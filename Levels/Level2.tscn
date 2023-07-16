@@ -1,0 +1,519 @@
+[gd_scene load_steps=23 format=3 uid="uid://bhngprgstjthk"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_gyus3"]
+[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_vufbv"]
+[ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="2_3ipu4"]
+[ext_resource type="PackedScene" path="res://Props/Ammo.tscn" id="3_ioqjk"]
+[ext_resource type="PackedScene" path="res://Props/WeaponPickup.tscn" id="4_jybxi"]
+[ext_resource type="PackedScene" uid="uid://cwpdmyvpmq07e" path="res://Characters/CircleChar.tscn" id="4_xai4x"]
+[ext_resource type="PackedScene" path="res://Props/HealthPack.tscn" id="5_emhvb"]
+[ext_resource type="PackedScene" path="res://Props/Armor.tscn" id="6_w65t4"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_14sd3"]
+
+[sub_resource type="Gradient" id="Gradient_t4an7"]
+colors = PackedColorArray(0, 0.480469, 0.435379, 1, 0.00392157, 0.478431, 0.435294, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_10d7l"]
+gradient = SubResource("Gradient_t4an7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0m2ai"]
+frequency = 0.269
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l40qu"]
+width = 2048
+height = 2048
+in_3d_space = true
+generate_mipmaps = false
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_0m2ai")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_033ge"]
+metallic_specular = 0.04
+normal_texture = SubResource("NoiseTexture2D_l40qu")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_on_uv2 = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+backlight_enabled = true
+backlight_texture = SubResource("GradientTexture1D_10d7l")
+uv2_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mcd50"]
+material = SubResource("StandardMaterial3D_033ge")
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7je41"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u5uj"]
+metallic_specular = 0.04
+normal_texture = SubResource("NoiseTexture2D_l40qu")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_on_uv2 = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+backlight_enabled = true
+backlight_texture = SubResource("GradientTexture1D_10d7l")
+uv2_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8gi18"]
+material = SubResource("StandardMaterial3D_2u5uj")
+size = Vector3(1, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_opvat"]
+size = Vector3(1, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a0wl"]
+metallic_specular = 0.04
+normal_texture = SubResource("NoiseTexture2D_l40qu")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_on_uv2 = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+backlight_enabled = true
+backlight_texture = SubResource("GradientTexture1D_10d7l")
+uv2_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ogdef"]
+material = SubResource("StandardMaterial3D_3a0wl")
+size = Vector3(1, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0147"]
+size = Vector3(1, 3, 2)
+
+[node name="Level2" type="Node3D"]
+script = ExtResource("1_gyus3")
+
+[node name="Level" parent="." instance=ExtResource("1_vufbv")]
+
+[node name="StairA1" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -9)
+mesh = SubResource("BoxMesh_mcd50")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StairA1"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairA1/StaticBody3D"]
+shape = SubResource("BoxShape3D_7je41")
+
+[node name="StairB1" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, -9)
+mesh = SubResource("BoxMesh_8gi18")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StairB1"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairB1/StaticBody3D"]
+shape = SubResource("BoxShape3D_opvat")
+
+[node name="StairC1" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, -9)
+mesh = SubResource("BoxMesh_ogdef")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StairC1"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairC1/StaticBody3D"]
+shape = SubResource("BoxShape3D_m0147")
+
+[node name="StairA2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.5, 0.5, 9)
+mesh = SubResource("BoxMesh_mcd50")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StairA2"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairA2/StaticBody3D"]
+shape = SubResource("BoxShape3D_7je41")
+
+[node name="StairB2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5, 1, 9)
+mesh = SubResource("BoxMesh_8gi18")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StairB2"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairB2/StaticBody3D"]
+shape = SubResource("BoxShape3D_opvat")
+
+[node name="StairC2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 1.5, 9)
+mesh = SubResource("BoxMesh_ogdef")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StairC2"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairC2/StaticBody3D"]
+shape = SubResource("BoxShape3D_m0147")
+
+[node name="FX" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Spawns" type="Node3D" parent="."]
+
+[node name="SpawnBlue1" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 4.125, 0)
+
+[node name="SpawnBlue2" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 4.125, 7.5)
+
+[node name="SpawnBlue3" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 4.125, 7.5)
+
+[node name="SpawnBlue4" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 13, 0.125, -18.5)
+
+[node name="SpawnBlue5" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 6.5, 0.125, -12)
+
+[node name="SpawnBlue6" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.125, -12.25)
+
+[node name="SpawnBlue7" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 3, 0.125, -22.5)
+
+[node name="SpawnBlue8" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -9, 0.125, -22.5)
+
+[node name="SpawnBlue9" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12, 4.125, -12)
+
+[node name="SpawnBlue10" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -12, 4.125, -25.5)
+
+[node name="SpawnBlue11" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -3, 4.125, -25.5)
+
+[node name="SpawnBlue12" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 13, 4.125, -25.5)
+
+[node name="SpawnBlue13" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 13, 4.125, -22)
+
+[node name="SpawnBlue14" type="Marker3D" parent="Spawns"]
+transform = Transform3D(8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, 6.5, 4.125, -22)
+
+[node name="SpawnBlue15" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -14, 0.125, -17)
+
+[node name="SpawnBlue16" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -18.5, 0.125, -12.5)
+
+[node name="SpawnBlue17" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -18.5, 0.125, -6.5)
+
+[node name="SpawnBlue18" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, -12.75, 0.125, -6.5)
+
+[node name="SpawnBlue19" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1.053e-07, 0, -1, 0, 1, 0, 1, 0, 1.053e-07, -8, 0.125, -7.5)
+
+[node name="SpawnBlue20" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 3.5, 0.125, -8.5)
+
+[node name="SpawnBlue21" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0.125, -8.5)
+
+[node name="SpawnBlue22" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, -3.5, 0.125, 0)
+
+[node name="SpawnRed1" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.5, 4.125, 6.55671e-07)
+
+[node name="SpawnRed2" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.5, 4.125, -7.5)
+
+[node name="SpawnRed3" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -12, 4.125, -7.5)
+
+[node name="SpawnRed4" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -13, 0.125, 18.5)
+
+[node name="SpawnRed5" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -6.5, 0.125, 12)
+
+[node name="SpawnRed6" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -3, 0.125, 12.25)
+
+[node name="SpawnRed7" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3, 0.125, 22.5)
+
+[node name="SpawnRed8" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9, 0.125, 22.5)
+
+[node name="SpawnRed9" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 12, 4.125, 12)
+
+[node name="SpawnRed10" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 12, 4.125, 25.5)
+
+[node name="SpawnRed11" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, 1, 3, 4.125, 25.5)
+
+[node name="SpawnRed12" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -13, 4.125, 25.5)
+
+[node name="SpawnRed13" type="Marker3D" parent="Spawns"]
+transform = Transform3D(8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -13, 4.125, 22)
+
+[node name="SpawnRed14" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-1.74846e-07, 0, 1, 0, 1, 0, -1, 0, -1.74846e-07, -6.5, 4.125, 22)
+
+[node name="SpawnRed15" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 14, 0.125, 17)
+
+[node name="SpawnRed16" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18.5, 0.125, 12.5)
+
+[node name="SpawnRed17" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 18.5, 0.125, 6.5)
+
+[node name="SpawnRed18" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-1, 0, -2.36434e-07, 0, 1, 0, 2.36434e-07, 0, -1, 12.75, 0.125, 6.5)
+
+[node name="SpawnRed19" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-1.92723e-07, 0, 1, 0, 1, 0, -1, 0, -1.92723e-07, 8, 0.125, 7.5)
+
+[node name="SpawnRed20" type="Marker3D" parent="Spawns"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.5, 0.125, 8.5)
+
+[node name="SpawnRed21" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 1.47027e-07, 0, 1, 0, -1.47027e-07, 0, 1, 7.43094e-07, 0.125, 8.5)
+
+[node name="SpawnRed22" type="Marker3D" parent="Spawns"]
+transform = Transform3D(-1.90739e-07, 0, 1, 0, 1, 0, -1, 0, -1.90739e-07, 3.5, 0.125, -3.0598e-07)
+
+[node name="Pickups" type="Node3D" parent="."]
+visible = false
+
+[node name="PistolAmmo1" parent="Pickups" instance=ExtResource("3_ioqjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 4, 7.5)
+script = null
+
+[node name="PistolAmmo2" parent="Pickups" instance=ExtResource("3_ioqjk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 4, -7.5)
+script = null
+
+[node name="RifleAmmo1" parent="Pickups" instance=ExtResource("3_ioqjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -25.5)
+script = null
+
+[node name="RifleAmmo2" parent="Pickups" instance=ExtResource("3_ioqjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 25.5)
+script = null
+
+[node name="RiflePickup" parent="Pickups" instance=ExtResource("4_jybxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+script = null
+
+[node name="PistolPickup1" parent="Pickups" instance=ExtResource("4_jybxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+script = null
+
+[node name="CollisionShape3D" parent="Pickups/PistolPickup1/Area3D" index="0"]
+disabled = true
+
+[node name="PistolPickup2" parent="Pickups" instance=ExtResource("4_jybxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0.25, -15.25)
+script = null
+
+[node name="PistolPickup3" parent="Pickups" instance=ExtResource("4_jybxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.25, -12)
+script = null
+
+[node name="PistolPickup4" parent="Pickups" instance=ExtResource("4_jybxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.25, 12)
+script = null
+
+[node name="PistolPickup5" parent="Pickups" instance=ExtResource("4_jybxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 0.25, 15.75)
+script = null
+
+[node name="HealthPack1" parent="Pickups" instance=ExtResource("5_emhvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -9.5)
+script = null
+
+[node name="CollisionShape3D" parent="Pickups/HealthPack1/Area3D" index="0"]
+disabled = true
+
+[node name="HealthPack2" parent="Pickups" instance=ExtResource("5_emhvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 9.5)
+script = null
+
+[node name="CollisionShape3D" parent="Pickups/HealthPack2/Area3D" index="0"]
+disabled = true
+
+[node name="Armor1" parent="Pickups" instance=ExtResource("6_w65t4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 4, -22)
+script = null
+
+[node name="Armor2" parent="Pickups" instance=ExtResource("6_w65t4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 4, 22)
+script = null
+
+[node name="NavPoints" type="Node3D" parent="."]
+visible = false
+
+[node name="NavPointMid1" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5, 4, -7.5)
+
+[node name="NavPointMid3" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5, 4, 0)
+
+[node name="NavPointRed1" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 4, -7.5)
+
+[node name="NavPointRed2" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0, 10.25)
+
+[node name="NavPointRed3" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.75, 0, 17.5)
+
+[node name="NavPointRed9" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.75, 0, 16)
+
+[node name="NavPointRed12" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.25, 0, 16)
+
+[node name="NavPointRed13" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.75, 0, 9.5)
+
+[node name="NavPointRed14" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.25, 0, 7.5)
+
+[node name="NavPointRed17" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.37114e-07, 0, 5)
+
+[node name="NavPointRed15" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18.25, 0, 12.25)
+
+[node name="NavPointRed16" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18.25, 0, 6.75)
+
+[node name="NavPointRed4" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 12)
+
+[node name="NavPointRed5" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12, 4, 12)
+
+[node name="NavPointRed6" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12, 4, 25.5)
+
+[node name="NavPointRed7" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.75, 4, 25.5)
+
+[node name="NavPointRed8" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.75, 4, 25.5)
+
+[node name="NavPointRed10" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.25, 4, 22)
+
+[node name="NavPointRed11" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.25, 4, 22)
+
+[node name="NavPointMid2" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4, 7.5)
+
+[node name="NavPointMid4" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4, 0)
+
+[node name="NavPointBlue1" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 7.5)
+
+[node name="NavPointBlue2" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -10.25)
+
+[node name="NavPointBlue3" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, -17.5)
+
+[node name="NavPointBlue9" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 0, -16)
+
+[node name="NavPointBlue12" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.25, 0, -16)
+
+[node name="NavPointBlue13" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.75, 0, -9.5)
+
+[node name="NavPointBlue14" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, -7.5)
+
+[node name="NavPointBlue17" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="NavPointBlue15" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.25, 0, -12.25)
+
+[node name="NavPointBlue16" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.25, 0, -6.75)
+
+[node name="NavPointBlue4" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -12)
+
+[node name="NavPointBlue5" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -12)
+
+[node name="NavPointBlue6" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -25.5)
+
+[node name="NavPointBlue7" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 4, -25.5)
+
+[node name="NavPointBlue8" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 4, -25.5)
+
+[node name="NavPointBlue10" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 4, -22)
+
+[node name="NavPointBlue11" type="Marker3D" parent="NavPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4, -22)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_14sd3")
+volume_db = -20.0
+
+[node name="Player" parent="." instance=ExtResource("2_3ipu4")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0367489, -4.74183)
+collision_layer = 1
+collision_mask = 1
+platform_floor_layers = 4294967295
+
+[node name="CircleChar1" parent="." instance=ExtResource("4_xai4x")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 4)
+
+[node name="CircleChar2" parent="." instance=ExtResource("4_xai4x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.65945, 0, -14.5276)
+turn = 0.018
+
+[node name="CircleChar3" parent="." instance=ExtResource("4_xai4x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.77936, 0, 22.9731)
+turn = 0.018
+
+[node name="CircleChar4" parent="." instance=ExtResource("4_xai4x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.5181, 0, 7.12818)
+
+[node name="CircleChar5" parent="." instance=ExtResource("4_xai4x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5676, 1.90735e-06, -12.0528)
+
+[connection signal="spawn_bullet_hole" from="Player" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Player" to="." method="spawn_damage_label"]
+[connection signal="spawn_damage_label" from="CircleChar1" to="." method="spawn_damage_label"]
+[connection signal="spawn_damage_label" from="CircleChar2" to="." method="spawn_damage_label"]
+[connection signal="spawn_damage_label" from="CircleChar3" to="." method="spawn_damage_label"]
+[connection signal="spawn_damage_label" from="CircleChar4" to="." method="spawn_damage_label"]
+[connection signal="spawn_damage_label" from="CircleChar5" to="." method="spawn_damage_label"]
+
+[editable path="Pickups/PistolPickup1"]
+[editable path="Pickups/HealthPack1"]
+[editable path="Pickups/HealthPack2"]

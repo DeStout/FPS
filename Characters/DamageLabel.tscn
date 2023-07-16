@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://ndot8npdai20"]
+
+[ext_resource type="Script" path="res://Characters/DamageLabel.gd" id="1_jr7wr"]
+
+[node name="DamageLabel" type="Label3D"]
+top_level = true
+billboard = 2
+double_sided = false
+alpha_cut = 1
+alpha_scissor_threshold = 0.034
+modulate = Color(0.709804, 0.172549, 0.133333, 1)
+font_size = 64
+outline_size = 0
+script = ExtResource("1_jr7wr")
+easing = 0.133786
+
+[node name="Despawn" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Despawn" to="." method="queue_free"]

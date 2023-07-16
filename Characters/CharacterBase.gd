@@ -1,0 +1,92 @@
+class_name CharacterBase
+extends CharacterBody3D
+
+
+enum BODY_SEGS {HEAD, TORSO, LIMB}
+var BODY_DMG := [-50, -25, -10]
+
+const ACCEL := 3.0
+const DEACCEL := 1.0
+const AIR_ACCEL := 0.2
+const AIR_DEACCEL := 0.03
+const SPEED = 6.5
+const JUMP_VELOCITY = 5.0
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+const MAX_HEALTH := 200
+var health := 100 : set = _set_health
+var body_segs : Array = []
+signal spawn_damage_label
+
+@export var weapon_held : Node3D = null
+@onready var state_machine = $PuppetAnimations/AnimationTree["parameters/playback"]
+var trigger_pulled := false
+
+@onready var current_level : Node3D = get_parent()
+signal spawn_bullet_hole
+
+
+func _ready() -> void:
+	var temp_bodysegs = get_tree().get_nodes_in_group("body_segs")
+	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
+
+
+func _process(delta) -> void:
+	if trigger_pulled:
+		_shoot()
+
+
+func _physics_process(delta) -> void:
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+
+func _shoot() -> void:
+	if weapon_held.can_shoot():
+		weapon_held.shoot(%ShootCast.get_collision_point())
+
+		if %ShootCast.is_colliding():
+			if %ShootCast.get_collider().is_in_group("body_segs"):
+					%ShootCast.get_collider().body_seg_shot()
+			elif current_level != null:
+				spawn_bullet_hole.emit(%ShootCast.get_collision_point(), \
+									%ShootCast.get_collision_normal())
+		# Add recoil
+		var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.v_recoil
+		$AimHelper.rotate_x(deg_to_rad(v_recoil))
+		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
+										-deg_to_rad(89), deg_to_rad(89))
+		var h_recoil : float = randf_range(-1, 1) * weapon_held.h_recoil
+		rotate_y(deg_to_rad(h_recoil))
+		$AimHelper.rotation.z = 0
+	elif weapon_held.ammo_in_mag == 0:
+		_reload()
+
+	if !weapon_held.automatic:
+		trigger_pulled = false
+
+
+func _reload() -> void:
+	if !weapon_held.is_reloading:
+		weapon_held.reload()
+
+
+func _take_damage(body_seg) -> void:
+	health += BODY_DMG[body_seg]
+
+	if health > 0:
+		$HurtSFX.get_children().pick_random().play()
+	if current_level != null:
+		spawn_damage_label.emit($DmgLbl.global_position, str(BODY_DMG[body_seg]))
+
+
+func _set_health(new_health) -> void:
+	health = new_health
+	if health <= 0:
+		_die()
+
+
+func _die() -> void:
+	visible = false
+	$DeathSFX.get_children().pick_random().play()
+	queue_free()

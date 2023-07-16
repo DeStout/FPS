@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://o6wrt3vjyibo"]
+
+[ext_resource type="Script" path="res://Props/ShotTrail.gd" id="1_j5er2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcg63"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_receive_shadows = true
+distance_fade_mode = 1
+distance_fade_min_distance = 0.25
+distance_fade_max_distance = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lm5jk"]
+material = SubResource("StandardMaterial3D_qcg63")
+radius = 0.01
+radial_segments = 12
+rings = 2
+
+[node name="ShotTrail" type="Node3D"]
+top_level = true
+script = ExtResource("1_j5er2")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_lm5jk")

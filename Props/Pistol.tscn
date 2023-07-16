@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch6dv53ilimv4"]
+
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/WeaponBase.tscn" id="1_ufvh7"]
+[ext_resource type="AudioStream" uid="uid://ddnxsubfu5btr" path="res://Props/PistolShoot.ogg" id="2_4horu"]
+[ext_resource type="PackedScene" uid="uid://brkwsl458i1pq" path="res://Props/PistolBase.tscn" id="2_7dgsw"]
+[ext_resource type="AudioStream" uid="uid://hhtniilpnas5" path="res://Props/PistolReload.ogg" id="4_bwu4n"]
+
+[node name="Weapon" instance=ExtResource("1_ufvh7")]
+
+[node name="PistolModel" parent="." index="0" instance=ExtResource("2_7dgsw")]
+
+[node name="Nozzle" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0565472, -0.164411)
+
+[node name="ShootAudio" parent="." index="2"]
+stream = ExtResource("2_4horu")
+max_db = -2.0
+
+[node name="ReloadAudio" parent="." index="3"]
+stream = ExtResource("4_bwu4n")
+volume_db = 45.0

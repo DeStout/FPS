@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Props/WeaponPickup.gd" id="1_e3clj"]
+[ext_resource type="ArrayMesh" uid="uid://j8dv0btg0w0y" path="res://Props/Pistol.mesh" id="2_fdrlm"]
+[ext_resource type="ArrayMesh" uid="uid://um10ol475r6k" path="res://Props/Rifle.mesh" id="3_qepxc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qsy6i"]
+height = 0.75
+
+[node name="WeaponPickup" type="Node3D"]
+script = ExtResource("1_e3clj")
+
+[node name="Spinner" type="Node3D" parent="."]
+
+[node name="Pistol" type="MeshInstance3D" parent="Spinner"]
+transform = Transform3D(1.6946, 1.33971, 5.80051e-08, -0.885937, 1.95046, -1.01691, -0.496311, 1.09267, 1.81524, 1.5857e-10, 0.284301, -0.0612284)
+visible = false
+mesh = ExtResource("2_fdrlm")
+skeleton = NodePath("")
+
+[node name="Rifle" type="MeshInstance3D" parent="Spinner"]
+transform = Transform3D(1.39941, 1.00635, -2.55638e-08, -0.731611, 1.46512, -0.82187, -0.409856, 0.820773, 1.46707, 6.34279e-10, 0.502529, -0.161122)
+visible = false
+mesh = ExtResource("3_qepxc")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_qsy6i")
+
+[connection signal="body_entered" from="Area3D" to="." method="_body_entered"]

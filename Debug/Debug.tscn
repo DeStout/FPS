@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://g1mw1dptu8qr"]
+
+[ext_resource type="Script" path="res://Debug/Debug.gd" id="1_3d6yx"]
+
+[node name="Debug" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3d6yx")
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 27.0
+offset_right = -1474.0
+offset_bottom = -811.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "FPS: 0"
+
+[node name="Mute" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 130.268
+offset_top = 27.0
+offset_right = -1360.73
+offset_bottom = -811.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Mute:"
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.13
+offset_top = 27.0
+offset_right = -1240.87
+offset_bottom = -811.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Level:"
+horizontal_alignment = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Behaviors" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1481.13
+offset_top = 68.5871
+offset_right = -22.8724
+offset_bottom = -792.413
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2

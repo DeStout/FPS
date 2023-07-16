@@ -1,0 +1,144 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwpdmyvpmq07e"]
+
+[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_ucihe"]
+[ext_resource type="Script" path="res://Characters/CircleChar.gd" id="2_1a018"]
+
+[node name="CircleChar" instance=ExtResource("1_ucihe")]
+script = ExtResource("2_1a018")
+speed = 0.5
+turn = 0.02
+
+[node name="ShootCast" parent="AimHelper" index="0"]
+collision_mask = 5
+
+[node name="Skeleton3D" parent="PuppetAnimations/Character" index="0"]
+bones/1/position = Vector3(2.91708e-10, 0.892875, -0.0641973)
+bones/2/rotation = Quaternion(-0.159364, 0.000852157, 0.00330623, 0.987214)
+bones/4/rotation = Quaternion(0.0562725, 0.0126306, 0.0192584, 0.99815)
+bones/5/rotation = Quaternion(0.0590834, -1.65839e-08, 1.87788e-08, 0.998253)
+bones/7/rotation = Quaternion(-0.289657, 0.202691, -0.427777, 0.831879)
+bones/8/rotation = Quaternion(0.422302, 0.0329495, -0.0822276, 0.902116)
+bones/10/rotation = Quaternion(0.223142, 0.160853, 0.499105, 0.821723)
+bones/11/rotation = Quaternion(0.503289, -0.0313371, 0.0979968, 0.857972)
+bones/12/position = Vector3(0.264621, -0.0952898, -0.0713815)
+bones/28/rotation = Quaternion(0.664947, 0.493071, 0.182037, 0.53065)
+bones/29/rotation = Quaternion(0.6559, 0.371215, -0.0413281, 0.655963)
+bones/30/position = Vector3(-0.209327, 0.137202, 0.327744)
+bones/30/rotation = Quaternion(-0.543586, 0.342094, 0.404314, 0.651166)
+bones/46/rotation = Quaternion(-0.301194, -0.593953, 0.634941, -0.391601)
+bones/47/rotation = Quaternion(0.239245, 0.572306, -0.543797, 0.565255)
+bones/49/rotation = Quaternion(-0.585487, 0.216795, -0.171019, 0.762206)
+bones/50/rotation = Quaternion(-0.0896889, 0.00386458, 0.137411, 0.986438)
+bones/52/rotation = Quaternion(-0.525505, -0.0534802, 0.335687, 0.779935)
+bones/53/rotation = Quaternion(-0.120601, -0.00382113, -0.184771, 0.975346)
+bones/60/position = Vector3(-0.351893, 1.2919, 0.501057)
+bones/60/rotation = Quaternion(0.5814, -0.412024, -0.435529, 0.550022)
+bones/67/position = Vector3(0.376083, 0.979515, 0.491713)
+bones/67/rotation = Quaternion(0.5814, 0.412024, 0.435529, 0.550022)
+
+[node name="Head" parent="PuppetAnimations/Character/Skeleton3D" index="1"]
+transform = Transform3D(-1, -4.40081e-08, -4.13124e-07, 6.69905e-08, 0.969808, -0.24387, 4.13044e-07, -0.24387, -0.969808, 7.35553e-09, 1.5711, -0.0225659)
+
+[node name="HeadArea" parent="PuppetAnimations/Character/Skeleton3D/Head" index="0"]
+collision_layer = 8
+
+[node name="Neck" parent="PuppetAnimations/Character/Skeleton3D" index="2"]
+transform = Transform3D(-1, -3.05008e-08, -4.5076e-07, 3.62634e-08, 0.991804, -0.127769, 4.52623e-07, -0.127768, -0.991804, 9.31323e-09, 1.50744, -0.014365)
+
+[node name="NeckArea" parent="PuppetAnimations/Character/Skeleton3D/Neck" index="0"]
+collision_layer = 8
+
+[node name="Chest" parent="PuppetAnimations/Character/Skeleton3D" index="3"]
+transform = Transform3D(-0.999977, 0.00679964, -0.000629105, 0.00648746, 0.974727, 0.223301, 0.00213157, 0.223292, -0.974749, -6.14888e-10, 1.13104, -0.0868667)
+
+[node name="ChestArea" parent="PuppetAnimations/Character/Skeleton3D/Chest" index="0"]
+collision_layer = 8
+
+[node name="Stomach" parent="PuppetAnimations/Character/Skeleton3D" index="4"]
+transform = Transform3D(-1, -3.78941e-09, -3.89234e-07, 3.31093e-08, 0.9955, -0.0947544, 3.87842e-07, -0.0947544, -0.995501, 2.91708e-10, 0.892875, -0.0641973)
+
+[node name="StomachArea" parent="PuppetAnimations/Character/Skeleton3D/Stomach" index="0"]
+collision_layer = 8
+
+[node name="L_UpperArm" parent="PuppetAnimations/Character/Skeleton3D" index="5"]
+transform = Transform3D(0.958391, -0.238099, -0.157467, -0.280295, -0.889374, -0.361174, -0.0540526, 0.390283, -0.919107, -0.194961, 1.39074, -0.0252055)
+
+[node name="L_UpperArmArea" parent="PuppetAnimations/Character/Skeleton3D/L_UpperArm" index="0"]
+collision_layer = 8
+
+[node name="L_Forearm" parent="PuppetAnimations/Character/Skeleton3D" index="6"]
+transform = Transform3D(0.992344, -0.100224, 0.0721595, -0.122146, -0.882744, 0.453698, 0.0182268, -0.459039, -0.888229, -0.244645, 1.20516, 0.0562358)
+
+[node name="L_ForearmArea" parent="PuppetAnimations/Character/Skeleton3D/L_Forearm" index="0"]
+collision_layer = 8
+
+[node name="L_Hand" parent="PuppetAnimations/Character/Skeleton3D" index="7"]
+transform = Transform3D(-0.240441, -0.957652, -0.1584, -0.91822, 0.277314, -0.282786, 0.314737, 0.0774525, -0.946013, -0.265218, 1.02394, -0.0380011)
+
+[node name="L_HandArea" parent="PuppetAnimations/Character/Skeleton3D/L_Hand" index="0"]
+collision_layer = 8
+
+[node name="R_UpperArm" parent="PuppetAnimations/Character/Skeleton3D" index="8"]
+transform = Transform3D(0.982094, 0.187986, -0.0123653, 0.1266, -0.60994, 0.782269, 0.139514, -0.769827, -0.622818, 0.194961, 1.39074, -0.0252054)
+
+[node name="R_UpperArmArea" parent="PuppetAnimations/Character/Skeleton3D/R_UpperArm" index="0"]
+collision_layer = 8
+
+[node name="R_Forearm" parent="PuppetAnimations/Character/Skeleton3D" index="9"]
+transform = Transform3D(0.985099, -0.117585, -0.125514, 0.159823, 0.356262, 0.920616, -0.0635348, -0.926958, 0.369746, 0.234188, 1.26347, -0.185847)
+
+[node name="R_ForearmArea" parent="PuppetAnimations/Character/Skeleton3D/R_Forearm" index="0"]
+collision_layer = 8
+
+[node name="R_Hand" parent="PuppetAnimations/Character/Skeleton3D" index="10"]
+transform = Transform3D(-0.437386, 0.899274, 0.000623561, -0.044063, -0.0221238, 0.998783, 0.898194, 0.436826, 0.0493015, 0.210049, 1.3366, -0.376145)
+
+[node name="R_HandArea" parent="PuppetAnimations/Character/Skeleton3D/R_Hand" index="0"]
+collision_layer = 8
+
+[node name="L_Thigh" parent="PuppetAnimations/Character/Skeleton3D" index="11"]
+transform = Transform3D(0.497507, -0.0525264, -0.865868, -0.0986781, -0.995112, 0.00366847, -0.861829, 0.083617, -0.500259, -0.0851499, 0.875386, -0.0593682)
+
+[node name="L_ThighArea" parent="PuppetAnimations/Character/Skeleton3D/L_Thigh" index="0"]
+collision_layer = 8
+
+[node name="L_Shin" parent="PuppetAnimations/Character/Skeleton3D" index="12"]
+transform = Transform3D(0.492446, -0.0326228, -0.869732, -0.364147, -0.915349, -0.171848, -0.790503, 0.401336, -0.46264, -0.107219, 0.457279, -0.0242356)
+
+[node name="L_ShinArea" parent="PuppetAnimations/Character/Skeleton3D/L_Shin" index="0"]
+collision_layer = 8
+
+[node name="L_Foot" parent="PuppetAnimations/Character/Skeleton3D" index="13"]
+transform = Transform3D(0.245938, -0.072078, -0.966602, 0.853542, -0.456465, 0.251209, -0.459327, -0.886817, -0.0507405, -0.11946, 0.113842, 0.126346)
+
+[node name="L_FootArea" parent="PuppetAnimations/Character/Skeleton3D/L_Foot" index="0"]
+collision_layer = 8
+
+[node name="R_Thigh" parent="PuppetAnimations/Character/Skeleton3D" index="14"]
+transform = Transform3D(0.48249, 0.0600434, 0.873841, -0.311257, -0.920779, 0.235128, 0.818733, -0.385436, -0.425577, 0.0851499, 0.875386, -0.0593682)
+
+[node name="R_ThighArea" parent="PuppetAnimations/Character/Skeleton3D/R_Thigh" index="0"]
+collision_layer = 8
+
+[node name="R_Shin" parent="PuppetAnimations/Character/Skeleton3D" index="15"]
+transform = Transform3D(0.473403, 0.024204, 0.880514, 0.0532657, -0.998579, -0.00118853, 0.879234, 0.0474638, -0.474019, 0.110378, 0.488511, -0.221313)
+
+[node name="R_ShinArea" parent="PuppetAnimations/Character/Skeleton3D/R_Shin" index="0"]
+collision_layer = 8
+
+[node name="R_Foot" parent="PuppetAnimations/Character/Skeleton3D" index="16"]
+transform = Transform3D(0.245938, 0.072078, 0.966602, -0.853542, -0.456465, 0.251209, 0.459327, -0.886817, -0.0507405, 0.11946, 0.113841, -0.203503)
+
+[node name="R_FootArea" parent="PuppetAnimations/Character/Skeleton3D/R_Foot" index="0"]
+collision_layer = 8
+
+[node name="AnimationTree" parent="PuppetAnimations" index="2"]
+active = true
+
+[node name="Respawn" type="Timer" parent="." index="3"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Respawn" to="." method="_respawn"]
+
+[editable path="PuppetAnimations"]

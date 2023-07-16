@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7isot5rpcwus"]
+
+[ext_resource type="PackedScene" uid="uid://skmswhmffk4p" path="res://Props/Rifle.glb" id="1_dil26"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5y7vo"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[node name="RifleBase" instance=ExtResource("1_dil26")]
+
+[node name="Rifle2" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_5y7vo")
