@@ -66,7 +66,7 @@ func _input(event) -> void:
 
 func _infinte_ammo() -> void:
 	if infinite_ammo:
-		print("infinite_ammo")
+		print("Debug: Infinite Ammo")
 		player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
 										player.weapon_held.mag_size
 		player._update_UI()

@@ -65,32 +65,62 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("Reload"):
 		_reload()
 
+	# Keyboard weapon switching
 	if Input.is_action_just_pressed("Weapon1"):
 		if weapon_held != $AimHelper/FPWeapons/Pistol:
+			weapon_held.interrupt_reload()
 			weapon_held = $AimHelper/FPWeapons/Pistol
 			$AimHelper/FPWeapons/Rifle.visible = false
+			$AimHelper/Weapons/Rifle.visible = false
 			$AimHelper/FPWeapons/Pistol.visible = true
+			$AimHelper/Weapons/Pistol.visible = true
+			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
+														Vector2(1.0, 1.0)
+			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
+														Vector2(1.0, 1.0)
 			_update_UI()
 	elif Input.is_action_just_pressed("Weapon2"):
 		if weapon_held != $AimHelper/FPWeapons/Rifle:
+			weapon_held.interrupt_reload()
 			weapon_held = $AimHelper/FPWeapons/Rifle
 			$AimHelper/FPWeapons/Pistol.visible = false
+			$AimHelper/Weapons/Pistol.visible = false
 			$AimHelper/FPWeapons/Rifle.visible = true
+			$AimHelper/Weapons/Rifle.visible = true
+			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
+														Vector2(1.0, -1.0)
+			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
+														Vector2(1.0, -1.0)
 			_update_UI()
 	elif Input.is_action_just_pressed("Weapon3"):
 		pass
 
+	# Controller weapon switching
 	if Input.is_action_just_pressed("SwitchWeapon"):
 		if weapon_held == $AimHelper/FPWeapons/Pistol:
+			weapon_held.interrupt_reload()
 			weapon_held = $AimHelper/FPWeapons/Rifle
 			$AimHelper/FPWeapons/Pistol.visible = false
+			$AimHelper/Weapons/Pistol.visible = false
 			$AimHelper/FPWeapons/Rifle.visible = true
+			$AimHelper/Weapons/Rifle.visible = true
 			_update_UI()
+			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
+														Vector2(1.0, -1.0)
+			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
+														Vector2(1.0, -1.0)
 		elif weapon_held == $AimHelper/FPWeapons/Rifle:
+			weapon_held.interrupt_reload()
 			weapon_held = $AimHelper/FPWeapons/Pistol
 			$AimHelper/FPWeapons/Rifle.visible = false
+			$AimHelper/Weapons/Rifle.visible = false
 			$AimHelper/FPWeapons/Pistol.visible = true
+			$AimHelper/Weapons/Pistol.visible = true
 			_update_UI()
+			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
+														Vector2(1.0, 1.0)
+			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
+														Vector2(1.0, 1.0)
 
 func _shoot() -> void:
 	super()

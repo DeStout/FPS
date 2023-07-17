@@ -61,7 +61,7 @@ func shoot(collisionPoint : Vector3) -> void:
 func reload() -> void:
 	if extra_ammo > 0 and ammo_in_mag < mag_size:
 		is_reloading = true
-		$ReloadAudio.play()
+		$ReloadAudio.play(0.0)
 		await $ReloadAudio.finished
 
 		var ammo_to_add = mag_size - ammo_in_mag
@@ -70,3 +70,9 @@ func reload() -> void:
 
 		is_reloading = false
 		finished_reloading.emit()
+
+
+func interrupt_reload() -> void:
+	if is_reloading:
+		$ReloadAudio.stop()
+		is_reloading = false

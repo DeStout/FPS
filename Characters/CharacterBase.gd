@@ -19,6 +19,7 @@ var body_segs : Array = []
 signal spawn_damage_label
 
 @export var weapon_held : Node3D = null
+@onready var anim_tree = $PuppetAnimations/AnimationTree
 @onready var state_machine = $PuppetAnimations/AnimationTree["parameters/playback"]
 var trigger_pulled := false
 

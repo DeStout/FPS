@@ -17,7 +17,6 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:
 
 
 func spawn_damage_label(pos : Vector3, dmg : String) -> void:
-	print("Taking damage")
 	var damage_label = damage_label_.instantiate()
 	$FX.add_child(damage_label)
 	damage_label.set_txt_and_pos(pos, dmg)
