@@ -19,6 +19,7 @@ var body_segs : Array = []
 signal spawn_damage_label
 
 @export var weapon_held : Node3D = null
+@onready var weapons := $AimHelper/Weapons
 @onready var anim_tree = $PuppetAnimations/AnimationTree
 @onready var state_machine = $PuppetAnimations/AnimationTree["parameters/playback"]
 var trigger_pulled := false
@@ -33,7 +34,7 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
-	if trigger_pulled:
+	if trigger_pulled and weapon_held:
 		_shoot()
 
 
@@ -91,3 +92,48 @@ func _die() -> void:
 	visible = false
 	$DeathSFX.get_children().pick_random().play()
 	queue_free()
+
+
+func pick_up_weapon(weapon_type : int) -> Node3D:
+	if !_have_weapon(weapon_type):
+		var new_weapon : Node3D
+		match weapon_type:
+			Globals.WEAPONS.PISTOL:
+				new_weapon = Globals.pistol_.instantiate()
+			Globals.WEAPONS.RIFLE:
+				new_weapon = Globals.rifle_.instantiate()
+		weapons.add_child(new_weapon)
+		_switch_weapon(new_weapon)
+		return new_weapon
+	return null
+
+
+func _have_weapon(weapon_type : int ) -> bool:
+	for weapon in weapons.get_children():
+		if weapon.weapon_type == weapon_type:
+			return true
+	return false
+
+
+func _get_weapon(weapon_type : int) -> Node3D:
+	var new_weapon : Node3D
+	for weapon in weapons.get_children():
+		if weapon.weapon_type == weapon_type:
+			new_weapon = weapon
+	return new_weapon
+
+
+func _switch_weapon(new_weapon) -> void:
+		if weapon_held != new_weapon:
+			if weapon_held:
+				weapon_held.interrupt_reload()
+				weapon_held.visible = false
+			weapon_held = new_weapon
+			weapon_held.visible = true
+#			var tween = get_tree().create_tween()
+#			tween.tween_property(anim_tree, \
+#				"parameters/Idle/IdleUpper_Blend/blend_position", \
+#										Vector2(1.0, -1.0), 0.25)
+#			tween.tween_property(anim_tree, \
+#				"parameters/Run/RunUpper_Blend/blend_position", \
+#										Vector2(1.0, -1.0), 0.25)

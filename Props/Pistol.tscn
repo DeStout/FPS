@@ -5,17 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://brkwsl458i1pq" path="res://Props/PistolBase.tscn" id="2_7dgsw"]
 [ext_resource type="AudioStream" uid="uid://hhtniilpnas5" path="res://Props/PistolReload.ogg" id="4_bwu4n"]
 
-[node name="Weapon" instance=ExtResource("1_ufvh7")]
+[node name="Pistol" instance=ExtResource("1_ufvh7")]
+weapon_type = 1
 
-[node name="PistolModel" parent="." index="0" instance=ExtResource("2_7dgsw")]
+[node name="Mesh" parent="." index="0" instance=ExtResource("2_7dgsw")]
+layers = 1
 
-[node name="Nozzle" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0565472, -0.164411)
+[node name="Nozzle" type="Node3D" parent="Mesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43266e-08, 0.0566698, 0.163877)
 
-[node name="ShootAudio" parent="." index="2"]
+[node name="ShootAudio" parent="." index="1"]
 stream = ExtResource("2_4horu")
 max_db = -2.0
 
-[node name="ReloadAudio" parent="." index="3"]
+[node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("4_bwu4n")
 volume_db = 45.0
+
+[editable path="Mesh"]

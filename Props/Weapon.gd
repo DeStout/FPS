@@ -53,7 +53,7 @@ func shoot(collisionPoint : Vector3) -> void:
 
 	var shot_trail = shot_trail_.instantiate()
 	add_child(shot_trail)
-	shot_trail.align_and_scale($Nozzle.global_position, collisionPoint)
+	shot_trail.align_and_scale($Mesh/Nozzle.global_position, collisionPoint)
 
 	$ShotTimer.start()
 

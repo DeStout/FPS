@@ -1,5 +1,9 @@
 extends CharacterBase
 
+const WEAPON_ALIGNMENTS := [Vector3(),
+							Vector3(0.115, -0.14, -0.31), 		# Pistol
+							Vector3(0.125, -0.21, -0.315)] 		# Rifle
+
 const MOUSE_HORZ_SENSITIVITY := -0.002
 const MOUSE_VERT_SENSITIVITY := -0.002
 const LOOK_SENSITIVITY := 0.05
@@ -7,6 +11,9 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
+	var pistol = pick_up_weapon(Globals.WEAPONS.PISTOL)
+	pick_up_weapon(Globals.WEAPONS.RIFLE)
+	_switch_weapon(pistol)
 	_update_UI()
 
 func _physics_process(delta) -> void:
@@ -67,60 +74,85 @@ func _unhandled_input(event):
 
 	# Keyboard weapon switching
 	if Input.is_action_just_pressed("Weapon1"):
-		if weapon_held != $AimHelper/FPWeapons/Pistol:
+		if _have_weapon(Globals.WEAPONS.RIFLE):
 			weapon_held.interrupt_reload()
-			weapon_held = $AimHelper/FPWeapons/Pistol
-			$AimHelper/FPWeapons/Rifle.visible = false
-			$AimHelper/Weapons/Rifle.visible = false
-			$AimHelper/FPWeapons/Pistol.visible = true
-			$AimHelper/Weapons/Pistol.visible = true
-			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
-														Vector2(1.0, 1.0)
-			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
-														Vector2(1.0, 1.0)
-			_update_UI()
+			_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+#			weapon_held = $AimHelper/FPWeapons/Pistol
+#			$AimHelper/FPWeapons/Rifle.visible = false
+#			$AimHelper/Weapons/Rifle.visible = false
+#			$AimHelper/FPWeapons/Pistol.visible = true
+#			$AimHelper/Weapons/Pistol.visible = true
+#			_update_UI()
+#			var tween = create_tween()
+#			tween.tween_property(anim_tree, \
+#				"parameters/Idle/IdleUpper_Blend/blend_position", \
+#										Vector2(1.0, 1.0), 0.25)
+#			tween.tween_property(anim_tree, \
+#				"parameters/Run/RunUpper_Blend/blend_position", \
+#										Vector2(1.0, 1.0), 0.25)
 	elif Input.is_action_just_pressed("Weapon2"):
-		if weapon_held != $AimHelper/FPWeapons/Rifle:
+		if _have_weapon(Globals.WEAPONS.RIFLE):
 			weapon_held.interrupt_reload()
-			weapon_held = $AimHelper/FPWeapons/Rifle
-			$AimHelper/FPWeapons/Pistol.visible = false
-			$AimHelper/Weapons/Pistol.visible = false
-			$AimHelper/FPWeapons/Rifle.visible = true
-			$AimHelper/Weapons/Rifle.visible = true
-			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
-														Vector2(1.0, -1.0)
-			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
-														Vector2(1.0, -1.0)
-			_update_UI()
+			_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+#		if weapon_held != $AimHelper/FPWeapons/Rifle:
+#			weapon_held.interrupt_reload()
+#			weapon_held = $AimHelper/FPWeapons/Rifle
+#			$AimHelper/FPWeapons/Pistol.visible = false
+#			$AimHelper/Weapons/Pistol.visible = false
+#			$AimHelper/FPWeapons/Rifle.visible = true
+#			$AimHelper/Weapons/Rifle.visible = true
+#			_update_UI()
+#			var tween = get_tree().create_tween()
+#			tween.tween_property(anim_tree, \
+#				"parameters/Idle/IdleUpper_Blend/blend_position", \
+#										Vector2(1.0, -1.0), 0.25)
+#			tween.tween_property(anim_tree, \
+#				"parameters/Run/RunUpper_Blend/blend_position", \
+#										Vector2(1.0, -1.0), 0.25)
 	elif Input.is_action_just_pressed("Weapon3"):
 		pass
 
 	# Controller weapon switching
 	if Input.is_action_just_pressed("SwitchWeapon"):
-		if weapon_held == $AimHelper/FPWeapons/Pistol:
+		if weapon_held:
 			weapon_held.interrupt_reload()
-			weapon_held = $AimHelper/FPWeapons/Rifle
-			$AimHelper/FPWeapons/Pistol.visible = false
-			$AimHelper/Weapons/Pistol.visible = false
-			$AimHelper/FPWeapons/Rifle.visible = true
-			$AimHelper/Weapons/Rifle.visible = true
-			_update_UI()
-			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
-														Vector2(1.0, -1.0)
-			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
-														Vector2(1.0, -1.0)
-		elif weapon_held == $AimHelper/FPWeapons/Rifle:
-			weapon_held.interrupt_reload()
-			weapon_held = $AimHelper/FPWeapons/Pistol
-			$AimHelper/FPWeapons/Rifle.visible = false
-			$AimHelper/Weapons/Rifle.visible = false
-			$AimHelper/FPWeapons/Pistol.visible = true
-			$AimHelper/Weapons/Pistol.visible = true
-			_update_UI()
-			anim_tree["parameters/Idle/IdleUpper_Blend/blend_position"] = \
-														Vector2(1.0, 1.0)
-			anim_tree["parameters/Run/RunUpper_Blend/blend_position"] = \
-														Vector2(1.0, 1.0)
+			for weapon_type in range(Globals.WEAPONS.size()):
+				weapon_type += weapon_held.weapon_type + 1
+				for weapon in weapons.get_children():
+					if weapon.weapon_type == (weapon_type % Globals.WEAPONS.size()):
+						_switch_weapon(weapon)
+						return
+
+#		if weapon_held == $AimHelper/FPWeapons/Rifle:
+#			weapon_held.interrupt_reload()
+#			weapon_held = $AimHelper/FPWeapons/Pistol
+#			$AimHelper/FPWeapons/Rifle.visible = false
+#			$AimHelper/Weapons/Rifle.visible = false
+#			$AimHelper/FPWeapons/Pistol.visible = true
+#			$AimHelper/Weapons/Pistol.visible = true
+#			_update_UI()
+#			var tween = create_tween()
+#			tween.tween_property(anim_tree, \
+#				"parameters/Idle/IdleUpper_Blend/blend_position", \
+#										Vector2(1.0, 1.0), 0.25)
+#			tween.tween_property(anim_tree, \
+#				"parameters/Run/RunUpper_Blend/blend_position", \
+#										Vector2(1.0, 1.0), 0.25)
+#		elif weapon_held == $AimHelper/FPWeapons/Pistol:
+#			weapon_held.interrupt_reload()
+#			weapon_held = $AimHelper/FPWeapons/Rifle
+#			$AimHelper/FPWeapons/Pistol.visible = false
+#			$AimHelper/Weapons/Pistol.visible = false
+#			$AimHelper/FPWeapons/Rifle.visible = true
+#			$AimHelper/Weapons/Rifle.visible = true
+#			_update_UI()
+#			var tween = get_tree().create_tween()
+#			tween.tween_property(anim_tree, \
+#				"parameters/Idle/IdleUpper_Blend/blend_position", \
+#										Vector2(1.0, -1.0), 0.25)
+#			tween.tween_property(anim_tree, \
+#				"parameters/Run/RunUpper_Blend/blend_position", \
+#										Vector2(1.0, -1.0), 0.25)
 
 func _shoot() -> void:
 	super()
@@ -128,6 +160,21 @@ func _shoot() -> void:
 
 
 func _update_UI() -> void:
-	%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
-						" / " + str(weapon_held.mag_size)
-	%ExtraAmmo.text = str(weapon_held.extra_ammo)
+	if weapon_held:
+		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
+							" / " + str(weapon_held.mag_size)
+		%ExtraAmmo.text = str(weapon_held.extra_ammo)
+
+
+func pick_up_weapon(new_weapon) -> Node3D:
+	var added_weapon = super(new_weapon)
+	if added_weapon:
+		added_weapon.position = WEAPON_ALIGNMENTS[new_weapon]
+	added_weapon.finished_reloading.connect(_update_UI)
+	_update_UI()
+	return added_weapon
+
+
+func _switch_weapon(new_weapon) -> void:
+	super(new_weapon)
+	_update_UI()

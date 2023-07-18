@@ -28,11 +28,6 @@ func _ready() -> void:
 
 	$FPS.visible = fps_visible
 
-	for weapon in player.get_node("AimHelper/FPWeapons").get_children():
-		weapon.finished_reloading.connect(_infinte_ammo)
-
-#	player = get_tree().current_scene.get_node("%Player")
-
 #	$Mute.visible = mute_visible
 #	_set_mute()
 

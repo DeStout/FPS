@@ -5,8 +5,6 @@
 [node name="Weapon" type="Node3D"]
 script = ExtResource("2_otbm5")
 
-[node name="Nozzle" type="Node3D" parent="."]
-
 [node name="ShootAudio" type="AudioStreamPlayer3D" parent="."]
 
 [node name="ReloadAudio" type="AudioStreamPlayer3D" parent="."]

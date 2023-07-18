@@ -5,16 +5,20 @@
 [ext_resource type="AudioStream" uid="uid://cqi8csv8ynwit" path="res://Props/RifleShoot.ogg" id="3_cv2kp"]
 [ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/RifleReload.ogg" id="4_q7p7a"]
 
-[node name="Weapon" instance=ExtResource("1_2nk2o")]
+[node name="Rifle" instance=ExtResource("1_2nk2o")]
+weapon_type = 2
 
-[node name="RifleBase" parent="." index="0" instance=ExtResource("2_oqy1o")]
+[node name="Mesh" parent="." index="0" instance=ExtResource("2_oqy1o")]
+layers = 1
 
-[node name="Nozzle" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101866, -0.66659)
+[node name="Nozzle" type="Node3D" parent="Mesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82408e-08, 0.102081, 0.666197)
 
-[node name="ShootAudio" parent="." index="2"]
+[node name="ShootAudio" parent="." index="1"]
 stream = ExtResource("3_cv2kp")
 max_db = 0.0
 
-[node name="ReloadAudio" parent="." index="3"]
+[node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("4_q7p7a")
+
+[editable path="Mesh"]
