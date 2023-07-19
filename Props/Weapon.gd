@@ -1,11 +1,11 @@
 extends Node3D
 
 
-@export_enum ("Slapper", "Pistol", "Rifle") var weapon_type : int
+@export var weapon_type : Globals.WEAPONS
 
 
 var automatic := false
-
+var shots_per_second : float
 var max_ammo : int
 var mag_size : int
 var extra_ammo : int
@@ -21,30 +21,34 @@ var shot_trail_ = preload("res://Props/ShotTrail.tscn")
 
 func _ready():
 	match weapon_type:
-		0:
-			pass
-		1:
+		Globals.WEAPONS.SLAPPER:
 			automatic = false
-			$ShotTimer.wait_time = 0.14
-			max_ammo = 48
-			mag_size = 12
+			shots_per_second = 1.0
+			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.SLAPPER]
+			v_recoil = 0
+			h_recoil = 0
+		Globals.WEAPONS.PISTOL:
+			automatic = false
+			shots_per_second = 7.143
+			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.PISTOL]
 			v_recoil = 1.0
 			h_recoil = 0.5
-		2:
+		Globals.WEAPONS.RIFLE:
 			automatic = true
-			$ShotTimer.wait_time = 0.10
-			max_ammo = 96
-			mag_size = 24
+			shots_per_second = 10.0
+			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.RIFLE]
 			v_recoil = 2.0
 			h_recoil = 1.0
 
+	$ShotTimer.wait_time = 1.0 / shots_per_second
+	max_ammo = mag_size * 4
 	extra_ammo = max_ammo - mag_size
 	ammo_in_mag = mag_size
 
 
 func can_shoot() -> bool:
-	var can_shoot : bool = ammo_in_mag > 0 and !is_reloading and !$ShotTimer.time_left
-	return can_shoot
+	var _can_shoot : bool = ammo_in_mag > 0 and !is_reloading and !$ShotTimer.time_left
+	return _can_shoot
 
 
 func shoot(collisionPoint : Vector3) -> void:
@@ -76,3 +80,11 @@ func interrupt_reload() -> void:
 	if is_reloading:
 		$ReloadAudio.stop()
 		is_reloading = false
+
+
+func can_pick_up_ammo() -> bool:
+	return extra_ammo < max_ammo - mag_size
+
+
+func add_ammo(new_ammo : int) -> void:
+	extra_ammo = min(extra_ammo + new_ammo, max_ammo - mag_size)

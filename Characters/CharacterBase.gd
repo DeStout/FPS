@@ -24,7 +24,8 @@ signal spawn_damage_label
 @onready var state_machine = $PuppetAnimations/AnimationTree["parameters/playback"]
 var trigger_pulled := false
 
-@onready var current_level : Node3D = get_parent()
+#@onready var current_level : Node3D = get_parent()
+var current_level : Node3D
 signal spawn_bullet_hole
 
 
@@ -33,7 +34,7 @@ func _ready() -> void:
 	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if trigger_pulled and weapon_held:
 		_shoot()
 
@@ -94,18 +95,43 @@ func _die() -> void:
 	queue_free()
 
 
-func pick_up_weapon(weapon_type : int) -> Node3D:
-	if !_have_weapon(weapon_type):
+func pick_up(new_pick_up : Node3D) -> void:
+	match new_pick_up.pick_up_type:
+		Globals.PICK_UPS.WEAPON:
+			_pick_up_weapon(new_pick_up)
+		Globals.PICK_UPS.AMMO:
+			_pick_up_ammo(new_pick_up)
+		Globals.PICK_UPS.HEALTH:
+			pass
+
+
+func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
+	if !_have_weapon(new_pick_up.weapon_type):
 		var new_weapon : Node3D
-		match weapon_type:
+		match new_pick_up.weapon_type:
+			Globals.WEAPONS.SLAPPER:
+				new_weapon = Globals.slapper_.instantiate()
 			Globals.WEAPONS.PISTOL:
 				new_weapon = Globals.pistol_.instantiate()
 			Globals.WEAPONS.RIFLE:
 				new_weapon = Globals.rifle_.instantiate()
 		weapons.add_child(new_weapon)
 		_switch_weapon(new_weapon)
+		if new_pick_up is PickUp:
+			new_pick_up.picked_up()
 		return new_weapon
+	else:
+		_pick_up_ammo(new_pick_up)
+
 	return null
+
+
+func _pick_up_ammo(new_pick_up : Node3D) -> void:
+	if _have_weapon(new_pick_up.weapon_type):
+		var weapon_for = _get_weapon(new_pick_up.weapon_type)
+		if weapon_for.can_pick_up_ammo():
+			weapon_for.add_ammo(Globals.MAG_SIZES[new_pick_up.weapon_type])
+			new_pick_up.picked_up()
 
 
 func _have_weapon(weapon_type : int ) -> bool:
@@ -130,6 +156,7 @@ func _switch_weapon(new_weapon) -> void:
 				weapon_held.visible = false
 			weapon_held = new_weapon
 			weapon_held.visible = true
+
 #			var tween = get_tree().create_tween()
 #			tween.tween_property(anim_tree, \
 #				"parameters/Idle/IdleUpper_Blend/blend_position", \

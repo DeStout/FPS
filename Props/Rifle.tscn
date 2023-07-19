@@ -9,7 +9,7 @@
 weapon_type = 2
 
 [node name="Mesh" parent="." index="0" instance=ExtResource("2_oqy1o")]
-layers = 1
+layers = 2
 
 [node name="Nozzle" type="Node3D" parent="Mesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82408e-08, 0.102081, 0.666197)

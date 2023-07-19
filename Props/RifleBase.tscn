@@ -41,7 +41,6 @@ ao_light_affect = 1.0
 
 [node name="RifleModel" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-layers = 2
 mesh = SubResource("ArrayMesh_a3huq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_5y7vo")

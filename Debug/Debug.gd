@@ -16,7 +16,7 @@ var fps_visible := true
 
 @onready var player = get_tree().current_scene.get_node("%Player")
 var player_invincible := false
-var infinite_ammo := true
+var infinite_ammo := false
 
 #enum Level{LEVEL1, LEVEL2}
 #var level := Level.LEVEL2
@@ -37,18 +37,18 @@ func _ready() -> void:
 #	$Behaviors.visible = enemy_behavior_visible
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	var fps = Performance.get_monitor(Performance.TIME_FPS)
 	$FPS.text = "FPS: " + str(fps)
 
 
-func _input(event) -> void:
+func _input(_event) -> void:
 	if Input.is_action_just_pressed("Reload"):
 		if infinite_ammo:
 			await player.weapon_held.finished_reloading
-#			player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
-#											player.weapon_held.mag_size
-#			player._update_UI()
+			player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
+											player.weapon_held.mag_size
+			player._update_UI()
 
 #	if event.is_action_pressed("Kill"):
 #		player.container.remove_player(player)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckqtvo1inhvtn"]
+
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/WeaponBase.tscn" id="1_283py"]
+[ext_resource type="PackedScene" uid="uid://cje6h18cutmm0" path="res://Props/SlapperBase.tscn" id="2_op7jl"]
+
+[node name="Slapper" instance=ExtResource("1_283py")]
+
+[node name="SlapperModel" parent="." index="0" instance=ExtResource("2_op7jl")]
+layers = 2
+surface_material_override/0 = null

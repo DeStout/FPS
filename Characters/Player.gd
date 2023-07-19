@@ -1,8 +1,11 @@
 extends CharacterBase
 
-const WEAPON_ALIGNMENTS := [Vector3(),
+const WEAPON_ALIGNMENTS := [Vector3(0.175, -0.16, -0.315),		# Slapper
 							Vector3(0.115, -0.14, -0.31), 		# Pistol
 							Vector3(0.125, -0.21, -0.315)] 		# Rifle
+const WEAPON_ROTATIONS := [Vector3(-50.5, 158, 10.5),		# Slapper
+							Vector3(), 		# Pistol
+							Vector3()] 		# Rifle
 
 const MOUSE_HORZ_SENSITIVITY := -0.002
 const MOUSE_VERT_SENSITIVITY := -0.002
@@ -11,10 +14,6 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
-	var pistol = pick_up_weapon(Globals.WEAPONS.PISTOL)
-	pick_up_weapon(Globals.WEAPONS.RIFLE)
-	_switch_weapon(pistol)
-	_update_UI()
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -63,7 +62,7 @@ func _input(event) -> void:
 		rotation.z = 0
 
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Shoot"):
 		trigger_pulled = true
 	if Input.is_action_just_released("Shoot"):
@@ -74,7 +73,7 @@ func _unhandled_input(event):
 
 	# Keyboard weapon switching
 	if Input.is_action_just_pressed("Weapon1"):
-		if _have_weapon(Globals.WEAPONS.RIFLE):
+		if _have_weapon(Globals.WEAPONS.PISTOL):
 			weapon_held.interrupt_reload()
 			_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 #			weapon_held = $AimHelper/FPWeapons/Pistol
@@ -166,13 +165,20 @@ func _update_UI() -> void:
 		%ExtraAmmo.text = str(weapon_held.extra_ammo)
 
 
-func pick_up_weapon(new_weapon) -> Node3D:
+func _pick_up_weapon(new_weapon) -> Node3D:
 	var added_weapon = super(new_weapon)
 	if added_weapon:
-		added_weapon.position = WEAPON_ALIGNMENTS[new_weapon]
-	added_weapon.finished_reloading.connect(_update_UI)
-	_update_UI()
+		added_weapon.position = WEAPON_ALIGNMENTS[new_weapon.weapon_type]
+		if new_weapon.weapon_type == Globals.WEAPONS.SLAPPER:
+			added_weapon.rotation = WEAPON_ROTATIONS[new_weapon.weapon_type]
+		added_weapon.finished_reloading.connect(_update_UI)
+		_update_UI()
 	return added_weapon
+
+
+func _pick_up_ammo(new_ammo : Node3D) -> void:
+	super(new_ammo)
+	_update_UI()
 
 
 func _switch_weapon(new_weapon) -> void:

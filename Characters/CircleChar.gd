@@ -9,7 +9,7 @@ func _ready():
 	state_machine.travel("Run")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_dir = Vector2(0, -speed)
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:

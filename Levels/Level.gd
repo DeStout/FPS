@@ -5,8 +5,13 @@ var bullet_hole_ := preload("res://Props/BulletHole.tscn")
 var damage_label_ := preload("res://Characters/DamageLabel.tscn")
 
 
-#func _ready():
-#	%Player.current_level = self
+func _ready():
+	%Player.current_level = self
+	$CircleChar1.current_level = self
+	$CircleChar2.current_level = self
+	$CircleChar3.current_level = self
+	$CircleChar4.current_level = self
+	$CircleChar5.current_level = self
 
 
 func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:

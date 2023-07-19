@@ -5,7 +5,7 @@ extends Label3D
 var start_pos := 0.0
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	position.y = start_pos + ease($Despawn.wait_time - $Despawn.time_left, easing)
 
 

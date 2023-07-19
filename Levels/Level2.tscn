@@ -1,13 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhngprgstjthk"]
+[gd_scene load_steps=21 format=3 uid="uid://bhngprgstjthk"]
 
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_gyus3"]
 [ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_vufbv"]
 [ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="2_3ipu4"]
-[ext_resource type="PackedScene" path="res://Props/Ammo.tscn" id="3_ioqjk"]
-[ext_resource type="PackedScene" path="res://Props/WeaponPickup.tscn" id="4_jybxi"]
+[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_2tcup"]
+[ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_qwd18"]
 [ext_resource type="PackedScene" uid="uid://cwpdmyvpmq07e" path="res://Characters/CircleChar.tscn" id="4_xai4x"]
-[ext_resource type="PackedScene" path="res://Props/HealthPack.tscn" id="5_emhvb"]
-[ext_resource type="PackedScene" path="res://Props/Armor.tscn" id="6_w65t4"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_14sd3"]
 
 [sub_resource type="Gradient" id="Gradient_t4an7"]
@@ -156,10 +154,13 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StairC2/StaticBody3D"]
 shape = SubResource("BoxShape3D_m0147")
 
+[node name="Players" type="Node3D" parent="."]
+
 [node name="FX" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="Spawns" type="Node3D" parent="."]
+visible = false
 
 [node name="SpawnBlue1" type="Marker3D" parent="Spawns"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 4.125, 0)
@@ -294,72 +295,60 @@ transform = Transform3D(1, 0, 1.47027e-07, 0, 1, 0, -1.47027e-07, 0, 1, 7.43094e
 transform = Transform3D(-1.90739e-07, 0, 1, 0, 1, 0, -1, 0, -1.90739e-07, 3.5, 0.125, -3.0598e-07)
 
 [node name="Pickups" type="Node3D" parent="."]
-visible = false
 
-[node name="PistolAmmo1" parent="Pickups" instance=ExtResource("3_ioqjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 4, 7.5)
-script = null
-
-[node name="PistolAmmo2" parent="Pickups" instance=ExtResource("3_ioqjk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 4, -7.5)
-script = null
-
-[node name="RifleAmmo1" parent="Pickups" instance=ExtResource("3_ioqjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -25.5)
-script = null
-
-[node name="RifleAmmo2" parent="Pickups" instance=ExtResource("3_ioqjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 25.5)
-script = null
-
-[node name="RiflePickup" parent="Pickups" instance=ExtResource("4_jybxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
-script = null
-
-[node name="PistolPickup1" parent="Pickups" instance=ExtResource("4_jybxi")]
+[node name="Pistol1" parent="Pickups" instance=ExtResource("3_2tcup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-script = null
+respawn_time = 25.0
 
-[node name="CollisionShape3D" parent="Pickups/PistolPickup1/Area3D" index="0"]
-disabled = true
-
-[node name="PistolPickup2" parent="Pickups" instance=ExtResource("4_jybxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0.25, -15.25)
-script = null
-
-[node name="PistolPickup3" parent="Pickups" instance=ExtResource("4_jybxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.25, -12)
-script = null
-
-[node name="PistolPickup4" parent="Pickups" instance=ExtResource("4_jybxi")]
+[node name="Pistol2" parent="Pickups" instance=ExtResource("3_2tcup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.25, 12)
-script = null
+respawn_time = 25.0
 
-[node name="PistolPickup5" parent="Pickups" instance=ExtResource("4_jybxi")]
+[node name="Pistol3" parent="Pickups" instance=ExtResource("3_2tcup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.25, -12)
+respawn_time = 25.0
+
+[node name="Pistol4" parent="Pickups" instance=ExtResource("3_2tcup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 0.25, 15.75)
-script = null
+respawn_time = 25.0
 
-[node name="HealthPack1" parent="Pickups" instance=ExtResource("5_emhvb")]
+[node name="Pistol5" parent="Pickups" instance=ExtResource("3_2tcup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0.25, -15.25)
+respawn_time = 25.0
+
+[node name="Rifle1" parent="Pickups" instance=ExtResource("3_2tcup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+weapon_type = 2
+respawn_time = 45.0
+
+[node name="AmmoPistol1" parent="Pickups" instance=ExtResource("4_qwd18")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 4, 7.5)
+respawn_time = 35.0
+
+[node name="AmmoPistol2" parent="Pickups" instance=ExtResource("4_qwd18")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 4, -7.5)
+respawn_time = 35.0
+
+[node name="AmmoRifle1" parent="Pickups" instance=ExtResource("4_qwd18")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 4, -25.5)
+weapon_type = 2
+respawn_time = 40.0
+
+[node name="AmmoRifle2" parent="Pickups" instance=ExtResource("4_qwd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 25.5)
+weapon_type = 2
+
+[node name="Marker3D11" type="Marker3D" parent="Pickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -9.5)
-script = null
 
-[node name="CollisionShape3D" parent="Pickups/HealthPack1/Area3D" index="0"]
-disabled = true
-
-[node name="HealthPack2" parent="Pickups" instance=ExtResource("5_emhvb")]
+[node name="Marker3D12" type="Marker3D" parent="Pickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 9.5)
-script = null
 
-[node name="CollisionShape3D" parent="Pickups/HealthPack2/Area3D" index="0"]
-disabled = true
-
-[node name="Armor1" parent="Pickups" instance=ExtResource("6_w65t4")]
+[node name="Marker3D13" type="Marker3D" parent="Pickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 4, -22)
-script = null
 
-[node name="Armor2" parent="Pickups" instance=ExtResource("6_w65t4")]
+[node name="Marker3D14" type="Marker3D" parent="Pickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 4, 22)
-script = null
 
 [node name="NavPoints" type="Node3D" parent="."]
 visible = false
@@ -513,7 +502,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.56
 [connection signal="spawn_damage_label" from="CircleChar3" to="." method="spawn_damage_label"]
 [connection signal="spawn_damage_label" from="CircleChar4" to="." method="spawn_damage_label"]
 [connection signal="spawn_damage_label" from="CircleChar5" to="." method="spawn_damage_label"]
-
-[editable path="Pickups/PistolPickup1"]
-[editable path="Pickups/HealthPack1"]
-[editable path="Pickups/HealthPack2"]

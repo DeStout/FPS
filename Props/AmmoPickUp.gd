@@ -3,15 +3,9 @@ extends PickUp
 
 
 @export var weapon_type : Globals.WEAPONS : set = _set_model
-@onready var weapon_model := get_child(0)
+var weapon_model : Node3D
 var pistol_ := preload("res://Props/PistolBase.tscn")
 var rifle_ := preload("res://Props/RifleBase.tscn")
-
-var rotate_rate := 2.0
-
-
-func _process(delta) -> void:
-	$Model.rotate_y(rotate_rate * delta)
 
 
 func _set_model(new_weapon_type) -> void:
@@ -21,7 +15,11 @@ func _set_model(new_weapon_type) -> void:
 			weapon_type = Globals.WEAPONS.PISTOL
 		Globals.WEAPONS.PISTOL:
 			weapon_model = pistol_.instantiate()
+			weapon_model.scale = Vector3.ONE
+			weapon_model.position = Vector3.ZERO
 		Globals.WEAPONS.RIFLE:
 			weapon_model = rifle_.instantiate()
+			weapon_model.scale = Vector3(0.5, 0.5, 0.5)
+			weapon_model.position = Vector3(0, -0.025, 0.1)
 	if $Model.get_child_count() > 0:
 		$Model.get_child(0).replace_by(weapon_model)
