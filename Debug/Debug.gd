@@ -16,7 +16,7 @@ var fps_visible := true
 
 @onready var player = get_tree().current_scene.get_node("%Player")
 var player_invincible := false
-var infinite_ammo := false
+var infinite_ammo := true
 
 #enum Level{LEVEL1, LEVEL2}
 #var level := Level.LEVEL2
@@ -25,8 +25,9 @@ var infinite_ammo := false
 
 func _ready() -> void:
 	visible = is_visible
-
 	$FPS.visible = fps_visible
+
+	player.weapon_picked_up.connect(_new_player_weapon)
 
 #	$Mute.visible = mute_visible
 #	_set_mute()
@@ -42,14 +43,7 @@ func _process(_delta) -> void:
 	$FPS.text = "FPS: " + str(fps)
 
 
-func _input(_event) -> void:
-	if Input.is_action_just_pressed("Reload"):
-		if infinite_ammo:
-			await player.weapon_held.finished_reloading
-			player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
-											player.weapon_held.mag_size
-			player._update_UI()
-
+#func _input(_event) -> void:
 #	if event.is_action_pressed("Kill"):
 #		player.container.remove_player(player)
 #	if event.is_action_pressed("Mute"):
@@ -57,6 +51,10 @@ func _input(_event) -> void:
 #		_set_mute()
 #	if event.is_action_pressed("Level"):
 #		_switch_level()
+
+
+func _new_player_weapon(new_weapon) -> void:
+	new_weapon.finished_reloading.connect(_infinte_ammo)
 
 
 func _infinte_ammo() -> void:

@@ -6,6 +6,7 @@ const WEAPON_ALIGNMENTS := [Vector3(0.175, -0.16, -0.315),		# Slapper
 const WEAPON_ROTATIONS := [Vector3(-50.5, 158, 10.5),		# Slapper
 							Vector3(), 		# Pistol
 							Vector3()] 		# Rifle
+signal weapon_picked_up
 
 const MOUSE_HORZ_SENSITIVITY := -0.002
 const MOUSE_VERT_SENSITIVITY := -0.002
@@ -172,6 +173,7 @@ func _pick_up_weapon(new_weapon) -> Node3D:
 		if new_weapon.weapon_type == Globals.WEAPONS.SLAPPER:
 			added_weapon.rotation = WEAPON_ROTATIONS[new_weapon.weapon_type]
 		added_weapon.finished_reloading.connect(_update_UI)
+		weapon_picked_up.emit(added_weapon)
 		_update_UI()
 	return added_weapon
 
