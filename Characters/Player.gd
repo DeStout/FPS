@@ -15,6 +15,7 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
+	_update_UI()
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -164,6 +165,9 @@ func _update_UI() -> void:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
 							" / " + str(weapon_held.mag_size)
 		%ExtraAmmo.text = str(weapon_held.extra_ammo)
+	%Health.text = str(health)
+	%Armor.text = str(armor)
+	%Armor.visible = armor
 
 
 func _pick_up_weapon(new_weapon) -> Node3D:
@@ -180,6 +184,11 @@ func _pick_up_weapon(new_weapon) -> Node3D:
 
 func _pick_up_ammo(new_ammo : Node3D) -> void:
 	super(new_ammo)
+	_update_UI()
+
+
+func _pick_up_health(new_health : Node3D) -> void:
+	super(new_health)
 	_update_UI()
 
 

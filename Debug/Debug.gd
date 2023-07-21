@@ -16,7 +16,7 @@ var fps_visible := true
 
 @onready var player = get_tree().current_scene.get_node("%Player")
 var player_invincible := false
-var infinite_ammo := true
+var infinite_ammo := false
 
 #enum Level{LEVEL1, LEVEL2}
 #var level := Level.LEVEL2

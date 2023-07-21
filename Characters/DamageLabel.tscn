@@ -4,7 +4,7 @@
 
 [node name="DamageLabel" type="Label3D"]
 top_level = true
-billboard = 2
+billboard = 1
 double_sided = false
 alpha_cut = 1
 alpha_scissor_threshold = 0.034

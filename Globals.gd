@@ -8,3 +8,4 @@ var pistol_ := preload("res://Props/Pistol.tscn")
 var rifle_ := preload("res://Props/Rifle.tscn")
 
 enum PICK_UPS {WEAPON, AMMO, HEALTH}
+enum HEALTHS {HEALTH_PACK, ARMOR}

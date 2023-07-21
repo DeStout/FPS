@@ -14,7 +14,9 @@ const JUMP_VELOCITY = 5.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const MAX_HEALTH := 200
+const MAX_ARMOR := 50
 var health := 100 : set = _set_health
+var armor := 0
 var body_segs : Array = []
 signal spawn_damage_label
 
@@ -75,7 +77,17 @@ func _reload() -> void:
 
 
 func _take_damage(body_seg) -> void:
-	health += BODY_DMG[body_seg]
+	if armor > 0:
+		var armor_dmg : int = BODY_DMG[body_seg] / 2
+		if armor > armor_dmg:
+			armor += BODY_DMG[body_seg] / 2
+			health += BODY_DMG[body_seg] / 2
+		else:
+			armor_dmg += armor
+			armor = 0
+			health += armor_dmg
+	else:
+		health += BODY_DMG[body_seg]
 
 	if health > 0:
 		$HurtSFX.get_children().pick_random().play()
@@ -102,7 +114,21 @@ func pick_up(new_pick_up : Node3D) -> void:
 		Globals.PICK_UPS.AMMO:
 			_pick_up_ammo(new_pick_up)
 		Globals.PICK_UPS.HEALTH:
-			pass
+			_pick_up_health(new_pick_up)
+
+
+func _pick_up_health(new_pick_up : Node3D) -> void:
+	match new_pick_up.health_type:
+		Globals.HEALTHS.HEALTH_PACK:
+			if health < MAX_HEALTH:
+				health += new_pick_up.health_amount
+				health = min(health, MAX_HEALTH)
+				new_pick_up.picked_up()
+		Globals.HEALTHS.ARMOR:
+			if armor < MAX_ARMOR:
+				armor += new_pick_up.health_amount
+				armor = min(armor, MAX_ARMOR)
+				new_pick_up.picked_up()
 
 
 func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:

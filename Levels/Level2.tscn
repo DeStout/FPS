@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhngprgstjthk"]
+[gd_scene load_steps=22 format=3 uid="uid://bhngprgstjthk"]
 
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_gyus3"]
 [ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_vufbv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_2tcup"]
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_qwd18"]
 [ext_resource type="PackedScene" uid="uid://cwpdmyvpmq07e" path="res://Characters/CircleChar.tscn" id="4_xai4x"]
+[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="5_i8p46"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_14sd3"]
 
 [sub_resource type="Gradient" id="Gradient_t4an7"]
@@ -338,17 +339,23 @@ respawn_time = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 25.5)
 weapon_type = 2
 
-[node name="Marker3D11" type="Marker3D" parent="Pickups"]
+[node name="HealthPack1" parent="Pickups" instance=ExtResource("5_i8p46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -9.5)
+respawn_time = 25.0
 
-[node name="Marker3D12" type="Marker3D" parent="Pickups"]
+[node name="HealthPack2" parent="Pickups" instance=ExtResource("5_i8p46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 9.5)
+respawn_time = 25.0
 
-[node name="Marker3D13" type="Marker3D" parent="Pickups"]
+[node name="Armor1" parent="Pickups" instance=ExtResource("5_i8p46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 4, -22)
+health_type = 1
+respawn_time = 40.0
 
-[node name="Marker3D14" type="Marker3D" parent="Pickups"]
+[node name="Armor2" parent="Pickups" instance=ExtResource("5_i8p46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 4, 22)
+health_type = 1
+respawn_time = 40.0
 
 [node name="NavPoints" type="Node3D" parent="."]
 visible = false
