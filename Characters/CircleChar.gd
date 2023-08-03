@@ -10,6 +10,7 @@ func _ready():
 
 
 func _physics_process(_delta):
+	super(_delta)
 	var input_dir = Vector2(0, -speed)
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:

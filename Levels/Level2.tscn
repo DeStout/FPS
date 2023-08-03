@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_vufbv"]
 [ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="2_3ipu4"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_2tcup"]
+[ext_resource type="PackedScene" uid="uid://cevbv8x2k7xwv" path="res://Characters/Enemy.tscn" id="4_ke8yd"]
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_qwd18"]
-[ext_resource type="PackedScene" uid="uid://cwpdmyvpmq07e" path="res://Characters/CircleChar.tscn" id="4_xai4x"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="5_i8p46"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_14sd3"]
 
@@ -156,6 +156,16 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_m0147")
 
 [node name="Players" type="Node3D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("2_3ipu4")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0367489, -4.74183)
+collision_layer = 1
+collision_mask = 1
+platform_floor_layers = 4294967295
+
+[node name="Enemy1" parent="Players" instance=ExtResource("4_ke8yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.94502)
 
 [node name="FX" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -322,13 +332,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
 weapon_type = 2
 respawn_time = 45.0
 
-[node name="AmmoPistol1" parent="Pickups" instance=ExtResource("4_qwd18")]
+[node name="PistolAmmo1" parent="Pickups" instance=ExtResource("4_qwd18")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 4, 7.5)
-respawn_time = 35.0
 
-[node name="AmmoPistol2" parent="Pickups" instance=ExtResource("4_qwd18")]
+[node name="PistolAmmo2" parent="Pickups" instance=ExtResource("4_qwd18")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 4, -7.5)
-respawn_time = 35.0
 
 [node name="AmmoRifle1" parent="Pickups" instance=ExtResource("4_qwd18")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 4, -25.5)
@@ -358,7 +366,6 @@ health_type = 1
 respawn_time = 40.0
 
 [node name="NavPoints" type="Node3D" parent="."]
-visible = false
 
 [node name="NavPointMid1" type="Marker3D" parent="NavPoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5, 4, -7.5)
@@ -478,34 +485,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4, -22)
 stream = ExtResource("8_14sd3")
 volume_db = -20.0
 
-[node name="Player" parent="." instance=ExtResource("2_3ipu4")]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0367489, -4.74183)
-collision_layer = 1
-collision_mask = 1
-platform_floor_layers = 4294967295
-
-[node name="CircleChar1" parent="." instance=ExtResource("4_xai4x")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 4)
-
-[node name="CircleChar2" parent="." instance=ExtResource("4_xai4x")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.65945, 0, -14.5276)
-turn = 0.018
-
-[node name="CircleChar3" parent="." instance=ExtResource("4_xai4x")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.77936, 0, 22.9731)
-turn = 0.018
-
-[node name="CircleChar4" parent="." instance=ExtResource("4_xai4x")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.5181, 0, 7.12818)
-
-[node name="CircleChar5" parent="." instance=ExtResource("4_xai4x")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5676, 1.90735e-06, -12.0528)
-
-[connection signal="spawn_bullet_hole" from="Player" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Player" to="." method="spawn_damage_label"]
-[connection signal="spawn_damage_label" from="CircleChar1" to="." method="spawn_damage_label"]
-[connection signal="spawn_damage_label" from="CircleChar2" to="." method="spawn_damage_label"]
-[connection signal="spawn_damage_label" from="CircleChar3" to="." method="spawn_damage_label"]
-[connection signal="spawn_damage_label" from="CircleChar4" to="." method="spawn_damage_label"]
-[connection signal="spawn_damage_label" from="CircleChar5" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Player" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Player" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy1" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy1" to="." method="spawn_damage_label"]

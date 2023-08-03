@@ -16,7 +16,6 @@ func picked_up() -> void:
 	$PickUpAudio.play()
 	visible = false
 	$Area/Collision.set_deferred("disabled", true)
-	await $PickUpAudio.finished
 
 	if respawn:
 		$Respawn.start(respawn_time)

@@ -9,6 +9,7 @@ var rifle_ := preload("res://Props/RifleBase.tscn")
 
 
 func _set_model(new_weapon_type) -> void:
+	var child_count = $Model.get_children()
 	weapon_type = new_weapon_type
 	match weapon_type:
 		Globals.WEAPONS.SLAPPER:

@@ -1,10 +1,6 @@
 class_name CharacterBase
 extends CharacterBody3D
 
-
-enum BODY_SEGS {HEAD, TORSO, LIMB}
-var BODY_DMG := [-50, -25, -10]
-
 const ACCEL := 3.0
 const DEACCEL := 1.0
 const AIR_ACCEL := 0.2
@@ -72,27 +68,26 @@ func _shoot() -> void:
 
 
 func _reload() -> void:
-	if !weapon_held.is_reloading:
+	if weapon_held and !weapon_held.is_reloading:
 		weapon_held.reload()
 
 
 func _take_damage(body_seg) -> void:
 	if armor > 0:
-		var armor_dmg : int = BODY_DMG[body_seg] / 2
-		if armor > armor_dmg:
-			armor += BODY_DMG[body_seg] / 2
-			health += BODY_DMG[body_seg] / 2
+		var armor_dmg : int = Globals.BODY_DMG[body_seg] / 2
+		if armor > abs(armor_dmg):
+			armor -= armor_dmg
+			health -= Globals.BODY_DMG[body_seg] - armor_dmg
 		else:
-			armor_dmg += armor
+			health -= Globals.BODY_DMG[body_seg] - armor
 			armor = 0
-			health += armor_dmg
 	else:
-		health += BODY_DMG[body_seg]
+		health -= Globals.BODY_DMG[body_seg]
 
 	if health > 0:
 		$HurtSFX.get_children().pick_random().play()
 	if current_level != null:
-		spawn_damage_label.emit($DmgLbl.global_position, str(BODY_DMG[body_seg]))
+		spawn_damage_label.emit($DmgLbl.global_position, str(Globals.BODY_DMG[body_seg]))
 
 
 func _set_health(new_health) -> void:

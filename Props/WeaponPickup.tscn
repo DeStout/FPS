@@ -51,12 +51,15 @@ ao_light_affect = 1.0
 script = ExtResource("2_co3s7")
 weapon_type = 1
 
+[node name="Area" parent="." index="0"]
+collision_mask = 3
+
 [node name="Collision" parent="Area" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_7apmu")
 
 [node name="Model" parent="." index="1"]
-transform = Transform3D(-0.850061, 0.832371, -1.60745, 0.942943, 1.71969, 0.391842, 1.54523, -0.591321, -1.12336, 0, 0.244229, 0)
+transform = Transform3D(0.503625, -0.688267, 1.80871, 0.942943, 1.71969, 0.391842, -1.69005, 0.75408, 0.757534, 0, 0.244229, 0)
 
 [node name="PistolModel" parent="Model" index="0" instance=ExtResource("3_gh7nk")]
 mesh = SubResource("ArrayMesh_1vcbi")

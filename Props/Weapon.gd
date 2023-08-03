@@ -28,13 +28,16 @@ func _ready():
 			v_recoil = 0
 			h_recoil = 0
 		Globals.WEAPONS.PISTOL:
+#			automatic = true
 			automatic = false
+#			shots_per_second = 60
 			shots_per_second = 7.143
 			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.PISTOL]
 			v_recoil = 1.0
 			h_recoil = 0.5
 		Globals.WEAPONS.RIFLE:
 			automatic = true
+#			shots_per_second = 100
 			shots_per_second = 10.0
 			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.RIFLE]
 			v_recoil = 2.0

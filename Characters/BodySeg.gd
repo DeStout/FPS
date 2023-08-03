@@ -1,6 +1,6 @@
 extends Area3D
 
-@export_enum("HEAD", "TORSO", "LIMB") var body_seg : int
+@export var body_seg : Globals.BODY_SEGS
 
 signal take_damage
 

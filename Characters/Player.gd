@@ -1,11 +1,11 @@
 extends CharacterBase
 
-const WEAPON_ALIGNMENTS := [Vector3(0.175, -0.16, -0.315),		# Slapper
+const WEAPON_ALIGNMENTS := [Vector3(0.14, -.205, -0.31),		# Slapper
 							Vector3(0.115, -0.14, -0.31), 		# Pistol
 							Vector3(0.125, -0.21, -0.315)] 		# Rifle
-const WEAPON_ROTATIONS := [Vector3(-50.5, 158, 10.5),		# Slapper
-							Vector3(), 		# Pistol
-							Vector3()] 		# Rifle
+const WEAPON_ROTATIONS := [Vector3(73, -29.5, -22),				# Slapper
+							Vector3.ZERO, 						# Pistol
+							Vector3.ZERO] 						# Rifle
 signal weapon_picked_up
 
 const MOUSE_HORZ_SENSITIVITY := -0.002
@@ -15,6 +15,7 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
+	_pick_up_weapon(Globals.slapper_.instantiate())
 	_update_UI()
 
 func _physics_process(delta) -> void:
@@ -65,6 +66,18 @@ func _input(event) -> void:
 
 
 func _unhandled_input(_event):
+	if Input.is_action_just_pressed("Hurt"):
+		_take_damage(1)
+		_update_UI()
+	if Input.is_action_just_pressed("SwitchLevel"):
+		match get_tree().current_scene.name:
+			"Level1":
+				get_tree().change_scene_to_file("res://Levels/Level2.tscn")
+			"Level2":
+				get_tree().change_scene_to_file("res://Levels/Level1.tscn")
+
+
+
 	if Input.is_action_just_pressed("Shoot"):
 		trigger_pulled = true
 	if Input.is_action_just_released("Shoot"):
@@ -75,6 +88,8 @@ func _unhandled_input(_event):
 
 	# Keyboard weapon switching
 	if Input.is_action_just_pressed("Weapon1"):
+		pass
+	elif Input.is_action_just_pressed("Weapon2"):
 		if _have_weapon(Globals.WEAPONS.PISTOL):
 			weapon_held.interrupt_reload()
 			_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
@@ -91,7 +106,7 @@ func _unhandled_input(_event):
 #			tween.tween_property(anim_tree, \
 #				"parameters/Run/RunUpper_Blend/blend_position", \
 #										Vector2(1.0, 1.0), 0.25)
-	elif Input.is_action_just_pressed("Weapon2"):
+	elif Input.is_action_just_pressed("Weapon3"):
 		if _have_weapon(Globals.WEAPONS.RIFLE):
 			weapon_held.interrupt_reload()
 			_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
@@ -110,8 +125,6 @@ func _unhandled_input(_event):
 #			tween.tween_property(anim_tree, \
 #				"parameters/Run/RunUpper_Blend/blend_position", \
 #										Vector2(1.0, -1.0), 0.25)
-	elif Input.is_action_just_pressed("Weapon3"):
-		pass
 
 	# Controller weapon switching
 	if Input.is_action_just_pressed("SwitchWeapon"):
@@ -174,8 +187,7 @@ func _pick_up_weapon(new_weapon) -> Node3D:
 	var added_weapon = super(new_weapon)
 	if added_weapon:
 		added_weapon.position = WEAPON_ALIGNMENTS[new_weapon.weapon_type]
-		if new_weapon.weapon_type == Globals.WEAPONS.SLAPPER:
-			added_weapon.rotation = WEAPON_ROTATIONS[new_weapon.weapon_type]
+		added_weapon.rotation_degrees = WEAPON_ROTATIONS[new_weapon.weapon_type]
 		added_weapon.finished_reloading.connect(_update_UI)
 		weapon_picked_up.emit(added_weapon)
 		_update_UI()
