@@ -207,3 +207,12 @@ func _pick_up_health(new_health : Node3D) -> void:
 func _switch_weapon(new_weapon) -> void:
 	super(new_weapon)
 	_update_UI()
+
+
+func _take_damage(body_seg) -> void:
+	super(body_seg)
+	_update_UI()
+
+
+func _die() -> void:
+	health = 100

@@ -73,6 +73,9 @@ func _reload() -> void:
 
 
 func _take_damage(body_seg) -> void:
+	if current_level != null:
+		spawn_damage_label.emit($DmgLbl.global_position, str(Globals.BODY_DMG[body_seg]))
+
 	if armor > 0:
 		var armor_dmg : int = Globals.BODY_DMG[body_seg] / 2
 		if armor > abs(armor_dmg):
@@ -86,8 +89,6 @@ func _take_damage(body_seg) -> void:
 
 	if health > 0:
 		$HurtSFX.get_children().pick_random().play()
-	if current_level != null:
-		spawn_damage_label.emit($DmgLbl.global_position, str(Globals.BODY_DMG[body_seg]))
 
 
 func _set_health(new_health) -> void:
@@ -97,9 +98,9 @@ func _set_health(new_health) -> void:
 
 
 func _die() -> void:
-	visible = false
+#	visible = false
 	$DeathSFX.get_children().pick_random().play()
-	queue_free()
+#	queue_free()
 
 
 func pick_up(new_pick_up : Node3D) -> void:

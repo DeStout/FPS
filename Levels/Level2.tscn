@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_gyus3"]
 [ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_vufbv"]
-[ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="2_3ipu4"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_2tcup"]
+[ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="4_8icpb"]
 [ext_resource type="PackedScene" uid="uid://cevbv8x2k7xwv" path="res://Characters/Enemy.tscn" id="4_ke8yd"]
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_qwd18"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="5_i8p46"]
@@ -157,15 +157,26 @@ shape = SubResource("BoxShape3D_m0147")
 
 [node name="Players" type="Node3D" parent="."]
 
-[node name="Player" parent="Players" instance=ExtResource("2_3ipu4")]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0367489, -4.74183)
-collision_layer = 1
-collision_mask = 1
-platform_floor_layers = 4294967295
-
 [node name="Enemy1" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.94502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253044, 0, 18.6492)
+
+[node name="Enemy2" parent="Players" instance=ExtResource("4_ke8yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04477, 0, -18.5336)
+
+[node name="Enemy3" parent="Players" instance=ExtResource("4_ke8yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2231, -1.90735e-06, -17.4162)
+
+[node name="Enemy4" parent="Players" instance=ExtResource("4_ke8yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0635, -1.90735e-06, 17.0727)
+
+[node name="Enemy5" parent="Players" instance=ExtResource("4_ke8yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5835, -1.90735e-06, 11.9182)
+
+[node name="Enemy6" parent="Players" instance=ExtResource("4_ke8yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.782, -1.90735e-06, -11.7524)
+
+[node name="Player" parent="Players" instance=ExtResource("4_8icpb")]
+unique_name_in_owner = true
 
 [node name="FX" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -485,7 +496,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4, -22)
 stream = ExtResource("8_14sd3")
 volume_db = -20.0
 
-[connection signal="spawn_bullet_hole" from="Players/Player" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Players/Player" to="." method="spawn_damage_label"]
 [connection signal="spawn_bullet_hole" from="Players/Enemy1" to="." method="spawn_bullet_hole"]
 [connection signal="spawn_damage_label" from="Players/Enemy1" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy2" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy2" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy3" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy3" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy4" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy4" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy5" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy5" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy6" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy6" to="." method="spawn_damage_label"]

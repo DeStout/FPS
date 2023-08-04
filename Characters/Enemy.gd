@@ -2,44 +2,46 @@ extends CharacterBase
 
 
 @onready var nav_agent := $NavAgent
+var last_position := Vector3.ZERO
+var stuck_length := 2.0
 
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
+var player_vis_threshold := 0.1
 
 const TURN_SPEED := 5.0
+const AIM_SPEED := 3.0
+
+
+func _ready():
+	$NameLabel.text = name
 
 
 func _physics_process(delta):
 	super(delta)
 
+	# Check and set if player vis has changed
 	var temp_player_vis = player and %PlayerCast.is_colliding() and \
-									%PlayerCast.get_collider() == player
+							%PlayerCast.get_collider() == player and \
+	%PlayerCast.target_position.normalized().dot(Vector3.FORWARD) > player_vis_threshold
 	if player_vis != temp_player_vis:
 		player_vis = temp_player_vis
 
 	var input_dir = Vector2.ZERO
 	var next_path_pos := Vector3.ZERO
-#	if player and !nav_agent.is_navigation_finished():
-#		if %PlayerCast.is_colliding() and %PlayerCast.get_collider() == player:
-#			next_path_pos = nav_agent.get_next_path_position()
-#			next_path_pos.y = position.y
-#			input_dir = Vector2(0, -1)
-	if player_vis:
-		nav_agent.target_position = player.global_position
 
+	if player_vis or !$PlayerTimer.is_stopped():
+		nav_agent.target_position = player.global_position
 	if !nav_agent.is_navigation_finished():
 		next_path_pos = nav_agent.get_next_path_position()
 		next_path_pos.y = position.y
 		input_dir = Vector2.UP
-
-	if !player_vis and nav_agent.is_navigation_finished():
-		var new_nav_point = current_level.get_nav_point().position
-#		print(new_nav_point)
-		nav_agent.target_position = new_nav_point
-
+	elif !player_vis and $PlayerTimer.is_stopped():
+#		print("Nav point reached")
+		_new_rand_nav_point()
 
 	if next_path_pos:
-		$NavTarget.global_position = next_path_pos
+#		$NavTarget.global_position = next_path_pos
 		var new_transform := transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
@@ -59,19 +61,71 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, deaccel)
 	move_and_slide()
 
-	%PlayerCast.target_position = %PlayerCast.to_local(player.global_position) + \
+	# Cast at Player for vis check
+	if player:
+		%PlayerCast.target_position = %PlayerCast.to_local(player.global_position) + \
 									Vector3(0, 0.9, 0)
 
+	# Check if AI is stuck
+	if abs(position.length_squared() - last_position.length_squared()) < stuck_length:
+		if $StuckTimer.is_stopped() and $PlayerTimer.is_stopped() and \
+											!nav_agent.is_target_reached():
+			$StuckTimer.start()
+#			print("Maybe Stuck")
+	elif !$StuckTimer.is_stopped():
+		$StuckTimer.stop()
+#		print("Not stuck")
+	last_position = position
 
-func _die() -> void:
-	health = 100
+	if weapon_held and weapon_held.ammo_in_mag == 0:
+		_reload()
+
+	_aim(delta)
+
+
+func _aim(delta) -> void:
+	if player and player_vis:
+		var player_pos = player.global_position + Vector3(0, 1.5, 0)
+		var new_transform : Transform3D = $AimHelper.transform.looking_at(player_pos)
+		$AimHelper.transform = $AimHelper.transform.interpolate_with(new_transform, AIM_SPEED * delta)
+	else:
+		var new_transform := Transform3D($AimHelper.basis.looking_at(Vector3.FORWARD), \
+															Vector3(0, 1.65, 0))
+		$AimHelper.transform = $AimHelper.transform.interpolate_with(new_transform, AIM_SPEED * delta)
+
 
 
 func _player_vis_change(new_player_vis) -> void:
 	player_vis = new_player_vis
 	if player_vis:
+#		print("Player seen")
 		nav_agent.target_position = player.global_position
+		$PlayerTimer.stop()
 	else:
-		var new_nav_point = current_level.get_nav_point().position
-#		print(new_nav_point)
-		nav_agent.target_position = new_nav_point
+		trigger_pulled = false
+#		print("Player not seen")
+		$PlayerTimer.start()
+
+
+func _new_rand_nav_point() -> void:
+	var new_nav_point = current_level.get_nav_point()
+#	print("New nav point: ", new_nav_point.name)
+	nav_agent.target_position = new_nav_point.position
+
+
+func _player_lost() -> void:
+#	print("Player lost")
+	_new_rand_nav_point()
+
+
+func _stuck() -> void:
+#	print("Stuck")
+	_new_rand_nav_point()
+
+
+func _die() -> void:
+	super()
+	player_vis = false
+	$PlayerTimer.stop()
+	global_position = current_level.get_nav_point().position
+	health = 100

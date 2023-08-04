@@ -27,7 +27,8 @@ func _ready() -> void:
 	visible = is_visible
 	$FPS.visible = fps_visible
 
-	player.weapon_picked_up.connect(_new_player_weapon)
+	if player:
+		player.weapon_picked_up.connect(_new_player_weapon)
 
 #	$Mute.visible = mute_visible
 #	_set_mute()
