@@ -59,6 +59,9 @@ script = ExtResource("2_ioiij")
 weapon_type = 1
 pick_up_type = 1
 
+[node name="Area" parent="." index="0"]
+collision_mask = 3
+
 [node name="Collision" parent="Area" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_hsana")

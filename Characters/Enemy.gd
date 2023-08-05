@@ -8,12 +8,14 @@ var stuck_length := 2.0
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
 var player_vis_threshold := 0.1
+var shoot_accuracy_threshold := 0.8
 
 const TURN_SPEED := 5.0
-const AIM_SPEED := 3.0
+const AIM_SPEED := 10.0
 
 
 func _ready():
+	super()
 	$NameLabel.text = name
 
 
@@ -22,8 +24,9 @@ func _physics_process(delta):
 
 	# Check and set if player vis has changed
 	var temp_player_vis = player and %PlayerCast.is_colliding() and \
-							%PlayerCast.get_collider() == player and \
-	%PlayerCast.target_position.normalized().dot(Vector3.FORWARD) > player_vis_threshold
+						%PlayerCast.get_collider() == player and \
+						to_local(%PlayerCast.get_collision_point()) \
+						.normalized().dot(Vector3.FORWARD) > player_vis_threshold
 	if player_vis != temp_player_vis:
 		player_vis = temp_player_vis
 
@@ -77,22 +80,37 @@ func _physics_process(delta):
 #		print("Not stuck")
 	last_position = position
 
-	if weapon_held and weapon_held.ammo_in_mag == 0:
-		_reload()
-
+	# Aim and fire or reload
 	_aim(delta)
+	if weapon_held:
+		if weapon_held.ammo_in_mag == 0:
+			_reload()
+		elif player_vis:
+			var player_pos := player.global_position + Vector3(0, 1.5, 0)
+			var local_player_pos = %ShootCast.to_local(player_pos).normalized()
+			var local_ray_collision = %ShootCast.to_local(\
+								%ShootCast.get_collision_point()).normalized()
+			if local_player_pos.dot(local_ray_collision) > shoot_accuracy_threshold:
+				if $ShootTimer.is_stopped():
+					trigger_pulled = true
+
+
+func _shoot() -> void:
+	super()
+	$ShootTimer.start(1.0 / (weapon_held.shots_per_second / 2))
 
 
 func _aim(delta) -> void:
 	if player and player_vis:
 		var player_pos = player.global_position + Vector3(0, 1.5, 0)
-		var new_transform : Transform3D = $AimHelper.transform.looking_at(player_pos)
-		$AimHelper.transform = $AimHelper.transform.interpolate_with(new_transform, AIM_SPEED * delta)
+		var new_trans :Transform3D = $AimHelper.global_transform.looking_at(player_pos)
+		$AimHelper.global_transform = $AimHelper.global_transform.interpolate_with \
+													(new_trans, AIM_SPEED * delta)
 	else:
-		var new_transform := Transform3D($AimHelper.basis.looking_at(Vector3.FORWARD), \
-															Vector3(0, 1.65, 0))
-		$AimHelper.transform = $AimHelper.transform.interpolate_with(new_transform, AIM_SPEED * delta)
-
+		$AimHelper.rotation = $AimHelper.rotation.lerp(Vector3.ZERO, AIM_SPEED * delta)
+	$AimHelper.rotation.x = clamp($AimHelper.rotation.x, deg_to_rad(-90), rad_to_deg(90))
+	$AimHelper.rotation.y = clamp($AimHelper.rotation.y, deg_to_rad(-80), rad_to_deg(80))
+	$AimHelper.rotation.z = 0
 
 
 func _player_vis_change(new_player_vis) -> void:
@@ -116,6 +134,8 @@ func _new_rand_nav_point() -> void:
 func _player_lost() -> void:
 #	print("Player lost")
 	_new_rand_nav_point()
+	if weapon_held and weapon_held.ammo_in_mag == 0:
+		_reload()
 
 
 func _stuck() -> void:
@@ -125,6 +145,9 @@ func _stuck() -> void:
 
 func _die() -> void:
 	super()
+	weapon_held = null
+	for weapon in $AimHelper/Weapons.get_children():
+		weapon.queue_free()
 	player_vis = false
 	$PlayerTimer.stop()
 	global_position = current_level.get_nav_point().position

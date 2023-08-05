@@ -12,6 +12,7 @@ var extra_ammo : int
 var ammo_in_mag : int
 var v_recoil : float
 var h_recoil : float
+var target_range : float
 
 signal finished_reloading
 var is_reloading := false
@@ -27,21 +28,24 @@ func _ready():
 			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.SLAPPER]
 			v_recoil = 0
 			h_recoil = 0
+			target_range = 1.0
 		Globals.WEAPONS.PISTOL:
 #			automatic = true
 			automatic = false
-#			shots_per_second = 60
+#			shots_per_second = 60.0
 			shots_per_second = 7.143
 			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.PISTOL]
 			v_recoil = 1.0
 			h_recoil = 0.5
+			target_range = 5.0
 		Globals.WEAPONS.RIFLE:
 			automatic = true
-#			shots_per_second = 100
+#			shots_per_second = 60.0
 			shots_per_second = 10.0
 			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.RIFLE]
 			v_recoil = 2.0
 			h_recoil = 1.0
+			target_range = 7.5
 
 	$ShotTimer.wait_time = 1.0 / shots_per_second
 	max_ammo = mag_size * 4

@@ -158,25 +158,11 @@ shape = SubResource("BoxShape3D_m0147")
 [node name="Players" type="Node3D" parent="."]
 
 [node name="Enemy1" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253044, 0, 18.6492)
-
-[node name="Enemy2" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04477, 0, -18.5336)
-
-[node name="Enemy3" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2231, -1.90735e-06, -17.4162)
-
-[node name="Enemy4" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0635, -1.90735e-06, 17.0727)
-
-[node name="Enemy5" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5835, -1.90735e-06, 11.9182)
-
-[node name="Enemy6" parent="Players" instance=ExtResource("4_ke8yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.782, -1.90735e-06, -11.7524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253044, 0, 8.74263)
 
 [node name="Player" parent="Players" instance=ExtResource("4_8icpb")]
 unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -8.85206)
 
 [node name="FX" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -498,13 +484,3 @@ volume_db = -20.0
 
 [connection signal="spawn_bullet_hole" from="Players/Enemy1" to="." method="spawn_bullet_hole"]
 [connection signal="spawn_damage_label" from="Players/Enemy1" to="." method="spawn_damage_label"]
-[connection signal="spawn_bullet_hole" from="Players/Enemy2" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Players/Enemy2" to="." method="spawn_damage_label"]
-[connection signal="spawn_bullet_hole" from="Players/Enemy3" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Players/Enemy3" to="." method="spawn_damage_label"]
-[connection signal="spawn_bullet_hole" from="Players/Enemy4" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Players/Enemy4" to="." method="spawn_damage_label"]
-[connection signal="spawn_bullet_hole" from="Players/Enemy5" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Players/Enemy5" to="." method="spawn_damage_label"]
-[connection signal="spawn_bullet_hole" from="Players/Enemy6" to="." method="spawn_bullet_hole"]
-[connection signal="spawn_damage_label" from="Players/Enemy6" to="." method="spawn_damage_label"]

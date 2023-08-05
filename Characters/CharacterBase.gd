@@ -30,6 +30,8 @@ signal spawn_bullet_hole
 func _ready() -> void:
 	var temp_bodysegs = get_tree().get_nodes_in_group("body_segs")
 	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
+	for body_seg in body_segs:
+		%ShootCast.add_exception(body_seg)
 
 
 func _process(_delta) -> void:
@@ -48,7 +50,8 @@ func _shoot() -> void:
 
 		if %ShootCast.is_colliding():
 			if %ShootCast.get_collider().is_in_group("body_segs"):
-					%ShootCast.get_collider().body_seg_shot()
+				var collider = %ShootCast.get_collider()
+				%ShootCast.get_collider().body_seg_shot()
 			elif current_level != null:
 				spawn_bullet_hole.emit(%ShootCast.get_collision_point(), \
 									%ShootCast.get_collision_normal())

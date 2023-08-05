@@ -9,16 +9,6 @@ func _ready():
 
 	$Players/Enemy1.current_level = self
 	$Players/Enemy1.player = %Player
-	$Players/Enemy2.current_level = self
-	$Players/Enemy2.player = %Player
-	$Players/Enemy3.current_level = self
-	$Players/Enemy3.player = %Player
-	$Players/Enemy4.current_level = self
-	$Players/Enemy4.player = %Player
-	$Players/Enemy5.current_level = self
-	$Players/Enemy5.player = %Player
-	$Players/Enemy6.current_level = self
-	$Players/Enemy6.player = %Player
 
 
 func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:
