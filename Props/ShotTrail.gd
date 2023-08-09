@@ -21,3 +21,4 @@ func _process(delta) -> void:
 func align_and_scale(nozzle_point : Vector3, collision_point : Vector3) -> void:
 	global_position = (nozzle_point + collision_point) / 2
 	$Mesh.mesh.height = (nozzle_point - collision_point).length()
+	transform = transform.looking_at(collision_point)

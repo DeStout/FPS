@@ -39,8 +39,11 @@ roughness = 0.28
 ao_enabled = true
 ao_light_affect = 1.0
 
-[node name="RifleModel" type="MeshInstance3D"]
+[node name="Rifle" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_a3huq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_5y7vo")
+
+[node name="Nozzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82408e-08, 0.102081, 0.666197)

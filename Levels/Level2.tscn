@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_gyus3"]
 [ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_vufbv"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_2tcup"]
-[ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="4_8icpb"]
+[ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="4_1cl0c"]
 [ext_resource type="PackedScene" uid="uid://cevbv8x2k7xwv" path="res://Characters/Enemy.tscn" id="4_ke8yd"]
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_qwd18"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="5_i8p46"]
@@ -160,7 +160,7 @@ shape = SubResource("BoxShape3D_m0147")
 [node name="Enemy1" parent="Players" instance=ExtResource("4_ke8yd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253044, 0, 8.74263)
 
-[node name="Player" parent="Players" instance=ExtResource("4_8icpb")]
+[node name="Player" parent="Players" instance=ExtResource("4_1cl0c")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -8.85206)
 
@@ -484,3 +484,4 @@ volume_db = -20.0
 
 [connection signal="spawn_bullet_hole" from="Players/Enemy1" to="." method="spawn_bullet_hole"]
 [connection signal="spawn_damage_label" from="Players/Enemy1" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Player" to="." method="spawn_bullet_hole"]

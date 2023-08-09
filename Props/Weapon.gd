@@ -13,6 +13,9 @@ var ammo_in_mag : int
 var v_recoil : float
 var h_recoil : float
 var target_range : float
+var anim_pos : Vector2
+
+@onready var nozzle : Node3D = get_node("Mesh/Nozzle")
 
 signal finished_reloading
 var is_reloading := false
@@ -25,27 +28,30 @@ func _ready():
 		Globals.WEAPONS.SLAPPER:
 			automatic = false
 			shots_per_second = 1.0
-			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.SLAPPER]
+			mag_size = 0
 			v_recoil = 0
 			h_recoil = 0
 			target_range = 1.0
+			anim_pos = Vector2(0, 1)
 		Globals.WEAPONS.PISTOL:
 #			automatic = true
 			automatic = false
 #			shots_per_second = 60.0
 			shots_per_second = 7.143
-			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.PISTOL]
+			mag_size = 12
 			v_recoil = 1.0
 			h_recoil = 0.5
 			target_range = 5.0
+			anim_pos = Vector2(-1, -1)
 		Globals.WEAPONS.RIFLE:
 			automatic = true
 #			shots_per_second = 60.0
 			shots_per_second = 10.0
-			mag_size = Globals.MAG_SIZES[Globals.WEAPONS.RIFLE]
+			mag_size = 24
 			v_recoil = 2.0
 			h_recoil = 1.0
 			target_range = 7.5
+			anim_pos = Vector2(1, -1)
 
 	$ShotTimer.wait_time = 1.0 / shots_per_second
 	max_ammo = mag_size * 4
@@ -58,13 +64,13 @@ func can_shoot() -> bool:
 	return _can_shoot
 
 
-func shoot(collisionPoint : Vector3) -> void:
+func shoot(nozzle_point : Vector3, collisionPoint : Vector3) -> void:
 	ammo_in_mag -= 1
 	$ShootAudio.play()
 
 	var shot_trail = shot_trail_.instantiate()
 	add_child(shot_trail)
-	shot_trail.align_and_scale($Mesh/Nozzle.global_position, collisionPoint)
+	shot_trail.align_and_scale(nozzle_point, collisionPoint)
 
 	$ShotTimer.start()
 

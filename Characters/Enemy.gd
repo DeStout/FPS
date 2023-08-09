@@ -8,10 +8,10 @@ var stuck_length := 2.0
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
 var player_vis_threshold := 0.1
-var shoot_accuracy_threshold := 0.8
+var shoot_accuracy_threshold := 0.9
 
 const TURN_SPEED := 5.0
-const AIM_SPEED := 10.0
+const AIM_SPEED := 7.5
 
 
 func _ready():
@@ -33,6 +33,7 @@ func _physics_process(delta):
 	var input_dir = Vector2.ZERO
 	var next_path_pos := Vector3.ZERO
 
+	# Choose target
 	if player_vis or !$PlayerTimer.is_stopped():
 		nav_agent.target_position = player.global_position
 	if !nav_agent.is_navigation_finished():
@@ -48,6 +49,7 @@ func _physics_process(delta):
 		var new_transform := transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
+	# Accel and move
 	var accel = ACCEL
 	var deaccel = DEACCEL
 	if !is_on_floor():
@@ -63,11 +65,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, deaccel)
 		velocity.z = move_toward(velocity.z, 0, deaccel)
 	move_and_slide()
-
-	# Cast at Player for vis check
-	if player:
-		%PlayerCast.target_position = %PlayerCast.to_local(player.global_position) + \
-									Vector3(0, 0.9, 0)
 
 	# Check if AI is stuck
 	if abs(position.length_squared() - last_position.length_squared()) < stuck_length:
@@ -93,6 +90,11 @@ func _physics_process(delta):
 			if local_player_pos.dot(local_ray_collision) > shoot_accuracy_threshold:
 				if $ShootTimer.is_stopped():
 					trigger_pulled = true
+
+	# Cast at Player for vis check
+	if player:
+		%PlayerCast.target_position = %PlayerCast.to_local(player.global_position) + \
+									Vector3(0, 0.9, 0)
 
 
 func _shoot() -> void:
@@ -145,9 +147,8 @@ func _stuck() -> void:
 
 func _die() -> void:
 	super()
-	weapon_held = null
-	for weapon in $AimHelper/Weapons.get_children():
-		weapon.queue_free()
+	_switch_weapon(null)
+	weapons = []
 	player_vis = false
 	$PlayerTimer.stop()
 	global_position = current_level.get_nav_point().position

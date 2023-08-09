@@ -17,9 +17,10 @@ var body_segs : Array = []
 signal spawn_damage_label
 
 @export var weapon_held : Node3D = null
-@onready var weapons := $AimHelper/Weapons
-@onready var anim_tree = $PuppetAnimations/AnimationTree
-@onready var state_machine = $PuppetAnimations/AnimationTree["parameters/playback"]
+@onready var weapons := [Globals.WEAPONS.SLAPPER]
+var nozzle : Node3D = null
+@onready var anim_tree = $PuppetBase/AnimationTree
+@onready var state_machine = $PuppetBase/AnimationTree["parameters/playback"]
 var trigger_pulled := false
 
 #@onready var current_level : Node3D = get_parent()
@@ -46,8 +47,7 @@ func _physics_process(delta) -> void:
 
 func _shoot() -> void:
 	if weapon_held.can_shoot():
-		weapon_held.shoot(%ShootCast.get_collision_point())
-
+		weapon_held.shoot(nozzle.global_position, %ShootCast.get_collision_point())
 		if %ShootCast.is_colliding():
 			if %ShootCast.get_collider().is_in_group("body_segs"):
 				var collider = %ShootCast.get_collider()
@@ -75,6 +75,7 @@ func _reload() -> void:
 		weapon_held.reload()
 
 
+# Signaled from BodySeg
 func _take_damage(body_seg) -> void:
 	if current_level != null:
 		spawn_damage_label.emit($DmgLbl.global_position, str(Globals.BODY_DMG[body_seg]))
@@ -135,12 +136,12 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 		var new_weapon : Node3D
 		match new_pick_up.weapon_type:
 			Globals.WEAPONS.SLAPPER:
-				new_weapon = Globals.slapper_.instantiate()
+				pass
 			Globals.WEAPONS.PISTOL:
-				new_weapon = Globals.pistol_.instantiate()
+				new_weapon = $Weapons/Pistol
 			Globals.WEAPONS.RIFLE:
-				new_weapon = Globals.rifle_.instantiate()
-		weapons.add_child(new_weapon)
+				new_weapon = $Weapons/Rifle
+		weapons.append(new_weapon.weapon_type)
 		_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
 			new_pick_up.picked_up()
@@ -155,37 +156,50 @@ func _pick_up_ammo(new_pick_up : Node3D) -> void:
 	if _have_weapon(new_pick_up.weapon_type):
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
 		if weapon_for.can_pick_up_ammo():
-			weapon_for.add_ammo(Globals.MAG_SIZES[new_pick_up.weapon_type])
+			weapon_for.add_ammo(weapon_held.mag_size)
 			new_pick_up.picked_up()
 
 
 func _have_weapon(weapon_type : int ) -> bool:
-	for weapon in weapons.get_children():
-		if weapon.weapon_type == weapon_type:
-			return true
-	return false
+	return weapons.has(weapon_type)
 
 
 func _get_weapon(weapon_type : int) -> Node3D:
-	var new_weapon : Node3D
-	for weapon in weapons.get_children():
+	var new_weapon : Node3D = null
+	for weapon in $Weapons.get_children():
 		if weapon.weapon_type == weapon_type:
 			new_weapon = weapon
 	return new_weapon
 
 
-func _switch_weapon(new_weapon) -> void:
+func _switch_weapon(new_weapon : Node3D) -> void:
+	if new_weapon != null:
 		if weapon_held != new_weapon:
 			if weapon_held:
 				weapon_held.interrupt_reload()
 				weapon_held.visible = false
 			weapon_held = new_weapon
 			weapon_held.visible = true
+			nozzle = weapon_held.nozzle
 
-#			var tween = get_tree().create_tween()
-#			tween.tween_property(anim_tree, \
-#				"parameters/Idle/IdleUpper_Blend/blend_position", \
-#										Vector2(1.0, -1.0), 0.25)
-#			tween.tween_property(anim_tree, \
-#				"parameters/Run/RunUpper_Blend/blend_position", \
-#										Vector2(1.0, -1.0), 0.25)
+			var tween = get_tree().create_tween()
+			tween.tween_property(anim_tree, \
+				"parameters/Idle/UpperIdle/blend_position", \
+										weapon_held.anim_pos, 0.15)
+			tween.tween_property(anim_tree, \
+				"parameters/Run/UpperRun/blend_position", \
+										weapon_held.anim_pos, 0.15)
+	else:
+		if weapon_held:
+			weapon_held.interrupt_reload()
+			weapon_held.visible = false
+		weapon_held = null
+		nozzle = null
+
+		var tween = get_tree().create_tween()
+		tween.tween_property(anim_tree, \
+			"parameters/Idle/UpperIdle/blend_position", \
+									Vector2(0, 1), 0.15)
+		tween.tween_property(anim_tree, \
+			"parameters/Run/UpperRun/blend_position", \
+									Vector2(0, 1), 0.15)

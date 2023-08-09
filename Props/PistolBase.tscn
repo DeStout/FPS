@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://brkwsl458i1pq"]
+[gd_scene load_steps=5 format=3 uid="uid://c7c70o2wmstqa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4f8rx"]
 
@@ -31,7 +31,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o0o83")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgda8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpbs7"]
 albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
 metallic = 0.33
 metallic_specular = 0.27
@@ -39,8 +39,11 @@ roughness = 0.28
 ao_enabled = true
 ao_light_affect = 1.0
 
-[node name="PistolModel" type="MeshInstance3D"]
+[node name="Pistol" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1vcbi")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_sgda8")
+surface_material_override/0 = SubResource("StandardMaterial3D_gpbs7")
+
+[node name="Nozzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.056256, 0.164417)

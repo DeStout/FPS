@@ -31,7 +31,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g3o84")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctvld"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcaxu"]
 albedo_color = Color(0.839216, 0.6, 0.466667, 1)
 subsurf_scatter_enabled = true
 subsurf_scatter_strength = 1.0
@@ -39,6 +39,9 @@ subsurf_scatter_skin_mode = true
 
 [node name="SlapperModel" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_84q4e")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ctvld")
+surface_material_override/0 = SubResource("StandardMaterial3D_mcaxu")
+
+[node name="Nozzle" type="Node3D" parent="."]
