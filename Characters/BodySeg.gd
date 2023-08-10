@@ -6,5 +6,5 @@ signal take_damage
 
 
 # Signal to CharacterBase
-func body_seg_shot() -> void:
-	take_damage.emit(body_seg)
+func body_seg_shot(weapon_type) -> void:
+	take_damage.emit(Globals.BODY_DMG[weapon_type][body_seg])

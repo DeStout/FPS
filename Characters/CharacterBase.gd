@@ -59,7 +59,7 @@ func _shoot() -> void:
 		if %ShootCast.is_colliding():
 			if %ShootCast.get_collider().is_in_group("body_segs"):
 				var collider = %ShootCast.get_collider()
-				%ShootCast.get_collider().body_seg_shot()
+				%ShootCast.get_collider().body_seg_shot(weapon_held.weapon_type)
 			elif current_level != null:
 				spawn_bullet_hole.emit(%ShootCast.get_collision_point(), \
 									%ShootCast.get_collision_normal())
@@ -84,20 +84,20 @@ func _reload() -> void:
 
 
 # Signaled from BodySeg
-func _take_damage(body_seg) -> void:
+func _take_damage(damage) -> void:
 	if current_level != null:
-		spawn_damage_label.emit($DmgLbl.global_position, str(Globals.BODY_DMG[body_seg]))
+		spawn_damage_label.emit($DmgLbl.global_position, str(damage))
 
 	if armor > 0:
-		var armor_dmg : int = Globals.BODY_DMG[body_seg] / 2
+		var armor_dmg : int = damage / 2
 		if armor > abs(armor_dmg):
 			armor -= armor_dmg
-			health -= Globals.BODY_DMG[body_seg] - armor_dmg
+			health -= damage - armor_dmg
 		else:
-			health -= Globals.BODY_DMG[body_seg] - armor
+			health -= damage - armor
 			armor = 0
 	else:
-		health -= Globals.BODY_DMG[body_seg]
+		health -= damage
 
 	if health > 0:
 		$HurtSFX.get_children().pick_random().play()
@@ -113,6 +113,7 @@ func _die() -> void:
 	visible = false
 	_switch_weapon(null)
 	weapons = []
+	armor = 0
 	_disable_collisions(true)
 	set_physics_process(false)
 
