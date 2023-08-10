@@ -1,11 +1,6 @@
 extends CharacterBase
 
-#const WEAPON_ALIGNMENTS := [Vector3(0.14, -.205, -0.31),		# Slapper
-#							Vector3(0.115, -0.14, -0.31), 		# Pistol
-#							Vector3(0.125, -0.21, -0.315)] 		# Rifle
-#const WEAPON_ROTATIONS := [Vector3(73, -29.5, -22),				# Slapper
-#							Vector3.ZERO, 						# Pistol
-#							Vector3.ZERO] 						# Rifle
+
 signal weapon_picked_up
 
 @onready var fp_weapon : Node3D = $AimHelper/FPWeapons/Slapper
@@ -133,7 +128,7 @@ func _unhandled_input(_event):
 			weapon_held.interrupt_reload()
 			for weapon_type in range(Globals.WEAPONS.size()):
 				weapon_type += weapon_held.weapon_type + 1
-				for weapon in %Weapons.get_children():
+				for weapon in $Weapons.get_children():
 					if weapon.weapon_type == (weapon_type % Globals.WEAPONS.size()):
 						_switch_weapon(weapon)
 						return
@@ -210,13 +205,13 @@ func _pick_up_health(new_health : Node3D) -> void:
 
 func _switch_weapon(new_weapon) -> void:
 	super(new_weapon)
-#	weapon_held.visible = false
 	fp_weapon.visible = false
-	for fpweapon in $AimHelper/FPWeapons.get_children():
-		if fpweapon.weapon_type == new_weapon.weapon_type:
-			fp_weapon = fpweapon
-	fp_weapon.visible = true
-	nozzle = fp_weapon.nozzle
+	if new_weapon != null:
+		for fpweapon in $AimHelper/FPWeapons.get_children():
+			if fpweapon.weapon_type == new_weapon.weapon_type:
+				fp_weapon = fpweapon
+		fp_weapon.visible = true
+		nozzle = fp_weapon.nozzle
 	_update_UI()
 
 
@@ -225,5 +220,6 @@ func _take_damage(body_seg) -> void:
 	_update_UI()
 
 
-func _die() -> void:
-	health = 100
+func respawn() -> void:
+	super()
+	_update_UI()

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://7eh2d0yb5a1h"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_floms"]
+[ext_resource type="Script" path="res://Levels/PlayersContainer.gd" id="2_l47m7"]
+[ext_resource type="Script" path="res://Characters/Pause.gd" id="4_63lp7"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_bt5qf"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_floms")
+
+[node name="Players" type="Node3D" parent="."]
+script = ExtResource("2_l47m7")
+
+[node name="FX" type="Node3D" parent="."]
+
+[node name="Spawns" type="Node3D" parent="."]
+visible = false
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="NavPoints" type="Node3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_bt5qf")
+volume_db = -20.0
+
+[node name="Pause" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("4_63lp7")

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Props/FPWeapon.gd" id="2_1l2s1"]
 
 [node name="Rifle" instance=ExtResource("1_wd4x2")]
+layers = 8
 cast_shadow = 0
 script = ExtResource("2_1l2s1")
 weapon_type = 2

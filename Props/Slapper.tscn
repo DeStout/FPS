@@ -6,3 +6,4 @@
 [node name="Slapper" instance=ExtResource("1_283py")]
 
 [node name="SlapperModel" parent="." index="0" instance=ExtResource("2_op7jl")]
+layers = 8

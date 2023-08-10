@@ -9,6 +9,7 @@
 weapon_type = 2
 
 [node name="Mesh" parent="." index="0" instance=ExtResource("2_oqy1o")]
+layers = 4
 
 [node name="ShootAudio" parent="." index="1"]
 stream = ExtResource("3_cv2kp")

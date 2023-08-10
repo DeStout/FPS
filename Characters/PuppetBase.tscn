@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://cmdilq5ptgg8g"]
 
 [ext_resource type="Script" path="res://Characters/BodySeg.gd" id="1_blxkk"]
-[ext_resource type="AnimationLibrary" uid="uid://fddywbgvrxmm" path="res://Testing/Animations.res" id="1_xek0x"]
+[ext_resource type="AnimationLibrary" uid="uid://fddywbgvrxmm" path="res://Characters/Animations/Animations.res" id="1_xek0x"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_u8yp8"]
 sync = true
@@ -606,6 +606,7 @@ bones/41/rotation = Quaternion(-2.10734e-08, 1, 2.98023e-08, -6.32203e-08)
 bones/41/scale = Vector3(1, 1, 1)
 
 [node name="Body" type="MeshInstance3D" parent="Skeleton"]
+layers = 2
 mesh = SubResource("ArrayMesh_7jxhm")
 skin = SubResource("Skin_u61v0")
 surface_material_override/0 = SubResource("StandardMaterial3D_wyixn")

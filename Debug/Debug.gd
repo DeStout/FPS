@@ -14,7 +14,7 @@ var fps_visible := true
 #@onready var music_bus := AudioServer.get_bus_index("Music")
 #var mute_setting := Mute.MUSIC
 
-@onready var player = get_tree().current_scene.get_node("%Player")
+var player : CharacterBase
 var player_invincible := false
 var infinite_ammo := false
 
@@ -24,6 +24,7 @@ var infinite_ammo := false
 
 
 func _ready() -> void:
+	player = get_tree().current_scene.get_node("Players").player
 	visible = is_visible
 	$FPS.visible = fps_visible
 

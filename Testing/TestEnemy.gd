@@ -7,17 +7,24 @@ var stuck_length := 2.0
 
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
-var player_vis_threshold := 0.25
-var shoot_accuracy_threshold := 0.65
+var player_vis_threshold := 0.1
+var shoot_accuracy_threshold := 0.9
 
-var move_speed_mod := 0.8
-const TURN_SPEED := 7.0
-const AIM_SPEED := 12.0
+const TURN_SPEED := 5.0
+const AIM_SPEED := 7.5
+
+var time := 0.0
 
 
-func new_name(new_name : String) -> void:
-	name = new_name
+func _ready():
+	super()
 	$NameLabel.text = name
+
+
+func _process(delta):
+	$AimTarget.position.x = 0.25 * sin(time*2)
+	$AimTarget.position.y = 0.25 * cos(time*2)
+	time += delta
 
 
 func _physics_process(delta):
@@ -35,7 +42,7 @@ func _physics_process(delta):
 	var next_path_pos := Vector3.ZERO
 
 	# Choose target
-	if player and (player_vis or !$PlayerTimer.is_stopped()):
+	if player_vis or !$PlayerTimer.is_stopped():
 		nav_agent.target_position = player.global_position
 	if !nav_agent.is_navigation_finished():
 		next_path_pos = nav_agent.get_next_path_position()
@@ -43,9 +50,10 @@ func _physics_process(delta):
 		input_dir = Vector2.UP
 	elif !player_vis and $PlayerTimer.is_stopped():
 #		print("Nav point reached")
-		_new_rand_nav_point()
+#		_new_rand_nav_point()
+		pass
 
-	if next_path_pos and transform.origin != next_path_pos:
+	if next_path_pos:
 #		$NavTarget.global_position = next_path_pos
 		var new_transform := transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
@@ -65,16 +73,15 @@ func _physics_process(delta):
 		state_machine.travel("Idle")
 		velocity.x = move_toward(velocity.x, 0, deaccel)
 		velocity.z = move_toward(velocity.z, 0, deaccel)
-	velocity.x *= move_speed_mod
-	velocity.z *= move_speed_mod
 	move_and_slide()
 
 	# Check if AI is stuck
 	if abs(position.length_squared() - last_position.length_squared()) < stuck_length:
 		if $StuckTimer.is_stopped() and $PlayerTimer.is_stopped() and \
 											!nav_agent.is_target_reached():
-			$StuckTimer.start()
+#			$StuckTimer.start()
 #			print("Maybe Stuck")
+			pass
 	elif !$StuckTimer.is_stopped():
 		$StuckTimer.stop()
 #		print("Not stuck")
@@ -85,7 +92,7 @@ func _physics_process(delta):
 	if weapon_held:
 		if weapon_held.ammo_in_mag == 0:
 			_reload()
-		elif player and player_vis:
+		elif player_vis:
 			var player_pos := player.global_position + Vector3(0, 1.5, 0)
 			var local_player_pos = %ShootCast.to_local(player_pos).normalized()
 			var local_ray_collision = %ShootCast.to_local(\
@@ -150,10 +157,9 @@ func _stuck() -> void:
 
 func _die() -> void:
 	super()
+	_switch_weapon(null)
+	weapons = []
 	player_vis = false
 	$PlayerTimer.stop()
-
-
-func respawn() -> void:
-	super()
-	_new_rand_nav_point()
+	global_position = current_level.get_nav_point().position
+	health = 100

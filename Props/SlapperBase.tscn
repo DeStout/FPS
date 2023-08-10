@@ -39,9 +39,9 @@ subsurf_scatter_skin_mode = true
 
 [node name="SlapperModel" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-layers = 2
+layers = 8
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_84q4e")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_mcaxu")
 
 [node name="Nozzle" type="Node3D" parent="."]

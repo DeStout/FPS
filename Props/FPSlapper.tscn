@@ -4,5 +4,6 @@
 [ext_resource type="Script" path="res://Props/FPWeapon.gd" id="2_603gx"]
 
 [node name="SlapperModel" instance=ExtResource("1_1anqe")]
+layers = 8
 cast_shadow = 0
 script = ExtResource("2_603gx")

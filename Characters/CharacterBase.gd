@@ -1,6 +1,12 @@
 class_name CharacterBase
 extends CharacterBody3D
 
+
+signal spawn_bullet_hole
+signal spawn_damage_label
+signal died
+
+# Movement
 const ACCEL := 3.0
 const DEACCEL := 1.0
 const AIR_ACCEL := 0.2
@@ -9,23 +15,25 @@ const SPEED = 6.5
 const JUMP_VELOCITY = 5.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Health
 const MAX_HEALTH := 200
 const MAX_ARMOR := 50
 var health := 100 : set = _set_health
 var armor := 0
 var body_segs : Array = []
-signal spawn_damage_label
 
-@export var weapon_held : Node3D = null
+# Weapons
+var weapon_held : Node3D = null
 @onready var weapons := [Globals.WEAPONS.SLAPPER]
 var nozzle : Node3D = null
-@onready var anim_tree = $PuppetBase/AnimationTree
-@onready var state_machine = $PuppetBase/AnimationTree["parameters/playback"]
 var trigger_pulled := false
 
-#@onready var current_level : Node3D = get_parent()
+#Animation
+@onready var anim_tree = $PuppetBase/AnimationTree
+@onready var state_machine = $PuppetBase/AnimationTree["parameters/playback"]
+
+# Level
 var current_level : Node3D
-signal spawn_bullet_hole
 
 
 func _ready() -> void:
@@ -96,15 +104,42 @@ func _take_damage(body_seg) -> void:
 
 
 func _set_health(new_health) -> void:
-	health = new_health
-	if health <= 0:
+	health = max(0, new_health)
+	if health == 0:
 		_die()
 
 
 func _die() -> void:
-#	visible = false
-	$DeathSFX.get_children().pick_random().play()
-#	queue_free()
+	visible = false
+	_switch_weapon(null)
+	weapons = []
+	_disable_collisions(true)
+	set_physics_process(false)
+
+	var death_sfx = $DeathSFX.get_children().pick_random()
+	death_sfx.play()
+	await death_sfx.finished
+
+	# Signal to Level
+#	drop_weapon(current_weapon)
+
+	died.emit(self)
+
+
+func respawn() -> void:
+	visible = true
+	_disable_collisions(false)
+	set_physics_process(true)
+	global_position = current_level.get_nav_point().position
+	health = 100
+	weapons = [Globals.WEAPONS.SLAPPER]
+	print(name, " Respawned")
+
+
+func _disable_collisions(is_disabled : bool) -> void:
+	$Collision.disabled = is_disabled
+	for body_seg in body_segs:
+		body_seg.get_node("Collision").disabled = is_disabled
 
 
 func pick_up(new_pick_up : Node3D) -> void:
@@ -142,6 +177,7 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 			Globals.WEAPONS.RIFLE:
 				new_weapon = $Weapons/Rifle
 		weapons.append(new_weapon.weapon_type)
+		new_weapon.reset()
 		_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
 			new_pick_up.picked_up()

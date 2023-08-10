@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://kqanl8xmbjxl"]
+
+[ext_resource type="PackedScene" uid="uid://dtsnii0ox2sfw" path="res://Testing/TestEnemy.tscn" id="1_136er"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4rg0m"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajcbw"]
+albedo_color = Color(0.168627, 0.180392, 0.0627451, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sg3x1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4xgww"]
+size = Vector3(2, 2, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f478v"]
+size = Vector3(2, 2, 0.25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8c16"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_gwje0"]
+sky_material = SubResource("ProceduralSkyMaterial_b8c16")
+
+[sub_resource type="Environment" id="Environment_ntbfx"]
+background_mode = 2
+sky = SubResource("Sky_gwje0")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_136er")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315774, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4rg0m")
+surface_material_override/0 = SubResource("StandardMaterial3D_ajcbw")
+
+[node name="StaticBody" type="StaticBody3D" parent="Floor"]
+
+[node name="Collision" type="CollisionShape3D" parent="Floor/StaticBody"]
+shape = SubResource("WorldBoundaryShape3D_sg3x1")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.323)
+mesh = SubResource("BoxMesh_4xgww")
+
+[node name="StaticBody" type="StaticBody3D" parent="Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody"]
+shape = SubResource("BoxShape3D_f478v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ntbfx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.566406, -0.157251, 0.808985, 0, 0.981627, 0.190809, -0.824126, 0.108075, -0.556, 1.639, 1.478, -1.975)

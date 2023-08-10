@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://djv07ymx6ry3v"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_2mwe5"]
+[ext_resource type="PackedScene" uid="uid://q0227uvq4f2x" path="res://Levels/Level1Base.tscn" id="2_lpp5j"]
+[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_qgt7c"]
+[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="4_xw2gk"]
+[ext_resource type="PackedScene" uid="uid://bvtob15rpepds" path="res://Characters/Player.tscn" id="5_6rh8r"]
+[ext_resource type="PackedScene" uid="uid://cevbv8x2k7xwv" path="res://Characters/Enemy.tscn" id="6_m25mg"]
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_2mwe5")
+
+[node name="Level" parent="." instance=ExtResource("2_lpp5j")]
+
+[node name="PicksUps" type="Node3D" parent="."]
+
+[node name="Rifle1" parent="PicksUps" instance=ExtResource("3_qgt7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.42402, 4.25, 1.49964)
+weapon_type = 2
+
+[node name="Rifle2" parent="PicksUps" instance=ExtResource("3_qgt7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8312, 1.14441e-05, 27.1695)
+weapon_type = 2
+
+[node name="Pistol1" parent="PicksUps" instance=ExtResource("3_qgt7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4965, 0, -0.694525)
+
+[node name="Pistol2" parent="PicksUps" instance=ExtResource("3_qgt7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26986, 1.90735e-06, -22.1656)
+
+[node name="Pistol3" parent="PicksUps" instance=ExtResource("3_qgt7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24225, 1.90735e-06, 22.2313)
+
+[node name="Health1" parent="PicksUps" instance=ExtResource("4_xw2gk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3894, 0, -16.6917)
+
+[node name="Health2" parent="PicksUps" instance=ExtResource("4_xw2gk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9072, 0, 14.7664)
+
+[node name="Armor1" parent="PicksUps" instance=ExtResource("4_xw2gk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74035, 4, 3.97697)
+health_type = 1
+
+[node name="Armor2" parent="PicksUps" instance=ExtResource("4_xw2gk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4143, 0, -25.3777)
+health_type = 1
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("5_6rh8r")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04007, 0, -16.2867)
+
+[node name="Enemy1" parent="Players" instance=ExtResource("6_m25mg")]
+
+[node name="FX" type="Node3D" parent="."]
+
+[connection signal="spawn_bullet_hole" from="Players/Player" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Player" to="." method="spawn_damage_label"]
+[connection signal="spawn_bullet_hole" from="Players/Enemy1" to="." method="spawn_bullet_hole"]
+[connection signal="spawn_damage_label" from="Players/Enemy1" to="." method="spawn_damage_label"]

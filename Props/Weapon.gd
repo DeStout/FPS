@@ -1,8 +1,8 @@
+class_name Weapon
 extends Node3D
 
 
 @export var weapon_type : Globals.WEAPONS
-
 
 var automatic := false
 var shots_per_second : float
@@ -34,9 +34,7 @@ func _ready():
 			target_range = 1.0
 			anim_pos = Vector2(0, 1)
 		Globals.WEAPONS.PISTOL:
-#			automatic = true
 			automatic = false
-#			shots_per_second = 60.0
 			shots_per_second = 7.143
 			mag_size = 12
 			v_recoil = 1.0
@@ -45,7 +43,6 @@ func _ready():
 			anim_pos = Vector2(-1, -1)
 		Globals.WEAPONS.RIFLE:
 			automatic = true
-#			shots_per_second = 60.0
 			shots_per_second = 10.0
 			mag_size = 24
 			v_recoil = 2.0
@@ -54,6 +51,10 @@ func _ready():
 			anim_pos = Vector2(1, -1)
 
 	$ShotTimer.wait_time = 1.0 / shots_per_second
+	reset()
+
+
+func reset() -> void:
 	max_ammo = mag_size * 4
 	extra_ammo = max_ammo - mag_size
 	ammo_in_mag = mag_size
