@@ -16,9 +16,9 @@ script = ExtResource("2_l47m7")
 [node name="Spawns" type="Node3D" parent="."]
 visible = false
 
-[node name="Pickups" type="Node3D" parent="."]
-
 [node name="NavPoints" type="Node3D" parent="."]
+
+[node name="Pickups" type="Node3D" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_bt5qf")

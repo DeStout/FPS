@@ -182,10 +182,6 @@ func _update_UI() -> void:
 func _pick_up_weapon(new_weapon) -> Node3D:
 	var added_weapon = super(new_weapon)
 	if added_weapon:
-#		added_weapon.position = WEAPON_ALIGNMENTS[new_weapon.weapon_type]
-#		added_weapon.rotation_degrees = WEAPON_ROTATIONS[new_weapon.weapon_type]
-		added_weapon.finished_reloading.connect(_update_UI)
-
 		# Signal to Debug
 		weapon_picked_up.emit(added_weapon)
 
