@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_cg56f"]
 
 [node name="Level1" instance=ExtResource("1_fo0yj")]
-num_enemies = 7
+num_enemies = 5
 
 [node name="Level1" parent="." index="0" instance=ExtResource("2_rps4x")]
 

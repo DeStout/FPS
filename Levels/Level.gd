@@ -15,7 +15,7 @@ func _ready():
 
 func spawn_shot_trail(nozzle_point, collision_point) -> void:
 	var shot_trail = shot_trail_.instantiate()
-	add_child(shot_trail)
+	$FX.add_child(shot_trail)
 	shot_trail.align_and_scale(nozzle_point, collision_point)
 
 

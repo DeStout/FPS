@@ -102,7 +102,7 @@ func _physics_process(delta):
 
 func _shoot() -> void:
 	super()
-	$ShootTimer.start(1.0 / (weapon_held.shots_per_second / 3))
+	$ShootTimer.start(1.0 / (weapon_held.shots_per_second / 3.0))
 
 
 func _aim(delta) -> void:

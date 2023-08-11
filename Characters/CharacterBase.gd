@@ -8,12 +8,12 @@ signal spawn_damage_label
 signal died
 
 # Movement
-const ACCEL := 3.0
-const DEACCEL := 1.0
-const AIR_ACCEL := 0.2
-const AIR_DEACCEL := 0.03
-const SPEED = 6.5
-const JUMP_VELOCITY = 5.0
+const ACCEL := 2.5
+const DEACCEL := 0.8
+const AIR_ACCEL := 0.18
+const AIR_DEACCEL := 0.02
+const SPEED = 5.5
+const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Health
@@ -102,7 +102,7 @@ func _take_damage(damage) -> void:
 		health -= damage
 
 	if health > 0:
-		$HurtSFX.get_children().pick_random().play()
+		$Voice.get_hurt_sfx().play()
 
 
 func _set_health(new_health) -> void:
@@ -119,7 +119,7 @@ func _die() -> void:
 	_disable_collisions(true)
 	set_physics_process(false)
 
-	var death_sfx = $DeathSFX.get_children().pick_random()
+	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()
 	await death_sfx.finished
 
