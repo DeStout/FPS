@@ -7,6 +7,7 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_floms")
+num_enemies = 3
 
 [node name="Players" type="Node3D" parent="."]
 script = ExtResource("2_l47m7")

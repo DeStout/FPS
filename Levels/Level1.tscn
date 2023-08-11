@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxbflxhcre44x"]
 
 [ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Levels/Level.tscn" id="1_fo0yj"]
-[ext_resource type="PackedScene" uid="uid://q0227uvq4f2x" path="res://Levels/Level1Base.tscn" id="1_il041"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="2_fr25d"]
+[ext_resource type="PackedScene" uid="uid://ca3w75xdwj1hb" path="res://Levels/Level1Base.tscn" id="2_rps4x"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="3_r55p8"]
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_cg56f"]
 
-[node name="Level" instance=ExtResource("1_fo0yj")]
-num_enemies = 3
+[node name="Level1" instance=ExtResource("1_fo0yj")]
+num_enemies = 7
 
-[node name="Level" parent="." index="0" instance=ExtResource("1_il041")]
+[node name="Level1" parent="." index="0" instance=ExtResource("2_rps4x")]
 
 [node name="TopSpawn1" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 4, -3)

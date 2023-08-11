@@ -48,6 +48,7 @@ func spawn_character(character : CharacterBase, spawn_point : Marker3D) -> void:
 
 
 func connect_signals(character) -> void:
+	character.spawn_shot_trail.connect(level.spawn_shot_trail)
 	character.spawn_bullet_hole.connect(level.spawn_bullet_hole)
 	character.spawn_damage_label.connect(level.spawn_damage_label)
 	character.died.connect(character_killed)

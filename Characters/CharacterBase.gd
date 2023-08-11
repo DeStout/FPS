@@ -2,6 +2,7 @@ class_name CharacterBase
 extends CharacterBody3D
 
 
+signal spawn_shot_trail
 signal spawn_bullet_hole
 signal spawn_damage_label
 signal died
@@ -55,7 +56,8 @@ func _physics_process(delta) -> void:
 
 func _shoot() -> void:
 	if weapon_held.can_shoot():
-		weapon_held.shoot(nozzle.global_position, %ShootCast.get_collision_point())
+		weapon_held.shoot()
+		spawn_shot_trail.emit(nozzle.global_position, %ShootCast.get_collision_point())
 		if %ShootCast.is_colliding():
 			if %ShootCast.get_collider().is_in_group("body_segs"):
 				var collider = %ShootCast.get_collider()

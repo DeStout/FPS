@@ -20,7 +20,6 @@ var anim_pos : Vector2
 signal finished_reloading
 var is_reloading := false
 
-var shot_trail_ = preload("res://Props/ShotTrail.tscn")
 
 
 func _ready():
@@ -36,15 +35,15 @@ func _ready():
 		Globals.WEAPONS.PISTOL:
 			automatic = false
 			shots_per_second = 7.143
-			mag_size = 12
+			mag_size = 15
 			v_recoil = 1.0
 			h_recoil = 0.5
 			target_range = 5.0
 			anim_pos = Vector2(-1, -1)
 		Globals.WEAPONS.RIFLE:
 			automatic = true
-			shots_per_second = 10.0
-			mag_size = 24
+			shots_per_second = 9.0
+			mag_size = 32
 			v_recoil = 2.0
 			h_recoil = 1.0
 			target_range = 7.5
@@ -65,14 +64,9 @@ func can_shoot() -> bool:
 	return _can_shoot
 
 
-func shoot(nozzle_point : Vector3, collisionPoint : Vector3) -> void:
+func shoot() -> void:
 	ammo_in_mag -= 1
 	$ShootAudio.play()
-
-	var shot_trail = shot_trail_.instantiate()
-	add_child(shot_trail)
-	shot_trail.align_and_scale(nozzle_point, collisionPoint)
-
 	$ShotTimer.start()
 
 

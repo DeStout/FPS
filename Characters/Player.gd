@@ -13,6 +13,8 @@ const LOOK_SENSITIVITY := 0.05
 func _ready() -> void:
 	super()
 	_update_UI()
+	weapons.append(Globals.WEAPONS.RIFLE)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -218,4 +220,7 @@ func _take_damage(body_seg) -> void:
 
 func respawn() -> void:
 	super()
+	weapons.append(Globals.WEAPONS.RIFLE)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+	weapon_held.reset()
 	_update_UI()

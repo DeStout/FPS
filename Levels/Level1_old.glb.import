@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0w8g3xxs1u61"
-path="res://.godot/imported/Level1.glb-34f518c4ab28eac1e46a412634e50475.scn"
+uid="uid://bv8aw5ypcgoup"
+path="res://.godot/imported/Level1_old.glb-24c21adb3aa9bda06b760cb14e8c5f01.scn"
 
 [deps]
 
-source_file="res://Levels/Level1.glb"
-dest_files=["res://.godot/imported/Level1.glb-34f518c4ab28eac1e46a412634e50475.scn"]
+source_file="res://Levels/Level1_old.glb"
+dest_files=["res://.godot/imported/Level1_old.glb-24c21adb3aa9bda06b760cb14e8c5f01.scn"]
 
 [params]
 
@@ -21,7 +21,7 @@ meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
-meshes/lightmap_texel_size=0.2
+meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30

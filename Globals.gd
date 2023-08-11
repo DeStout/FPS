@@ -15,5 +15,5 @@ enum HEALTHS {HEALTH_PACK, ARMOR}
 
 enum BODY_SEGS {HEAD, TORSO, LIMB}
 const BODY_DMG := [[50, 50, 50],		# Slapper
-					[35, 20, 8],		# Pistol
-					[50, 25, 10]]		# Rifle
+					[22, 12, 5],		# Pistol
+					[25, 15, 8]]		# Rifle
