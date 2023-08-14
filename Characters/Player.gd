@@ -12,9 +12,9 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	_update_UI()
-	weapons.append(Globals.WEAPONS.RIFLE)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -50,6 +50,14 @@ func _physics_process(delta) -> void:
 
 
 func _input(event) -> void:
+	if Input.is_action_just_pressed("Shoot"):
+		trigger_pulled = true
+	elif Input.is_action_just_released("Shoot"):
+		trigger_pulled = false
+		
+	if Input.is_action_just_pressed("Reload"):
+		_reload()
+		
 	# Mouse Look
 	if event is InputEventMouseMotion:
 		$AimHelper.rotate_x(MOUSE_HORZ_SENSITIVITY * event.relative.y)
@@ -70,12 +78,16 @@ func _input(event) -> void:
 			if _have_weapon(Globals.WEAPONS.RIFLE):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+		
+		elif Input.is_action_just_pressed("SwitchLevel"):
+			match get_tree().current_scene.name:
+				"Level1":
+					get_tree().change_scene_to_file("res://Levels/Level2.tscn")
+				"Level2":
+					get_tree().change_scene_to_file("res://Levels/Level1.tscn")
 
 
 	if event is InputEventJoypadButton:
-		if Input.is_action_just_pressed("Reload"):
-			_reload()
-			
 		# Controller weapon switching
 		if Input.is_action_just_pressed("SwitchWeapon"):
 			if weapon_held:
@@ -84,16 +96,10 @@ func _input(event) -> void:
 					weapon_type += weapon_held.weapon_type + 1
 					weapon_type %= Globals.WEAPONS.size()
 					for weapon in weapons:
-						print(weapon)
 						if weapon == weapon_type and weapon != Globals.WEAPONS.SLAPPER:
 							_switch_weapon(_get_weapon(weapon))
 							return
-	
-	if event is InputEventJoypadMotion:
-		if Input.is_action_just_pressed("Shoot"):
-			trigger_pulled = true
-		elif Input.is_action_just_released("Shoot"):
-			trigger_pulled = false
+							
 
 func _shoot() -> void:
 	super()
@@ -142,14 +148,15 @@ func _switch_weapon(new_weapon) -> void:
 	_update_UI()
 
 
-func _take_damage(body_seg) -> void:
-	super(body_seg)
+func _take_damage(damage : int) -> void:
+	damage *= (2.0/3.0)
+	super(damage)
 	_update_UI()
 
 
 func respawn() -> void:
 	super()
-	weapons.append(Globals.WEAPONS.RIFLE)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_held.reset()
 	_update_UI()

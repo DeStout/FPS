@@ -9,6 +9,8 @@ var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
 var player_vis_threshold := 0.45
 var shoot_accuracy_threshold := 0.4
+var shoot_speed_mod := 1.0/2.0
+var shoot_speed_variance := Vector2(0.5, 1.0)
 
 var move_speed_mod := 0.8
 const TURN_SPEED := 6.0
@@ -102,7 +104,10 @@ func _physics_process(delta):
 
 func _shoot() -> void:
 	super()
-	$ShootTimer.start(1.0 / (weapon_held.shots_per_second / 3.0))
+	trigger_pulled = false
+	var speed_variance = randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
+	var shoot_speed = weapon_held.shots_per_second * shoot_speed_mod * speed_variance
+	$ShootTimer.start(1.0 / shoot_speed)
 
 
 func _aim(delta) -> void:
@@ -146,6 +151,12 @@ func _player_lost() -> void:
 func _stuck() -> void:
 #	print("Stuck")
 	_new_rand_nav_point()
+
+
+func _take_damage(damage) -> void:
+	damage *= 2
+	player_vis = true
+	super(damage)
 
 
 func _die() -> void:

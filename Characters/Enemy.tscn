@@ -44,135 +44,135 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.210124)
 cull_mask = 1048567
 
 [node name="Weapons" parent="." index="6"]
-transform = Transform3D(-0.216477, -0.172708, -0.96089, -0.967375, 0.170636, 0.187268, 0.13162, 0.97008, -0.204013, 0.173483, 1.36661, -0.270165)
+transform = Transform3D(-0.213681, -0.177826, -0.960583, -0.970338, 0.152448, 0.187629, 0.113074, 0.972182, -0.205126, 0.172425, 1.35773, -0.269342)
 
 [node name="Skeleton" parent="PuppetBase" index="2"]
-bones/1/position = Vector3(1.61994e-09, 0.889626, -0.0641973)
-bones/2/rotation = Quaternion(0.00720001, 4.74071e-05, 0.000554543, 0.999974)
-bones/4/rotation = Quaternion(0.00632858, 4.25177e-05, 0.000487061, 0.99998)
-bones/5/rotation = Quaternion(0.00839499, 5.46141e-05, 0.000646355, 0.999965)
-bones/7/rotation = Quaternion(0.0125617, 0.883844, 0.272742, 0.379835)
-bones/8/rotation = Quaternion(-0.0165216, -0.72228, -0.0160797, 0.691216)
-bones/9/rotation = Quaternion(-0.398591, 0.726123, 0.136338, 0.5434)
+bones/1/position = Vector3(1.61993e-09, 0.885937, -0.0641973)
+bones/2/rotation = Quaternion(0.00467833, 2.97282e-05, 0.000360499, 0.999989)
+bones/4/rotation = Quaternion(0.00411129, 2.58817e-05, 0.00031673, 0.999992)
+bones/5/rotation = Quaternion(0.00545652, 3.37037e-05, 0.000420337, 0.999985)
+bones/7/rotation = Quaternion(0.0146717, 0.885207, 0.274581, 0.375232)
+bones/8/rotation = Quaternion(-0.0159997, -0.721805, -0.0155635, 0.691737)
+bones/9/rotation = Quaternion(-0.401415, 0.724323, 0.130923, 0.545051)
 bones/10/rotation = Quaternion(2.38419e-07, -2.98023e-08, -1.19209e-07, 1)
-bones/11/rotation = Quaternion(0.0314937, -0.0170484, -0.0726453, 0.996715)
+bones/11/rotation = Quaternion(0.0309496, -0.0184234, -0.0721166, 0.996746)
 bones/12/rotation = Quaternion(-5.96047e-08, -2.38419e-07, 2.38419e-07, 1)
-bones/14/rotation = Quaternion(0.00214088, 0.00382241, -0.00199472, 0.999988)
+bones/14/rotation = Quaternion(0.00139721, 0.00249822, -0.00130478, 0.999995)
 bones/15/rotation = Quaternion(-5.96046e-08, 5.96046e-08, 1.78814e-07, 1)
 bones/16/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/17/rotation = Quaternion(0.332264, 0.0594762, 0.0441139, 0.940275)
+bones/17/rotation = Quaternion(0.329115, 0.0538096, 0.0451919, 0.941672)
 bones/18/rotation = Quaternion(-0.0177395, 0.184228, 0.00458947, 0.982713)
-bones/20/rotation = Quaternion(-0.133762, 0.949558, 0.258954, 0.115712)
-bones/21/rotation = Quaternion(0.247979, 0.388412, -0.241057, 0.854128)
-bones/22/rotation = Quaternion(-0.23798, -0.838183, -0.133997, 0.47208)
+bones/20/rotation = Quaternion(-0.131906, 0.949627, 0.263559, 0.106518)
+bones/21/rotation = Quaternion(0.250355, 0.384411, -0.243366, 0.85459)
+bones/22/rotation = Quaternion(-0.221732, -0.841668, -0.141207, 0.471689)
 bones/23/rotation = Quaternion(5.96046e-08, -5.96046e-08, 1.78814e-07, 1)
-bones/24/rotation = Quaternion(0.0116092, 0.0231696, 0.07207, 0.997063)
-bones/25/rotation = Quaternion(-0.000904292, -0.0131134, 0.00340143, 0.999908)
-bones/27/rotation = Quaternion(-0.00658522, -0.0137074, -0.0431665, 0.998952)
-bones/28/rotation = Quaternion(0.00344862, -0.0251688, 0.00577075, 0.999661)
+bones/24/rotation = Quaternion(0.0124273, 0.0233968, 0.0774502, 0.996644)
+bones/25/rotation = Quaternion(-0.000603998, -0.00849879, 0.00221814, 0.999961)
+bones/27/rotation = Quaternion(-0.00714625, -0.0138435, -0.0461793, 0.998812)
+bones/28/rotation = Quaternion(0.0021733, -0.0163116, 0.00378493, 0.999857)
 bones/29/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/30/rotation = Quaternion(-0.344817, 0.496746, -0.55936, 0.566976)
+bones/30/rotation = Quaternion(-0.343299, 0.501536, -0.564909, 0.558109)
 bones/31/rotation = Quaternion(-0.0929818, 0.136922, -0.113451, 0.979661)
-bones/33/rotation = Quaternion(-0.140244, 0.0704766, 0.987498, -0.0145918)
-bones/34/rotation = Quaternion(-0.0208212, 0.998032, 0.0590402, 0.00367095)
-bones/35/rotation = Quaternion(0.0771821, 0.787164, -0.601034, 0.114779)
-bones/38/rotation = Quaternion(0.133398, -0.160928, 0.977684, -0.0210036)
-bones/39/rotation = Quaternion(0.0454073, 0.990604, 0.128757, -0.00800545)
-bones/40/rotation = Quaternion(-0.0857161, 0.681366, -0.720459, -0.0966058)
+bones/33/rotation = Quaternion(-0.140773, 0.0604713, 0.988115, -0.0124599)
+bones/34/rotation = Quaternion(-0.0284328, 0.996326, 0.0806238, 0.00501302)
+bones/35/rotation = Quaternion(0.0747636, 0.794746, -0.591128, 0.115572)
+bones/38/rotation = Quaternion(0.133427, -0.169095, 0.976259, -0.0228514)
+bones/39/rotation = Quaternion(0.0510775, 0.988096, 0.144835, -0.00900517)
+bones/40/rotation = Quaternion(-0.0840689, 0.687605, -0.714583, -0.0974804)
 bones/41/rotation = Quaternion(-4.21469e-08, 1, 5.96047e-08, -1.26441e-07)
 
 [node name="Head" parent="PuppetBase/Skeleton" index="1"]
-transform = Transform3D(0.999994, -0.00336851, 0.000362994, 0.00338118, 0.999033, -0.043833, -0.000214991, 0.0438339, 0.999039, -0.000548222, 1.56933, -0.044572)
+transform = Transform3D(0.999998, -0.00219228, 0.000209876, 0.00219737, 0.999592, -0.0284883, -0.000147336, 0.0284887, 0.999594, -0.000356517, 1.56578, -0.047076)
 
 [node name="HeadArea" parent="PuppetBase/Skeleton/Head" index="0"]
 collision_layer = 8
 
 [node name="Neck" parent="PuppetBase/Skeleton" index="2"]
-transform = Transform3D(0.999999, -0.00110837, 0.000102797, 0.00110974, 0.999896, -0.0143996, -8.68263e-05, 0.0143997, 0.999896, 0.00188163, 1.45093, -0.0266827)
+transform = Transform3D(1, -0.000720713, 6.28289e-05, 0.000721269, 0.999956, -0.00935655, -5.60828e-05, 0.00935659, 0.999956, 0.002005, 1.44754, -0.0283131)
 
 [node name="NeckArea" parent="PuppetBase/Skeleton/Neck" index="0"]
 collision_layer = 8
 
 [node name="Chest" parent="PuppetBase/Skeleton" index="3"]
-transform = Transform3D(0.999999, -0.00110837, 0.000102797, 0.00110974, 0.999896, -0.0143996, -8.68263e-05, 0.0143997, 0.999896, 7.13332e-10, 1.12779, -0.0868668)
+transform = Transform3D(1, -0.000720713, 6.28289e-05, 0.000721269, 0.999956, -0.00935655, -5.60828e-05, 0.00935659, 0.999956, 7.1333e-10, 1.12411, -0.0868668)
 
 [node name="ChestArea" parent="PuppetBase/Skeleton/Chest" index="0"]
 collision_layer = 8
 
 [node name="Stomach" parent="PuppetBase/Skeleton" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61994e-09, 0.889626, -0.0641973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61993e-09, 0.885937, -0.0641973)
 
 [node name="StomachArea" parent="PuppetBase/Skeleton/Stomach" index="0"]
 collision_layer = 8
 
 [node name="R_UpperArm" parent="PuppetBase/Skeleton" index="5"]
-transform = Transform3D(0.194519, -0.830579, -0.521825, -0.30228, 0.455338, -0.837433, 0.933161, 0.320634, -0.162496, 0.194675, 1.39002, -0.0359325)
+transform = Transform3D(0.19463, -0.826596, -0.52807, -0.280501, 0.468979, -0.837483, 0.939914, 0.311123, -0.140584, 0.194775, 1.38651, -0.0372486)
 
 [node name="R_UpperArmArea" parent="PuppetBase/Skeleton/R_UpperArm" index="0"]
 collision_layer = 8
 
 [node name="R_Forearm" parent="PuppetBase/Skeleton" index="6"]
-transform = Transform3D(0.703863, -0.637665, 0.312987, 0.380029, -0.0342154, -0.924341, 0.600129, 0.769554, 0.218248, 0.227651, 1.23675, -0.173645)
+transform = Transform3D(0.710085, -0.633802, 0.306717, 0.383121, -0.0176923, -0.923529, 0.590761, 0.773293, 0.23026, 0.226346, 1.22966, -0.171203)
 
 [node name="R_ForearmArea" parent="PuppetBase/Skeleton/R_Forearm" index="0"]
 collision_layer = 8
 
 [node name="R_Hand" parent="PuppetBase/Skeleton" index="7"]
-transform = Transform3D(-0.216477, -0.172708, -0.96089, -0.967375, 0.170636, 0.187268, 0.13162, 0.97008, -0.204013, 0.173483, 1.36661, -0.323144)
+transform = Transform3D(-0.213681, -0.177826, -0.960583, -0.970338, 0.152448, 0.187629, 0.113074, 0.972182, -0.205126, 0.172425, 1.35773, -0.322321)
 
 [node name="R_HandArea" parent="PuppetBase/Skeleton/R_Hand" index="0"]
 collision_layer = 8
 
 [node name="L_UpperArm" parent="PuppetBase/Skeleton" index="8"]
-transform = Transform3D(0.230062, 0.850343, 0.473273, -0.654013, 0.495222, -0.571859, -0.720652, -0.177964, 0.670067, -0.195247, 1.38959, -0.0358987)
+transform = Transform3D(0.232466, 0.848411, 0.475562, -0.649345, 0.499407, -0.573536, -0.724093, -0.175476, 0.667006, -0.195147, 1.38623, -0.0372268)
 
 [node name="L_UpperArmArea" parent="PuppetBase/Skeleton/L_UpperArm" index="0"]
 collision_layer = 8
 
 [node name="L_Forearm" parent="PuppetBase/Skeleton" index="9"]
-transform = Transform3D(0.46411, 0.860228, -0.21121, -0.541788, 0.464327, 0.700619, 0.700762, -0.210733, 0.68156, -0.234807, 1.19369, 0.0241243)
+transform = Transform3D(0.466583, 0.858098, -0.214402, -0.544646, 0.469739, 0.69477, 0.696894, -0.207395, 0.686532, -0.233947, 1.18987, 0.0217752)
 
 [node name="L_ForearmArea" parent="PuppetBase/Skeleton/L_Forearm" index="0"]
 collision_layer = 8
 
 [node name="L_Hand" parent="PuppetBase/Skeleton" index="10"]
-transform = Transform3D(-0.223403, 0.267166, 0.937397, -0.779343, 0.528638, -0.336401, -0.585419, -0.805707, 0.090115, -0.235628, 0.992887, -0.0185657)
+transform = Transform3D(-0.223692, 0.267386, 0.937266, -0.782208, 0.524453, -0.336303, -0.581474, -0.808365, 0.0918359, -0.233851, 0.989374, -0.0223451)
 
 [node name="L_HandArea" parent="PuppetBase/Skeleton/L_Hand" index="0"]
 collision_layer = 8
 
 [node name="R_Thigh" parent="PuppetBase/Skeleton" index="11"]
-transform = Transform3D(-0.963527, -0.00186515, 0.267603, -0.0840048, -0.947322, -0.309069, 0.254083, -0.320277, 0.912614, 0.0851499, 0.872137, -0.0593682)
+transform = Transform3D(-0.96335, -0.000506029, 0.268247, -0.0897417, -0.941769, -0.324064, 0.252791, -0.33626, 0.907208, 0.0851499, 0.868448, -0.0593682)
 
 [node name="R_ThighArea" parent="PuppetBase/Skeleton/R_Thigh" index="0"]
 collision_layer = 8
 
 [node name="R_Shin" parent="PuppetBase/Skeleton" index="12"]
-transform = Transform3D(0.96664, -0.0223927, -0.255157, -0.00813766, -0.998353, 0.0567872, -0.256009, -0.0528164, -0.96523, 0.111145, 0.486395, -0.223875)
+transform = Transform3D(0.96686, -0.0237029, -0.254205, -0.0139073, -0.999092, 0.0402628, -0.254928, -0.0353931, -0.966312, 0.111691, 0.485584, -0.230383)
 
 [node name="R_ShinArea" parent="PuppetBase/Skeleton/R_Shin" index="0"]
 collision_layer = 8
 
 [node name="R_Foot" parent="PuppetBase/Skeleton" index="13"]
-transform = Transform3D(-1, -1.04308e-07, -2.24449e-07, -2.23517e-07, 4.17233e-07, 1, -1.3411e-07, 1, -3.42727e-07, 0.119459, 0.113841, -0.180125)
+transform = Transform3D(-1, 1.19209e-07, -4.20958e-07, -4.07919e-07, 3.27826e-07, 1, 8.9407e-08, 1, -4.13507e-07, 0.11946, 0.11384, -0.180125)
 
 [node name="R_FootArea" parent="PuppetBase/Skeleton/R_Foot" index="0"]
 collision_layer = 8
 
 [node name="L_Thigh" parent="PuppetBase/Skeleton" index="14"]
-transform = Transform3D(-0.960237, 0.00905098, -0.279038, -0.0485867, -0.98964, 0.135098, -0.274925, 0.143284, 0.950729, -0.0851499, 0.872137, -0.0593682)
+transform = Transform3D(-0.960055, 0.00759828, -0.279707, -0.0416491, -0.992376, 0.115997, -0.276693, 0.123013, 0.953052, -0.0851499, 0.868448, -0.0593682)
 
 [node name="L_ThighArea" parent="PuppetBase/Skeleton/L_Thigh" index="0"]
 collision_layer = 8
 
 [node name="L_Shin" parent="PuppetBase/Skeleton" index="15"]
-transform = Transform3D(0.961737, 0.0164626, 0.273478, 0.087922, -0.963942, -0.251168, 0.259482, 0.265602, -0.928506, -0.107753, 0.453497, -0.0317093)
+transform = Transform3D(0.962107, 0.0178002, 0.27209, 0.0953117, -0.956874, -0.274422, 0.255472, 0.289956, -0.922312, -0.108338, 0.449361, -0.0403002)
 
 [node name="L_ShinArea" parent="PuppetBase/Skeleton/L_Shin" index="0"]
 collision_layer = 8
 
 [node name="L_Foot" parent="PuppetBase/Skeleton" index="16"]
-transform = Transform3D(-1, -1.49012e-07, -1.71363e-07, -1.56462e-07, -2.98023e-08, 1, -8.9407e-08, 1, 5.96046e-08, -0.11946, 0.113839, 0.127273)
+transform = Transform3D(-1, 4.17233e-07, -1.49012e-07, -1.41561e-07, -5.96046e-08, 1, 3.8743e-07, 1, 1.19209e-07, -0.11946, 0.113839, 0.127274)
 
 [node name="L_FootArea" parent="PuppetBase/Skeleton/L_Foot" index="0"]
 collision_layer = 8
