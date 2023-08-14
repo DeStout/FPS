@@ -48,10 +48,6 @@ func _physics_process(delta) -> void:
 		velocity.z = move_toward(velocity.z, 0, deaccel)
 	move_and_slide()
 
-#	if Input.is_action_pressed("Shoot"):
-#		_shoot()
-#		_update_UI()
-
 
 func _input(event) -> void:
 	# Mouse Look
@@ -62,109 +58,42 @@ func _input(event) -> void:
 		rotate_y(MOUSE_HORZ_SENSITIVITY * event.relative.x)
 		rotation.z = 0
 
-
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("Hurt"):
-		_take_damage(1)
-		_update_UI()
-	if Input.is_action_just_pressed("SwitchLevel"):
-		match get_tree().current_scene.name:
-			"Level1":
-				get_tree().change_scene_to_file("res://Levels/Level2.tscn")
-			"Level2":
-				get_tree().change_scene_to_file("res://Levels/Level1.tscn")
-
-
-
-	if Input.is_action_just_pressed("Shoot"):
-		trigger_pulled = true
-	if Input.is_action_just_released("Shoot"):
-		trigger_pulled = false
-
-	if Input.is_action_just_pressed("Reload"):
-		_reload()
-
+	if event is InputEventKey:
 	# Keyboard weapon switching
-	if Input.is_action_just_pressed("Weapon1"):
-		pass
-	elif Input.is_action_just_pressed("Weapon2"):
-		if _have_weapon(Globals.WEAPONS.PISTOL):
-			weapon_held.interrupt_reload()
-			_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
-#			weapon_held = $AimHelper/FPWeapons/Pistol
-#			$AimHelper/FPWeapons/Rifle.visible = false
-#			$AimHelper/Weapons/Rifle.visible = false
-#			$AimHelper/FPWeapons/Pistol.visible = true
-#			$AimHelper/Weapons/Pistol.visible = true
-#			_update_UI()
-#			var tween = create_tween()
-#			tween.tween_property(anim_tree, \
-#				"parameters/Idle/IdleUpper_Blend/blend_position", \
-#										Vector2(1.0, 1.0), 0.25)
-#			tween.tween_property(anim_tree, \
-#				"parameters/Run/RunUpper_Blend/blend_position", \
-#										Vector2(1.0, 1.0), 0.25)
-	elif Input.is_action_just_pressed("Weapon3"):
-		if _have_weapon(Globals.WEAPONS.RIFLE):
-			weapon_held.interrupt_reload()
-			_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
-#		if weapon_held != $AimHelper/FPWeapons/Rifle:
-#			weapon_held.interrupt_reload()
-#			weapon_held = $AimHelper/FPWeapons/Rifle
-#			$AimHelper/FPWeapons/Pistol.visible = false
-#			$AimHelper/Weapons/Pistol.visible = false
-#			$AimHelper/FPWeapons/Rifle.visible = true
-#			$AimHelper/Weapons/Rifle.visible = true
-#			_update_UI()
-#			var tween = get_tree().create_tween()
-#			tween.tween_property(anim_tree, \
-#				"parameters/Idle/IdleUpper_Blend/blend_position", \
-#										Vector2(1.0, -1.0), 0.25)
-#			tween.tween_property(anim_tree, \
-#				"parameters/Run/RunUpper_Blend/blend_position", \
-#										Vector2(1.0, -1.0), 0.25)
+		if Input.is_action_just_pressed("Weapon1"):
+			pass
+		elif Input.is_action_just_pressed("Weapon2"):
+			if _have_weapon(Globals.WEAPONS.PISTOL):
+				weapon_held.interrupt_reload()
+				_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+		elif Input.is_action_just_pressed("Weapon3"):
+			if _have_weapon(Globals.WEAPONS.RIFLE):
+				weapon_held.interrupt_reload()
+				_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
 
-	# Controller weapon switching
-	if Input.is_action_just_pressed("SwitchWeapon"):
-		if weapon_held:
-			weapon_held.interrupt_reload()
-			for weapon_type in range(Globals.WEAPONS.size()):
-				weapon_type += weapon_held.weapon_type + 1
-				for weapon in $Weapons.get_children():
-					if weapon.weapon_type == (weapon_type % Globals.WEAPONS.size()):
-						_switch_weapon(weapon)
-						return
 
-#		if weapon_held == $AimHelper/FPWeapons/Rifle:
-#			weapon_held.interrupt_reload()
-#			weapon_held = $AimHelper/FPWeapons/Pistol
-#			$AimHelper/FPWeapons/Rifle.visible = false
-#			$AimHelper/Weapons/Rifle.visible = false
-#			$AimHelper/FPWeapons/Pistol.visible = true
-#			$AimHelper/Weapons/Pistol.visible = true
-#			_update_UI()
-#			var tween = create_tween()
-#			tween.tween_property(anim_tree, \
-#				"parameters/Idle/IdleUpper_Blend/blend_position", \
-#										Vector2(1.0, 1.0), 0.25)
-#			tween.tween_property(anim_tree, \
-#				"parameters/Run/RunUpper_Blend/blend_position", \
-#										Vector2(1.0, 1.0), 0.25)
-#		elif weapon_held == $AimHelper/FPWeapons/Pistol:
-#			weapon_held.interrupt_reload()
-#			weapon_held = $AimHelper/FPWeapons/Rifle
-#			$AimHelper/FPWeapons/Pistol.visible = false
-#			$AimHelper/Weapons/Pistol.visible = false
-#			$AimHelper/FPWeapons/Rifle.visible = true
-#			$AimHelper/Weapons/Rifle.visible = true
-#			_update_UI()
-#			var tween = get_tree().create_tween()
-#			tween.tween_property(anim_tree, \
-#				"parameters/Idle/IdleUpper_Blend/blend_position", \
-#										Vector2(1.0, -1.0), 0.25)
-#			tween.tween_property(anim_tree, \
-#				"parameters/Run/RunUpper_Blend/blend_position", \
-#										Vector2(1.0, -1.0), 0.25)
+	if event is InputEventJoypadButton:
+		if Input.is_action_just_pressed("Reload"):
+			_reload()
+			
+		# Controller weapon switching
+		if Input.is_action_just_pressed("SwitchWeapon"):
+			if weapon_held:
+				weapon_held.interrupt_reload()
+				for weapon_type in range(Globals.WEAPONS.size()):
+					weapon_type += weapon_held.weapon_type + 1
+					weapon_type %= Globals.WEAPONS.size()
+					for weapon in weapons:
+						print(weapon)
+						if weapon == weapon_type and weapon != Globals.WEAPONS.SLAPPER:
+							_switch_weapon(_get_weapon(weapon))
+							return
+	
+	if event is InputEventJoypadMotion:
+		if Input.is_action_just_pressed("Shoot"):
+			trigger_pulled = true
+		elif Input.is_action_just_released("Shoot"):
+			trigger_pulled = false
 
 func _shoot() -> void:
 	super()
