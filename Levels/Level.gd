@@ -4,6 +4,7 @@ extends Node3D
 var shot_trail_ = preload("res://Props/ShotTrail.tscn")
 var bullet_hole_ := preload("res://Props/BulletHole.tscn")
 var damage_label_ := preload("res://Characters/DamageLabel.tscn")
+var weapon_pick_up_ := preload("res://Props/WeaponPickUp.tscn")
 
 @export var num_enemies := 0
 
@@ -30,6 +31,12 @@ func spawn_damage_label(pos : Vector3, dmg : String) -> void:
 	var damage_label = damage_label_.instantiate()
 	$FX.add_child(damage_label)
 	damage_label.set_txt_and_pos(pos, dmg)
+
+
+func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:
+	var new_pick_up = weapon_pick_up_.instantiate()
+	$Pickups.add_child(new_pick_up)
+	new_pick_up.set_up_drop(dropped_position, weapon_info)
 
 
 func get_spawn_point() -> Marker3D:

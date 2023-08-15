@@ -2,9 +2,6 @@ class_name CharacterBase
 extends CharacterBody3D
 
 
-signal spawn_shot_trail
-signal spawn_bullet_hole
-signal spawn_damage_label
 signal died
 
 # Movement
@@ -57,13 +54,14 @@ func _physics_process(delta) -> void:
 func _shoot() -> void:
 	if weapon_held.can_shoot():
 		weapon_held.shoot()
-		spawn_shot_trail.emit(nozzle.global_position, %ShootCast.get_collision_point())
+		current_level.spawn_shot_trail(nozzle.global_position, \
+												%ShootCast.get_collision_point())
 		if %ShootCast.is_colliding():
 			if %ShootCast.get_collider().is_in_group("body_segs"):
 				var collider = %ShootCast.get_collider()
 				%ShootCast.get_collider().body_seg_shot(weapon_held.weapon_type)
 			elif current_level != null:
-				spawn_bullet_hole.emit(%ShootCast.get_collision_point(), \
+				current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
 									%ShootCast.get_collision_normal())
 		# Add recoil
 		var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.v_recoil
@@ -88,7 +86,7 @@ func _reload() -> void:
 # Signaled from BodySeg
 func _take_damage(damage) -> void:
 	if current_level != null:
-		spawn_damage_label.emit($DmgLbl.global_position, str(damage))
+		current_level.spawn_damage_label($DmgLbl.global_position, str(damage))
 
 	if armor > 0:
 		var armor_dmg : int = damage / 2
@@ -113,29 +111,32 @@ func _set_health(new_health) -> void:
 
 func _die() -> void:
 	visible = false
-	_switch_weapon(null)
-	weapons = []
-	armor = 0
 	_disable_collisions(true)
 	set_physics_process(false)
-
+	
+	if weapon_held != null:
+		var weapon_info := [weapon_held.weapon_type, weapon_held.extra_ammo, \
+														weapon_held.ammo_in_mag]
+		current_level.spawn_weapon_pick_up(global_position, weapon_info)
+		
+	global_position = current_level.get_nav_point().position
+	armor = 0
+	weapons = [Globals.WEAPONS.SLAPPER]
+	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
+	
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()
 	await death_sfx.finished
-
-	# Signal to Level
-#	drop_weapon(current_weapon)
-
+	
+	# Signal to PlayersContainer.character_killed
 	died.emit(self)
 
 
 func respawn() -> void:
 	visible = true
-	_disable_collisions(false)
-	set_physics_process(true)
-	global_position = current_level.get_nav_point().position
 	health = 100
-	weapons = [Globals.WEAPONS.SLAPPER]
+	set_physics_process(true)
+	_disable_collisions(false)
 	print(name, " Respawned")
 
 
@@ -179,15 +180,20 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 				new_weapon = $Weapons/Pistol
 			Globals.WEAPONS.RIFLE:
 				new_weapon = $Weapons/Rifle
+		if new_pick_up.weapon_info.size() == 0:
+			new_weapon.reset()
+		else:
+			new_weapon.extra_ammo = new_pick_up.weapon_info[1]
+			new_weapon.ammo_in_mag = new_pick_up.weapon_info[2]
+				
 		weapons.append(new_weapon.weapon_type)
-		new_weapon.reset()
 		_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
 			new_pick_up.picked_up()
 		return new_weapon
 	else:
 		_pick_up_ammo(new_pick_up)
-
+		
 	return null
 
 
