@@ -15,6 +15,7 @@ func _ready() -> void:
 	weapons.append(Globals.WEAPONS.PISTOL)
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	_update_UI()
+	
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -69,7 +70,9 @@ func _input(event) -> void:
 	if event is InputEventKey:
 	# Keyboard weapon switching
 		if Input.is_action_just_pressed("Weapon1"):
-			pass
+			if _have_weapon(Globals.WEAPONS.SLAPPER):
+				weapon_held.interrupt_reload()
+				_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
 		elif Input.is_action_just_pressed("Weapon2"):
 			if _have_weapon(Globals.WEAPONS.PISTOL):
 				weapon_held.interrupt_reload()
@@ -96,7 +99,7 @@ func _input(event) -> void:
 					weapon_type += weapon_held.weapon_type + 1
 					weapon_type %= Globals.WEAPONS.size()
 					for weapon in weapons:
-						if weapon == weapon_type and weapon != Globals.WEAPONS.SLAPPER:
+						if weapon == weapon_type:
 							_switch_weapon(_get_weapon(weapon))
 							return
 							
@@ -106,6 +109,7 @@ func _shoot() -> void:
 	_update_UI()
 
 
+# Signal from Weapon.finished_reloading
 func _update_UI() -> void:
 	if weapon_held:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \

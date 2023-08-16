@@ -10,6 +10,6 @@ enum PICK_UPS {WEAPON, AMMO, HEALTH}
 enum HEALTHS {HEALTH_PACK, ARMOR}
 
 enum BODY_SEGS {HEAD, TORSO, LIMB}
-const BODY_DMG := [[50, 50, 50],		# Slapper
+const BODY_DMG := 	[25,				# Slapper
 					[22, 12, 5],		# Pistol
 					[25, 15, 8]]		# Rifle

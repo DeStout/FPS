@@ -15,17 +15,18 @@ var target_range : float
 var anim_pos : Vector2
 
 @onready var nozzle : Node3D = get_node("Mesh/Nozzle")
+var slappable := []
 
+# Signal to Player._update_UI and Debug._inifite_ammo
 signal finished_reloading
 var is_reloading := false
-
 
 
 func _ready():
 	match weapon_type:
 		Globals.WEAPONS.SLAPPER:
 			automatic = false
-			shots_per_second = 1.0
+			shots_per_second = 1.5
 			mag_size = 0
 			v_recoil = 0
 			h_recoil = 0
@@ -59,12 +60,14 @@ func reset() -> void:
 
 
 func can_shoot() -> bool:
-	var _can_shoot : bool = ammo_in_mag > 0 and !is_reloading and !$ShotTimer.time_left
-	return _can_shoot
+	var can_shoot : bool = ((ammo_in_mag > 0 and !is_reloading) or \
+				weapon_type == Globals.WEAPONS.SLAPPER) and $ShotTimer.is_stopped()
+	return can_shoot
 
 
 func shoot() -> void:
-	ammo_in_mag -= 1
+	if weapon_type != Globals.WEAPONS.SLAPPER:
+		ammo_in_mag -= 1
 	$ShootAudio.play()
 	$ShotTimer.start()
 
@@ -95,3 +98,13 @@ func can_pick_up_ammo() -> bool:
 
 func add_ammo(new_ammo : int) -> void:
 	extra_ammo = min(extra_ammo + new_ammo, max_ammo - mag_size)
+
+
+func _add_slappable(body: Node3D) -> void:
+	if body.is_in_group("players"):
+		slappable.append(body)
+
+
+func _remove_slappable(body: Node3D) -> void:
+	if slappable.has(body):
+		slappable.erase(body)

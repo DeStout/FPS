@@ -3,7 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://cje6h18cutmm0" path="res://Props/SlapperBase.tscn" id="1_1anqe"]
 [ext_resource type="Script" path="res://Props/FPWeapon.gd" id="2_603gx"]
 
-[node name="SlapperModel" instance=ExtResource("1_1anqe")]
-layers = 8
-cast_shadow = 0
+[node name="Slapper" instance=ExtResource("1_1anqe")]
 script = ExtResource("2_603gx")

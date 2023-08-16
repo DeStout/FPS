@@ -39,6 +39,8 @@ func _ready() -> void:
 	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
+	
+	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
 
 
 func _process(_delta) -> void:
@@ -54,28 +56,41 @@ func _physics_process(delta) -> void:
 func _shoot() -> void:
 	if weapon_held.can_shoot():
 		weapon_held.shoot()
-		current_level.spawn_shot_trail(nozzle.global_position, \
-												%ShootCast.get_collision_point())
-		if %ShootCast.is_colliding():
-			if %ShootCast.get_collider().is_in_group("body_segs"):
-				var collider = %ShootCast.get_collider()
-				%ShootCast.get_collider().body_seg_shot(weapon_held.weapon_type)
-			elif current_level != null:
-				current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
-									%ShootCast.get_collision_normal())
-		# Add recoil
-		var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.v_recoil
-		$AimHelper.rotate_x(deg_to_rad(v_recoil))
-		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
-										-deg_to_rad(89), deg_to_rad(89))
-		var h_recoil : float = randf_range(-1, 1) * weapon_held.h_recoil
-		rotate_y(deg_to_rad(h_recoil))
-		$AimHelper.rotation.z = 0
+		if weapon_held.weapon_type == Globals.WEAPONS.SLAPPER:
+			_slap()
+		else:
+			current_level.spawn_shot_trail(nozzle.global_position, \
+													%ShootCast.get_collision_point())
+			if %ShootCast.is_colliding():
+				if %ShootCast.get_collider().is_in_group("body_segs"):
+					var collider = %ShootCast.get_collider()
+					%ShootCast.get_collider().body_seg_shot(weapon_held.weapon_type)
+				elif current_level != null:
+					current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
+										%ShootCast.get_collision_normal())
+			# Add recoil
+			var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.v_recoil
+			$AimHelper.rotate_x(deg_to_rad(v_recoil))
+			$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
+											-deg_to_rad(89), deg_to_rad(89))
+			var h_recoil : float = randf_range(-1, 1) * weapon_held.h_recoil
+			rotate_y(deg_to_rad(h_recoil))
+			$AimHelper.rotation.z = 0
 	elif weapon_held.ammo_in_mag == 0:
 		_reload()
 
 	if !weapon_held.automatic:
 		trigger_pulled = false
+
+
+func _slap() -> void:
+	var slappable = _get_weapon(Globals.WEAPONS.SLAPPER).slappable
+	print(slappable)
+	for character in slappable:
+		if character != self:
+			character._take_damage(Globals.BODY_DMG[Globals.WEAPONS.SLAPPER])
+			$Slapped.play()
+		
 
 
 func _reload() -> void:
@@ -114,7 +129,7 @@ func _die() -> void:
 	_disable_collisions(true)
 	set_physics_process(false)
 	
-	if weapon_held != null:
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		var weapon_info := [weapon_held.weapon_type, weapon_held.extra_ammo, \
 														weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
@@ -235,16 +250,17 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 				"parameters/Run/UpperRun/blend_position", \
 										weapon_held.anim_pos, 0.15)
 	else:
-		if weapon_held:
-			weapon_held.interrupt_reload()
-			weapon_held.visible = false
-		weapon_held = null
-		nozzle = null
-
-		var tween = get_tree().create_tween()
-		tween.tween_property(anim_tree, \
-			"parameters/Idle/UpperIdle/blend_position", \
-									Vector2(0, 1), 0.15)
-		tween.tween_property(anim_tree, \
-			"parameters/Run/UpperRun/blend_position", \
-									Vector2(0, 1), 0.15)
+		assert(new_weapon != null, "Cannot switch to a NULL weapon")
+#		if weapon_held:
+#			weapon_held.interrupt_reload()
+#			weapon_held.visible = false
+#		weapon_held = null
+#		nozzle = null
+#
+#		var tween = get_tree().create_tween()
+#		tween.tween_property(anim_tree, \
+#			"parameters/Idle/UpperIdle/blend_position", \
+#									Vector2(0, 1), 0.15)
+#		tween.tween_property(anim_tree, \
+#			"parameters/Run/UpperRun/blend_position", \
+#									Vector2(0, 1), 0.15)

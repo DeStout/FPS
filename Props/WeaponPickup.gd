@@ -12,6 +12,10 @@ var weapon_info := []
 var rotate_rate := 2.0
 
 
+func _ready() -> void:
+	rotation.y = randf() * 2 * PI
+
+
 func _process(delta) -> void:
 	$Model.rotate_y(rotate_rate * delta)
 

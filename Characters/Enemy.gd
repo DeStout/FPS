@@ -9,8 +9,8 @@ var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
 var player_vis_threshold := 0.45
 var shoot_accuracy_threshold := 0.4
-var shoot_speed_mod := 1.0/2.0
-var shoot_speed_variance := Vector2(0.5, 1.0)
+var shoot_speed_mod := 1.0/1.75
+var shoot_speed_variance := Vector2(0.3, 1.0)
 
 var move_speed_mod := 0.8
 const TURN_SPEED := 6.0
@@ -84,7 +84,7 @@ func _physics_process(delta):
 
 	# Aim and fire or reload
 	_aim(delta)
-	if weapon_held:
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		if weapon_held.ammo_in_mag == 0:
 			_reload()
 		elif player and player_vis:
@@ -93,6 +93,11 @@ func _physics_process(delta):
 			var local_ray_collision = %ShootCast.to_local(\
 								%ShootCast.get_collision_point()).normalized()
 			if local_player_pos.dot(local_ray_collision) > shoot_accuracy_threshold:
+				if $ShootTimer.is_stopped():
+					trigger_pulled = true
+	else:
+		if player and player_vis:
+			if player.global_position.distance_to(global_position) < 1.0:
 				if $ShootTimer.is_stopped():
 					trigger_pulled = true
 
