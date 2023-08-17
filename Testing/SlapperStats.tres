@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://0vmjwnqanvpp"]
+
+[ext_resource type="Script" path="res://WeaponStats.gd" id="1_va60y"]
+
+[resource]
+script = ExtResource("1_va60y")
+weapon_type = 0
+automatic = false
+shots_per_second = 1.66
+max_ammo = 0
+mag_size = 0
+v_recoil = 0.0
+h_recoil = 0.0
+anim_pos = Vector2(0, 1)
+body_dmg = {
+0: 40,
+1: 40,
+2: 40
+}

@@ -1,10 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://kqanl8xmbjxl"]
+[gd_scene load_steps=11 format=3 uid="uid://kqanl8xmbjxl"]
 
 [ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Levels/Level.tscn" id="1_uqhhm"]
 [ext_resource type="Script" path="res://Testing/TestPlayersContainer.gd" id="2_4nd52"]
-[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_eondn"]
-[ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_ajpxo"]
-[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="5_sffkt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_htmcb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -68,30 +65,3 @@ script = ExtResource("2_4nd52")
 visible = true
 
 [node name="Spawn0" type="Marker3D" parent="Spawns" index="0"]
-
-[node name="RiflePickUp" parent="Pickups" index="0" instance=ExtResource("3_eondn")]
-transform = Transform3D(0.890605, 0, 0.454777, 0, 1, 0, -0.454777, 0, 0.890605, 0, 0.25, -5)
-weapon_type = 2
-respawn_time = 15.0
-
-[node name="RifleAmmo" parent="Pickups" index="1" instance=ExtResource("4_ajpxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-weapon_type = 2
-respawn_time = 15.0
-
-[node name="PistolPickUp" parent="Pickups" index="2" instance=ExtResource("3_eondn")]
-transform = Transform3D(0.778582, 0, -0.627542, 0, 1, 0, 0.627542, 0, 0.778582, -8, 0, 0)
-respawn_time = 15.0
-
-[node name="PistolAmmo" parent="Pickups" index="3" instance=ExtResource("4_ajpxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-respawn_time = 15.0
-
-[node name="HealthPickUp" parent="Pickups" index="4" instance=ExtResource("5_sffkt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
-respawn_time = 15.0
-
-[node name="ArmorPickUp" parent="Pickups" index="5" instance=ExtResource("5_sffkt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
-health_type = 1
-respawn_time = 15.0

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://byfp57m203jiy"]
+
+[ext_resource type="Script" path="res://WeaponStats.gd" id="1_rwa5h"]
+
+[resource]
+script = ExtResource("1_rwa5h")
+weapon_type = 2
+automatic = true
+shots_per_second = 9.0
+max_ammo = 128
+mag_size = 32
+v_recoil = 2.0
+h_recoil = 1.0
+anim_pos = Vector2(1, -1)
+body_dmg = {
+0: 25,
+1: 15,
+2: 8
+}
