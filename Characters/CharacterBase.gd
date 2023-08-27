@@ -134,7 +134,6 @@ func _die() -> void:
 														weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 		
-	global_position = current_level.get_nav_point().position
 	armor = 0
 	weapons = [Globals.WEAPONS.SLAPPER]
 	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
@@ -143,6 +142,8 @@ func _die() -> void:
 	death_sfx.play()
 	await death_sfx.finished
 	
+	await get_tree().physics_frame
+	global_position = current_level.get_nav_point().position
 	# Signal to PlayersContainer.character_killed
 	died.emit(self)
 

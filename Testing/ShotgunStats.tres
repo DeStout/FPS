@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dfch3e5wm7ygn"]
+
+[ext_resource type="Script" path="res://Testing/WeaponStats.gd" id="1_xr2u8"]
+
+[resource]
+script = ExtResource("1_xr2u8")
+weapon_type = 3
+automatic = true
+burst_fire = true
+burst_num = 8
+burst_variance = 0.05
+shots_per_second = 2.25
+max_ammo = 40
+mag_size = 10
+v_recoil = 12.0
+h_recoil = 3.0
+anim_pos = Vector2(1, -1)
+body_dmg = {
+0: 7,
+1: 4,
+2: 2
+}

@@ -1,11 +1,14 @@
 [gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://byfp57m203jiy"]
 
-[ext_resource type="Script" path="res://WeaponStats.gd" id="1_rwa5h"]
+[ext_resource type="Script" path="res://Testing/WeaponStats.gd" id="1_cni8a"]
 
 [resource]
-script = ExtResource("1_rwa5h")
+script = ExtResource("1_cni8a")
 weapon_type = 2
 automatic = true
+burst_fire = false
+burst_num = 0
+burst_variance = 0.0
 shots_per_second = 9.0
 max_ammo = 128
 mag_size = 32

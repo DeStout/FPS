@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export() var stats : Resource
+@export var stats : Resource
 var extra_ammo : int
 var ammo_in_mag : int
 
@@ -82,6 +82,18 @@ func is_automatic() -> bool:
 	return stats.automatic
 
 
+func is_burst_fire() -> bool:
+	return stats.burst_fire
+
+
+func get_burst_num() -> int:
+	return stats.burst_num
+
+
+func get_burst_variance() -> float:
+	return stats.burst_variance
+
+
 func get_mag_size() -> int:
 	return stats.mag_size
 
@@ -96,3 +108,7 @@ func get_h_recoil() -> float:
 
 func get_anim_pos() -> Vector2:
 	return stats.anim_pos
+
+
+func get_body_dmg() -> Dictionary:
+	return stats.body_dmg

@@ -81,6 +81,10 @@ func _input(event) -> void:
 			if _have_weapon(Globals.WEAPONS.RIFLE):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+		elif Input.is_action_just_pressed("Weapon4"):
+			if _have_weapon(Globals.WEAPONS.SHOTGUN):
+				weapon_held.interrupt_reload()
+				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 		
 		elif Input.is_action_just_pressed("SwitchLevel"):
 			match get_tree().current_scene.name:

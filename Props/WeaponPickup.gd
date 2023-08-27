@@ -4,6 +4,7 @@ extends PickUp
 
 var pistol_ := preload("res://Props/PistolBase.tscn")
 var rifle_ := preload("res://Props/RifleBase.tscn")
+var shotgun_ := preload("res://Testing/TestShotgunBase.tscn")
 
 @export var weapon_type : Globals.WEAPONS : set = _set_model
 @onready var weapon_model := get_child(0)
@@ -29,6 +30,8 @@ func _set_model(new_weapon_type) -> void:
 			weapon_model = pistol_.instantiate()
 		Globals.WEAPONS.RIFLE:
 			weapon_model = rifle_.instantiate()
+		Globals.WEAPONS.SHOTGUN:
+			weapon_model = shotgun_.instantiate()
 	if $Model.get_child_count() > 0:
 		$Model.get_child(0).replace_by(weapon_model)
 
@@ -49,6 +52,8 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 			name = "PistolPickUp"
 		Globals.WEAPONS.RIFLE:
 			name = "RiflePickUp"
+		Globals.WEAPONS.SHOTGUN:
+			name = "ShotgunPickUp"
 	$Despawn.start()
 
 

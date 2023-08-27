@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c0650j8mcrbva"]
 
-[ext_resource type="Script" path="res://WeaponStats.gd" id="1_e26b4"]
+[ext_resource type="Script" path="res://Testing/WeaponStats.gd" id="1_e26b4"]
 
 [resource]
 script = ExtResource("1_e26b4")

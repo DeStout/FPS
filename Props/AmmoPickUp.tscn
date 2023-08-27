@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://be726fajde41v" path="res://Props/PickUp.tscn" id="1_d54ph"]
 [ext_resource type="Script" path="res://Props/AmmoPickUp.gd" id="2_ioiij"]
 [ext_resource type="AudioStream" uid="uid://dkhe7fneben1t" path="res://Props/PickupAmmo.ogg" id="3_btt07"]
-[ext_resource type="PackedScene" uid="uid://brkwsl458i1pq" path="res://Props/PistolBase.tscn" id="3_mdfk0"]
+[ext_resource type="PackedScene" uid="uid://c7c70o2wmstqa" path="res://Props/PistolBase.tscn" id="3_mdfk0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hsana"]
 height = 0.5
@@ -46,7 +46,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o0o83")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgda8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpbs7"]
 albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
 metallic = 0.33
 metallic_specular = 0.27
@@ -74,10 +74,12 @@ skeleton = NodePath("../Model")
 [node name="Model" parent="." index="2"]
 transform = Transform3D(-1.27055e-21, 6.55671e-08, 1.5, 1.5, -6.55671e-08, 2.86603e-15, 6.55671e-08, 1.5, -6.55671e-08, 0, 0.25, 0)
 
-[node name="PistolModel" parent="Model" index="0" instance=ExtResource("3_mdfk0")]
+[node name="Pistol" type="MeshInstance3D" parent="Model" index="0" instance=ExtResource("3_mdfk0")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+layers = 4
 mesh = SubResource("ArrayMesh_1vcbi")
-surface_material_override/0 = SubResource("StandardMaterial3D_sgda8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_gpbs7")
 
 [node name="PickUpAudio" parent="." index="3"]
 stream = ExtResource("3_btt07")

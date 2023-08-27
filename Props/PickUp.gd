@@ -20,6 +20,7 @@ func picked_up() -> void:
 	if respawn:
 		$Respawn.start(respawn_time)
 
+
 # Signaled by $Respawn Timer
 func _respawn():
 	print(name, " Respawn")

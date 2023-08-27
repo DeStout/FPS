@@ -6,5 +6,5 @@ signal take_damage
 
 
 # Signal to CharacterBase _take_damage
-func body_seg_shot(weapon_dmg : Dictionary) -> void:
-	take_damage.emit(weapon_dmg[body_seg])
+func body_seg_shot(body_seg_dmg : Dictionary) -> void:
+	take_damage.emit(body_seg_dmg[body_seg])

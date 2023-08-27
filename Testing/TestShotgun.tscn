@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://barsvh0ntyosw"]
+
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/WeaponBase.tscn" id="1_4qip4"]
+[ext_resource type="Script" path="res://Testing/TestWeapon.gd" id="2_mcuba"]
+[ext_resource type="Resource" uid="uid://dfch3e5wm7ygn" path="res://Testing/ShotgunStats.tres" id="3_3euvm"]
+[ext_resource type="PackedScene" uid="uid://ddpoj4h308su2" path="res://Testing/TestShotgunBase.tscn" id="4_ic3j6"]
+[ext_resource type="AudioStream" uid="uid://osy8548poupm" path="res://Props/ShotgunShoot.ogg" id="4_or01c"]
+[ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/RifleReload.ogg" id="6_0jncs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shp0e"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[node name="Shotgun" instance=ExtResource("1_4qip4")]
+script = ExtResource("2_mcuba")
+stats = ExtResource("3_3euvm")
+
+[node name="Mesh" parent="." index="0" instance=ExtResource("4_ic3j6")]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_shp0e")
+
+[node name="ShootAudio" parent="." index="1"]
+stream = ExtResource("4_or01c")
+
+[node name="ReloadAudio" parent="." index="2"]
+stream = ExtResource("6_0jncs")

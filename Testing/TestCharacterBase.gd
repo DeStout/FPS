@@ -25,6 +25,7 @@ var weapon_held : Node3D = null
 @onready var weapons := [Globals.WEAPONS.SLAPPER]
 var nozzle : Node3D = null
 var trigger_pulled := false
+var default_shot_target := Vector3(0, 0, -99)
 
 #Animation
 @onready var anim_tree = $PuppetBase/AnimationTree
@@ -35,6 +36,7 @@ var current_level : Node3D
 
 
 func _ready() -> void:
+	current_level = get_parent().get_parent()
 	var temp_bodysegs = get_tree().get_nodes_in_group("body_segs")
 	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
 	for body_seg in body_segs:
@@ -59,15 +61,26 @@ func _shoot() -> void:
 		if weapon_held.get_weapon_type() == Globals.WEAPONS.SLAPPER:
 			_slap()
 		else:
-			current_level.spawn_shot_trail(nozzle.global_position, \
-													%ShootCast.get_collision_point())
-			if %ShootCast.is_colliding():
-				if %ShootCast.get_collider().is_in_group("body_segs"):
-					var collider = %ShootCast.get_collider()
-					%ShootCast.get_collider().body_seg_shot(weapon_held.weapon_type)
-				elif current_level != null:
-					current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
-										%ShootCast.get_collision_normal())
+			var num_shots : int = 1
+			if weapon_held.is_burst_fire():
+				num_shots = weapon_held.get_burst_num()
+			for shot in range(num_shots):
+				if weapon_held.is_burst_fire():
+					%ShootCast.rotate_x(randf_range(-weapon_held.get_burst_variance(), \
+													weapon_held.get_burst_variance()))
+					%ShootCast.rotate_y(randf_range(-weapon_held.get_burst_variance(), \
+													weapon_held.get_burst_variance()))
+					%ShootCast.force_raycast_update()
+					%ShootCast.rotation = Vector3(0, 0, 0)
+				current_level.spawn_shot_trail(nozzle.global_position, \
+														%ShootCast.get_collision_point())
+				if %ShootCast.is_colliding():
+					if %ShootCast.get_collider().is_in_group("body_segs"):
+						var collider = %ShootCast.get_collider()
+						%ShootCast.get_collider().body_seg_shot(weapon_held.get_body_dmg())
+					elif current_level != null:
+						current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
+											%ShootCast.get_collision_normal())
 			# Add recoil
 			var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
 			$AimHelper.rotate_x(deg_to_rad(v_recoil))
@@ -94,6 +107,7 @@ func _slap() -> void:
 
 
 func _reload() -> void:
+	print(weapon_held.name, " reload")
 	if weapon_held and !weapon_held.is_reloading:
 		weapon_held.reload()
 
@@ -119,9 +133,11 @@ func _take_damage(damage) -> void:
 
 
 func _set_health(new_health) -> void:
+	print(health - new_health)
 	health = max(0, new_health)
-	if health == 0:
-		_die()
+	if health <= 0:
+		health = 100
+#		_die()
 
 
 func _die() -> void:
@@ -195,6 +211,8 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 				new_weapon = $Weapons/Pistol
 			Globals.WEAPONS.RIFLE:
 				new_weapon = $Weapons/Rifle
+			Globals.WEAPONS.SHOTGUN:
+				new_weapon = $Weapons/Shotgun
 		if new_pick_up.weapon_info.size() == 0:
 			new_weapon.reset()
 		else:
