@@ -1,4 +1,4 @@
-class_name CharacterBase
+class_name CharacterBase_old
 extends CharacterBody3D
 
 
@@ -25,7 +25,6 @@ var weapon_held : Node3D = null
 @onready var weapons := [Globals.WEAPONS.SLAPPER]
 var nozzle : Node3D = null
 var trigger_pulled := false
-var default_shot_target := Vector3(0, 0, -99)
 
 #Animation
 @onready var anim_tree = $PuppetBase/AnimationTree
@@ -36,7 +35,6 @@ var current_level : Node3D
 
 
 func _ready() -> void:
-	current_level = get_parent().get_parent()
 	var temp_bodysegs = get_tree().get_nodes_in_group("body_segs")
 	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
 	for body_seg in body_segs:
@@ -58,44 +56,30 @@ func _physics_process(delta) -> void:
 func _shoot() -> void:
 	if weapon_held.can_shoot():
 		weapon_held.shoot()
-		if weapon_held.get_weapon_type() == Globals.WEAPONS.SLAPPER:
+		if weapon_held.weapon_type == Globals.WEAPONS.SLAPPER:
 			_slap()
 		else:
-			var num_shots : int = 1
-			if weapon_held.is_burst_fire():
-				num_shots = weapon_held.get_burst_num()
-			for shot in range(num_shots):
-				if weapon_held.is_burst_fire():
-					%ShootCast.rotate_x(randf_range(-weapon_held.get_burst_variance(), \
-													weapon_held.get_burst_variance()))
-					%ShootCast.rotate_y(randf_range(-weapon_held.get_burst_variance(), \
-													weapon_held.get_burst_variance()))
-					%ShootCast.force_raycast_update()
-				if %ShootCast.is_colliding():
-					current_level.spawn_shot_trail(nozzle.global_position, \
-															%ShootCast.get_collision_point())
-					if %ShootCast.get_collider().is_in_group("body_segs"):
-						var collider = %ShootCast.get_collider()
-						%ShootCast.get_collider().body_seg_shot(weapon_held.get_body_dmg())
-					elif current_level != null:
-						current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
-											%ShootCast.get_collision_normal())
-				else:
-					current_level.spawn_shot_trail(nozzle.global_position, \
-							%ShootCast.to_global(%ShootCast.target_position))
-				%ShootCast.rotation = Vector3(0, 0, 0)
+			current_level.spawn_shot_trail(nozzle.global_position, \
+													%ShootCast.get_collision_point())
+			if %ShootCast.is_colliding():
+				if %ShootCast.get_collider().is_in_group("body_segs"):
+					var collider = %ShootCast.get_collider()
+					%ShootCast.get_collider().body_seg_shot(weapon_held.weapon_type)
+				elif current_level != null:
+					current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
+										%ShootCast.get_collision_normal())
 			# Add recoil
-			var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
+			var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.v_recoil
 			$AimHelper.rotate_x(deg_to_rad(v_recoil))
 			$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
 											-deg_to_rad(89), deg_to_rad(89))
-			var h_recoil : float = randf_range(-1, 1) * weapon_held.get_h_recoil()
+			var h_recoil : float = randf_range(-1, 1) * weapon_held.h_recoil
 			rotate_y(deg_to_rad(h_recoil))
 			$AimHelper.rotation.z = 0
 	elif weapon_held.ammo_in_mag == 0:
 		_reload()
 
-	if !weapon_held.is_automatic():
+	if !weapon_held.automatic:
 		trigger_pulled = false
 
 
@@ -110,7 +94,6 @@ func _slap() -> void:
 
 
 func _reload() -> void:
-	print(weapon_held.name, " reload")
 	if weapon_held and !weapon_held.is_reloading:
 		weapon_held.reload()
 
@@ -136,11 +119,9 @@ func _take_damage(damage) -> void:
 
 
 func _set_health(new_health) -> void:
-	print(health - new_health)
 	health = max(0, new_health)
-	if health <= 0:
-		health = 100
-#		_die()
+	if health == 0:
+		_die()
 
 
 func _die() -> void:
@@ -153,7 +134,6 @@ func _die() -> void:
 														weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 		
-	global_position = current_level.get_nav_point().position
 	armor = 0
 	weapons = [Globals.WEAPONS.SLAPPER]
 	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
@@ -162,6 +142,8 @@ func _die() -> void:
 	death_sfx.play()
 	await death_sfx.finished
 	
+	await get_tree().physics_frame
+	global_position = current_level.get_nav_point().position
 	# Signal to PlayersContainer.character_killed
 	died.emit(self)
 
@@ -214,15 +196,13 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 				new_weapon = $Weapons/Pistol
 			Globals.WEAPONS.RIFLE:
 				new_weapon = $Weapons/Rifle
-			Globals.WEAPONS.SHOTGUN:
-				new_weapon = $Weapons/Shotgun
 		if new_pick_up.weapon_info.size() == 0:
 			new_weapon.reset()
 		else:
 			new_weapon.extra_ammo = new_pick_up.weapon_info[1]
 			new_weapon.ammo_in_mag = new_pick_up.weapon_info[2]
 				
-		weapons.append(new_weapon.get_weapon_type())
+		weapons.append(new_weapon.weapon_type)
 		_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
 			new_pick_up.picked_up()
@@ -237,7 +217,7 @@ func _pick_up_ammo(new_pick_up : Node3D) -> void:
 	if _have_weapon(new_pick_up.weapon_type):
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
 		if weapon_for.can_pick_up_ammo():
-			weapon_for.add_ammo(weapon_held.get_mag_size())
+			weapon_for.add_ammo(weapon_held.mag_size)
 			new_pick_up.picked_up()
 
 
@@ -248,7 +228,7 @@ func _have_weapon(weapon_type : int ) -> bool:
 func _get_weapon(weapon_type : int) -> Node3D:
 	var new_weapon : Node3D = null
 	for weapon in $Weapons.get_children():
-		if weapon.get_weapon_type() == weapon_type:
+		if weapon.weapon_type == weapon_type:
 			new_weapon = weapon
 	return new_weapon
 
@@ -264,11 +244,12 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 			nozzle = weapon_held.nozzle
 
 			var tween = get_tree().create_tween()
-			var anim_pos = weapon_held.get_anim_pos()
 			tween.tween_property(anim_tree, \
-				"parameters/Idle/UpperIdle/blend_position", anim_pos, 0.15)
+				"parameters/Idle/UpperIdle/blend_position", \
+										weapon_held.anim_pos, 0.15)
 			tween.tween_property(anim_tree, \
-				"parameters/Run/UpperRun/blend_position", anim_pos, 0.15)
+				"parameters/Run/UpperRun/blend_position", \
+										weapon_held.anim_pos, 0.15)
 	else:
 		assert(new_weapon != null, "Cannot switch to a NULL weapon")
 #		if weapon_held:

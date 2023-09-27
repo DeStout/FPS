@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://kqanl8xmbjxl"]
 
 [ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Levels/Level.tscn" id="1_uqhhm"]
-[ext_resource type="Script" path="res://Testing/TestPlayersContainer.gd" id="2_4nd52"]
-[ext_resource type="PackedScene" uid="uid://3bdpsmhs0ihw" path="res://Testing/TestCharacterBase.tscn" id="3_01wwm"]
-[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/WeaponPickUp.tscn" id="3_eondn"]
-[ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/AmmoPickUp.tscn" id="4_ajpxo"]
-[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/HealthPickUp.tscn" id="5_sffkt"]
+[ext_resource type="Script" path="res://Characters/PlayersContainer.gd" id="2_fgd4r"]
+[ext_resource type="PackedScene" uid="uid://3bdpsmhs0ihw" path="res://Characters/CharacterBase.tscn" id="3_01wwm"]
+[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_eondn"]
+[ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/PickUps/AmmoPickUp.tscn" id="4_ajpxo"]
+[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="5_sffkt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_htmcb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -63,7 +63,7 @@ mesh = SubResource("BoxMesh_072c3")
 shape = SubResource("BoxShape3D_svhb8")
 
 [node name="Players" parent="." index="4"]
-script = ExtResource("2_4nd52")
+script = ExtResource("2_fgd4r")
 
 [node name="TestCharacter" parent="Players" index="0" instance=ExtResource("3_01wwm")]
 
@@ -74,16 +74,16 @@ visible = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4)
 
 [node name="PistolPickUp" parent="Pickups" index="0" instance=ExtResource("3_eondn")]
-transform = Transform3D(-0.999462, 0, 0.0327274, 0, 1, 0, -0.0327274, 0, -0.999462, 8, 0.25, -8)
+transform = Transform3D(0.4994, 0, -0.866368, 0, 1, 0, 0.866368, 0, 0.4994, 8, 0.25, -8)
 respawn_time = 15.0
 
 [node name="RiflePickUp" parent="Pickups" index="1" instance=ExtResource("3_eondn")]
-transform = Transform3D(0.998824, 0, -0.0484284, 0, 1, 0, 0.0484284, 0, 0.998824, 6, 0.25, -8)
+transform = Transform3D(0.874568, 0, 0.484898, 0, 1, 0, -0.484898, 0, 0.874568, 6, 0.25, -8)
 weapon_type = 2
 respawn_time = 15.0
 
 [node name="ShotgunPickUp" parent="Pickups" index="2" instance=ExtResource("3_eondn")]
-transform = Transform3D(-0.345998, 0, -0.938232, 0, 1, 0, 0.938232, 0, -0.345998, 4, 0.25, -8)
+transform = Transform3D(-0.979379, 0, -0.202014, 0, 1, 0, 0.202014, 0, -0.979379, 4, 0.25, -8)
 weapon_type = 3
 respawn_time = 15.0
 

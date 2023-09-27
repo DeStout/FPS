@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://cmdilq5ptgg8g"]
 
-[ext_resource type="Script" path="res://Characters/BodySeg.gd" id="1_blxkk"]
+[ext_resource type="Script" path="res://Characters/BodySeg_old.gd" id="1_blxkk"]
 [ext_resource type="AnimationLibrary" uid="uid://fddywbgvrxmm" path="res://Characters/Animations/Animations.res" id="1_xek0x"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_u8yp8"]

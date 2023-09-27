@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cav8u8ekjjhdi"]
 
-[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/WeaponBase.tscn" id="1_detkd"]
-[ext_resource type="PackedScene" uid="uid://c7isot5rpcwus" path="res://Props/RifleBase.tscn" id="2_alsi6"]
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_detkd"]
+[ext_resource type="PackedScene" uid="uid://c7isot5rpcwus" path="res://Props/Weapons/RifleBase.tscn" id="2_alsi6"]
 [ext_resource type="Script" path="res://Testing/TestWeapon.gd" id="2_ihoid"]
-[ext_resource type="AudioStream" uid="uid://cqi8csv8ynwit" path="res://Props/RifleShoot.ogg" id="3_clpu8"]
-[ext_resource type="Resource" uid="uid://byfp57m203jiy" path="res://Testing/RifleStats.tres" id="3_w1qhh"]
-[ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/RifleReload.ogg" id="4_pf3cb"]
+[ext_resource type="AudioStream" uid="uid://cqi8csv8ynwit" path="res://Props/Weapons/RifleShoot.ogg" id="3_clpu8"]
+[ext_resource type="Resource" uid="uid://byfp57m203jiy" path="res://RifleStats.tres" id="3_w1qhh"]
+[ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/Weapons/RifleReload.ogg" id="4_pf3cb"]
 
 [node name="Rifle" instance=ExtResource("1_detkd")]
 script = ExtResource("2_ihoid")

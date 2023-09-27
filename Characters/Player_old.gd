@@ -12,8 +12,8 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
-#	weapons.append(Globals.WEAPONS.PISTOL)
-#	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	_update_UI()
 	
 
@@ -81,10 +81,6 @@ func _input(event) -> void:
 			if _have_weapon(Globals.WEAPONS.RIFLE):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
-		elif Input.is_action_just_pressed("Weapon4"):
-			if _have_weapon(Globals.WEAPONS.SHOTGUN):
-				weapon_held.interrupt_reload()
-				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 		
 		elif Input.is_action_just_pressed("SwitchLevel"):
 			match get_tree().current_scene.name:
@@ -117,7 +113,7 @@ func _shoot() -> void:
 func _update_UI() -> void:
 	if weapon_held:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
-							" / " + str(weapon_held.get_mag_size())
+							" / " + str(weapon_held.mag_size)
 		%ExtraAmmo.text = str(weapon_held.extra_ammo)
 	%Health.text = str(health)
 	%Armor.text = str(armor)
@@ -149,7 +145,7 @@ func _switch_weapon(new_weapon) -> void:
 	fp_weapon.visible = false
 	if new_weapon != null:
 		for fpweapon in $AimHelper/FPWeapons.get_children():
-			if fpweapon.weapon_type == new_weapon.get_weapon_type():
+			if fpweapon.weapon_type == new_weapon.weapon_type:
 				fp_weapon = fpweapon
 		fp_weapon.visible = true
 		nozzle = fp_weapon.nozzle

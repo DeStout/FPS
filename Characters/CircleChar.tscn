@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwpdmyvpmq07e"]
 
-[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_ucihe"]
+[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase_old.tscn" id="1_ucihe"]
 [ext_resource type="Script" path="res://Characters/CircleChar.gd" id="2_1a018"]
-[ext_resource type="PackedScene" uid="uid://ch6dv53ilimv4" path="res://Props/Pistol.tscn" id="3_lcx48"]
+[ext_resource type="PackedScene" uid="uid://bwie7ixf4v1vw" path="res://Props/Pistol.tscn" id="3_lcx48"]
 [ext_resource type="PackedScene" uid="uid://ckqtvo1inhvtn" path="res://Props/Slapper.tscn" id="3_p48sk"]
 [ext_resource type="PackedScene" uid="uid://bhxw75oi8yofw" path="res://Props/Rifle.tscn" id="4_sioqq"]
 

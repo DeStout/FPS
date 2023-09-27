@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckqtvo1inhvtn"]
+
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_283py"]
+[ext_resource type="PackedScene" uid="uid://cje6h18cutmm0" path="res://Props/Weapons/SlapperBase.tscn" id="2_op7jl"]
+[ext_resource type="AudioStream" uid="uid://dbch5f7uhvslh" path="res://Props/Weapons/Whoosh.ogg" id="3_7ctbc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b5hgt"]
+
+[node name="Slapper" instance=ExtResource("1_283py")]
+
+[node name="SlapArea" type="Area3D" parent="." index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape3D" parent="SlapArea" index="0"]
+shape = SubResource("SphereShape3D_b5hgt")
+
+[node name="Mesh" parent="." index="1" instance=ExtResource("2_op7jl")]
+layers = 0
+
+[node name="ShootAudio" parent="." index="2"]
+stream = ExtResource("3_7ctbc")
+
+[connection signal="body_entered" from="SlapArea" to="." method="_add_slappable"]
+[connection signal="body_exited" from="SlapArea" to="." method="_remove_slappable"]

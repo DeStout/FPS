@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtsnii0ox2sfw"]
 
-[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_vybhi"]
+[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase_old.tscn" id="1_vybhi"]
 [ext_resource type="Script" path="res://Testing/TestEnemy.gd" id="2_5tg7m"]
 [ext_resource type="PackedScene" uid="uid://cy12nf62sv60i" path="res://Debug/VectorCube.tscn" id="3_vbil7"]
 [ext_resource type="Script" path="res://Testing/DecisionTree.gd" id="4_q7h47"]

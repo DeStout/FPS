@@ -1,0 +1,180 @@
+[gd_scene load_steps=10 format=3 uid="uid://1s5qidco641t"]
+
+[ext_resource type="Script" path="res://Characters/CharacterBase_old.gd" id="1_2ivhj"]
+[ext_resource type="PackedScene" uid="uid://bwie7ixf4v1vw" path="res://Props/Weapons/Pistol.tscn" id="2_0n5ny"]
+[ext_resource type="PackedScene" uid="uid://cmdilq5ptgg8g" path="res://Characters/PuppetBase.tscn" id="2_hk3ry"]
+[ext_resource type="PackedScene" uid="uid://ckqtvo1inhvtn" path="res://Props/Weapons/Slapper.tscn" id="2_p785k"]
+[ext_resource type="PackedScene" uid="uid://bhxw75oi8yofw" path="res://Props/Weapons/Rifle.tscn" id="3_radhw"]
+[ext_resource type="Script" path="res://Characters/Voice.gd" id="5_1op2j"]
+[ext_resource type="AudioStream" uid="uid://dvwslqt03fwb6" path="res://Props/Slap.ogg" id="7_shw64"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yxej"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulpgl"]
+albedo_color = Color(0.839216, 0.6, 0.466667, 1)
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+
+[node name="CharacterBase" type="CharacterBody3D" groups=["players"]]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 4278190080
+script = ExtResource("1_2ivhj")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("CapsuleShape3D_5yxej")
+
+[node name="AimHelper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+
+[node name="ShootCast" type="RayCast3D" parent="AimHelper"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -99)
+collision_mask = 13
+collide_with_areas = true
+debug_shape_thickness = 1
+
+[node name="Weapons" type="Node3D" parent="."]
+transform = Transform3D(-0.208583, -0.1844, -0.960464, -0.974563, 0.121504, 0.188317, 0.0819746, 0.975312, -0.205053, 0.170691, 1.34348, -0.267807)
+
+[node name="Slapper" parent="Weapons" instance=ExtResource("2_p785k")]
+transform = Transform3D(1, 0, 0, -7.45058e-08, 1, 4.47035e-08, -2.98023e-08, 0, 1, -0.0806546, -0.0416175, 0.0439858)
+visible = false
+
+[node name="Pistol" parent="Weapons" instance=ExtResource("2_0n5ny")]
+transform = Transform3D(-0.249066, -0.429781, 0.867903, -0.310145, 0.884345, 0.348921, -0.917485, -0.182271, -0.353554, -0.0656748, -0.0175465, 0.0636245)
+visible = false
+weapon_type = 1
+
+[node name="Rifle" parent="Weapons" instance=ExtResource("3_radhw")]
+transform = Transform3D(-0.247434, -0.469154, 0.847746, -0.310294, 0.867242, 0.389376, -0.917876, -0.166706, -0.360159, -0.0597211, 0.00324258, 0.0451551)
+visible = false
+
+[node name="PuppetBase" parent="." instance=ExtResource("2_hk3ry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0529786)
+
+[node name="AnimationTree" parent="PuppetBase" index="1"]
+active = true
+parameters/Idle/UpperIdle/blend_position = Vector2(0, 1)
+parameters/Run/UpperRun/blend_position = Vector2(0, 1)
+
+[node name="Skeleton" parent="PuppetBase" index="2"]
+bones/1/position = Vector3(1.61993e-09, 0.879977, -0.0641974)
+bones/2/rotation = Quaternion(0.000841626, 5.12373e-06, 6.48882e-05, 1)
+bones/4/rotation = Quaternion(0.000739756, -2.68695e-07, 5.82692e-05, 1)
+bones/5/rotation = Quaternion(0.000981776, -1.4182e-07, 7.7114e-05, 1)
+bones/7/rotation = Quaternion(0.0183882, 0.887489, 0.277695, 0.367301)
+bones/8/rotation = Quaternion(-0.0159198, -0.721728, -0.0154799, 0.691821)
+bones/9/rotation = Quaternion(-0.405708, 0.721515, 0.122572, 0.547533)
+bones/10/rotation = Quaternion(2.38419e-07, -2.98023e-08, -1.19209e-07, 1)
+bones/11/rotation = Quaternion(0.0301524, -0.0204388, -0.0713414, 0.996787)
+bones/12/rotation = Quaternion(-5.96047e-08, -2.38419e-07, 2.38419e-07, 1)
+bones/14/rotation = Quaternion(0.000315246, 0.000564835, -0.000295451, 1)
+bones/15/rotation = Quaternion(-5.96046e-08, 5.96046e-08, 1.78814e-07, 1)
+bones/16/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/17/rotation = Quaternion(0.323962, 0.0446233, 0.0469941, 0.943848)
+bones/18/rotation = Quaternion(-0.0177395, 0.184228, 0.00458947, 0.982713)
+bones/20/rotation = Quaternion(-0.12898, 0.949582, 0.270694, 0.091562)
+bones/21/rotation = Quaternion(0.253945, 0.378325, -0.246856, 0.855245)
+bones/22/rotation = Quaternion(-0.195332, -0.846723, -0.154168, 0.470253)
+bones/23/rotation = Quaternion(5.96046e-08, -5.96046e-08, 1.78814e-07, 1)
+bones/24/rotation = Quaternion(0.0136907, 0.0237506, 0.0862209, 0.995899)
+bones/25/rotation = Quaternion(-7.97557e-05, -0.00106926, 0.000281924, 0.999999)
+bones/27/rotation = Quaternion(-0.00802707, -0.0140653, -0.0508453, 0.998575)
+bones/28/rotation = Quaternion(0.000251954, -0.00198248, 0.000469121, 0.999998)
+bones/29/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/30/rotation = Quaternion(-0.340933, 0.509019, -0.573892, 0.543427)
+bones/31/rotation = Quaternion(-0.0929818, 0.136922, -0.113451, 0.979661)
+bones/33/rotation = Quaternion(-0.141464, 0.0463283, 0.988814, -0.00940006)
+bones/34/rotation = Quaternion(-0.0392608, 0.992984, 0.111328, 0.00692204)
+bones/35/rotation = Quaternion(0.0712543, 0.805419, -0.576733, 0.116631)
+bones/38/rotation = Quaternion(0.133435, -0.181414, 0.973974, -0.0256561)
+bones/39/rotation = Quaternion(0.059589, 0.983762, 0.168971, -0.0105058)
+bones/40/rotation = Quaternion(-0.0815665, 0.696875, -0.705662, -0.0987608)
+bones/41/rotation = Quaternion(-4.21469e-08, 1, 5.96047e-08, -1.26441e-07)
+
+[node name="Body" parent="PuppetBase/Skeleton" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ulpgl")
+
+[node name="Head" parent="PuppetBase/Skeleton" index="1"]
+transform = Transform3D(1, -0.000400499, 1.04489e-05, 0.000400547, 0.999987, -0.00512629, -8.39564e-06, 0.0051263, 0.999987, -6.41988e-05, 1.56001, -0.0508856)
+
+[node name="Neck" parent="PuppetBase/Skeleton" index="2"]
+transform = Transform3D(1, -0.000129768, 1.03567e-05, 0.000129785, 0.999999, -0.00168325, -1.01382e-05, 0.00168325, 0.999999, 0.00219354, 1.44201, -0.0307966)
+
+[node name="Chest" parent="PuppetBase/Skeleton" index="3"]
+transform = Transform3D(1, -0.000129768, 1.03567e-05, 0.000129785, 0.999999, -0.00168325, -1.01382e-05, 0.00168325, 0.999999, 7.13329e-10, 1.11815, -0.0868669)
+
+[node name="Stomach" parent="PuppetBase/Skeleton" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61993e-09, 0.879977, -0.0641974)
+
+[node name="R_UpperArm" parent="PuppetBase/Skeleton" index="5"]
+transform = Transform3D(0.195426, -0.820239, -0.537603, -0.245293, 0.489869, -0.836576, 0.949547, 0.295359, -0.105466, 0.194927, 1.38081, -0.0392536)
+
+[node name="R_Forearm" parent="PuppetBase/Skeleton" index="6"]
+transform = Transform3D(0.719697, -0.627516, 0.297086, 0.388355, 0.00915346, -0.921464, 0.575514, 0.77855, 0.250287, 0.224267, 1.21846, -0.167021)
+
+[node name="R_Hand" parent="PuppetBase/Skeleton" index="7"]
+transform = Transform3D(-0.208583, -0.1844, -0.960464, -0.974563, 0.121504, 0.188317, 0.0819746, 0.975312, -0.205053, 0.170691, 1.34348, -0.320785)
+
+[node name="GunTransform" parent="PuppetBase/Skeleton/R_Hand" index="1"]
+remote_path = NodePath("../../../../Weapons")
+
+[node name="L_UpperArm" parent="PuppetBase/Skeleton" index="8"]
+transform = Transform3D(0.23671, 0.845027, 0.479477, -0.640479, 0.506808, -0.577002, -0.730585, -0.170513, 0.661189, -0.194995, 1.38076, -0.0392497)
+
+[node name="L_Forearm" parent="PuppetBase/Skeleton" index="9"]
+transform = Transform3D(0.470363, 0.854855, -0.219045, -0.548628, 0.477689, 0.686163, 0.691206, -0.202571, 0.693685, -0.232471, 1.18356, 0.0177821)
+
+[node name="L_Hand" parent="PuppetBase/Skeleton" index="10"]
+transform = Transform3D(-0.224374, 0.267817, 0.936979, -0.78686, 0.517434, -0.336323, -0.574897, -0.812734, 0.0946357, -0.231016, 0.983537, -0.0284078)
+
+[node name="R_Thigh" parent="PuppetBase/Skeleton" index="11"]
+transform = Transform3D(-0.963074, 0.00156314, 0.269232, -0.0983905, -0.932862, -0.346537, 0.250615, -0.360231, 0.898569, 0.0851499, 0.862488, -0.0593682)
+
+[node name="R_Shin" parent="PuppetBase/Skeleton" index="12"]
+transform = Transform3D(0.967187, -0.0256997, -0.252764, -0.0225309, -0.999627, 0.0154238, -0.253067, -0.00922266, -0.967405, 0.112523, 0.484184, -0.240122)
+
+[node name="R_Foot" parent="PuppetBase/Skeleton" index="13"]
+transform = Transform3D(-1, -1.19209e-07, -2.71248e-07, -2.6566e-07, 5.07571e-07, 1, -7.45058e-08, 1, -6.0536e-07, 0.119459, 0.113871, -0.180125)
+
+[node name="L_Thigh" parent="PuppetBase/Skeleton" index="14"]
+transform = Transform3D(-0.959799, 0.00548225, -0.280634, -0.0316974, -0.995531, 0.0889605, -0.278893, 0.0942796, 0.955683, -0.0851499, 0.862488, -0.0593682)
+
+[node name="L_Shin" parent="PuppetBase/Skeleton" index="15"]
+transform = Transform3D(0.96264, 0.019751, 0.270062, 0.105684, -0.945644, -0.307552, 0.249308, 0.324603, -0.912402, -0.109192, 0.443073, -0.0524513)
+
+[node name="L_Foot" parent="PuppetBase/Skeleton" index="16"]
+transform = Transform3D(-1, 5.21541e-07, -7.45058e-08, -5.21541e-08, -1.78814e-07, 1, 5.66244e-07, 1, 1.78814e-07, -0.11946, 0.113871, 0.127273)
+
+[node name="DmgLbl" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88315, 0)
+
+[node name="Voice" type="Node3D" parent="."]
+script = ExtResource("5_1op2j")
+
+[node name="Slapped" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_shw64")
+
+[connection signal="take_damage" from="PuppetBase/Skeleton/Head/HeadArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/Neck/NeckArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/Chest/ChestArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/Stomach/StomachArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/R_UpperArm/R_UpperArmArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/R_Forearm/R_ForearmArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/R_Hand/R_HandArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/L_UpperArm/L_UpperArmArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/L_Forearm/L_ForearmArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/L_Hand/L_HandArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/R_Thigh/R_ThighArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/R_Shin/R_ShinArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/R_Foot/R_FootArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/L_Thigh/L_ThighArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/L_Shin/L_ShinArea" to="." method="_take_damage"]
+[connection signal="take_damage" from="PuppetBase/Skeleton/L_Foot/L_FootArea" to="." method="_take_damage"]
+
+[editable path="PuppetBase"]

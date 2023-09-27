@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cevbv8x2k7xwv"]
 
-[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_rf7ub"]
+[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase_old.tscn" id="1_rf7ub"]
 [ext_resource type="Script" path="res://Characters/Enemy.gd" id="2_ojr6m"]
 [ext_resource type="PackedScene" uid="uid://cy12nf62sv60i" path="res://Debug/VectorCube.tscn" id="3_3vsup"]
 

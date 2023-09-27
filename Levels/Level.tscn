@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7eh2d0yb5a1h"]
 
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_floms"]
-[ext_resource type="Script" path="res://Levels/PlayersContainer.gd" id="2_l47m7"]
+[ext_resource type="Script" path="res://Levels/PlayersContainer_old.gd" id="2_l47m7"]
 [ext_resource type="Script" path="res://Characters/Pause.gd" id="4_63lp7"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_bt5qf"]
 
