@@ -4,6 +4,7 @@ extends CharacterBase
 @onready var nav_agent := $NavAgent
 var last_position := Vector3.ZERO
 var stuck_length := 2.0
+var stuck_times := 0
 
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
@@ -17,9 +18,13 @@ const TURN_SPEED := 6.0
 const AIM_SPEED := 8.0
 
 
-func new_name(new_name : String) -> void:
-	name = new_name
+func new_name(new_name_ : String) -> void:
+	name = new_name_
 	$NameLabel.text = name
+	
+	
+func _ready() -> void:
+	super()
 
 
 func _physics_process(delta):
@@ -84,7 +89,7 @@ func _physics_process(delta):
 
 	# Aim and fire or reload
 	_aim(delta)
-	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
 		if weapon_held.ammo_in_mag == 0:
 			_reload()
 		elif player and player_vis:
@@ -111,8 +116,13 @@ func _shoot() -> void:
 	super()
 	trigger_pulled = false
 	var speed_variance = randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
-	var shoot_speed = weapon_held.shots_per_second * shoot_speed_mod * speed_variance
+	var shoot_speed = weapon_held.stats.shots_per_second * shoot_speed_mod * speed_variance
 	$ShootTimer.start(1.0 / shoot_speed)
+
+
+func _swing() -> void:
+	super()
+	_slap()
 
 
 func _aim(delta) -> void:
@@ -155,13 +165,23 @@ func _player_lost() -> void:
 
 func _stuck() -> void:
 #	print("Stuck")
-	_new_rand_nav_point()
+	if stuck_times < 1:
+		_jump()
+		stuck_times += 1
+	else:
+		_new_rand_nav_point()
+		stuck_times = 0
 
 
-func _take_damage(damage) -> void:
+func _jump() -> void:
+	#print(name, " jumping")
+	velocity.y = JUMP_VELOCITY
+
+
+func _take_damage(damage : int, shooter : CharacterBase) -> void:
 	damage *= 2
 	player_vis = true
-	super(damage)
+	super(damage, shooter)
 
 
 func _die() -> void:
@@ -173,3 +193,11 @@ func _die() -> void:
 func respawn() -> void:
 	super()
 	_new_rand_nav_point()
+
+
+func _unequip_weapon(old_weapon) -> void:
+	old_weapon.visible = false
+
+
+func _equip_weapon(new_weapon) -> void:
+	new_weapon.visible = true

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://be726fajde41v" path="res://Props/PickUps/PickUp.tscn" id="1_ageoa"]
 [ext_resource type="Script" path="res://Props/PickUps/HealthPickUp.gd" id="2_wni3s"]
 [ext_resource type="PackedScene" uid="uid://bq2ea87mqcm2y" path="res://Props/PickUps/HealthPackBase.tscn" id="3_qo3wk"]
-[ext_resource type="AudioStream" uid="uid://choojvhhegbm6" path="res://Props/PickUps/PickupArmor.ogg" id="4_8tiwe"]
+[ext_resource type="AudioStream" uid="uid://choojvhhegbm6" path="res://Props/PickUps/Audio/PickupArmor.ogg" id="4_8tiwe"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hkh2d"]
 height = 0.75

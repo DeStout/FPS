@@ -6,6 +6,7 @@ var level2_ := preload("res://Levels/Level2.tscn")
 
 
 enum WEAPONS {SLAPPER, PISTOL, RIFLE, SHOTGUN}
+var WEAPON_NAMES = ["Slapper", "Pistol", "Rifle", "Shotgun"]
 enum PICK_UPS {WEAPON, AMMO, HEALTH}
 enum HEALTHS {HEALTH_PACK, ARMOR}
 

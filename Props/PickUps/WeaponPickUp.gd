@@ -2,19 +2,16 @@
 extends PickUp
 
 
-var pistol_ := preload("res://Props/Weapons/PistolBase.tscn")
-var rifle_ := preload("res://Props/Weapons/RifleBase.tscn")
-var shotgun_ := preload("res://Props/Weapons/RifleBase.tscn")
+var pistol_ := preload("res://Props/Weapons/Pistol/PistolBase.tscn")
+var rifle_ := preload("res://Props/Weapons/Rifle/RifleBase.tscn")
+var shotgun_ := preload("res://Props/Weapons/Shotgun/ShotgunBase.tscn")
 
 @export var weapon_type : Globals.WEAPONS : set = _set_model
 @onready var weapon_model := get_child(0)
 var weapon_info := []
 
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var rotate_rate := 2.0
-
-
-func _ready() -> void:
-	rotation.y = randf() * 2 * PI
 
 
 func _process(delta) -> void:
@@ -46,7 +43,11 @@ func picked_up() -> void:
 func set_up_drop(new_pos, new_weapon_info) -> void:
 	weapon_type = new_weapon_info[0]
 	weapon_info = new_weapon_info
-	global_position = new_pos + Vector3(0, 0.25, 0)
+	
+	global_position = new_pos
+	$FloorSnap.force_raycast_update()
+	global_position = $FloorSnap.get_collision_point() + Vector3(0, 0.25, 0)
+	
 	match weapon_info[0]:
 		Globals.WEAPONS.PISTOL:
 			name = "PistolPickUp"

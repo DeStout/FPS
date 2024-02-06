@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://barsvh0ntyosw"]
+
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_pxpne"]
+[ext_resource type="Resource" uid="uid://dfch3e5wm7ygn" path="res://Props/Weapons/Shotgun/ShotgunStats.tres" id="2_i570p"]
+[ext_resource type="PackedScene" uid="uid://ddpoj4h308su2" path="res://Props/Weapons/Shotgun/ShotgunBase.tscn" id="3_ejx6r"]
+[ext_resource type="AudioStream" uid="uid://osy8548poupm" path="res://Props/Weapons/Shotgun/ShotgunShoot.ogg" id="4_h3ewr"]
+[ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/Weapons/Rifle/RifleReload.ogg" id="5_sodi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shp0e"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[node name="Shotgun" instance=ExtResource("1_pxpne")]
+stats = ExtResource("2_i570p")
+
+[node name="Mesh" parent="." index="0" instance=ExtResource("3_ejx6r")]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_shp0e")
+
+[node name="ShootAudio" parent="." index="1"]
+stream = ExtResource("4_h3ewr")
+
+[node name="ReloadAudio" parent="." index="2"]
+stream = ExtResource("5_sodi4")

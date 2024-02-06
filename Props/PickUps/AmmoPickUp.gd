@@ -4,9 +4,9 @@ extends PickUp
 
 @export var weapon_type : Globals.WEAPONS : set = _set_model
 var weapon_model : Node3D
-var pistol_ := preload("res://Props/Weapons/PistolBase.tscn")
-var rifle_ := preload("res://Props/Weapons/RifleBase.tscn")
-var shotgun_ := preload("res://Props/Weapons/ShotgunBase.tscn")
+var pistol_ := preload("res://Props/Weapons/Pistol/PistolBase.tscn")
+var rifle_ := preload("res://Props/Weapons/Rifle/RifleBase.tscn")
+var shotgun_ := preload("res://Props/Weapons/Shotgun/ShotgunBase.tscn")
 
 
 func _set_model(new_weapon_type) -> void:

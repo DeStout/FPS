@@ -47,6 +47,7 @@ func reload() -> void:
 		extra_ammo = max(extra_ammo - ammo_to_add, 0)
 
 		is_reloading = false
+		# Signals to Player _update_UI
 		finished_reloading.emit()
 
 

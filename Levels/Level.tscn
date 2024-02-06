@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://7eh2d0yb5a1h"]
 
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_floms"]
-[ext_resource type="Script" path="res://Levels/PlayersContainer_old.gd" id="2_l47m7"]
-[ext_resource type="Script" path="res://Characters/Pause.gd" id="4_63lp7"]
+[ext_resource type="Script" path="res://Levels/PlayersContainer.gd" id="2_6myo3"]
+[ext_resource type="Script" path="res://Levels/Pause.gd" id="4_ni1cj"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_bt5qf"]
 
 [node name="Level" type="Node3D"]
@@ -10,7 +10,7 @@ script = ExtResource("1_floms")
 num_enemies = 3
 
 [node name="Players" type="Node3D" parent="."]
-script = ExtResource("2_l47m7")
+script = ExtResource("2_6myo3")
 
 [node name="FX" type="Node3D" parent="."]
 
@@ -27,4 +27,4 @@ volume_db = -20.0
 
 [node name="Pause" type="Node" parent="."]
 process_mode = 3
-script = ExtResource("4_63lp7")
+script = ExtResource("4_ni1cj")

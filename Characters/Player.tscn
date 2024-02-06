@@ -1,54 +1,325 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwpd8iov14p00"]
+[gd_scene load_steps=30 format=3 uid="uid://bjvof25uwl8sb"]
 
-[ext_resource type="PackedScene" uid="uid://3bdpsmhs0ihw" path="res://Characters/CharacterBase.tscn" id="1_1qb45"]
-[ext_resource type="Script" path="res://Characters/Player.gd" id="2_ae7eo"]
-[ext_resource type="PackedScene" uid="uid://0r6eljbdbyqv" path="res://Props/FPSlapper.tscn" id="3_xqw0d"]
-[ext_resource type="PackedScene" uid="uid://by7wwhoru7x60" path="res://Props/FPPistol.tscn" id="4_bsojp"]
-[ext_resource type="PackedScene" uid="uid://btj7bcwc5cjwk" path="res://Props/FPRifle.tscn" id="5_7tau6"]
-[ext_resource type="PackedScene" uid="uid://cokxjgyi8s31g" path="res://Testing/FPShotgun.tscn" id="5_17djx"]
-[ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="6_cmtlu"]
+[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_sksl4"]
+[ext_resource type="Script" path="res://Characters/Player.gd" id="2_p530v"]
+[ext_resource type="PackedScene" uid="uid://0r6eljbdbyqv" path="res://Props/Weapons/Slapper/FPSlapper.tscn" id="7_of6tn"]
+[ext_resource type="PackedScene" uid="uid://by7wwhoru7x60" path="res://Props/Weapons/Pistol/FPPistol.tscn" id="8_wni34"]
+[ext_resource type="PackedScene" uid="uid://btj7bcwc5cjwk" path="res://Props/Weapons/Rifle/FPRifle.tscn" id="9_kxdh1"]
+[ext_resource type="PackedScene" uid="uid://cokxjgyi8s31g" path="res://Props/Weapons/Shotgun/FPShotgun.tscn" id="10_0co2x"]
+[ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="11_ky6qt"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_dqcbe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm4ms"]
+albedo_color = Color(0.839216, 0.6, 0.466667, 1)
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15itc"]
+albedo_color = Color(0.839216, 0.6, 0.466667, 1)
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5y7vo"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iala0"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[sub_resource type="Animation" id="Animation_37gcc"]
+resource_name = "PistolEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.08, -0.275, -0.16, 0.25, 1, 0.08, -0.115, -0.16)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1.98446e-08, 0.891007, -0.453991, 3.89471e-08, 0.25, 1, 0, 1, 0, -7.54979e-08)
+
+[sub_resource type="Animation" id="Animation_2htne"]
+resource_name = "PistolShoot"
+length = 0.14
+step = 0.01
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.08, -0.115, -0.16, 0.05, 1, 0.08, -0.08, -0.15, 0.14, 1, 0.08, -0.115, -0.16)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -4.37114e-08, 0.05, 1, -8.71465e-09, 0.979925, 0.199368, 4.28339e-08, 0.14, 1, 0, 1, 0, -4.37114e-08)
+
+[sub_resource type="Animation" id="Animation_p4hij"]
+resource_name = "PistolUnEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.08, -0.115, -0.16, 0.25, 1, 0.08, -0.275, -0.16)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -7.54979e-08, 0.25, 1, 3.42753e-08, 0.891007, -0.453991, 6.72691e-08)
+
+[sub_resource type="Animation" id="Animation_chyh5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_yquew"]
+resource_name = "RifleEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.105, -0.4, -0.275, 0.25, 1, 0.105, -0.235, -0.275)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.39558e-08, 0.948324, -0.317305, 7.15965e-08, 0.25, 1, 0, 1, 0, -7.54979e-08)
+
+[sub_resource type="Animation" id="Animation_vnien"]
+resource_name = "RifleShoot"
+length = 0.1111
+step = 0.0111
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.105, -0.235, -0.275, 0.0333, 1, 0.105, -0.235, -0.19, 0.111, 1, 0.105, -0.235, -0.275)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -7.5498e-08, 0.0333, 1, -1.33488e-09, 0.999534, 0.0305385, 4.3691e-08, 0.111, 1, 0, 1, 0, -7.5498e-08)
+
+[sub_resource type="Animation" id="Animation_6e0nd"]
+resource_name = "RifleUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.105, -0.235, -0.275, 0.25, 1, 0.105, -0.4, -0.275)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -7.54979e-08, 0.25, 1, 1.38698e-08, 0.948324, -0.317305, 4.14525e-08)
+
+[sub_resource type="Animation" id="Animation_mey44"]
+resource_name = "ShotgunEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.085, -0.355, -0.215, 0.25, 1, 0.085, -0.175, -0.215)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.304864, 0, 0, 0.952396, 0.25, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_l34i7"]
+resource_name = "ShotgunShoot"
+length = 0.4444
+step = 0.0111
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.085, -0.175, -0.215, 0.0444, 1, 0.085, -0.115, -0.16, 0.2109, 1, 0.085, -0.115, -0.15, 0.3219, 1, 0.085, -0.175, -0.215, 0.444, 1, 0.085, -0.175, -0.215)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0444, 1, 0.362438, 0, 0, 0.932008, 0.2109, 1, 0.358368, 0, 0, 0.93358, 0.3219, 1, 0, 0, 0, 1, 0.444, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ij2ii"]
+resource_name = "ShotgunUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.085, -0.175, -0.215, 0.25, 1, 0.085, -0.355, -0.215)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.304864, 0, 0, 0.952396)
+
+[sub_resource type="Animation" id="Animation_28y8p"]
+resource_name = "Slap"
+length = 0.6
+step = 0.0333
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slapper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.14, -0.13, -0.145, 0.1332, 1, 0.13, -0.005, -0.135, 0.1998, 1, 0.021, -0.039, -0.136, 0.2664, 1, -0.165, -0.208, -0.137, 0.3663, 1, -0.165, -0.208, -0.137, 0.3996, 1, 0.065, -0.475, -0.145, 0.5994, 1, 0.14, -0.13, -0.145)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slapper")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0717862, 0.909558, 0.403964, 0.0660547, 0.1332, 1, 0.0709922, 0.805128, 0.557278, 0.190187, 0.1998, 1, 0.310236, 0.937765, -0.0851041, -0.130797, 0.2664, 1, 0.318869, 0.915376, -0.245759, -0.00339559, 0.3663, 1, 0.318869, 0.915376, -0.245759, -0.00339559, 0.3996, 1, 0.0717862, 0.909558, 0.403964, 0.0660547, 0.5994, 1, 0.0717862, 0.909558, 0.403964, 0.0660547)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1998),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_slap"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r2qqc"]
+resource_name = "SlapperEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slapper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.164924, 0.936935, -0.262137, 0.16198, 0.25, 1, 0.0717863, 0.909558, 0.403964, 0.0660546)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slapper")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.14, -0.2, -0.145, 0.25, 1, 0.14, -0.13, -0.145)
+
+[sub_resource type="Animation" id="Animation_pah7n"]
+resource_name = "SlapperUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slapper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.14, -0.13, -0.145, 0.25, 1, 0.14, -0.2, -0.145)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slapper")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0717864, 0.909558, 0.403964, 0.0660545, 0.25, 1, 0.166762, 0.930257, -0.282732, 0.163937)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3q633"]
+_data = {
+"PistolEquip": SubResource("Animation_37gcc"),
+"PistolShoot": SubResource("Animation_2htne"),
+"PistolUnequip": SubResource("Animation_p4hij"),
+"RESET": SubResource("Animation_chyh5"),
+"RifleEquip": SubResource("Animation_yquew"),
+"RifleShoot": SubResource("Animation_vnien"),
+"RifleUnequip": SubResource("Animation_6e0nd"),
+"ShotgunEquip": SubResource("Animation_mey44"),
+"ShotgunShoot": SubResource("Animation_l34i7"),
+"ShotgunUnequip": SubResource("Animation_ij2ii"),
+"Slap": SubResource("Animation_28y8p"),
+"SlapperEquip": SubResource("Animation_r2qqc"),
+"SlapperUnequip": SubResource("Animation_pah7n")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_byxgu"]
 font_size = 76
-font_color = Color(0.862745, 0.0980392, 0.0862745, 1)
+font_color = Color(1, 0.152941, 0.109804, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_i1ii6"]
+[sub_resource type="LabelSettings" id="LabelSettings_tg22j"]
 font_size = 68
-font_color = Color(0.254902, 0, 1, 1)
+font_color = Color(0, 0.376471, 0.560784, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6grfg"]
+[sub_resource type="LabelSettings" id="LabelSettings_6sj48"]
 font_size = 48
+font_color = Color(0.207843, 0.207843, 0.207843, 1)
 
-[node name="Player" instance=ExtResource("1_1qb45")]
-script = ExtResource("2_ae7eo")
+[sub_resource type="LabelSettings" id="LabelSettings_j2l27"]
+font_size = 48
+font_color = Color(0.207843, 0.207843, 0.207843, 1)
 
-[node name="MainCamera" type="Camera3D" parent="AimHelper" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105338)
-cull_mask = 1048567
+[node name="Player" instance=ExtResource("1_sksl4")]
+script = ExtResource("2_p530v")
+metadata/_edit_vertical_guides_ = [960.0]
+metadata/_edit_horizontal_guides_ = [540.0]
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="AimHelper/MainCamera" index="0"]
-remote_path = NodePath("../../../CanvasLayer/GunViewContainer/GunView/GunCamera")
-
-[node name="FPWeapons" type="Node3D" parent="AimHelper" index="2"]
-
-[node name="Slapper" parent="AimHelper/FPWeapons" index="0" instance=ExtResource("3_xqw0d")]
-transform = Transform3D(-0.974922, 0.0954632, 0.201034, 0.220188, 0.544985, 0.809017, -0.0323294, 0.832994, -0.552337, 0.08, -0.13, -0.255)
-visible = false
-
-[node name="Pistol" parent="AimHelper/FPWeapons" index="1" instance=ExtResource("4_bsojp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.11, -0.135, -0.31)
-visible = false
-
-[node name="Rifle" parent="AimHelper/FPWeapons" index="2" instance=ExtResource("5_7tau6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.14, -0.23, -0.3)
-visible = false
-
-[node name="Shotgun" parent="AimHelper/FPWeapons" index="3" instance=ExtResource("5_17djx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.18, -0.235)
-visible = false
-
-[node name="Weapons" parent="." index="2"]
-transform = Transform3D(-0.221157, -0.160819, -0.961887, -0.960754, 0.205282, 0.186575, 0.167454, 0.9654, -0.199907, 0.17551, 1.38304, -0.27201)
+[node name="Weapons" parent="." index="1"]
+transform = Transform3D(-0.279552, -0.251109, -0.926712, -0.444435, 0.889406, -0.106932, 0.851074, 0.38197, -0.360237, 0.115308, 1.33968, -0.316399)
 
 [node name="Mesh" parent="Weapons/Pistol" index="0"]
 cast_shadow = 3
@@ -59,85 +330,229 @@ cast_shadow = 3
 [node name="Mesh" parent="Weapons/Shotgun" index="0"]
 cast_shadow = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
-layer = 2
+[node name="FPWeapons" type="Node3D" parent="AimHelper" index="0"]
 
-[node name="GunViewContainer" type="SubViewportContainer" parent="CanvasLayer" index="0"]
+[node name="Slapper" parent="AimHelper/FPWeapons" index="0" instance=ExtResource("7_of6tn")]
+transform = Transform3D(-0.893125, 0.393969, 0.217064, 0.224125, 0.808168, -0.544639, -0.389995, -0.437781, -0.810093, 0.14, -0.2, -0.145)
+visible = false
+material_override = SubResource("StandardMaterial3D_hm4ms")
+surface_material_override/0 = SubResource("StandardMaterial3D_15itc")
+
+[node name="Pistol" parent="AimHelper/FPWeapons" index="1" instance=ExtResource("8_wni34")]
+transform = Transform3D(-1, 1.22158e-07, 8.8753e-08, 8.52651e-14, 0.587785, -0.809017, -1.50996e-07, -0.809017, -0.587785, 0.08, -0.275, -0.16)
+visible = false
+
+[node name="Rifle" parent="AimHelper/FPWeapons" index="2" instance=ExtResource("9_kxdh1")]
+transform = Transform3D(-1, 9.08715e-08, 1.20591e-07, -3.55271e-15, 0.798636, -0.601815, -1.50996e-07, -0.601815, -0.798636, 0.105, -0.4, -0.275)
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_5y7vo")
+
+[node name="Shotgun" parent="AimHelper/FPWeapons" index="3" instance=ExtResource("10_0co2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.085, -0.175, -0.215)
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_iala0")
+
+[node name="FPAnimator" type="AnimationPlayer" parent="AimHelper/FPWeapons" index="4"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3q633")
+}
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="AimHelper/Camera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.210124)
+remote_path = NodePath("../../../CanvasLayer/SubViewportContainer/SubViewport/FPCamera")
+
+[node name="AnimationTree" parent="PuppetBase" index="1"]
+parameters/Run/UpperRun/blend_position = Vector2(-1.0581, -1.14815)
+
+[node name="Skeleton" parent="PuppetBase" index="2"]
+bones/1/position = Vector3(1.61993e-09, 0.897347, -0.0641973)
+bones/2/rotation = Quaternion(-0.259748, -4.17697e-05, 1.48226e-05, 0.965676)
+bones/4/rotation = Quaternion(0.191978, -5.09226e-09, 1.58798e-08, 0.981399)
+bones/5/rotation = Quaternion(0.116986, -1.65597e-09, -2.1432e-09, 0.993134)
+bones/7/rotation = Quaternion(0.592327, 0.628964, -0.179083, -0.470619)
+bones/8/rotation = Quaternion(-0.0194398, -0.724841, -0.0188693, 0.688383)
+bones/9/rotation = Quaternion(-0.642064, 0.734346, -0.113692, 0.188584)
+bones/20/rotation = Quaternion(-0.250893, 0.942521, -0.0892176, 0.20186)
+bones/21/rotation = Quaternion(0.346655, 0.200915, -0.337031, 0.851982)
+bones/22/rotation = Quaternion(-0.566477, -0.663034, 0.407106, 0.271579)
+bones/33/rotation = Quaternion(-0.138638, 0.0977519, 0.985298, -0.0202808)
+bones/34/rotation = Quaternion(-0.000281734, 1, 0.000798205, 4.91396e-05)
+bones/35/rotation = Quaternion(0.083534, 0.766362, -0.626951, 0.112444)
+bones/38/rotation = Quaternion(0.133253, -0.141618, 0.98077, -0.016671)
+bones/39/rotation = Quaternion(0.0319242, 0.995367, 0.0905241, -0.00562841)
+bones/40/rotation = Quaternion(-0.0895735, 0.666314, -0.734222, -0.0944543)
+
+[node name="Body" parent="PuppetBase/Skeleton" index="0"]
+cast_shadow = 3
+
+[node name="Head" parent="PuppetBase/Skeleton" index="1"]
+transform = Transform3D(1, -5.70742e-05, -6.78493e-05, 5.0356e-05, 0.995458, -0.0951967, 7.29744e-05, 0.0951967, 0.995458, -8.34563e-06, 1.54914, -0.257676)
+
+[node name="HeadArea" parent="PuppetBase/Skeleton/Head" index="0"]
+collision_layer = 4
+
+[node name="Neck" parent="PuppetBase/Skeleton" index="2"]
+transform = Transform3D(1, -6.92846e-06, -8.83723e-05, 5.03268e-05, 0.865062, 0.501665, 7.29718e-05, -0.501665, 0.865062, 0.00222785, 1.44362, -0.201355)
+
+[node name="NeckArea" parent="PuppetBase/Skeleton/Neck" index="0"]
+collision_layer = 4
+
+[node name="Chest" parent="PuppetBase/Skeleton" index="3"]
+transform = Transform3D(1, -6.92846e-06, -8.83723e-05, 5.03268e-05, 0.865062, 0.501665, 7.29718e-05, -0.501665, 0.865062, 7.1333e-10, 1.13552, -0.0868668)
+
+[node name="ChestArea" parent="PuppetBase/Skeleton/Chest" index="0"]
+collision_layer = 4
+
+[node name="Stomach" parent="PuppetBase/Skeleton" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61993e-09, 0.897347, -0.0641973)
+
+[node name="StomachArea" parent="PuppetBase/Skeleton/Stomach" index="0"]
+collision_layer = 4
+
+[node name="R_UpperArm" parent="PuppetBase/Skeleton" index="5"]
+transform = Transform3D(0.508894, -0.858223, 0.0669325, 0.10721, -0.0139613, -0.994138, 0.854127, 0.513087, 0.0849049, 0.194955, 1.38646, -0.177842)
+
+[node name="R_UpperArmArea" parent="PuppetBase/Skeleton/R_UpperArm" index="0"]
+collision_layer = 4
+
+[node name="R_Forearm" parent="PuppetBase/Skeleton" index="6"]
+transform = Transform3D(0.686964, -0.0633761, 0.723922, 0.652915, -0.383521, -0.653157, 0.319034, 0.921355, -0.222086, 0.286634, 1.24757, -0.303734)
+
+[node name="R_ForearmArea" parent="PuppetBase/Skeleton/R_Forearm" index="0"]
+collision_layer = 4
+
+[node name="R_Hand" parent="PuppetBase/Skeleton" index="7"]
+transform = Transform3D(-0.279552, -0.251109, -0.926712, -0.444435, 0.889406, -0.106932, 0.851074, 0.38197, -0.360237, 0.115308, 1.33968, -0.369377)
+
+[node name="R_HandArea" parent="PuppetBase/Skeleton/R_Hand" index="0"]
+collision_layer = 4
+
+[node name="L_UpperArm" parent="PuppetBase/Skeleton" index="8"]
+transform = Transform3D(0.913649, 0.234112, 0.332322, 0.401218, -0.387921, -0.829784, -0.0653474, 0.891465, -0.448353, -0.194967, 1.38644, -0.177871)
+
+[node name="L_UpperArmArea" parent="PuppetBase/Skeleton/L_UpperArm" index="0"]
+collision_layer = 4
+
+[node name="L_Forearm" parent="PuppetBase/Skeleton" index="9"]
+transform = Transform3D(0.285342, 0.283448, -0.915553, -0.850198, -0.366112, -0.378319, -0.442428, 0.886352, 0.13652, -0.114462, 1.36087, -0.368682)
+
+[node name="L_ForearmArea" parent="PuppetBase/Skeleton/L_Forearm" index="0"]
+collision_layer = 4
+
+[node name="L_Hand" parent="PuppetBase/Skeleton" index="10"]
+transform = Transform3D(-0.189311, 0.160173, 0.968765, 0.499236, 0.86527, -0.0455031, -0.845532, 0.475028, -0.243769, 0.0391454, 1.3894, -0.501861)
+
+[node name="L_HandArea" parent="PuppetBase/Skeleton/L_Hand" index="0"]
+collision_layer = 4
+
+[node name="R_Thigh" parent="PuppetBase/Skeleton" index="11"]
+transform = Transform3D(-0.963932, -0.00504117, 0.266103, -0.0704427, -0.959333, -0.273346, 0.256659, -0.282232, 0.924376, 0.0851499, 0.879858, -0.0593682)
+
+[node name="R_ThighArea" parent="PuppetBase/Skeleton/R_Thigh" index="0"]
+collision_layer = 4
+
+[node name="R_Shin" parent="PuppetBase/Skeleton" index="12"]
+transform = Transform3D(0.96611, -0.0193322, -0.257406, 0.00566152, -0.995365, 0.0960051, -0.258069, -0.0942088, -0.961522, 0.109867, 0.487772, -0.20834)
+
+[node name="R_ShinArea" parent="PuppetBase/Skeleton/R_Shin" index="0"]
+collision_layer = 4
+
+[node name="R_Foot" parent="PuppetBase/Skeleton" index="13"]
+transform = Transform3D(-1, -8.9407e-08, -4.8615e-07, -4.99189e-07, 4.02331e-07, 1, -2.98023e-08, 1, -4.69387e-07, 0.11946, 0.113751, -0.180125)
+
+[node name="R_FootArea" parent="PuppetBase/Skeleton/R_Foot" index="0"]
+collision_layer = 4
+
+[node name="L_Thigh" parent="PuppetBase/Skeleton" index="14"]
+transform = Transform3D(-0.960737, 0.0128611, -0.277164, -0.0670695, -0.980066, 0.187006, -0.269234, 0.198253, 0.942448, -0.0851499, 0.879858, -0.0593682)
+
+[node name="L_ThighArea" parent="PuppetBase/Skeleton/L_Thigh" index="0"]
+collision_layer = 4
+
+[node name="L_Shin" parent="PuppetBase/Skeleton" index="15"]
+transform = Transform3D(0.960756, 0.01296, 0.27709, 0.0676032, -0.979729, -0.188577, 0.269029, 0.199909, -0.942157, -0.106223, 0.463341, -0.00833443)
+
+[node name="L_ShinArea" parent="PuppetBase/Skeleton/L_Shin" index="0"]
+collision_layer = 4
+
+[node name="L_Foot" parent="PuppetBase/Skeleton" index="16"]
+transform = Transform3D(-1, -8.9407e-07, -7.71135e-07, -7.82311e-07, -1.49012e-07, 1, -9.83477e-07, 1, 2.5332e-07, -0.11946, 0.113748, 0.127274)
+
+[node name="L_FootArea" parent="PuppetBase/Skeleton/L_Foot" index="0"]
+collision_layer = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" index="0"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 stretch = true
 
-[node name="GunView" type="SubViewport" parent="CanvasLayer/GunViewContainer" index="0"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" index="0"]
 transparent_bg = true
 handle_input_locally = false
-gui_disable_input = true
-positional_shadow_atlas_size = 4096
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="GunCamera" type="Camera3D" parent="CanvasLayer/GunViewContainer/GunView" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, -0.105338)
+[node name="FPCamera" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 cull_mask = 8
+current = true
 
 [node name="UI" type="Control" parent="CanvasLayer" index="1"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 540.0
-offset_right = -960.0
-offset_bottom = -540.0
+offset_right = -1920.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+pivot_offset = Vector2(960, 540)
 
-[node name="Crosshairs" type="Sprite2D" parent="CanvasLayer/UI" index="0"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_cmtlu")
+[node name="Crosshair" type="Sprite2D" parent="CanvasLayer/UI" index="0"]
+position = Vector2(960, 540)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_ky6qt")
 
 [node name="Health" type="BoxContainer" parent="CanvasLayer/UI" index="1"]
-layout_mode = 0
-offset_left = -852.0
-offset_top = -481.0
-offset_right = -686.0
-offset_bottom = -273.0
-theme_override_constants/separation = -20
+layout_mode = 1
+offset_left = 67.0
+offset_top = 64.0
+offset_right = 196.0
+offset_bottom = 266.0
 vertical = true
 
 [node name="Health" type="Label" parent="CanvasLayer/UI/Health" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100"
-label_settings = SubResource("LabelSettings_dqcbe")
+label_settings = SubResource("LabelSettings_byxgu")
 vertical_alignment = 1
 
 [node name="Armor" type="Label" parent="CanvasLayer/UI/Health" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_i1ii6")
+text = "0
+"
+label_settings = SubResource("LabelSettings_tg22j")
 
 [node name="Weapon" type="VBoxContainer" parent="CanvasLayer/UI" index="2"]
 layout_mode = 0
-offset_left = 610.0
-offset_top = 340.0
-offset_right = 905.0
-offset_bottom = 484.0
-alignment = 2
+offset_left = 1708.0
+offset_top = 904.0
+offset_right = 1805.0
+offset_bottom = 1042.0
 
 [node name="AmmoInMag" type="Label" parent="CanvasLayer/UI/Weapon" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 6
 text = "0 / 0"
-label_settings = SubResource("LabelSettings_6grfg")
+label_settings = SubResource("LabelSettings_6sj48")
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -145,145 +560,10 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = SubResource("LabelSettings_6grfg")
+label_settings = SubResource("LabelSettings_j2l27")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Skeleton" parent="PuppetBase" index="2"]
-bones/1/position = Vector3(1.61993e-09, 0.896611, -0.0641973)
-bones/2/rotation = Quaternion(0.0111302, 7.63805e-05, 0.00085674, 0.999938)
-bones/4/rotation = Quaternion(0.010367, 0.000108595, 0.000786451, 0.999946)
-bones/5/rotation = Quaternion(0.0137591, 0.000125294, 0.001051, 0.999905)
-bones/7/rotation = Quaternion(0.00896247, 0.881374, 0.269445, 0.387941)
-bones/8/rotation = Quaternion(-0.0182278, -0.72377, -0.0176996, 0.689573)
-bones/9/rotation = Quaternion(-0.39287, 0.729653, 0.147153, 0.540006)
-bones/10/rotation = Quaternion(2.38419e-07, -2.98023e-08, -1.19209e-07, 1)
-bones/11/rotation = Quaternion(0.032352, -0.0148728, -0.0734821, 0.996661)
-bones/12/rotation = Quaternion(-5.96047e-08, -2.38419e-07, 2.38419e-07, 1)
-bones/14/rotation = Quaternion(0.00331496, 0.00590424, -0.00307626, 0.999972)
-bones/15/rotation = Quaternion(-5.96046e-08, 5.96046e-08, 1.78814e-07, 1)
-bones/16/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/17/rotation = Quaternion(0.338171, 0.0702215, 0.0421412, 0.937514)
-bones/18/rotation = Quaternion(-0.0177395, 0.184228, 0.00458947, 0.982713)
-bones/20/rotation = Quaternion(-0.137396, 0.949222, 0.249787, 0.133065)
-bones/21/rotation = Quaternion(0.243165, 0.396451, -0.236377, 0.853126)
-bones/22/rotation = Quaternion(-0.268648, -0.830889, -0.122024, 0.471766)
-bones/23/rotation = Quaternion(5.96046e-08, -5.96046e-08, 1.78814e-07, 1)
-bones/24/rotation = Quaternion(0.00997664, 0.022719, 0.0618117, 0.997779)
-bones/25/rotation = Quaternion(-0.00142096, -0.0218833, 0.00560968, 0.999744)
-bones/27/rotation = Quaternion(-0.00557447, -0.0134754, -0.0376365, 0.999185)
-bones/28/rotation = Quaternion(0.00605692, -0.0419984, 0.00940975, 0.999055)
-bones/29/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/30/rotation = Quaternion(-0.347822, 0.487305, -0.548833, 0.583384)
-bones/31/rotation = Quaternion(-0.0929818, 0.136922, -0.113451, 0.979661)
-bones/33/rotation = Quaternion(-0.138856, 0.0942615, 0.985622, -0.0195618)
-bones/34/rotation = Quaternion(-0.00289342, 0.999962, 0.00820422, 0.000510172)
-bones/35/rotation = Quaternion(0.082739, 0.769036, -0.623717, 0.112756)
-bones/38/rotation = Quaternion(0.133275, -0.143816, 0.980439, -0.0171617)
-bones/39/rotation = Quaternion(0.0334638, 0.994908, 0.09489, -0.00589983)
-bones/40/rotation = Quaternion(-0.089137, 0.668048, -0.732665, -0.0947049)
-bones/41/rotation = Quaternion(-4.21469e-08, 1, 5.96047e-08, -1.26441e-07)
-
-[node name="Body" parent="PuppetBase/Skeleton" index="0"]
-cast_shadow = 3
-
-[node name="Head" parent="PuppetBase/Skeleton" index="1"]
-transform = Transform3D(0.999985, -0.00536327, 0.000810279, 0.00540703, 0.9975, -0.0704537, -0.000430392, 0.070457, 0.997515, -0.000851966, 1.57608, -0.0405965)
-
-[node name="HeadArea" parent="PuppetBase/Skeleton/Head" index="0"]
-collision_layer = 4
-
-[node name="Neck" parent="PuppetBase/Skeleton" index="2"]
-transform = Transform3D(0.999999, -0.00171167, 0.000171823, 0.00171507, 0.999751, -0.0222589, -0.00013368, 0.0222592, 0.999752, 0.00169002, 1.45743, -0.0241446)
-
-[node name="NeckArea" parent="PuppetBase/Skeleton/Neck" index="0"]
-collision_layer = 4
-
-[node name="Chest" parent="PuppetBase/Skeleton" index="3"]
-transform = Transform3D(0.999999, -0.00171167, 0.000171823, 0.00171507, 0.999751, -0.0222589, -0.00013368, 0.0222592, 0.999752, 7.13331e-10, 1.13478, -0.0868668)
-
-[node name="ChestArea" parent="PuppetBase/Skeleton/Chest" index="0"]
-collision_layer = 4
-
-[node name="Stomach" parent="PuppetBase/Skeleton" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61993e-09, 0.896611, -0.0641973)
-
-[node name="StomachArea" parent="PuppetBase/Skeleton/Stomach" index="0"]
-collision_layer = 4
-
-[node name="R_UpperArm" parent="PuppetBase/Skeleton" index="5"]
-transform = Transform3D(0.195072, -0.838148, -0.509366, -0.341473, 0.428811, -0.836371, 0.919425, 0.337088, -0.202556, 0.194519, 1.39672, -0.0338836)
-
-[node name="R_UpperArmArea" parent="PuppetBase/Skeleton/R_UpperArm" index="0"]
-collision_layer = 4
-
-[node name="R_Forearm" parent="PuppetBase/Skeleton" index="6"]
-transform = Transform3D(0.691507, -0.644951, 0.325356, 0.375663, -0.0636342, -0.924569, 0.617005, 0.76157, 0.19828, 0.230187, 1.25031, -0.17823)
-
-[node name="R_ForearmArea" parent="PuppetBase/Skeleton/R_Forearm" index="0"]
-collision_layer = 4
-
-[node name="R_Hand" parent="PuppetBase/Skeleton" index="7"]
-transform = Transform3D(-0.221157, -0.160819, -0.961887, -0.960754, 0.205282, 0.186575, 0.167454, 0.9654, -0.199907, 0.17551, 1.38304, -0.324988)
-
-[node name="R_HandArea" parent="PuppetBase/Skeleton/R_Hand" index="0"]
-collision_layer = 4
-
-[node name="L_UpperArm" parent="PuppetBase/Skeleton" index="8"]
-transform = Transform3D(0.225898, 0.853778, 0.469076, -0.662902, 0.487566, -0.568191, -0.713814, -0.182598, 0.676112, -0.195402, 1.39605, -0.0338315)
-
-[node name="L_UpperArmArea" parent="PuppetBase/Skeleton/L_UpperArm" index="0"]
-collision_layer = 4
-
-[node name="L_Forearm" parent="PuppetBase/Skeleton" index="9"]
-transform = Transform3D(0.4593, 0.864377, -0.204685, -0.534536, 0.45299, 0.713493, 0.709447, -0.218295, 0.670099, -0.236324, 1.20105, 0.0281716)
-
-[node name="L_ForearmArea" parent="PuppetBase/Skeleton/L_Forearm" index="0"]
-collision_layer = 4
-
-[node name="L_Hand" parent="PuppetBase/Skeleton" index="10"]
-transform = Transform3D(-0.222871, 0.266691, 0.937659, -0.774687, 0.535426, -0.336421, -0.591767, -0.801371, 0.0872709, -0.238981, 0.999593, -0.0112503)
-
-[node name="L_HandArea" parent="PuppetBase/Skeleton/L_Hand" index="0"]
-collision_layer = 4
-
-[node name="R_Thigh" parent="PuppetBase/Skeleton" index="11"]
-transform = Transform3D(-0.963886, -0.00468195, 0.266272, -0.071986, -0.958045, -0.27743, 0.256399, -0.286579, 0.92311, 0.0851499, 0.879122, -0.0593682)
-
-[node name="R_ThighArea" parent="PuppetBase/Skeleton/R_Thigh" index="0"]
-collision_layer = 4
-
-[node name="R_Shin" parent="PuppetBase/Skeleton" index="12"]
-transform = Transform3D(0.966171, -0.0196779, -0.25715, 0.00408048, -0.995794, 0.0915326, -0.257869, -0.0894854, -0.962027, 0.110011, 0.487725, -0.210118)
-
-[node name="R_ShinArea" parent="PuppetBase/Skeleton/R_Shin" index="0"]
-collision_layer = 4
-
-[node name="R_Foot" parent="PuppetBase/Skeleton" index="13"]
-transform = Transform3D(-1, 7.45058e-08, -4.84288e-07, -5.12227e-07, 5.43892e-07, 1, 2.98023e-08, 1, -4.99189e-07, 0.11946, 0.113839, -0.180125)
-
-[node name="R_FootArea" parent="PuppetBase/Skeleton/R_Foot" index="0"]
-collision_layer = 4
-
-[node name="L_Thigh" parent="PuppetBase/Skeleton" index="14"]
-transform = Transform3D(-0.960672, 0.0123835, -0.277408, -0.0647387, -0.981464, 0.18038, -0.270032, 0.191245, 0.943667, -0.0851499, 0.879122, -0.0593682)
-
-[node name="L_ThighArea" parent="PuppetBase/Skeleton/L_Thigh" index="0"]
-collision_layer = 4
-
-[node name="L_Shin" parent="PuppetBase/Skeleton" index="15"]
-transform = Transform3D(0.96088, 0.0133979, 0.276639, 0.0702161, -0.977981, -0.196525, 0.267915, 0.208262, -0.940664, -0.106414, 0.462259, -0.0113209)
-
-[node name="L_ShinArea" parent="PuppetBase/Skeleton/L_Shin" index="0"]
-collision_layer = 4
-
-[node name="L_Foot" parent="PuppetBase/Skeleton" index="16"]
-transform = Transform3D(-1, -5.96046e-08, -1.67638e-07, -1.82539e-07, -3.57628e-07, 1, 5.96046e-08, 1, 2.23517e-07, -0.11946, 0.113833, 0.127275)
-
-[node name="L_FootArea" parent="PuppetBase/Skeleton/L_Foot" index="0"]
-collision_layer = 4
-
-[connection signal="finished_reloading" from="Weapons/Slapper" to="." method="_update_UI"]
 [connection signal="finished_reloading" from="Weapons/Pistol" to="." method="_update_UI"]
 [connection signal="finished_reloading" from="Weapons/Rifle" to="." method="_update_UI"]
 [connection signal="finished_reloading" from="Weapons/Shotgun" to="." method="_update_UI"]

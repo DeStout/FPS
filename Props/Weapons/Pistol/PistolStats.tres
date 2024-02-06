@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c0650j8mcrbva"]
+
+[ext_resource type="Script" path="res://Props/Weapons/WeaponStats.gd" id="1_e26b4"]
+
+[resource]
+script = ExtResource("1_e26b4")
+weapon_type = 1
+automatic = false
+burst_fire = false
+burst_num = 0
+burst_variance = 0.0
+shots_per_second = 7.143
+max_ammo = 60
+mag_size = 15
+v_recoil = 1.0
+h_recoil = 0.5
+body_dmg = {
+0: 22,
+1: 12,
+2: 5
+}
+pos_offset = Vector3(-0.0750129, -0.0176662, 0.0586265)
+rot_offset = Vector3(-0.375674, 1.96402, -0.333061)
+anim_pos = Vector2(-1, -1)
+equip_anim = "PistolEquip"
+unequip_anim = "PistolUnequip"
+shoot_anim = "PistolShoot"
+reload_anim = "PistolReload"

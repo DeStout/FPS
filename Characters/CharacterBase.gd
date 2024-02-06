@@ -18,31 +18,52 @@ const MAX_HEALTH := 200
 const MAX_ARMOR := 50
 var health := 100 : set = _set_health
 var armor := 0
-var body_segs : Array = []
+var last_shot_by : CharacterBase = null
+
+const BodySeg := preload("res://Characters/BodySeg.gd")
+@onready var body_segs : Array = [$PuppetBase/Skeleton/Head/HeadArea,
+						$PuppetBase/Skeleton/Neck/NeckArea,
+						$PuppetBase/Skeleton/Chest/ChestArea,
+						$PuppetBase/Skeleton/Stomach/StomachArea,
+						$PuppetBase/Skeleton/R_UpperArm/R_UpperArmArea,
+						$PuppetBase/Skeleton/R_Forearm/R_ForearmArea,
+						$PuppetBase/Skeleton/R_Hand/R_HandArea,
+						$PuppetBase/Skeleton/L_UpperArm/L_UpperArmArea,
+						$PuppetBase/Skeleton/L_Forearm/L_ForearmArea,
+						$PuppetBase/Skeleton/L_Hand/L_HandArea,
+						$PuppetBase/Skeleton/R_Thigh/R_ThighArea,
+						$PuppetBase/Skeleton/R_Shin/R_ShinArea,
+						$PuppetBase/Skeleton/R_Foot/R_FootArea,
+						$PuppetBase/Skeleton/L_Thigh/L_ThighArea,
+						$PuppetBase/Skeleton/L_Shin/L_ShinArea,
+						$PuppetBase/Skeleton/L_Foot/L_FootArea]
 
 # Weapons
-var weapon_held : Node3D = null
+@onready
+var weapon_held : Node3D = $Weapons/Slapper
 @onready var weapons := [Globals.WEAPONS.SLAPPER]
 var nozzle : Node3D = null
 var trigger_pulled := false
 var default_shot_target := Vector3(0, 0, -99)
+var switching_weapons := false
 
 #Animation
 @onready var anim_tree = $PuppetBase/AnimationTree
 @onready var state_machine = $PuppetBase/AnimationTree["parameters/playback"]
 
-# Level
 var current_level : Node3D
 
 
 func _ready() -> void:
 	current_level = get_parent().get_parent()
-	var temp_bodysegs = get_tree().get_nodes_in_group("body_segs")
-	body_segs = temp_bodysegs.filter(func(body_seg): return is_ancestor_of(body_seg))
+	
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
-	
-	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
+
+	var spawn_weapon = randi_range(0,3)
+	if spawn_weapon > 0:
+		weapons.append(spawn_weapon)
+	_switch_weapon(_get_weapon(spawn_weapon))
 
 
 func _process(_delta) -> void:
@@ -56,10 +77,10 @@ func _physics_process(delta) -> void:
 
 
 func _shoot() -> void:
-	if weapon_held.can_shoot():
+	if weapon_held.can_shoot() and !switching_weapons:
 		weapon_held.shoot()
 		if weapon_held.get_weapon_type() == Globals.WEAPONS.SLAPPER:
-			_slap()
+			_swing()
 		else:
 			var num_shots : int = 1
 			if weapon_held.is_burst_fire():
@@ -68,15 +89,13 @@ func _shoot() -> void:
 				if weapon_held.is_burst_fire():
 					%ShootCast.rotate_x(randf_range(-weapon_held.get_burst_variance(), \
 													weapon_held.get_burst_variance()))
-					%ShootCast.rotate_y(randf_range(-weapon_held.get_burst_variance(), \
-													weapon_held.get_burst_variance()))
+					%ShootCast.rotate_z(randf_range(-PI, PI))
 					%ShootCast.force_raycast_update()
 				if %ShootCast.is_colliding():
 					current_level.spawn_shot_trail(nozzle.global_position, \
-															%ShootCast.get_collision_point())
-					if %ShootCast.get_collider().is_in_group("body_segs"):
-						var collider = %ShootCast.get_collider()
-						%ShootCast.get_collider().body_seg_shot(weapon_held.get_body_dmg())
+												%ShootCast.get_collision_point())
+					if %ShootCast.get_collider() is BodySeg:
+						%ShootCast.get_collider().body_seg_shot(weapon_held.get_body_dmg(), self)
 					elif current_level != null:
 						current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
 											%ShootCast.get_collision_normal())
@@ -99,24 +118,27 @@ func _shoot() -> void:
 		trigger_pulled = false
 
 
+func _swing() -> void:
+	pass
+
+
 func _slap() -> void:
 	var slappable = _get_weapon(Globals.WEAPONS.SLAPPER).slappable
-	print(slappable)
 	for character in slappable:
 		if character != self:
-			character._take_damage(Globals.BODY_DMG[Globals.WEAPONS.SLAPPER])
+			#print(name, " slapped ", character.name)
+			character._take_damage(Globals.BODY_DMG[Globals.WEAPONS.SLAPPER], self)
 			$Slapped.play()
-		
 
 
 func _reload() -> void:
-	print(weapon_held.name, " reload")
+	#print(weapon_held.name, " reload")
 	if weapon_held and !weapon_held.is_reloading:
 		weapon_held.reload()
 
 
 # Signaled from BodySeg
-func _take_damage(damage) -> void:
+func _take_damage(damage, shooter) -> void:
 	if current_level != null:
 		current_level.spawn_damage_label($DmgLbl.global_position, str(damage))
 
@@ -133,14 +155,15 @@ func _take_damage(damage) -> void:
 
 	if health > 0:
 		$Voice.get_hurt_sfx().play()
+		
+	last_shot_by = shooter
 
 
 func _set_health(new_health) -> void:
-	print(health - new_health)
+	#print(name, " takes ", health - new_health, " damage", )
 	health = max(0, new_health)
 	if health <= 0:
-		health = 100
-#		_die()
+		_die()
 
 
 func _die() -> void:
@@ -148,30 +171,48 @@ func _die() -> void:
 	_disable_collisions(true)
 	set_physics_process(false)
 	
-	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		var weapon_info := [weapon_held.weapon_type, weapon_held.extra_ammo, \
-														weapon_held.ammo_in_mag]
+	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
+		var weapon_info := [weapon_held.stats.weapon_type,
+								weapon_held.extra_ammo,
+								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
-		
-	global_position = current_level.get_nav_point().position
+	
 	armor = 0
 	weapons = [Globals.WEAPONS.SLAPPER]
 	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
 	
+	#print(name, " has died")
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()
 	await death_sfx.finished
+	
+	# Do this now and in respawn() because Godot has priority issues
+	global_position = current_level.get_nav_point().position
+	await get_tree().physics_frame
 	
 	# Signal to PlayersContainer.character_killed
 	died.emit(self)
 
 
 func respawn() -> void:
+	# Do this now and in _die() because Godot has priority issues
+	global_position = current_level.get_nav_point().position
+	await get_tree().physics_frame
+	
 	visible = true
 	health = 100
 	set_physics_process(true)
 	_disable_collisions(false)
-	print(name, " Respawned")
+	#print(name, " Respawned")
+
+	var spawn_weapon = randi_range(0,3)
+	if spawn_weapon > 0:
+		weapons.append(spawn_weapon)
+	_switch_weapon(_get_weapon(spawn_weapon))
+
+
+func set_current_camera(is_current : bool) -> void:
+	%Camera.current = is_current
 
 
 func _disable_collisions(is_disabled : bool) -> void:
@@ -194,11 +235,13 @@ func _pick_up_health(new_pick_up : Node3D) -> void:
 	match new_pick_up.health_type:
 		Globals.HEALTHS.HEALTH_PACK:
 			if health < MAX_HEALTH:
+				print(name, " picked up a health pack")
 				health += new_pick_up.health_amount
 				health = min(health, MAX_HEALTH)
 				new_pick_up.picked_up()
 		Globals.HEALTHS.ARMOR:
 			if armor < MAX_ARMOR:
+				print(name, " picked up body armor")
 				armor += new_pick_up.health_amount
 				armor = min(armor, MAX_ARMOR)
 				new_pick_up.picked_up()
@@ -223,8 +266,10 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 			new_weapon.ammo_in_mag = new_pick_up.weapon_info[2]
 				
 		weapons.append(new_weapon.get_weapon_type())
-		_switch_weapon(new_weapon)
+		if new_weapon.stats.weapon_type > weapon_held.stats.weapon_type:
+			_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
+			#print(name, " picked up ", Globals.WEAPON_NAMES[new_pick_up.weapon_type])
 			new_pick_up.picked_up()
 		return new_weapon
 	else:
@@ -238,6 +283,7 @@ func _pick_up_ammo(new_pick_up : Node3D) -> void:
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
 		if weapon_for.can_pick_up_ammo():
 			weapon_for.add_ammo(weapon_held.get_mag_size())
+			print(name, " picked up ammo for the ", Globals.WEAPON_NAMES[new_pick_up.weapon_type])
 			new_pick_up.picked_up()
 
 
@@ -255,32 +301,43 @@ func _get_weapon(weapon_type : int) -> Node3D:
 
 func _switch_weapon(new_weapon : Node3D) -> void:
 	if new_weapon != null:
-		if weapon_held != new_weapon:
+		if weapon_held != new_weapon and !switching_weapons:
+			switching_weapons = true
+			var old_weapon : Node3D
 			if weapon_held:
 				weapon_held.interrupt_reload()
-				weapon_held.visible = false
+			old_weapon = weapon_held
 			weapon_held = new_weapon
-			weapon_held.visible = true
 			nozzle = weapon_held.nozzle
-
-			var tween = get_tree().create_tween()
-			var anim_pos = weapon_held.get_anim_pos()
-			tween.tween_property(anim_tree, \
-				"parameters/Idle/UpperIdle/blend_position", anim_pos, 0.15)
-			tween.tween_property(anim_tree, \
-				"parameters/Run/UpperRun/blend_position", anim_pos, 0.15)
+				
+			await _anim_weapon_switch(old_weapon, weapon_held)
+			switching_weapons = false
 	else:
 		assert(new_weapon != null, "Cannot switch to a NULL weapon")
-#		if weapon_held:
-#			weapon_held.interrupt_reload()
-#			weapon_held.visible = false
-#		weapon_held = null
-#		nozzle = null
-#
-#		var tween = get_tree().create_tween()
-#		tween.tween_property(anim_tree, \
-#			"parameters/Idle/UpperIdle/blend_position", \
-#									Vector2(0, 1), 0.15)
-#		tween.tween_property(anim_tree, \
-#			"parameters/Run/UpperRun/blend_position", \
-#									Vector2(0, 1), 0.15)
+		if weapon_held:
+			weapon_held.interrupt_reload()
+			weapon_held.visible = false
+		weapon_held = null
+		nozzle = null
+
+
+func _anim_weapon_switch(old_weapon, new_weapon) -> void:
+	await _unequip_weapon(old_weapon)
+	
+	var tween = get_tree().create_tween()
+	var anim_pos = weapon_held.get_anim_pos()
+	tween.tween_property(anim_tree, \
+		"parameters/Idle/UpperIdle/blend_position", anim_pos, 0.15)
+	tween.tween_property(anim_tree, \
+		"parameters/Run/UpperRun/blend_position", anim_pos, 0.15)
+		
+	await _equip_weapon(new_weapon)
+	return
+
+
+func _unequip_weapon(old_weapon) -> void:
+	pass
+
+
+func _equip_weapon(new_weapon) -> void:
+	pass

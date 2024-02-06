@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://0vmjwnqanvpp"]
+
+[ext_resource type="Script" path="res://Props/Weapons/WeaponStats.gd" id="1_va60y"]
+
+[resource]
+script = ExtResource("1_va60y")
+weapon_type = 0
+automatic = true
+burst_fire = false
+burst_num = 0
+burst_variance = 0.0
+shots_per_second = 1.66
+max_ammo = 0
+mag_size = 0
+v_recoil = 0.0
+h_recoil = 0.0
+body_dmg = {
+0: 40,
+1: 40,
+2: 40
+}
+pos_offset = Vector3(0.00662899, -0.0015403, 0.0135412)
+rot_offset = Vector3(-0.400822, 2.00414, -0.449278)
+anim_pos = Vector2(0, 1)
+equip_anim = "SlapperEquip"
+unequip_anim = "SlapperUnequip"
+shoot_anim = "Slap"
+reload_anim = ""

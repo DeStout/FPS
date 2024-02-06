@@ -12,8 +12,13 @@ const LOOK_SENSITIVITY := 0.05
 
 func _ready() -> void:
 	super()
-#	weapons.append(Globals.WEAPONS.PISTOL)
-#	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	#weapons.append(Globals.WEAPONS.PISTOL)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	#weapons.append(Globals.WEAPONS.RIFLE)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+	#weapons.append(Globals.WEAPONS.SHOTGUN)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
+	#_equip_weapon($Weapons/Slapper)
 	_update_UI()
 	
 
@@ -67,7 +72,7 @@ func _input(event) -> void:
 		rotate_y(MOUSE_HORZ_SENSITIVITY * event.relative.x)
 		rotation.z = 0
 
-	if event is InputEventKey:
+	if event is InputEventKey or event is InputEventJoypadButton:
 	# Keyboard weapon switching
 		if Input.is_action_just_pressed("Weapon1"):
 			if _have_weapon(Globals.WEAPONS.SLAPPER):
@@ -87,6 +92,7 @@ func _input(event) -> void:
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 		
 		elif Input.is_action_just_pressed("SwitchLevel"):
+			print("why")
 			match get_tree().current_scene.name:
 				"Level1":
 					get_tree().change_scene_to_file("res://Levels/Level2.tscn")
@@ -100,16 +106,29 @@ func _input(event) -> void:
 			if weapon_held:
 				weapon_held.interrupt_reload()
 				for weapon_type in range(Globals.WEAPONS.size()):
-					weapon_type += weapon_held.weapon_type + 1
+					weapon_type += weapon_held.stats.weapon_type + 1
 					weapon_type %= Globals.WEAPONS.size()
 					for weapon in weapons:
 						if weapon == weapon_type:
 							_switch_weapon(_get_weapon(weapon))
 							return
-							
+
+
+func _swing() -> void:
+	super()
+	if %FPAnimator.is_playing():
+		%FPAnimator.stop()
+	%FPAnimator.play("Slap")
+
 
 func _shoot() -> void:
+	var can_shoot : bool = weapon_held.can_shoot()
 	super()
+	if can_shoot and weapon_held.get_weapon_type() != Globals.WEAPONS.SLAPPER \
+			and !switching_weapons:
+		if %FPAnimator.is_playing():
+			%FPAnimator.stop()
+		%FPAnimator.play(weapon_held.stats.shoot_anim)
 	_update_UI()
 
 
@@ -144,27 +163,58 @@ func _pick_up_health(new_health : Node3D) -> void:
 	_update_UI()
 
 
-func _switch_weapon(new_weapon) -> void:
-	super(new_weapon)
-	fp_weapon.visible = false
-	if new_weapon != null:
-		for fpweapon in $AimHelper/FPWeapons.get_children():
-			if fpweapon.weapon_type == new_weapon.get_weapon_type():
-				fp_weapon = fpweapon
-		fp_weapon.visible = true
-		nozzle = fp_weapon.nozzle
-	_update_UI()
-
-
-func _take_damage(damage : int) -> void:
+func _take_damage(damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/3.0)
-	super(damage)
+	super(damage, shooter)
 	_update_UI()
+
+
+func _die() -> void:
+	super()
+	%Camera.current = false
+	last_shot_by.set_current_camera(true)
+	print("Death cam on ", last_shot_by.name)
+	$CanvasLayer/UI.visible = false
 
 
 func respawn() -> void:
 	super()
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	%Camera.current = true
+	last_shot_by.set_current_camera(false)
+	$CanvasLayer/UI.visible = true
+	#weapons.append(Globals.WEAPONS.PISTOL)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_held.reset()
 	_update_UI()
+
+
+func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
+	var new_fp_weapon : MeshInstance3D = null
+	if weapon != null:
+		var fp_weapons := $AimHelper/FPWeapons.get_children()
+		fp_weapons.erase($AimHelper/FPWeapons/FPAnimator)
+		for fpweapon in fp_weapons:
+			if fpweapon.weapon_type == weapon.get_weapon_type():
+				new_fp_weapon = fpweapon
+	return new_fp_weapon
+
+
+func _switch_weapon(new_weapon) -> void:
+	#if new_weapon != null and !switching_weapons and weapon_held != new_weapon:
+	super(new_weapon)
+	_update_UI()
+
+
+func _unequip_weapon(old_weapon) -> void:
+	%FPAnimator.play(old_weapon.stats.unequip_anim)
+	await %FPAnimator.animation_finished
+	get_fp_weapon(old_weapon).visible = false
+
+
+func _equip_weapon(new_weapon) -> void:
+	fp_weapon = get_fp_weapon(new_weapon)
+	fp_weapon.visible = true
+	nozzle = fp_weapon.nozzle
+	%FPAnimator.play(new_weapon.stats.equip_anim)
+	await %FPAnimator.animation_finished
+	super(new_weapon)
