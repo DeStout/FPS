@@ -24,6 +24,7 @@ visible = false
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_bt5qf")
 volume_db = -20.0
+bus = &"Music"
 
 [node name="Pause" type="Node" parent="."]
 process_mode = 3

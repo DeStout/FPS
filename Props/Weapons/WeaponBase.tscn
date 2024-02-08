@@ -6,8 +6,10 @@
 script = ExtResource("1_vmqcn")
 
 [node name="ShootAudio" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
 
 [node name="ReloadAudio" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
 
 [node name="ShotTimer" type="Timer" parent="."]
 one_shot = true

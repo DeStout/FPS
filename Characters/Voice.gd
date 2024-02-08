@@ -27,6 +27,7 @@ func _ready() -> void:
 			new_voice.volume_db = HURT_SETTINGS[VOICES.DE][0]
 			new_voice.unit_size = HURT_SETTINGS[VOICES.DE][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.DE][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -34,6 +35,7 @@ func _ready() -> void:
 			new_voice.volume_db = HURT_SETTINGS[VOICES.DE][0]
 			new_voice.unit_size = HURT_SETTINGS[VOICES.DE][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.DE][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -41,6 +43,7 @@ func _ready() -> void:
 			new_voice.volume_db = DEATH_SETTINGS[VOICES.DE][0]
 			new_voice.unit_size = DEATH_SETTINGS[VOICES.DE][1]
 			new_voice.max_db = DEATH_SETTINGS[VOICES.DE][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			death_sfx.append(new_voice)
 		VOICES.REUBEN:
@@ -50,6 +53,7 @@ func _ready() -> void:
 			new_voice.volume_db = HURT_SETTINGS[VOICES.REUBEN][0]
 			new_voice.unit_size = HURT_SETTINGS[VOICES.REUBEN][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.REUBEN][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -57,6 +61,7 @@ func _ready() -> void:
 			new_voice.volume_db = DEATH_SETTINGS[VOICES.REUBEN][0]
 			new_voice.unit_size = DEATH_SETTINGS[VOICES.REUBEN][1]
 			new_voice.max_db = DEATH_SETTINGS[VOICES.REUBEN][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			death_sfx.append(new_voice)
 		VOICES.AUTUMN:
@@ -66,6 +71,7 @@ func _ready() -> void:
 			new_voice.volume_db = HURT_SETTINGS[VOICES.AUTUMN][0]
 			new_voice.unit_size = HURT_SETTINGS[VOICES.AUTUMN][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.AUTUMN][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -73,6 +79,7 @@ func _ready() -> void:
 			new_voice.volume_db = DEATH_SETTINGS[VOICES.AUTUMN][0]
 			new_voice.unit_size = DEATH_SETTINGS[VOICES.AUTUMN][1]
 			new_voice.max_db = DEATH_SETTINGS[VOICES.AUTUMN][2]
+			new_voice.bus = "SFX"
 			add_child(new_voice)
 			death_sfx.append(new_voice)
 	print(owner.name, " is ", voice_name)

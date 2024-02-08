@@ -1,9 +1,9 @@
 extends Control
 
 
-var is_visible := true
+#var is_visible := true
 
-var fps_visible := true
+#var fps_visible := true
 
 #var enemy_behavior_visible := true
 
@@ -14,22 +14,22 @@ var fps_visible := true
 #@onready var music_bus := AudioServer.get_bus_index("Music")
 #var mute_setting := Mute.MUSIC
 
-var player : CharacterBase
-var player_invincible := false
-var infinite_ammo := false
+#var player : CharacterBase
+#var player_invincible := false
+#var infinite_ammo := false
 
 #enum Level{LEVEL1, LEVEL2}
 #var level := Level.LEVEL2
 #var level_visible := false
 
 
-func _ready() -> void:
-	#player = get_tree().current_scene.get_node("Players").player
-	visible = is_visible
-	$FPS.visible = fps_visible
+#func _ready() -> void:
+	##player = get_tree().current_scene.get_node("Players").player
+	#visible = is_visible
+	#$FPS.visible = fps_visible
 
-	if player:
-		player.weapon_picked_up.connect(_new_player_weapon)
+	#if player:
+		#player.weapon_picked_up.connect(_new_player_weapon)
 
 #	$Mute.visible = mute_visible
 #	_set_mute()
@@ -40,9 +40,9 @@ func _ready() -> void:
 #	$Behaviors.visible = enemy_behavior_visible
 
 
-func _process(_delta) -> void:
-	var fps = Performance.get_monitor(Performance.TIME_FPS)
-	$FPS.text = "FPS: " + str(fps)
+#func _process(_delta) -> void:
+	#var fps = Performance.get_monitor(Performance.TIME_FPS)
+	#$FPS.text = "FPS: " + str(fps)
 
 
 #func _input(_event) -> void:
@@ -55,16 +55,16 @@ func _process(_delta) -> void:
 #		_switch_level()
 
 
-func _new_player_weapon(new_weapon) -> void:
-	new_weapon.finished_reloading.connect(_infinte_ammo)
+#func _new_player_weapon(new_weapon) -> void:
+	#new_weapon.finished_reloading.connect(_infinte_ammo)
 
 
-func _infinte_ammo() -> void:
-	if infinite_ammo:
-		print("Debug: Infinite Ammo")
-		player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
-										player.weapon_held.mag_size
-		player._update_UI()
+#func _infinte_ammo() -> void:
+	#if infinite_ammo:
+		#print("Debug: Infinite Ammo")
+		#player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
+										#player.weapon_held.mag_size
+		#player._update_UI()
 
 #func _set_mute() -> void:
 #	match mute_setting:

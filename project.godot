@@ -11,26 +11,23 @@ config_version=5
 [application]
 
 config/name="FPS"
-run/main_scene="res://Levels/Level2.tscn"
+run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+run/size/window_height_override=608
+run/size/window_width_override=1080
+run/size/viewport_height=1080
+run/size/viewport_width=1920
+run/stretch/mode="viewport"
 
 [autoload]
 
 Globals="*res://Globals.gd"
-Debug="*res://Debug/Debug.tscn"
+Debug="res://Debug/Debug.tscn"
 
 [debug]
 
 gdscript/warnings/unused_variable=0
-
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/window_width_override=1080
-window/size/window_height_override=608
-window/stretch/mode="viewport"
 
 [input]
 

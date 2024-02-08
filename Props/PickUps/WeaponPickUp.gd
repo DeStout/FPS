@@ -61,3 +61,7 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 func despawn() -> void:
 	print(name, " despawned")
 	queue_free()
+
+
+func swing_to_main_menu() -> void:
+	pass # Replace with function body.

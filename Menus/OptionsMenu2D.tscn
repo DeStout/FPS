@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://b87sic5k3mvs0"]
+
+[ext_resource type="Script" path="res://Menus/OptionsMenu2D.gd" id="1_o5lmb"]
+[ext_resource type="Script" path="res://Menus/AudioSetting.gd" id="2_cejly"]
+
+[node name="OptionsMenu2D" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5lmb")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 54
+clip_tabs = false
+
+[node name="Audio" type="Control" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Audio" type="BoxContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.0
+offset_top = -286.0
+offset_right = 524.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Audio"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Audio Levels"
+
+[node name="Master" type="BoxContainer" parent="TabContainer/Audio/Audio"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Audio/Master"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/Audio/Master"]
+layout_mode = 2
+script = ExtResource("2_cejly")
+bus_name = "Master"
+default_value = 25.0
+
+[node name="Music" type="BoxContainer" parent="TabContainer/Audio/Audio"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Audio/Music"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/Audio/Music"]
+layout_mode = 2
+script = ExtResource("2_cejly")
+bus_name = "Music"
+default_value = 80.0
+
+[node name="SFX" type="BoxContainer" parent="TabContainer/Audio/Audio"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Audio/SFX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/Audio/SFX"]
+layout_mode = 2
+script = ExtResource("2_cejly")
+bus_name = "SFX"
+default_value = 80.0
+
+[node name="Input" type="BoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+vertical = true
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Input"]
+layout_mode = 2
+
+[node name="HSlider2" type="HSlider" parent="TabContainer/Input"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 370.0
+offset_top = 260.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Back"
+
+[connection signal="value_changed" from="TabContainer/Audio/Audio/Master/HSlider" to="TabContainer/Audio/Audio/Master/HSlider" method="audio_level_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/Audio/Music/HSlider" to="TabContainer/Audio/Audio/Music/HSlider" method="audio_level_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/Audio/SFX/HSlider" to="TabContainer/Audio/Audio/SFX/HSlider" method="audio_level_changed"]
+[connection signal="pressed" from="Button" to="." method="back_pressed"]
