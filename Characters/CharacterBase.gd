@@ -60,10 +60,10 @@ func _ready() -> void:
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
 
-	var spawn_weapon = randi_range(0,3)
-	if spawn_weapon > 0:
-		weapons.append(spawn_weapon)
-	_switch_weapon(_get_weapon(spawn_weapon))
+	#var spawn_weapon = randi_range(0,3)
+	#if spawn_weapon > 0:
+		#weapons.append(spawn_weapon)
+	#_switch_weapon(_get_weapon(spawn_weapon))
 
 
 func _process(_delta) -> void:
@@ -235,13 +235,13 @@ func _pick_up_health(new_pick_up : Node3D) -> void:
 	match new_pick_up.health_type:
 		Globals.HEALTHS.HEALTH_PACK:
 			if health < MAX_HEALTH:
-				print(name, " picked up a health pack")
+				#print(name, " picked up a health pack")
 				health += new_pick_up.health_amount
 				health = min(health, MAX_HEALTH)
 				new_pick_up.picked_up()
 		Globals.HEALTHS.ARMOR:
 			if armor < MAX_ARMOR:
-				print(name, " picked up body armor")
+				#print(name, " picked up body armor")
 				armor += new_pick_up.health_amount
 				armor = min(armor, MAX_ARMOR)
 				new_pick_up.picked_up()

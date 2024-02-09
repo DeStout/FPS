@@ -136,7 +136,7 @@ shape = SubResource("CylinderShape3D_xkhuc")
 disabled = true
 
 [node name="Model" parent="World/WeaponPickUp" index="1"]
-transform = Transform3D(-1.74343, 0.95982, -0.0171174, 0.942943, 1.71969, 0.391842, 0.202763, 0.333492, -1.95167, 0, 0.244229, 0)
+transform = Transform3D(0.901859, -0.849358, 1.55752, 0.942943, 1.71969, 0.391842, -1.5056, 0.557598, 1.17593, 0, 0.244229, 0)
 
 [node name="Rifle" parent="World/WeaponPickUp/Model" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -194,7 +194,7 @@ size = Vector2i(1920, 1080)
 [node name="PlayMenu2D" parent="PlayMenu/Mesh/Viewport" instance=ExtResource("6_vcnix")]
 
 [node name="OptionsMenu" type="Area3D" parent="."]
-transform = Transform3D(7.42371e-07, 0, -9.833, 0, 9.833, 0, 9.833, 0, 7.42371e-07, 7.5, 5.988, 0)
+transform = Transform3D(4.82207e-07, 0, -6.38703, 0, 6.38703, 0, 6.38703, 0, 4.82207e-07, 7.5, 5.988, 0)
 script = ExtResource("4_l07be")
 
 [node name="Collision" type="CollisionShape3D" parent="OptionsMenu"]

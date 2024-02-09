@@ -10,29 +10,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o5lmb")
+metadata/_edit_vertical_guides_ = [1665.0]
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.45463
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 246.0
+anchor_bottom = 0.45463
+offset_left = -705.0
+offset_top = -427.0
+offset_right = 705.0
+offset_bottom = 397.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 54
-clip_tabs = false
+theme_override_font_sizes/font_size = 72
 
 [node name="Audio" type="Control" parent="TabContainer"]
 layout_mode = 2
@@ -44,10 +44,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -532.0
-offset_top = -286.0
-offset_right = 524.0
-offset_bottom = 245.0
+offset_left = -618.0
+offset_top = -313.5
+offset_right = 618.0
+offset_bottom = 225.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
@@ -56,7 +56,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="TabContainer/Audio/Audio"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 100
 text = "Audio Levels"
 
 [node name="Master" type="BoxContainer" parent="TabContainer/Audio/Audio"]
@@ -65,7 +65,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="TabContainer/Audio/Audio/Master"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 54
 text = "Master Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Audio/Audio/Master"]
@@ -80,7 +80,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="TabContainer/Audio/Audio/Music"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 54
 text = "Music Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Audio/Audio/Music"]
@@ -95,7 +95,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="TabContainer/Audio/Audio/SFX"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 54
 text = "SFX Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Audio/Audio/SFX"]
@@ -104,18 +104,85 @@ script = ExtResource("2_cejly")
 bus_name = "SFX"
 default_value = 80.0
 
-[node name="Input" type="BoxContainer" parent="TabContainer"]
+[node name="Input" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
+
+[node name="Input" type="BoxContainer" parent="TabContainer/Input"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -618.0
+offset_top = -365.5
+offset_right = 652.0
+offset_bottom = 262.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 vertical = true
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Input"]
+[node name="Label" type="Label" parent="TabContainer/Input/Input"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Input"
+
+[node name="Mouse" type="BoxContainer" parent="TabContainer/Input/Input"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Input/Input/Mouse"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Mouse Sensitivity"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Input/Input/Mouse"]
 layout_mode = 2
 
-[node name="HSlider2" type="HSlider" parent="TabContainer/Input"]
+[node name="Controller" type="BoxContainer" parent="TabContainer/Input/Input"]
 layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Input/Input/Controller"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Controller Sensitivity"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Input/Input/Controller"]
+layout_mode = 2
+
+[node name="InvertY" type="BoxContainer" parent="TabContainer/Input/Input"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Input/Input/InvertY"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Invert Y Axis"
+
+[node name="Control" type="Control" parent="TabContainer/Input/Input/InvertY"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Input/Input/InvertY/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -17.5
+offset_right = 14.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.78636, 2.78636)
+size_flags_horizontal = 0
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -124,16 +191,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 370.0
-offset_top = 260.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = 323.0
+offset_top = 372.0
+offset_right = 577.0
+offset_bottom = 454.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 36
+scale = Vector2(1.50619, 1.50619)
+theme_override_font_sizes/font_size = 54
 text = "Back"
 
 [connection signal="value_changed" from="TabContainer/Audio/Audio/Master/HSlider" to="TabContainer/Audio/Audio/Master/HSlider" method="audio_level_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Audio/Music/HSlider" to="TabContainer/Audio/Audio/Music/HSlider" method="audio_level_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Audio/SFX/HSlider" to="TabContainer/Audio/Audio/SFX/HSlider" method="audio_level_changed"]
+[connection signal="value_changed" from="TabContainer/Input/Input/Mouse/HSlider" to="." method="mouse_sens_change"]
+[connection signal="value_changed" from="TabContainer/Input/Input/Controller/HSlider" to="." method="controller_sens_change"]
+[connection signal="toggled" from="TabContainer/Input/Input/InvertY/Control/CheckBox" to="." method="invert_y_change"]
 [connection signal="pressed" from="Button" to="." method="back_pressed"]

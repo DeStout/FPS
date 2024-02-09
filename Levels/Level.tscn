@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7eh2d0yb5a1h"]
+[gd_scene load_steps=6 format=3 uid="uid://7eh2d0yb5a1h"]
 
 [ext_resource type="Script" path="res://Levels/Level.gd" id="1_floms"]
 [ext_resource type="Script" path="res://Levels/PlayersContainer.gd" id="2_6myo3"]
 [ext_resource type="Script" path="res://Levels/Pause.gd" id="4_ni1cj"]
+[ext_resource type="PackedScene" uid="uid://b87sic5k3mvs0" path="res://Menus/OptionsMenu2D.tscn" id="5_jcdih"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="8_bt5qf"]
 
 [node name="Level" type="Node3D"]
@@ -26,6 +27,37 @@ stream = ExtResource("8_bt5qf")
 volume_db = -20.0
 bus = &"Music"
 
-[node name="Pause" type="Node" parent="."]
+[node name="Pause" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 2
+visible = false
 script = ExtResource("4_ni1cj")
+
+[node name="OptionsMenu2D" parent="Pause" instance=ExtResource("5_jcdih")]
+process_mode = 2
+offset_right = 950.0
+offset_bottom = 534.0
+scale = Vector2(1.00523, 1.00523)
+
+[node name="Button" parent="Pause/OptionsMenu2D" index="1"]
+visible = false
+
+[node name="Button" type="Button" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 323.0
+offset_top = 372.0
+offset_right = 577.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.50619, 1.50619)
+theme_override_font_sizes/font_size = 54
+text = "Quit"
+
+[connection signal="pressed" from="Pause/Button" to="Pause" method="quit_button"]
+
+[editable path="Pause/OptionsMenu2D"]

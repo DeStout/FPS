@@ -23,6 +23,6 @@ func picked_up() -> void:
 
 # Signaled by $Respawn Timer
 func _respawn():
-	print(name, " Respawn")
+	#print(name, " Respawn")
 	visible = true
 	$Area/Collision.set_deferred("disabled", false)

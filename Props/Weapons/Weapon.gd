@@ -24,9 +24,9 @@ func reset() -> void:
 
 
 func can_shoot() -> bool:
-	var can_shoot : bool = ((ammo_in_mag > 0 and !is_reloading) or \
+	var able_to_shoot : bool = ((ammo_in_mag > 0 and !is_reloading) or \
 		stats.weapon_type == Globals.WEAPONS.SLAPPER) and $ShotTimer.is_stopped()
-	return can_shoot
+	return able_to_shoot
 
 
 func shoot() -> void:

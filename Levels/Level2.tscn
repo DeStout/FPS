@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="5_i8p46"]
 
 [node name="Level2" instance=ExtResource("1_komsv")]
-num_enemies = 15
+num_enemies = 5
 
 [node name="LevelBase" parent="." index="0" instance=ExtResource("1_vufbv")]
 
@@ -295,4 +295,5 @@ respawn_time = 40.0
 
 [node name="MusicPlayer" parent="." index="6"]
 autoplay = true
-bus = &"Music"
+
+[editable path="Pause/OptionsMenu2D"]

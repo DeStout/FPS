@@ -5,9 +5,9 @@ signal weapon_picked_up
 
 @onready var fp_weapon : Node3D = $AimHelper/FPWeapons/Slapper
 
-const MOUSE_HORZ_SENSITIVITY := -0.002
-const MOUSE_VERT_SENSITIVITY := -0.002
-const LOOK_SENSITIVITY := 0.05
+#const MOUSE_HORZ_SENSITIVITY := -0.002
+#const MOUSE_VERT_SENSITIVITY := -0.002
+#const LOOK_SENSITIVITY := 0.05
 
 
 func _ready() -> void:
@@ -28,10 +28,11 @@ func _physics_process(delta) -> void:
 	# Controller Look
 	var look_dir = Input.get_vector("LookLeft", "LookRight", "LookUp", "LookDown")
 	if look_dir:
-		$AimHelper.rotate_x(LOOK_SENSITIVITY * -look_dir.y)
+		$AimHelper.rotate_x(-Globals.invert_y_to_int() * Globals.controller_sensitivity * \
+							-look_dir.y)
 		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
 										-deg_to_rad(89), deg_to_rad(89))
-		rotate_y(LOOK_SENSITIVITY * -look_dir.x)
+		rotate_y(Globals.controller_sensitivity * -look_dir.x)
 		rotation.z = 0
 
 	var accel = ACCEL
@@ -66,10 +67,11 @@ func _input(event) -> void:
 		
 	# Mouse Look
 	if event is InputEventMouseMotion:
-		$AimHelper.rotate_x(MOUSE_HORZ_SENSITIVITY * event.relative.y)
+		$AimHelper.rotate_x(Globals.invert_y_to_int() * Globals.mouse_sensitivity * \
+							event.relative.y)
 		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
 										-deg_to_rad(89), deg_to_rad(89))
-		rotate_y(MOUSE_HORZ_SENSITIVITY * event.relative.x)
+		rotate_y(-Globals.mouse_sensitivity * event.relative.x)
 		rotation.z = 0
 
 	if event is InputEventKey or event is InputEventJoypadButton:
@@ -90,14 +92,6 @@ func _input(event) -> void:
 			if _have_weapon(Globals.WEAPONS.SHOTGUN):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
-		
-		elif Input.is_action_just_pressed("SwitchLevel"):
-			print("why")
-			match get_tree().current_scene.name:
-				"Level1":
-					get_tree().change_scene_to_file("res://Levels/Level2.tscn")
-				"Level2":
-					get_tree().change_scene_to_file("res://Levels/Level1.tscn")
 
 
 	if event is InputEventJoypadButton:
@@ -173,7 +167,7 @@ func _die() -> void:
 	super()
 	%Camera.current = false
 	last_shot_by.set_current_camera(true)
-	print("Death cam on ", last_shot_by.name)
+	#print("Death cam on ", last_shot_by.name)
 	$CanvasLayer/UI.visible = false
 
 

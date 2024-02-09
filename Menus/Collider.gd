@@ -2,8 +2,8 @@ extends Area3D
 class_name Menu2D
 
 
-func my_input_event(event : InputEvent, position : Vector3):
-	var mouse_pos3d := position
+func my_input_event(event : InputEvent, pos : Vector3):
+	var mouse_pos3d := pos
 	mouse_pos3d = global_transform.affine_inverse() * mouse_pos3d
 	var mouse_pos2d := Vector2(mouse_pos3d.x, -mouse_pos3d.y)
 	
