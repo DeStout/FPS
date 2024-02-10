@@ -15,49 +15,47 @@ num_enemies = 3
 script = ExtResource("2_6myo3")
 
 [node name="ScoreLayer" type="CanvasLayer" parent="Players"]
-layer = 3
-visible = false
 
 [node name="Score" type="Control" parent="Players/ScoreLayer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -570.0
-offset_top = -310.0
-offset_right = 1350.0
-offset_bottom = 770.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.603867, 0.603867)
 script = ExtResource("3_5eywp")
 
 [node name="Name" type="Label" parent="Players/ScoreLayer/Score"]
 layout_mode = 0
-offset_left = 72.0
+offset_left = 112.0
 offset_top = 108.0
-offset_right = 289.0
+offset_right = 329.0
 offset_bottom = 207.0
 theme_override_font_sizes/font_size = 72
 text = "Name"
 
 [node name="Kill" type="Label" parent="Players/ScoreLayer/Score"]
 layout_mode = 0
-offset_left = 646.0
+offset_left = 703.0
 offset_top = 108.0
-offset_right = 787.0
+offset_right = 844.0
 offset_bottom = 207.0
 theme_override_font_sizes/font_size = 72
 text = "Kills"
 
 [node name="Deaths" type="Label" parent="Players/ScoreLayer/Score"]
 layout_mode = 0
-offset_left = 1237.0
+offset_left = 1291.0
 offset_top = 108.0
-offset_right = 1482.0
+offset_right = 1536.0
 offset_bottom = 207.0
 theme_override_font_sizes/font_size = 72
 text = "Deaths"
@@ -103,11 +101,9 @@ script = ExtResource("4_ni1cj")
 
 [node name="OptionsMenu2D" parent="Pause" instance=ExtResource("5_jcdih")]
 process_mode = 2
-offset_left = -718.0
-offset_top = -392.0
-offset_right = 1192.0
-offset_bottom = 682.0
-scale = Vector2(0.764095, 0.764095)
+offset_right = 950.0
+offset_bottom = 534.0
+scale = Vector2(1.00523, 1.00523)
 
 [node name="Button" parent="Pause/OptionsMenu2D" index="1"]
 visible = false
@@ -118,13 +114,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 289.0
-offset_top = 313.0
-offset_right = 543.0
-offset_bottom = 395.0
+offset_left = 323.0
+offset_top = 372.0
+offset_right = 577.0
+offset_bottom = 454.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.01652, 1.01652)
+scale = Vector2(1.50619, 1.50619)
 theme_override_font_sizes/font_size = 54
 text = "Quit"
 

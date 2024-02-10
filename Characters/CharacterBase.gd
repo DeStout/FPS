@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 signal died
+signal add_score
 
 # Movement
 const ACCEL := 2.5
@@ -139,6 +140,8 @@ func _reload() -> void:
 
 # Signaled from BodySeg
 func _take_damage(damage, shooter) -> void:
+	last_shot_by = shooter
+	
 	if current_level != null:
 		current_level.spawn_damage_label($DmgLbl.global_position, str(damage))
 
@@ -155,8 +158,6 @@ func _take_damage(damage, shooter) -> void:
 
 	if health > 0:
 		$Voice.get_hurt_sfx().play()
-		
-	last_shot_by = shooter
 
 
 func _set_health(new_health) -> void:
@@ -167,6 +168,8 @@ func _set_health(new_health) -> void:
 
 
 func _die() -> void:
+	add_score.emit(self, last_shot_by)
+	
 	visible = false
 	_disable_collisions(true)
 	set_physics_process(false)

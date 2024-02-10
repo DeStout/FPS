@@ -9,6 +9,7 @@ var level
 var player : CharacterBase
 var enemies := []
 var respawn_timers := []
+var score_tracker := {}
 
 
 func set_up() -> void:
@@ -18,6 +19,7 @@ func set_up() -> void:
 	var spawn_point = level.get_spawn_point()
 	used_spawns.append(spawn_point)
 
+	%Score.add_character(player.name)
 	spawn_character(player, spawn_point)
 	connect_signals(player)
 
@@ -31,6 +33,7 @@ func set_up() -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
+		%Score.add_character(enemy.name)
 		spawn_character(enemy, spawn_point)
 		connect_signals(enemy)
 
@@ -49,6 +52,12 @@ func spawn_character(character : CharacterBase, spawn_point : Marker3D) -> void:
 
 func connect_signals(character) -> void:
 	character.died.connect(character_killed)
+	character.add_score.connect(add_to_score_board)
+
+
+func add_to_score_board(killed, killer) -> void:
+	%Score.add_death(killed.name)
+	%Score.add_kill(killer.name)
 
 
 func character_killed(character) -> void:
