@@ -65,11 +65,12 @@ func _physics_process(delta):
 		deaccel = AIR_DEACCEL
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		state_machine.travel("Run")
+		if is_on_floor():
+			state_machine.travel("Run")
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel)
 		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel)
 	else:
-		state_machine.travel("Idle")
+		state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel)
 		velocity.z = move_toward(velocity.z, 0, deaccel)
 	velocity.x *= move_speed_mod
@@ -178,7 +179,7 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 
-func _take_damage(damage : int, shooter : CharacterBase) -> void:
+func take_damage(damage : int, shooter : CharacterBase) -> void:
 	damage *= 2
 	player_vis = true
 	super(damage, shooter)

@@ -19,8 +19,8 @@ body_dmg = {
 1: 15,
 2: 8
 }
-pos_offset = Vector3(-0.0631537, -0.00211084, 0.0455215)
-rot_offset = Vector3(-0.343566, 1.95424, -0.269231)
+pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
+rot_offset = Vector3(1.54272, 1.58703, 2.09439)
 anim_pos = Vector2(1, -1)
 equip_anim = "RifleEquip"
 unequip_anim = "RifleUnequip"

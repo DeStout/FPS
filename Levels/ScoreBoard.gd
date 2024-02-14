@@ -24,7 +24,6 @@ func add_kill(character_name) -> void:
 	var list_index = (characters[character_name][0] * 3) + 1
 	var num_kills = characters[character_name][1] + 1
 	characters[character_name][1] = num_kills
-	print(characters[character_name])
 	$List.set_item_text(list_index, str(num_kills))
 
 
@@ -32,5 +31,4 @@ func add_death(character_name) -> void:
 	var list_index = (characters[character_name][0] * 3) + 2
 	var num_deaths = characters[character_name][2] + 1
 	characters[character_name][2] = num_deaths
-	print(characters[character_name])
 	$List.set_item_text(list_index, str(num_deaths))

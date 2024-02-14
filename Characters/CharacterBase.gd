@@ -13,6 +13,7 @@ const AIR_DEACCEL := 0.02
 const SPEED = 5.5
 const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var was_on_floor := false
 
 # Health
 const MAX_HEALTH := 200
@@ -21,23 +22,24 @@ var health := 100 : set = _set_health
 var armor := 0
 var last_shot_by : CharacterBase = null
 
+# Body segments
 const BodySeg := preload("res://Characters/BodySeg.gd")
-@onready var body_segs : Array = [$PuppetBase/Skeleton/Head/HeadArea,
-						$PuppetBase/Skeleton/Neck/NeckArea,
-						$PuppetBase/Skeleton/Chest/ChestArea,
-						$PuppetBase/Skeleton/Stomach/StomachArea,
-						$PuppetBase/Skeleton/R_UpperArm/R_UpperArmArea,
-						$PuppetBase/Skeleton/R_Forearm/R_ForearmArea,
-						$PuppetBase/Skeleton/R_Hand/R_HandArea,
-						$PuppetBase/Skeleton/L_UpperArm/L_UpperArmArea,
-						$PuppetBase/Skeleton/L_Forearm/L_ForearmArea,
-						$PuppetBase/Skeleton/L_Hand/L_HandArea,
-						$PuppetBase/Skeleton/R_Thigh/R_ThighArea,
-						$PuppetBase/Skeleton/R_Shin/R_ShinArea,
-						$PuppetBase/Skeleton/R_Foot/R_FootArea,
-						$PuppetBase/Skeleton/L_Thigh/L_ThighArea,
-						$PuppetBase/Skeleton/L_Shin/L_ShinArea,
-						$PuppetBase/Skeleton/L_Foot/L_FootArea]
+@onready var body_segs : Array = [$Puppet/Skeleton3D/Head/HeadArea,
+						$Puppet/Skeleton3D/Neck/NeckArea,
+						$Puppet/Skeleton3D/Chest/ChestArea,
+						$Puppet/Skeleton3D/Stomach/StomachArea,
+						$Puppet/Skeleton3D/R_UpperArm/R_UpperArmArea,
+						$Puppet/Skeleton3D/R_Forearm/R_ForearmArea,
+						$Puppet/Skeleton3D/R_Hand/R_HandArea,
+						$Puppet/Skeleton3D/L_UpperArm/L_UpperArmArea,
+						$Puppet/Skeleton3D/L_Forearm/L_ForearmArea,
+						$Puppet/Skeleton3D/L_Hand/L_HandArea,
+						$Puppet/Skeleton3D/R_Thigh/R_ThighArea,
+						$Puppet/Skeleton3D/R_Shin/R_ShinArea,
+						$Puppet/Skeleton3D/R_Foot/R_FootArea,
+						$Puppet/Skeleton3D/L_Thigh/L_ThighArea,
+						$Puppet/Skeleton3D/L_Shin/L_ShinArea,
+						$Puppet/Skeleton3D/L_Foot/L_FootArea]
 
 # Weapons
 @onready
@@ -49,8 +51,8 @@ var default_shot_target := Vector3(0, 0, -99)
 var switching_weapons := false
 
 #Animation
-@onready var anim_tree = $PuppetBase/AnimationTree
-@onready var state_machine = $PuppetBase/AnimationTree["parameters/playback"]
+@onready var anim_tree = $Puppet/AnimationTree
+@onready var state_machine = $Puppet/AnimationTree["parameters/playback"]
 
 var current_level : Node3D
 
@@ -73,8 +75,20 @@ func _process(_delta) -> void:
 
 
 func _physics_process(delta) -> void:
-	if not is_on_floor():
+	if !is_on_floor():
 		velocity.y -= gravity * delta
+		
+		if was_on_floor:
+			state_machine.travel("IdleFall")
+			var tween = get_tree().create_tween()
+			tween.tween_property(anim_tree, \
+				"parameters/IdleFall/LowerIdleFall/blend_position", 1, 0.05)
+		was_on_floor = false
+	elif is_on_floor() and !was_on_floor:
+		was_on_floor = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(anim_tree, \
+			"parameters/IdleFall/LowerIdleFall/blend_position", -1, 0.05)
 
 
 func _shoot() -> void:
@@ -128,7 +142,7 @@ func _slap() -> void:
 	for character in slappable:
 		if character != self:
 			#print(name, " slapped ", character.name)
-			character._take_damage(Globals.BODY_DMG[Globals.WEAPONS.SLAPPER], self)
+			character.take_damage(Globals.BODY_DMG[Globals.WEAPONS.SLAPPER], self)
 			$Slapped.play()
 
 
@@ -139,7 +153,7 @@ func _reload() -> void:
 
 
 # Signaled from BodySeg
-func _take_damage(damage, shooter) -> void:
+func take_damage(damage, shooter) -> void:
 	last_shot_by = shooter
 	
 	if current_level != null:
@@ -330,7 +344,7 @@ func _anim_weapon_switch(old_weapon, new_weapon) -> void:
 	var tween = get_tree().create_tween()
 	var anim_pos = weapon_held.get_anim_pos()
 	tween.tween_property(anim_tree, \
-		"parameters/Idle/UpperIdle/blend_position", anim_pos, 0.15)
+		"parameters/IdleFall/UpperIdle/blend_position", anim_pos, 0.15)
 	tween.tween_property(anim_tree, \
 		"parameters/Run/UpperRun/blend_position", anim_pos, 0.15)
 		

@@ -46,11 +46,12 @@ func _physics_process(delta) -> void:
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:
-		state_machine.travel("Run")
+		if is_on_floor():
+			state_machine.travel("Run")
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel)
 		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel)
 	else:
-		state_machine.travel("Idle")
+		state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel)
 		velocity.z = move_toward(velocity.z, 0, deaccel)
 	move_and_slide()
@@ -157,7 +158,7 @@ func _pick_up_health(new_health : Node3D) -> void:
 	_update_UI()
 
 
-func _take_damage(damage : int, shooter : CharacterBase) -> void:
+func take_damage(damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/3.0)
 	super(damage, shooter)
 	_update_UI()
@@ -202,10 +203,12 @@ func _switch_weapon(new_weapon) -> void:
 func _unequip_weapon(old_weapon) -> void:
 	%FPAnimator.play(old_weapon.stats.unequip_anim)
 	await %FPAnimator.animation_finished
+	old_weapon.visible = false
 	get_fp_weapon(old_weapon).visible = false
 
 
 func _equip_weapon(new_weapon) -> void:
+	new_weapon.visible = true
 	fp_weapon = get_fp_weapon(new_weapon)
 	fp_weapon.visible = true
 	nozzle = fp_weapon.nozzle
