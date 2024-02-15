@@ -15,9 +15,9 @@ mag_size = 0
 v_recoil = 0.0
 h_recoil = 0.0
 body_dmg = {
-0: 40,
-1: 40,
-2: 40
+0: 20,
+1: 20,
+2: 20
 }
 pos_offset = Vector3(0.00662899, -0.0015403, 0.0135412)
 rot_offset = Vector3(-0.400822, 2.00414, -0.449278)

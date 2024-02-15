@@ -142,7 +142,7 @@ func _slap() -> void:
 	for character in slappable:
 		if character != self:
 			#print(name, " slapped ", character.name)
-			character.take_damage(Globals.BODY_DMG[Globals.WEAPONS.SLAPPER], self)
+			character.take_damage(weapon_held.stats.body_dmg[0], self)
 			$Slapped.play()
 
 
@@ -222,7 +222,7 @@ func respawn() -> void:
 	_disable_collisions(false)
 	#print(name, " Respawned")
 
-	var spawn_weapon = randi_range(0,3)
+	var spawn_weapon = randi_range(0,4)
 	if spawn_weapon > 0:
 		weapons.append(spawn_weapon)
 	_switch_weapon(_get_weapon(spawn_weapon))
@@ -272,6 +272,8 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 				pass
 			Globals.WEAPONS.PISTOL:
 				new_weapon = $Weapons/Pistol
+			Globals.WEAPONS.SMG:
+				new_weapon = $Weapons/SMG
 			Globals.WEAPONS.RIFLE:
 				new_weapon = $Weapons/Rifle
 			Globals.WEAPONS.SHOTGUN:

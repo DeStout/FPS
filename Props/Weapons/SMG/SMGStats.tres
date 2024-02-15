@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dspa676i0l216"]
+
+[ext_resource type="Script" path="res://Props/Weapons/WeaponStats.gd" id="1_bsv2a"]
+
+[resource]
+script = ExtResource("1_bsv2a")
+weapon_type = 2
+automatic = true
+burst_fire = false
+burst_num = 0
+burst_variance = 0.0
+shots_per_second = 20.0
+max_ammo = 180
+mag_size = 45
+v_recoil = 2.5
+h_recoil = 2.5
+body_dmg = {
+0: 15,
+1: 8,
+2: 6
+}
+pos_offset = Vector3(-0.033591, -0.0112215, -0.00850368)
+rot_offset = Vector3(1.5708, -0.453786, 0)
+anim_pos = Vector2(-1, -1)
+equip_anim = "SMGEquip"
+unequip_anim = "SMGUnequip"
+shoot_anim = "SMGShoot"
+reload_anim = ""

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_xr2u8")
-weapon_type = 3
+weapon_type = 4
 automatic = true
 burst_fire = true
 burst_num = 8
@@ -12,8 +12,8 @@ burst_variance = 0.06
 shots_per_second = 2.25
 max_ammo = 40
 mag_size = 10
-v_recoil = 14.0
-h_recoil = 3.0
+v_recoil = 16.0
+h_recoil = 5.0
 body_dmg = {
 0: 17,
 1: 9,

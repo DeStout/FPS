@@ -9,15 +9,15 @@ automatic = false
 burst_fire = false
 burst_num = 0
 burst_variance = 0.0
-shots_per_second = 7.143
+shots_per_second = 10.0
 max_ammo = 60
 mag_size = 15
 v_recoil = 1.0
 h_recoil = 0.5
 body_dmg = {
-0: 22,
-1: 12,
-2: 5
+0: 18,
+1: 10,
+2: 6
 }
 pos_offset = Vector3(-0.0382926, -0.0126591, 0.00222373)
 rot_offset = Vector3(1.54396, 1.08048, 1.51289)

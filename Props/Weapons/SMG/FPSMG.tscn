@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://kwpmppcj56nl"]
+
+[ext_resource type="PackedScene" uid="uid://g15slaechxh8" path="res://Props/Weapons/SMG/SMGBase.tscn" id="1_j2ij0"]
+[ext_resource type="Script" path="res://Props/Weapons/FPWeapon.gd" id="2_amtev"]
+
+[node name="SMG" instance=ExtResource("1_j2ij0")]
+layers = 8
+cast_shadow = 0
+script = ExtResource("2_amtev")
+weapon_type = 2

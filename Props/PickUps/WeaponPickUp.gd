@@ -3,6 +3,7 @@ extends PickUp
 
 
 var pistol_ := preload("res://Props/Weapons/Pistol/PistolBase.tscn")
+var smg_ := preload("res://Props/Weapons/SMG/SMGBase.tscn")
 var rifle_ := preload("res://Props/Weapons/Rifle/RifleBase.tscn")
 var shotgun_ := preload("res://Props/Weapons/Shotgun/ShotgunBase.tscn")
 
@@ -25,6 +26,8 @@ func _set_model(new_weapon_type) -> void:
 			weapon_type = Globals.WEAPONS.PISTOL
 		Globals.WEAPONS.PISTOL:
 			weapon_model = pistol_.instantiate()
+		Globals.WEAPONS.SMG:
+			weapon_model = smg_.instantiate()
 		Globals.WEAPONS.RIFLE:
 			weapon_model = rifle_.instantiate()
 		Globals.WEAPONS.SHOTGUN:
@@ -51,6 +54,8 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 	match weapon_info[0]:
 		Globals.WEAPONS.PISTOL:
 			name = "PistolPickUp"
+		Globals.WEAPONS.SMG:
+			name = "SMGPickUp"
 		Globals.WEAPONS.RIFLE:
 			name = "RiflePickUp"
 		Globals.WEAPONS.SHOTGUN:
@@ -61,7 +66,3 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 func despawn() -> void:
 	print(name, " despawned")
 	queue_free()
-
-
-func swing_to_main_menu() -> void:
-	pass # Replace with function body.

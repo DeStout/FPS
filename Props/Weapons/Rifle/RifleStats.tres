@@ -4,20 +4,20 @@
 
 [resource]
 script = ExtResource("1_cni8a")
-weapon_type = 2
+weapon_type = 3
 automatic = true
 burst_fire = false
 burst_num = 0
 burst_variance = 0.0
-shots_per_second = 9.0
+shots_per_second = 12.0
 max_ammo = 128
 mag_size = 32
 v_recoil = 2.0
 h_recoil = 1.0
 body_dmg = {
-0: 25,
-1: 15,
-2: 8
+0: 22,
+1: 13,
+2: 7
 }
 pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
 rot_offset = Vector3(1.54272, 1.58703, 2.09439)

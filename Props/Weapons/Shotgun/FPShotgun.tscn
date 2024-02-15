@@ -7,4 +7,4 @@
 layers = 8
 cast_shadow = 0
 script = ExtResource("2_lnbhj")
-weapon_type = 3
+weapon_type = 4

@@ -14,8 +14,8 @@ var level2_ := preload("res://Levels/Level2.tscn")
 var main_menu : Node3D = main_menu_.instantiate()
 var level : Node3D = null
 
-enum WEAPONS {SLAPPER, PISTOL, RIFLE, SHOTGUN}
-var WEAPON_NAMES = ["Slapper", "Pistol", "Rifle", "Shotgun"]
+enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN}
+var WEAPON_NAMES = ["Slapper", "Pistol", "SMG", "Rifle", "Shotgun"]
 enum PICK_UPS {WEAPON, AMMO, HEALTH}
 enum HEALTHS {HEALTH_PACK, ARMOR}
 
@@ -25,8 +25,8 @@ const BODY_DMG := 	[25,				# Slapper
 					[25, 15, 8]]		# Rifle
 
 
-func _ready() -> void:
-	game.add_child(main_menu)
+#func _ready() -> void:
+	#game.add_child(main_menu)
 
 
 func start_game() -> void:
@@ -37,6 +37,7 @@ func start_game() -> void:
 
 func switch_levels() -> void:
 	level.queue_free()
+	await level.tree_exited
 	match level.name:
 		"Level1":
 			level = level2_.instantiate()

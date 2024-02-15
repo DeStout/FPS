@@ -14,12 +14,14 @@ func _ready() -> void:
 	super()
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	#weapons.append(Globals.WEAPONS.SMG)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
 	#weapons.append(Globals.WEAPONS.RIFLE)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
 	#weapons.append(Globals.WEAPONS.SHOTGUN)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 	#_equip_weapon($Weapons/Slapper)
-	_update_UI()
+	update_UI()
 	
 
 func _physics_process(delta) -> void:
@@ -86,10 +88,14 @@ func _input(event) -> void:
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 		elif Input.is_action_just_pressed("Weapon3"):
+			if _have_weapon(Globals.WEAPONS.SMG):
+				weapon_held.interrupt_reload()
+				_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
+		elif Input.is_action_just_pressed("Weapon4"):
 			if _have_weapon(Globals.WEAPONS.RIFLE):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
-		elif Input.is_action_just_pressed("Weapon4"):
+		elif Input.is_action_just_pressed("Weapon5"):
 			if _have_weapon(Globals.WEAPONS.SHOTGUN):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
@@ -124,11 +130,11 @@ func _shoot() -> void:
 		if %FPAnimator.is_playing():
 			%FPAnimator.stop()
 		%FPAnimator.play(weapon_held.stats.shoot_anim)
-	_update_UI()
+	update_UI()
 
 
 # Signal from Weapon.finished_reloading
-func _update_UI() -> void:
+func update_UI() -> void:
 	if weapon_held:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
 							" / " + str(weapon_held.get_mag_size())
@@ -144,24 +150,24 @@ func _pick_up_weapon(new_weapon) -> Node3D:
 		# Signal to Debug
 		weapon_picked_up.emit(added_weapon)
 
-		_update_UI()
+		update_UI()
 	return added_weapon
 
 
 func _pick_up_ammo(new_ammo : Node3D) -> void:
 	super(new_ammo)
-	_update_UI()
+	update_UI()
 
 
 func _pick_up_health(new_health : Node3D) -> void:
 	super(new_health)
-	_update_UI()
+	update_UI()
 
 
 func take_damage(damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/3.0)
 	super(damage, shooter)
-	_update_UI()
+	update_UI()
 
 
 func _die() -> void:
@@ -180,7 +186,7 @@ func respawn() -> void:
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_held.reset()
-	_update_UI()
+	update_UI()
 
 
 func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
@@ -197,7 +203,7 @@ func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
 func _switch_weapon(new_weapon) -> void:
 	#if new_weapon != null and !switching_weapons and weapon_held != new_weapon:
 	super(new_weapon)
-	_update_UI()
+	update_UI()
 
 
 func _unequip_weapon(old_weapon) -> void:
