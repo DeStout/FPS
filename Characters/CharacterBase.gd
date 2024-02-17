@@ -67,6 +67,8 @@ func _ready() -> void:
 	#if spawn_weapon > 0:
 		#weapons.append(spawn_weapon)
 	#_switch_weapon(_get_weapon(spawn_weapon))
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 
 
 func _process(_delta) -> void:
@@ -204,7 +206,7 @@ func _die() -> void:
 	await death_sfx.finished
 	
 	# Do this now and in respawn() because Godot has priority issues
-	global_position = current_level.get_nav_point().position
+	global_position = current_level.get_spawn_point().position
 	await get_tree().physics_frame
 	
 	# Signal to PlayersContainer.character_killed
@@ -213,7 +215,7 @@ func _die() -> void:
 
 func respawn() -> void:
 	# Do this now and in _die() because Godot has priority issues
-	global_position = current_level.get_nav_point().position
+	global_position = current_level.get_spawn_point().position
 	await get_tree().physics_frame
 	
 	visible = true
@@ -222,10 +224,12 @@ func respawn() -> void:
 	_disable_collisions(false)
 	#print(name, " Respawned")
 
-	var spawn_weapon = randi_range(0,4)
-	if spawn_weapon > 0:
-		weapons.append(spawn_weapon)
-	_switch_weapon(_get_weapon(spawn_weapon))
+	#var spawn_weapon = randi_range(0,4)
+	#if spawn_weapon > 0:
+		#weapons.append(spawn_weapon)
+	#_switch_weapon(_get_weapon(spawn_weapon))
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 
 
 func set_current_camera(is_current : bool) -> void:
@@ -354,9 +358,9 @@ func _anim_weapon_switch(old_weapon, new_weapon) -> void:
 	return
 
 
-func _unequip_weapon(old_weapon) -> void:
+func _unequip_weapon(_old_weapon) -> void:
 	pass
 
 
-func _equip_weapon(new_weapon) -> void:
+func _equip_weapon(_new_weapon) -> void:
 	pass

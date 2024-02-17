@@ -245,7 +245,7 @@ transform = Transform3D(-2.62268e-07, 0, -1, 0, 1, 0, 1, 0, -2.62268e-07, -5, 0,
 [node name="NavPoint37" type="Marker3D" parent="NavPoints" index="36"]
 transform = Transform3D(-2.62268e-07, 0, -1, 0, 1, 0, 1, 0, -2.62268e-07, -4.76837e-07, 0, -2.6226e-06)
 
-[node name="Rifle1" parent="Pickups" index="0" instance=ExtResource("2_fr25d")]
+[node name="SMG1" parent="Pickups" index="0" instance=ExtResource("2_fr25d")]
 transform = Transform3D(0.927604, 0, -0.373565, 0, 1, 0, 0.373565, 0, 0.927604, 0, 0.25, 0)
 weapon_type = 2
 respawn_time = 45.0
@@ -262,23 +262,23 @@ transform = Transform3D(0.326208, 0, -0.945298, 0, 1, 0, 0.945298, 0, 0.326208, 
 [node name="Pistol4" parent="Pickups" index="4" instance=ExtResource("2_fr25d")]
 transform = Transform3D(-0.941142, 0, -0.338012, 0, 1, 0, 0.338012, 0, -0.941142, 6, 4.25, 0)
 
-[node name="RifleAmmo1" parent="Pickups" index="5" instance=ExtResource("4_cg56f")]
+[node name="Rifle1" parent="Pickups" index="5" instance=ExtResource("2_fr25d")]
+transform = Transform3D(-0.890834, 0, -0.45433, 0, 1, 0, 0.45433, 0, -0.890834, 27, 0.25, -22)
+weapon_type = 3
+
+[node name="Shotgun1" parent="Pickups" index="6" instance=ExtResource("2_fr25d")]
+transform = Transform3D(0.890834, 0, 0.45433, 0, 1, 0, -0.45433, 0, 0.890834, -27, 0.25, 22)
+weapon_type = 4
+
+[node name="RifleAmmo1" parent="Pickups" index="7" instance=ExtResource("4_cg56f")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, -6)
-weapon_type = 2
+weapon_type = 3
 respawn_time = 35.0
 
-[node name="RifleAmmo2" parent="Pickups" index="6" instance=ExtResource("4_cg56f")]
+[node name="ShotgunAmmo1" parent="Pickups" index="8" instance=ExtResource("4_cg56f")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, 6)
-weapon_type = 2
+weapon_type = 4
 respawn_time = 35.0
-
-[node name="PistolAmmo1" parent="Pickups" index="7" instance=ExtResource("4_cg56f")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -27, 0, 22)
-respawn_time = 25.0
-
-[node name="PistolAmmo2" parent="Pickups" index="8" instance=ExtResource("4_cg56f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 0, -22)
-respawn_time = 25.0
 
 [node name="Health1" parent="Pickups" index="9" instance=ExtResource("3_r55p8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0, 3.5)
@@ -296,3 +296,5 @@ health_type = 1
 
 [node name="MusicPlayer" parent="." index="6"]
 autoplay = true
+
+[editable path="Pause/OptionsMenu2D"]

@@ -43,5 +43,6 @@ func get_spawn_point() -> Marker3D:
 	return $Spawns.get_children().pick_random()
 
 
-func get_nav_point() -> Marker3D:
-	return $NavPoints.get_children().pick_random()
+func get_nav_point() -> Node3D:
+	var nav_points : Array = $NavPoints.get_children() + $Pickups.get_children()
+	return nav_points.pick_random()

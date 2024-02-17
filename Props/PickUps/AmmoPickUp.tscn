@@ -9,7 +9,7 @@
 height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hgem"]
-albedo_color = Color(0.333333, 0.196078, 0, 1)
+albedo_color = Color(0.764706, 0.580392, 0.47451, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kaj33"]
 material = SubResource("StandardMaterial3D_2hgem")
@@ -76,11 +76,9 @@ skeleton = NodePath("../Model")
 [node name="Model" parent="." index="2"]
 transform = Transform3D(-1.27055e-21, 6.55671e-08, 1.5, 1.5, -6.55671e-08, 2.86603e-15, 6.55671e-08, 1.5, -6.55671e-08, 0, 0.25, 0)
 
-[node name="Pistol" type="MeshInstance3D" parent="Model" index="0" instance=ExtResource("3_mdfk0")]
+[node name="Pistol" parent="Model" index="0" instance=ExtResource("3_mdfk0")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
-layers = 4
 mesh = SubResource("ArrayMesh_1vcbi")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gpbs7")
 
 [node name="PickUpAudio" parent="." index="3"]

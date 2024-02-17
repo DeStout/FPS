@@ -1,9 +1,9 @@
 extends Control
 
 
-#var is_visible := true
+var debug_visible := true
 
-#var fps_visible := true
+var fps_visible := true
 
 #var enemy_behavior_visible := true
 
@@ -18,41 +18,41 @@ extends Control
 #var player_invincible := false
 #var infinite_ammo := false
 
-#enum Level{LEVEL1, LEVEL2}
-#var level := Level.LEVEL2
-#var level_visible := false
+enum Level{LEVEL1, LEVEL2, LEVEL3}
+var level := Level.LEVEL3
+var level_visible := true
 
 
-#func _ready() -> void:
-	##player = get_tree().current_scene.get_node("Players").player
-	#visible = is_visible
-	#$FPS.visible = fps_visible
+func _ready() -> void:
+	#player = get_tree().current_scene.get_node("Players").player
+	visible = debug_visible
+	$FPS.visible = fps_visible
 
 	#if player:
 		#player.weapon_picked_up.connect(_new_player_weapon)
 
-#	$Mute.visible = mute_visible
-#	_set_mute()
+	#$Mute.visible = mute_visible
+	#_set_mute()
 
-#	$Level.visible = level_visible
-#	$Level.text = "Level: Level2"
+	$Level.visible = level_visible
+	$Level.text = "Level:"
 
-#	$Behaviors.visible = enemy_behavior_visible
-
-
-#func _process(_delta) -> void:
-	#var fps = Performance.get_monitor(Performance.TIME_FPS)
-	#$FPS.text = "FPS: " + str(fps)
+	#$Behaviors.visible = enemy_behavior_visible
 
 
-#func _input(_event) -> void:
+func _process(_delta) -> void:
+	var fps = Performance.get_monitor(Performance.TIME_FPS)
+	$FPS.text = "FPS: " + str(fps)
+
+
+func _input(event) -> void:
 #	if event.is_action_pressed("Kill"):
 #		player.container.remove_player(player)
 #	if event.is_action_pressed("Mute"):
 #		mute_setting = (mute_setting + 1) % 4
 #		_set_mute()
-#	if event.is_action_pressed("Level"):
-#		_switch_level()
+	if event.is_action_pressed("SwitchLevel"):
+		_switch_level()
 
 
 #func _new_player_weapon(new_weapon) -> void:
@@ -97,15 +97,19 @@ extends Control
 #	return label
 #
 #
-#func _switch_level() -> void:
-#	if level == Level.LEVEL1:
-#		level = Level.LEVEL2
-#		get_tree().change_scene_to_file("res://Level2.tscn")
-#		$Level.text = "Level: Level2"
-#	elif level == Level.LEVEL2:
-#		level = Level.LEVEL1
-#		get_tree().change_scene_to_file("res://Level1.tscn")
-#		$Level.text = "Level: Level1"
-#
-#	for child in $Behaviors.get_children():
-#		child.queue_free()
+func _switch_level() -> void:
+	if level == Level.LEVEL1:
+		level = Level.LEVEL2
+		#get_tree().change_scene_to_file("res://Level2.tscn")
+		$Level.text = "Level: Level2"
+	elif level == Level.LEVEL2:
+		level = Level.LEVEL3
+		#get_tree().change_scene_to_file("res://Level1.tscn")
+		$Level.text = "Level: Level3"
+	elif level == Level.LEVEL3:
+		level = Level.LEVEL1
+		#get_tree().change_scene_to_file("res://Level1.tscn")
+		$Level.text = "Level: Level1"
+
+	#for child in $Behaviors.get_children():
+		#child.queue_free()

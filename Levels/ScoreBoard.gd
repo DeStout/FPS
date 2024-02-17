@@ -4,7 +4,7 @@ extends Control
 var characters := {}
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ScoreBoard"):
 		get_parent().visible = true
 	elif Input.is_action_just_released("ScoreBoard"):

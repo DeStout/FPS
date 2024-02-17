@@ -43,20 +43,18 @@ text = "Mute:"
 horizontal_alignment = 2
 
 [node name="Level" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 250.13
-offset_top = 27.0
-offset_right = -1240.87
-offset_bottom = -811.0
+offset_left = 17.0
+offset_top = 69.0
+offset_right = -1474.0
+offset_bottom = -769.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 16
 text = "Level:"
-horizontal_alignment = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Behaviors" type="VBoxContainer" parent="."]

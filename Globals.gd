@@ -10,6 +10,7 @@ var invert_y_axis := false
 var main_menu_ := preload("res://Menus/MainMenu.tscn")
 var level1_ := preload("res://Levels/Level1.tscn")
 var level2_ := preload("res://Levels/Level2.tscn")
+var level3_ := preload("res://Levels/Level3.tscn")
 
 var main_menu : Node3D = main_menu_.instantiate()
 var level : Node3D = null
@@ -25,23 +26,26 @@ const BODY_DMG := 	[25,				# Slapper
 					[25, 15, 8]]		# Rifle
 
 
-#func _ready() -> void:
-	#game.add_child(main_menu)
+func _ready() -> void:
+	game.add_child(main_menu)
 
 
 func start_game() -> void:
 	game.remove_child(main_menu)
-	level = level2_.instantiate()
+	level = level3_.instantiate()
 	game.add_child(level)
 
 
 func switch_levels() -> void:
-	level.queue_free()
-	await level.tree_exited
+	var free_level = level
+	game.remove_child(level)
+	free_level.queue_free()
 	match level.name:
 		"Level1":
 			level = level2_.instantiate()
 		"Level2":
+			level = level3_.instantiate()
+		"Level3":
 			level = level1_.instantiate()
 	game.add_child(level)
 
