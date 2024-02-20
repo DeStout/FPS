@@ -2,7 +2,7 @@ extends Node3D
 
 
 var player_ = preload("res://Characters/Player.tscn")
-var enemy_ = preload("res://Characters/Enemy.tscn")
+var enemy_ = preload("res://Characters/SimpleEnemy.tscn")
 var respawn_timer_ = preload("res://Levels/RespawnTimer.tscn")
 
 var level 

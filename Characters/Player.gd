@@ -11,6 +11,7 @@ signal weapon_picked_up
 
 
 func _ready() -> void:
+	
 	super()
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))

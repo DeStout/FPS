@@ -1,7 +1,7 @@
 extends Control
 
 
-var debug_visible := true
+var debug_visible := false
 
 var fps_visible := true
 
