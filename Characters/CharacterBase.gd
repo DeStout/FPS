@@ -104,29 +104,36 @@ func _shoot() -> void:
 				num_shots = weapon_held.get_burst_num()
 			for shot in range(num_shots):
 				if weapon_held.is_burst_fire():
-					%ShootCast.rotate_x(randf_range(-weapon_held.get_burst_variance(), \
+					%ShootCast.rotate_x(randf_range(-weapon_held.get_burst_variance(),
 													weapon_held.get_burst_variance()))
 					%ShootCast.rotate_z(randf_range(-PI, PI))
 					%ShootCast.force_raycast_update()
 				if %ShootCast.is_colliding():
-					current_level.spawn_shot_trail(nozzle.global_position, \
+					current_level.spawn_shot_trail(nozzle.global_position,
 												%ShootCast.get_collision_point())
 					if %ShootCast.get_collider() is BodySeg:
-						%ShootCast.get_collider().body_seg_shot(weapon_held.get_body_dmg(), self)
+						%ShootCast.get_collider().body_seg_shot(
+												weapon_held.get_body_dmg(), self)
 					elif current_level != null:
-						current_level.spawn_bullet_hole(%ShootCast.get_collision_point(), \
+						current_level.spawn_bullet_hole(%ShootCast.get_collision_point(),
 											%ShootCast.get_collision_normal())
 				else:
 					current_level.spawn_shot_trail(nozzle.global_position, \
 							%ShootCast.to_global(%ShootCast.target_position))
 				%ShootCast.rotation = Vector3(0, 0, 0)
+			
 			# Add recoil
 			var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
-			$AimHelper.rotate_x(deg_to_rad(v_recoil))
-			$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
-											-deg_to_rad(89), deg_to_rad(89))
+			v_recoil = min(deg_to_rad(89), $AimHelper.rotation.x + deg_to_rad(v_recoil))
 			var h_recoil : float = randf_range(-1, 1) * weapon_held.get_h_recoil()
-			rotate_y(deg_to_rad(h_recoil))
+			h_recoil = rotation.y + deg_to_rad(h_recoil)
+			var t_recoil : float = (1.0 / weapon_held.stats.shots_per_second) * .75
+			if weapon_held.stats.weapon_type == Globals.WEAPONS.SHOTGUN:
+				t_recoil = 0.075
+			var tween = get_tree().create_tween()
+			tween.set_parallel()
+			tween.tween_property($AimHelper, "rotation:x", v_recoil, t_recoil)
+			tween.tween_property(self, "rotation:y", h_recoil, t_recoil)
 			$AimHelper.rotation.z = 0
 	elif weapon_held.ammo_in_mag == 0:
 		_reload()
@@ -306,7 +313,8 @@ func _pick_up_ammo(new_pick_up : Node3D) -> void:
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
 		if weapon_for.can_pick_up_ammo():
 			weapon_for.add_ammo(weapon_held.get_mag_size())
-			print(name, " picked up ammo for the ", Globals.WEAPON_NAMES[new_pick_up.weapon_type])
+			#print(name, " picked up ammo for the ", 
+									#Globals.WEAPON_NAMES[new_pick_up.weapon_type])
 			new_pick_up.picked_up()
 
 

@@ -10,6 +10,9 @@ num_enemies = 5
 
 [node name="LevelBase" parent="." index="0" instance=ExtResource("2_v1ojq")]
 
+[node name="Spawns" parent="." index="3"]
+visible = true
+
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, -10, 5, -31)
 
@@ -86,10 +89,10 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(0.707477, 0, 0.706736, 0, 1, 0, -0.706736, 0, 0.707477, 26.75, 5, 9.75)
 
 [node name="Marker3D28" type="Marker3D" parent="Spawns" index="25"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 15, 5, -8)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 15, 0, -8)
 
 [node name="Marker3D29" type="Marker3D" parent="Spawns" index="26"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -15, 5, -8)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -15, 0, -8)
 
 [node name="Marker3D30" type="Marker3D" parent="Spawns" index="27"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -27, 5, -12)
