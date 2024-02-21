@@ -28,10 +28,18 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:
 	bullet_hole.project_to(normal)
 
 
-func spawn_damage_label(pos : Vector3, dmg : String) -> void:
+func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> void:
 	var damage_label = damage_label_.instantiate()
 	$FX.add_child(damage_label)
-	damage_label.set_txt_and_pos(pos, dmg)
+	var color : Color
+	match body_seg_type:
+		Globals.BODY_SEGS.HEAD:
+			color = Color.GOLD
+		Globals.BODY_SEGS.TORSO:
+			color = Color.ORANGE_RED
+		Globals.BODY_SEGS.LIMB:
+			color = Color.BROWN
+	damage_label.set_txt_pos_color(pos, dmg, color)
 
 
 func spawn_rag_doll(dead_skel, dead_trans) -> void:

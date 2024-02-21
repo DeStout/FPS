@@ -14,15 +14,16 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	# Position change broken into individual axes because Label is top level
-	position.x = start_pos.x + (ease($Despawn.wait_time - $Despawn.time_left, easing) * \
-					rand_vel * dir_vector.x)
-	position.y = start_pos.y + ease($Despawn.wait_time - $Despawn.time_left, easing) * \
-					rand_vel
-	position.z = start_pos.z + (ease($Despawn.wait_time - $Despawn.time_left, easing) * \
-					rand_vel * dir_vector.z)
+	position.x = start_pos.x + (ease($Despawn.wait_time - $Despawn.time_left, easing) \
+					* rand_vel * dir_vector.x * 0.333)
+	position.y = start_pos.y + ease($Despawn.wait_time - $Despawn.time_left, easing) \
+					 * rand_vel
+	position.z = start_pos.z + (ease($Despawn.wait_time - $Despawn.time_left, easing) \
+					* rand_vel * dir_vector.z * 0.333)
 
 
-func set_txt_and_pos(pos : Vector3, dmg_txt : String) -> void:
+func set_txt_pos_color(pos : Vector3, dmg_txt : String, color : Color) -> void:
 	global_position = pos
 	text = dmg_txt
 	start_pos = position
+	modulate = color

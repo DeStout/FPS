@@ -3,7 +3,8 @@ extends RigidBody3D
 
 @onready var skeleton := $Skeleton3D
 var fadeout := false
-var fade_time := 2.0
+@export var vis_time := 10.0
+@export var fade_time := 0.5
 @onready var surf_mat : BaseMaterial3D = $Skeleton3D/Body.get_surface_override_material(0)
 
 
@@ -25,6 +26,6 @@ func match_pose_transform(puppet_skel, puppet_trans) -> void:
 	skeleton.physical_bones_start_simulation()
 	
 	var tween = create_tween()
-	await tween.tween_interval(10.0).finished
+	await tween.tween_interval(vis_time).finished
 	surf_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	fadeout = true

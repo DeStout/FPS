@@ -163,11 +163,11 @@ func _reload() -> void:
 
 
 # Signaled from BodySeg
-func take_damage(damage, shooter) -> void:
+func take_damage(body_seg_type, damage, shooter) -> void:
 	last_shot_by = shooter
 	
 	if current_level != null:
-		current_level.spawn_damage_label($DmgLbl.global_position, str(damage))
+		current_level.spawn_damage_label(body_seg_type, $DmgLbl.global_position, str(damage))
 
 	if armor > 0:
 		var armor_dmg : int = damage / 2
