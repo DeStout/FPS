@@ -21,7 +21,6 @@ func match_pose_transform(puppet_skel, puppet_trans) -> void:
 		skeleton.set_bone_pose_position(bone, puppet_skel.get_bone_pose_position(bone))
 		skeleton.set_bone_pose_rotation(bone, puppet_skel.get_bone_pose_rotation(bone))
 		skeleton.set_bone_pose_scale(bone, puppet_skel.get_bone_pose_scale(bone))
-	#await get_tree().physics_frame
 	
 	skeleton.physical_bones_start_simulation()
 	

@@ -152,7 +152,8 @@ func _slap() -> void:
 	for character in slappable:
 		if character != self:
 			#print(name, " slapped ", character.name)
-			character.take_damage(weapon_held.stats.body_dmg[0], self)
+			character.take_damage(Globals.BODY_SEGS.TORSO, 
+											weapon_held.stats.body_dmg[0], self)
 			$Slapped.play()
 
 

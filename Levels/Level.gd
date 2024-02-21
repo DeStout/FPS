@@ -35,9 +35,7 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 	match body_seg_type:
 		Globals.BODY_SEGS.HEAD:
 			color = Color.GOLD
-		Globals.BODY_SEGS.TORSO:
-			color = Color.ORANGE_RED
-		Globals.BODY_SEGS.LIMB:
+		_:
 			color = Color.BROWN
 	damage_label.set_txt_pos_color(pos, dmg, color)
 

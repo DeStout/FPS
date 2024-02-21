@@ -546,12 +546,12 @@ skin = SubResource("Skin_y3cyu")
 surface_material_override/0 = SubResource("StandardMaterial3D_ldlm0")
 
 [node name="Head" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.999983, -0.00568831, 0.00080014, 0.00572053, 0.997213, -0.0743871, -0.00040843, 0.0743921, 0.997229, -0.000933079, 1.57643, -0.0395254)
+transform = Transform3D(0.999983, -0.00568831, 0.00080014, 0.00572053, 0.997213, -0.0743871, -0.00040843, 0.0743913, 0.997229, -0.000933079, 1.57643, -0.0395254)
 visible = false
 collision_layer = 32
 collision_mask = 33
 joint_type = 2
-body_offset = Transform3D(-1, 1.36258e-05, 0, 7.41417e-06, 0.971211, -0.238221, 3.18545e-05, -0.238222, -0.971211, 0, 0, 0)
+body_offset = Transform3D(-1, 1.36264e-05, 0, 7.41417e-06, 0.971211, -0.238221, 3.18545e-05, -0.238222, -0.971211, 0, 0, 0)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -568,14 +568,14 @@ transform = Transform3D(1, 7.81597e-13, -1.50635e-12, -9.59682e-38, 1, -3.9443e-
 shape = SubResource("SphereShape3D_0e6sm")
 
 [node name="Neck" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(-0.995256, 0.000462235, 0.00350804, -0.00349795, -0.210502, -0.977589, 0.000278848, -0.977595, 0.210502, -0.000809328, 1.54506, -0.0318836)
+transform = Transform3D(-0.995277, 0.000460869, 0.00349967, -0.00349795, -0.210501, -0.977602, 0.000278837, -0.977603, 0.210503, -0.000809312, 1.54507, -0.0318801)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09847e-05, 0.000867617, 0.0319125)
-body_offset = Transform3D(0.995263, 9.13627e-07, 6.56401e-08, 1.32023e-05, 6.10948e-07, -1, 2.77418e-06, 1, 5.21541e-07, -1.09356e-05, 0.0319126, -0.000867635)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0766e-05, 0.000873124, 0.0319218)
+body_offset = Transform3D(0.995283, 2.27627e-06, 8.47646e-06, 1.32764e-05, 2.66731e-06, -1.00001, 2.77566e-06, 1.00001, 2.38419e-06, -1.09877e-05, 0.0319222, -0.000873208)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -592,15 +592,15 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CylinderShape3D_dm668")
 
 [node name="Chest" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(-1.00002, 0.000649147, -0.00178659, -0.00189448, -0.264047, 0.967341, 0.000147013, 0.964608, 0.264709, 0.00096757, 1.32378, -0.0491256)
+transform = Transform3D(-1.00002, 0.000649147, -0.00178659, -0.00189448, -0.264048, 0.967341, 0.000147013, 0.964608, 0.264709, 0.000969813, 1.32378, -0.0491254)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, -1.73472e-18, -1.16415e-10, 0, 1, -1.49012e-08, 1.16415e-10, 1.49012e-08, 1, 0.00131794, 0.013363, -0.191272)
+joint_offset = Transform3D(1, -1.73472e-18, -1.16415e-10, 0, 1, -1.49012e-08, 1.16415e-10, 1.49012e-08, 1, 0.00132019, 0.0133627, -0.191272)
 joint_rotation = Vector3(1.49012e-08, -1.16415e-10, 0)
-body_offset = Transform3D(0.999999, 0.000125953, 0.00684048, -0.00680006, -0.072798, 1.00023, 0.00062971, -0.997442, -0.0729152, -1.12336e-05, 0.192298, -0.000618637)
+body_offset = Transform3D(0.999999, 0.000125953, 0.00684048, -0.00680006, -0.0727981, 1.00023, 0.00062971, -0.997442, -0.0729152, -1.34767e-05, 0.192298, -0.000618935)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -617,13 +617,13 @@ transform = Transform3D(0.999985, -3.56658e-08, 7.07701e-12, 1.76959e-08, -3.755
 shape = SubResource("BoxShape3D_kxlp2")
 
 [node name="Stomach" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(-1, -3.81889e-07, 1.16147e-09, 3.31089e-08, -0.0947536, -0.995501, 3.87845e-07, -0.995501, 0.0947536, -9.39746e-10, 1.01614, -0.075532)
+transform = Transform3D(-1, -3.89359e-07, 1.16147e-09, 3.31089e-08, -0.0947536, -0.995501, 3.87845e-07, -0.995501, 0.0947536, -9.39746e-10, 1.01614, -0.075532)
 visible = false
 collision_layer = 32
 input_ray_pickable = false
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40813e-11, -9.98204e-08, 0.119622)
-body_offset = Transform3D(1, -7.34528e-09, 2.62762e-09, -6.96332e-13, 8.34465e-07, -1, -3.18323e-12, 1, 8.34465e-07, -3.98403e-10, 0.119622, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40821e-11, -9.98204e-08, 0.119622)
+body_offset = Transform3D(1, 1.2497e-10, 2.62762e-09, -6.96332e-13, 8.34465e-07, -1, -3.18323e-12, 1, 8.34465e-07, -3.98403e-10, 0.119622, 0)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -698,14 +698,14 @@ transform = Transform3D(1, -3.55271e-15, 0, 0, -2.98023e-08, 1, 1.42109e-14, -1,
 shape = SubResource("CylinderShape3D_gbe3w")
 
 [node name="UpperArm_L" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.976446, 0.0894196, 0.196365, -0.1589, -0.317665, 0.934793, 0.14596, -0.943978, -0.29598, -0.215934, 1.29881, -0.00233711)
+transform = Transform3D(0.976446, 0.0894196, 0.196365, -0.1589, -0.317665, 0.934793, 0.14596, -0.943978, -0.29598, -0.215934, 1.29881, -0.00233624)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.34074e-06, 1.7967e-06, 0.104334)
-body_offset = Transform3D(1, 7.01845e-06, -8.60542e-07, -7.07805e-08, -6.49691e-06, -1, -7.45058e-08, 1, 7.7486e-07, 1.43051e-06, 0.104334, -1.87755e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.33764e-06, 3.16761e-06, 0.104332)
+body_offset = Transform3D(1, 7.01845e-06, -8.90344e-07, -7.07805e-08, -6.49691e-06, -1, -7.45058e-08, 1, 7.7486e-07, 1.43051e-06, 0.104332, -3.24845e-06)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -722,14 +722,14 @@ transform = Transform3D(1, 4.47035e-08, 1.49012e-08, 7.45058e-08, 2.98023e-08, 1
 shape = SubResource("CylinderShape3D_vyy8q")
 
 [node name="Forearm_L" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.0134813, 0.215822, -0.976158, 0.981162, 0.184707, 0.0546361, 0.192533, -0.955258, -0.210065, -0.237816, 1.10056, 0.00877565)
+transform = Transform3D(0.0134813, 0.215528, -0.976155, 0.981162, 0.184557, 0.0546355, 0.192533, -0.954091, -0.210061, -0.237816, 1.10056, 0.00877564)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102648, -2.47212e-06, -8.57148e-06)
-body_offset = Transform3D(-7.59959e-07, -8.34167e-05, -0.999998, -0.999965, -0.00020352, -1.70618e-06, 1.42753e-05, 0.996601, -1.3113e-06, -8.49366e-06, 0.102644, 9.98378e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102648, -2.49013e-06, -8.57142e-06)
+body_offset = Transform3D(-7.59959e-07, -0.000117317, -0.999995, -0.999965, -0.000277326, -2.04891e-06, 1.42753e-05, 0.99539, -4.99189e-06, -8.49366e-06, 0.102644, 1.01328e-06)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -747,14 +747,14 @@ transform = Transform3D(0, -1, -2.23517e-08, 1, -2.98023e-08, 4.47035e-08, -7.45
 shape = SubResource("CylinderShape3D_badyx")
 
 [node name="Hand_L" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.893867, -0.447661, -0.0245539, 0.103661, 0.153064, 0.982763, -0.436156, -0.881003, 0.183221, -0.238643, 0.977888, -0.0150802)
+transform = Transform3D(0.89387, -0.447661, -0.0245537, 0.10366, 0.153063, 0.982763, -0.436156, -0.881003, 0.183221, -0.238643, 0.977888, -0.0150802)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80953e-08, -1.02593e-06, 0.0223349)
-body_offset = Transform3D(0.999988, -2.83122e-06, 2.15322e-06, -1.13994e-05, 1.90735e-06, -0.999997, -2.53916e-05, 0.999998, 5.66244e-07, 0, 0.0223348, 1.01328e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12574e-08, -1.0246e-06, 0.0223349)
+body_offset = Transform3D(0.999991, -3.18885e-06, 2.29478e-06, -1.01328e-05, 2.39909e-06, -0.999997, -2.67923e-05, 0.999998, 5.06639e-07, 0, 0.0223348, 1.01328e-06)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -844,14 +844,14 @@ transform = Transform3D(0.89126, 1.13621e-07, -0.453493, 0.453493, -8.9407e-08, 
 shape = SubResource("BoxShape3D_3282e")
 
 [node name="Thigh_L" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.496371, -0.866661, 0.050364, -0.127483, -0.0153855, 0.991717, -0.858699, -0.4987, -0.118117, -0.0957318, 0.671218, -0.0345538)
+transform = Transform3D(0.496371, -0.866661, 0.0503635, -0.127483, -0.0153855, 0.991717, -0.858699, -0.4987, -0.118116, -0.0957318, 0.671218, -0.0345538)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96067e-07, -1.10317e-06, 0.210091)
-body_offset = Transform3D(1, 2.5928e-06, -1.81794e-06, -5.58794e-07, 3.34904e-06, -0.999995, 6.34789e-06, 1.00002, 1.52737e-06, 6.78003e-07, 0.21009, 7.82311e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57944e-07, -1.13958e-06, 0.210091)
+body_offset = Transform3D(1, 2.5928e-06, -2.51085e-06, -5.58794e-07, 3.34904e-06, -0.999995, 6.34789e-06, 1.00002, 1.6652e-06, 6.85453e-07, 0.21009, 7.89762e-07)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -892,14 +892,14 @@ transform = Transform3D(1, -1.49012e-08, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_glqyj")
 
 [node name="Foot_L" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.245933, -0.966602, 0.0720742, 0.853542, 0.251205, 0.456463, -0.459325, -0.0507466, 0.886817, -0.126677, 0.0679545, 0.0381241)
+transform = Transform3D(0.245933, -0.966602, 0.0720741, 0.853542, 0.251204, 0.456462, -0.459325, -0.0507467, 0.886816, -0.126677, 0.0679544, 0.038124)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -9.35874e-06, 2.61364e-05, 0.100524)
-body_offset = Transform3D(0.999998, 1.34856e-06, -1.40071e-06, -1.19209e-07, 4.24311e-06, -0.999998, 2.05822e-06, 0.999999, -1.45286e-07, 9.49949e-06, 0.100524, -2.61217e-05)
+joint_offset = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -9.35388e-06, 2.61666e-05, 0.100524)
+body_offset = Transform3D(0.999998, 1.1418e-06, -1.43051e-06, -1.19209e-07, 4.43682e-06, -0.999998, 2.05822e-06, 0.999999, -1.49012e-07, 9.49763e-06, 0.100524, -2.61515e-05)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -920,14 +920,14 @@ transform = Transform3D(1, 1.49012e-08, 2.98023e-08, -1.02445e-07, 1, -2.98023e-
 shape = SubResource("SphereShape3D_8aqie")
 
 [node name="Thigh_R" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.486639, 0.871609, -0.0589891, -0.284969, 0.222207, 0.932443, 0.825818, -0.436945, 0.356525, 0.0975408, 0.683681, -0.134265)
+transform = Transform3D(0.486639, 0.871609, -0.0589892, -0.284969, 0.222207, 0.932442, 0.825818, -0.436945, 0.356527, 0.0975409, 0.683681, -0.134265)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33106e-07, 2.06349e-06, 0.21008)
-body_offset = Transform3D(1, 1.49012e-07, 1.3113e-06, 2.38419e-07, 7.45058e-07, -1.00002, -3.27826e-07, 1, -1.59442e-06, 3.57628e-07, 0.210084, -1.72853e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01978e-06, 2.23404e-06, 0.21008)
+body_offset = Transform3D(1, 1.49012e-07, 3.01003e-06, 2.38419e-07, 7.45058e-07, -1.00002, -3.27826e-07, 1, -2.5481e-06, 3.8743e-07, 0.210084, -1.69873e-06)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -944,13 +944,13 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CylinderShape3D_sdlm8")
 
 [node name="Shin_R" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.346427, 0.0253888, 0.939655, 0.0823127, -0.996718, -0.00269548, 0.94637, 0.0773866, -0.342882, 0.114698, 0.300817, -0.194644)
+transform = Transform3D(0.346427, 0.0253888, 0.939655, 0.0823127, -0.996718, -0.0026955, 0.94637, 0.0773866, -0.342882, 0.114698, 0.300817, -0.194644)
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 3
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14751e-07, -0.187599, -6.34035e-07)
-body_offset = Transform3D(1.00005, -6.69062e-06, 0.148527, -4.03076e-06, 1.00004, 9.73046e-06, -0.149344, 1.63913e-07, 0.989174, -9.46224e-07, 0.187607, 6.25849e-07)
+body_offset = Transform3D(1.00005, -6.69062e-06, 0.148527, -4.04567e-06, 1.00004, 9.74163e-06, -0.149344, 1.63913e-07, 0.989174, -9.46224e-07, 0.187607, 6.25849e-07)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
@@ -968,14 +968,14 @@ transform = Transform3D(0.974315, 0, 0.225189, -1.49012e-08, 1, 4.5402e-09, -0.2
 shape = SubResource("CylinderShape3D_tcnba")
 
 [node name="Foot_R" type="PhysicalBone3D" parent="Skeleton3D"]
-transform = Transform3D(0.245937, 0.966601, -0.0720771, -0.853539, 0.251208, 0.45646, 0.459324, -0.0507377, 0.88681, 0.126713, 0.0679716, -0.269272)
+transform = Transform3D(0.245936, 0.966601, -0.0720764, -0.853539, 0.251208, 0.456459, 0.459324, -0.0507379, 0.88681, 0.126713, 0.0679718, -0.269272)
 visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28977e-05, -1.01743e-05, 0.100518)
-body_offset = Transform3D(0.999997, 3.03984e-06, 1.54972e-06, 1.01328e-06, -1.03936e-06, -0.999992, -1.53296e-06, 0.999999, 1.00583e-06, -1.30534e-05, 0.100517, 1.00732e-05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28854e-05, -1.03086e-05, 0.100518)
+body_offset = Transform3D(0.999996, 3.03425e-06, 2.26498e-06, 1.46031e-06, -7.7486e-07, -0.999991, -2.45869e-06, 0.999999, 1.45286e-06, -1.3113e-05, 0.100517, 1.01626e-05)
 mass = 5.0
 friction = 0.9
 linear_damp = 1.0
