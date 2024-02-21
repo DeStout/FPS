@@ -1,7 +1,8 @@
 extends Node3D
 
 
-var shot_trail_ = preload("res://Props/ShotTrail.tscn")
+var rag_doll_ := preload("res://Characters/RagDoll.tscn")
+var shot_trail_ := preload("res://Props/ShotTrail.tscn")
 var bullet_hole_ := preload("res://Props/BulletHole.tscn")
 var damage_label_ := preload("res://Characters/DamageLabel.tscn")
 var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
@@ -31,6 +32,12 @@ func spawn_damage_label(pos : Vector3, dmg : String) -> void:
 	var damage_label = damage_label_.instantiate()
 	$FX.add_child(damage_label)
 	damage_label.set_txt_and_pos(pos, dmg)
+
+
+func spawn_rag_doll(dead_skel, dead_trans) -> void:
+	var rag_doll = rag_doll_.instantiate()
+	$FX.add_child(rag_doll)
+	rag_doll.match_pose_transform(dead_skel, dead_trans)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

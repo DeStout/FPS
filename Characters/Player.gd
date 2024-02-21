@@ -5,10 +5,6 @@ signal weapon_picked_up
 
 @onready var fp_weapon : Node3D = $AimHelper/FPWeapons/Slapper
 
-#const MOUSE_HORZ_SENSITIVITY := -0.002
-#const MOUSE_VERT_SENSITIVITY := -0.002
-#const LOOK_SENSITIVITY := 0.05
-
 
 func _ready() -> void:
 	

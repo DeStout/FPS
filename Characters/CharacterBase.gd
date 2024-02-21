@@ -22,7 +22,8 @@ var health := 100 : set = _set_health
 var armor := 0
 var last_shot_by : CharacterBase = null
 
-# Body segments
+# Body segments / Skeleton
+@onready var skeleton := $Puppet/Skeleton3D
 const BodySeg := preload("res://Characters/BodySeg.gd")
 @onready var body_segs : Array = [$Puppet/Skeleton3D/Head/HeadArea,
 						$Puppet/Skeleton3D/Neck/NeckArea,
@@ -191,7 +192,9 @@ func _set_health(new_health) -> void:
 
 
 func _die() -> void:
+	# Signal to PlayerContainer.add_to_score_board
 	add_score.emit(self, last_shot_by)
+	current_level.spawn_rag_doll(skeleton, transform)
 	
 	visible = false
 	_disable_collisions(true)

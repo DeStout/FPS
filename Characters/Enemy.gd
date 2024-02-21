@@ -22,6 +22,9 @@ const AIM_SPEED := 8.0
 func new_name(new_name_ : String) -> void:
 	name = new_name_
 	$NameLabel.text = name
+	$NameLabel.set_layer_mask_value(1, false)
+	$NameLabel.set_layer_mask_value(5, true)
+	
 	
 	
 func _ready() -> void:

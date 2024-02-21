@@ -249,7 +249,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_ljked")
 
 [node name="Collision" type="StaticBody3D" parent="."]
-collision_mask = 18
+collision_mask = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
 shape = SubResource("ConcavePolygonShape3D_irrpg")

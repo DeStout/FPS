@@ -164,11 +164,17 @@ Weapon5={
 3d_render/layer_2="Bodies"
 3d_render/layer_3="Guns"
 3d_render/layer_4="FPGuns"
+3d_render/layer_5="Names"
 3d_physics/layer_1="Level"
 3d_physics/layer_2="Characters"
 3d_physics/layer_3="PlayerBody"
 3d_physics/layer_4="EnemyBody"
 3d_physics/layer_5="PicksUps"
+3d_physics/layer_6="Ragdoll"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
 
 [rendering]
 

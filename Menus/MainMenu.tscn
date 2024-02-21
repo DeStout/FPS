@@ -55,7 +55,7 @@ ao_enabled = true
 ao_light_affect = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgnif"]
-size = Vector3(1, 0.667, 0)
+size = Vector3(1, 0.667, 0.001)
 
 [sub_resource type="QuadMesh" id="QuadMesh_teltm"]
 size = Vector2(1, 0.667)
@@ -119,7 +119,7 @@ shape = SubResource("CylinderShape3D_xkhuc")
 disabled = true
 
 [node name="Model" parent="World/WeaponPickUp" index="1"]
-transform = Transform3D(0.81059, -0.814554, 1.62442, 0.942943, 1.71969, 0.391842, -1.5563, 0.607018, 1.08105, 0, 0.244229, 0)
+transform = Transform3D(-1.66208, 1.00795, -0.424101, 0.942943, 1.71969, 0.391842, 0.562122, 0.125686, -1.90441, 0, 0.244229, 0)
 
 [node name="SMG" parent="World/WeaponPickUp/Model" index="0"]
 layers = 4

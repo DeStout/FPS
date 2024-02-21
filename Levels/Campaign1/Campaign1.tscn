@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://c43jgpwtg2rkl"]
+[gd_scene load_steps=22 format=3 uid="uid://c43jgpwtg2rkl"]
 
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Levels/Campaign1/Campaign1_tex_7.png" id="1_8hk84"]
+[ext_resource type="PackedScene" uid="uid://clfqcxbkg45pd" path="res://Characters/PuppetToRagTest.tscn" id="2_0lmar"]
 [ext_resource type="PackedScene" uid="uid://bjvof25uwl8sb" path="res://Characters/Player.tscn" id="2_cqxx7"]
 [ext_resource type="Texture2D" uid="uid://d04uefk603may" path="res://Levels/Campaign1/Campaign1_tex_7_1.png" id="2_o8ivp"]
 [ext_resource type="Script" path="res://Levels/Pause.gd" id="4_a6f8h"]
@@ -157,7 +158,10 @@ directional_shadow_max_distance = 1.0
 [node name="Players" type="Node3D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("2_cqxx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.8892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472707, 0.0397137, 12.861)
+
+[node name="Puppet" parent="Players" instance=ExtResource("2_0lmar")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 6.5)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_wob6y")
@@ -168,6 +172,7 @@ mesh = SubResource("ArrayMesh_gco7v")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor"]
+collision_mask = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6j7rs")
@@ -177,6 +182,7 @@ mesh = SubResource("ArrayMesh_pibc5")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Walls"]
+collision_mask = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6sgko")
@@ -186,6 +192,7 @@ mesh = SubResource("ArrayMesh_nkvsk")
 skeleton = NodePath("")
 
 [node name="Collision" type="StaticBody3D" parent="NavigationRegion3D/Stairs"]
+collision_mask = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Stairs/Collision"]
 shape = SubResource("ConcavePolygonShape3D_jj1q3")
