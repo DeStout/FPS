@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm4fw4cn6xt2m"
-path.s3tc="res://.godot/imported/Campaign1_tex_7.png-912f5dfcff7d35eb9fc7f64e33f8a695.s3tc.ctex"
+uid="uid://dhix4objgyydo"
+path.s3tc="res://.godot/imported/Level3_tex_1.png-0855bbd12606b8b34782cdf11d121ccb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Levels/Campaign1/Campaign1_tex_7.png"
-dest_files=["res://.godot/imported/Campaign1_tex_7.png-912f5dfcff7d35eb9fc7f64e33f8a695.s3tc.ctex"]
+source_file="res://Levels/Multiplayer/Level3_tex_1.png"
+dest_files=["res://.godot/imported/Level3_tex_1.png-0855bbd12606b8b34782cdf11d121ccb.s3tc.ctex"]
 
 [params]
 

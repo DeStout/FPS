@@ -19,7 +19,12 @@ func _ready() -> void:
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 	#_equip_weapon($Weapons/Slapper)
 	update_UI()
-	
+
+
+func _process(delta: float) -> void:
+	super(delta)
+	_fade_dmg(delta)
+
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -164,7 +169,34 @@ func _pick_up_health(new_health : Node3D) -> void:
 func take_damage(body_seg_type : int, damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/3.0)
 	super(body_seg_type, damage, shooter)
+	_show_damage(shooter)
 	update_UI()
+
+
+func _show_damage(shooter : CharacterBase) -> void:
+	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
+								to_local(shooter.global_position).z).normalized()
+	dmg_dir.y = -dmg_dir.y
+	
+	if dmg_dir.y > 0:
+		$CanvasLayer/UI/DMG_Up.modulate.a = dmg_dir.y
+	else:
+		$CanvasLayer/UI/DMG_Down.modulate.a = abs(dmg_dir.y)
+	if dmg_dir.x > 0:
+		$CanvasLayer/UI/DMG_Right.modulate.a = dmg_dir.x
+	else:
+		$CanvasLayer/UI/DMG_Left.modulate.a = abs(dmg_dir.x)
+
+
+func _fade_dmg(delta) -> void:
+	if $CanvasLayer/UI/DMG_Up.modulate.a > 0:
+		$CanvasLayer/UI/DMG_Up.modulate.a -= delta
+	if $CanvasLayer/UI/DMG_Left.modulate.a > 0:
+		$CanvasLayer/UI/DMG_Left.modulate.a -= delta
+	if $CanvasLayer/UI/DMG_Down.modulate.a > 0:
+		$CanvasLayer/UI/DMG_Down.modulate.a -= delta
+	if $CanvasLayer/UI/DMG_Right.modulate.a > 0:
+		$CanvasLayer/UI/DMG_Right.modulate.a -= delta
 
 
 func _die() -> void:

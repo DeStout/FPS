@@ -41,8 +41,9 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	var fps = Performance.get_monitor(Performance.TIME_FPS)
-	$FPS.text = "FPS: " + str(fps)
+	$FPS.text = "FPS: " + str(Performance.get_monitor(Performance.TIME_FPS))
+	$Objects.text = "Objects: " + \
+					str(Performance.get_monitor(Performance.OBJECT_NODE_COUNT))
 
 
 func _input(event) -> void:

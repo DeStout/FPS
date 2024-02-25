@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bc3s64pryrj37"]
 
-[ext_resource type="LightmapGIData" uid="uid://b2mag5g0cqwmx" path="res://Levels/Level3.lmbake" id="1_4a6g2"]
+[ext_resource type="LightmapGIData" uid="uid://b2mag5g0cqwmx" path="res://Levels/Multiplayer/Level3.lmbake" id="1_4a6g2"]
 
 [sub_resource type="Environment" id="Environment_cnod1"]
 ambient_light_color = Color(1, 0.827451, 0.862745, 1)

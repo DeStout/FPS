@@ -172,6 +172,11 @@ Weapon5={
 3d_physics/layer_5="PicksUps"
 3d_physics/layer_6="Ragdoll"
 
+[limbo_ai]
+
+behavior_tree/behavior_tree_default_dir="res://Characters/AI/Trees"
+behavior_tree/user_task_dir_1="res://Characters/AI/Tasks"
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"

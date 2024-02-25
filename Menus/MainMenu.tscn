@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dgtm2531pd3e2"]
 
 [ext_resource type="Script" path="res://Menus/CameraCast.gd" id="1_8asdj"]
-[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Level2Base.tscn" id="1_uajbf"]
+[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Multiplayer/Level2Base.tscn" id="1_uajbf"]
 [ext_resource type="PackedScene" uid="uid://d0g1to2wstnia" path="res://Menus/MainMenu2D.tscn" id="2_5g8u8"]
 [ext_resource type="Script" path="res://Menus/CamArm.gd" id="3_2n8o8"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_uvlh7"]

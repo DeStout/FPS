@@ -8,11 +8,11 @@ var controller_sensitivity := 0.05
 var invert_y_axis := false
 
 var main_menu_ := preload("res://Menus/MainMenu.tscn")
-var level1_ := preload("res://Levels/Level1.tscn")
-var level2_ := preload("res://Levels/Level2.tscn")
-var level3_ := preload("res://Levels/Level3.tscn")
+var level1_ := preload("res://Levels/Multiplayer/Level1.tscn")
+var level2_ := preload("res://Levels/Multiplayer/Level2.tscn")
+var level3_ := preload("res://Levels/Multiplayer/Level3.tscn")
 
-var main_menu : Node3D = main_menu_.instantiate()
+@onready var main_menu : Node3D = game.get_node("MainMenu")
 var level : Node3D = null
 
 enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN}
@@ -24,10 +24,6 @@ enum BODY_SEGS {HEAD, TORSO, LIMB}
 const BODY_DMG := 	[25,				# Slapper
 					[22, 12, 5],		# Pistol
 					[25, 15, 8]]		# Rifle
-
-
-func _ready() -> void:
-	game.add_child(main_menu)
 
 
 func start_game() -> void:
@@ -47,13 +43,18 @@ func switch_levels() -> void:
 			level = level3_.instantiate()
 		"Level3":
 			level = level1_.instantiate()
+		_:
+			assert(false, "Can't switch from this level")
 	game.add_child(level)
 
 
 func quit_game() -> void:
-	level.queue_free()
-	level = null
-	game.add_child(main_menu)
+	if main_menu:
+		level.queue_free()
+		level = null
+		game.add_child(main_menu)
+	else:
+		get_tree().quit()
 
 
 func invert_y_to_int() -> int:

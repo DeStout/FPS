@@ -1,4 +1,5 @@
 extends Node3D
+class_name CampaignLevel
 
 
 var rag_doll_ := preload("res://Characters/RagDoll.tscn")
@@ -10,9 +11,8 @@ var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 @export var num_enemies := 0
 
 
-func _ready():
-	$Players.level = self
-	$Players.set_up()
+func _ready() -> void:
+	Globals.level = self
 
 
 func spawn_shot_trail(nozzle_point, collision_point) -> void:
@@ -53,7 +53,7 @@ func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> vo
 
 
 func get_spawn_point() -> Marker3D:
-	return $Spawns.get_children().pick_random()
+	return Marker3D.new()
 
 
 func get_nav_point() -> Node3D:

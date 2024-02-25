@@ -12,8 +12,8 @@ burst_variance = 0.06
 shots_per_second = 2.25
 max_ammo = 40
 mag_size = 10
-v_recoil = 16.0
-h_recoil = 5.0
+v_recoil = 10.0
+h_recoil = 4.0
 body_dmg = {
 0: 17,
 1: 9,

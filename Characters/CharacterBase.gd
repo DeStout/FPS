@@ -50,6 +50,9 @@ var nozzle : Node3D = null
 var trigger_pulled := false
 var default_shot_target := Vector3(0, 0, -99)
 var switching_weapons := false
+var v_recoil := 0.0
+var h_recoil := 0.0
+var t_recoil := 0.0
 
 #Animation
 @onready var anim_tree = $Puppet/AnimationTree
@@ -72,7 +75,8 @@ func _ready() -> void:
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
+	_apply_recoil(delta)
 	if trigger_pulled and weapon_held:
 		_shoot()
 
@@ -123,24 +127,32 @@ func _shoot() -> void:
 							%ShootCast.to_global(%ShootCast.target_position))
 				%ShootCast.rotation = Vector3(0, 0, 0)
 			
-			# Add recoil
-			var v_recoil : float = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
-			v_recoil = min(deg_to_rad(89), $AimHelper.rotation.x + deg_to_rad(v_recoil))
-			var h_recoil : float = randf_range(-1, 1) * weapon_held.get_h_recoil()
-			h_recoil = rotation.y + deg_to_rad(h_recoil)
-			var t_recoil : float = (1.0 / weapon_held.stats.shots_per_second) * .75
+			# set recoil
+			v_recoil = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
+			h_recoil = randf_range(-1, 1) * weapon_held.get_h_recoil()
+			t_recoil = (1.0 / weapon_held.stats.shots_per_second) * .75
 			if weapon_held.stats.weapon_type == Globals.WEAPONS.SHOTGUN:
 				t_recoil = 0.075
-			var tween = get_tree().create_tween()
-			tween.set_parallel()
-			tween.tween_property($AimHelper, "rotation:x", v_recoil, t_recoil)
-			tween.tween_property(self, "rotation:y", h_recoil, t_recoil)
-			$AimHelper.rotation.z = 0
+			v_recoil = deg_to_rad(v_recoil / weapon_held.stats.shots_per_second)
+			h_recoil = deg_to_rad(h_recoil / weapon_held.stats.shots_per_second)
+			
 	elif weapon_held.ammo_in_mag == 0:
 		_reload()
 
 	if !weapon_held.is_automatic():
 		trigger_pulled = false
+
+
+func _apply_recoil(delta) -> void:
+	if t_recoil > 0:
+		rotation.y += h_recoil
+		$AimHelper.rotation.x += v_recoil
+		$AimHelper.rotation.x = min($AimHelper.rotation.x, deg_to_rad(89))
+		t_recoil -= delta
+	else:
+		v_recoil = 0.0
+		h_recoil = 0.0
+		t_recoil = 0.0
 
 
 func _swing() -> void:
