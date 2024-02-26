@@ -252,6 +252,7 @@ func respawn() -> void:
 		#weapons.append(spawn_weapon)
 	#_switch_weapon(_get_weapon(spawn_weapon))
 	weapons.append(Globals.WEAPONS.PISTOL)
+	_get_weapon(Globals.WEAPONS.PISTOL).reset()
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 
 

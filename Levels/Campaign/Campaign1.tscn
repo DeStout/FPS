@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://c43jgpwtg2rkl"]
+[gd_scene load_steps=23 format=3 uid="uid://c43jgpwtg2rkl"]
 
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Levels/Campaign/Campaign1_tex_7.png" id="1_8hk84"]
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Levels/Campaign/CampaignLevel.tscn" id="1_h3cvu"]
 [ext_resource type="PackedScene" uid="uid://bjvof25uwl8sb" path="res://Characters/Player.tscn" id="2_cqxx7"]
 [ext_resource type="PackedScene" uid="uid://la6he6vwubnb" path="res://Characters/Enemy.tscn" id="2_gq26m"]
 [ext_resource type="Texture2D" uid="uid://d04uefk603may" path="res://Levels/Campaign/Campaign1_tex_7_1.png" id="2_o8ivp"]
+[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="6_1cm40"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anu7h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -382,3 +383,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.75, 6.308, 18.75)
 
 [node name="Marker3D20" type="Marker3D" parent="NavPoints" index="32"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.25, 6.308, 18.75)
+
+[node name="Rifle" parent="Pickups" index="0" instance=ExtResource("6_1cm40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.551, 6.25)
+weapon_type = 3
+respawn_time = 0.0
+
+[node name="SMG" parent="Pickups" index="1" instance=ExtResource("6_1cm40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+weapon_type = 2
+respawn_time = 0.0
+
+[node name="Shotgun" parent="Pickups" index="2" instance=ExtResource("6_1cm40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.25, 0)
+weapon_type = 4
+respawn_time = 0.0
+
+[node name="Pistol" parent="Pickups" index="3" instance=ExtResource("6_1cm40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.25, 0)
+respawn_time = 0.0

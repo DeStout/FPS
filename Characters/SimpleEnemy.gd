@@ -8,7 +8,7 @@ var stuck_times := 0
 
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
-var player_vis_threshold := 0.45
+var player_vis_threshold := 0.1
 var shoot_accuracy_threshold := 0.4
 var shoot_speed_mod := 1.0/1.75
 var shoot_speed_variance := Vector2(0.3, 1.0)
@@ -25,6 +25,11 @@ func new_name(new_name_ : String) -> void:
 	
 func _ready() -> void:
 	super()
+
+
+func _process(delta: float) -> void:
+	super(delta)
+	_look(delta)
 
 
 func _physics_process(delta):
@@ -129,7 +134,7 @@ func _swing() -> void:
 func _aim(delta) -> void:
 	if player and player_vis:
 		var player_pos = player.global_position + Vector3(0, 1.5, 0)
-		var new_trans :Transform3D = $AimHelper.global_transform.looking_at(player_pos)
+		var new_trans : Transform3D = $AimHelper.global_transform.looking_at(player_pos)
 		$AimHelper.global_transform = $AimHelper.global_transform.interpolate_with \
 													(new_trans, AIM_SPEED * delta)
 	else:
@@ -139,15 +144,56 @@ func _aim(delta) -> void:
 	$AimHelper.rotation.z = 0
 
 
+func _look(delta) -> void:
+	if player and player_vis:
+		var player_pos : Vector3 = $LookHelper.to_local(player.global_position
+													+ Vector3(0, 1.5, 0))
+		$LookHelper.basis = $LookHelper.basis.looking_at(player_pos)
+		var temp_euler : Vector3 = $LookHelper.basis.get_euler() / (PI/2)
+		var eulers := Vector2(-temp_euler.y, temp_euler.x)
+		
+		var local_player_pos = %ShootCast.to_local(player_pos).normalized()
+		var local_ray_collision = %ShootCast.to_local(\
+									%ShootCast.get_collision_point()).normalized()
+		var torso : Vector2 = anim_tree["parameters/Run/TorsoRunBlend/blend_position"]
+		torso = torso.lerp(eulers, AIM_SPEED * delta)
+		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].x = torso.x
+		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].y = torso.y
+		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].x = torso.x
+		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].y = torso.y
+		#else:
+			#var head : Vector2 = anim_tree["parameters/Run/HeadRunBlend/blend_position"]
+			#head = head.slerp(eulers, AIM_SPEED * delta)
+			#anim_tree["parameters/Run/HeadRunBlend/blend_position"].x = head.x
+			#anim_tree["parameters/Run/HeadRunBlend/blend_position"].y = head.y
+			#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].x = head.x
+			#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].y = head.y
+		$LookHelper.basis = Basis()
+	else:
+		var torso : Vector2 = anim_tree["parameters/Run/TorsoRunBlend/blend_position"]
+		torso = torso.lerp(Vector2.ZERO, AIM_SPEED * delta)
+		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].x = torso.x
+		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].y = torso.y
+		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].x = torso.x
+		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].y = torso.y
+		
+		#var head : Vector2 = anim_tree["parameters/Run/HeadRunBlend/blend_position"]
+		#head = head.slerp(Vector2.ZERO, AIM_SPEED * delta)
+		#anim_tree["parameters/Run/HeadRunBlend/blend_position"].x = head.x
+		#anim_tree["parameters/Run/HeadRunBlend/blend_position"].y = head.y
+		#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].x = head.x
+		#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].y = head.y
+
+
 func _player_vis_change(new_player_vis) -> void:
 	player_vis = new_player_vis
 	if player_vis:
-#		print("Player seen")
+#		print("Player seent")
 		nav_agent.target_position = player.global_position
 		$PlayerTimer.stop()
 	else:
 		trigger_pulled = false
-#		print("Player not seen")
+#		print("Player unseent")
 		$PlayerTimer.start()
 
 

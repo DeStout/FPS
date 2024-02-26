@@ -175,8 +175,7 @@ func take_damage(body_seg_type : int, damage : int, shooter : CharacterBase) -> 
 
 func _show_damage(shooter : CharacterBase) -> void:
 	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
-								to_local(shooter.global_position).z).normalized()
-	dmg_dir.y = -dmg_dir.y
+								-to_local(shooter.global_position).z).normalized()
 	
 	if dmg_dir.y > 0:
 		$CanvasLayer/UI/DMG_Up.modulate.a = dmg_dir.y

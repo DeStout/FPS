@@ -18,6 +18,10 @@ func new_name(new_name_ : String) -> void:
 	$NameLabel.text = name
 
 
+func _process(delta: float) -> void:
+	_look(delta)
+
+
 func _physics_process(delta):
 	super(delta)
 
@@ -44,6 +48,18 @@ func get_rand_nav_point() -> Vector3:
 	return Vector3(randf(), randf(), randf())
 
 
+func _look(delta) -> void:
+	var player_pos : Vector3 = $LookHelper.to_local(player.global_position + 
+															Vector3(0, 1.5, 0))
+	$LookHelper.basis = $LookHelper.basis.looking_at(player_pos)
+	var euler : Vector3 = $LookHelper.basis.get_euler() / (PI/2)
+	anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].y = euler.x
+	anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].x = -euler.y
+	anim_tree["parameters/Run/TorsoRunBlend/blend_position"].y = euler.x
+	anim_tree["parameters/Run/TorsoRunBlend/blend_position"].x = -euler.y
+	$LookHelper.basis = Basis()
+
+
 func _shoot() -> void:
 	super()
 
@@ -58,9 +74,11 @@ func take_damage(body_seg_type : int, damage : int, shooter : CharacterBase) -> 
 
 
 func _die() -> void:
-	super()
-	player_vis = false
-	$VisTimer.stop()
+	health = 100
+	pass
+	#super()
+	#player_vis = false
+	#$VisTimer.stop()
 
 
 func respawn() -> void:
