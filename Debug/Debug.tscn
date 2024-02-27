@@ -2,18 +2,12 @@
 
 [ext_resource type="Script" path="res://Debug/Debug.gd" id="1_3d6yx"]
 
-[node name="Debug" type="Control"]
+[node name="Debug" type="CanvasLayer"]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layer = 10
 script = ExtResource("1_3d6yx")
 
 [node name="FPS" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,7 +21,6 @@ theme_override_font_sizes/font_size = 16
 text = "FPS: 0"
 
 [node name="Objects" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,7 +35,6 @@ text = "Objects: 0"
 
 [node name="Mute" type="Label" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -57,7 +49,6 @@ text = "Mute:"
 horizontal_alignment = 2
 
 [node name="Level" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -73,7 +64,6 @@ metadata/_edit_layout_mode = 1
 
 [node name="Behaviors" type="VBoxContainer" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

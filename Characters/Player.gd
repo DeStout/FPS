@@ -7,7 +7,6 @@ signal weapon_picked_up
 
 
 func _ready() -> void:
-	
 	super()
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
@@ -24,6 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	_fade_dmg(delta)
+	_fade_health(delta)
 
 
 func _physics_process(delta) -> void:
@@ -141,9 +141,6 @@ func update_UI() -> void:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
 							" / " + str(weapon_held.get_mag_size())
 		%ExtraAmmo.text = str(weapon_held.extra_ammo)
-	%Health.text = str(health)
-	%Armor.text = str(armor)
-	%Armor.visible = armor
 
 
 func _pick_up_weapon(new_weapon) -> Node3D:
@@ -163,14 +160,49 @@ func _pick_up_ammo(new_ammo : Node3D) -> void:
 
 func _pick_up_health(new_health : Node3D) -> void:
 	super(new_health)
-	update_UI()
+	_update_health_UI()
 
 
 func take_damage(body_seg_type : int, damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/3.0)
 	super(body_seg_type, damage, shooter)
 	_show_damage(shooter)
-	update_UI()
+	_update_health_UI()
+
+
+func _update_health_UI() -> void:
+	%HealthMod.color.a = 1
+	
+	# Health Boxes
+	var box_count := %HealthMod/HealthBar.get_child_count()
+	var health_per_box : int = MAX_HEALTH / box_count
+	var filled_boxes : int = health / health_per_box
+	for box_num in range(0, box_count):
+		var box : ColorRect = %HealthMod/HealthBar.get_child(box_count - box_num - 1)
+		if box_num < filled_boxes:
+			box.color.a = 1
+		elif box_num == filled_boxes:
+			box.color.a = fmod(health, health_per_box) / float(health_per_box)
+		else:
+			box.color.a = 0
+
+# Armor Boxes
+	box_count = %HealthMod/ArmorBar.get_child_count()
+	var armor_per_box : int = MAX_ARMOR / box_count
+	filled_boxes = armor / armor_per_box
+	for box_num in range(0, box_count):
+		var box : ColorRect = %HealthMod/ArmorBar.get_child(box_count - box_num - 1)
+		if box_num < filled_boxes:
+			box.color.a = 1
+		elif box_num == filled_boxes:
+			box.color.a = fmod(armor, armor_per_box) / float(armor_per_box)
+		else:
+			box.color.a = 0
+
+
+func _fade_health(delta) -> void:
+	if %HealthMod.color.a > 0:
+		%HealthMod.color.a -= delta * 0.75
 
 
 func _show_damage(shooter : CharacterBase) -> void:
@@ -178,24 +210,24 @@ func _show_damage(shooter : CharacterBase) -> void:
 								-to_local(shooter.global_position).z).normalized()
 	
 	if dmg_dir.y > 0:
-		$CanvasLayer/UI/DMG_Up.modulate.a = dmg_dir.y
+		$FPCanvas/UI/DMG_Up.modulate.a = dmg_dir.y
 	else:
-		$CanvasLayer/UI/DMG_Down.modulate.a = abs(dmg_dir.y)
+		$FPCanvas/UI/DMG_Down.modulate.a = abs(dmg_dir.y)
 	if dmg_dir.x > 0:
-		$CanvasLayer/UI/DMG_Right.modulate.a = dmg_dir.x
+		$FPCanvas/UI/DMG_Right.modulate.a = dmg_dir.x
 	else:
-		$CanvasLayer/UI/DMG_Left.modulate.a = abs(dmg_dir.x)
+		$FPCanvas/UI/DMG_Left.modulate.a = abs(dmg_dir.x)
 
 
 func _fade_dmg(delta) -> void:
-	if $CanvasLayer/UI/DMG_Up.modulate.a > 0:
-		$CanvasLayer/UI/DMG_Up.modulate.a -= delta
-	if $CanvasLayer/UI/DMG_Left.modulate.a > 0:
-		$CanvasLayer/UI/DMG_Left.modulate.a -= delta
-	if $CanvasLayer/UI/DMG_Down.modulate.a > 0:
-		$CanvasLayer/UI/DMG_Down.modulate.a -= delta
-	if $CanvasLayer/UI/DMG_Right.modulate.a > 0:
-		$CanvasLayer/UI/DMG_Right.modulate.a -= delta
+	if $FPCanvas/UI/DMG_Up.modulate.a > 0:
+		$FPCanvas/UI/DMG_Up.modulate.a -= delta
+	if $FPCanvas/UI/DMG_Left.modulate.a > 0:
+		$FPCanvas/UI/DMG_Left.modulate.a -= delta
+	if $FPCanvas/UI/DMG_Down.modulate.a > 0:
+		$FPCanvas/UI/DMG_Down.modulate.a -= delta
+	if $FPCanvas/UI/DMG_Right.modulate.a > 0:
+		$FPCanvas/UI/DMG_Right.modulate.a -= delta
 
 
 func _die() -> void:
@@ -203,14 +235,14 @@ func _die() -> void:
 	%Camera.current = false
 	last_shot_by.set_current_camera(true)
 	#print("Death cam on ", last_shot_by.name)
-	$CanvasLayer/UI.visible = false
+	$FPCanvas/UI.visible = false
 
 
 func respawn() -> void:
 	super()
 	%Camera.current = true
 	last_shot_by.set_current_camera(false)
-	$CanvasLayer/UI.visible = true
+	$FPCanvas/UI.visible = true
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_held.reset()
@@ -229,7 +261,6 @@ func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
 
 
 func _switch_weapon(new_weapon) -> void:
-	#if new_weapon != null and !switching_weapons and weapon_held != new_weapon:
 	super(new_weapon)
 	update_UI()
 

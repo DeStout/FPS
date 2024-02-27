@@ -16,7 +16,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
 
 # Health
-const MAX_HEALTH := 200
+const MAX_HEALTH := 100
 const MAX_ARMOR := 50
 var health := 100 : set = _set_health
 var armor := 0

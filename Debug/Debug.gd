@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 var debug_visible := true

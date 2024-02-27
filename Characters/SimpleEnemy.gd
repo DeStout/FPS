@@ -8,8 +8,8 @@ var stuck_times := 0
 
 var player : CharacterBody3D = null
 var player_vis := false : set = _player_vis_change
-var player_vis_threshold := 0.1
-var shoot_accuracy_threshold := 0.4
+var player_vis_threshold := 0.45
+var shoot_accuracy_threshold := 0.9
 var shoot_speed_mod := 1.0/1.75
 var shoot_speed_variance := Vector2(0.3, 1.0)
 
