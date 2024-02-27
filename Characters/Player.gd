@@ -186,7 +186,7 @@ func _update_health_UI() -> void:
 		else:
 			box.color.a = 0
 
-# Armor Boxes
+	# Armor Boxes
 	box_count = %HealthMod/ArmorBar.get_child_count()
 	var armor_per_box : int = MAX_ARMOR / box_count
 	filled_boxes = armor / armor_per_box

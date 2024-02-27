@@ -13,5 +13,9 @@ func options_pressed() -> void:
 	options_button.emit()
 
 
+func play_boop() -> void:
+	$Boop.play()
+
+
 func quit() -> void:
 	get_tree().quit()

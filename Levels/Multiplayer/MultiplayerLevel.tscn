@@ -128,6 +128,7 @@ scale = Vector2(1.01652, 1.01652)
 theme_override_font_sizes/font_size = 54
 text = "Quit"
 
+[connection signal="mouse_entered" from="Pause/Button" to="Pause/OptionsMenu2D" method="play_boop"]
 [connection signal="pressed" from="Pause/Button" to="Pause" method="quit_button"]
 
 [editable path="Pause/OptionsMenu2D"]

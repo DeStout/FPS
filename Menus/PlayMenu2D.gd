@@ -10,3 +10,7 @@ func start_pressed() -> void:
 
 func back_pressed() -> void:
 	back_button.emit()
+
+
+func play_boop() -> void:
+	$Boop.play()

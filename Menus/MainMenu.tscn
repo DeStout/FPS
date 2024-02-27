@@ -100,6 +100,30 @@ environment = null
 [node name="NavRegion" parent="World" index="1"]
 navigation_mesh = null
 
+[node name="StaticBody3D" parent="World/NavRegion/Mesh/StairA1" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="StaticBody3D" parent="World/NavRegion/Mesh/StairB1" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="StaticBody3D" parent="World/NavRegion/Mesh/StairC1" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="StaticBody3D" parent="World/NavRegion/Mesh/StairA2" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="StaticBody3D" parent="World/NavRegion/Mesh/StairB2" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="StaticBody3D" parent="World/NavRegion/Mesh/StairC2" index="0"]
+collision_layer = 0
+collision_mask = 0
+
 [node name="Collision" parent="World" index="2"]
 collision_layer = 0
 collision_mask = 0
@@ -108,6 +132,9 @@ input_ray_pickable = false
 [node name="CollisionShape3D" parent="World/Collision" index="0"]
 shape = null
 disabled = true
+
+[node name="RedLights" parent="World" index="4"]
+visible = false
 
 [node name="WeaponPickUp" parent="World" instance=ExtResource("3_uvlh7")]
 transform = Transform3D(-0.45433, 0, 0.890834, 0, 1, 0, -0.890834, 0, -0.45433, 0, 4.25, 0)
@@ -119,7 +146,7 @@ shape = SubResource("CylinderShape3D_xkhuc")
 disabled = true
 
 [node name="Model" parent="World/WeaponPickUp" index="1"]
-transform = Transform3D(-1.66208, 1.00795, -0.424101, 0.942943, 1.71969, 0.391842, 0.562122, 0.125686, -1.90441, 0, 0.244229, 0)
+transform = Transform3D(-1.27788, 0.968908, -1.17731, 0.942943, 1.71969, 0.391842, 1.2021, -0.304679, -1.55564, 0, 0.244229, 0)
 
 [node name="SMG" parent="World/WeaponPickUp/Model" index="0"]
 layers = 4
