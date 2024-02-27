@@ -1,9 +1,99 @@
-[gd_resource type="BehaviorTree" load_steps=3 format=3 uid="uid://173couunbi78"]
+[gd_resource type="BehaviorTree" load_steps=26 format=3 uid="uid://173couunbi78"]
+
+[ext_resource type="Script" path="res://Characters/AI/Tasks/MoveToTarget.gd" id="1_b06su"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_jf85a"]
+var/arrived/name = "arrived"
+var/arrived/type = 1
+var/arrived/value = false
+var/arrived/hint = 0
+var/arrived/hint_string = ""
 
-[sub_resource type="BTSequence" id="BTSequence_ryi6e"]
+[sub_resource type="BTWaitTicks" id="BTWaitTicks_kiynt"]
+num_ticks = 30
+
+[sub_resource type="BBNode" id="BBNode_fvn2b"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_rveta"]
+node = SubResource("BBNode_fvn2b")
+method = &"set_rand_nav_point"
+
+[sub_resource type="BTSequence" id="BTSequence_vq2o6"]
+children = [SubResource("BTWaitTicks_kiynt"), SubResource("BTCallMethod_rveta")]
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_iee4l"]
+children = [SubResource("BTSequence_vq2o6")]
+
+[sub_resource type="BBNode" id="BBNode_kql5y"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_sh3k4"]
+node = SubResource("BBNode_kql5y")
+method = &"has_arrived"
+result_var = "arrived"
+
+[sub_resource type="BBVariant" id="BBVariant_u673d"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_g1vbt"]
+variable = "arrived"
+value = SubResource("BBVariant_u673d")
+
+[sub_resource type="BTAction" id="BTAction_dt0i5"]
+script = ExtResource("1_b06su")
+
+[sub_resource type="BTSequence" id="BTSequence_e7ab4"]
+custom_name = "Move To Target"
+children = [SubResource("BTCheckVar_g1vbt"), SubResource("BTAction_dt0i5")]
+
+[sub_resource type="BTSequence" id="BTSequence_t4fwm"]
+children = [SubResource("BTCallMethod_sh3k4"), SubResource("BTSequence_e7ab4")]
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_abws7"]
+variable = "arrived"
+
+[sub_resource type="BBVariant" id="BBVariant_5pix2"]
+type = 4
+saved_value = "IdleFall"
+resource_name = "IdleFall"
+
+[sub_resource type="BBNode" id="BBNode_is0as"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_chejm"]
+node = SubResource("BBNode_is0as")
+method = &"set_animation"
+args = Array[BBVariant]([SubResource("BBVariant_5pix2")])
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_v26ud"]
+text = "Hold up a minute"
+
+[sub_resource type="BTWait" id="BTWait_jlw7u"]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_66reh"]
+text = "New target"
+
+[sub_resource type="BBNode" id="BBNode_i50bn"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_hrhv1"]
+node = SubResource("BBNode_i50bn")
+method = &"set_rand_nav_point"
+
+[sub_resource type="BTSequence" id="BTSequence_2tu4j"]
+custom_name = "Get New Target"
+children = [SubResource("BTCheckTrigger_abws7"), SubResource("BTCallMethod_chejm"), SubResource("BTConsolePrint_v26ud"), SubResource("BTWait_jlw7u"), SubResource("BTConsolePrint_66reh"), SubResource("BTCallMethod_hrhv1")]
+
+[sub_resource type="BTSelector" id="BTSelector_s2u26"]
+children = [SubResource("BTRunLimit_iee4l"), SubResource("BTSequence_t4fwm"), SubResource("BTSequence_2tu4j")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_jf85a")
-root_task = SubResource("BTSequence_ryi6e")
+root_task = SubResource("BTSelector_s2u26")

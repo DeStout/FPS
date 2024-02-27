@@ -39,14 +39,14 @@ func _physics_process(delta) -> void:
 		rotate_y(Globals.controller_sensitivity * -look_dir.x)
 		rotation.z = 0
 
-	var accel = ACCEL
-	var deaccel = DEACCEL
+	#var accel = ACCEL
+	#var deaccel = DEACCEL
 	if is_on_floor():
 		if Input.is_action_just_pressed("Jump"):
 			velocity.y = JUMP_VELOCITY
-	else:
-		accel = AIR_ACCEL
-		deaccel = AIR_DEACCEL
+	#else:
+		#accel = AIR_ACCEL
+		#deaccel = AIR_DEACCEL
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:

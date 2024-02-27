@@ -14,6 +14,8 @@ const SPEED = 5.5
 const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
+var accel := ACCEL
+var deaccel := DEACCEL
 
 # Health
 const MAX_HEALTH := 100
@@ -83,6 +85,8 @@ func _process(delta) -> void:
 
 func _physics_process(delta) -> void:
 	if !is_on_floor():
+		accel = AIR_ACCEL
+		deaccel = AIR_DEACCEL
 		velocity.y -= gravity * delta
 		
 		if was_on_floor:
@@ -92,6 +96,9 @@ func _physics_process(delta) -> void:
 				"parameters/IdleFall/LowerIdleFall/blend_position", 1, 0.05)
 		was_on_floor = false
 	elif is_on_floor() and !was_on_floor:
+		accel = ACCEL
+		deaccel = DEACCEL
+		
 		was_on_floor = true
 		var tween = get_tree().create_tween()
 		tween.tween_property(anim_tree, \

@@ -1,11 +1,11 @@
 @tool
 extends BTAction
-## TestTask
+## MoveToTarget
 
 
 # Display a customized name (requires @tool).
 func _generate_name() -> String:
-	return "TestTask"
+	return "MoveToTarget"
 
 
 # Called once during initialization.
@@ -15,7 +15,7 @@ func _setup() -> void:
 
 # Called each time this task is entered.
 func _enter() -> void:
-	pass
+	agent.set_animation("Run")
 
 
 # Called each time this task is exited.
@@ -25,6 +25,9 @@ func _exit() -> void:
 
 # Called each time this task is ticked (aka executed).
 func _tick(delta: float) -> Status:
+	agent.turn_to_target(delta)
+	agent.move_to_target(delta)
+	
 	return SUCCESS
 
 

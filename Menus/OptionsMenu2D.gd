@@ -39,5 +39,5 @@ func invert_y_change(new_value) -> void:
 	Globals.invert_y_axis = new_value
 
 
-func play_boop(tab := 0) -> void:
+func play_boop(_tab := 0) -> void:
 	$Boop.play()

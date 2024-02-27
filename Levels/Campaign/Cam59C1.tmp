@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://c43jgpwtg2rkl"]
+[gd_scene load_steps=23 format=3 uid="uid://c43jgpwtg2rkl"]
 
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Levels/Campaign/Campaign1_tex_7.png" id="1_8hk84"]
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Levels/Campaign/CampaignLevel.tscn" id="1_h3cvu"]
-[ext_resource type="PackedScene" uid="uid://bjvof25uwl8sb" path="res://Characters/Player.tscn" id="2_cqxx7"]
 [ext_resource type="PackedScene" uid="uid://la6he6vwubnb" path="res://Characters/CampaignEnemy.tscn" id="2_gq26m"]
 [ext_resource type="Texture2D" uid="uid://d04uefk603may" path="res://Levels/Campaign/Campaign1_tex_7_1.png" id="2_o8ivp"]
 [ext_resource type="Script" path="res://Levels/Campaign/CampaignPlayers.gd" id="4_eopk7"]
@@ -292,13 +291,8 @@ script = ExtResource("4_eopk7")
 level = NodePath("..")
 enemies = [NodePath("Enemy1")]
 
-[node name="Player" parent="Characters" index="0" instance=ExtResource("2_cqxx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.2151)
-
-[node name="Enemy1" parent="Characters" index="1" node_paths=PackedStringArray("level", "target") instance=ExtResource("2_gq26m")]
+[node name="Enemy1" parent="Characters" index="0" instance=ExtResource("2_gq26m")]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0, 6)
-level = NodePath("../..")
-target = NodePath("../Player")
 
 [node name="Marker3D21" type="Marker3D" parent="NavPoints" index="0"]
 

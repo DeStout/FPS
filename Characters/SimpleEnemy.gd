@@ -62,12 +62,6 @@ func _physics_process(delta):
 		var new_transform := transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
-	# Accel and move
-	var accel = ACCEL
-	var deaccel = DEACCEL
-	if !is_on_floor():
-		accel = AIR_ACCEL
-		deaccel = AIR_DEACCEL
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		if is_on_floor():
@@ -152,22 +146,12 @@ func _look(delta) -> void:
 		var temp_euler : Vector3 = $LookHelper.basis.get_euler() / (PI/2)
 		var eulers := Vector2(-temp_euler.y, temp_euler.x)
 		
-		var local_player_pos = %ShootCast.to_local(player_pos).normalized()
-		var local_ray_collision = %ShootCast.to_local(\
-									%ShootCast.get_collision_point()).normalized()
 		var torso : Vector2 = anim_tree["parameters/Run/TorsoRunBlend/blend_position"]
 		torso = torso.lerp(eulers, AIM_SPEED * delta)
 		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].x = torso.x
 		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].y = torso.y
 		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].x = torso.x
 		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].y = torso.y
-		#else:
-			#var head : Vector2 = anim_tree["parameters/Run/HeadRunBlend/blend_position"]
-			#head = head.slerp(eulers, AIM_SPEED * delta)
-			#anim_tree["parameters/Run/HeadRunBlend/blend_position"].x = head.x
-			#anim_tree["parameters/Run/HeadRunBlend/blend_position"].y = head.y
-			#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].x = head.x
-			#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].y = head.y
 		$LookHelper.basis = Basis()
 	else:
 		var torso : Vector2 = anim_tree["parameters/Run/TorsoRunBlend/blend_position"]
@@ -176,13 +160,6 @@ func _look(delta) -> void:
 		anim_tree["parameters/Run/TorsoRunBlend/blend_position"].y = torso.y
 		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].x = torso.x
 		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].y = torso.y
-		
-		#var head : Vector2 = anim_tree["parameters/Run/HeadRunBlend/blend_position"]
-		#head = head.slerp(Vector2.ZERO, AIM_SPEED * delta)
-		#anim_tree["parameters/Run/HeadRunBlend/blend_position"].x = head.x
-		#anim_tree["parameters/Run/HeadRunBlend/blend_position"].y = head.y
-		#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].x = head.x
-		#anim_tree["parameters/IdleFall/HeadIdleBlend/blend_position"].y = head.y
 
 
 func _player_vis_change(new_player_vis) -> void:
@@ -201,13 +178,6 @@ func _new_rand_nav_point() -> void:
 	var new_nav_point = current_level.get_nav_point()
 #	print("New nav point: ", new_nav_point.name)
 	nav_agent.target_position = new_nav_point.position
-
-
-func _player_lost() -> void:
-#	print("Player lost")
-	_new_rand_nav_point()
-	if weapon_held and weapon_held.ammo_in_mag == 0:
-		_reload()
 
 
 func _stuck() -> void:
