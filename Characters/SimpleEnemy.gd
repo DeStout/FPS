@@ -195,10 +195,11 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 
-func take_damage(body_seg_type : int, damage : int, shooter : CharacterBase) -> void:
+func take_damage(body_seg : Area3D, damage : int,
+												shooter : CharacterBase) -> void:
 	damage *= 2
 	player_vis = true
-	super(body_seg_type, damage, shooter)
+	super(body_seg, damage, shooter)
 
 
 func _die() -> void:

@@ -28,3 +28,9 @@ func match_pose_transform(puppet_skel, puppet_trans) -> void:
 	await tween.tween_interval(vis_time).finished
 	surf_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	fadeout = true
+
+
+func add_impulse(shooter_pos : Vector3, body_seg_shot : String, gun_impulse : float) -> void:
+	var body_seg : PhysicalBone3D = skeleton.get_node(body_seg_shot)
+	var impulse = shooter_pos.direction_to(global_position) * gun_impulse
+	body_seg.apply_central_impulse(impulse)

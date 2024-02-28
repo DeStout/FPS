@@ -5,7 +5,7 @@ extends Area3D
 
 signal take_damage
 
-
-# Signal to CharacterBase take_damage
+# Called from shooter CharacterBaser
 func body_seg_shot(body_seg_dmg : Dictionary, shooter : CharacterBase) -> void:
-	take_damage.emit(body_seg, body_seg_dmg[body_seg], shooter)
+	# Signal to CharacterBase take_damage()
+	take_damage.emit(self, body_seg_dmg[body_seg], shooter)

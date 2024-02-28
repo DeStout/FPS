@@ -19,6 +19,7 @@ body_dmg = {
 1: 8,
 2: 6
 }
+impulse = 325.0
 pos_offset = Vector3(-0.033591, -0.0112215, -0.00850368)
 rot_offset = Vector3(1.5708, -0.453786, 0)
 anim_pos = Vector2(-1, -1)

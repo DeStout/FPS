@@ -1,0 +1,8 @@
+[gd_resource type="BlackboardPlan" format=3 uid="uid://8q7sg7cg2k4t"]
+
+[resource]
+var/arrived/name = "arrived"
+var/arrived/type = 1
+var/arrived/value = false
+var/arrived/hint = 0
+var/arrived/hint_string = ""

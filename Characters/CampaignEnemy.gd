@@ -1,7 +1,7 @@
 extends CharacterBase
 
 
-const TURN_SPEED := 6.0
+const TURN_SPEED := 4.0
 const AIM_SPEED := 8.0
 
 @export var level : CampaignLevel = null
@@ -9,6 +9,13 @@ const AIM_SPEED := 8.0
 @export var target : CharacterBase = null
 var target_vis := false
 var target_vis_threshold := 0.45
+
+@export var patrol_path : Path3D = null
+
+
+func _ready() -> void:
+	super()
+	$NameLabel.text = name
 
 
 func _process(delta: float) -> void:
@@ -36,7 +43,7 @@ func turn_to_target(delta) -> void:
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
 
-func move_to_target(delta) -> void:
+func move_to_target(_delta) -> void:
 	var input_dir = Vector2.UP
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -45,7 +52,17 @@ func move_to_target(delta) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, deaccel)
 		velocity.z = move_toward(velocity.z, 0, deaccel)
+	#nav_agent.set_velocity(velocity)
+	#if name == "Enemy1":
+		#print("Velocity: ", velocity)
 	move_and_slide()
+
+
+#func avoid_velocity(new_velocity) -> void:
+	#if name == "Enemy1":
+		#print("Agent Vel: ", new_velocity)
+	#velocity = new_velocity
+	#move_and_slide()
 
 
 func _find_target() -> void:
@@ -59,6 +76,8 @@ func _is_target_vis() -> bool:
 	temp_target_vis = %TargetCast.get_collider() == target
 	var target_cast_col = to_local(%TargetCast.get_collision_point()).normalized()
 	temp_target_vis =  target_cast_col.dot(Vector3.FORWARD) > target_vis_threshold
+	if temp_target_vis:
+		trigger_pulled = true
 	return temp_target_vis
 
 
@@ -100,10 +119,6 @@ func _shoot() -> void:
 func _swing() -> void:
 	super()
 	_slap()
-
-
-func take_damage(body_seg_type : int, damage : int, shooter : CharacterBase) -> void:
-	super(body_seg_type, damage, shooter)
 
 
 # Keep so he don't die

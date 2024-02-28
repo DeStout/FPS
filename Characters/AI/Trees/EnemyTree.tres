@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=26 format=3 uid="uid://173couunbi78"]
+[gd_resource type="BehaviorTree" load_steps=24 format=3 uid="uid://173couunbi78"]
 
 [ext_resource type="Script" path="res://Characters/AI/Tasks/MoveToTarget.gd" id="1_b06su"]
 
@@ -8,6 +8,11 @@ var/arrived/type = 1
 var/arrived/value = false
 var/arrived/hint = 0
 var/arrived/hint_string = ""
+var/agent/name = "agent"
+var/agent/type = 22
+var/agent/value = NodePath("..")
+var/agent/hint = 0
+var/agent/hint_string = ""
 
 [sub_resource type="BTWaitTicks" id="BTWaitTicks_kiynt"]
 num_ticks = 30
@@ -71,13 +76,7 @@ node = SubResource("BBNode_is0as")
 method = &"set_animation"
 args = Array[BBVariant]([SubResource("BBVariant_5pix2")])
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_v26ud"]
-text = "Hold up a minute"
-
 [sub_resource type="BTWait" id="BTWait_jlw7u"]
-
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_66reh"]
-text = "New target"
 
 [sub_resource type="BBNode" id="BBNode_i50bn"]
 saved_value = NodePath(".")
@@ -89,7 +88,7 @@ method = &"set_rand_nav_point"
 
 [sub_resource type="BTSequence" id="BTSequence_2tu4j"]
 custom_name = "Get New Target"
-children = [SubResource("BTCheckTrigger_abws7"), SubResource("BTCallMethod_chejm"), SubResource("BTConsolePrint_v26ud"), SubResource("BTWait_jlw7u"), SubResource("BTConsolePrint_66reh"), SubResource("BTCallMethod_hrhv1")]
+children = [SubResource("BTCheckTrigger_abws7"), SubResource("BTCallMethod_chejm"), SubResource("BTWait_jlw7u"), SubResource("BTCallMethod_hrhv1")]
 
 [sub_resource type="BTSelector" id="BTSelector_s2u26"]
 children = [SubResource("BTRunLimit_iee4l"), SubResource("BTSequence_t4fwm"), SubResource("BTSequence_2tu4j")]

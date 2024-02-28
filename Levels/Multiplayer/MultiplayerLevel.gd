@@ -16,12 +16,14 @@ func _ready():
 	$Players.set_up()
 
 
+# Called from CharacterBase.shoot()
 func spawn_shot_trail(nozzle_point, collision_point) -> void:
 	var shot_trail = shot_trail_.instantiate()
 	$FX.add_child(shot_trail)
 	shot_trail.align_and_scale(nozzle_point, collision_point)
 
 
+# Called from CharacterBase.shoot()
 func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:
 	var bullet_hole := bullet_hole_.instantiate()
 	$FX.add_child(bullet_hole)
@@ -29,6 +31,7 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:
 	bullet_hole.project_to(normal)
 
 
+# Called from CharacterBase.take_damage()
 func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> void:
 	var damage_label = damage_label_.instantiate()
 	$FX.add_child(damage_label)
@@ -41,10 +44,14 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 	damage_label.set_txt_pos_color(pos, dmg, color)
 
 
-func spawn_rag_doll(dead_skel, dead_trans) -> void:
+# Called from CharacterBase.die()
+func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, 
+						shooter : CharacterBase, body_seg_shot : String) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
 	rag_doll.match_pose_transform(dead_skel, dead_trans)
+	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
+											shooter.weapon_held.stats.impulse)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

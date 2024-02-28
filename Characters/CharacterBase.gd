@@ -43,6 +43,7 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 						$Puppet/Skeleton3D/L_Thigh/L_ThighArea,
 						$Puppet/Skeleton3D/L_Shin/L_ShinArea,
 						$Puppet/Skeleton3D/L_Foot/L_FootArea]
+var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
 @onready
@@ -171,7 +172,12 @@ func _slap() -> void:
 	for character in slappable:
 		if character != self:
 			#print(name, " slapped ", character.name)
-			character.take_damage(Globals.BODY_SEGS.TORSO, 
+			var chest_seg : Area3D = null
+			for body_seg in character.body_segs:
+				if body_seg.name == "ChestArea":
+					chest_seg = body_seg
+			assert(chest_seg != null, "Character does not have Chest")
+			character.take_damage(chest_seg, 
 											weapon_held.stats.body_dmg[0], self)
 			$Slapped.play()
 
@@ -183,11 +189,14 @@ func _reload() -> void:
 
 
 # Signaled from BodySeg
-func take_damage(body_seg_type, damage, shooter) -> void:
+func take_damage(body_seg : Area3D, damage : int,
+												shooter : CharacterBase) -> void:
 	last_shot_by = shooter
+	last_body_seg_shot = body_seg.get_parent()
 	
 	if current_level != null:
-		current_level.spawn_damage_label(body_seg_type, $DmgLbl.global_position, str(damage))
+		current_level.spawn_damage_label(body_seg.body_seg,
+											$DmgLbl.global_position, str(damage))
 
 	if armor > 0:
 		var armor_dmg : int = damage / 2
@@ -214,7 +223,8 @@ func _set_health(new_health) -> void:
 func _die() -> void:
 	# Signal to PlayerContainer.add_to_score_board
 	add_score.emit(self, last_shot_by)
-	current_level.spawn_rag_doll(skeleton, transform)
+	current_level.spawn_rag_doll(skeleton, transform, 
+						last_shot_by, last_body_seg_shot.name)
 	
 	visible = false
 	_disable_collisions(true)
