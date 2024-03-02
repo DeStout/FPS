@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0g1to2wstnia"]
 
 [ext_resource type="Script" path="res://Menus/MainMenu2D.gd" id="1_kesxx"]
-[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/boop.wav" id="2_lrbfi"]
+[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="2_lrbfi"]
 
 [node name="MainMenu2D" type="VBoxContainer"]
 anchors_preset = 8
@@ -40,6 +40,11 @@ text = "Quit"
 [node name="Boop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_lrbfi")
 pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lrbfi")
+pitch_scale = 2.75
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="PlayButton" to="." method="play_boop"]

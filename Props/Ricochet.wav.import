@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bald4fr15ru7"
-path="res://.godot/imported/boop.wav-84c104851d47f8f183abc98e3096576e.sample"
+uid="uid://dgudfyms0v4ku"
+path="res://.godot/imported/Ricochet.wav-336a8a4e5e2bb313c13ae274c5493349.sample"
 
 [deps]
 
-source_file="res://Menus/boop.wav"
-dest_files=["res://.godot/imported/boop.wav-84c104851d47f8f183abc98e3096576e.sample"]
+source_file="res://Props/Ricochet.wav"
+dest_files=["res://.godot/imported/Ricochet.wav-336a8a4e5e2bb313c13ae274c5493349.sample"]
 
 [params]
 

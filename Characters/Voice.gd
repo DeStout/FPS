@@ -82,7 +82,7 @@ func _ready() -> void:
 			new_voice.bus = "SFX"
 			add_child(new_voice)
 			death_sfx.append(new_voice)
-	print(owner.name, " is ", voice_name)
+	#print(owner.name, " is ", voice_name)
 
 
 func get_hurt_sfx() -> AudioStreamPlayer3D:

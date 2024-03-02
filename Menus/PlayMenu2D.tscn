@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://5b0kqbde0dta"]
 
 [ext_resource type="Script" path="res://Menus/PlayMenu2D.gd" id="1_005mr"]
-[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/boop.wav" id="2_ijsgp"]
+[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="2_y22hn"]
 
 [node name="PlayMenu2D" type="VBoxContainer"]
 anchors_preset = 8
@@ -32,8 +32,13 @@ theme_override_font_sizes/font_size = 72
 text = "Back"
 
 [node name="Boop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ijsgp")
+stream = ExtResource("2_y22hn")
 pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y22hn")
+pitch_scale = 2.75
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="StartButton" to="." method="play_boop"]

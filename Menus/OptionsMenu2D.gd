@@ -22,6 +22,7 @@ func _ready() -> void:
 
 
 func back_pressed() -> void:
+	play_select()
 	back_button.emit()
 
 
@@ -36,8 +37,13 @@ func controller_sens_change(new_value) -> void:
 
 
 func invert_y_change(new_value) -> void:
+	play_select()
 	Globals.invert_y_axis = new_value
 
 
 func play_boop(_tab := 0) -> void:
 	$Boop.play()
+
+
+func play_select(_tab := 0) -> void:
+	$Select.play()

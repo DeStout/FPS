@@ -5,6 +5,8 @@ signal weapon_picked_up
 
 @onready var fp_weapon : Node3D = $AimHelper/FPWeapons/Slapper
 
+@export_exp_easing() var health_fade
+
 
 func _ready() -> void:
 	super()
@@ -66,6 +68,9 @@ func _input(event) -> void:
 		trigger_pulled = true
 	elif Input.is_action_just_released("Shoot"):
 		trigger_pulled = false
+		
+	if Input.is_action_pressed("ScoreBoard"):
+		%HealthMod.color.a = 1
 		
 	if Input.is_action_just_pressed("Reload"):
 		_reload()
@@ -160,7 +165,7 @@ func _pick_up_ammo(new_ammo : Node3D) -> void:
 
 func _pick_up_health(new_health : Node3D) -> void:
 	super(new_health)
-	_update_health_UI()
+	update_health_UI()
 
 
 func take_damage(body_seg : Area3D, damage : int,
@@ -168,10 +173,10 @@ func take_damage(body_seg : Area3D, damage : int,
 	damage *= (2.0/3.0)
 	super(body_seg, damage, shooter)
 	_show_damage(shooter)
-	_update_health_UI()
+	update_health_UI()
 
 
-func _update_health_UI() -> void:
+func update_health_UI() -> void:
 	%HealthMod.color.a = 1
 	
 	# Health Boxes
@@ -203,7 +208,7 @@ func _update_health_UI() -> void:
 
 func _fade_health(delta) -> void:
 	if %HealthMod.color.a > 0:
-		%HealthMod.color.a -= delta * 0.50
+		%HealthMod.color.a -= delta
 
 
 func _show_damage(shooter : CharacterBase) -> void:

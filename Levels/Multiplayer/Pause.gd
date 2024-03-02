@@ -11,6 +11,7 @@ func _input(event) -> void:
 			get_tree().paused = !get_tree().paused
 
 			if get_tree().paused:
+				%Players.player.update_health_UI()
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				visible = true
 			else:

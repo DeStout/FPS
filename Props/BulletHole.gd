@@ -6,6 +6,12 @@ var fade_out_time := 5.0
 var fade_time := 0.0
 
 
+func _ready() -> void:
+	if randi_range(0, 7) == 0:
+		$Ricochet.pitch_scale += randf_range(-0.2, 0.2)
+		$Ricochet.play()
+
+
 func _process(delta) -> void:
 	fade_time += delta
 	if fade_time >= linger_time:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/Multiplayer/MultiplayerLevel.gd" id="1_kwlcy"]
 [ext_resource type="Script" path="res://Levels/Multiplayer/PlayersContainer.gd" id="2_0ved6"]
 [ext_resource type="Script" path="res://Levels/Multiplayer/ScoreBoard.gd" id="3_322px"]
-[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_iv26a"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_cyeg3"]
 [ext_resource type="Script" path="res://Levels/Multiplayer/Pause.gd" id="5_n53iw"]
 [ext_resource type="PackedScene" uid="uid://b87sic5k3mvs0" path="res://Menus/OptionsMenu2D.tscn" id="6_odi03"]
 
@@ -12,6 +12,7 @@ script = ExtResource("1_kwlcy")
 num_enemies = 3
 
 [node name="Players" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_0ved6")
 
 [node name="ScoreLayer" type="CanvasLayer" parent="Players"]
@@ -91,7 +92,7 @@ visible = false
 [node name="Pickups" type="Node3D" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_iv26a")
+stream = ExtResource("4_cyeg3")
 volume_db = -20.0
 bus = &"Music"
 

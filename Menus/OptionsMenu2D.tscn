@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Menus/OptionsMenu2D.gd" id="1_o5lmb"]
 [ext_resource type="Script" path="res://Menus/AudioSetting.gd" id="2_cejly"]
-[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/boop.wav" id="3_5d36l"]
+[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="3_v1wpd"]
 
 [node name="OptionsMenu2D" type="Control"]
 layout_mode = 3
@@ -203,19 +203,30 @@ theme_override_font_sizes/font_size = 54
 text = "Back"
 
 [node name="Boop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_5d36l")
+stream = ExtResource("3_v1wpd")
 pitch_scale = 1.5
 bus = &"SFX"
 
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v1wpd")
+pitch_scale = 2.75
+bus = &"SFX"
+
+[connection signal="tab_changed" from="TabContainer" to="." method="play_select"]
 [connection signal="tab_hovered" from="TabContainer" to="." method="play_boop"]
+[connection signal="drag_started" from="TabContainer/Audio/Audio/Master/HSlider" to="." method="play_select"]
 [connection signal="mouse_entered" from="TabContainer/Audio/Audio/Master/HSlider" to="." method="play_boop"]
 [connection signal="value_changed" from="TabContainer/Audio/Audio/Master/HSlider" to="TabContainer/Audio/Audio/Master/HSlider" method="audio_level_changed"]
+[connection signal="drag_started" from="TabContainer/Audio/Audio/Music/HSlider" to="." method="play_select"]
 [connection signal="mouse_entered" from="TabContainer/Audio/Audio/Music/HSlider" to="." method="play_boop"]
 [connection signal="value_changed" from="TabContainer/Audio/Audio/Music/HSlider" to="TabContainer/Audio/Audio/Music/HSlider" method="audio_level_changed"]
+[connection signal="drag_started" from="TabContainer/Audio/Audio/SFX/HSlider" to="." method="play_select"]
 [connection signal="mouse_entered" from="TabContainer/Audio/Audio/SFX/HSlider" to="." method="play_boop"]
 [connection signal="value_changed" from="TabContainer/Audio/Audio/SFX/HSlider" to="TabContainer/Audio/Audio/SFX/HSlider" method="audio_level_changed"]
+[connection signal="drag_started" from="TabContainer/Input/Input/Mouse/HSlider" to="." method="play_select"]
 [connection signal="mouse_entered" from="TabContainer/Input/Input/Mouse/HSlider" to="." method="play_boop"]
 [connection signal="value_changed" from="TabContainer/Input/Input/Mouse/HSlider" to="." method="mouse_sens_change"]
+[connection signal="drag_started" from="TabContainer/Input/Input/Controller/HSlider" to="." method="play_select"]
 [connection signal="mouse_entered" from="TabContainer/Input/Input/Controller/HSlider" to="." method="play_boop"]
 [connection signal="value_changed" from="TabContainer/Input/Input/Controller/HSlider" to="." method="controller_sens_change"]
 [connection signal="mouse_entered" from="TabContainer/Input/Input/InvertY/Control/CheckBox" to="." method="play_boop"]

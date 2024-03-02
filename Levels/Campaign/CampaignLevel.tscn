@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Levels/Campaign/CampaignLevel.gd" id="1_byqwd"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="3_wjaqp"]
-[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_ho10k"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Levels/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_ho10k"]
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_byqwd")

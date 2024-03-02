@@ -13,8 +13,8 @@ func _ready() -> void:
 	assert(bus_name != "", "Audio slider bus undefined")
 	bus_index = AudioServer.get_bus_index(bus_name)
 	value = default_value
-	if bus_name == "Music":
-		value = MIN_VOL
+	#if bus_name == "Music":
+		#value = MIN_VOL
 	var default_level : float = (((MAX_VOL - MIN_VOL) / max_value) * value) + MIN_VOL
 	AudioServer.set_bus_volume_db(bus_index, default_level)
 
