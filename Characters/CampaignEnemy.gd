@@ -15,6 +15,7 @@ var target_vis_threshold := 0.45
 
 func _ready() -> void:
 	super()
+	nav_agent.target_position = Vector3.ZERO
 	$NameLabel.text = name
 
 
@@ -25,44 +26,11 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	super(delta)
-	target_vis = _is_target_vis()
 	_find_target()
 
 
 func set_animation(anim : String) -> void:
 	state_machine.travel(anim)
-
-
-func turn_to_target(delta) -> void:
-	var next_path_pos := Vector3.ZERO
-	if !nav_agent.is_navigation_finished():
-		next_path_pos = nav_agent.get_next_path_position()
-		next_path_pos.y = position.y
-	if next_path_pos and transform.origin != next_path_pos:
-		var new_transform := transform.looking_at(next_path_pos)
-		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
-
-
-func move_to_target(_delta) -> void:
-	var input_dir = Vector2.UP
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel)
-	else:
-		velocity.x = move_toward(velocity.x, 0, deaccel)
-		velocity.z = move_toward(velocity.z, 0, deaccel)
-	#nav_agent.set_velocity(velocity)
-	#if name == "Enemy1":
-		#print("Velocity: ", velocity)
-	move_and_slide()
-
-
-#func avoid_velocity(new_velocity) -> void:
-	#if name == "Enemy1":
-		#print("Agent Vel: ", new_velocity)
-	#velocity = new_velocity
-	#move_and_slide()
 
 
 func _find_target() -> void:
@@ -71,7 +39,7 @@ func _find_target() -> void:
 				%TargetCast.to_local(target.global_position) + Vector3(0, 0.9, 0)
 
 
-func _is_target_vis() -> bool:
+func is_target_vis() -> bool:
 	var temp_target_vis = target and %TargetCast.is_colliding()
 	temp_target_vis = %TargetCast.get_collider() == target
 	var target_cast_col = to_local(%TargetCast.get_collision_point()).normalized()
@@ -85,7 +53,12 @@ func set_rand_nav_point() -> void:
 	nav_agent.target_position = level.get_nav_point().global_position
 
 
+func set_target_as_nav_target() -> void:
+	nav_agent.target_position = target.global_position
+
+
 func has_arrived() -> bool:
+	print("Nav Arrived: ", nav_agent.is_target_reached())
 	return nav_agent.is_target_reached()
 
 

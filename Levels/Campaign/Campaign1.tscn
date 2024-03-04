@@ -299,9 +299,11 @@ shape = SubResource("ConcavePolygonShape3D_r4v24")
 [node name="Path1" type="Path3D" parent="Paths" index="0"]
 curve = SubResource("Curve3D_7v1m4")
 
-[node name="Characters" parent="." index="4" node_paths=PackedStringArray("level", "enemies")]
+[node name="Characters" parent="." index="4" node_paths=PackedStringArray("level", "player", "enemies")]
+unique_name_in_owner = true
 script = ExtResource("4_eopk7")
 level = NodePath("..")
+player = NodePath("Player")
 enemies = [NodePath("Enemy1")]
 
 [node name="Player" parent="Characters" index="0" instance=ExtResource("2_cqxx7")]
@@ -309,97 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 health_fade = null
 
 [node name="Enemy1" parent="Characters" index="1" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 6.35, 6.125)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy2" parent="Characters" index="2" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -6.25222, 6.35, 6.125)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy3" parent="Characters" index="3" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 5.74146, 6.35, 6.125)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy4" parent="Characters" index="4" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 5.74146, 6.35, 0.109237)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy5" parent="Characters" index="5" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 5.74146, 6.35, -6.18872)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy6" parent="Characters" index="6" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0.243074, 6.35, -6.18872)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy7" parent="Characters" index="7" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -6.02338, 6.35, -6.18872)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy8" parent="Characters" index="8" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -6.02339, 6.35, 0.0424862)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy9" parent="Characters" index="9" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 25.5828, 6.35, -19.3766)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy10" parent="Characters" index="10" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 19.3306, 6.35, -19.3766)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy11" parent="Characters" index="11" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 31.3243, 6.35, -19.3766)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy12" parent="Characters" index="12" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 31.3243, 6.35, -25.3924)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy13" parent="Characters" index="13" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 31.3243, 6.35, -31.6904)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy14" parent="Characters" index="14" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 25.8259, 6.35, -31.6904)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy15" parent="Characters" index="15" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 19.5595, 6.35, -31.6904)
-level = NodePath("../..")
-target = NodePath("../Player")
-patrol_path = NodePath("../../Paths/Path1")
-
-[node name="Enemy16" parent="Characters" index="16" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 19.5595, 6.35, -25.4592)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0, 0)
 level = NodePath("../..")
 target = NodePath("../Player")
 patrol_path = NodePath("../../Paths/Path1")
