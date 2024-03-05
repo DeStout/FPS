@@ -311,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 health_fade = null
 
 [node name="Enemy1" parent="Characters" index="1" node_paths=PackedStringArray("level", "target", "patrol_path") instance=ExtResource("2_gq26m")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0, 4)
 level = NodePath("../..")
 target = NodePath("../Player")
 patrol_path = NodePath("../../Paths/Path1")

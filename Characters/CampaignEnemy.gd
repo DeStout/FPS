@@ -8,7 +8,7 @@ const AIM_SPEED := 8.0
 @onready var nav_agent := $NavAgent
 @export var target : CharacterBase = null
 var target_vis := false
-var target_vis_threshold := 0.45
+var target_vis_threshold := 0.15
 
 @export var patrol_path : Path3D = null
 
@@ -20,8 +20,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	super(delta)
 	if target != null:
 		_look(delta)
+	if !trigger_pulled:
+		_reset_aim()
 
 
 func _physics_process(delta):
@@ -41,12 +44,15 @@ func _find_target() -> void:
 
 func is_target_vis() -> bool:
 	var temp_target_vis = target and %TargetCast.is_colliding()
-	temp_target_vis = %TargetCast.get_collider() == target
-	var target_cast_col = to_local(%TargetCast.get_collision_point()).normalized()
-	temp_target_vis =  target_cast_col.dot(Vector3.FORWARD) > target_vis_threshold
-	if temp_target_vis:
-		trigger_pulled = true
-	return temp_target_vis
+	if %TargetCast.get_collider() == target:
+		var target_cast_col = to_local(%TargetCast.get_collision_point()).normalized()
+		temp_target_vis =  target_cast_col.dot(Vector3.FORWARD) > target_vis_threshold
+		#if temp_target_vis:
+			#trigger_pulled = true
+		#else:
+			#trigger_pulled = false
+		return temp_target_vis
+	return false
 
 
 func set_rand_nav_point() -> void:
@@ -58,7 +64,6 @@ func set_target_as_nav_target() -> void:
 
 
 func has_arrived() -> bool:
-	print("Nav Arrived: ", nav_agent.is_target_reached())
 	return nav_agent.is_target_reached()
 
 
@@ -87,6 +92,10 @@ func _look(delta) -> void:
 
 func _shoot() -> void:
 	super()
+
+
+func _reset_aim() -> void:
+	$AimHelper.rotation.x = lerp_angle($AimHelper.rotation.x, 0, 0.5)
 
 
 func _swing() -> void:
