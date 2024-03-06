@@ -28,8 +28,8 @@ func _tick(delta: float) -> Status:
 	turn_to_target.call_deferred(delta)
 	move_to_target.call_deferred(delta)
 	
-	if agent.is_target_vis():
-		return SUCCESS
+	#if agent.is_target_vis():
+		#return SUCCESS
 	return RUNNING
 
 

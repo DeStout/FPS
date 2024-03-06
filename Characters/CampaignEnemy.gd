@@ -46,12 +46,8 @@ func is_target_vis() -> bool:
 	var temp_target_vis = target and %TargetCast.is_colliding()
 	if %TargetCast.get_collider() == target:
 		var target_cast_col = to_local(%TargetCast.get_collision_point()).normalized()
-		temp_target_vis =  target_cast_col.dot(Vector3.FORWARD) > target_vis_threshold
-		#if temp_target_vis:
-			#trigger_pulled = true
-		#else:
-			#trigger_pulled = false
-		return temp_target_vis
+		if target_cast_col.dot(Vector3.FORWARD) > target_vis_threshold:
+			return temp_target_vis
 	return false
 
 
@@ -61,6 +57,10 @@ func set_rand_nav_point() -> void:
 
 func set_target_as_nav_target() -> void:
 	nav_agent.target_position = target.global_position
+
+
+func set_nav_target(new_nav_target : Vector3) -> void:
+	nav_agent.target_position = new_nav_target
 
 
 func has_arrived() -> bool:
@@ -101,6 +101,14 @@ func _reset_aim() -> void:
 func _swing() -> void:
 	super()
 	_slap()
+
+
+func _unequip_weapon(old_weapon) -> void:
+	old_weapon.visible = false
+
+
+func _equip_weapon(new_weapon) -> void:
+	new_weapon.visible = true
 
 
 # Keep so he don't die

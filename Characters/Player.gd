@@ -54,12 +54,12 @@ func _physics_process(delta) -> void:
 	if direction:
 		if is_on_floor():
 			state_machine.travel("Run")
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel)
+		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel * delta)
+		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel * delta)
 	else:
 		state_machine.travel("IdleFall")
-		velocity.x = move_toward(velocity.x, 0, deaccel)
-		velocity.z = move_toward(velocity.z, 0, deaccel)
+		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
+		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	move_and_slide()
 
 

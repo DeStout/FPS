@@ -6,10 +6,10 @@ signal died
 signal add_score
 
 # Movement
-const ACCEL := 2.5
-const DEACCEL := 0.8
-const AIR_ACCEL := 0.18
-const AIR_DEACCEL := 0.02
+const ACCEL := 140
+const DEACCEL := 50.5
+const AIR_ACCEL := 10.5
+const AIR_DEACCEL := 1.5
 const SPEED = 5.5
 const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

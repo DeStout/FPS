@@ -1,6 +1,7 @@
-[gd_resource type="BehaviorTree" load_steps=59 format=3 uid="uid://173couunbi78"]
+[gd_resource type="BehaviorTree" load_steps=63 format=3 uid="uid://173couunbi78"]
 
 [ext_resource type="Script" path="res://Characters/AI/Tasks/MoveToTarget.gd" id="1_b06su"]
+[ext_resource type="Script" path="res://Characters/AI/Tasks/MoveToInRange.gd" id="1_pmaus"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_jf85a"]
 var/target_visible/name = "target_visible"
@@ -24,6 +25,12 @@ var/agent/value = NodePath("..")
 var/agent/hint = 0
 var/agent/hint_string = ""
 
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_jjpd7"]
+text = "Follow Target"
+
+[sub_resource type="BTAlwaysFail" id="BTAlwaysFail_1j72u"]
+children = [SubResource("BTConsolePrint_jjpd7")]
+
 [sub_resource type="BBNode" id="BBNode_u55n2"]
 value_source = 1
 variable = "agent"
@@ -33,37 +40,6 @@ resource_name = "$agent"
 node = SubResource("BBNode_u55n2")
 method = &"is_target_vis"
 result_var = "temp_target_vis"
-
-[sub_resource type="BBVariant" id="BBVariant_eesa5"]
-type = 1
-saved_value = true
-resource_name = "true"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_h01la"]
-variable = "target_visible"
-value = SubResource("BBVariant_eesa5")
-
-[sub_resource type="BBVariant" id="BBVariant_vcqqn"]
-type = 1
-saved_value = true
-resource_name = "true"
-
-[sub_resource type="BTSetVar" id="BTSetVar_03nyx"]
-variable = "target_known"
-value = SubResource("BBVariant_vcqqn")
-
-[sub_resource type="BTSequence" id="BTSequence_frw15"]
-children = [SubResource("BTCallMethod_w11jp"), SubResource("BTCheckVar_h01la"), SubResource("BTSetVar_03nyx")]
-
-[sub_resource type="BTAlwaysFail" id="BTAlwaysFail_hu7lv"]
-custom_name = "Check Target Visible"
-children = [SubResource("BTSequence_frw15")]
-
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_jjpd7"]
-text = "Follow Target"
-
-[sub_resource type="BTAlwaysFail" id="BTAlwaysFail_1j72u"]
-children = [SubResource("BTConsolePrint_jjpd7")]
 
 [sub_resource type="BBVariant" id="BBVariant_j3abm"]
 type = 1
@@ -83,6 +59,15 @@ resource_name = "true"
 variable = "target_visible"
 value = SubResource("BBVariant_w2i23")
 
+[sub_resource type="BBVariant" id="BBVariant_vcqqn"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_03nyx"]
+variable = "target_known"
+value = SubResource("BBVariant_vcqqn")
+
 [sub_resource type="BBNode" id="BBNode_nsugo"]
 value_source = 1
 variable = "agent"
@@ -92,12 +77,21 @@ resource_name = "$agent"
 node = SubResource("BBNode_nsugo")
 method = &"set_target_as_nav_target"
 
+[sub_resource type="BTComment" id="BTComment_20ap8"]
+children = [SubResource("BTCallMethod_wli2i")]
+
+[sub_resource type="BTAction" id="BTAction_1qok2"]
+script = ExtResource("1_pmaus")
+
 [sub_resource type="BTAction" id="BTAction_hc6js"]
 script = ExtResource("1_b06su")
 
+[sub_resource type="BTComment" id="BTComment_lsvr6"]
+children = [SubResource("BTAction_hc6js")]
+
 [sub_resource type="BTDynamicSequence" id="BTDynamicSequence_84ylf"]
-custom_name = "Move To Target"
-children = [SubResource("BTCheckVar_qbfwc"), SubResource("BTSetVar_k0kr0"), SubResource("BTCallMethod_wli2i"), SubResource("BTAction_hc6js")]
+custom_name = "Move in Range and Engage"
+children = [SubResource("BTCallMethod_w11jp"), SubResource("BTCheckVar_qbfwc"), SubResource("BTSetVar_k0kr0"), SubResource("BTSetVar_03nyx"), SubResource("BTComment_20ap8"), SubResource("BTAction_1qok2"), SubResource("BTComment_lsvr6")]
 
 [sub_resource type="BTCheckTrigger" id="BTCheckTrigger_2lr8p"]
 variable = "target_visible"
@@ -175,11 +169,11 @@ node = SubResource("BBNode_7k5rw")
 method = &"set_rand_nav_point"
 
 [sub_resource type="BTSequence" id="BTSequence_mbdta"]
-custom_name = "Get New Target"
+custom_name = "Get Random Target"
 children = [SubResource("BTCheckTrigger_3fsg5"), SubResource("BTCallMethod_nxn5b"), SubResource("BTWait_dg3xm"), SubResource("BTCallMethod_fi8wk")]
 
 [sub_resource type="BTSelector" id="BTSelector_lxlxm"]
-custom_name = "Follow Target"
+custom_name = "Follow and Engage Target"
 children = [SubResource("BTAlwaysFail_1j72u"), SubResource("BTDynamicSequence_84ylf"), SubResource("BTSequence_p2y07"), SubResource("BTSequence_mbdta")]
 
 [sub_resource type="BTConsolePrint" id="BTConsolePrint_s6bam"]
@@ -206,12 +200,30 @@ resource_name = "false"
 variable = "arrived"
 value = SubResource("BBVariant_u673d")
 
+[sub_resource type="BBNode" id="BBNode_yl3np"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_ssdxm"]
+node = SubResource("BBNode_yl3np")
+method = &"is_target_vis"
+result_var = "target_vis"
+
+[sub_resource type="BBVariant" id="BBVariant_mnj76"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_cwr54"]
+variable = "target_vis"
+value = SubResource("BBVariant_mnj76")
+
 [sub_resource type="BTAction" id="BTAction_dt0i5"]
 script = ExtResource("1_b06su")
 
 [sub_resource type="BTDynamicSequence" id="BTDynamicSequence_w7wan"]
 custom_name = "Move To Target"
-children = [SubResource("BTCallMethod_sh3k4"), SubResource("BTCheckVar_g1vbt"), SubResource("BTAction_dt0i5")]
+children = [SubResource("BTCallMethod_sh3k4"), SubResource("BTCheckVar_g1vbt"), SubResource("BTCallMethod_ssdxm"), SubResource("BTCheckVar_cwr54"), SubResource("BTAction_dt0i5")]
 
 [sub_resource type="BTCheckTrigger" id="BTCheckTrigger_abws7"]
 variable = "arrived"
@@ -226,6 +238,7 @@ method = &"set_animation"
 args = Array[BBVariant]([SubResource("BBVariant_5pix2")])
 
 [sub_resource type="BTWait" id="BTWait_jlw7u"]
+duration = 0.0
 
 [sub_resource type="BBNode" id="BBNode_i50bn"]
 saved_value = NodePath(".")
@@ -236,7 +249,7 @@ node = SubResource("BBNode_i50bn")
 method = &"set_rand_nav_point"
 
 [sub_resource type="BTSequence" id="BTSequence_2tu4j"]
-custom_name = "Get New Target"
+custom_name = "Get Random Target"
 children = [SubResource("BTCheckTrigger_abws7"), SubResource("BTCallMethod_chejm"), SubResource("BTWait_jlw7u"), SubResource("BTCallMethod_hrhv1")]
 
 [sub_resource type="BTSelector" id="BTSelector_s2u26"]
@@ -244,7 +257,7 @@ custom_name = "Move Random"
 children = [SubResource("BTAlwaysFail_vb6d3"), SubResource("BTDynamicSequence_w7wan"), SubResource("BTSequence_2tu4j")]
 
 [sub_resource type="BTSelector" id="BTSelector_k6les"]
-children = [SubResource("BTAlwaysFail_hu7lv"), SubResource("BTSelector_lxlxm"), SubResource("BTSelector_s2u26")]
+children = [SubResource("BTSelector_lxlxm"), SubResource("BTSelector_s2u26")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_jf85a")
