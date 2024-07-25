@@ -20,9 +20,6 @@ func _input(event) -> void:
 			else:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				visible = false
-		
-		elif Input.is_action_just_pressed("SwitchLevel"):
-			Globals.switch_levels()
 
 
 func quit_button() -> void:

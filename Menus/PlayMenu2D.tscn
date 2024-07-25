@@ -15,7 +15,7 @@ offset_right = 256.0
 offset_bottom = 424.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 alignment = 1
 script = ExtResource("1_005mr")
 
@@ -24,6 +24,12 @@ custom_minimum_size = Vector2(512, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Start"
+
+[node name="OptionsButton" type="Button" parent="."]
+custom_minimum_size = Vector2(512, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Settings"
 
 [node name="BackButton" type="Button" parent="."]
 custom_minimum_size = Vector2(512, 150)
@@ -43,5 +49,7 @@ bus = &"SFX"
 
 [connection signal="mouse_entered" from="StartButton" to="." method="play_boop"]
 [connection signal="pressed" from="StartButton" to="." method="start_pressed"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="play_boop"]
+[connection signal="pressed" from="OptionsButton" to="." method="options_pressed"]
 [connection signal="mouse_entered" from="BackButton" to="." method="play_boop"]
 [connection signal="pressed" from="BackButton" to="." method="back_pressed"]

@@ -8,8 +8,6 @@ var bullet_hole_ := preload("res://Props/BulletHole.tscn")
 var damage_label_ := preload("res://Characters/DamageLabel.tscn")
 var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 
-@export var num_enemies := 0
-
 
 func _ready():
 	$Players.level = self

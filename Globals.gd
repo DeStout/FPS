@@ -14,6 +14,7 @@ var level3_ := preload("res://Levels/Multiplayer/Level3.tscn")
 
 @onready var main_menu : Node3D = game.get_node("MainMenu")
 var level : Node3D = null
+var game_settings : GameSettings = GameSettings.new()
 
 enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN}
 var WEAPON_NAMES = ["Slapper", "Pistol", "SMG", "Rifle", "Shotgun"]
@@ -26,32 +27,33 @@ const BODY_DMG := 	[25,				# Slapper
 					[25, 15, 8]]		# Rifle
 
 
+func set_game_settings(new_game_settings : GameSettings) -> void:
+	game_settings = new_game_settings
+
+
 func start_game() -> void:
 	game.remove_child(main_menu)
-	level = level3_.instantiate()
+	level = select_level().instantiate()
 	game.add_child(level)
 
 
-func switch_levels() -> void:
-	var free_level = level
-	game.remove_child(level)
-	free_level.queue_free()
-	match level.name:
-		"Level1":
-			level = level2_.instantiate()
-		"Level2":
-			level = level3_.instantiate()
-		"Level3":
-			level = level1_.instantiate()
+func select_level() -> PackedScene:
+	match game_settings.level:
+		0:
+			return level1_
+		1:
+			return level2_
+		2:
+			return level3_
 		_:
-			assert(false, "Can't switch from this level")
-	game.add_child(level)
+			return level3_
 
 
 func quit_game() -> void:
 	if main_menu:
 		level.queue_free()
 		level = null
+		await get_tree().process_frame
 		game.add_child(main_menu)
 	else:
 		get_tree().quit()

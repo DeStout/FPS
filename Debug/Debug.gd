@@ -46,14 +46,12 @@ func _process(_delta) -> void:
 					str(Performance.get_monitor(Performance.OBJECT_NODE_COUNT))
 
 
-func _input(event) -> void:
+#func _input(event) -> void:
 #	if event.is_action_pressed("Kill"):
 #		player.container.remove_player(player)
 #	if event.is_action_pressed("Mute"):
 #		mute_setting = (mute_setting + 1) % 4
 #		_set_mute()
-	if event.is_action_pressed("SwitchLevel"):
-		_switch_level()
 
 
 #func _new_player_weapon(new_weapon) -> void:
@@ -96,21 +94,3 @@ func _input(event) -> void:
 #	label.name = enemy.name
 #	$Behaviors.add_child(label)
 #	return label
-#
-#
-func _switch_level() -> void:
-	if level == Level.LEVEL1:
-		level = Level.LEVEL2
-		#get_tree().change_scene_to_file("res://Level2.tscn")
-		$Level.text = "Level: Level2"
-	elif level == Level.LEVEL2:
-		level = Level.LEVEL3
-		#get_tree().change_scene_to_file("res://Level1.tscn")
-		$Level.text = "Level: Level3"
-	elif level == Level.LEVEL3:
-		level = Level.LEVEL1
-		#get_tree().change_scene_to_file("res://Level1.tscn")
-		$Level.text = "Level: Level1"
-
-	#for child in $Behaviors.get_children():
-		#child.queue_free()

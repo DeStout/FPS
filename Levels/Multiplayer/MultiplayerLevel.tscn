@@ -9,7 +9,6 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_kwlcy")
-num_enemies = 3
 
 [node name="Players" type="Node3D" parent="."]
 unique_name_in_owner = true

@@ -333,28 +333,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25)
 
 [node name="Marker3D26" type="Marker3D" parent="NavPoints" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25, 0, -41.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
 
 [node name="Marker3D27" type="Marker3D" parent="NavPoints" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 0, -41.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -40)
 
 [node name="Marker3D28" type="Marker3D" parent="NavPoints" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25, 0, 41.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 40)
 
 [node name="Marker3D29" type="Marker3D" parent="NavPoints" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 0, 41.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)
 
 [node name="Marker3D32" type="Marker3D" parent="NavPoints" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
 
 [node name="Marker3D33" type="Marker3D" parent="NavPoints" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
 
 [node name="Marker3D30" type="Marker3D" parent="NavPoints" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
 
 [node name="Marker3D31" type="Marker3D" parent="NavPoints" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
 [node name="Marker3D" type="Marker3D" parent="NavPoints" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 6.30828, 6.25)

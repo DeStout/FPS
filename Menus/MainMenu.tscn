@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgtm2531pd3e2"]
+[gd_scene load_steps=27 format=3 uid="uid://dgtm2531pd3e2"]
 
 [ext_resource type="Script" path="res://Menus/CameraCast.gd" id="1_8asdj"]
 [ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Levels/Multiplayer/Level2Base.tscn" id="1_uajbf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Menus/Collider.gd" id="4_l07be"]
 [ext_resource type="PackedScene" uid="uid://5b0kqbde0dta" path="res://Menus/PlayMenu2D.tscn" id="6_vcnix"]
 [ext_resource type="PackedScene" uid="uid://b87sic5k3mvs0" path="res://Menus/OptionsMenu2D.tscn" id="8_3h5rh"]
+[ext_resource type="PackedScene" uid="uid://00asmkvy7wyo" path="res://Menus/SettingsMenu2D.tscn" id="8_ib7fi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkhuc"]
 resource_local_to_scene = true
@@ -69,11 +70,23 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_8xqql")
 
+[sub_resource type="QuadMesh" id="QuadMesh_v2xvu"]
+size = Vector2(1, 0.667)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0od1j"]
+viewport_path = NodePath("PlayMenu/Mesh/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_au83a"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_0od1j")
+
 [sub_resource type="QuadMesh" id="QuadMesh_iv33o"]
 size = Vector2(1, 0.667)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4w5io"]
-viewport_path = NodePath("PlayMenu/Mesh/Viewport")
+viewport_path = NodePath("SettingsMenu/Mesh/Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vwpj"]
 resource_local_to_scene = true
@@ -146,7 +159,7 @@ shape = SubResource("CylinderShape3D_xkhuc")
 disabled = true
 
 [node name="Model" parent="World/WeaponPickUp" index="1"]
-transform = Transform3D(-1.27788, 0.968908, -1.17731, 0.942943, 1.71969, 0.391842, 1.2021, -0.304679, -1.55564, 0, 0.244229, 0)
+transform = Transform3D(1.21318, -0.31362, -1.54312, 0.942943, 1.71969, 0.391842, 1.26539, -0.96518, 1.19106, 0, 0.244229, 0)
 
 [node name="SMG" parent="World/WeaponPickUp/Model" index="0"]
 layers = 4
@@ -193,8 +206,8 @@ shape = SubResource("BoxShape3D_dgnif")
 disabled = true
 
 [node name="Mesh" type="MeshInstance3D" parent="PlayMenu"]
-mesh = SubResource("QuadMesh_iv33o")
-surface_material_override/0 = SubResource("StandardMaterial3D_0vwpj")
+mesh = SubResource("QuadMesh_v2xvu")
+surface_material_override/0 = SubResource("StandardMaterial3D_au83a")
 
 [node name="Viewport" type="SubViewport" parent="PlayMenu/Mesh"]
 transparent_bg = true
@@ -202,6 +215,25 @@ physics_object_picking = true
 size = Vector2i(1920, 1080)
 
 [node name="PlayMenu2D" parent="PlayMenu/Mesh/Viewport" instance=ExtResource("6_vcnix")]
+
+[node name="SettingsMenu" type="Area3D" parent="."]
+transform = Transform3D(-13, 0, -1.96295e-06, 0, 13, 0, 1.96295e-06, 0, -13, 0, 5.794, 5.275)
+script = ExtResource("4_l07be")
+
+[node name="Collision" type="CollisionShape3D" parent="SettingsMenu"]
+shape = SubResource("BoxShape3D_dgnif")
+disabled = true
+
+[node name="Mesh" type="MeshInstance3D" parent="SettingsMenu"]
+mesh = SubResource("QuadMesh_iv33o")
+surface_material_override/0 = SubResource("StandardMaterial3D_0vwpj")
+
+[node name="Viewport" type="SubViewport" parent="SettingsMenu/Mesh"]
+transparent_bg = true
+physics_object_picking = true
+size = Vector2i(1920, 1080)
+
+[node name="SettingsMenu2D" parent="SettingsMenu/Mesh/Viewport" instance=ExtResource("8_ib7fi")]
 
 [node name="OptionsMenu" type="Area3D" parent="."]
 transform = Transform3D(4.82207e-07, 0, -6.38703, 0, 6.38703, 0, 6.38703, 0, 4.82207e-07, 7.5, 5.988, 0)
@@ -225,6 +257,8 @@ size = Vector2i(1920, 1080)
 [connection signal="options_button" from="MainMenu/Mesh/Viewport/MainMenu2D" to="CamArm" method="swing_to_options_menu"]
 [connection signal="play_button" from="MainMenu/Mesh/Viewport/MainMenu2D" to="CamArm" method="swing_to_play_menu"]
 [connection signal="back_button" from="PlayMenu/Mesh/Viewport/PlayMenu2D" to="CamArm" method="swing_to_main_menu"]
+[connection signal="options_button" from="PlayMenu/Mesh/Viewport/PlayMenu2D" to="CamArm" method="swing_to_settings_menu"]
+[connection signal="accept_button" from="SettingsMenu/Mesh/Viewport/SettingsMenu2D" to="CamArm" method="swing_to_play_menu"]
 [connection signal="back_button" from="OptionsMenu/Mesh/Viewport/TabContainer" to="CamArm" method="swing_to_main_menu"]
 
 [editable path="World"]
