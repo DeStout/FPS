@@ -1,96 +1,95 @@
 extends CanvasLayer
 
 
-var debug_visible := true
 
+var debug_visible := true
 var fps_visible := true
 
-#var enemy_behavior_visible := true
+# Cheats
+var invincible := false
+var infinite_ammo := false
+var bottomless_clip := false
 
-#enum Mute{NONE, MUSIC, SFX, ALL}
-#var mute_visible := false
-#@onready var master_bus := AudioServer.get_bus_index("Master")
-#@onready var sfx_bus := AudioServer.get_bus_index("SFX")
-#@onready var music_bus := AudioServer.get_bus_index("Music")
-#var mute_setting := Mute.MUSIC
+var level : MultiplayerLevel = null
+var players_container = null
+var player : CharacterBase = null
+var player_pos : Transform3D
 
-#var player : CharacterBase
-#var player_invincible := false
-#var infinite_ammo := false
-
-enum Level{LEVEL1, LEVEL2, LEVEL3}
-var level := Level.LEVEL3
-var level_visible := true
+var debug_camera_ = preload("res://Debug/DebugCamera.tscn")
+var debug_camera : CharacterBody3D = null
+var cam_swap := false
 
 
 func _ready() -> void:
-	#player = get_tree().current_scene.get_node("Players").player
 	visible = debug_visible
 	$FPS.visible = fps_visible
-
-	#if player:
-		#player.weapon_picked_up.connect(_new_player_weapon)
-
-	#$Mute.visible = mute_visible
-	#_set_mute()
-
-	$Level.visible = level_visible
-	$Level.text = "Level:"
-
-	#$Behaviors.visible = enemy_behavior_visible
+	
+	Globals.game_started.connect(game_started)
+	Globals.game_ended.connect(game_ended)
 
 
 func _process(_delta) -> void:
 	$FPS.text = "FPS: " + str(Performance.get_monitor(Performance.TIME_FPS))
 	$Objects.text = "Objects: " + \
 					str(Performance.get_monitor(Performance.OBJECT_NODE_COUNT))
+	
+	if player:
+		if invincible:
+			_invincible()
+		if infinite_ammo:
+			_infinite_ammo()
+		if bottomless_clip:
+			_bottomless_clip()
+			
+		if Input.is_action_just_pressed("DebugCam"):
+			_swap_cameras()
 
 
-#func _input(event) -> void:
-#	if event.is_action_pressed("Kill"):
-#		player.container.remove_player(player)
-#	if event.is_action_pressed("Mute"):
-#		mute_setting = (mute_setting + 1) % 4
-#		_set_mute()
+func game_started(new_level) -> void:
+	level = new_level
+	players_container = level.get_node("Players")
+	player = players_container.player
+
+func game_ended() -> void:
+	level = null
+	players_container = null
+	player = null
+	debug_camera = null
+	cam_swap = false
 
 
-#func _new_player_weapon(new_weapon) -> void:
-	#new_weapon.finished_reloading.connect(_infinte_ammo)
+func _swap_cameras() -> void:
+	cam_swap = !cam_swap
+	if cam_swap:
+		player_pos = player.transform
+		players_container.remove_child(player)
+		for enemy in players_container.enemies:
+			enemy.character_killed(player)
+		
+		if !debug_camera:
+			debug_camera = debug_camera_.instantiate()
+			debug_camera.transform = player_pos
+			players_container.add_child(debug_camera)
+			debug_camera.global_position.y += 1.5
+		else:
+			players_container.add_child(debug_camera)
+	else:
+		players_container.remove_child(debug_camera)
+		players_container.add_child(player)
+		player.transform = player_pos
+		for enemy in players_container.enemies:
+			enemy.character_spawned(player, true)
 
 
-#func _infinte_ammo() -> void:
-	#if infinite_ammo:
-		#print("Debug: Infinite Ammo")
-		#player.weapon_held.extra_ammo = player.weapon_held.max_ammo - \
-										#player.weapon_held.mag_size
-		#player._update_UI()
+func _invincible() -> void:
+	player.health = player.MAX_HEALTH
+	player.update_health_UI()
 
-#func _set_mute() -> void:
-#	match mute_setting:
-#		Mute.NONE:
-#			AudioServer.set_bus_mute(master_bus, false)
-#			AudioServer.set_bus_mute(sfx_bus, false)
-#			AudioServer.set_bus_mute(music_bus, false)
-#			$Mute.text = "Mute: None"
-#		Mute.MUSIC:
-#			AudioServer.set_bus_mute(master_bus, false)
-#			AudioServer.set_bus_mute(sfx_bus, false)
-#			AudioServer.set_bus_mute(music_bus, true)
-#			$Mute.text = "Mute: Music"
-#		Mute.SFX:
-#			AudioServer.set_bus_mute(master_bus, false)
-#			AudioServer.set_bus_mute(sfx_bus, true)
-#			AudioServer.set_bus_mute(music_bus, false)
-#			$Mute.text = "Mute: SFX"
-#		Mute.ALL:
-#			AudioServer.set_bus_mute(master_bus, true)
-#			AudioServer.set_bus_mute(sfx_bus, false)
-#			AudioServer.set_bus_mute(music_bus, false)
-#			$Mute.text = "Mute: All"
-#
-#
-#func add_enemy_behavior_label(enemy) -> Label:
-#	var label = Label.new()
-#	label.name = enemy.name
-#	$Behaviors.add_child(label)
-#	return label
+func _infinite_ammo() -> void:
+	player.weapon_held.extra_ammo = player.weapon_held.stats.max_ammo - \
+									player.weapon_held.stats.mag_size
+	player.update_UI()
+
+func _bottomless_clip() -> void:
+	player.weapon_held.ammo_in_mag = player.weapon_held.stats.mag_size
+	player.update_UI()

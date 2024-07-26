@@ -253,6 +253,14 @@ func _die() -> void:
 	died.emit(self)
 
 
+func character_killed(deceased) -> void:
+	pass
+
+
+func character_spawned(just_born, is_player) -> void:
+	pass
+
+
 func respawn() -> void:
 	# Do this now and in _die() because Godot has priority issues
 	global_position = current_level.get_spawn_point().position

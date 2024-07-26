@@ -1,6 +1,10 @@
 extends Node
 
 
+signal game_started
+signal game_ended
+
+
 @onready var game = get_tree().current_scene
 
 var mouse_sensitivity := 0.002
@@ -35,6 +39,7 @@ func start_game() -> void:
 	game.remove_child(main_menu)
 	level = select_level().instantiate()
 	game.add_child(level)
+	game_started.emit(level)
 
 
 func select_level() -> PackedScene:
@@ -55,6 +60,7 @@ func quit_game() -> void:
 		level = null
 		await get_tree().process_frame
 		game.add_child(main_menu)
+		game_ended.emit()
 	else:
 		get_tree().quit()
 

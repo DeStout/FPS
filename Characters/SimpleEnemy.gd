@@ -208,6 +208,18 @@ func _die() -> void:
 	$PlayerTimer.stop()
 
 
+func character_killed(deceased) -> void:
+	super(deceased)
+	if player == deceased:
+		player = null
+
+
+func character_spawned(just_born, is_player) -> void:
+	super(just_born, is_player)
+	if is_player:
+		player = just_born
+
+
 func respawn() -> void:
 	super()
 	_new_rand_nav_point()

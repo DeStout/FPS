@@ -42,10 +42,27 @@ func set_up() -> void:
 				%Score.add_character(enemy.name)
 				spawn_character(enemy, spawn_point)
 				connect_signals(enemy)
+		
 		1:				# FFA
 			print("Game Type: Free For All")
+			enemies.append(player)
 			for x in range(Globals.game_settings.num_ai):
 				var enemy = ffa_enemy_.instantiate()
+				enemies.append(enemy)
+				enemy.new_name("Enemy" + str(x+1))
+				
+				while(used_spawns.has(spawn_point)):
+					spawn_point = level.get_spawn_point()
+				used_spawns.append(spawn_point)
+
+				%Score.add_character(enemy.name)
+				spawn_character(enemy, spawn_point)
+				connect_signals(enemy)
+			
+			for enemy in enemies:
+				if enemy != player:
+					enemy.set_enemies(enemies)
+		
 		2:				# Teams
 			print("Game Type: Team Battle")
 
@@ -75,20 +92,17 @@ func add_to_score_board(killed, killer) -> void:
 func character_killed(character) -> void:
 	remove_child(character)
 
-	if character == player:
-		for enemy in enemies:
-			enemy.player = null
+	for enemy in enemies:
+		enemy.character_killed(character)
 
 	for respawn_timer in respawn_timers:
 		if respawn_timer.character == character:
 			respawn_timer.start()
 			return
 
-
 func respawn_character(character) -> void:
 	add_child(character)
 	character.respawn()
-
-	if character == player:
-		for enemy in enemies:
-			enemy.player = player
+	
+	for enemy in enemies:
+		enemy.character_spawned(character, player == character)
