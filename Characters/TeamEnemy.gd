@@ -11,6 +11,7 @@ var enemies_vis : Array = []
 var target : CharacterBody3D = null
 var target_i := -1
 var target_vis_threshold := 0.45
+var target_dist := 2.5
 var shoot_accuracy_threshold := 0.9
 var shoot_speed_mod := 1.0/1.75
 var shoot_speed_variance := Vector2(0.3, 1.0)
@@ -57,11 +58,16 @@ func _physics_process(delta):
 	# Choose target
 	if target_i >= 0 and (enemies_vis[target_i] or !$TargetTimer.is_stopped()):
 		if target and target.is_inside_tree():
-			nav_agent.target_position = target.global_position
+			var short_target = _get_short_target(target.global_position)
+			nav_agent.target_position = short_target
 	if !nav_agent.is_navigation_finished():
 		next_path_pos = nav_agent.get_next_path_position()
 		next_path_pos.y = position.y
-		input_dir = Vector2.UP
+		if basis.z.dot(next_path_pos - global_position) <= 1:
+			input_dir = Vector2.UP
+		else:
+			print(name, ", BAck!")
+			input_dir = Vector2.DOWN
 	elif target_i == -1 and $TargetTimer.is_stopped():
 #		print("Nav point reached")
 		_new_rand_nav_point()
@@ -154,6 +160,12 @@ func find_new_target() -> void:
 func set_new_target(new_target, new_target_i) -> void:
 	target = new_target
 	target_i = new_target_i
+	
+	
+func _get_short_target(target_pos) -> Vector3:
+	var short_vect = (global_position - target_pos).normalized() * target_dist
+	short_vect = (target_pos - global_position) + short_vect
+	return short_vect + global_position
 
 
 func _shoot() -> void:
@@ -246,7 +258,7 @@ func _jump() -> void:
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	if Globals.game_settings.game_mode == 2:
 		if !enemies.has(shooter):
-			print(name, " friendly from ", shooter.name)
+			#print(name, " friendly from ", shooter.name)
 			return
 	damage *= 2
 	set_new_target(shooter, enemies.find(shooter))
