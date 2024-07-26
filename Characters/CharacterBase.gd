@@ -78,6 +78,11 @@ func _ready() -> void:
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 
 
+func set_color(new_color : Color) -> void:
+	var mat = $Puppet/Skeleton3D/Body.get_surface_override_material(0)
+	mat.albedo_color = new_color
+
+
 func _process(delta) -> void:
 	_apply_recoil(delta)
 	if trigger_pulled and weapon_held:
@@ -189,8 +194,7 @@ func _reload() -> void:
 
 
 # Signaled from BodySeg
-func take_damage(body_seg : Area3D, damage : int,
-												shooter : CharacterBase) -> void:
+func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	last_shot_by = shooter
 	last_body_seg_shot = body_seg.get_parent()
 	
@@ -222,9 +226,10 @@ func _set_health(new_health) -> void:
 
 func _die() -> void:
 	# Signal to PlayerContainer.add_to_score_board
+	var body_color = $Puppet/Skeleton3D/Body.get_surface_override_material(0).albedo_color
 	add_score.emit(self, last_shot_by)
 	current_level.spawn_rag_doll(skeleton, transform, 
-						last_shot_by, last_body_seg_shot.name)
+						last_shot_by, last_body_seg_shot.name, body_color)
 	
 	visible = false
 	_disable_collisions(true)

@@ -16,7 +16,7 @@ func accept_pressed() -> void:
 	var game_settings : GameSettings = GameSettings.new()
 	game_settings.game_mode = $GameMode/ModeMenu.selected
 	game_settings.level = $LevelSelect/LevelMenu.selected
-	game_settings.num_ai = $NumAI/AIMenu.selected + 1
+	game_settings.num_ai = $NumAI/AIMenu.selected
 	Globals.set_game_settings(game_settings)
 	
 	accept_button.emit()

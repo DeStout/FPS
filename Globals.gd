@@ -31,10 +31,12 @@ const BODY_DMG := 	[25,				# Slapper
 					[25, 15, 8]]		# Rifle
 
 
+# Called from SettingsMenu2D.accept_pressed()
 func set_game_settings(new_game_settings : GameSettings) -> void:
 	game_settings = new_game_settings
 
 
+# Called from PlayMenu2D.start_pressed()
 func start_game() -> void:
 	game.remove_child(main_menu)
 	level = select_level().instantiate()
@@ -54,6 +56,7 @@ func select_level() -> PackedScene:
 			return level3_
 
 
+# Called from Pause.quit_button()
 func quit_game() -> void:
 	if main_menu:
 		level.queue_free()

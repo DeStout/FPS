@@ -43,13 +43,16 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 
 
 # Called from CharacterBase.die()
-func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, 
-						shooter : CharacterBase, body_seg_shot : String) -> void:
+func spawn_rag_doll(dead_skel : Skeleton3D,
+							dead_trans : Transform3D, shooter : CharacterBase,
+							body_seg_shot : String, body_color : Color) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
 	rag_doll.match_pose_transform(dead_skel, dead_trans)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
 											shooter.weapon_held.stats.impulse)
+	rag_doll.get_node("Skeleton3D/Body").\
+						get_surface_override_material(0).albedo_color = body_color
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

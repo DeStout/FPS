@@ -3,7 +3,6 @@ extends Node3D
 
 var player_ = preload("res://Characters/Player.tscn")
 var simple_enemy_ = preload("res://Characters/SimpleEnemy.tscn")
-var ffa_enemy_ = preload("res://Characters/FFAEnemy.tscn")
 var team_enemy_ = preload("res://Characters/TeamEnemy.tscn")
 
 var respawn_timer_ = preload("res://Levels/Multiplayer/RespawnTimer.tscn")
@@ -47,7 +46,7 @@ func set_up() -> void:
 			print("Game Type: Free For All")
 			enemies.append(player)
 			for x in range(Globals.game_settings.num_ai):
-				var enemy = ffa_enemy_.instantiate()
+				var enemy = team_enemy_.instantiate()
 				enemies.append(enemy)
 				enemy.new_name("Enemy" + str(x+1))
 				
@@ -65,6 +64,34 @@ func set_up() -> void:
 		
 		2:				# Teams
 			print("Game Type: Team Battle")
+			player.set_color(Color.BLUE)
+			var team1 := [player]
+			var team2 := []
+			for x in range(Globals.game_settings.num_ai):
+				var enemy = team_enemy_.instantiate()
+				if x < Globals.game_settings.num_ai / 2:
+					team1.append(enemy)
+					enemy.new_name("Ally" + str(x+1))
+					enemy.set_color(Color.BLUE)
+				else:
+					team2.append(enemy)
+					enemy.new_name("Enemy" + str(x-(Globals.game_settings.num_ai / 2)+1))
+					enemy.set_color(Color.RED)
+				
+				while(used_spawns.has(spawn_point)):
+					spawn_point = level.get_spawn_point()
+				used_spawns.append(spawn_point)
+
+				%Score.add_character(enemy.name)
+				spawn_character(enemy, spawn_point)
+				connect_signals(enemy)
+			
+			for ally in team1:
+				if ally != player:
+					ally.set_enemies(team2)
+			for enemy in team2:
+				enemy.set_enemies(team1)
+
 
 
 func spawn_character(character : CharacterBase, spawn_point : Marker3D) -> void:

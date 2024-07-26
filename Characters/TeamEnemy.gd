@@ -6,9 +6,11 @@ var last_position := Vector3.ZERO
 var stuck_length := 2.0
 var stuck_times := 0
 
-var player : CharacterBody3D = null
-var player_vis := false : set = _player_vis_change
-var player_vis_threshold := 0.45
+var enemies : Array = []
+var enemies_vis : Array = []
+var target : CharacterBody3D = null
+var target_i := -1
+var target_vis_threshold := 0.45
 var shoot_accuracy_threshold := 0.9
 var shoot_speed_mod := 1.0/1.75
 var shoot_speed_variance := Vector2(0.3, 1.0)
@@ -21,6 +23,14 @@ const AIM_SPEED := 8.0
 func new_name(new_name_ : String) -> void:
 	name = new_name_
 	$NameLabel.text = name
+
+
+func set_enemies(new_enemies):
+	enemies = new_enemies.duplicate()
+	if enemies.has(self):
+		enemies.erase(self)
+	for x in range(enemies.size()):
+		enemies_vis.append(false)
 	
 	
 func _ready() -> void:
@@ -29,31 +39,30 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	_look(delta)
+	if target and target.is_inside_tree():
+		_look(delta)
 
 
 func _physics_process(delta):
 	super(delta)
-
-	# Check and set if player vis has changed
-	var temp_player_vis = player and %PlayerCast.is_colliding() and \
-						%PlayerCast.get_collider() == player and \
-						to_local(%PlayerCast.get_collision_point()) \
-						.normalized().dot(Vector3.FORWARD) > player_vis_threshold
-	if player_vis != temp_player_vis:
-		player_vis = temp_player_vis
+	
+	check_enemies_visible()
+	
+	if (target_i < 0 or !enemies_vis[target_i]) and enemies_vis.has(true):
+		find_new_target()
 
 	var input_dir = Vector2.ZERO
 	var next_path_pos := Vector3.ZERO
 
 	# Choose target
-	if player and (player_vis or !$PlayerTimer.is_stopped()):
-		nav_agent.target_position = player.global_position
+	if target_i >= 0 and (enemies_vis[target_i] or !$TargetTimer.is_stopped()):
+		if target and target.is_inside_tree():
+			nav_agent.target_position = target.global_position
 	if !nav_agent.is_navigation_finished():
 		next_path_pos = nav_agent.get_next_path_position()
 		next_path_pos.y = position.y
 		input_dir = Vector2.UP
-	elif !player_vis and $PlayerTimer.is_stopped():
+	elif target_i == -1 and $TargetTimer.is_stopped():
 #		print("Nav point reached")
 		_new_rand_nav_point()
 
@@ -78,7 +87,7 @@ func _physics_process(delta):
 
 	# Check if AI is stuck
 	if abs(position.length_squared() - last_position.length_squared()) < stuck_length:
-		if $StuckTimer.is_stopped() and $PlayerTimer.is_stopped() and \
+		if $StuckTimer.is_stopped() and $TargetTimer.is_stopped() and \
 											!nav_agent.is_target_reached():
 			$StuckTimer.start()
 #			print("Maybe Stuck")
@@ -88,28 +97,63 @@ func _physics_process(delta):
 	last_position = position
 
 	# Aim and fire or reload
-	_aim(delta)
+	if target and target.is_inside_tree():
+		_aim(delta)
 	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
 		if weapon_held.ammo_in_mag == 0:
 			_reload()
-		elif player and player_vis:
-			var player_pos := player.global_position + Vector3(0, 1.5, 0)
-			var local_player_pos = %ShootCast.to_local(player_pos).normalized()
+		elif target and enemies_vis[target_i] and target.is_inside_tree():
+			var target_pos = target.global_position + Vector3(0, 1.5, 0)
+			var local_player_pos = %ShootCast.to_local(target_pos).normalized()
 			var local_ray_collision = %ShootCast.to_local(\
 								%ShootCast.get_collision_point()).normalized()
 			if local_player_pos.dot(local_ray_collision) > shoot_accuracy_threshold:
 				if $ShootTimer.is_stopped():
 					trigger_pulled = true
 	else:
-		if player and player_vis:
-			if player.global_position.distance_to(global_position) < 1.0:
+		if target and enemies_vis[target_i]:
+			if target.global_position.distance_to(global_position) < 1.0:
 				if $ShootTimer.is_stopped():
 					trigger_pulled = true
 
-	# Cast at Player for vis check
-	if player:
-		%PlayerCast.target_position = %PlayerCast.to_local(player.global_position) + \
-									Vector3(0, 0.9, 0)
+
+func check_enemies_visible() -> void:
+	var offset := Vector3(0, 0.9, 0)
+	var temp_vis := enemies_vis.duplicate()
+	for i in enemies.size():
+		var enemy = enemies[i]
+		if enemy.is_inside_tree():
+			var target_pos = %TargetCast.to_local(enemy.global_position) + offset
+			%TargetCast.target_position = target_pos
+			%TargetCast.force_raycast_update()
+			
+			if %TargetCast.is_colliding():
+				var collider = %TargetCast.get_collider()
+				var enemy_dot_prod := to_local(%TargetCast.get_collision_point()) \
+												.normalized().dot(Vector3.FORWARD)
+				if collider == enemy and enemy_dot_prod > target_vis_threshold:
+					enemies_vis[i] = true
+				else:
+					enemies_vis[i] = false
+	if target and temp_vis[target_i] != enemies_vis[target_i]:
+		_target_vis_change(enemies_vis[target_i])
+
+
+func find_new_target() -> void:
+	var least_dist := 0.0
+	for i in enemies_vis.size():
+		if enemies[i].is_inside_tree() and enemies_vis[i]:
+			var dist = global_position.distance_squared_to(enemies[i].global_position)
+			if dist < least_dist or least_dist == 0.0:
+				least_dist = dist
+				target_i = i
+	set_new_target(enemies[target_i], target_i)
+	#print(name, " has new target: ", target.name)
+
+
+func set_new_target(new_target, new_target_i) -> void:
+	target = new_target
+	target_i = new_target_i
 
 
 func _shoot() -> void:
@@ -126,9 +170,9 @@ func _swing() -> void:
 
 
 func _aim(delta) -> void:
-	if player and player_vis:
-		var player_pos = player.global_position + Vector3(0, 1.5, 0)
-		var new_trans : Transform3D = $AimHelper.global_transform.looking_at(player_pos)
+	if target and enemies_vis[target_i]:
+		var target_pos = target.global_position + Vector3(0, 1.5, 0)
+		var new_trans : Transform3D = $AimHelper.global_transform.looking_at(target_pos)
 		$AimHelper.global_transform = $AimHelper.global_transform.interpolate_with \
 													(new_trans, AIM_SPEED * delta)
 	else:
@@ -139,10 +183,10 @@ func _aim(delta) -> void:
 
 
 func _look(delta) -> void:
-	if player and player_vis:
-		var player_pos : Vector3 = $LookHelper.to_local(player.global_position
+	if target and enemies_vis[target_i]:
+		var target_pos : Vector3 = $LookHelper.to_local(target.global_position
 													+ Vector3(0, 1.5, 0))
-		$LookHelper.basis = $LookHelper.basis.looking_at(player_pos)
+		$LookHelper.basis = $LookHelper.basis.looking_at(target_pos)
 		var temp_euler : Vector3 = $LookHelper.basis.get_euler() / (PI/2)
 		var eulers := Vector2(-temp_euler.y, temp_euler.x)
 		
@@ -162,16 +206,20 @@ func _look(delta) -> void:
 		anim_tree["parameters/IdleFall/TorsoIdleBlend/blend_position"].y = torso.y
 
 
-func _player_vis_change(new_player_vis) -> void:
-	player_vis = new_player_vis
-	if player_vis:
-#		print("Player seent")
-		nav_agent.target_position = player.global_position
-		$PlayerTimer.stop()
+func _target_vis_change(new_target_vis) -> void:
+	if new_target_vis:
+#		print("Target seent")
+		nav_agent.target_position = target.global_position
+		$TargetTimer.stop()
 	else:
 		trigger_pulled = false
-#		print("Player unseent")
-		$PlayerTimer.start()
+#		print("Target unseent")
+		$TargetTimer.start()
+
+
+func target_lost() -> void:
+	target = null
+	target_i = -1
 
 
 func _new_rand_nav_point() -> void:
@@ -195,17 +243,30 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 
-func take_damage(body_seg : Area3D, damage : int,
-												shooter : CharacterBase) -> void:
+func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+	if Globals.game_settings.game_mode == 2:
+		if !enemies.has(shooter):
+			print(name, " friendly from ", shooter.name)
+			return
 	damage *= 2
-	player_vis = true
+	set_new_target(shooter, enemies.find(shooter))
 	super(body_seg, damage, shooter)
 
 
 func _die() -> void:
 	super()
-	player_vis = false
-	$PlayerTimer.stop()
+	target_lost()
+	$TargetTimer.stop()
+
+
+func character_killed(deceased) -> void:
+	super(deceased)
+	if target == deceased:
+		target_lost()
+
+
+func character_spawned(just_born, is_player) -> void:
+	super(just_born, is_player)
 
 
 func respawn() -> void:
