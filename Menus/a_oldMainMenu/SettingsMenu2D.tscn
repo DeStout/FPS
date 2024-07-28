@@ -1,0 +1,191 @@
+[gd_scene load_steps=5 format=3 uid="uid://00asmkvy7wyo"]
+
+[ext_resource type="Script" path="res://Menus/a_oldMainMenu/SettingsMenu2D.gd" id="1_6e3w3"]
+[ext_resource type="Texture2D" uid="uid://c3076nl1psi7c" path="res://Menus/DropDownCarot.png" id="2_e2s6x"]
+[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="3_g5ctm"]
+
+[sub_resource type="Theme" id="Theme_7ifij"]
+default_font_size = 48
+
+[node name="SettingsMenu2D" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_6e3w3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 266.0
+offset_right = 1694.0
+offset_bottom = 801.0
+color = Color(0.498039, 0.498039, 0.498039, 0.25098)
+
+[node name="GameMode" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 280.0
+offset_top = 276.0
+offset_right = 792.0
+offset_bottom = 517.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="GameMode"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Type"
+
+[node name="ModeMenu" type="OptionButton" parent="GameMode"]
+layout_mode = 2
+theme = SubResource("Theme_7ifij")
+theme_override_font_sizes/font_size = 64
+theme_override_icons/arrow = ExtResource("2_e2s6x")
+item_count = 3
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Lone Wolf"
+popup/item_0/id = 0
+popup/item_1/text = "Free For All"
+popup/item_1/id = 1
+popup/item_2/text = "Teams"
+popup/item_2/id = 2
+
+[node name="LevelSelect" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 280.0
+offset_top = 517.0
+offset_right = 792.0
+offset_bottom = 758.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="LevelSelect"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Map"
+
+[node name="LevelMenu" type="OptionButton" parent="LevelSelect"]
+layout_mode = 2
+theme = SubResource("Theme_7ifij")
+theme_override_font_sizes/font_size = 64
+theme_override_icons/arrow = ExtResource("2_e2s6x")
+item_count = 3
+selected = 2
+allow_reselect = true
+popup/item_0/text = "Square"
+popup/item_0/id = 0
+popup/item_1/text = "Bridge"
+popup/item_1/id = 1
+popup/item_2/text = "Temple"
+popup/item_2/id = 2
+
+[node name="NumAI" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 871.0
+offset_top = 277.0
+offset_right = 1383.0
+offset_bottom = 518.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="NumAI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Number of AI
+"
+
+[node name="AIMenu" type="OptionButton" parent="NumAI"]
+layout_mode = 2
+theme = SubResource("Theme_7ifij")
+theme_override_font_sizes/font_size = 64
+theme_override_icons/arrow = ExtResource("2_e2s6x")
+item_count = 17
+selected = 5
+allow_reselect = true
+popup/item_0/text = "0"
+popup/item_0/id = 0
+popup/item_1/text = "1"
+popup/item_1/id = 1
+popup/item_2/text = "2"
+popup/item_2/id = 2
+popup/item_3/text = "3"
+popup/item_3/id = 3
+popup/item_4/text = "4"
+popup/item_4/id = 4
+popup/item_5/text = "5"
+popup/item_5/id = 5
+popup/item_6/text = "6"
+popup/item_6/id = 6
+popup/item_7/text = "7"
+popup/item_7/id = 7
+popup/item_8/text = "8"
+popup/item_8/id = 8
+popup/item_9/text = "9"
+popup/item_9/id = 9
+popup/item_10/text = "10"
+popup/item_10/id = 10
+popup/item_11/text = "11"
+popup/item_11/id = 11
+popup/item_12/text = "12"
+popup/item_12/id = 12
+popup/item_13/text = "13"
+popup/item_13/id = 13
+popup/item_14/text = "14"
+popup/item_14/id = 14
+popup/item_15/text = "15"
+popup/item_15/id = 15
+popup/item_16/text = "16"
+popup/item_16/id = 16
+
+[node name="AcceptButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 626.0
+offset_right = 1255.0
+offset_bottom = 733.0
+theme_override_font_sizes/font_size = 72
+text = "Accept
+"
+
+[node name="DefaultsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1283.0
+offset_top = 658.0
+offset_right = 1533.0
+offset_bottom = 733.0
+theme_override_font_sizes/font_size = 48
+text = "Defaults"
+
+[node name="Boop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g5ctm")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g5ctm")
+pitch_scale = 2.75
+bus = &"SFX"
+
+[connection signal="item_focused" from="GameMode/ModeMenu" to="." method="play_boop"]
+[connection signal="item_selected" from="GameMode/ModeMenu" to="." method="play_select"]
+[connection signal="mouse_entered" from="GameMode/ModeMenu" to="." method="play_boop"]
+[connection signal="item_focused" from="LevelSelect/LevelMenu" to="." method="play_boop"]
+[connection signal="item_selected" from="LevelSelect/LevelMenu" to="." method="play_select"]
+[connection signal="mouse_entered" from="LevelSelect/LevelMenu" to="." method="play_boop"]
+[connection signal="item_focused" from="NumAI/AIMenu" to="." method="play_boop"]
+[connection signal="item_selected" from="NumAI/AIMenu" to="." method="play_select"]
+[connection signal="mouse_entered" from="NumAI/AIMenu" to="." method="play_boop"]
+[connection signal="mouse_entered" from="AcceptButton" to="." method="play_boop"]
+[connection signal="pressed" from="AcceptButton" to="." method="accept_pressed"]
+[connection signal="mouse_entered" from="DefaultsButton" to="." method="play_boop"]
+[connection signal="pressed" from="DefaultsButton" to="." method="defaults_pressed"]

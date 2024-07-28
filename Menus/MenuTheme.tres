@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c1t8b0kfqb6ey"]
+
+[ext_resource type="Texture2D" uid="uid://c3076nl1psi7c" path="res://Menus/DropDownCarot.png" id="1_jwgjr"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vlkh3"]
+color = Color(0.301961, 0.537255, 1, 1)
+grow_begin = -9.0
+grow_end = 0.0
+thickness = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jvsl"]
+bg_color = Color(0.596078, 0.760784, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_462eb"]
+color = Color(0.172549, 0.203922, 0.219608, 1)
+thickness = 12
+
+[sub_resource type="ImageTexture" id="ImageTexture_0jp2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oty0t"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[resource]
+default_font_size = 36
+Button/colors/font_focus_color = Color(0.392157, 0.392157, 0.392157, 1)
+Button/colors/font_hover_color = Color(0, 0, 1, 1)
+Button/colors/font_pressed_color = Color(1, 0, 0, 1)
+Button/styles/focus = null
+HSlider/icons/grabber = ExtResource("1_jwgjr")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_vlkh3")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4jvsl")
+HSlider/styles/slider = SubResource("StyleBoxLine_462eb")
+TabContainer/colors/drop_mark_color = Color(1, 0, 0, 1)
+TabContainer/colors/font_hovered_color = Color(0, 0, 1, 1)
+TabContainer/colors/font_selected_color = Color(0.392157, 0.392157, 0.392157, 1)
+TabContainer/icons/drop_mark = SubResource("ImageTexture_0jp2k")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_oty0t")

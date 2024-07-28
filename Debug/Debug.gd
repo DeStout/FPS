@@ -63,8 +63,8 @@ func _swap_cameras() -> void:
 	if cam_swap:
 		player_pos = player.transform
 		players_container.remove_child(player)
-		for enemy in players_container.enemies:
-			enemy.character_killed(player)
+		for bot in players_container.bots:
+			bot.character_killed(player)
 		
 		if !debug_camera:
 			debug_camera = debug_camera_.instantiate()
@@ -77,8 +77,8 @@ func _swap_cameras() -> void:
 		players_container.remove_child(debug_camera)
 		players_container.add_child(player)
 		player.transform = player_pos
-		for enemy in players_container.enemies:
-			enemy.character_spawned(player, true)
+		for bot in players_container.bots:
+			bot.character_spawned(player, true)
 
 
 func _invincible() -> void:

@@ -1,0 +1,319 @@
+[gd_scene load_steps=5 format=3 uid="uid://sr0hwfx8k4q2"]
+
+[ext_resource type="Script" path="res://Menus/OptionsMenu.gd" id="1_1evur"]
+[ext_resource type="Theme" uid="uid://c1t8b0kfqb6ey" path="res://Menus/MenuTheme.tres" id="2_v235q"]
+[ext_resource type="Script" path="res://Menus/AudioSetting.gd" id="3_p2er2"]
+[ext_resource type="Script" path="res://Menus/SensSetting.gd" id="4_kiwx0"]
+
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "mouse_slider", "controller_slider", "invert_y_box")]
+visible = false
+layout_mode = 3
+anchor_left = 0.272
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.240051
+offset_right = -65.0
+script = ExtResource("1_1evur")
+master_slider = NodePath("Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider")
+music_slider = NodePath("Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider")
+sfx_slider = NodePath("Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider")
+mouse_slider = NodePath("Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens")
+controller_slider = NodePath("Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens")
+invert_y_box = NodePath("Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Title" type="Control" parent="Layout/Title"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Layout" type="MarginContainer" parent="Layout/Title/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1333.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Layout/Title/Title/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 75
+text = "Game Settings
+"
+vertical_alignment = 1
+tab_stops = PackedFloat32Array(3)
+
+[node name="Settings" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Settings" type="Control" parent="Layout/Settings"]
+layout_mode = 1
+anchors_preset = 0
+offset_top = 169.0
+offset_right = 1333.0
+offset_bottom = 929.0
+
+[node name="Tabs" type="TabContainer" parent="Layout/Settings/Settings"]
+layout_mode = 1
+offset_right = 1333.0
+offset_bottom = 760.0
+theme = ExtResource("2_v235q")
+theme_override_font_sizes/font_size = 48
+
+[node name="Audio" type="Control" parent="Layout/Settings/Settings/Tabs"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Layout/Settings/Settings/Tabs/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 1000
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Audio/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 160
+
+[node name="Master" type="Control" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master"]
+layout_mode = 1
+offset_right = 1237.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+value = 25.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("3_p2er2")
+bus_name = "Master"
+default_value = 50.0
+
+[node name="Music" type="Control" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music"]
+layout_mode = 1
+offset_right = 1237.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+value = 80.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("3_p2er2")
+bus_name = "Music"
+default_value = 50.0
+
+[node name="SFX" type="Control" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX"]
+layout_mode = 1
+offset_right = 1237.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+value = 80.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("3_p2er2")
+bus_name = "SFX"
+default_value = 50.0
+
+[node name="Controls" type="Control" parent="Layout/Settings/Settings/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Layout/Settings/Settings/Tabs/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 1000
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Controls/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 160
+
+[node name="Mouse" type="Control" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse"]
+layout_mode = 1
+offset_right = 1237.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Mouse Sensitivity"
+
+[node name="MouseSens" type="HSlider" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+value = 25.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("4_kiwx0")
+default_value = 25
+
+[node name="Controller" type="Control" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller"]
+layout_mode = 1
+offset_right = 1237.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Controller Sensitivity"
+
+[node name="ControllerSens" type="HSlider" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+value = 25.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("4_kiwx0")
+io = 1
+default_value = 25
+
+[node name="InvertY" type="Control" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY"]
+layout_mode = 1
+offset_right = 1237.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Invert Y Axis"
+
+[node name="InvertY" type="Control" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout"]
+layout_mode = 2
+
+[node name="InvertYBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY"]
+layout_mode = 2
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Buttons" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="Layout/Buttons"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 925.0
+offset_right = 1333.0
+offset_bottom = 1072.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout/Buttons/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 64
+
+[node name="Layout" type="HBoxContainer" parent="Layout/Buttons/Buttons/MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 2.91
+theme_override_constants/separation = 160
+alignment = 2
+
+[node name="Defaults" type="Button" parent="Layout/Buttons/Buttons/MarginContainer/Layout"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+theme_override_font_sizes/font_size = 64
+text = "Defaults"
+flat = true
+
+[node name="Back" type="Button" parent="Layout/Buttons/Buttons/MarginContainer/Layout"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("2_v235q")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+flat = true
+
+[connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" to="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" method="audio_level_changed"]
+[connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" to="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" method="audio_level_changed"]
+[connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider" to="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider" method="audio_level_changed"]
+[connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens" to="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens" method="_sensitivity_changed"]
+[connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" to="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" method="_sensitivity_changed"]
+[connection signal="toggled" from="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="invert_y_change"]
+[connection signal="pressed" from="Layout/Buttons/Buttons/MarginContainer/Layout/Defaults" to="." method="default_button"]
+[connection signal="pressed" from="Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="." method="back_button"]

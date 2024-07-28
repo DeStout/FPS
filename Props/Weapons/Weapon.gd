@@ -65,6 +65,10 @@ func add_ammo(new_ammo : int) -> void:
 	extra_ammo = min(extra_ammo + new_ammo, stats.max_ammo - stats.mag_size)
 
 
+func has_ammo() -> bool:
+	return ammo_in_mag + extra_ammo > 0
+
+
 func _add_slappable(body: Node3D) -> void:
 	if body.is_in_group("players"):
 		slappable.append(body)

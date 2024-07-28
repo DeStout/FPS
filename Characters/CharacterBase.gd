@@ -111,6 +111,18 @@ func _physics_process(delta) -> void:
 			"parameters/IdleFall/LowerIdleFall/blend_position", -1, 0.05)
 
 
+func _pull_trigger() -> void:
+	if weapon_held.stats.weapon_type == Globals.WEAPONS.SLAPPER:
+		trigger_pulled = true
+	elif weapon_held.has_ammo():
+		if weapon_held.ammo_in_mag > 0:
+			trigger_pulled = true
+			return
+		_reload()
+		return
+	_switch_to_next_weapon()
+
+
 func _shoot() -> void:
 	if weapon_held.can_shoot() and !switching_weapons:
 		weapon_held.shoot()
@@ -342,7 +354,8 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 			new_weapon.extra_ammo = new_pick_up.weapon_info[1]
 			new_weapon.ammo_in_mag = new_pick_up.weapon_info[2]
 				
-		weapons.append(new_weapon.get_weapon_type())
+		weapons.append(new_weapon.stats.weapon_type)
+		weapons.sort()
 		if new_weapon.stats.weapon_type > weapon_held.stats.weapon_type:
 			_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
@@ -375,6 +388,15 @@ func _get_weapon(weapon_type : int) -> Node3D:
 		if weapon.get_weapon_type() == weapon_type:
 			new_weapon = weapon
 	return new_weapon
+
+
+func _switch_to_next_weapon() -> void:
+	var snopaew = weapons.duplicate()
+	snopaew.reverse()
+	for weapon_i in snopaew:
+		var nopaew = _get_weapon(weapon_i)
+		if nopaew.has_ammo() or weapon_i == Globals.WEAPONS.SLAPPER:
+			_switch_weapon(nopaew)
 
 
 func _switch_weapon(new_weapon : Node3D) -> void:

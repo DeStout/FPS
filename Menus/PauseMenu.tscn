@@ -1,41 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7bpadmpmu5g3"]
+[gd_scene load_steps=5 format=3 uid="uid://c7bpadmpmu5g3"]
 
-[ext_resource type="Script" path="res://Levels/Multiplayer/Pause.gd" id="1_8ue3a"]
-[ext_resource type="PackedScene" uid="uid://b87sic5k3mvs0" path="res://Menus/OptionsMenu2D.tscn" id="2_c53vv"]
+[ext_resource type="Script" path="res://Maps/Multiplayer/Pause.gd" id="1_8ue3a"]
+[ext_resource type="PackedScene" uid="uid://sr0hwfx8k4q2" path="res://Menus/OptionsMenu.tscn" id="2_5rsrr"]
+[ext_resource type="Theme" uid="uid://c1t8b0kfqb6ey" path="res://Menus/MenuTheme.tres" id="3_6tdwi"]
+[ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="4_et666"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
 layer = 2
-visible = false
 script = ExtResource("1_8ue3a")
 
-[node name="OptionsMenu2D" parent="." instance=ExtResource("2_c53vv")]
-process_mode = 2
-offset_left = -718.0
-offset_top = -392.0
-offset_right = 1192.0
-offset_bottom = 682.0
-scale = Vector2(0.764095, 0.764095)
-
-[node name="Button" parent="OptionsMenu2D" index="1"]
-visible = false
-
-[node name="Button" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 289.0
-offset_top = 313.0
-offset_right = 543.0
-offset_bottom = 395.0
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 246.0
+offset_top = 15.0
+offset_right = -246.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.01652, 1.01652)
-theme_override_font_sizes/font_size = 54
+color = Color(0.234375, 0.234375, 0.234375, 0.498039)
+
+[node name="OptionsMenu" parent="." instance=ExtResource("2_5rsrr")]
+visible = true
+offset_left = -231.24
+offset_right = -296.0
+
+[node name="Defaults" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="0"]
+visible = false
+
+[node name="Back" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="1"]
+visible = false
+
+[node name="QuitButton" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 125)
+offset_left = 1335.0
+offset_top = 936.0
+offset_right = 1585.0
+offset_bottom = 1061.0
+theme = ExtResource("3_6tdwi")
+theme_override_font_sizes/font_size = 64
 text = "Quit"
+flat = true
 
-[connection signal="pressed" from="Button" to="." method="quit_button"]
+[node name="Boop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_et666")
+volume_db = -12.0
+pitch_scale = 2.12
+mix_target = 2
+max_polyphony = 2
+bus = &"SFX"
 
-[editable path="OptionsMenu2D"]
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_et666")
+volume_db = -12.0
+pitch_scale = 1.75
+mix_target = 2
+max_polyphony = 2
+bus = &"SFX"
+
+[connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" to="." method="play_select"]
+[connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" to="." method="play_boop"]
+[connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" to="." method="play_select"]
+[connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" to="." method="play_boop"]
+[connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider" to="." method="play_select"]
+[connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider" to="." method="play_boop"]
+[connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens" to="." method="play_select"]
+[connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens" to="." method="play_boop"]
+[connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" to="." method="play_select"]
+[connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" to="." method="play_boop"]
+[connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="play_boop"]
+[connection signal="pressed" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="play_select"]
+[connection signal="pressed" from="QuitButton" to="." method="quit_button"]
+
+[editable path="OptionsMenu"]

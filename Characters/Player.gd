@@ -65,7 +65,7 @@ func _physics_process(delta) -> void:
 
 func _input(event) -> void:
 	if Input.is_action_just_pressed("Shoot"):
-		trigger_pulled = true
+		_pull_trigger()
 	elif Input.is_action_just_released("Shoot"):
 		trigger_pulled = false
 		

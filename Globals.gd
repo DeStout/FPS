@@ -12,12 +12,12 @@ var controller_sensitivity := 0.05
 var invert_y_axis := false
 
 var main_menu_ := preload("res://Menus/MainMenu.tscn")
-var level1_ := preload("res://Levels/Multiplayer/Level1.tscn")
-var level2_ := preload("res://Levels/Multiplayer/Level2.tscn")
-var level3_ := preload("res://Levels/Multiplayer/Level3.tscn")
+var Square_ := preload("res://Maps/Multiplayer/Square.tscn")
+var Bridge_ := preload("res://Maps/Multiplayer/Bridge.tscn")
+var Temple_ := preload("res://Maps/Multiplayer/Temple.tscn")
 
-@onready var main_menu : Node3D = game.get_node("MainMenu")
-var level : Node3D = null
+@onready var main_menu : Control = game.get_node("MainMenu")
+var map : Node3D = null
 var game_settings : GameSettings = GameSettings.new()
 
 enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN}
@@ -31,38 +31,40 @@ const BODY_DMG := 	[25,				# Slapper
 					[25, 15, 8]]		# Rifle
 
 
-# Called from SettingsMenu2D.accept_pressed()
+# Called from PlayMenu.start_button()
 func set_game_settings(new_game_settings : GameSettings) -> void:
 	game_settings = new_game_settings
 
 
-# Called from PlayMenu2D.start_pressed()
+# Called from PlayMenu.start_button()
 func start_game() -> void:
 	game.remove_child(main_menu)
-	level = select_level().instantiate()
-	game.add_child(level)
-	game_started.emit(level)
+	map = select_map().instantiate()
+	game.add_child(map)
+	game_started.emit(map)
 
 
-func select_level() -> PackedScene:
-	match game_settings.level:
+func select_map() -> PackedScene:
+	match game_settings.map:
 		0:
-			return level1_
+			return Square_
 		1:
-			return level2_
+			return Bridge_
 		2:
-			return level3_
+			return Temple_
 		_:
-			return level3_
+			return Temple_
 
 
 # Called from Pause.quit_button()
 func quit_game() -> void:
 	if main_menu:
-		level.queue_free()
-		level = null
+		map.queue_free()
+		map = null
 		await get_tree().process_frame
 		game.add_child(main_menu)
+		main_menu.update()
+		# Signal to Debug.game_ended()
 		game_ended.emit()
 	else:
 		get_tree().quit()
