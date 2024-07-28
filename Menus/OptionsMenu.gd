@@ -11,8 +11,13 @@ const INVERT_DEFAULT := false
 @export var invert_y_box : CheckBox
 
 
-func _ready() -> void:
-	update()
+func default() -> void:
+	master_slider.default()
+	music_slider.default()
+	sfx_slider.default()
+	mouse_slider.default()
+	controller_slider.default()
+	invert_y_change(INVERT_DEFAULT)
 
 
 func update() -> void:
@@ -32,13 +37,7 @@ func invert_y_change(new_value : bool) -> void:
 
 func default_button() -> void:
 	$"..".play_select()
-	master_slider.default()
-	music_slider.default()
-	sfx_slider.default()
-	mouse_slider.default()
-	controller_slider.default()
-	invert_y_change(INVERT_DEFAULT)
-	
+	default()
 
 
 func back_button() -> void:

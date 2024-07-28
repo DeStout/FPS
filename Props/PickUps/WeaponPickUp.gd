@@ -64,5 +64,5 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 
 
 func despawn() -> void:
-	print(name, " despawned")
+	#print(name, " despawned")
 	queue_free()

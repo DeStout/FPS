@@ -18,7 +18,7 @@ var Temple_ := preload("res://Maps/Multiplayer/Temple.tscn")
 
 @onready var main_menu : Control = game.get_node("MainMenu")
 var map : Node3D = null
-var game_settings : GameSettings = GameSettings.new()
+var match_settings : MatchSettings = MatchSettings.new()
 
 enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN}
 var WEAPON_NAMES = ["Slapper", "Pistol", "SMG", "Rifle", "Shotgun"]
@@ -32,8 +32,8 @@ const BODY_DMG := 	[25,				# Slapper
 
 
 # Called from PlayMenu.start_button()
-func set_game_settings(new_game_settings : GameSettings) -> void:
-	game_settings = new_game_settings
+func set_match_settings(new_match_settings : MatchSettings) -> void:
+	match_settings = new_match_settings
 
 
 # Called from PlayMenu.start_button()
@@ -45,7 +45,7 @@ func start_game() -> void:
 
 
 func select_map() -> PackedScene:
-	match game_settings.map:
+	match match_settings.map:
 		0:
 			return Square_
 		1:

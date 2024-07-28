@@ -9,10 +9,6 @@ const MIN_CONTROLLER_SENS := 0.01
 @export var default_value := 0
 
 
-func _ready() -> void:
-	default()
-
-
 func update() -> void:
 	match io:
 		0:
@@ -25,36 +21,34 @@ func default() -> void:
 	_sensitivity_changed(default_value)
 
 
-func _sens_to_slider(new_sens_val) -> int:
-	var range : float
-	var percentage : int
+func _sens_to_slider(new_sens : float) -> int:
+	var slide_range : float = max_value - min_value
+	var sens_percent : float
 	match io:
 		0:
-			range = MAX_MOUSE_SENS - MIN_CONTROLLER_SENS
-			percentage = (new_sens_val - MIN_CONTROLLER_SENS) / range
+			sens_percent = (new_sens - MIN_MOUSE_SENS) / \
+											(MAX_MOUSE_SENS - MIN_MOUSE_SENS)
 		1:
-			range = MAX_CONTROLLER_SENS - MIN_CONTROLLER_SENS
-			percentage = (new_sens_val - MIN_MOUSE_SENS) / range
-	return int((percentage * (max_value - min_value)) + min_value)
+			sens_percent = (new_sens - MIN_CONTROLLER_SENS) / \
+											(MAX_CONTROLLER_SENS - MIN_CONTROLLER_SENS)
+	return int((slide_range * sens_percent) + min_value)
 
 
-func _slider_to_sens(new_slider_val) -> float:
-	var range : int = max_value - min_value
-	var steps : int = range / step
-	var step_val : float
+func _slider_to_sens(new_value : int) -> float:
+	var slide_percent : float = new_value / (max_value - min_value)
+	var sens_range := 0.0
+	var min_sens := 0.0
 	match io:
 		0:
-			step_val = (MAX_MOUSE_SENS - MIN_MOUSE_SENS) / steps
-			return float(new_slider_val * step_val)
+			sens_range = MAX_MOUSE_SENS - MIN_MOUSE_SENS
+			min_sens = MIN_MOUSE_SENS
 		1:
-			step_val = (MAX_CONTROLLER_SENS - MIN_CONTROLLER_SENS) / steps
-			return float(new_slider_val * step_val)
-		_:
-			return 0.0
+			sens_range = MAX_CONTROLLER_SENS - MIN_CONTROLLER_SENS
+			min_sens = MIN_CONTROLLER_SENS
+	return float((sens_range * slide_percent) + min_sens)
 
 
 func _sensitivity_changed(new_value : int = 0) -> void:
-	#print("New Value: ", new_value)
 	value = new_value
 	match io:
 		0:

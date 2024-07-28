@@ -249,7 +249,7 @@ func _jump() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	if !Globals.game_settings.friendly_fire and !enemies.has(shooter):
+	if !Globals.match_settings.friendly_fire and !enemies.has(shooter):
 		return
 	damage *= 2
 	set_new_target(shooter, enemies.find(shooter))
@@ -265,7 +265,6 @@ func _die() -> void:
 func character_killed(deceased) -> void:
 	super(deceased)
 	if target == deceased:
-		print("target killed")
 		target_lost()
 		_new_rand_nav_point()
 

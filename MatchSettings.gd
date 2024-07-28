@@ -1,5 +1,5 @@
 extends Resource
-class_name GameSettings
+class_name MatchSettings
 
 
 var game_mode := 0

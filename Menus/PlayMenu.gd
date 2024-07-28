@@ -9,12 +9,12 @@ extends Control
 func start_button() -> void:
 	$"..".play_select()
 	
-	var game_settings : GameSettings = GameSettings.new()
-	game_settings.game_mode = game_mode.selected
-	game_settings.map = map.selected
-	game_settings.num_bots = num_bots.selected
-	game_settings.friendly_fire = ff.selected
-	Globals.set_game_settings(game_settings)
+	var match_settings : MatchSettings = MatchSettings.new()
+	match_settings.game_mode = game_mode.selected
+	match_settings.map = map.selected
+	match_settings.num_bots = num_bots.selected
+	match_settings.friendly_fire = ff.selected
+	Globals.set_match_settings(match_settings)
 	
 	Globals.start_game()
 

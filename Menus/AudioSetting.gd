@@ -12,7 +12,6 @@ var bus_index : int = 0
 func _ready() -> void:
 	assert(bus_name != "", "Audio slider bus undefined")
 	bus_index = AudioServer.get_bus_index(bus_name)
-	default()
 
 
 func update() -> void:
@@ -24,7 +23,7 @@ func default() -> void:
 
 
 func _bus_to_slider(new_volume : float) -> int:
-	var bus_percent : float = new_volume / (MAX_VOL - MIN_VOL)
+	var bus_percent : float = (new_volume - MIN_VOL) / (MAX_VOL - MIN_VOL)
 	var slide_range : float = max_value - min_value
 	return int((slide_range * bus_percent) + min_value)
 

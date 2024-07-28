@@ -25,7 +25,7 @@ func set_up() -> void:
 	spawn_character(player, spawn_point)
 	connect_signals(player)
 	
-	match Globals.game_settings.game_mode:
+	match Globals.match_settings.game_mode:
 		0:				# Lone Wolf
 			_set_up_lone_wolves(used_spawns)
 		
@@ -39,7 +39,7 @@ func set_up() -> void:
 func _set_up_lone_wolves(used_spawns : Array) -> void:
 	#print("Game Type: Lone Wolf")
 	var spawn_point = level.get_spawn_point()
-	for x in range(Globals.game_settings.num_bots):
+	for x in range(Globals.match_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
 		enemy.set_color(Color.RED)
 		bots.append(enemy)
@@ -60,7 +60,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 	var spawn_point = level.get_spawn_point()
 	var enemies := []
 	enemies.append(player)
-	for x in range(Globals.game_settings.num_bots):
+	for x in range(Globals.match_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
 		enemy.set_color(Color.RED)
 		enemies.append(enemy)
@@ -85,16 +85,16 @@ func _set_up_team_battle(used_spawns) -> void:
 	var spawn_point = level.get_spawn_point()
 	var team1 := [player]
 	var team2 := []
-	for x in range(Globals.game_settings.num_bots):
+	for x in range(Globals.match_settings.num_bots):
 		var bot = team_enemy_.instantiate()
-		if x < Globals.game_settings.num_bots / 2:
+		if x < Globals.match_settings.num_bots / 2:
 			bot.set_color(Color.BLUE)
 			team1.append(bot)
 			bot.new_name("Ally" + str(x+1))
 		else:
 			bot.set_color(Color.RED)
 			team2.append(bot)
-			bot.new_name("Enemy" + str(x-(Globals.game_settings.num_bots / 2)+1))
+			bot.new_name("Enemy" + str(x-(Globals.match_settings.num_bots / 2)+1))
 		bots.append(bot)
 		
 		while(used_spawns.has(spawn_point)):

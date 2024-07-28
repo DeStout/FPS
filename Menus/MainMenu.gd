@@ -4,6 +4,7 @@ extends Control
 func _ready() -> void:
 	$PlayMenu.visible = false
 	$OptionsMenu.visible = false
+	$OptionsMenu.default()
 
 
 func update() -> void:
