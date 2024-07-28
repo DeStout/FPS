@@ -6,7 +6,6 @@ var last_position := Vector3.ZERO
 var stuck_length := 2.0
 var stuck_times := 0
 
-var enemies : Array = []
 var enemies_vis : Array = []
 var target : CharacterBody3D = null
 var target_i := -1
@@ -27,9 +26,7 @@ func new_name(new_name_ : String) -> void:
 
 
 func set_enemies(new_enemies):
-	enemies = new_enemies.duplicate()
-	if enemies.has(self):
-		enemies.erase(self)
+	super(new_enemies)
 	for x in range(enemies.size()):
 		enemies_vis.append(false)
 	
@@ -249,8 +246,6 @@ func _jump() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	if !Globals.match_settings.friendly_fire and !enemies.has(shooter):
-		return
 	damage *= 2
 	set_new_target(shooter, enemies.find(shooter))
 	super(body_seg, damage, shooter)

@@ -22,6 +22,9 @@ const MAX_HEALTH := 100
 const MAX_ARMOR := 50
 var health := 100 : set = _set_health
 var armor := 0
+
+# Enemies
+var enemies := []
 var last_shot_by : CharacterBase = null
 
 # Body segments / Skeleton
@@ -207,6 +210,9 @@ func _reload() -> void:
 
 # Signaled from BodySeg
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+	if !Globals.match_settings.friendly_fire and !is_enemy(shooter):
+		return
+		
 	last_shot_by = shooter
 	last_body_seg_shot = body_seg.get_parent()
 	
@@ -234,6 +240,16 @@ func _set_health(new_health) -> void:
 	health = max(0, new_health)
 	if health <= 0:
 		_die()
+
+
+func set_enemies(new_enemies):
+	enemies = new_enemies.duplicate()
+	if enemies.has(self):
+		enemies.erase(self)
+
+
+func is_enemy(character):
+	return enemies.has(character)
 
 
 func _die() -> void:

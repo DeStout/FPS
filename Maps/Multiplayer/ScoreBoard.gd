@@ -20,9 +20,9 @@ func add_character(new_character_name : String) -> void:
 	$List.add_item(str(0))
 
 
-func add_kill(character_name) -> void:
+func add_kill(character_name, score := 1) -> void:
 	var list_index = (characters[character_name][0] * 3) + 1
-	var num_kills = characters[character_name][1] + 1
+	var num_kills = characters[character_name][1] + score
 	characters[character_name][1] = num_kills
 	$List.set_item_text(list_index, str(num_kills))
 

@@ -27,7 +27,7 @@ func set_up() -> void:
 	
 	match Globals.match_settings.game_mode:
 		0:				# Lone Wolf
-			_set_up_lone_wolves(used_spawns)
+			_set_up_lone_wolf(used_spawns)
 		
 		1:				# FFA
 			_set_up_ffa(used_spawns)
@@ -36,7 +36,7 @@ func set_up() -> void:
 			_set_up_team_battle(used_spawns)
 
 
-func _set_up_lone_wolves(used_spawns : Array) -> void:
+func _set_up_lone_wolf(used_spawns : Array) -> void:
 	#print("Game Type: Lone Wolf")
 	var spawn_point = level.get_spawn_point()
 	for x in range(Globals.match_settings.num_bots):
@@ -53,13 +53,13 @@ func _set_up_lone_wolves(used_spawns : Array) -> void:
 		%Score.add_character(enemy.name)
 		spawn_character(enemy, spawn_point)
 		connect_signals(enemy)
+	player.set_enemies(bots)
 
 
 func _set_up_ffa(used_spawns : Array) -> void:
 	#print("Game Type: Free For All")
 	var spawn_point = level.get_spawn_point()
-	var enemies := []
-	enemies.append(player)
+	var enemies := [player]
 	for x in range(Globals.match_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
 		enemy.set_color(Color.RED)
@@ -76,12 +76,11 @@ func _set_up_ffa(used_spawns : Array) -> void:
 		connect_signals(enemy)
 	
 	for enemy in enemies:
-		if enemy != player:
-			enemy.set_enemies(enemies)
+		enemy.set_enemies(enemies)
 
 
 func _set_up_team_battle(used_spawns) -> void:
-	print("Game Type: Team Battle")
+	#print("Game Type: Team Battle")
 	var spawn_point = level.get_spawn_point()
 	var team1 := [player]
 	var team2 := []
@@ -106,8 +105,7 @@ func _set_up_team_battle(used_spawns) -> void:
 		connect_signals(bot)
 	
 	for ally in team1:
-		if ally != player:
-			ally.set_enemies(team2)
+		ally.set_enemies(team2)
 	for enemy in team2:
 		enemy.set_enemies(team1)
 
@@ -129,9 +127,13 @@ func connect_signals(character) -> void:
 	character.add_score.connect(add_to_score_board)
 
 
+# Signaled from CharacterBase._die()
 func add_to_score_board(killed, killer) -> void:
 	%Score.add_death(killed.name)
-	%Score.add_kill(killer.name)
+	if killer.is_enemy(killed):
+		%Score.add_kill(killer.name)
+	else:
+		%Score.add_kill(killer.name, -1)
 
 
 func character_killed(character) -> void:

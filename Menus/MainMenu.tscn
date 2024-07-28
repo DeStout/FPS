@@ -65,6 +65,7 @@ alignment = 0
 layout_mode = 2
 theme = ExtResource("1_hpr53")
 theme_override_font_sizes/font_size = 64
+disabled = true
 text = "Controls"
 flat = true
 alignment = 0
@@ -78,7 +79,6 @@ flat = true
 alignment = 0
 
 [node name="PlayMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "num_bots", "ff")]
-visible = false
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
@@ -298,10 +298,10 @@ theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
 theme_override_icons/arrow = ExtResource("4_rvtwg")
 item_count = 2
-selected = 0
-popup/item_0/text = "On"
+selected = 1
+popup/item_0/text = "Off"
 popup/item_0/id = 0
-popup/item_1/text = "Off"
+popup/item_1/text = "On"
 popup/item_1/id = 1
 
 [node name="Buttons" type="Control" parent="PlayMenu/Layout"]
