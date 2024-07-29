@@ -61,18 +61,18 @@ func _physics_process(delta):
 	if !nav_agent.is_navigation_finished():
 		next_path_pos = nav_agent.get_next_path_position()
 		next_path_pos.y = position.y
-		
-		#Debug Cube
-		#$NavTarget/MeshInstance3D.global_position = next_path_pos
-		
-		input_dir = Vector2.UP
-		#if target and -basis.z.dot(next_path_pos - global_position) <= 0:
-			#input_dir = Vector2.DOWN
 	else:
 		_new_rand_nav_point()
-
+	
+	var back_up = target and -basis.z.dot(next_path_pos - global_position) <= 0
 	if next_path_pos and transform.origin != next_path_pos:
-		var new_transform := transform.looking_at(next_path_pos)
+		var new_transform : Transform3D
+		if back_up:
+			input_dir = Vector2.DOWN
+			new_transform = transform.looking_at(target.global_position)
+		else:
+			input_dir = Vector2.UP
+			new_transform = transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

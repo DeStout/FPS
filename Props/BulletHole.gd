@@ -1,7 +1,7 @@
 extends Decal
 
 var start_alpha := 1.0
-var linger_time := 120.0
+var linger_time := 60.0
 var fade_out_time := 5.0
 var fade_time := 0.0
 

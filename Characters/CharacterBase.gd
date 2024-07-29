@@ -117,6 +117,7 @@ func _physics_process(delta) -> void:
 func _pull_trigger() -> void:
 	if weapon_held.stats.weapon_type == Globals.WEAPONS.SLAPPER:
 		trigger_pulled = true
+		return
 	elif weapon_held.has_ammo():
 		if weapon_held.ammo_in_mag > 0:
 			trigger_pulled = true
