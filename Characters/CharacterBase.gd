@@ -119,8 +119,8 @@ func _pull_trigger() -> void:
 		trigger_pulled = true
 		return
 	elif weapon_held.has_ammo():
+		trigger_pulled = true
 		if weapon_held.ammo_in_mag > 0:
-			trigger_pulled = true
 			return
 		_reload()
 		return
@@ -192,7 +192,6 @@ func _slap() -> void:
 	var slappable = _get_weapon(Globals.WEAPONS.SLAPPER).slappable
 	for character in slappable:
 		if character != self:
-			#print(name, " slapped ", character.name)
 			var chest_seg : Area3D = null
 			for body_seg in character.body_segs:
 				if body_seg.name == "ChestArea":
@@ -204,7 +203,6 @@ func _slap() -> void:
 
 
 func _reload() -> void:
-	#print(weapon_held.name, " reload")
 	if weapon_held and !weapon_held.is_reloading:
 		weapon_held.reload()
 

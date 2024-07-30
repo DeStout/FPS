@@ -69,7 +69,8 @@ func _physics_process(delta):
 		var new_transform : Transform3D
 		if back_up:
 			input_dir = Vector2.DOWN
-			new_transform = transform.looking_at(target.global_position)
+			var temp_pos := target.global_position; temp_pos.y = global_position.y
+			new_transform = transform.looking_at(temp_pos)
 		else:
 			input_dir = Vector2.UP
 			new_transform = transform.looking_at(next_path_pos)
@@ -149,7 +150,6 @@ func find_new_target() -> void:
 				least_dist = dist
 				target_i = i
 	set_new_target(enemies[target_i], target_i)
-	#print(name, " has new target: ", target.name)
 
 
 func set_new_target(new_target, new_target_i) -> void:

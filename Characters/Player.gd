@@ -255,7 +255,6 @@ func _switch_weapon(new_weapon) -> void:
 
 
 func _cycle_switch_weapon() -> void:
-	#print("cycle")
 	var cycle_dir := int(Input.is_action_just_pressed("CycleWeapon") or \
 									Input.is_action_just_pressed("WeaponUp"))
 	cycle_dir = -int(Input.is_action_just_pressed("WeaponDown")) + cycle_dir
@@ -272,19 +271,6 @@ func _cycle_switch_weapon() -> void:
 				if weapon == weapon_type:
 					_switch_weapon(_get_weapon(weapon))
 					return
-	
-	
-		# Controller weapon switching
-		#if Input.is_action_just_pressed("SwitchWeapon"):
-			#if weapon_held:
-				#weapon_held.interrupt_reload()
-				#for weapon_type in range(Globals.WEAPONS.size()):
-					#weapon_type += weapon_held.stats.weapon_type + 1
-					#weapon_type %= Globals.WEAPONS.size()
-					#for weapon in weapons:
-						#if weapon == weapon_type:
-							#_switch_weapon(_get_weapon(weapon))
-							#return
 
 
 func _unequip_weapon(old_weapon) -> void:
