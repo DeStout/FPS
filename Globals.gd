@@ -72,3 +72,10 @@ func quit_game() -> void:
 
 func invert_y_to_int() -> int:
 	return (int(invert_y_axis) * 2) - 1
+
+
+#func align_to_floor_normal(old_basis, floor_normal) -> Basis:
+	#if floor_normal
+	#var dot1 = 
+	#var new_basis : Basis = Basis()
+	#return new_basis

@@ -107,7 +107,6 @@ func _input(event) -> void:
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 
-
 	if event is InputEventJoypadButton:
 		# Controller weapon switching
 		if Input.is_action_just_pressed("SwitchWeapon"):

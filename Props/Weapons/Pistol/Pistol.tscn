@@ -18,4 +18,10 @@ max_db = -4.0
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_1n1px")
 
+[node name="MuzzleFlash1" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0549036, -0.12633)
+
+[node name="MuzzleFlash2" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0549036, -0.173799)
+
 [editable path="Mesh"]

@@ -1,7 +1,9 @@
 extends HSlider
 
-const MAX_MOUSE_SENS := 0.01
-const MIN_MOUSE_SENS := 0.0005
+const  MAX_MOUSE_SENS := 0.005
+const  MIN_MOUSE_SENS := 0.0001
+#const MAX_MOUSE_SENS := 0.01
+#const MIN_MOUSE_SENS := 0.0005
 const MAX_CONTROLLER_SENS := 0.2
 const MIN_CONTROLLER_SENS := 0.01
 
