@@ -41,14 +41,9 @@ func _physics_process(delta) -> void:
 		rotate_y(Globals.controller_sensitivity * -look_dir.x)
 		rotation.z = 0
 
-	#var accel = ACCEL
-	#var deaccel = DEACCEL
 	if is_on_floor():
 		if Input.is_action_just_pressed("Jump"):
 			velocity.y = JUMP_VELOCITY
-	#else:
-		#accel = AIR_ACCEL
-		#deaccel = AIR_DEACCEL
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:
@@ -106,19 +101,8 @@ func _input(event) -> void:
 			if _have_weapon(Globals.WEAPONS.SHOTGUN):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
-
-	if event is InputEventJoypadButton:
-		# Controller weapon switching
-		if Input.is_action_just_pressed("SwitchWeapon"):
-			if weapon_held:
-				weapon_held.interrupt_reload()
-				for weapon_type in range(Globals.WEAPONS.size()):
-					weapon_type += weapon_held.stats.weapon_type + 1
-					weapon_type %= Globals.WEAPONS.size()
-					for weapon in weapons:
-						if weapon == weapon_type:
-							_switch_weapon(_get_weapon(weapon))
-							return
+	elif event is InputEventJoypadButton or event is InputEventMouseButton:
+		_cycle_switch_weapon()
 
 
 func _swing() -> void:
@@ -268,6 +252,39 @@ func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
 func _switch_weapon(new_weapon) -> void:
 	super(new_weapon)
 	update_UI()
+
+
+func _cycle_switch_weapon() -> void:
+	#print("cycle")
+	var cycle_dir := int(Input.is_action_just_pressed("CycleWeapon") or \
+									Input.is_action_just_pressed("WeaponUp"))
+	cycle_dir = -int(Input.is_action_just_pressed("WeaponDown")) + cycle_dir
+	if cycle_dir != 0 and weapon_held:
+		weapon_held.interrupt_reload()
+		
+		var from; var to
+		if cycle_dir > 0: from = 0; to = Globals.WEAPONS.size()
+		else: from = Globals.WEAPONS.size(); to = 0
+		for weapon_type in range(from, to, cycle_dir):
+			weapon_type += weapon_held.stats.weapon_type + cycle_dir
+			weapon_type %= Globals.WEAPONS.size()
+			for weapon in weapons:
+				if weapon == weapon_type:
+					_switch_weapon(_get_weapon(weapon))
+					return
+	
+	
+		# Controller weapon switching
+		#if Input.is_action_just_pressed("SwitchWeapon"):
+			#if weapon_held:
+				#weapon_held.interrupt_reload()
+				#for weapon_type in range(Globals.WEAPONS.size()):
+					#weapon_type += weapon_held.stats.weapon_type + 1
+					#weapon_type %= Globals.WEAPONS.size()
+					#for weapon in weapons:
+						#if weapon == weapon_type:
+							#_switch_weapon(_get_weapon(weapon))
+							#return
 
 
 func _unequip_weapon(old_weapon) -> void:
