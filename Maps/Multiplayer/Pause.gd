@@ -32,5 +32,4 @@ func play_select(t := 0) -> void:
 
 
 func quit_button() -> void:
-	get_tree().paused = false
 	Globals.quit_game()

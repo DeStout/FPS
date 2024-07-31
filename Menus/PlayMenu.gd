@@ -15,7 +15,7 @@ func start_button() -> void:
 	var match_settings : MatchSettings = MatchSettings.new()
 	match_settings.game_mode = game_mode.selected
 	match_settings.map = map.selected
-	match_settings.score_to_win = score_to_win.selected
+	match_settings.score_to_win = score_to_win.selected * 5
 	match_settings.time = _convert_time()
 	match_settings.num_bots = num_bots.selected
 	match_settings.friendly_fire = ff.selected

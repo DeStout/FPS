@@ -17,8 +17,8 @@ thickness = 12
 
 [sub_resource type="ImageTexture" id="ImageTexture_0jp2k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oty0t"]
-bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6x2d"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
 
 [resource]
 default_font_size = 36
@@ -32,6 +32,8 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4jvsl")
 HSlider/styles/slider = SubResource("StyleBoxLine_462eb")
 TabContainer/colors/drop_mark_color = Color(1, 0, 0, 1)
 TabContainer/colors/font_hovered_color = Color(0, 0, 1, 1)
-TabContainer/colors/font_selected_color = Color(0.392157, 0.392157, 0.392157, 1)
+TabContainer/colors/font_selected_color = Color(1, 1, 1, 1)
+TabContainer/colors/font_unselected_color = Color(0.337255, 0.337255, 0.337255, 1)
+TabContainer/constants/side_margin = 50
 TabContainer/icons/drop_mark = SubResource("ImageTexture_0jp2k")
-TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_oty0t")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_w6x2d")

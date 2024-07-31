@@ -103,7 +103,8 @@ func _input(event) -> void:
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 	elif event is InputEventJoypadButton or event is InputEventMouseButton:
-		_cycle_switch_weapon()
+		if !Input.is_action_pressed("ScoreBoard"):
+			_cycle_switch_weapon()
 
 
 func _swing() -> void:
@@ -135,6 +136,11 @@ func update_UI() -> void:
 func _update_time_UI() -> void:
 	if Globals.match_settings.time != 0:
 		%MatchTimer.set_time(current_level.get_match_time())
+
+
+func update_leaders_UI(team_list) -> void:
+	#print(team_list)
+	%LeaderList.update(team_list)
 
 
 func _pick_up_weapon(new_weapon) -> Node3D:

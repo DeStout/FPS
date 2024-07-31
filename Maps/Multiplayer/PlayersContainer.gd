@@ -9,6 +9,10 @@ var respawn_timer_ = preload("res://Maps/Multiplayer/RespawnTimer.tscn")
 var level 
 var player : CharacterBase
 var bots := []
+var team_colors := [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, \
+	Color.MAGENTA, Color.CYAN, Color.ORANGE, Color.INDIGO, Color.ORANGE_RED, \
+	Color.GREEN_YELLOW, Color.DARK_BLUE, Color.DARK_RED, Color.DARK_VIOLET, \
+	Color.CORNFLOWER_BLUE, Color.DEEP_PINK, Color.SPRING_GREEN, Color.GOLD]
 var respawn_timers := []
 var score_tracker := {}
 
@@ -20,8 +24,8 @@ func set_up() -> void:
 	var spawn_point = level.get_spawn_point()
 	used_spawns.append(spawn_point)
 
-	%Score.add_character(player.name)
-	player.set_color(Color.BLUE)
+	%Score.add_character(player.name, team_colors[0])
+	player.set_color(team_colors[0])
 	spawn_character(player, spawn_point)
 	connect_signals(player)
 	
@@ -34,6 +38,7 @@ func set_up() -> void:
 		
 		2:				# Teams
 			_set_up_team_battle(used_spawns)
+	player.update_leaders_UI(%Score.get_leader_list())
 
 
 func _set_up_lone_wolf(used_spawns : Array) -> void:
@@ -41,7 +46,7 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 	var spawn_point = level.get_spawn_point()
 	for x in range(Globals.match_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
-		enemy.set_color(Color.RED)
+		enemy.set_color(team_colors[1])
 		bots.append(enemy)
 		enemy.new_name("Enemy" + str(x+1))
 		enemy.set_enemies([player])
@@ -50,7 +55,7 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		%Score.add_character(enemy.name)
+		%Score.add_character(enemy.name, team_colors[1])
 		spawn_character(enemy, spawn_point)
 		connect_signals(enemy)
 	player.set_enemies(bots)
@@ -62,7 +67,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 	var enemies := [player]
 	for x in range(Globals.match_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
-		enemy.set_color(Color.RED)
+		enemy.set_color(team_colors[x+1])
 		enemies.append(enemy)
 		bots.append(enemy)
 		enemy.new_name("Enemy" + str(x+1))
@@ -71,7 +76,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		%Score.add_character(enemy.name)
+		%Score.add_character(enemy.name, team_colors[x+1])
 		spawn_character(enemy, spawn_point)
 		connect_signals(enemy)
 	
@@ -84,14 +89,17 @@ func _set_up_team_battle(used_spawns) -> void:
 	var spawn_point = level.get_spawn_point()
 	var team1 := [player]
 	var team2 := []
+	var team_color : Color
 	for x in range(Globals.match_settings.num_bots):
 		var bot = team_enemy_.instantiate()
 		if x < Globals.match_settings.num_bots / 2:
-			bot.set_color(Color.BLUE)
+			team_color = team_colors[0]
+			bot.set_color(team_color)
 			team1.append(bot)
 			bot.new_name("Ally" + str(x+1))
 		else:
-			bot.set_color(Color.RED)
+			team_color = team_colors[1]
+			bot.set_color(team_color)
 			team2.append(bot)
 			bot.new_name("Enemy" + str(x-(Globals.match_settings.num_bots / 2)+1))
 		bots.append(bot)
@@ -100,7 +108,7 @@ func _set_up_team_battle(used_spawns) -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		%Score.add_character(bot.name)
+		%Score.add_character(bot.name, team_color)
 		spawn_character(bot, spawn_point)
 		connect_signals(bot)
 	
@@ -131,9 +139,10 @@ func connect_signals(character) -> void:
 func add_to_score_board(killed, killer) -> void:
 	%Score.add_death(killed.name)
 	if killer.is_enemy(killed):
-		%Score.add_kill(killer.name)
+		%Score.add_kill(killer)
 	else:
-		%Score.add_kill(killer.name, -1)
+		%Score.add_kill(killer, -1)
+	player.update_leaders_UI(%Score.get_leader_list())
 
 
 func character_killed(character) -> void:

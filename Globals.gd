@@ -59,9 +59,14 @@ func select_map() -> PackedScene:
 # Called from Pause.quit_button()
 func quit_game() -> void:
 	if main_menu:
+		get_tree().paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 		map.queue_free()
 		map = null
+		match_settings = MatchSettings.new()
 		await get_tree().process_frame
+		
 		game.add_child(main_menu)
 		main_menu.update()
 		# Signal to Debug.game_ended()

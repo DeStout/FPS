@@ -26,8 +26,6 @@ func get_match_time() -> int:
 
 
 func end_match() -> void:
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Globals.quit_game()
 
 

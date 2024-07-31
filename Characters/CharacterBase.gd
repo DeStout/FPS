@@ -22,6 +22,7 @@ const MAX_HEALTH := 100
 const MAX_ARMOR := 50
 var health := 100 : set = _set_health
 var armor := 0
+var team : Color
 
 # Enemies
 var enemies := []
@@ -82,6 +83,7 @@ func _ready() -> void:
 
 
 func set_color(new_color : Color) -> void:
+	team = new_color
 	var mat = $Puppet/Skeleton3D/Body.get_surface_override_material(0)
 	mat.albedo_color = new_color
 
