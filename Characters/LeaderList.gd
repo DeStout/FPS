@@ -12,16 +12,11 @@ func _set_up(new_leaders : Array):
 		var new_team : Control = leader_label_.instantiate()
 		new_team.set_up(team)
 		teams.append(new_team)
-		
-	#if !list.get_child_count():
-		#for i in range(min(teams.size(), 3)):
-			#list.add_child(teams[i])
 
 
 func update(new_leaders : Dictionary) -> void:
 	if !teams.size():
 		_set_up(new_leaders.keys())
-		#return
 	
 	for team in teams:
 		for leader in new_leaders:
@@ -39,9 +34,9 @@ func _top_teams() -> void:
 		for team in teams:
 			if team.score > top_teams[tt].score and !top_teams.has(team):
 				top_teams[tt] = team
-	for team in top_teams:
-		if team.score == 0:
-			top_teams.erase(team)
+	for i in range(top_teams.size()-1, -1, -1):
+		if top_teams[i].score == 0:
+			top_teams.erase(top_teams[i])
 			
 	for old_leader in list.get_children():
 		list.remove_child(old_leader)
