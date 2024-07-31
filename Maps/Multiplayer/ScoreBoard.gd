@@ -17,6 +17,7 @@ func _input(_event : InputEvent) -> void:
 func add_character(new_character_name : String, team : Color) -> void:
 	characters[new_character_name] = [$List.item_count / 3, 0, 0]
 	$List.add_item(new_character_name)
+	$List.set_item_custom_fg_color(-1, team)
 	$List.add_item(str(0))
 	$List.add_item(str(0))
 	
