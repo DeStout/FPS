@@ -9,9 +9,26 @@ var damage_label_ := preload("res://Characters/DamageLabel.tscn")
 var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 
 
-func _ready():
+func _ready() -> void:
 	$Players.level = self
 	$Players.set_up()
+	
+	_start_timer()
+
+
+func _start_timer() -> void:
+	if Globals.match_settings.time != 0:
+		$MatchTime.start(Globals.match_settings.time)
+
+
+func get_match_time() -> int:
+	return int($MatchTime.time_left)
+
+
+func end_match() -> void:
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Globals.quit_game()
 
 
 # Called from CharacterBase.shoot()

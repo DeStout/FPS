@@ -8,6 +8,10 @@ const FAST_SPEED := 14
 var speed := SPEED
 
 
+func _process(delta: float) -> void:
+	_update_time_UI()
+
+
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var input_dir_y = Input.get_axis("Crouch", "Jump")
@@ -26,6 +30,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, DEACCEL * delta)
 		velocity.z = move_toward(velocity.z, 0, DEACCEL * delta)
 	move_and_slide()
+	
+	
+func _update_time_UI() -> void:
+	if Globals.match_settings.time != 0:
+		%MatchTimer.set_time($"..".level.get_match_time())
 
 
 func _input(event: InputEvent) -> void:

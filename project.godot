@@ -23,7 +23,7 @@ run/stretch/mode="viewport"
 [autoload]
 
 Globals="*res://Globals.gd"
-Debug="res://Debug/Debug.tscn"
+Debug="*res://Debug/Debug.tscn"
 
 [debug]
 

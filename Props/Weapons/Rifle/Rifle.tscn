@@ -18,9 +18,3 @@ max_db = 0.0
 
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_kippd")
-
-[node name="MuzzleFlash1" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102033, -0.648419)
-
-[node name="MuzzleFlash2" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102033, -0.678415)

@@ -1,9 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://lmnl710ipqwn"]
+[gd_scene load_steps=6 format=3 uid="uid://lmnl710ipqwn"]
 
 [ext_resource type="Script" path="res://Debug/DebugCamera.gd" id="1_in0u3"]
+[ext_resource type="Script" path="res://Characters/UI.gd" id="2_objhq"]
+[ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="3_reoch"]
+[ext_resource type="Script" path="res://Characters/MatchTimer.gd" id="4_hlhmk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk1cn"]
+resource_local_to_scene = true
+font_size = 72
+font_color = Color(0.121569, 0.121569, 0.121569, 1)
+outline_size = 5
+outline_color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="DebugCamera" type="CharacterBody3D"]
 script = ExtResource("1_in0u3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 current = true
+
+[node name="FPCanvas" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="FPCanvas"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+script = ExtResource("2_objhq")
+metadata/_edit_use_anchors_ = true
+
+[node name="MatchTimer" type="Label" parent="FPCanvas/UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00 : 00"
+label_settings = SubResource("LabelSettings_fk1cn")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_hlhmk")
+metadata/_edit_use_anchors_ = true
+
+[node name="Crosshair" type="Sprite2D" parent="FPCanvas/UI"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_reoch")

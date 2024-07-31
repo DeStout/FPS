@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 	super(delta)
 	_fade_dmg(delta)
 	_fade_health(delta)
+	_update_time_UI()
 
 
 func _physics_process(delta) -> void:
@@ -129,6 +130,11 @@ func update_UI() -> void:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
 							" / " + str(weapon_held.get_mag_size())
 		%ExtraAmmo.text = str(weapon_held.extra_ammo)
+
+
+func _update_time_UI() -> void:
+	if Globals.match_settings.time != 0:
+		%MatchTimer.set_time(current_level.get_match_time())
 
 
 func _pick_up_weapon(new_weapon) -> Node3D:

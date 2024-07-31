@@ -96,3 +96,8 @@ bus = &"Music"
 
 [node name="Pause" parent="." instance=ExtResource("5_0qwuh")]
 visible = false
+
+[node name="MatchTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MatchTime" to="." method="end_match"]

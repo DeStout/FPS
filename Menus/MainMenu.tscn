@@ -78,7 +78,7 @@ text = "Quit"
 flat = true
 alignment = 0
 
-[node name="PlayMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "num_bots", "ff")]
+[node name="PlayMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "score_to_win", "time_m", "time_s", "num_bots", "ff")]
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
@@ -88,8 +88,11 @@ offset_right = -65.0
 script = ExtResource("3_co3mv")
 game_mode = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout/ModeOptions")
 map = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout/LevelOptions")
-num_bots = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Bots/VLayout/BotOptions")
-ff = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/FF/VLayout/FFOptions")
+score_to_win = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout/Score")
+time_m = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Minutes")
+time_s = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Seconds")
+num_bots = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout/BotOptions")
+ff = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout/FFOptions")
 
 [node name="Layout" type="VBoxContainer" parent="PlayMenu"]
 layout_mode = 1
@@ -221,20 +224,203 @@ popup/item_1/id = 1
 popup/item_2/text = "Temple"
 popup/item_2/id = 2
 
-[node name="Bots" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout"]
+[node name="Settings" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs"]
+visible = false
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Bots"]
+[node name="Margin" type="MarginContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 1000
+
+[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="ScoreToWin" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Bots/VLayout"]
+[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Score To Win"
+
+[node name="Score" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout"]
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_constants/arrow_margin = 20
+theme_override_font_sizes/font_size = 36
+theme_override_icons/arrow = ExtResource("4_rvtwg")
+item_count = 15
+selected = 10
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "5"
+popup/item_1/id = 1
+popup/item_2/text = "10"
+popup/item_2/id = 2
+popup/item_3/text = "15"
+popup/item_3/id = 3
+popup/item_4/text = "20"
+popup/item_4/id = 4
+popup/item_5/text = "25"
+popup/item_5/id = 5
+popup/item_6/text = "30"
+popup/item_6/id = 6
+popup/item_7/text = "35"
+popup/item_7/id = 7
+popup/item_8/text = "40"
+popup/item_8/id = 8
+popup/item_9/text = "45"
+popup/item_9/id = 9
+popup/item_10/text = "50"
+popup/item_10/id = 10
+popup/item_11/text = "75"
+popup/item_11/id = 11
+popup/item_12/text = "100"
+popup/item_12/id = 12
+popup/item_13/text = "150"
+popup/item_13/id = 13
+popup/item_14/text = "250"
+popup/item_14/id = 14
+
+[node name="MatchTime" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime"]
+layout_mode = 0
+offset_right = 274.0
+offset_bottom = 129.0
+
+[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Match Length"
+
+[node name="HLayout" type="HBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout"]
+layout_mode = 2
+
+[node name="Minutes" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout"]
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_constants/arrow_margin = 20
+theme_override_font_sizes/font_size = 36
+theme_override_icons/arrow = ExtResource("4_rvtwg")
+item_count = 26
+selected = 13
+popup/item_0/text = "Unlimited"
+popup/item_0/id = 0
+popup/item_1/text = "0"
+popup/item_1/id = 1
+popup/item_2/text = "1"
+popup/item_2/id = 2
+popup/item_3/text = "2"
+popup/item_3/id = 3
+popup/item_4/text = "3"
+popup/item_4/id = 4
+popup/item_5/text = "4"
+popup/item_5/id = 5
+popup/item_6/text = "5"
+popup/item_6/id = 6
+popup/item_7/text = "6"
+popup/item_7/id = 7
+popup/item_8/text = "7"
+popup/item_8/id = 8
+popup/item_9/text = "8"
+popup/item_9/id = 9
+popup/item_10/text = "9"
+popup/item_10/id = 10
+popup/item_11/text = "10"
+popup/item_11/id = 11
+popup/item_12/text = "11"
+popup/item_12/id = 12
+popup/item_13/text = "12"
+popup/item_13/id = 13
+popup/item_14/text = "13"
+popup/item_14/id = 14
+popup/item_15/text = "14"
+popup/item_15/id = 15
+popup/item_16/text = "15"
+popup/item_16/id = 16
+popup/item_17/text = "20"
+popup/item_17/id = 17
+popup/item_18/text = "25"
+popup/item_18/id = 18
+popup/item_19/text = "30"
+popup/item_19/id = 19
+popup/item_20/text = "35"
+popup/item_20/id = 20
+popup/item_21/text = "40"
+popup/item_21/id = 21
+popup/item_22/text = "45"
+popup/item_22/id = 22
+popup/item_23/text = "50"
+popup/item_23/id = 23
+popup/item_24/text = "55"
+popup/item_24/id = 24
+popup/item_25/text = "60"
+popup/item_25/id = 25
+
+[node name="Seconds" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout"]
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_constants/arrow_margin = 20
+theme_override_font_sizes/font_size = 36
+theme_override_icons/arrow = ExtResource("4_rvtwg")
+item_count = 13
+selected = 1
+popup/item_0/text = "Unlimited"
+popup/item_0/id = 0
+popup/item_1/text = "0"
+popup/item_1/id = 1
+popup/item_2/text = "5"
+popup/item_2/id = 2
+popup/item_3/text = "10"
+popup/item_3/id = 3
+popup/item_4/text = "15"
+popup/item_4/id = 4
+popup/item_5/text = "20"
+popup/item_5/id = 5
+popup/item_6/text = "25"
+popup/item_6/id = 6
+popup/item_7/text = "30"
+popup/item_7/id = 7
+popup/item_8/text = "35"
+popup/item_8/id = 8
+popup/item_9/text = "40"
+popup/item_9/id = 9
+popup/item_10/text = "45"
+popup/item_10/id = 10
+popup/item_11/text = "50"
+popup/item_11/id = 11
+popup/item_12/text = "55"
+popup/item_12/id = 12
+
+[node name="Bots" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots"]
+layout_mode = 0
+offset_right = 274.0
+offset_bottom = 129.0
+
+[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Number of Bots"
 
-[node name="BotOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Bots/VLayout"]
+[node name="BotOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
 theme_override_constants/arrow_margin = 20
@@ -277,20 +463,20 @@ popup/item_15/id = 15
 popup/item_16/text = "16"
 popup/item_16/id = 16
 
-[node name="FF" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout"]
+[node name="FF" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/FF"]
+[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/FF/VLayout"]
+[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Friendly Fire"
 
-[node name="FFOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/FF/VLayout"]
+[node name="FFOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
 theme_override_constants/h_separation = 250
@@ -347,6 +533,15 @@ flat = true
 [node name="OptionsMenu" parent="." instance=ExtResource("5_ueokc")]
 layout_mode = 1
 
+[node name="MasterSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout" index="1"]
+default_value = 75.0
+
+[node name="MusicSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout" index="1"]
+default_value = 60.0
+
+[node name="SFXSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout" index="1"]
+default_value = 40.0
+
 [node name="Boop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_keuxs")
 volume_db = -12.0
@@ -370,6 +565,8 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/Controls" to="Boop" method="play"]
 [connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/Quit" to="Boop" method="play"]
 [connection signal="pressed" from="MainMenu/MarginContainer/Layout/Quit" to="." method="quit_button"]
+[connection signal="item_selected" from="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Minutes" to="PlayMenu" method="_set_time"]
+[connection signal="item_selected" from="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Seconds" to="PlayMenu" method="_set_time"]
 [connection signal="mouse_entered" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="Boop" method="play"]
 [connection signal="pressed" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="PlayMenu" method="start_button"]
 [connection signal="mouse_entered" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="Boop" method="play"]

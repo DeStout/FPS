@@ -26,9 +26,3 @@ stream = ExtResource("4_h3ewr")
 
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_sodi4")
-
-[node name="MuzzleFlash1" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0943311, -0.0867921)
-
-[node name="MuzzleFlash2" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0943311, -0.386718)
