@@ -12,9 +12,9 @@ var controller_sensitivity := 0.05
 var invert_y_axis := false
 
 var main_menu_ := preload("res://Menus/MainMenu.tscn")
-var Square_ := preload("res://Maps/Multiplayer/Square.tscn")
-var Bridge_ := preload("res://Maps/Multiplayer/Bridge.tscn")
-var Temple_ := preload("res://Maps/Multiplayer/Temple.tscn")
+#var Square_ := preload("res://Maps/Multiplayer/Square.tscn")
+#var Bridge_ := preload("res://Maps/Multiplayer/Bridge.tscn")
+#var Temple_ := preload("res://Maps/Multiplayer/Temple.tscn")
 
 @onready var main_menu : Control = game.get_node("MainMenu")
 var map : Node3D = null
@@ -39,21 +39,26 @@ func set_match_settings(new_match_settings : MatchSettings) -> void:
 # Called from PlayMenu.start_button()
 func start_game() -> void:
 	game.remove_child(main_menu)
-	map = select_map().instantiate()
-	game.add_child(map)
-	game_started.emit(map)
+	LoadingScreen.load(_select_map(), start_match)
 
 
-func select_map() -> PackedScene:
+func _select_map() -> String:
+	var map_address := ""
 	match match_settings.map:
 		0:
-			return Square_
+			map_address = "res://Maps/Multiplayer/Square.tscn"
 		1:
-			return Bridge_
+			map_address = "res://Maps/Multiplayer/Bridge.tscn"
 		2:
-			return Temple_
-		_:
-			return Temple_
+			map_address = "res://Maps/Multiplayer/Temple.tscn"
+	return map_address
+
+
+# Called from LoadingScreen._load_complete()
+func start_match(new_map) -> void:
+	map = new_map.instantiate()
+	game.add_child(map)
+	game_started.emit(map)
 
 
 # Called from Pause.quit_button()

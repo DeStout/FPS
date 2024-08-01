@@ -45,6 +45,7 @@ func _process(_delta) -> void:
 			_swap_cameras()
 
 
+# Emitted from Globals.start_match()
 func game_started(new_level) -> void:
 	level = new_level
 	players_container = level.get_node("Players")

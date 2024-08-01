@@ -25,8 +25,13 @@ func get_match_time() -> int:
 	return int($MatchTime.time_left)
 
 
+# Called by $MatchTime.timeout and ScoreBoard._check_win()
 func end_match() -> void:
-	Globals.quit_game()
+	var tween = create_tween()
+	var post_time := 3.0
+	tween.tween_property(Engine, "time_scale", 0.25, post_time)
+	$MatchTime.connect("timeout", Globals.quit_game)
+	$MatchTime.start(post_time)
 
 
 # Called from CharacterBase.shoot()

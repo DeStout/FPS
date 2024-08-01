@@ -50,4 +50,4 @@ func get_leader_list() -> Dictionary:
 func _check_win() -> void:
 	for team in teams:
 		if teams[team] >= Globals.match_settings.score_to_win:
-			Globals.quit_game()
+			$"../..".level.end_match()
