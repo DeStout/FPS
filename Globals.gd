@@ -66,24 +66,24 @@ func start_match() -> void:
 	map.open()
 
 
-# Called from Pause.quit_button()
+# Called from Pause.quit_button() and MultiplayerLevel.end_match()
 func quit_game() -> void:
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	map.queue_free()
+	map = null
+	match_settings = MatchSettings.new()
+	await get_tree().process_frame
+	
 	if main_menu:
-		get_tree().paused = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
-		map.queue_free()
-		Engine.time_scale = 1.0
-		map = null
-		match_settings = MatchSettings.new()
-		await get_tree().process_frame
-		
 		game.add_child(main_menu)
 		main_menu.update()
-		# Signal to Debug.game_ended()
-		game_ended.emit()
 	else:
 		get_tree().quit()
+		
+	# Signal to Debug.game_ended()
+	game_ended.emit()
 
 
 func invert_y_to_int() -> int:

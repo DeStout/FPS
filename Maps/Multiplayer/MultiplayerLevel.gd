@@ -18,8 +18,10 @@ func open() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$MusicPlayer.play()
 	$Players/ScoreLayer/FadeInOut.color.a = 1
+	
+	var open_time = 3.0
 	var tween = get_tree().create_tween()
-	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 0, 3.0)
+	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 0, open_time)
 	await tween.finished
 	
 	_start_match()
@@ -37,12 +39,19 @@ func get_match_time() -> int:
 
 # Called by $MatchTime.timeout and ScoreBoard._check_win()
 func end_match() -> void:
-	var post_time := 3.0
+	%Score.visible = true
+	%Score.game_over = true
+	
+	var post_time := 2.0
+	var timer = get_tree().create_timer(post_time, false, false, true)
 	
 	var tween = create_tween().set_parallel()
-	tween.tween_property(Engine, "time_scale", 0.25, post_time)
-	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 1, post_time)
+	tween.tween_property(Engine, "time_scale", 0.1, post_time)
+	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 1.2, post_time)
 	await tween.finished
+	
+	Engine.time_scale = 1.0
+	await get_tree().process_frame
 	
 	Globals.quit_game()
 

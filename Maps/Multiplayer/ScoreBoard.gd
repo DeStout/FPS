@@ -1,17 +1,19 @@
 extends Control
 
 
+var game_over := false
 var characters := {}
 var teams := {}
 
 
 func _input(_event : InputEvent) -> void:
-	if Input.is_action_just_pressed("ScoreBoard"):
-		visible = true
-	elif Input.is_action_just_released("ScoreBoard"):
-		visible = false
-	elif Input.is_action_just_pressed("Pause"):
-		visible = false
+	if !game_over:
+		if Input.is_action_just_pressed("ScoreBoard"):
+			visible = true
+		elif Input.is_action_just_released("ScoreBoard"):
+			visible = false
+		elif Input.is_action_just_pressed("Pause"):
+			visible = false
 
 
 func add_character(new_character_name : String, team : Color) -> void:
