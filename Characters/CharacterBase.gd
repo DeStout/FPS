@@ -70,6 +70,7 @@ var current_level : Node3D
 
 func _ready() -> void:
 	current_level = get_parent().get_parent()
+	set_processing(false)
 	
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
@@ -80,6 +81,11 @@ func _ready() -> void:
 	#_switch_weapon(_get_weapon(spawn_weapon))
 	weapons.append(Globals.WEAPONS.PISTOL)
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+
+
+func set_processing(new_process) -> void:
+	set_process(new_process)
+	set_physics_process(new_process)
 
 
 func set_color(new_color : Color) -> void:

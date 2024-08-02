@@ -2,17 +2,12 @@
 
 [ext_resource type="Script" path="res://Menus/LoadingScreen.gd" id="1_c2ky7"]
 
-[node name="LoadingScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="LoadingScreen" type="CanvasLayer"]
+layer = 3
+visible = false
 script = ExtResource("1_c2ky7")
 
 [node name="BG" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,7 +17,6 @@ color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 
 [node name="Percent" type="Label" parent="."]
 modulate = Color(1, 0, 0, 1)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,8 +29,7 @@ vertical_alignment = 1
 
 [node name="Continue" type="Label" parent="."]
 visible = false
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
+modulate = Color(0, 0, 1, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

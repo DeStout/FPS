@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 var address := ""
@@ -14,11 +14,6 @@ func _ready() -> void:
 	set_process(false)
 
 
-func _process(delta: float) -> void:
-	_update_UI(delta)
-	_update_load()
-
-
 func load(load_path : String, callback : Callable) -> void:
 	ResourceLoader.load_threaded_request(load_path)
 	status = ResourceLoader.load_threaded_get_status(load_path, progress)
@@ -29,6 +24,11 @@ func load(load_path : String, callback : Callable) -> void:
 	address = load_path
 	return_callable = callback
 	set_process(true)
+
+
+func _process(delta: float) -> void:
+	_update_UI(delta)
+	_update_load()
 
 
 func _update_UI(delta : float) -> void:
@@ -44,22 +44,23 @@ func _update_UI(delta : float) -> void:
 
 func _update_load() -> void:
 	status = ResourceLoader.load_threaded_get_status(address, progress)
-	fake_progress += min(randi_range(0, 2), \
-									int(progress[0]*100 - fake_progress))
 	if fake_progress < int(progress[0]*100):
-		return
+		fake_progress += min(randi_range(0, 2), int(progress[0]*100 - fake_progress))
+		
 	elif status == ResourceLoader.THREAD_LOAD_LOADED:
 		$Percent.modulate = Color.BLUE
 		$Continue.visible = true
+		return_callable.call_deferred(ResourceLoader.load_threaded_get(address))
 
 
 func _load_complete() -> void:
-	return_callable.call_deferred(ResourceLoader.load_threaded_get(address))
 	visible = false
+	fake_progress = 0
 	$Continue.visible = false
 	$Continue.modulate.a = 1
 	$Percent.modulate = Color.RED
 	address = ""
 	return_callable = Callable()
 	set_process(false)
+	Globals.start_match()
 	

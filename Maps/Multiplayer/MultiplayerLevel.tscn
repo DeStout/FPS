@@ -14,11 +14,17 @@ unique_name_in_owner = true
 script = ExtResource("2_0vpn7")
 
 [node name="ScoreLayer" type="CanvasLayer" parent="Players"]
-layer = 3
-visible = false
+layer = 2
+
+[node name="FadeInOut" type="ColorRect" parent="Players/ScoreLayer"]
+offset_right = 1920.0
+offset_bottom = 1082.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
 
 [node name="Score" type="Control" parent="Players/ScoreLayer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,6 +101,7 @@ volume_db = -20.0
 bus = &"Music"
 
 [node name="Pause" parent="." instance=ExtResource("5_0qwuh")]
+layer = 3
 visible = false
 
 [node name="MatchTime" type="Timer" parent="."]

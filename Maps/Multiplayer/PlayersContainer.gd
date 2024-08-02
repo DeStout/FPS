@@ -135,6 +135,13 @@ func connect_signals(character) -> void:
 	character.add_score.connect(add_to_score_board)
 
 
+func set_characters_processing(new_process) -> void:
+	var characters = bots.duplicate()
+	characters.append(player)
+	for character in characters:
+		character.set_processing(new_process)
+
+
 # Signaled from CharacterBase._die()
 func add_to_score_board(killed, killer) -> void:
 	%Score.add_death(killed.name)

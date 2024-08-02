@@ -37,9 +37,9 @@ func set_match_settings(new_match_settings : MatchSettings) -> void:
 
 
 # Called from PlayMenu.start_button()
-func start_game() -> void:
+func load_game() -> void:
 	game.remove_child(main_menu)
-	LoadingScreen.load(_select_map(), start_match)
+	LoadingScreen.load(_select_map(), add_map)
 
 
 func _select_map() -> String:
@@ -55,10 +55,15 @@ func _select_map() -> String:
 
 
 # Called from LoadingScreen._load_complete()
-func start_match(new_map) -> void:
+func add_map(new_map) -> void:
 	map = new_map.instantiate()
 	game.add_child(map)
+
+
+func start_match() -> void:
+	# Signals to Debug.game_start()
 	game_started.emit(map)
+	map.open()
 
 
 # Called from Pause.quit_button()
@@ -68,6 +73,7 @@ func quit_game() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 		map.queue_free()
+		Engine.time_scale = 1.0
 		map = null
 		match_settings = MatchSettings.new()
 		await get_tree().process_frame
@@ -82,10 +88,3 @@ func quit_game() -> void:
 
 func invert_y_to_int() -> int:
 	return (int(invert_y_axis) * 2) - 1
-
-
-#func align_to_floor_normal(old_basis, floor_normal) -> Basis:
-	#if floor_normal
-	#var dot1 = 
-	#var new_basis : Basis = Basis()
-	#return new_basis

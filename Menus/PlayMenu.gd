@@ -21,7 +21,7 @@ func start_button() -> void:
 	match_settings.friendly_fire = ff.selected
 	Globals.set_match_settings(match_settings)
 	
-	Globals.start_game()
+	Globals.load_game()
 
 
 func _convert_time() -> int:

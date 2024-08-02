@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/PickUps/AmmoPickUp.tscn" id="4_cg56f"]
 
 [node name="Level1" instance=ExtResource("1_fo0yj")]
-num_enemies = 5
 
 [node name="Level1" parent="." index="0" instance=ExtResource("2_rps4x")]
 
@@ -293,8 +292,3 @@ health_type = 1
 [node name="Armor2" parent="Pickups" index="12" instance=ExtResource("3_r55p8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 27)
 health_type = 1
-
-[node name="MusicPlayer" parent="." index="6"]
-autoplay = true
-
-[editable path="Pause/OptionsMenu2D"]

@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="5_i8p46"]
 
 [node name="Level2" instance=ExtResource("1_komsv")]
-num_enemies = 5
 
 [node name="LevelBase" parent="." index="0" instance=ExtResource("1_vufbv")]
 
@@ -294,8 +293,3 @@ respawn_time = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 4, 22)
 health_type = 1
 respawn_time = 40.0
-
-[node name="MusicPlayer" parent="." index="6"]
-autoplay = true
-
-[editable path="Pause/OptionsMenu2D"]

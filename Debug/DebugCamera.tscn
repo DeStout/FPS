@@ -36,6 +36,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MatchTimer" type="Label" parent="FPCanvas/UI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5

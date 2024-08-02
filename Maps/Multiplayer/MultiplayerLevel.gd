@@ -12,13 +12,23 @@ var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 func _ready() -> void:
 	$Players.level = self
 	$Players.set_up()
+
+
+func open() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$MusicPlayer.play()
+	$Players/ScoreLayer/FadeInOut.color.a = 1
+	var tween = get_tree().create_tween()
+	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 0, 3.0)
+	await tween.finished
 	
-	_start_timer()
-
-
-func _start_timer() -> void:
+	_start_match()
 	if Globals.match_settings.time != 0:
 		$MatchTime.start(Globals.match_settings.time)
+
+
+func _start_match() -> void:
+	$Players.set_characters_processing(true)
 
 
 func get_match_time() -> int:
@@ -27,11 +37,14 @@ func get_match_time() -> int:
 
 # Called by $MatchTime.timeout and ScoreBoard._check_win()
 func end_match() -> void:
-	var tween = create_tween()
 	var post_time := 3.0
+	
+	var tween = create_tween().set_parallel()
 	tween.tween_property(Engine, "time_scale", 0.25, post_time)
-	$MatchTime.connect("timeout", Globals.quit_game)
-	$MatchTime.start(post_time)
+	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 1, post_time)
+	await tween.finished
+	
+	Globals.quit_game()
 
 
 # Called from CharacterBase.shoot()

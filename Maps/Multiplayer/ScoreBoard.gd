@@ -7,11 +7,11 @@ var teams := {}
 
 func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ScoreBoard"):
-		get_parent().visible = true
+		visible = true
 	elif Input.is_action_just_released("ScoreBoard"):
-		get_parent().visible = false
+		visible = false
 	elif Input.is_action_just_pressed("Pause"):
-		get_parent().visible = false
+		visible = false
 
 
 func add_character(new_character_name : String, team : Color) -> void:
