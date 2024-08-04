@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn7ssygjxfd3q"]
+
+[ext_resource type="PackedScene" uid="uid://bj4atepg6ty4q" path="res://Props/Weapons/Sniper/SniperBase.tscn" id="1_brmfw"]
+[ext_resource type="Script" path="res://Props/Weapons/FPWeapon.gd" id="2_45mm8"]
+
+[node name="Sniper" instance=ExtResource("1_brmfw")]
+layers = 8
+cast_shadow = 0
+script = ExtResource("2_45mm8")
+weapon_type = 5

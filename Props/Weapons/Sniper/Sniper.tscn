@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlgv171g6as4t"]
+
+[ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_aobci"]
+[ext_resource type="Resource" uid="uid://c5yeg7feu1anw" path="res://Props/Weapons/Sniper/SniperStats.tres" id="2_4k1vu"]
+[ext_resource type="PackedScene" uid="uid://bj4atepg6ty4q" path="res://Props/Weapons/Sniper/SniperBase.tscn" id="2_ja4ht"]
+[ext_resource type="AudioStream" uid="uid://osy8548poupm" path="res://Props/Weapons/Shotgun/ShotgunShoot.ogg" id="3_w70ah"]
+[ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/Weapons/Rifle/RifleReload.ogg" id="4_qgijo"]
+
+[node name="Sniper" instance=ExtResource("1_aobci")]
+stats = ExtResource("2_4k1vu")
+
+[node name="Mesh" parent="." index="0" instance=ExtResource("2_ja4ht")]
+layers = 4
+
+[node name="ShootAudio" parent="." index="1"]
+stream = ExtResource("3_w70ah")
+max_db = 0.0
+
+[node name="ReloadAudio" parent="." index="2"]
+stream = ExtResource("4_qgijo")

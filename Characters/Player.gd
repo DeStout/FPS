@@ -10,15 +10,6 @@ signal weapon_picked_up
 
 func _ready() -> void:
 	super()
-	#weapons.append(Globals.WEAPONS.PISTOL)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
-	#weapons.append(Globals.WEAPONS.SMG)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
-	#weapons.append(Globals.WEAPONS.RIFLE)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
-	#weapons.append(Globals.WEAPONS.SHOTGUN)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
-	#_equip_weapon($Weapons/Slapper)
 	update_UI()
 
 

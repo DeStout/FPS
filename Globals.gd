@@ -20,15 +20,15 @@ var main_menu_ := preload("res://Menus/MainMenu.tscn")
 var map : Node3D = null
 var match_settings : MatchSettings = MatchSettings.new()
 
-enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN}
-var WEAPON_NAMES = ["Slapper", "Pistol", "SMG", "Rifle", "Shotgun"]
+enum WEAPONS {SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN, SNIPER}
+var WEAPON_NAMES = ["Slapper", "Pistol", "SMG", "Rifle", "Shotgun", "Sniper"]
 enum PICK_UPS {WEAPON, AMMO, HEALTH}
 enum HEALTHS {HEALTH_PACK, ARMOR}
 
 enum BODY_SEGS {HEAD, TORSO, LIMB}
-const BODY_DMG := 	[25,				# Slapper
-					[22, 12, 5],		# Pistol
-					[25, 15, 8]]		# Rifle
+#const BODY_DMG := 	[25,				# Slapper
+					#[22, 12, 5],		# Pistol
+					#[25, 15, 8]]		# Rifle
 
 
 # Called from PlayMenu.start_button()

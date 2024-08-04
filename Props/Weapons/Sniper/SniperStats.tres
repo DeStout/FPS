@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c5yeg7feu1anw"]
+
+[ext_resource type="Script" path="res://Props/Weapons/WeaponStats.gd" id="1_kap7b"]
+
+[resource]
+script = ExtResource("1_kap7b")
+weapon_type = 5
+automatic = false
+burst_fire = false
+burst_num = 0
+burst_variance = 0.0
+shots_per_second = 1.0
+max_ammo = 28
+mag_size = 7
+v_recoil = 8.0
+h_recoil = 3.0
+body_dmg = {
+0: 75,
+1: 45,
+2: 35
+}
+desired_range = Vector2(10, 25)
+impulse = 350.0
+pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
+rot_offset = Vector3(1.54272, 1.58703, 2.09439)
+anim_pos = Vector2(1, 0)
+equip_anim = ""
+unequip_anim = ""
+shoot_anim = ""
+reload_anim = ""

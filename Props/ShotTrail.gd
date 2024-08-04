@@ -1,24 +1,27 @@
 extends Node3D
 
-var color : Color
 
-var start_alpha := 0.05
-var fade_out_time := 0.35
-var fade_time := 0.0
+var travel_speed := 100
+var travel_time := 0.0
+var time := 0.0
+var to := Vector3.ZERO
+
+
+func _ready() -> void:
+	set_process(false)
 
 
 func _process(delta) -> void:
-	color = $Mesh.get_active_material(0).albedo_color
-	fade_time += delta
-	color.a = start_alpha - (start_alpha * (fade_time / fade_out_time))
-	$Mesh.get_active_material(0).albedo_color = color
-
-
-	if color.a <= 0:
+	position = position.lerp(to, time / travel_time)
+	time += delta
+	if time > travel_time:
 		queue_free()
 
 
 func align_and_scale(nozzle_point : Vector3, collision_point : Vector3) -> void:
-	global_position = (nozzle_point + collision_point) / 2
-	$Mesh.mesh.height = (nozzle_point - collision_point).length()
-	transform = transform.looking_at(collision_point)
+	global_position = nozzle_point
+	to = collision_point
+	basis = basis.looking_at(to_local(collision_point))
+	travel_time = (nozzle_point - collision_point).length() / travel_speed
+	
+	set_process(true)

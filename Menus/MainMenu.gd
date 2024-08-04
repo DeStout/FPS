@@ -29,9 +29,9 @@ func quit_button() -> void:
 	get_tree().quit()
 
 
-func play_boop(t := 0) -> void:
+func play_boop(_t := 0) -> void:
 	$Boop.play()
 
 
-func play_select(t := 0) -> void:
+func play_select(_t := 0) -> void:
 	$Select.play()

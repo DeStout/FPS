@@ -6,9 +6,9 @@ var debug_visible := true
 var fps_visible := true
 
 # Cheats
-var invincible := false
+var invincible := true
 var infinite_ammo := false
-var bottomless_clip := false
+var bottomless_clip := true
 
 var level : MultiplayerLevel = null
 var players_container = null

@@ -74,13 +74,8 @@ func _ready() -> void:
 	
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
-
-	#var spawn_weapon = randi_range(0,3)
-	#if spawn_weapon > 0:
-		#weapons.append(spawn_weapon)
-	#_switch_weapon(_get_weapon(spawn_weapon))
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	
+	_starting_weapons()
 
 
 func set_processing(new_process) -> void:
@@ -92,6 +87,20 @@ func set_color(new_color : Color) -> void:
 	team = new_color
 	var mat = $Puppet/Skeleton3D/Body.get_surface_override_material(0)
 	mat.albedo_color = new_color
+
+
+func _starting_weapons() -> void:
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	#weapons.append(Globals.WEAPONS.SMG)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
+	#weapons.append(Globals.WEAPONS.RIFLE)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+	#weapons.append(Globals.WEAPONS.SHOTGUN)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
+	#weapons.append(Globals.WEAPONS.SNIPER)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
+	_equip_weapon($Weapons/Pistol)
 
 
 func _process(delta) -> void:
@@ -168,7 +177,8 @@ func _shoot() -> void:
 			v_recoil = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
 			h_recoil = randf_range(-1, 1) * weapon_held.get_h_recoil()
 			t_recoil = (1.0 / weapon_held.stats.shots_per_second) * .75
-			if weapon_held.stats.weapon_type == Globals.WEAPONS.SHOTGUN:
+			if weapon_held.stats.weapon_type == Globals.WEAPONS.SHOTGUN or \
+						weapon_held.stats.weapon_type == Globals.WEAPONS.SNIPER:
 				t_recoil = 0.075
 			v_recoil = deg_to_rad(v_recoil / weapon_held.stats.shots_per_second)
 			h_recoil = deg_to_rad(h_recoil / weapon_held.stats.shots_per_second)
@@ -371,6 +381,8 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 				new_weapon = $Weapons/Rifle
 			Globals.WEAPONS.SHOTGUN:
 				new_weapon = $Weapons/Shotgun
+			Globals.WEAPONS.SNIPER:
+				new_weapon = $Weapons/Sniper
 		if new_pick_up.weapon_info.size() == 0:
 			new_weapon.reset()
 		else:
@@ -414,6 +426,7 @@ func _get_weapon(weapon_type : int) -> Node3D:
 
 
 func _switch_to_next_weapon() -> void:
+	# weapons backwards = snopaew
 	var snopaew = weapons.duplicate()
 	snopaew.reverse()
 	for weapon_i in snopaew:
