@@ -11,11 +11,13 @@ const DEACCEL := 50.5
 const AIR_ACCEL := 10.5
 const AIR_DEACCEL := 1.5
 const SPEED = 5.5
+const ZOOM_SPEED = 4.75
 const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
 var accel := ACCEL
 var deaccel := DEACCEL
+var speed = SPEED
 
 # Health
 const MAX_HEALTH := 100
@@ -55,6 +57,8 @@ var weapon_held : Node3D = $Weapons/Slapper
 @onready var weapons := [Globals.WEAPONS.SLAPPER]
 var nozzle : Node3D = null
 var trigger_pulled := false
+var alt_pulled := false
+var zoomed := false
 var default_shot_target := Vector3(0, 0, -99)
 var switching_weapons := false
 var v_recoil := 0.0
@@ -100,13 +104,15 @@ func _starting_weapons() -> void:
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 	#weapons.append(Globals.WEAPONS.SNIPER)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
-	_equip_weapon($Weapons/Pistol)
 
 
 func _process(delta) -> void:
 	_apply_recoil(delta)
-	if trigger_pulled and weapon_held:
-		_shoot()
+	if weapon_held:
+		if trigger_pulled:
+			_shoot()
+		elif alt_pulled:
+			_gun_alt()
 
 
 func _physics_process(delta) -> void:
@@ -142,6 +148,11 @@ func _pull_trigger() -> void:
 		_reload()
 		return
 	_switch_to_next_weapon()
+
+
+func _pull_alt() -> void:
+	if weapon_held.stats.weapon_type == Globals.WEAPONS.SNIPER:
+		alt_pulled = true
 
 
 func _shoot() -> void:
@@ -188,6 +199,20 @@ func _shoot() -> void:
 
 	if !weapon_held.is_automatic():
 		trigger_pulled = false
+
+
+func _gun_alt() -> void:
+	if weapon_held.stats.weapon_type == Globals.WEAPONS.SNIPER:
+		alt_pulled = false
+		_zoom()
+
+
+func _zoom() -> void:
+	zoomed = !zoomed
+	if zoomed:
+		speed = ZOOM_SPEED
+	else:
+		speed = SPEED
 
 
 func _apply_recoil(delta) -> void:
@@ -445,7 +470,7 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 			old_weapon = weapon_held
 			weapon_held = new_weapon
 			nozzle = weapon_held.nozzle
-				
+			
 			await _anim_weapon_switch(old_weapon, weapon_held)
 			switching_weapons = false
 	else:

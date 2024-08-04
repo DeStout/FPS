@@ -4,6 +4,8 @@ class_name WeaponStats
 
 @export var weapon_type : Globals.WEAPONS
 @export var automatic : bool
+@export var can_zoom : bool
+@export var zoom_level := 1.0
 @export var burst_fire : bool
 @export var burst_num : int
 @export var burst_variance : float

@@ -9,6 +9,7 @@ signal game_ended
 
 var mouse_sensitivity := 0.002
 var controller_sensitivity := 0.05
+var zoom_sensitibity := 1.0
 var invert_y_axis := false
 
 var main_menu_ := preload("res://Menus/MainMenu.tscn")

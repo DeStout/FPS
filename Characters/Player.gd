@@ -26,11 +26,13 @@ func _physics_process(delta) -> void:
 	# Controller Look
 	var look_dir = Input.get_vector("LookLeft", "LookRight", "LookUp", "LookDown")
 	if look_dir:
-		$AimHelper.rotate_x(-Globals.invert_y_to_int() * Globals.controller_sensitivity * \
-							-look_dir.y)
+		$AimHelper.rotate_x(-Globals.invert_y_to_int() * \
+							Globals.controller_sensitivity * \
+							Globals.zoom_sensitibity * -look_dir.y)
 		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
 										-deg_to_rad(89), deg_to_rad(89))
-		rotate_y(Globals.controller_sensitivity * -look_dir.x)
+		rotate_y(Globals.controller_sensitivity * Globals.zoom_sensitibity * \
+																-look_dir.x)
 		rotation.z = 0
 
 	if is_on_floor():
@@ -41,8 +43,8 @@ func _physics_process(delta) -> void:
 	if direction:
 		if is_on_floor():
 			state_machine.travel("Run")
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel * delta)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel * delta)
+		velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
+		velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 	else:
 		state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
@@ -56,6 +58,11 @@ func _input(event) -> void:
 	elif Input.is_action_just_released("Shoot"):
 		trigger_pulled = false
 		
+	if Input.is_action_just_pressed("GunAlt"):
+		_pull_alt()
+	elif Input.is_action_just_released("GunAlt"):
+		alt_pulled = false
+		
 	if Input.is_action_pressed("ScoreBoard"):
 		%HealthMod.color.a = 1
 		
@@ -64,11 +71,13 @@ func _input(event) -> void:
 		
 	# Mouse Look
 	if event is InputEventMouseMotion:
-		$AimHelper.rotate_x(Globals.invert_y_to_int() * Globals.mouse_sensitivity * \
-							event.relative.y)
+		$AimHelper.rotate_x(Globals.invert_y_to_int() * \
+							Globals.mouse_sensitivity * \
+							Globals.zoom_sensitibity * event.relative.y)
 		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
 										-deg_to_rad(89), deg_to_rad(89))
-		rotate_y(-Globals.mouse_sensitivity * event.relative.x)
+		rotate_y(-Globals.mouse_sensitivity * Globals.zoom_sensitibity * \
+															event.relative.x)
 		rotation.z = 0
 
 	if event is InputEventKey or event is InputEventJoypadButton:
@@ -116,12 +125,45 @@ func _shoot() -> void:
 	update_UI()
 
 
+func _zoom() -> void:
+	super()
+	var zoom_level := 1.0
+	var zoom_time := 0.075
+	var cam = $AimHelper/Camera
+	var fps_cam = $FPCanvas/SubViewportContainer/SubViewport/FPCamera
+	if zoomed:
+		zoom_level = weapon_held.stats.zoom_level
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
+		tween.tween_property(fps_cam, "fov", 75 / zoom_level, zoom_time)
+		Globals.zoom_sensitibity = 0.5
+		$Weapons.visible = false
+		$AimHelper/FPWeapons.visible = false
+		_zoom_crosshairs(true)
+	else:
+		_zoom_crosshairs(false)
+		Globals.zoom_sensitibity = 1.0
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(cam, "fov", 75, zoom_time)
+		tween.tween_property(fps_cam, "fov", 75, zoom_time)
+		$Weapons.visible = true
+		$AimHelper/FPWeapons.visible = true
+
+
 # Signal from Weapon.finished_reloading
 func update_UI() -> void:
 	if weapon_held:
 		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
 							" / " + str(weapon_held.get_mag_size())
 		%ExtraAmmo.text = str(weapon_held.extra_ammo)
+
+
+func _show_crosshairs(show) -> void:
+	$FPCanvas/UI/Crosshair.visible = show
+
+
+func _zoom_crosshairs(show) -> void:
+	$FPCanvas/UI/Scope.visible = show
 
 
 func _update_time_UI() -> void:
@@ -235,8 +277,6 @@ func respawn() -> void:
 	%Camera.current = true
 	last_shot_by.set_current_camera(false)
 	$FPCanvas/UI.visible = true
-	#weapons.append(Globals.WEAPONS.PISTOL)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_held.reset()
 	update_UI()
 
@@ -253,6 +293,8 @@ func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
 
 
 func _switch_weapon(new_weapon) -> void:
+	if zoomed:
+		_gun_alt()
 	super(new_weapon)
 	update_UI()
 
@@ -284,6 +326,11 @@ func _unequip_weapon(old_weapon) -> void:
 
 
 func _equip_weapon(new_weapon) -> void:
+	if weapon_held.stats.weapon_type == Globals.WEAPONS.SNIPER:
+		_show_crosshairs(false)
+	else:
+		_show_crosshairs(true)
+		
 	new_weapon.visible = true
 	fp_weapon = get_fp_weapon(new_weapon)
 	fp_weapon.visible = true

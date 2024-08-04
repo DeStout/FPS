@@ -7,7 +7,7 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 disable_ambient_light = true
-albedo_color = Color(1, 1, 1, 0.0980392)
+albedo_color = Color(1, 1, 1, 0.0392157)
 disable_receive_shadows = true
 distance_fade_mode = 1
 distance_fade_min_distance = 0.25
@@ -15,7 +15,7 @@ distance_fade_max_distance = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lm5jk"]
 material = SubResource("StandardMaterial3D_qcg63")
-radius = 0.01
+radius = 0.025
 height = 0.75
 radial_segments = 5
 rings = 1

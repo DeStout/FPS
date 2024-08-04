@@ -6,6 +6,8 @@
 script = ExtResource("1_bsv2a")
 weapon_type = 2
 automatic = true
+can_zoom = false
+zoom_level = 0.0
 burst_fire = false
 burst_num = 0
 burst_variance = 0.0

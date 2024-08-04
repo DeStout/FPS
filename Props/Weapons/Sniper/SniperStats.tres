@@ -6,14 +6,16 @@
 script = ExtResource("1_kap7b")
 weapon_type = 5
 automatic = false
+can_zoom = false
+zoom_level = 3.0
 burst_fire = false
 burst_num = 0
 burst_variance = 0.0
 shots_per_second = 1.0
 max_ammo = 28
 mag_size = 7
-v_recoil = 8.0
-h_recoil = 3.0
+v_recoil = 4.0
+h_recoil = 0.75
 body_dmg = {
 0: 75,
 1: 45,

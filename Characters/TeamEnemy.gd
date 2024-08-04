@@ -17,7 +17,7 @@ var shoot_speed_variance := Vector2(0.3, 1.0)
 
 var move_speed_mod := 0.8
 const TURN_SPEED := 6.0
-const AIM_SPEED := 8.0
+const AIM_SPEED := 6.0
 
 
 func new_name(new_name_ : String) -> void:
