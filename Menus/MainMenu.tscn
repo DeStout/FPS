@@ -287,13 +287,13 @@ popup/item_9/id = 9
 popup/item_10/text = "50"
 popup/item_10/id = 10
 popup/item_11/text = "75"
-popup/item_11/id = 11
+popup/item_11/id = 15
 popup/item_12/text = "100"
-popup/item_12/id = 12
+popup/item_12/id = 20
 popup/item_13/text = "150"
-popup/item_13/id = 13
+popup/item_13/id = 30
 popup/item_14/text = "250"
-popup/item_14/id = 14
+popup/item_14/id = 50
 
 [node name="MatchTime" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
 layout_mode = 2

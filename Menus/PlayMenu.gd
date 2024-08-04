@@ -15,13 +15,18 @@ func start_button() -> void:
 	var match_settings : MatchSettings = MatchSettings.new()
 	match_settings.game_mode = game_mode.selected
 	match_settings.map = map.selected
-	match_settings.score_to_win = score_to_win.selected * 5
+	match_settings.score_to_win = _get_win_score()
 	match_settings.time = _convert_time()
 	match_settings.num_bots = num_bots.selected
 	match_settings.friendly_fire = ff.selected
 	Globals.set_match_settings(match_settings)
 	
 	Globals.load_game()
+
+
+func _get_win_score() -> int:
+	var score_i = score_to_win.selected
+	return score_to_win.get_item_id(score_i)
 
 
 func _convert_time() -> int:
