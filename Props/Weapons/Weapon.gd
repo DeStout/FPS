@@ -39,7 +39,7 @@ func shoot() -> void:
 func reload() -> void:
 	if extra_ammo > 0 and ammo_in_mag < stats.mag_size:
 		is_reloading = true
-		$ReloadAudio.play(0.0)
+		$ReloadAudio.play()
 		await $ReloadAudio.finished
 
 		var ammo_to_add = stats.mag_size - ammo_in_mag

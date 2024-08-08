@@ -94,8 +94,11 @@ func set_color(new_color : Color) -> void:
 
 
 func _starting_weapons() -> void:
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	var starting_weapon = _rand_weapon()
+	weapons.append(starting_weapon)
+	_switch_weapon(_get_weapon(starting_weapon))
+	#weapons.append(Globals.WEAPONS.PISTOL)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	#weapons.append(Globals.WEAPONS.SMG)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
 	#weapons.append(Globals.WEAPONS.RIFLE)
@@ -247,7 +250,9 @@ func _slap() -> void:
 
 func _reload() -> void:
 	if weapon_held and !weapon_held.is_reloading:
-		weapon_held.reload()
+		print("reload")
+		await weapon_held.reload()
+	return
 
 
 # Signaled from BodySeg
@@ -345,15 +350,13 @@ func respawn() -> void:
 	health = 100
 	set_physics_process(true)
 	_disable_collisions(false)
-	#print(name, " Respawned")
-
-	#var spawn_weapon = randi_range(0,4)
-	#if spawn_weapon > 0:
-		#weapons.append(spawn_weapon)
-	#_switch_weapon(_get_weapon(spawn_weapon))
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_get_weapon(Globals.WEAPONS.PISTOL).reset()
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	
+	var spawn_weapon = _rand_weapon()
+	weapons.append(spawn_weapon)
+	_switch_weapon(_get_weapon(spawn_weapon))
+	#weapons.append(Globals.WEAPONS.PISTOL)
+	#_get_weapon(Globals.WEAPONS.PISTOL).reset()
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 
 
 func set_current_camera(is_current : bool) -> void:
@@ -448,6 +451,12 @@ func _get_weapon(weapon_type : int) -> Node3D:
 		if weapon.get_weapon_type() == weapon_type:
 			new_weapon = weapon
 	return new_weapon
+
+
+func _rand_weapon() -> int:
+	var spawn_weapon = randf_range(1, pow(Globals.WEAPONS.size(), 2))
+	spawn_weapon = int(sqrt(spawn_weapon))
+	return Globals.WEAPONS.size() - spawn_weapon
 
 
 func _switch_to_next_weapon() -> void:

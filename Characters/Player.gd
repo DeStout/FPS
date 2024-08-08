@@ -56,6 +56,7 @@ func _input(event) -> void:
 	if Input.is_action_just_pressed("Shoot"):
 		_pull_trigger()
 	elif Input.is_action_just_released("Shoot"):
+		print("no trigger")
 		trigger_pulled = false
 		
 	if Input.is_action_just_pressed("GunAlt"):
@@ -80,8 +81,9 @@ func _input(event) -> void:
 															event.relative.x)
 		rotation.z = 0
 
-	if event is InputEventKey or event is InputEventJoypadButton:
-	# Keyboard weapon switching
+	# Weapon Switching
+	if event is InputEventKey or event is InputEventJoypadButton or \
+												event is InputEventMouseButton:
 		if Input.is_action_just_pressed("Weapon1"):
 			if _have_weapon(Globals.WEAPONS.SLAPPER):
 				weapon_held.interrupt_reload()
@@ -102,9 +104,11 @@ func _input(event) -> void:
 			if _have_weapon(Globals.WEAPONS.SHOTGUN):
 				weapon_held.interrupt_reload()
 				_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
-	elif event is InputEventJoypadButton or event is InputEventMouseButton:
-		if !Input.is_action_pressed("ScoreBoard"):
-			_cycle_switch_weapon()
+		elif Input.is_action_pressed("CycleWeapon") or \
+									Input.is_action_pressed("WeaponUp") or \
+										Input.is_action_pressed("WeaponDown"):
+			if !Input.is_action_pressed("ScoreBoard"):
+				_cycle_switch_weapon()
 
 
 func _swing() -> void:
