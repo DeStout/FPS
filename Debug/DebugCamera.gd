@@ -13,10 +13,22 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Controller Look
+	var look_dir = Input.get_vector("LookLeft", "LookRight", "LookUp", "LookDown")
+	if look_dir:
+		$AimHelper.rotate_x(-Globals.invert_y_to_int() * \
+							Globals.controller_sensitivity * \
+							Globals.zoom_sensitibity * -look_dir.y)
+		$AimHelper.rotation.x = clamp($AimHelper.rotation.x, \
+										-deg_to_rad(89), deg_to_rad(89))
+		rotate_y(Globals.controller_sensitivity * Globals.zoom_sensitibity * \
+																-look_dir.x)
+		rotation.z = 0
+	
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var input_dir_y = Input.get_axis("Crouch", "Jump")
 	var direction = (transform.basis * Vector3(input_dir.x, input_dir_y, \
-																		input_dir.y))
+																input_dir.y))
 	speed = SPEED
 	if Input.is_action_pressed("Fast"):
 		speed = FAST_SPEED
@@ -39,9 +51,9 @@ func _update_time_UI() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		$Camera3D.rotate_x(Globals.invert_y_to_int() * Globals.mouse_sensitivity * \
-							event.relative.y)
-		$Camera3D.rotation.x = clamp($Camera3D.rotation.x, \
+		$AimHelper/Camera3D.rotate_x(Globals.invert_y_to_int() * \
+									Globals.mouse_sensitivity * event.relative.y)
+		$AimHelper/Camera3D.rotation.x = clamp($AimHelper/Camera3D.rotation.x, \
 										-deg_to_rad(89), deg_to_rad(89))
 		rotate_y(-Globals.mouse_sensitivity * event.relative.x)
 		rotation.z = 0

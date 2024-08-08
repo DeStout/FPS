@@ -56,20 +56,19 @@ func _input(event) -> void:
 	if Input.is_action_just_pressed("Shoot"):
 		_pull_trigger()
 	elif Input.is_action_just_released("Shoot"):
-		print("no trigger")
 		trigger_pulled = false
-		
+
 	if Input.is_action_just_pressed("GunAlt"):
 		_pull_alt()
 	elif Input.is_action_just_released("GunAlt"):
 		alt_pulled = false
-		
+
 	if Input.is_action_pressed("ScoreBoard"):
 		%HealthMod.color.a = 1
-		
+
 	if Input.is_action_just_pressed("Reload"):
 		_reload()
-		
+
 	# Mouse Look
 	if event is InputEventMouseMotion:
 		$AimHelper.rotate_x(Globals.invert_y_to_int() * \

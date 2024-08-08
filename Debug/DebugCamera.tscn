@@ -15,7 +15,9 @@ outline_color = Color(0.184314, 0.184314, 0.184314, 1)
 [node name="DebugCamera" type="CharacterBody3D"]
 script = ExtResource("1_in0u3")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="AimHelper" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="AimHelper"]
 current = true
 
 [node name="FPCanvas" type="CanvasLayer" parent="."]

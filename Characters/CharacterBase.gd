@@ -250,7 +250,6 @@ func _slap() -> void:
 
 func _reload() -> void:
 	if weapon_held and !weapon_held.is_reloading:
-		print("reload")
 		await weapon_held.reload()
 	return
 
