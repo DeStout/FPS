@@ -66,6 +66,7 @@ func start_match() -> void:
 
 # Called from Pause.quit_button() and MultiplayerLevel.end_match()
 func quit_game() -> void:
+	Engine.time_scale = 1.0
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	

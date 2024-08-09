@@ -50,9 +50,6 @@ func end_match() -> void:
 	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 1.2, post_time)
 	await tween.finished
 	
-	Engine.time_scale = 1.0
-	await get_tree().process_frame
-	
 	Globals.quit_game()
 
 
