@@ -8,3 +8,5 @@ extends Node3D
 
 func _ready() -> void:
 	player.set_processing(true)
+	for enemy in enemies:
+		enemy.set_processing(true)

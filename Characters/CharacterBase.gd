@@ -27,7 +27,7 @@ var armor := 0
 var team : Color
 
 # Enemies
-var enemies := []
+@export var enemies : Array[CharacterBase] = []
 var last_shot_by : CharacterBase = null
 
 # Body segments / Skeleton
