@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0w8g3xxs1u61"
-path="res://.godot/imported/Level1.glb-8341038a4781ebdf41dc4cd3a4fc7fa4.scn"
+uid="uid://m14adrv5f2fa"
+path="res://.godot/imported/Bridge.glb-9ae45f729e51ed373736c7add2ecfbbf.scn"
 
 [deps]
 
-source_file="res://Maps/Multiplayer/Level1.glb"
-dest_files=["res://.godot/imported/Level1.glb-8341038a4781ebdf41dc4cd3a4fc7fa4.scn"]
+source_file="res://Maps/Multiplayer/Bridge.glb"
+dest_files=["res://.godot/imported/Bridge.glb-9ae45f729e51ed373736c7add2ecfbbf.scn"]
 
 [params]
 

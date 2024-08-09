@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://715bel8u8beu"]
 
 [ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Maps/Multiplayer/MultiplayerLevel.tscn" id="1_jfgit"]
-[ext_resource type="PackedScene" uid="uid://bc3s64pryrj37" path="res://Maps/Multiplayer/Level3Base.tscn" id="2_v1ojq"]
+[ext_resource type="PackedScene" uid="uid://bc3s64pryrj37" path="res://Maps/Multiplayer/TempleBase.tscn" id="2_v1ojq"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_w03wq"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="4_if10g"]
 
