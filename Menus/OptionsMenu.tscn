@@ -143,7 +143,7 @@ tick_count = 5
 ticks_on_borders = true
 script = ExtResource("3_p2er2")
 bus_name = "Music"
-default_value = 50.0
+default_value = 40.0
 
 [node name="SFX" type="Control" parent="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout"]
 layout_mode = 2
@@ -169,7 +169,7 @@ tick_count = 5
 ticks_on_borders = true
 script = ExtResource("3_p2er2")
 bus_name = "SFX"
-default_value = 50.0
+default_value = 20.0
 
 [node name="Controls" type="Control" parent="Layout/Settings/Settings/Tabs"]
 visible = false

@@ -13,9 +13,6 @@ var zoom_sensitibity := 1.0
 var invert_y_axis := false
 
 var main_menu_ := preload("res://Menus/MainMenu.tscn")
-#var Square_ := preload("res://Maps/Multiplayer/Square.tscn")
-#var Bridge_ := preload("res://Maps/Multiplayer/Bridge.tscn")
-#var Temple_ := preload("res://Maps/Multiplayer/Temple.tscn")
 
 @onready var main_menu : Control = game.get_node("MainMenu")
 var map : Node3D = null

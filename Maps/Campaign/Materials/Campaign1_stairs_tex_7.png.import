@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d04uefk603may"
-path.s3tc="res://.godot/imported/Campaign1_tex_7_1.png-0be387814764174ff045d31c9b5689af.s3tc.ctex"
+uid="uid://clfnb616xcetq"
+path.s3tc="res://.godot/imported/Campaign1_stairs_tex_7.png-66e3a2b43da152c960f929d965e672b8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Maps/Campaign/Campaign1_tex_7_1.png"
-dest_files=["res://.godot/imported/Campaign1_tex_7_1.png-0be387814764174ff045d31c9b5689af.s3tc.ctex"]
+source_file="res://Maps/Campaign/Materials/Campaign1_stairs_tex_7.png"
+dest_files=["res://.godot/imported/Campaign1_stairs_tex_7.png-66e3a2b43da152c960f929d965e672b8.s3tc.ctex"]
 
 [params]
 

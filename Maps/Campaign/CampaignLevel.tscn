@@ -9,7 +9,7 @@ script = ExtResource("1_byqwd")
 
 [node name="NavReg" type="NavigationRegion3D" parent="."]
 
-[node name="Characters" type="Node3D" parent="."]
+[node name="Players" type="Node3D" parent="."]
 
 [node name="FX" type="Node3D" parent="."]
 

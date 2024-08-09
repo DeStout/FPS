@@ -10,7 +10,10 @@ var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 
 
 func _ready() -> void:
-	Globals.level = self
+	Globals.match_settings.time = 0
+	Globals.map = self
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func spawn_shot_trail(nozzle_point, collision_point) -> void:
