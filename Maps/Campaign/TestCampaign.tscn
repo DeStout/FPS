@@ -277,18 +277,16 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box16/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Players" parent="." index="3" node_paths=PackedStringArray("level", "player", "enemies")]
+[node name="Players" parent="." index="3" node_paths=PackedStringArray("level", "player")]
 unique_name_in_owner = true
 script = ExtResource("2_nadqn")
 level = NodePath("..")
 player = NodePath("Player")
-enemies = [NodePath("CampaignEnemy")]
 
-[node name="Player" parent="Players" index="0" instance=ExtResource("2_dt1qx")]
+[node name="Player" parent="Players" index="0" node_paths=PackedStringArray("enemies") instance=ExtResource("2_dt1qx")]
+enemies = [null]
 
-[node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("enemies") instance=ExtResource("4_yerhm")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -5)
-enemies = [NodePath("../Player")]
+[node name="CampaignEnemy" parent="Players" index="1" instance=ExtResource("4_yerhm")]
 
 [node name="Pause" parent="." index="8"]
 visible = false

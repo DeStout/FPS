@@ -8,7 +8,7 @@ var respawn_timer_ = preload("res://Maps/Multiplayer/RespawnTimer.tscn")
 
 var level 
 var player : CharacterBase
-var bots := []
+var bots : Array[CharacterBase] = []
 var team_colors := [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, \
 	Color.MAGENTA, Color.CYAN, Color.ORANGE, Color.INDIGO, Color.ORANGE_RED, \
 	Color.GREEN_YELLOW, Color.DARK_BLUE, Color.DARK_RED, Color.DARK_VIOLET, \
@@ -49,7 +49,8 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 		enemy.set_color(team_colors[1])
 		bots.append(enemy)
 		enemy.new_name("Enemy" + str(x+1))
-		enemy.set_enemies([player])
+		var temp : Array[CharacterBase] = [player]
+		enemy.set_enemies(temp)
 
 		while(used_spawns.has(spawn_point)):
 			spawn_point = level.get_spawn_point()
@@ -64,7 +65,7 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 func _set_up_ffa(used_spawns : Array) -> void:
 	#print("Game Type: Free For All")
 	var spawn_point = level.get_spawn_point()
-	var enemies := [player]
+	var enemies : Array[CharacterBase] = [player]
 	for x in range(Globals.match_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
 		enemy.set_color(team_colors[x+1])
@@ -87,8 +88,8 @@ func _set_up_ffa(used_spawns : Array) -> void:
 func _set_up_team_battle(used_spawns) -> void:
 	#print("Game Type: Team Battle")
 	var spawn_point = level.get_spawn_point()
-	var team1 := [player]
-	var team2 := []
+	var team1 : Array[CharacterBase] = [player]
+	var team2 : Array[CharacterBase] = []
 	var team_color : Color
 	for x in range(Globals.match_settings.num_bots):
 		var bot = team_enemy_.instantiate()

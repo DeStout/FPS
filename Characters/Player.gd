@@ -1,4 +1,4 @@
-extends CharacterBase
+extends MultiplayerBase
 
 
 signal weapon_picked_up
