@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://bv0rwydo3odmv"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_l4ff0"]
-[ext_resource type="PackedScene" uid="uid://bjvof25uwl8sb" path="res://Characters/Player.tscn" id="2_dt1qx"]
+[ext_resource type="PackedScene" uid="uid://bjvof25uwl8sb" path="res://Characters/Multiplayer/Player.tscn" id="2_dt1qx"]
 [ext_resource type="Script" path="res://Maps/Campaign/CampaignPlayers.gd" id="2_nadqn"]
-[ext_resource type="PackedScene" uid="uid://la6he6vwubnb" path="res://Characters/CampaignEnemy.tscn" id="4_yerhm"]
+[ext_resource type="PackedScene" uid="uid://la6he6vwubnb" path="res://Characters/Campaign/CampaignEnemy.tscn" id="4_yerhm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_101rf"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -284,9 +284,12 @@ level = NodePath("..")
 player = NodePath("Player")
 
 [node name="Player" parent="Players" index="0" node_paths=PackedStringArray("enemies") instance=ExtResource("2_dt1qx")]
-enemies = [null]
+enemies = [NodePath("../CampaignEnemy")]
 
-[node name="CampaignEnemy" parent="Players" index="1" instance=ExtResource("4_yerhm")]
+[node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("player", "enemies") instance=ExtResource("4_yerhm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -3.96297)
+player = NodePath("../Player")
+enemies = [NodePath("../Player")]
 
 [node name="Pause" parent="." index="8"]
 visible = false

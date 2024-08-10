@@ -2,7 +2,7 @@ extends Node3D
 class_name CampaignLevel
 
 
-var rag_doll_ := preload("res://Characters/RagDoll.tscn")
+var rag_doll_ := preload("res://Characters/Multiplayer/RagDoll.tscn")
 var shot_trail_ := preload("res://Props/ShotTrail.tscn")
 var bullet_hole_ := preload("res://Props/BulletHole.tscn")
 var damage_label_ := preload("res://Characters/DamageLabel.tscn")

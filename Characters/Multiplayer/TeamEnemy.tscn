@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://hv83ne1uckpm"]
 
 [ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_k7sdm"]
-[ext_resource type="Script" path="res://Characters/TeamEnemy.gd" id="2_y5jr0"]
+[ext_resource type="Script" path="res://Characters/Multiplayer/TeamEnemy.gd" id="2_y5jr0"]
 [ext_resource type="PackedScene" uid="uid://cy12nf62sv60i" path="res://Debug/VectorCube.tscn" id="3_ehgq3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bpq3"]

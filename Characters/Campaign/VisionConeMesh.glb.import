@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b6ljvo243ec5m"
-path="res://.godot/imported/VisionConeMesh.glb-0c196b0376e526811b246d918cb749aa.scn"
+path="res://.godot/imported/VisionConeMesh.glb-701e991d75f4b0fffc8e6b05baaa7525.scn"
 
 [deps]
 
-source_file="res://Characters/VisionConeMesh.glb"
-dest_files=["res://.godot/imported/VisionConeMesh.glb-0c196b0376e526811b246d918cb749aa.scn"]
+source_file="res://Characters/Campaign/VisionConeMesh.glb"
+dest_files=["res://.godot/imported/VisionConeMesh.glb-701e991d75f4b0fffc8e6b05baaa7525.scn"]
 
 [params]
 

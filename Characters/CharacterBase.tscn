@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckqtvo1inhvtn" path="res://Props/Weapons/Slapper/Slapper.tscn" id="2_26305"]
 [ext_resource type="PackedScene" uid="uid://bwie7ixf4v1vw" path="res://Props/Weapons/Pistol/Pistol.tscn" id="3_c6pft"]
 [ext_resource type="PackedScene" uid="uid://bhxw75oi8yofw" path="res://Props/Weapons/Rifle/Rifle.tscn" id="4_7rqvl"]
-[ext_resource type="Script" path="res://Characters/Voice.gd" id="4_8ihun"]
+[ext_resource type="Script" path="res://Characters/Multiplayer/Voice.gd" id="4_8ihun"]
 [ext_resource type="PackedScene" uid="uid://dh23vd3s1cpss" path="res://Props/Weapons/SMG/SMG.tscn" id="4_bxvtu"]
 [ext_resource type="PackedScene" uid="uid://barsvh0ntyosw" path="res://Props/Weapons/Shotgun/Shotgun.tscn" id="5_gqd55"]
 [ext_resource type="AudioStream" uid="uid://dvwslqt03fwb6" path="res://Props/Weapons/Slapper/Slap.ogg" id="5_tm5o4"]

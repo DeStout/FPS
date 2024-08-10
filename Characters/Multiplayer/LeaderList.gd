@@ -1,7 +1,7 @@
 extends Control
 
 
-var leader_label_ := preload("res://Characters/LeaderLabel.tscn")
+var leader_label_ := preload("res://Characters/Multiplayer/LeaderLabel.tscn")
 
 @export var list : VBoxContainer
 var teams := []

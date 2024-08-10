@@ -5,6 +5,7 @@ extends CharacterBase
 
 var update_frame_interval := 5
 
+@export var player : CharacterBase
 var enemies_vis := []
 var target_vis_threshold := 0.45
 var target_dist := 2.5
@@ -55,14 +56,14 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	velocity.x *= move_speed_mod
 	velocity.z *= move_speed_mod
-	#move_and_slide()
+	move_and_slide()
 
 
 func _check_enemies_vis() -> void:
-	#print(%VisionCone.bodies_vis)
-	#for character in %VisionCone.bodies_vis:
-		#print(character.name)
-	pass
+	for enemy_i in range(%VisionCone.bodies_vis.size()):
+		%TargetCast.target_position = %TargetCast.to_local(%VisionCone \
+						.bodies_vis[enemy_i].global_position + (Vector3.UP*1.5))
+		%TargetCast.force_raycast_update()
 
 
 func _shoot() -> void:
