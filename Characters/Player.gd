@@ -334,10 +334,11 @@ func _equip_weapon(new_weapon) -> void:
 	else:
 		_show_crosshairs(true)
 		
-	new_weapon.visible = true
+	%FPAnimator.play(new_weapon.stats.equip_anim)
+	await get_tree().process_frame
 	fp_weapon = get_fp_weapon(new_weapon)
+	new_weapon.visible = true
 	fp_weapon.visible = true
 	nozzle = fp_weapon.nozzle
-	%FPAnimator.play(new_weapon.stats.equip_anim)
 	await %FPAnimator.animation_finished
 	super(new_weapon)
