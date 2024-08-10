@@ -6,6 +6,10 @@ extends Area3D
 var bodies_vis : Array[CharacterBase] = []
 
 
+func get_bodies() -> Array:
+	return bodies_vis.duplicate()
+
+
 func _body_entered(body : Node3D) -> void:
 	if body is CharacterBase and !bodies_vis.has(body):
 		if body != parent:

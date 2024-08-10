@@ -287,7 +287,7 @@ player = NodePath("Player")
 enemies = [NodePath("../CampaignEnemy")]
 
 [node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("player", "enemies") instance=ExtResource("4_yerhm")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -3.96297)
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 0, 0, -3.96297)
 player = NodePath("../Player")
 enemies = [NodePath("../Player")]
 

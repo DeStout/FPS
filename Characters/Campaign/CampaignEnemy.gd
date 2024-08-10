@@ -6,9 +6,8 @@ extends CharacterBase
 var update_frame_interval := 5
 
 @export var player : CharacterBase
-var enemies_vis := []
-var target_vis_threshold := 0.45
-var target_dist := 2.5
+var enemies_vis : Array[bool] = []
+
 var shoot_accuracy_threshold := 0.9
 var shoot_speed_mod := 1.0/1.75
 var shoot_speed_variance := Vector2(0.3, 1.0)
@@ -16,22 +15,24 @@ var shoot_speed_variance := Vector2(0.3, 1.0)
 var move_speed_mod := 0.8
 const TURN_SPEED := 6.0
 const AIM_SPEED := 6.0
+
+var input_dir := Vector2.ZERO
 	
 	
 func _ready() -> void:
 	super()
+	
+	enemies_vis.resize(enemies.size())
+	enemies_vis.fill(false)
 
 
 func _process(delta: float) -> void:
 	super(delta)
-	if get_tree().get_frame() % update_frame_interval == 0:
-		_check_enemies_vis()
 
 
 func _physics_process(delta):
 	super(delta)
 
-	var input_dir = Vector2.ZERO
 	var next_path_pos := Vector3.ZERO
 			
 	if !nav_agent.is_navigation_finished():
@@ -59,11 +60,18 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _check_enemies_vis() -> void:
-	for enemy_i in range(%VisionCone.bodies_vis.size()):
-		%TargetCast.target_position = %TargetCast.to_local(%VisionCone \
-						.bodies_vis[enemy_i].global_position + (Vector3.UP*1.5))
-		%TargetCast.force_raycast_update()
+func check_enemies_visible() -> bool:
+	%TargetCast.target_position = Vector3.FORWARD
+	enemies_vis.fill(false)
+	var bodies = %VisionCone.get_bodies()
+	for body in bodies:
+		if enemies.has(body):
+			%TargetCast.target_position = %TargetCast.to_local(\
+										body.global_position + (Vector3.UP*1.5))
+			%TargetCast.force_raycast_update()
+			if %TargetCast.is_colliding() and %TargetCast.get_collider() == body:
+				enemies_vis[enemies.find(body)] = true
+	return enemies_vis.has(true)
 
 
 func _shoot() -> void:
