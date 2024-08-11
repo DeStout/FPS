@@ -30,11 +30,6 @@ func check_priorities() -> void:
 		enemy.set_closest_to_target()
 	
 	if enemy.target:
-		if enemy.is_enemy_visible(enemy.target):
-			enemy.prev_target_pos = enemy.target.global_position
-		enemy.set_nav_target(enemy.prev_target_pos)
 		enemy.action = Callable(enemy.move_to_nav_target)
 	else:
-		enemy.prev_target_pos = Vector3.ZERO
-		enemy.set_nav_target(enemy.prev_target_pos)
 		transition.emit(self, "GuardState")

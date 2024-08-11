@@ -5,7 +5,6 @@ extends CharacterBase
 
 @export var player : CharacterBase
 var target : CharacterBase = null
-var prev_target_pos := Vector3.ZERO
 var look_target := Vector3.ZERO
 var enemies_vis : Array[bool] = []
 
@@ -41,22 +40,32 @@ func _physics_process(delta):
 
 
 func move_to_nav_target(delta) -> void:
+	if !target:
+		return
+	
+	# Switch to GuardState if navigation has been completed
 	var next_path_pos := Vector3.ZERO
-	if !nav_agent.is_navigation_finished():
-		next_path_pos = nav_agent.get_next_path_position()
-		next_path_pos.y = global_position.y
-		
-		if target and !is_enemy_visible(target):
-			look_target = next_path_pos
-		else:
-			look_target = target.global_position
-		look_target.y = global_position.y
-	else:
-		target = null
+	if nav_agent.is_navigation_finished() and !is_enemy_visible(target):
+		if $TargetTimer.is_stopped():
+			$TargetTimer.start(3.0)
 		state_machine.travel("IdleFall")
 		return
 	
-	if target and enemies_vis[target_i()]:
+	# Set the desired destination
+	if is_enemy_visible(target):
+		nav_agent.target_position = target.global_position
+	next_path_pos = nav_agent.get_next_path_position()
+	next_path_pos.y = global_position.y
+	
+	# Set where the bot will be looking by setting the look target.
+	if target:
+		look_target = target.global_position
+		if !is_enemy_visible(target):
+			look_target = next_path_pos
+	look_target.y = global_position.y
+	
+	# Adjust desired destination based on current_weapons desired range
+	if target and is_enemy_visible(target):
 		var desired_range : Vector2 = weapon_held.stats.desired_range
 		var temp_path_pos := next_path_pos
 		temp_path_pos.y = target.global_position.y
@@ -64,23 +73,21 @@ func move_to_nav_target(delta) -> void:
 		if dist_to < desired_range.x:
 			var dir_from := -target.position.normalized()
 			next_path_pos += (dir_from * (desired_range.x - dist_to))
-	else:
-		print("uh oh")
 	
 	$Debug/Box.global_position = next_path_pos
 	
+	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO
 	var desired_range : Vector2 = weapon_held.stats.desired_range
 	var dist_to = global_position.distance_to(target.global_position)
 	if dist_to < desired_range.x or desired_range.y < dist_to:
-		print("Outside range")
 		var local_path := to_local(next_path_pos)
 		input_dir = Vector2(local_path.x, local_path.z).normalized()
-		
-	if next_path_pos and transform.origin != next_path_pos:
-		var new_transform : Transform3D
-		new_transform = transform.looking_at(look_target)
-		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
+	
+	# Turn to look the look target
+	var new_transform : Transform3D
+	new_transform = transform.looking_at(look_target)
+	transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -95,6 +102,11 @@ func move_to_nav_target(delta) -> void:
 	velocity.x *= move_speed_mod
 	velocity.z *= move_speed_mod
 	move_and_slide()
+
+
+func target_lost() -> void:
+	target = null
+
 
 
 func check_enemies_visible() -> bool:
@@ -124,16 +136,6 @@ func set_closest_to_target() -> void:
 		if temp_dist < dist:
 			target = enemy
 			dist = temp_dist
-
-
-func set_nav_target(new_nav_target) -> void:
-	nav_agent.target_position = new_nav_target
-
-
-func target_i() -> int:
-	if target:
-		return enemies.find(target)
-	return -1
 
 
 func is_enemy_visible(enemy) -> bool:
