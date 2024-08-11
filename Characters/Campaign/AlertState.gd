@@ -4,21 +4,37 @@ extends State
 
 var update_interval := 10
 
-
-# Runs when the state is entered
 func enter():
-	print(enemy.name, ": Alert State")
+	print(enemy.name, ": Enter AlertState")
+	enemy.action = Callable()
 
-# Runs when the state is exited
+
 func exit():
+	enemy.action = Callable()
+
+
+func update(_delta):
 	pass
 
-# Updates every _process() update (When state is active)
-func update():
-	pass
 
-# Updates every _physics_process() update (When state is active)
-func physics_update():
+func physics_update(delta):
 	if get_tree().get_frame() % update_interval == 0:
-		if !enemy.check_enemies_visible():
-			Transitioned.emit(self, "GuardState")
+		check_priorities()
+	
+	if enemy.action:
+		enemy.action.call(delta)
+
+
+func check_priorities() -> void:
+	if enemy.check_enemies_visible():
+		enemy.set_closest_to_target()
+	
+	if enemy.target:
+		if enemy.is_enemy_visible(enemy.target):
+			enemy.prev_target_pos = enemy.target.global_position
+		enemy.set_nav_target(enemy.prev_target_pos)
+		enemy.action = Callable(enemy.move_to_nav_target)
+	else:
+		enemy.prev_target_pos = Vector3.ZERO
+		enemy.set_nav_target(enemy.prev_target_pos)
+		transition.emit(self, "GuardState")

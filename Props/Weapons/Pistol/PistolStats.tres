@@ -6,6 +6,8 @@
 script = ExtResource("1_e26b4")
 weapon_type = 1
 automatic = false
+can_zoom = false
+zoom_level = 1.0
 burst_fire = false
 burst_num = 0
 burst_variance = 0.0
@@ -19,7 +21,7 @@ body_dmg = {
 1: 10,
 2: 6
 }
-desired_range = Vector2(5, 10)
+desired_range = Vector2(2, 5)
 impulse = 150.0
 pos_offset = Vector3(-0.0382926, -0.0126591, 0.00222373)
 rot_offset = Vector3(1.54396, 1.08048, 1.51289)

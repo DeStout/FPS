@@ -1,13 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv0rwydo3odmv"]
+[gd_scene load_steps=18 format=3 uid="uid://bv0rwydo3odmv"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_l4ff0"]
+[ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Campaign1_tex_7.png" id="2_4rklu"]
 [ext_resource type="PackedScene" uid="uid://bjvof25uwl8sb" path="res://Characters/Multiplayer/Player.tscn" id="2_dt1qx"]
 [ext_resource type="Script" path="res://Maps/Campaign/CampaignPlayers.gd" id="2_nadqn"]
 [ext_resource type="PackedScene" uid="uid://la6he6vwubnb" path="res://Characters/Campaign/CampaignEnemy.tscn" id="4_yerhm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_101rf"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 16.18
+sun_curve = 0.522331
 
 [sub_resource type="Sky" id="Sky_mwba1"]
 sky_material = SubResource("ProceduralSkyMaterial_101rf")
@@ -15,8 +20,8 @@ sky_material = SubResource("ProceduralSkyMaterial_101rf")
 [sub_resource type="Environment" id="Environment_8pkur"]
 background_mode = 2
 sky = SubResource("Sky_mwba1")
-tonemap_mode = 2
-glow_enabled = true
+ambient_light_color = Color(0.929688, 0.874963, 0.853858, 1)
+ambient_light_sky_contribution = 0.07
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ocw6n"]
 vertices = PackedVector3Array(-6.25, 0.099999, -7, -3.25, 0.099999, -7.5, -3.25, 0.099999, -11.75, -11.75, 0.099999, -5.75, -6.5, 0.099999, -5.75, -6.25, 0.099999, -7, -6.25, 0.099999, -7, -3.25, 0.099999, -11.75, -11.75, 0.099999, -11.75, -11.75, 0.099999, -5.75, -0.25, 0.099999, -6.5, -0.5, 0.099999, -5.25, 1.5, 0.099999, -5, 2, 0.099999, -6, 3.75, 0.099999, -8, 5.5, 0.099999, -8.5, 5.5, 0.099999, -11.75, -3.25, 0.099999, -11.75, -3.25, 0.099999, -7.5, -0.75, 0.099999, -7, 2, 0.099999, -6, 3.25, 0.099999, -6.75, 3.75, 0.099999, -8, -0.75, 0.099999, -7, -0.25, 0.099999, -6.5, 5.5, 0.099999, -11.75, 5.5, 0.099999, -8.5, 6.5, 0.099999, -8.25, 11.75, 0.099999, -11.75, 6.5, 0.099999, -8.25, 7.5, 0.099999, -4.25, 11.75, 0.099999, -4.25, 11.75, 0.099999, -11.75, 4.75, 0.099999, -6.75, 5, 0.099999, -6.25, 5.5, 0.099999, -6.5, 5.25, 0.099999, -7, -2.5, 0.099999, -6, -2.5, 0.099999, -5.25, -2, 0.099999, -5.25, -5.25, 0.099999, -2.75, -5.5, 0.099999, -3.75, -6.25, 0.099999, -4, -11.75, 0.099999, -5.75, -11.75, 0.099999, 7, -8, 0.099999, 7, -6.5, 0.099999, 4.75, -4, 0.099999, -1.5, -5.25, 0.099999, -2.75, -11.75, 0.099999, -5.75, -6.25, 0.099999, -4, -6.5, 0.099999, -5.75, -11.75, 0.099999, -5.75, -6.5, 0.099999, 4.75, -4.25, 0.099999, 4, -4, 0.099999, -1.5, -5, 0.099999, -5.75, -5, 0.099999, -5.25, -4.25, 0.099999, -5.25, -4.25, 0.099999, -5.75, 4.5, 4.1, -5, 5.5, 4.1, -5, 5.25, 4.1, -5.75, 4.5, 4.1, -5.5, 4.5, 2.1, -5.5, 5.25, 2.1, -5, 5.25, 2.1, -5.75, -4, 4.1, -5, -3.75, 4.1, -4.25, -3, 4.1, -4.5, -3.25, 4.1, -5.25, 1.5, 0.099999, -4, 1.5, 0.099999, -5, -0.5, 0.099999, -5.25, -1.5, 0.099999, -3.75, -1.5, 0.099999, -2.75, -2.5, 0.099999, 7, -2.5, 0.099999, 8, 3.5, 0.099999, 6.75, -2.5, 0.099999, 7, 3.5, 0.099999, 6.75, 3.75, 0.099999, 4.5, 3.5, 0.099999, -2.75, -3, 0.099999, -1.5, -4.25, 0.099999, 4, 3.5, 0.099999, -2.75, 1.5, 0.099999, -4, -1.5, 0.099999, -2.75, -3, 0.099999, -1.5, -3, 0.099999, -1.5, -4, 0.099999, -1.5, -4.25, 0.099999, 4, 3.25, 0.099999, -5.25, 3.25, 0.099999, -4.5, 3.75, 0.099999, -4.5, 5.5, 0.099999, -4, 6.25, 0.099999, -3.75, 6.25, 0.099999, -4.5, 5.5, 0.099999, -4.5, 6.25, 0.099999, 4.25, 6.75, 0.099999, 4.75, 8, 0.099999, 4.5, 7, 0.099999, -2.5, 8, 0.099999, 4.5, 9.75, 0.099999, 6.5, 11.75, 0.099999, 6.5, 11.75, 0.099999, -4.25, 7.5, 0.099999, -3, 7, 0.099999, -2.5, 11.75, 0.099999, -4.25, 7.5, 0.099999, -4.25, 7.5, 0.099999, -3, 7, 0.099999, -2.5, 3.5, 0.099999, -2.75, 4, 0.099999, 4, 6.25, 0.099999, 4.25, 3.5, 0.099999, -2.75, 3.75, 0.099999, 4.5, 4, 0.099999, 4, -3.75, 0.099999, -3.5, -3.5, 0.099999, -3, -3, 0.099999, -3.25, -3.25, 0.099999, -3.75, 5, 0.099999, 5.5, 5, 0.099999, 6.25, 5.5, 0.099999, 6.25, 5.5, 0.099999, 5.5, -5.25, 0.099999, 5.75, -5.25, 0.099999, 6.5, -4.75, 0.099999, 6.25, -4.75, 0.099999, 5.75, 7.25, 0.099999, 6.5, 7.5, 0.099999, 7, 8, 0.099999, 6.75, 7.75, 0.099999, 6.25, 6, 4.1, 7.5, 7, 4.1, 7, 6.75, 4.1, 6.5, 5.75, 4.1, 6.75, -8.5, 0.099999, 7.5, -8, 0.099999, 7, -11.75, 0.099999, 7, 4.5, 0.099999, 10, 4, 0.099999, 7.25, 3.5, 0.099999, 6.75, -2.5, 0.099999, 8, -2.75, 0.099999, 10, -8.5, 0.099999, 8.75, -8.5, 0.099999, 7.5, -11.75, 0.099999, 7, -8.5, 0.099999, 8.75, -11.75, 0.099999, 7, -11.75, 0.099999, 11.75, -6.75, 0.099999, 10, 11.75, 0.099999, 6.5, 9.75, 0.099999, 6.5, 7.5, 0.099999, 9.5, 11.75, 0.099999, 11.75, 5.5, 0.099999, 10.25, 4.5, 0.099999, 10, -2.75, 0.099999, 10, -2.75, 0.099999, 10, -6.75, 0.099999, 10, -11.75, 0.099999, 11.75, 11.75, 0.099999, 11.75, 5.5, 0.099999, 10.25, 11.75, 0.099999, 11.75, 7.5, 0.099999, 9.5, 5.5, 0.099999, 10.25, 6, 2.1, 6.75, 6, 2.1, 7.25, 6.75, 2.1, 7, -5.5, 4.1, 7, -5.5, 4.1, 7.75, -4.75, 4.1, 7.75, -4.75, 4.1, 7, -5.5, 2.1, 7.25, -5, 2.1, 7.75, -5, 2.1, 7, -6.75, 0.099999, 7.5, -6.75, 0.099999, 8.25, -6.25, 0.099999, 8.25, -4.5, 0.099999, 8, -4.5, 0.099999, 8.75, -3.75, 0.099999, 8.75, -3.75, 0.099999, 8, 5.5, 0.099999, 8, 5.5, 0.099999, 8.5, 6, 0.099999, 8.5, 6, 0.099999, 8)
@@ -27,14 +32,20 @@ filter_ledge_spans = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_cr31b"]
 size = Vector2(25, 25)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ajyo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74yqt"]
 albedo_color = Color(0.496094, 0.496094, 0.496094, 1)
+albedo_texture = ExtResource("2_4rklu")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ou2t"]
 size = Vector3(25, 0.25, 25)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vgkx4"]
 size = Vector2(2, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ajyo"]
+albedo_color = Color(0.496094, 0.496094, 0.496094, 1)
+albedo_texture = ExtResource("2_4rklu")
+uv1_scale = Vector3(0.1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cmr8"]
 size = Vector3(2, 0.25, 25)
@@ -52,7 +63,7 @@ environment = SubResource("Environment_8pkur")
 
 [node name="Sun" type="DirectionalLight3D" parent="." index="1"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_color = Color(0.750598, 0.828628, 0.890625, 1)
+light_color = Color(0.847059, 1, 1, 1)
 shadow_enabled = true
 
 [node name="NavReg" parent="." index="2"]
@@ -60,7 +71,7 @@ navigation_mesh = SubResource("NavigationMesh_ocw6n")
 
 [node name="Floor" type="MeshInstance3D" parent="NavReg" index="0"]
 mesh = SubResource("PlaneMesh_cr31b")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ajyo")
+surface_material_override/0 = SubResource("StandardMaterial3D_74yqt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Floor" index="0"]
 collision_mask = 50
@@ -291,5 +302,92 @@ transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 0, 0, -3
 player = NodePath("../Player")
 enemies = [NodePath("../Player")]
 
+[node name="Weapons" parent="Players/CampaignEnemy" index="4"]
+transform = Transform3D(0.843936, -0.074011, 0.531314, -0.255388, 0.815563, 0.519262, -0.471751, -0.573915, 0.669382, 0.168324, 1.4644, -0.380938)
+
+[node name="Skeleton3D" parent="Players/CampaignEnemy/Puppet" index="2"]
+bones/1/position = Vector3(-8.86938e-10, 0.896995, -0.0641973)
+bones/2/rotation = Quaternion(-0.144061, 0.000921147, 0.00238051, 0.989565)
+bones/4/rotation = Quaternion(0.082777, 0.0131006, 0.0180996, 0.996318)
+bones/5/rotation = Quaternion(-0.0229632, -0.000162092, -0.00108153, 0.999736)
+bones/7/rotation = Quaternion(-0.188902, 0.25849, -0.488756, 0.811552)
+bones/8/rotation = Quaternion(0.257056, 0.0352194, -0.0500546, 0.964457)
+bones/9/rotation = Quaternion(-0.00713556, -0.334706, -0.0182349, 0.942119)
+bones/11/rotation = Quaternion(-0.137307, -0.0284083, 0.158392, 0.97737)
+bones/14/rotation = Quaternion(0.0639428, -0.17204, -0.0801638, 0.979738)
+bones/17/rotation = Quaternion(-0.304479, -0.0307629, 0.277358, 0.910724)
+bones/20/rotation = Quaternion(0.200917, 0.118135, 0.508479, 0.82893)
+bones/21/rotation = Quaternion(0.695269, -0.025765, 0.135378, 0.705415)
+bones/22/rotation = Quaternion(0.1299, 0.266935, -0.0648666, 0.952714)
+bones/24/rotation = Quaternion(-0.130696, 0.0435447, -0.136981, 0.980948)
+bones/25/rotation = Quaternion(-0.0604402, 0.0140289, 0.0220224, 0.99783)
+bones/27/rotation = Quaternion(0.0954016, 0.161016, 0.105522, 0.976646)
+bones/28/rotation = Quaternion(0.0965066, -0.128962, -0.0740844, 0.984158)
+bones/30/rotation = Quaternion(-0.521678, -0.384338, 0.592586, 0.478518)
+bones/33/rotation = Quaternion(-0.589448, 0.226887, -0.158193, 0.758979)
+bones/34/rotation = Quaternion(-0.0700168, 0.00388546, 0.107272, 0.991754)
+bones/35/rotation = Quaternion(0.263072, -0.134613, -0.615992, 0.730223)
+bones/38/rotation = Quaternion(-0.529818, -0.0656515, 0.326632, 0.779932)
+bones/39/rotation = Quaternion(-0.120415, -0.00382145, -0.184486, 0.975423)
+bones/40/rotation = Quaternion(0.219926, 0.130111, 0.507666, 0.822787)
+
+[node name="Head" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="1"]
+transform = Transform3D(-0.999984, -0.00568389, 0.000576604, -0.00570092, 0.986184, -0.165554, 0.000372356, -0.165554, -0.986201, -0.000929503, 1.57637, -0.0395736)
+
+[node name="Neck" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="2"]
+transform = Transform3D(-0.999994, -0.0034964, 0.000463203, -0.00351552, 0.977553, -0.210661, 0.000283753, -0.210661, -0.977559, -0.000705083, 1.51362, -0.0260521)
+
+[node name="Chest" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="3"]
+transform = Transform3D(-0.999987, 0.00497685, -0.00113756, 0.0046637, 0.981184, 0.193017, 0.00207678, 0.193009, -0.981195, -1.79353e-09, 1.13516, -0.0868667)
+
+[node name="Stomach" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="4"]
+transform = Transform3D(-1, -3.78941e-09, -3.89234e-07, 3.31093e-08, 0.995501, -0.0947544, 3.87842e-07, -0.0947544, -0.995501, -8.86938e-10, 0.896995, -0.0641973)
+
+[node name="R_UpperArm" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="5"]
+transform = Transform3D(0.984165, 0.171734, -0.0439017, 0.153068, -0.698492, 0.699056, 0.0893867, -0.694706, -0.713718, 0.194475, 1.39702, -0.0333033)
+
+[node name="R_Forearm" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="6"]
+transform = Transform3D(0.963572, -0.266581, -0.0215594, 0.195878, 0.648524, 0.73556, -0.182104, -0.712988, 0.677116, 0.230311, 1.25126, -0.178269)
+
+[node name="R_Hand" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="7"]
+transform = Transform3D(0.843936, -0.074011, 0.531314, -0.255388, 0.815563, 0.519262, -0.471751, -0.573915, 0.669382, 0.175584, 1.3844, -0.324641)
+
+[node name="L_UpperArm" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="8"]
+transform = Transform3D(0.976455, -0.196312, 0.0894255, -0.158854, -0.93482, -0.317613, 0.145948, 0.29593, -0.943994, -0.195446, 1.39628, -0.0332461)
+
+[node name="L_Forearm" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="9"]
+transform = Transform3D(0.976163, -0.0134011, 0.216625, -0.0545818, -0.981173, 0.185261, 0.210063, -0.192669, -0.958516, -0.236411, 1.20121, 0.0285061)
+
+[node name="L_Hand" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="10"]
+transform = Transform3D(0.893869, 0.0245436, -0.447656, 0.103595, -0.982786, 0.152973, -0.436195, -0.183113, -0.881024, -0.239162, 0.99978, -0.0110474)
+
+[node name="R_Thigh" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="11"]
+transform = Transform3D(0.486652, 0.0590127, 0.8716, -0.285239, -0.932301, 0.222384, 0.825717, -0.356838, -0.436874, 0.0851499, 0.879505, -0.0593682)
+
+[node name="R_Shin" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="12"]
+transform = Transform3D(0.47755, 0.0253612, 0.878239, 0.0804043, -0.99665, -0.0149399, 0.874918, 0.0777488, -0.477989, 0.109945, 0.48779, -0.209297)
+
+[node name="R_Foot" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="13"]
+transform = Transform3D(0.245939, 0.0720782, 0.966602, -0.853541, -0.456465, 0.25121, 0.459327, -0.886817, -0.0507407, 0.11946, 0.11384, -0.180125)
+
+[node name="L_Thigh" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="14"]
+transform = Transform3D(0.496393, -0.0504021, -0.866633, -0.127042, -0.991782, -0.015087, -0.858751, 0.117588, -0.498717, -0.0851499, 0.879505, -0.0593682)
+
+[node name="L_Shin" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="15"]
+transform = Transform3D(0.493954, -0.0350033, -0.868783, -0.334258, -0.93005, -0.152574, -0.802671, 0.365762, -0.471102, -0.106327, 0.462798, -0.00996253)
+
+[node name="L_Foot" parent="Players/CampaignEnemy/Puppet/Skeleton3D" index="16"]
+transform = Transform3D(0.245938, -0.0720763, -0.966602, 0.853542, -0.456465, 0.251209, -0.459326, -0.886817, -0.0507421, -0.11946, 0.113837, 0.127274)
+
 [node name="Pause" parent="." index="8"]
 visible = false
+
+[editable path="Players/CampaignEnemy"]
+[editable path="Players/CampaignEnemy/Weapons/Pistol"]
+[editable path="Players/CampaignEnemy/Weapons/Pistol/Mesh"]
+[editable path="Players/CampaignEnemy/Weapons/SMG"]
+[editable path="Players/CampaignEnemy/Weapons/SMG/Mesh"]
+[editable path="Players/CampaignEnemy/Weapons/Rifle"]
+[editable path="Players/CampaignEnemy/Weapons/Shotgun"]
+[editable path="Players/CampaignEnemy/Weapons/Sniper"]
+[editable path="Players/CampaignEnemy/Puppet"]

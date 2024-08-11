@@ -6,6 +6,8 @@
 script = ExtResource("1_cni8a")
 weapon_type = 3
 automatic = true
+can_zoom = false
+zoom_level = 1.0
 burst_fire = false
 burst_num = 0
 burst_variance = 0.0
@@ -19,7 +21,7 @@ body_dmg = {
 1: 13,
 2: 7
 }
-desired_range = Vector2(7.5, 15)
+desired_range = Vector2(3, 8)
 impulse = 300.0
 pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
 rot_offset = Vector3(1.54272, 1.58703, 2.09439)

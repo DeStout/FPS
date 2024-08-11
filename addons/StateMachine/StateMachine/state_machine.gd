@@ -17,16 +17,16 @@ func _ready() -> void:
 	
 	for state : Node in get_children():
 		states[state.name.to_lower()] = state
-		state.Transitioned.connect(on_state_transitioned)
+		state.transition.connect(on_state_transitioned)
 	
 	current_state.enter()
 	current_state.active = true
 
-func _process(_delta : float) -> void:
-	current_state.update()
+func _process(delta : float) -> void:
+	current_state.update(delta)
 
-func _physics_process(_delta : float) -> void:
-	current_state.physics_update()
+func _physics_process(delta : float) -> void:
+	current_state.physics_update(delta)
 
 func on_state_transitioned(state : State, new_state_name : String) -> void:
 	if state != current_state:

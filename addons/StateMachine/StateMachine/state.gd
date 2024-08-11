@@ -3,10 +3,10 @@ class_name State
 
 @export var enemy : CharacterBase
 
-signal Transitioned
+signal transition
 var active := false
 
 func enter() -> void: pass
 func exit() -> void: pass
-func update() -> void: pass
-func physics_update() -> void: pass
+func update(delta) -> void: pass
+func physics_update(delta) -> void: pass

@@ -199,8 +199,8 @@ func _pick_up_health(new_health : Node3D) -> void:
 	update_health_UI()
 
 
-func take_damage(body_seg : Area3D, damage : int,
-												shooter : CharacterBase) -> void:
+func take_damage(body_seg : Area3D, 
+								damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/3.0)
 	super(body_seg, damage, shooter)
 	_show_damage(shooter)
