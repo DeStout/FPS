@@ -27,8 +27,16 @@ func _ready() -> void:
 	enemies_vis.resize(enemies.size())
 	enemies_vis.fill(false)
 	
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	#weapons.append(Globals.WEAPONS.PISTOL)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	#weapons.append(Globals.WEAPONS.SMG)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
+	weapons.append(Globals.WEAPONS.RIFLE)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
+	#weapons.append(Globals.WEAPONS.SHOTGUN)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
+	#weapons.append(Globals.WEAPONS.SNIPER)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
 
 
 func _process(delta: float) -> void:
@@ -65,24 +73,24 @@ func move_to_nav_target(delta) -> void:
 	look_target.y = global_position.y
 	
 	# Adjust desired destination based on current_weapons desired range
-	if target and is_enemy_visible(target):
-		var desired_range : Vector2 = weapon_held.stats.desired_range
-		var temp_path_pos := next_path_pos
-		temp_path_pos.y = target.global_position.y
-		var dist_to = temp_path_pos.distance_to(target.global_position)
-		if dist_to < desired_range.x:
-			var dir_from := -target.position.normalized()
-			next_path_pos += (dir_from * (desired_range.x - dist_to))
+	#if target and is_enemy_visible(target):
+		#var desired_range : Vector2 = weapon_held.stats.desired_range
+		#var temp_path_pos := next_path_pos
+		#temp_path_pos.y = target.global_position.y
+		#var dist_to = temp_path_pos.distance_to(target.global_position)
+		#if dist_to < desired_range.x:
+			#var dir_from := target.position.normalized()
+			#next_path_pos += (dir_from * (desired_range.x - dist_to))
+			#next_path_pos += dir_from
 	
 	$Debug/Box.global_position = next_path_pos
 	
-	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO
+	# Set Input_dir based on direction to next_path_pos
 	var desired_range : Vector2 = weapon_held.stats.desired_range
 	var dist_to = global_position.distance_to(target.global_position)
-	if dist_to < desired_range.x or desired_range.y < dist_to:
-		var local_path := to_local(next_path_pos)
-		input_dir = Vector2(local_path.x, local_path.z).normalized()
+	if (dist_to > desired_range.y) and is_enemy_visible(target):
+		input_dir = Vector2.UP
 	
 	# Turn to look the look target
 	var new_transform : Transform3D

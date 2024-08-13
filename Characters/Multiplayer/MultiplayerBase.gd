@@ -68,7 +68,7 @@ func _die() -> void:
 	# Signal to PlayerContainer.add_to_score_board
 	var body_color = $Puppet/Skeleton3D/Body.get_surface_override_material(0).albedo_color
 	add_score.emit(self, last_shot_by)
-	current_level.spawn_rag_doll(skeleton, transform, 
+	current_level.spawn_rag_doll(skeleton, transform, \
 						last_shot_by, last_body_seg_shot.name, body_color)
 	
 	visible = false
