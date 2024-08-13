@@ -4,13 +4,14 @@ extends State
 
 var update_interval := 10
 
+
 func enter():
-	print(enemy.name, ": Enter AlertState")
-	enemy.action = Callable()
+	#print(enemy.name, ": Enter AlertState")
+	pass
 
 
 func exit():
-	enemy.action = Callable()
+	pass
 
 
 func update(_delta):
@@ -21,15 +22,12 @@ func physics_update(delta):
 	if get_tree().get_frame() % update_interval == 0:
 		check_priorities()
 	
-	if enemy.action:
-		enemy.action.call(delta)
+	enemy.move_to_target(delta)
 
 
 func check_priorities() -> void:
 	if enemy.check_enemies_visible():
 		enemy.set_closest_to_target()
 	
-	if enemy.target:
-		enemy.action = Callable(enemy.move_to_nav_target)
-	else:
+	if !enemy.target:
 		transition.emit(self, "GuardState")
