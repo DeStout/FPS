@@ -17,7 +17,7 @@ class_name WeaponStats
 @export var body_dmg : Dictionary = {Globals.BODY_SEGS.HEAD : 0, \
 									Globals.BODY_SEGS.TORSO : 0, \
 									Globals.BODY_SEGS.LIMB : 0}
-@export var desired_range : Vector2
+@export var range : float
 @export var impulse := 0.0
 @export var pos_offset : Vector3
 @export var rot_offset : Vector3

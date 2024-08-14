@@ -34,6 +34,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i1pd2")
 
 [node name="Sniper" type="MeshInstance3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7l2ge")
 
 [node name="Nozzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.103, 1.5)

@@ -2,7 +2,7 @@ extends Node3D
 class_name MultiplayerLevel
 
 
-var rag_doll_ := preload("res://Characters/Multiplayer/RagDoll.tscn")
+var rag_doll_ := preload("res://Characters/RagDoll.tscn")
 var shot_trail_ := preload("res://Props/ShotTrail.tscn")
 var bullet_hole_ := preload("res://Props/BulletHole.tscn")
 var damage_label_ := preload("res://Characters/DamageLabel.tscn")
@@ -10,8 +10,8 @@ var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 
 
 func _ready() -> void:
-	$Players.level = self
-	$Players.set_up()
+	%Players.level = self
+	%Players.set_up()
 
 
 func open() -> void:
@@ -82,13 +82,13 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 
 
 # Called from CharacterBase.die()
-func spawn_rag_doll(dead_skel : Skeleton3D,
-							dead_trans : Transform3D, shooter : CharacterBase,
-							body_seg_shot : String, body_color : Color) -> void:
+func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
+								shooter : CharacterBase, body_seg_shot : String, \
+													body_color : Color) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
 	rag_doll.set_color(body_color)
-	rag_doll.match_pose_transform(dead_skel, dead_trans)
+	rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
 											shooter.weapon_held.stats.impulse)
 

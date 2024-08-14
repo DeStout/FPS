@@ -1,7 +1,7 @@
 extends Node3D
 
 
-var player_ = preload("res://Characters/Multiplayer/Player.tscn")
+var player_ = preload("res://Characters/Multiplayer/MultiplayerPlayer.tscn")
 var team_enemy_ = preload("res://Characters/Multiplayer/TeamEnemy.tscn")
 
 var respawn_timer_ = preload("res://Maps/Multiplayer/RespawnTimer.tscn")

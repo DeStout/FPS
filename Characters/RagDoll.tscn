@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://cjbxjddcm07wa"]
 
-[ext_resource type="Script" path="res://Characters/Multiplayer/RagDoll.gd" id="1_gnild"]
+[ext_resource type="Script" path="res://Characters/RagDoll.gd" id="1_gnild"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_14aqg"]
 radius = 0.25

@@ -21,7 +21,7 @@ body_dmg = {
 1: 45,
 2: 35
 }
-desired_range = Vector2(5, 15)
+range = 4.5
 impulse = 350.0
 pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
 rot_offset = Vector3(1.54272, 1.58703, 2.09439)

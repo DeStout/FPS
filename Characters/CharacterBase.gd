@@ -5,8 +5,9 @@ extends CharacterBody3D
 #signal died
 #signal add_score
 
-var current_level : Node3D
+@export var current_level : Node3D
 @export var enemies : Array[CharacterBase] = []
+var last_shot_by : CharacterBase = null
 
 # Movement
 const ACCEL := 140
@@ -220,6 +221,9 @@ func _reload() -> void:
 
 # Signaled from BodySeg
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+	last_shot_by = shooter
+	last_body_seg_shot = body_seg.get_parent()
+	
 	if armor > 0:
 		var armor_dmg : int = damage / 2
 		if armor > abs(armor_dmg):
@@ -230,9 +234,13 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 			armor = 0
 	else:
 		health -= damage
-
+		
 	if health > 0:
 		$Voice.get_hurt_sfx().play()
+	
+	if current_level != null:
+		current_level.spawn_damage_label(body_seg.body_seg,
+											$DmgLbl.global_position, str(damage))
 
 
 func _set_health(new_health) -> void:
@@ -252,7 +260,17 @@ func is_enemy(character):
 
 
 func _die() -> void:
-	pass
+	var body_color = $Puppet/Skeleton3D/Body.get_surface_override_material(0).albedo_color
+	current_level.spawn_rag_doll(skeleton, transform, \
+						last_shot_by, last_body_seg_shot.name, body_color)
+	
+	visible = false
+	_disable_collisions(true)
+	set_physics_process(false)
+	
+	var death_sfx = $Voice.get_death_sfx()
+	death_sfx.play()
+	await death_sfx.finished
 
 
 func _disable_collisions(is_disabled : bool) -> void:

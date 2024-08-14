@@ -101,7 +101,7 @@ func _physics_process(delta):
 		_aim(delta)
 	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
 		if target and enemies_vis[target_i] and target.is_inside_tree():
-			var target_pos = target.global_position + Vector3(0, 0.9, 0)
+			var target_pos = target.global_position + Vector3(0, 0.7, 0)
 			var local_player_pos = %ShootCast.to_local(target_pos).normalized()
 			var local_ray_collision = %ShootCast.to_local(\
 								%ShootCast.get_collision_point()).normalized()

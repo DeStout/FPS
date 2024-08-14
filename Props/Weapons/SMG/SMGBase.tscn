@@ -48,4 +48,4 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_y504h")
 
 [node name="Nozzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0708031, -0.385607)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.071, -1)

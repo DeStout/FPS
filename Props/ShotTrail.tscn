@@ -17,7 +17,7 @@ distance_fade_max_distance = 1.0
 material = SubResource("StandardMaterial3D_qcg63")
 radius = 0.025
 height = 0.75
-radial_segments = 5
+radial_segments = 9
 rings = 1
 
 [node name="ShotTrail" type="Node3D"]

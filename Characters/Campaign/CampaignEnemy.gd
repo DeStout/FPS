@@ -7,13 +7,14 @@ extends CharacterBase
 var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
 
+@export var starting_weapon : Globals.WEAPONS
 @export_exp_easing() var accuracy = 1.0
 var shoot_speed_mod := 1.0/1.75
 var shoot_speed_variance := Vector2(0.3, 1.0)
 
 const GUARD_SPEED := 2.5
 const TURN_SPEED := 6.0
-const AIM_SPEED := 6.0
+const AIM_SPEED := 1.0
 var move_speed_mod := 0.8
 
 
@@ -29,8 +30,10 @@ func _ready() -> void:
 	enemies_vis.resize(enemies.size())
 	enemies_vis.fill(false)
 	
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	weapons.append(starting_weapon)
+	_switch_weapon(_get_weapon(starting_weapon))
+	#weapons.append(Globals.WEAPONS.PISTOL)
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	#weapons.append(Globals.WEAPONS.SMG)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
 	#weapons.append(Globals.WEAPONS.RIFLE)
@@ -86,9 +89,24 @@ func guard(delta) -> void:
 	speed = SPEED
 
 
+func aim(delta) -> void:
+	if target and enemies_vis[enemies.find(target)]:
+		var target_pos = target.global_position + Vector3(0, 1.5, 0)
+		var new_trans : Transform3D = $AimHelper.global_transform.looking_at(target_pos)
+		$AimHelper.global_transform = $AimHelper.global_transform.interpolate_with \
+													(new_trans, AIM_SPEED * delta)
+	else:
+		$AimHelper.rotation = $AimHelper.rotation.lerp(Vector3.ZERO, AIM_SPEED * delta)
+	$AimHelper.rotation.x = clamp($AimHelper.rotation.x, deg_to_rad(-90), rad_to_deg(90))
+	$AimHelper.rotation.y = clamp($AimHelper.rotation.y, deg_to_rad(-80), rad_to_deg(80))
+	$AimHelper.rotation.z = 0
+
+
 func move_to_target(delta) -> void:
 	if !target:
 		return
+	if is_enemy_visible(target) and $ShootTimer.is_stopped():
+		trigger_pulled = true
 	
 	# Start timer to switch to GuardState if no target visible
 	if !is_enemy_visible(target) and $TargetTimer.is_stopped():
@@ -106,7 +124,7 @@ func move_to_target(delta) -> void:
 	var input_dir := Vector2.ZERO
 	var range : float = weapon_held.stats.range
 	var dist_to = global_position.distance_to(target.global_position)
-	if (dist_to > range) and is_enemy_visible(target) or !is_enemy_visible(target):
+	if ((dist_to > range) and is_enemy_visible(target)) or !is_enemy_visible(target):
 		input_dir = Vector2.UP
 	
 	# Turn to look at the target
@@ -186,12 +204,23 @@ func _jump() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	damage = 0
 	if $StateMachine.current_state.name == "GuardState" and \
 									$StateMachine.current_state.active == true:
 		target = shooter
 		$StateMachine.current_state.alert()
 	super(body_seg, damage, shooter)
+
+
+func _die() -> void:
+	super()
+	
+	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
+		var weapon_info := [weapon_held.stats.weapon_type,
+								weapon_held.extra_ammo,
+								weapon_held.ammo_in_mag]
+		current_level.spawn_weapon_pick_up(global_position, weapon_info)
+	
+	queue_free()
 
 
 func _unequip_weapon(old_weapon) -> void:

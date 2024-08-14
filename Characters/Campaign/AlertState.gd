@@ -22,6 +22,7 @@ func physics_update(delta):
 	if get_tree().get_frame() % update_interval == 0:
 		check_priorities()
 	
+	enemy.aim(delta)
 	enemy.move_to_target(delta)
 
 

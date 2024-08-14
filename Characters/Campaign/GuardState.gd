@@ -6,7 +6,7 @@ var update_interval := 10
 
 
 func enter() -> void:
-	print(enemy.name, ": Enter GuardState")
+	#print(enemy.name, ": Enter GuardState")
 	# TODO: Set animations to standing idle
 	pass
 

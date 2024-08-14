@@ -1,0 +1,888 @@
+[gd_scene load_steps=40 format=3 uid="uid://ccv03pjd6hrky"]
+
+[ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Characters/CharacterBase.tscn" id="1_p20pr"]
+[ext_resource type="Script" path="res://Characters/Campaign/CampaignPlayer.gd" id="2_mc7bf"]
+[ext_resource type="PackedScene" uid="uid://0r6eljbdbyqv" path="res://Props/Weapons/Slapper/FPSlapper.tscn" id="3_fcbs8"]
+[ext_resource type="PackedScene" uid="uid://by7wwhoru7x60" path="res://Props/Weapons/Pistol/FPPistol.tscn" id="4_nbr7w"]
+[ext_resource type="PackedScene" uid="uid://kwpmppcj56nl" path="res://Props/Weapons/SMG/FPSMG.tscn" id="5_t1e0j"]
+[ext_resource type="PackedScene" uid="uid://btj7bcwc5cjwk" path="res://Props/Weapons/Rifle/FPRifle.tscn" id="6_o6wkc"]
+[ext_resource type="PackedScene" uid="uid://cokxjgyi8s31g" path="res://Props/Weapons/Shotgun/FPShotgun.tscn" id="7_7bspr"]
+[ext_resource type="PackedScene" uid="uid://dn7ssygjxfd3q" path="res://Props/Weapons/Sniper/FPSniper.tscn" id="8_y7naf"]
+[ext_resource type="Script" path="res://Characters/Multiplayer/UI.gd" id="9_b4dyo"]
+[ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="10_dfcab"]
+[ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="11_842hl"]
+[ext_resource type="Script" path="res://Characters/Multiplayer/MatchTimer.gd" id="12_dsica"]
+[ext_resource type="Script" path="res://Characters/Multiplayer/LeaderList.gd" id="13_1765b"]
+[ext_resource type="Texture2D" uid="uid://crqwjsvsfkcig" path="res://Characters/DmgArrow.png" id="14_c57qt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm4ms"]
+albedo_color = Color(0.839216, 0.6, 0.466667, 1)
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15itc"]
+albedo_color = Color(0.839216, 0.6, 0.466667, 1)
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5y7vo"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iala0"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+metallic = 0.33
+metallic_specular = 0.27
+roughness = 0.28
+ao_enabled = true
+ao_light_affect = 1.0
+
+[sub_resource type="Animation" id="Animation_37gcc"]
+resource_name = "PistolEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.08, -0.275, -0.16, 0.25, 1, 0.08, -0.115, -0.16)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1.98446e-08, 0.891007, -0.453991, 3.89471e-08, 0.25, 1, 0, 1, 0, -7.54979e-08)
+
+[sub_resource type="Animation" id="Animation_2htne"]
+resource_name = "PistolShoot"
+length = 0.14
+step = 0.01
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.08, -0.115, -0.16, 0.05, 1, 0.08, -0.08, -0.15, 0.14, 1, 0.08, -0.115, -0.16)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -4.37114e-08, 0.05, 1, -8.71465e-09, 0.979925, 0.199368, 4.28339e-08, 0.14, 1, 0, 1, 0, -4.37114e-08)
+
+[sub_resource type="Animation" id="Animation_p4hij"]
+resource_name = "PistolUnEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.08, -0.115, -0.16, 0.25, 1, 0.08, -0.275, -0.16)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -7.54979e-08, 0.25, 1, 3.42753e-08, 0.891007, -0.453991, 6.72691e-08)
+
+[sub_resource type="Animation" id="Animation_chyh5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_yquew"]
+resource_name = "RifleEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.105, -0.4, -0.275, 0.25, 1, 0.105, -0.235, -0.275)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.39558e-08, 0.948324, -0.317305, 7.15965e-08, 0.25, 1, 0, 1, 0, -7.54979e-08)
+
+[sub_resource type="Animation" id="Animation_vnien"]
+resource_name = "RifleShoot"
+length = 0.1111
+step = 0.0111
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.105, -0.235, -0.275, 0.0333, 1, 0.105, -0.235, -0.19, 0.111, 1, 0.105, -0.235, -0.275)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -7.5498e-08, 0.0333, 1, -1.33488e-09, 0.999534, 0.0305385, 4.3691e-08, 0.111, 1, 0, 1, 0, -7.5498e-08)
+
+[sub_resource type="Animation" id="Animation_6e0nd"]
+resource_name = "RifleUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.105, -0.235, -0.275, 0.25, 1, 0.105, -0.4, -0.275)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, -7.54979e-08, 0.25, 1, 1.38698e-08, 0.948324, -0.317305, 4.14525e-08)
+
+[sub_resource type="Animation" id="Animation_2xlax"]
+resource_name = "SMGEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.09, -0.26, -0.135, 0.25, 1, 0.09, -0.16, -0.135)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.496217, 0, 0, 0.868199, 0.25, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_wkgcg"]
+resource_name = "SMGShoot"
+length = 0.0833
+step = 0.0083
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.09, -0.16, -0.135, 0.0249, 1, 0.09, -0.16, -0.09, 0.083, 1, 0.09, -0.16, -0.135)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0249, 1, 0.0741085, 0, 0, 0.99725, 0.083, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ws6cv"]
+resource_name = "SMGUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.09, -0.16, -0.135, 0.25, 1, 0.09, -0.26, -0.135)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.496217, 0, 0, 0.868199)
+
+[sub_resource type="Animation" id="Animation_mey44"]
+resource_name = "ShotgunEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.085, -0.355, -0.215, 0.25, 1, 0.085, -0.175, -0.215)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.304864, 0, 0, 0.952396, 0.25, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_l34i7"]
+resource_name = "ShotgunShoot"
+length = 0.4444
+step = 0.0111
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.085, -0.175, -0.215, 0.0444, 1, 0.085, -0.115, -0.16, 0.2109, 1, 0.085, -0.115, -0.15, 0.3219, 1, 0.085, -0.175, -0.215, 0.444, 1, 0.085, -0.175, -0.215)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0444, 1, 0.362438, 0, 0, 0.932008, 0.2109, 1, 0.358368, 0, 0, 0.93358, 0.3219, 1, 0, 0, 0, 1, 0.444, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ij2ii"]
+resource_name = "ShotgunUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.085, -0.175, -0.215, 0.25, 1, 0.085, -0.355, -0.215)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.304864, 0, 0, 0.952396)
+
+[sub_resource type="Animation" id="Animation_28y8p"]
+resource_name = "Slap"
+length = 0.6
+step = 0.0333
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slapper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.14, -0.13, -0.145, 0.1332, 1, 0.13, -0.005, -0.135, 0.1998, 1, 0.021, -0.039, -0.136, 0.2664, 1, -0.165, -0.208, -0.137, 0.3663, 1, -0.165, -0.208, -0.137, 0.3996, 1, 0.065, -0.475, -0.145, 0.5994, 1, 0.14, -0.13, -0.145)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slapper")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0717862, 0.909558, 0.403964, 0.0660547, 0.1332, 1, 0.0709922, 0.805128, 0.557278, 0.190187, 0.1998, 1, 0.310236, 0.937765, -0.0851041, -0.130797, 0.2664, 1, 0.318869, 0.915376, -0.245759, -0.00339559, 0.3663, 1, 0.318869, 0.915376, -0.245759, -0.00339559, 0.3996, 1, 0.0717862, 0.909558, 0.403964, 0.0660547, 0.5994, 1, 0.0717862, 0.909558, 0.403964, 0.0660547)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1998),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_slap"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r2qqc"]
+resource_name = "SlapperEquip"
+length = 0.25
+step = 0.05
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slapper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.164924, 0.936935, -0.262137, 0.16198, 0.25, 1, 0.0717863, 0.909558, 0.403964, 0.0660546)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slapper")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.14, -0.2, -0.145, 0.25, 1, 0.14, -0.13, -0.145)
+
+[sub_resource type="Animation" id="Animation_pah7n"]
+resource_name = "SlapperUnequip"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slapper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.14, -0.13, -0.145, 0.25, 1, 0.14, -0.2, -0.145)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slapper")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0717864, 0.909558, 0.403964, 0.0660545, 0.25, 1, 0.166762, 0.930257, -0.282732, 0.163937)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3q633"]
+_data = {
+"PistolEquip": SubResource("Animation_37gcc"),
+"PistolShoot": SubResource("Animation_2htne"),
+"PistolUnequip": SubResource("Animation_p4hij"),
+"RESET": SubResource("Animation_chyh5"),
+"RifleEquip": SubResource("Animation_yquew"),
+"RifleShoot": SubResource("Animation_vnien"),
+"RifleUnequip": SubResource("Animation_6e0nd"),
+"SMGEquip": SubResource("Animation_2xlax"),
+"SMGShoot": SubResource("Animation_wkgcg"),
+"SMGUnequip": SubResource("Animation_ws6cv"),
+"ShotgunEquip": SubResource("Animation_mey44"),
+"ShotgunShoot": SubResource("Animation_l34i7"),
+"ShotgunUnequip": SubResource("Animation_ij2ii"),
+"Slap": SubResource("Animation_28y8p"),
+"SlapperEquip": SubResource("Animation_r2qqc"),
+"SlapperUnequip": SubResource("Animation_pah7n")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ki72"]
+albedo_color = Color(0.839216, 0.6, 0.466667, 1)
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+distance_fade_min_distance = 0.77
+distance_fade_max_distance = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_ht06m"]
+resource_local_to_scene = true
+font_size = 72
+font_color = Color(0.121569, 0.121569, 0.121569, 1)
+outline_size = 5
+outline_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6sj48"]
+resource_local_to_scene = true
+font_size = 48
+font_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j2l27"]
+font_size = 48
+font_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="Player" instance=ExtResource("1_p20pr")]
+script = ExtResource("2_mc7bf")
+health_fade = null
+
+[node name="Weapons" parent="." index="1"]
+transform = Transform3D(0.857105, -0.0742741, 0.511642, -0.212297, 0.852648, 0.479419, -0.471406, -0.519034, 0.714354, 0.164331, 1.4341, -0.372772)
+
+[node name="Mesh" parent="Weapons/Pistol" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Weapons/SMG" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Weapons/Rifle" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Weapons/Shotgun" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Weapons/Sniper" index="0"]
+cast_shadow = 3
+
+[node name="FPWeapons" type="Node3D" parent="AimHelper" index="0"]
+
+[node name="Slapper" parent="AimHelper/FPWeapons" index="0" instance=ExtResource("3_fcbs8")]
+transform = Transform3D(-0.893124, 0.393968, 0.217064, 0.224124, 0.808168, -0.544639, -0.389995, -0.437781, -0.810093, 0.14, -0.2, -0.145)
+visible = false
+material_override = SubResource("StandardMaterial3D_hm4ms")
+surface_material_override/0 = SubResource("StandardMaterial3D_15itc")
+
+[node name="Pistol" parent="AimHelper/FPWeapons" index="1" instance=ExtResource("4_nbr7w")]
+transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, 0.08, -0.115, -0.16)
+visible = false
+
+[node name="SMG" parent="AimHelper/FPWeapons" index="2" instance=ExtResource("5_t1e0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, -0.16, -0.135)
+visible = false
+
+[node name="Rifle" parent="AimHelper/FPWeapons" index="3" instance=ExtResource("6_o6wkc")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.105, -0.235, -0.275)
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_5y7vo")
+
+[node name="Shotgun" parent="AimHelper/FPWeapons" index="4" instance=ExtResource("7_7bspr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.085, -0.175, -0.215)
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_iala0")
+
+[node name="Sniper" parent="AimHelper/FPWeapons" index="5" instance=ExtResource("8_y7naf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.1, -0.175, -0.155)
+visible = false
+
+[node name="FPAnimator" type="AnimationPlayer" parent="AimHelper/FPWeapons" index="6"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3q633")
+}
+autoplay = "SlapperEquip"
+
+[node name="Camera" parent="AimHelper" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+cull_mask = 1048567
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="AimHelper/Camera" index="0"]
+remote_path = NodePath("../../../FPCanvas/SubViewportContainer/SubViewport/FPCamera")
+
+[node name="ShootCast" parent="AimHelper" index="2"]
+visible = false
+debug_shape_thickness = 1
+
+[node name="Skeleton3D" parent="Puppet" index="2"]
+bones/1/position = Vector3(-1.35434e-09, 0.882878, -0.0641973)
+bones/2/rotation = Quaternion(-0.134491, 0.000792158, 0.00312849, 0.99091)
+bones/2/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/4/rotation = Quaternion(0.0911138, 0.0132792, 0.0186265, 0.995578)
+bones/5/rotation = Quaternion(-0.0117959, -4.25951e-05, -0.000229124, 0.99993)
+bones/5/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/7/rotation = Quaternion(-0.1752, 0.246274, -0.498142, 0.812717)
+bones/7/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/8/rotation = Quaternion(0.261597, 0.0351858, -0.0509343, 0.96319)
+bones/9/rotation = Quaternion(-0.0296644, -0.333103, -0.00586193, 0.942406)
+bones/11/rotation = Quaternion(-0.139322, -0.0289392, 0.152726, 0.977971)
+bones/12/rotation = Quaternion(-0.0728706, -0.00440988, -0.0389535, 0.996571)
+bones/14/rotation = Quaternion(0.0618819, -0.170287, -0.0853864, 0.979736)
+bones/15/rotation = Quaternion(0.0688573, 0.146545, 0.0441172, 0.985818)
+bones/17/rotation = Quaternion(-0.316057, -0.0324075, 0.254615, 0.913361)
+bones/18/rotation = Quaternion(-0.0645516, 0.0977242, -0.0941116, 0.988649)
+bones/20/rotation = Quaternion(0.171595, 0.0956057, 0.524055, 0.828722)
+bones/20/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/21/rotation = Quaternion(0.709308, -0.0252303, 0.138112, 0.690775)
+bones/22/rotation = Quaternion(0.182064, 0.226454, -0.0457581, 0.95576)
+bones/24/rotation = Quaternion(-0.145737, 0.0483132, -0.150165, 0.976666)
+bones/25/rotation = Quaternion(-0.0702868, 0.00646852, 0.0354121, 0.996877)
+bones/27/rotation = Quaternion(0.103204, 0.156735, 0.113153, 0.975694)
+bones/28/rotation = Quaternion(0.0745916, -0.142745, -0.0503788, 0.985658)
+bones/30/rotation = Quaternion(-0.542191, -0.393381, 0.597605, 0.440623)
+bones/31/rotation = Quaternion(-0.291467, -0.110498, 0.336933, 0.888433)
+bones/33/rotation = Quaternion(-0.578747, 0.200795, -0.190971, 0.766984)
+bones/34/rotation = Quaternion(-0.122674, 0.00381775, 0.187947, 0.974481)
+bones/35/rotation = Quaternion(0.277536, -0.127676, -0.652288, 0.693681)
+bones/36/rotation = Quaternion(0.00495412, -0.00577786, -0.163837, 0.986458)
+bones/38/rotation = Quaternion(-0.516868, -0.0440484, 0.349442, 0.780254)
+bones/39/rotation = Quaternion(-0.156988, -0.0037526, -0.24052, 0.957857)
+bones/40/rotation = Quaternion(0.231455, 0.126154, 0.53426, 0.803169)
+bones/41/rotation = Quaternion(0.00495411, 0.00577787, 0.163837, 0.986458)
+
+[node name="Body" parent="Puppet/Skeleton3D" index="0"]
+cast_shadow = 3
+surface_material_override/0 = SubResource("StandardMaterial3D_7ki72")
+
+[node name="Head" parent="Puppet/Skeleton3D" index="1"]
+transform = Transform3D(-1.00096, -0.00120969, 0.000195357, -0.00122281, 0.975792, -0.223045, 7.91123e-05, -0.223045, -0.975793, -0.000197336, 1.56304, -0.0491355)
+
+[node name="HeadArea" parent="Puppet/Skeleton3D/Head" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="Neck" parent="Puppet/Skeleton3D" index="2"]
+transform = Transform3D(-1.00048, -0.000746738, 0.000133099, -0.000756547, 0.969794, -0.245884, 5.45066e-05, -0.245884, -0.969795, -0.000149406, 1.50079, -0.0333533)
+
+[node name="NeckArea" parent="Puppet/Skeleton3D/Neck" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="Chest" parent="Puppet/Skeleton3D" index="3"]
+transform = Transform3D(-1.00046, 0.00641636, -0.000729132, 0.00619159, 0.985196, 0.1741, 0.00183454, 0.174091, -0.985215, -2.26093e-09, 1.12105, -0.0868667)
+
+[node name="ChestArea" parent="Puppet/Skeleton3D/Chest" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="Stomach" parent="Puppet/Skeleton3D" index="4"]
+transform = Transform3D(-1, -3.78941e-09, -3.89234e-07, 3.31093e-08, 0.995501, -0.0947544, 3.87842e-07, -0.0947544, -0.995501, -1.35434e-09, 0.882878, -0.0641973)
+
+[node name="StomachArea" parent="Puppet/Skeleton3D/Stomach" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="R_UpperArm" parent="Puppet/Skeleton3D" index="5"]
+transform = Transform3D(0.989745, 0.145929, -0.0321108, 0.133417, -0.766236, 0.630082, 0.0672782, -0.627303, -0.777102, 0.194952, 1.38372, -0.0383218)
+
+[node name="R_UpperArmArea" parent="Puppet/Skeleton3D/R_UpperArm" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="R_Forearm" parent="Puppet/Skeleton3D" index="6"]
+transform = Transform3D(0.965937, -0.261997, 0.0156403, 0.154791, 0.616833, 0.772967, -0.211959, -0.743503, 0.635766, 0.225403, 1.22383, -0.169222)
+
+[node name="R_ForearmArea" parent="Puppet/Skeleton3D/R_Forearm" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="R_Hand" parent="Puppet/Skeleton3D" index="7"]
+transform = Transform3D(0.857105, -0.0742741, 0.511642, -0.212297, 0.852648, 0.479419, -0.471406, -0.519034, 0.714354, 0.171616, 1.35046, -0.321859)
+
+[node name="R_HandArea" parent="Puppet/Skeleton3D/R_Hand" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="L_UpperArm" parent="Puppet/Skeleton3D" index="8"]
+transform = Transform3D(0.97967, -0.182952, 0.0932582, -0.147822, -0.943835, -0.298739, 0.142538, 0.278613, -0.950778, -0.195157, 1.38357, -0.0383099)
+
+[node name="L_UpperArmArea" parent="Puppet/Skeleton3D/L_UpperArm" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="L_Forearm" parent="Puppet/Skeleton3D" index="9"]
+transform = Transform3D(0.977938, 0.00385797, 0.213412, -0.0432459, -0.976459, 0.215822, 0.20902, -0.220079, -0.953833, -0.233334, 1.18661, 0.0198288)
+
+[node name="L_ForearmArea" parent="Puppet/Skeleton3D/L_Forearm" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="L_Hand" parent="Puppet/Skeleton3D" index="10"]
+transform = Transform3D(0.894947, 0.0228835, -0.447736, 0.0934211, -0.98723, 0.136276, -0.438479, -0.163631, -0.884807, -0.232542, 0.986153, -0.0253518)
+
+[node name="L_HandArea" parent="Puppet/Skeleton3D/L_Hand" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="R_Thigh" parent="Puppet/Skeleton3D" index="11"]
+transform = Transform3D(0.489172, 0.0641992, 0.869821, -0.337514, -0.905655, 0.256656, 0.804236, -0.419126, -0.421353, 0.0851499, 0.865389, -0.0593682)
+
+[node name="R_ThighArea" parent="Puppet/Skeleton3D/R_Thigh" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="R_Shin" parent="Puppet/Skeleton3D" index="12"]
+transform = Transform3D(0.474996, 0.0195539, 0.879771, 0.139003, -0.988869, -0.0530701, 0.86894, 0.147499, -0.472427, 0.112124, 0.484868, -0.235468)
+
+[node name="R_ShinArea" parent="Puppet/Skeleton3D/R_Shin" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="R_Foot" parent="Puppet/Skeleton3D" index="13"]
+transform = Transform3D(0.245939, 0.0720782, 0.966602, -0.853541, -0.456465, 0.25121, 0.459327, -0.886817, -0.0507409, 0.119461, 0.113838, -0.180125)
+
+[node name="R_FootArea" parent="Puppet/Skeleton3D/R_Foot" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="L_Thigh" parent="Puppet/Skeleton3D" index="14"]
+transform = Transform3D(0.499247, -0.056255, -0.864632, -0.0542084, -0.997963, 0.0336294, -0.864762, 0.030081, -0.501279, -0.0851499, 0.865388, -0.0593682)
+
+[node name="L_ThighArea" parent="Puppet/Skeleton3D/L_Thigh" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="L_Shin" parent="Puppet/Skeleton3D" index="15"]
+transform = Transform3D(0.489711, -0.0284491, -0.87142, -0.416799, -0.885507, -0.205319, -0.765808, 0.463754, -0.4455, -0.108786, 0.446084, -0.0467294)
+
+[node name="L_ShinArea" parent="Puppet/Skeleton3D/L_Shin" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="L_Foot" parent="Puppet/Skeleton3D" index="16"]
+transform = Transform3D(0.245938, -0.0720759, -0.966602, 0.853542, -0.456465, 0.251209, -0.459327, -0.886817, -0.0507424, -0.11946, 0.113836, 0.127274)
+
+[node name="L_FootArea" parent="Puppet/Skeleton3D/L_Foot" index="0"]
+collision_layer = 4
+collision_mask = 1
+
+[node name="FPCanvas" type="CanvasLayer" parent="." index="8"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="FPCanvas" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="FPCanvas/SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="FPCamera" type="Camera3D" parent="FPCanvas/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+cull_mask = 8
+current = true
+
+[node name="UI" type="Control" parent="FPCanvas" index="1"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+script = ExtResource("9_b4dyo")
+metadata/_edit_use_anchors_ = true
+
+[node name="Crosshair" type="Sprite2D" parent="FPCanvas/UI" index="0"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_dfcab")
+
+[node name="Scope" type="Sprite2D" parent="FPCanvas/UI" index="1"]
+visible = false
+texture = ExtResource("11_842hl")
+
+[node name="MatchTimer" type="Label" parent="FPCanvas/UI" index="2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00 : 00"
+label_settings = SubResource("LabelSettings_ht06m")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_dsica")
+metadata/_edit_use_anchors_ = true
+
+[node name="LeaderList" type="Control" parent="FPCanvas/UI" index="3" node_paths=PackedStringArray("list")]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -750.0
+offset_top = 46.0
+offset_right = -472.0
+offset_bottom = 316.0
+script = ExtResource("13_1765b")
+list = NodePath("List")
+
+[node name="List" type="VBoxContainer" parent="FPCanvas/UI/LeaderList" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.167
+offset_top = 125.0
+offset_bottom = -0.0900269
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 2
+
+[node name="Weapon" type="VBoxContainer" parent="FPCanvas/UI" index="4"]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 331.0
+offset_right = 734.0
+offset_bottom = 469.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoInMag" type="Label" parent="FPCanvas/UI/Weapon" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_6sj48")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ExtraAmmo" type="Label" parent="FPCanvas/UI/Weapon" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_j2l27")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DMG_Left" type="Sprite2D" parent="FPCanvas/UI" index="5"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1397, -107)
+rotation = -3.14159
+scale = Vector2(1.38477, 1.38477)
+texture = ExtResource("14_c57qt")
+metadata/_edit_group_ = true
+
+[node name="DMG_Right" type="Sprite2D" parent="FPCanvas/UI" index="6"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1413, 61)
+scale = Vector2(1.38477, 1.38477)
+texture = ExtResource("14_c57qt")
+metadata/_edit_group_ = true
+
+[node name="DMG_Up" type="Sprite2D" parent="FPCanvas/UI" index="7"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(164, -1046)
+rotation = -1.57079
+scale = Vector2(1.38477, 2.15647)
+texture = ExtResource("14_c57qt")
+metadata/_edit_group_ = true
+
+[node name="DMG_Down" type="Sprite2D" parent="FPCanvas/UI" index="8"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-142, 1034)
+rotation = -4.71238
+scale = Vector2(1.38477, 2.15647)
+texture = ExtResource("14_c57qt")
+metadata/_edit_group_ = true
+
+[node name="HealthCanvas" type="CanvasLayer" parent="." index="9"]
+layer = 2
+
+[node name="HealthMod" type="CanvasModulate" parent="HealthCanvas" index="0"]
+unique_name_in_owner = true
+
+[node name="HealthBar" type="VBoxContainer" parent="HealthCanvas/HealthMod" index="0"]
+custom_minimum_size = Vector2(75, 0)
+offset_left = 55.0
+offset_top = 91.0
+offset_right = 130.0
+offset_bottom = 976.0
+theme_override_constants/separation = 15
+
+[node name="Health1" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="0"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health2" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="1"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health3" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="2"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health4" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="3"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health5" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="4"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health6" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="5"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health7" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="6"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health8" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="7"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health9" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="8"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="Health10" type="ColorRect" parent="HealthCanvas/HealthMod/HealthBar" index="9"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.94902, 0.137255, 0.196078, 1)
+
+[node name="ArmorBar" type="VBoxContainer" parent="HealthCanvas/HealthMod" index="1"]
+custom_minimum_size = Vector2(75, 0)
+offset_left = 1793.0
+offset_top = 91.0
+offset_right = 1868.0
+offset_bottom = 976.0
+theme_override_constants/separation = 15
+
+[node name="Armor1" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="0"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor2" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="1"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor3" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="2"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor4" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="3"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor5" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="4"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor6" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="5"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor7" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="6"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor8" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="7"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor9" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="8"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[node name="Armor10" type="ColorRect" parent="HealthCanvas/HealthMod/ArmorBar" index="9"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+color = Color(0.207843, 0.368627, 1, 0)
+
+[connection signal="finished_reloading" from="Weapons/Pistol" to="." method="update_UI"]
+[connection signal="finished_reloading" from="Weapons/SMG" to="." method="update_UI"]
+[connection signal="finished_reloading" from="Weapons/Rifle" to="." method="update_UI"]
+[connection signal="finished_reloading" from="Weapons/Shotgun" to="." method="update_UI"]
+
+[editable path="Weapons/Pistol"]
+[editable path="Weapons/Pistol/Mesh"]
+[editable path="Weapons/SMG"]
+[editable path="Weapons/SMG/Mesh"]
+[editable path="Weapons/Rifle"]
+[editable path="Weapons/Shotgun"]
+[editable path="Weapons/Sniper"]
+[editable path="Puppet"]

@@ -41,11 +41,11 @@ ao_enabled = true
 ao_light_affect = 1.0
 
 [node name="Pistol" type="MeshInstance3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, 0, 0, 0)
 layers = 4
 mesh = SubResource("ArrayMesh_1vcbi")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gpbs7")
 
 [node name="Nozzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.056256, 0.164417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.056, 0.9)
