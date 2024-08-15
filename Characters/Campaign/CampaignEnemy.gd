@@ -12,7 +12,7 @@ var enemies_vis : Array[bool] = []
 var shoot_speed_mod := 1.0/2.5
 var shoot_speed_variance := Vector2(0.3, 1.0)
 
-const GUARD_SPEED := 3.5
+const GUARD_SPEED := 3.0
 const TURN_SPEED := 6.0
 const AIM_SPEED := 1.0
 var move_speed_mod := 0.8
@@ -121,8 +121,6 @@ func move_to_target(delta) -> void:
 	nav_agent.target_position = target.global_position
 	next_path_pos = nav_agent.get_next_path_position()
 	next_path_pos.y = global_position.y
-	
-	$Debug/Box.global_position = next_path_pos
 	
 	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO

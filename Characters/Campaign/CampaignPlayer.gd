@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 	super(delta)
 	_fade_dmg(delta)
 	_fade_health(delta)
-	_update_time_UI()
 
 
 func _physics_process(delta) -> void:
@@ -176,11 +175,6 @@ func _show_crosshairs(show) -> void:
 
 func _zoom_crosshairs(show) -> void:
 	$FPCanvas/UI/Scope.visible = show
-
-
-func _update_time_UI() -> void:
-	if %MatchTimer and Globals.match_settings.time != 0:
-		%MatchTimer.set_time(current_level.get_match_time())
 
 
 func update_leaders_UI(team_list) -> void:
