@@ -52,7 +52,7 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 	
 	global_position = new_pos
 	$FloorSnap.force_raycast_update()
-	global_position = $FloorSnap.get_collision_point() + Vector3(0, 0.25, 0)
+	global_position.y = $FloorSnap.get_collision_point().y + 0.25
 	
 	match weapon_info[0]:
 		Globals.WEAPONS.PISTOL:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://bv0rwydo3odmv"]
+[gd_scene load_steps=136 format=3 uid="uid://bv0rwydo3odmv"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_l4ff0"]
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Campaign1_tex_7.png" id="2_4rklu"]
@@ -165,6 +165,60 @@ size = Vector2(1, 3.75)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oogff"]
 data = PackedVector3Array(0.5, 0, 1.875, -0.5, 0, 1.875, 0.5, 0, -1.875, -0.5, 0, 1.875, -0.5, 0, -1.875, 0.5, 0, -1.875)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_5g0vh"]
+size = Vector2(4.5, 0.625)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7h6ai"]
+data = PackedVector3Array(2.25, 0, 0.3125, -2.25, 0, 0.3125, 2.25, 0, -0.3125, -2.25, 0, 0.3125, -2.25, 0, -0.3125, 2.25, 0, -0.3125)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nwa4c"]
+size = Vector2(1, 2.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1welc"]
+data = PackedVector3Array(0.5, 0, 1.25, -0.5, 0, 1.25, 0.5, 0, -1.25, -0.5, 0, 1.25, -0.5, 0, -1.25, 0.5, 0, -1.25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y1glm"]
+size = Vector2(0.25, 2.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_alqyu"]
+data = PackedVector3Array(0.125, 0, 1.25, -0.125, 0, 1.25, 0.125, 0, -1.25, -0.125, 0, 1.25, -0.125, 0, -1.25, 0.125, 0, -1.25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wa8v7"]
+data = PackedVector3Array(0.125, 0, 1.25, -0.125, 0, 1.25, 0.125, 0, -1.25, -0.125, 0, 1.25, -0.125, 0, -1.25, 0.125, 0, -1.25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eeglm"]
+data = PackedVector3Array(2.25, 0, 0.3125, -2.25, 0, 0.3125, 2.25, 0, -0.3125, -2.25, 0, 0.3125, -2.25, 0, -0.3125, 2.25, 0, -0.3125)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aug15"]
+size = Vector2(3.5, 0.25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fkhuv"]
+data = PackedVector3Array(1.75, 0, 0.125, -1.75, 0, 0.125, 1.75, 0, -0.125, -1.75, 0, 0.125, -1.75, 0, -0.125, 1.75, 0, -0.125)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m6k73"]
+data = PackedVector3Array(1.75, 0, 0.125, -1.75, 0, 0.125, 1.75, 0, -0.125, -1.75, 0, 0.125, -1.75, 0, -0.125, 1.75, 0, -0.125)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pfppo"]
+size = Vector2(0.25, 2.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_w6nj7"]
+data = PackedVector3Array(0.125, 0, 1.25, -0.125, 0, 1.25, 0.125, 0, -1.25, -0.125, 0, 1.25, -0.125, 0, -1.25, 0.125, 0, -1.25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nwq3h"]
+data = PackedVector3Array(0.125, 0, 1.25, -0.125, 0, 1.25, 0.125, 0, -1.25, -0.125, 0, 1.25, -0.125, 0, -1.25, 0.125, 0, -1.25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sya2n"]
+size = Vector2(1.5, 2.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uwyq0"]
+data = PackedVector3Array(0.75, 0, 1.25, -0.75, 0, 1.25, 0.75, 0, -1.25, -0.75, 0, 1.25, -0.75, 0, -1.25, 0.75, 0, -1.25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ijevr"]
+size = Vector2(3.5, 2.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7jvbs"]
+data = PackedVector3Array(1.75, 0, 1.25, -1.75, 0, 1.25, 1.75, 0, -1.25, -1.75, 0, 1.25, -1.75, 0, -1.25, 1.75, 0, -1.25)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_blnaa"]
 size = Vector2(1, 10.505)
 
@@ -232,62 +286,26 @@ data = PackedVector3Array(3.75, 0, 1.875, -3.75, 0, 1.875, 3.75, 0, -1.875, -3.7
 [sub_resource type="PlaneMesh" id="PlaneMesh_sqsni"]
 size = Vector2(3.75, 0.3)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3n7kx"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wxhuv"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_y7vgq"]
 size = Vector2(3.75, 0.15)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2beoj"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2vqim"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ueluc"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h1il3"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ye2ui"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h42wc"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0m2yp"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_23v3g"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_s2fdm"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rq6aj"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hm44a"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gli6q"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_icbvg"]
-data = PackedVector3Array(1.875, 0, 0.15, -1.875, 0, 0.15, 1.875, 0, -0.15, -1.875, 0, 0.15, -1.875, 0, -0.15, 1.875, 0, -0.15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ldoky"]
-data = PackedVector3Array(1.875, 0, 0.075, -1.875, 0, 0.075, 1.875, 0, -0.075, -1.875, 0, 0.075, -1.875, 0, -0.075, 1.875, 0, -0.075)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rwc2v"]
+points = PackedVector3Array(1.875, 0, 0, -1.875, 0, 0, -1.875, -4.5, 9, 1.875, -4.5, 9)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qp8tn"]
 size = Vector2(4.5, 8.7)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wn3ax"]
 data = PackedVector3Array(2.25, 0, 4.35, -2.25, 0, 4.35, 2.25, 0, -4.35, -2.25, 0, 4.35, -2.25, 0, -4.35, 2.25, 0, -4.35)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gxw2q"]
+size = Vector2(5, 6.25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oichv"]
+data = PackedVector3Array(2.5, 0, 3.125, -2.5, 0, 3.125, 2.5, 0, -3.125, -2.5, 0, 3.125, -2.5, 0, -3.125, 2.5, 0, -3.125)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7k8wa"]
+data = PackedVector3Array(2.5, 0, 3.125, -2.5, 0, 3.125, 2.5, 0, -3.125, -2.5, 0, 3.125, -2.5, 0, -3.125, 2.5, 0, -3.125)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6x1hf"]
 data = PackedVector3Array(2.5, 0, 5, -2.5, 0, 5, 2.5, 0, -5, -2.5, 0, 5, -2.5, 0, -5, 2.5, 0, -5)
@@ -586,7 +604,18 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Boardwalk/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_km2pg")
 
-[node name="Ladder" type="Area3D" parent="NavReg" index="13"]
+[node name="Boardwalk2" type="MeshInstance3D" parent="NavReg" index="13"]
+transform = Transform3D(0.964313, -0.264765, 0, 0.264765, 0.964313, 0, 0, 0, 1, 7.59041, 3.32235, -23.75)
+mesh = SubResource("BoxMesh_32kg4")
+surface_material_override/0 = SubResource("StandardMaterial3D_5rkm6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Boardwalk2" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Boardwalk2/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_km2pg")
+
+[node name="Ladder" type="Area3D" parent="NavReg" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -40)
 collision_mask = 2
 script = ExtResource("4_havcl")
@@ -599,7 +628,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u77tx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Ladder" index="1"]
 shape = SubResource("ConcavePolygonShape3D_h1s7q")
 
-[node name="Ladder2" type="Area3D" parent="NavReg" index="14"]
+[node name="Ladder2" type="Area3D" parent="NavReg" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 2.5, 2.45)
 collision_mask = 2
 script = ExtResource("4_havcl")
@@ -612,7 +641,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u77tx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Ladder2" index="1"]
 shape = SubResource("ConcavePolygonShape3D_h1s7q")
 
-[node name="Wall1" type="MeshInstance3D" parent="NavReg" index="15"]
+[node name="Wall1" type="MeshInstance3D" parent="NavReg" index="16"]
 transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 12.5, 2.5, 0)
 mesh = SubResource("PlaneMesh_vgkx4")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ajyo")
@@ -623,7 +652,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall1/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_vkyhj")
 
-[node name="Wall2" type="MeshInstance3D" parent="NavReg" index="16"]
+[node name="Wall2" type="MeshInstance3D" parent="NavReg" index="17"]
 transform = Transform3D(-5.73206e-15, 1.31134e-07, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, 1.31134e-07, 0, 2.5, 12.5)
 mesh = SubResource("PlaneMesh_vgkx4")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ajyo")
@@ -634,7 +663,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3kq4x")
 
-[node name="Wall13" type="MeshInstance3D" parent="NavReg" index="17"]
+[node name="Wall13" type="MeshInstance3D" parent="NavReg" index="18"]
 transform = Transform3D(4.37114e-08, -1, 8.74226e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74226e-08, -1, 12.5, 2.5, -35)
 mesh = SubResource("PlaneMesh_qu752")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ajyo")
@@ -645,7 +674,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall13/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_gxdir")
 
-[node name="Wall17" type="MeshInstance3D" parent="NavReg" index="18"]
+[node name="Wall17" type="MeshInstance3D" parent="NavReg" index="19"]
 transform = Transform3D(1.91068e-15, -4.37112e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37112e-08, 17.5, 7.5, -37.5)
 mesh = SubResource("PlaneMesh_3dr6m")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ke21")
@@ -656,7 +685,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall17/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mo2h2")
 
-[node name="Wall18" type="MeshInstance3D" parent="NavReg" index="19"]
+[node name="Wall18" type="MeshInstance3D" parent="NavReg" index="20"]
 transform = Transform3D(1.91068e-15, -4.37116e-08, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, -4.37116e-08, 17.5, 7.5, -32.5)
 mesh = SubResource("PlaneMesh_3dr6m")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ke21")
@@ -667,7 +696,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall18/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_tkco8")
 
-[node name="Wall22" type="MeshInstance3D" parent="NavReg" index="20"]
+[node name="Wall22" type="MeshInstance3D" parent="NavReg" index="21"]
 transform = Transform3D(4.37114e-08, 1, 2.13163e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -2.13163e-13, 1, 22.5, 7.5, -30)
 mesh = SubResource("PlaneMesh_8oare")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -678,7 +707,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall22/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mohvq")
 
-[node name="Wall30" type="MeshInstance3D" parent="NavReg" index="21"]
+[node name="Wall30" type="MeshInstance3D" parent="NavReg" index="22"]
 transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 27.5, 5.5, -29.375)
 mesh = SubResource("PlaneMesh_vdy3c")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -689,7 +718,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall30/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_oogff")
 
-[node name="Wall31" type="MeshInstance3D" parent="NavReg" index="22"]
+[node name="Wall31" type="MeshInstance3D" parent="NavReg" index="23"]
 transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 27.5, 5.5, -40.625)
 mesh = SubResource("PlaneMesh_vdy3c")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -700,7 +729,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall31/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_oogff")
 
-[node name="Wall37" type="MeshInstance3D" parent="NavReg" index="23"]
+[node name="Wall37" type="MeshInstance3D" parent="NavReg" index="24"]
 transform = Transform3D(4.37114e-08, 1, 1.77636e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -1.77636e-13, 1, 57.5, 5.5, -40.625)
 mesh = SubResource("PlaneMesh_vdy3c")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -711,7 +740,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall37/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_oogff")
 
-[node name="Wall46" type="MeshInstance3D" parent="NavReg" index="24"]
+[node name="Wall46" type="MeshInstance3D" parent="NavReg" index="25"]
 transform = Transform3D(-5.73206e-15, -4.37112e-08, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, -4.37112e-08, 46.925, 1, -35)
 mesh = SubResource("PlaneMesh_vdy3c")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -722,7 +751,161 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall46/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_oogff")
 
-[node name="Wall47" type="MeshInstance3D" parent="NavReg" index="25"]
+[node name="Wall51" type="MeshInstance3D" parent="NavReg" index="26"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64275e-15, -8.74226e-08, -1, 48.8, 2.75, -34.687)
+mesh = SubResource("PlaneMesh_5g0vh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall51" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall51/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_7h6ai")
+
+[node name="Wall53" type="MeshInstance3D" parent="NavReg" index="27"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64275e-15, -8.74226e-08, -1, 48.8, 4.5, -33.125)
+mesh = SubResource("PlaneMesh_nwa4c")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall53" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall53/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_1welc")
+
+[node name="Wall56" type="MeshInstance3D" parent="NavReg" index="28"]
+transform = Transform3D(1, -1.06581e-14, -7.64274e-15, -1.06581e-14, -1, 8.74226e-08, -7.64275e-15, -8.74226e-08, -1, 48.925, 4, -33.125)
+mesh = SubResource("PlaneMesh_y1glm")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall56" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall56/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_alqyu")
+
+[node name="Wall57" type="MeshInstance3D" parent="NavReg" index="29"]
+transform = Transform3D(-1, -8.74228e-08, 1.52855e-14, -8.74228e-08, 1, -8.74226e-08, -7.64275e-15, -8.74226e-08, -1, 48.925, 0.5, -33.125)
+mesh = SubResource("PlaneMesh_y1glm")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall57" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall57/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_wa8v7")
+
+[node name="Wall52" type="MeshInstance3D" parent="NavReg" index="30"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64275e-15, -8.74226e-08, -1, 48.8, 2.75, -31.562)
+mesh = SubResource("PlaneMesh_5g0vh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall52" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall52/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_eeglm")
+
+[node name="Wall54" type="MeshInstance3D" parent="NavReg" index="31"]
+transform = Transform3D(9.55343e-15, 1.31134e-07, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, 1.31134e-07, 48.925, 2.25, -31.875)
+mesh = SubResource("PlaneMesh_aug15")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall54" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall54/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_fkhuv")
+
+[node name="Wall55" type="MeshInstance3D" parent="NavReg" index="32"]
+transform = Transform3D(-1.33748e-14, -2.18557e-07, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, -2.18557e-07, 48.925, 2.25, -34.375)
+mesh = SubResource("PlaneMesh_aug15")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall55" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall55/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_m6k73")
+
+[node name="Wall62" type="MeshInstance3D" parent="NavReg" index="33"]
+transform = Transform3D(-1, -8.74228e-08, 1.52855e-14, -8.74228e-08, 1, -8.74226e-08, -7.64275e-15, -8.74226e-08, -1, 62.625, 5, -35)
+mesh = SubResource("PlaneMesh_pfppo")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall62" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall62/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_w6nj7")
+
+[node name="Wall63" type="MeshInstance3D" parent="NavReg" index="34"]
+transform = Transform3D(1, 1.74846e-07, -2.29282e-14, 1.74846e-07, -1, 8.74226e-08, -7.64275e-15, -8.74226e-08, -1, 62.625, 8.5, -35)
+mesh = SubResource("PlaneMesh_pfppo")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall63" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall63/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_nwq3h")
+
+[node name="Wall67" type="MeshInstance3D" parent="NavReg" index="35"]
+transform = Transform3D(1.31134e-07, -1, 8.74226e-08, -1, -1.31134e-07, 1.91068e-14, -7.64275e-15, -8.74226e-08, -1, 62.5, 9.25, -35)
+mesh = SubResource("PlaneMesh_sya2n")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall67" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall67/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_uwyq0")
+
+[node name="Wall64" type="MeshInstance3D" parent="NavReg" index="36"]
+transform = Transform3D(9.55343e-15, 1.31134e-07, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, 1.31134e-07, 62.625, 6.75, -33.75)
+mesh = SubResource("PlaneMesh_aug15")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall64" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall64/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_fkhuv")
+
+[node name="Wall65" type="MeshInstance3D" parent="NavReg" index="37"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64275e-15, -8.74226e-08, -1, 62.75, 6.75, -35)
+mesh = SubResource("PlaneMesh_ijevr")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall65" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall65/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_7jvbs")
+
+[node name="Wall68" type="MeshInstance3D" parent="NavReg" index="38"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64275e-15, -8.74226e-08, -1, 49.05, 2.25, -33.125)
+mesh = SubResource("PlaneMesh_ijevr")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall68" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall68/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_7jvbs")
+
+[node name="Wall66" type="MeshInstance3D" parent="NavReg" index="39"]
+transform = Transform3D(-1.33748e-14, -2.18557e-07, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, -2.18557e-07, 62.625, 6.75, -36.25)
+mesh = SubResource("PlaneMesh_aug15")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall66" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall66/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_m6k73")
+
+[node name="Wall47" type="MeshInstance3D" parent="NavReg" index="40"]
 transform = Transform3D(9.55343e-15, 1.31134e-07, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, 1.31134e-07, 46.925, 1, -27.5)
 mesh = SubResource("PlaneMesh_vdy3c")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -733,7 +916,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall47/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_oogff")
 
-[node name="Wall49" type="MeshInstance3D" parent="NavReg" index="26"]
+[node name="Wall49" type="MeshInstance3D" parent="NavReg" index="41"]
 transform = Transform3D(0.447104, 9.17097e-08, 0.894482, -0.894482, 1.03422e-07, 0.447104, -5.15056e-08, -1, 1.28273e-07, 53.161, 3.24, -27.499)
 mesh = SubResource("PlaneMesh_blnaa")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -744,7 +927,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall49/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_8ycbr")
 
-[node name="Wall38" type="MeshInstance3D" parent="NavReg" index="27"]
+[node name="Wall38" type="MeshInstance3D" parent="NavReg" index="42"]
 transform = Transform3D(4.37114e-08, 1, 1.77636e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -1.77636e-13, 1, 45.05, 1, -31.25)
 mesh = SubResource("PlaneMesh_nqs33")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -755,7 +938,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall38/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3jq6h")
 
-[node name="Wall27" type="MeshInstance3D" parent="NavReg" index="28"]
+[node name="Wall27" type="MeshInstance3D" parent="NavReg" index="43"]
 transform = Transform3D(4.37114e-08, 1, 2.13163e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -2.13163e-13, 1, 27.5, 2.5, -35)
 mesh = SubResource("PlaneMesh_6liwx")
 surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
@@ -766,7 +949,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall27/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_urcsm")
 
-[node name="Wall41" type="MeshInstance3D" parent="NavReg" index="29"]
+[node name="Wall41" type="MeshInstance3D" parent="NavReg" index="44"]
 transform = Transform3D(4.37114e-08, 1, 2.13163e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -2.13163e-13, 1, 27.5, 12.5, -35)
 mesh = SubResource("PlaneMesh_6liwx")
 surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
@@ -777,7 +960,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall41/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_urcsm")
 
-[node name="Wall45" type="MeshInstance3D" parent="NavReg" index="30"]
+[node name="Wall45" type="MeshInstance3D" parent="NavReg" index="45"]
 transform = Transform3D(-4.37114e-08, -1, -8.7423e-08, -1, 4.37114e-08, 3.82138e-15, 1.69407e-21, 8.7423e-08, -1, 12.5, 12.5, -35)
 mesh = SubResource("PlaneMesh_rtm01")
 surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
@@ -788,7 +971,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall45/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_nvy7m")
 
-[node name="Wall39" type="MeshInstance3D" parent="NavReg" index="31"]
+[node name="Wall39" type="MeshInstance3D" parent="NavReg" index="46"]
 transform = Transform3D(4.37114e-08, 1, 2.13163e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -2.13163e-13, 1, 27.5, 7.5, -17.5)
 mesh = SubResource("PlaneMesh_65mg4")
 surface_material_override/0 = SubResource("StandardMaterial3D_br8er")
@@ -799,7 +982,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall39/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ltg0i")
 
-[node name="Wall40" type="MeshInstance3D" parent="NavReg" index="32"]
+[node name="Wall40" type="MeshInstance3D" parent="NavReg" index="47"]
 transform = Transform3D(4.37114e-08, 1, 2.13163e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -2.13163e-13, 1, 27.5, 7.5, -52.5)
 mesh = SubResource("PlaneMesh_65mg4")
 surface_material_override/0 = SubResource("StandardMaterial3D_br8er")
@@ -810,7 +993,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall40/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_7p870")
 
-[node name="Wall42" type="MeshInstance3D" parent="NavReg" index="33"]
+[node name="Wall42" type="MeshInstance3D" parent="NavReg" index="48"]
 transform = Transform3D(-4.37114e-08, -1, -8.7423e-08, -1, 4.37114e-08, 3.82138e-15, 1.69407e-21, 8.7423e-08, -1, 57.5, 12.5, -35)
 mesh = SubResource("PlaneMesh_6liwx")
 surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
@@ -821,7 +1004,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall42/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_urcsm")
 
-[node name="Wall43" type="MeshInstance3D" parent="NavReg" index="34"]
+[node name="Wall43" type="MeshInstance3D" parent="NavReg" index="49"]
 transform = Transform3D(-4.37114e-08, -1, -8.7423e-08, -1, 4.37114e-08, 3.82138e-15, 1.69407e-21, 8.7423e-08, -1, 57.5, 7.5, -52.5)
 mesh = SubResource("PlaneMesh_65mg4")
 surface_material_override/0 = SubResource("StandardMaterial3D_br8er")
@@ -832,7 +1015,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall43/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ltg0i")
 
-[node name="Wall44" type="MeshInstance3D" parent="NavReg" index="35"]
+[node name="Wall44" type="MeshInstance3D" parent="NavReg" index="50"]
 transform = Transform3D(-4.37114e-08, -1, -8.7423e-08, -1, 4.37114e-08, 3.82138e-15, 1.69407e-21, 8.7423e-08, -1, 57.5, 7.5, -17.5)
 mesh = SubResource("PlaneMesh_65mg4")
 surface_material_override/0 = SubResource("StandardMaterial3D_br8er")
@@ -843,7 +1026,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall44/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_7p870")
 
-[node name="Wall24" type="MeshInstance3D" parent="NavReg" index="36"]
+[node name="Wall24" type="MeshInstance3D" parent="NavReg" index="51"]
 transform = Transform3D(1.91068e-15, -4.37116e-08, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, -4.37116e-08, 25, 7.5, -27.5)
 mesh = SubResource("PlaneMesh_8oare")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -854,7 +1037,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall24/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mfbn8")
 
-[node name="Wall25" type="MeshInstance3D" parent="NavReg" index="37"]
+[node name="Wall25" type="MeshInstance3D" parent="NavReg" index="52"]
 transform = Transform3D(-5.73205e-15, -4.37112e-08, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, -4.37112e-08, 25, 7.5, -42.5)
 mesh = SubResource("PlaneMesh_8oare")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -865,7 +1048,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall25/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mpp5v")
 
-[node name="Wall28" type="MeshInstance3D" parent="NavReg" index="38"]
+[node name="Wall28" type="MeshInstance3D" parent="NavReg" index="53"]
 transform = Transform3D(1.91069e-15, 1.31134e-07, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, 1.31134e-07, 42.5, 5.5, -38.75)
 mesh = SubResource("PlaneMesh_lb43n")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -876,7 +1059,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall28/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_sdvu3")
 
-[node name="Wall29" type="MeshInstance3D" parent="NavReg" index="39"]
+[node name="Wall29" type="MeshInstance3D" parent="NavReg" index="54"]
 transform = Transform3D(1.91068e-15, -4.37116e-08, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, -4.37116e-08, 42.5, 5.5, -31.25)
 mesh = SubResource("PlaneMesh_lb43n")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -887,7 +1070,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall29/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_sdvu3")
 
-[node name="Wall23" type="MeshInstance3D" parent="NavReg" index="40"]
+[node name="Wall23" type="MeshInstance3D" parent="NavReg" index="55"]
 transform = Transform3D(4.37114e-08, 1, 2.13163e-13, -1, 4.37114e-08, 3.82138e-15, 3.82137e-15, -2.13163e-13, 1, 22.5, 7.5, -40)
 mesh = SubResource("PlaneMesh_8oare")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -898,7 +1081,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall23/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_nb1gv")
 
-[node name="Floor9" type="MeshInstance3D" parent="NavReg" index="41"]
+[node name="Floor9" type="MeshInstance3D" parent="NavReg" index="56"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 60, 5, -35)
 mesh = SubResource("PlaneMesh_dnj4q")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
@@ -909,7 +1092,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Floor9/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_c4tly")
 
-[node name="Floor11" type="MeshInstance3D" parent="NavReg" index="42"]
+[node name="Floor11" type="MeshInstance3D" parent="NavReg" index="57"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.925, 0.5, -31.25)
 mesh = SubResource("PlaneMesh_prn8s")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
@@ -920,656 +1103,422 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Floor11/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_g1ppm")
 
-[node name="Stair12" type="MeshInstance3D" parent="NavReg" index="43"]
+[node name="Stairs" type="Node3D" parent="NavReg" index="58"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 57.35, 4.85, -29.375)
+
+[node name="Stair12" type="MeshInstance3D" parent="NavReg/Stairs" index="0"]
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair12" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair12/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_3n7kx")
-
-[node name="Stair13" type="MeshInstance3D" parent="NavReg" index="44"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 57.05, 4.7, -29.375)
+[node name="Stair13" type="MeshInstance3D" parent="NavReg/Stairs" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0.299999)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair13" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair13/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_wxhuv")
-
-[node name="Stair14" type="MeshInstance3D" parent="NavReg" index="45"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 57.2, 4.775, -29.375)
+[node name="Stair14" type="MeshInstance3D" parent="NavReg/Stairs" index="2"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.0749998, 0.149998)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair14" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair14/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_2beoj")
-
-[node name="Stair15" type="MeshInstance3D" parent="NavReg" index="46"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.75, 4.55, -29.375)
+[node name="Stair15" type="MeshInstance3D" parent="NavReg/Stairs" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.599998)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair15" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair15/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_2vqim")
-
-[node name="Stair16" type="MeshInstance3D" parent="NavReg" index="47"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 56.9, 4.625, -29.375)
+[node name="Stair16" type="MeshInstance3D" parent="NavReg/Stairs" index="4"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.225, 0.449997)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair16" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair16/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ueluc")
-
-[node name="Stair17" type="MeshInstance3D" parent="NavReg" index="48"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.45, 4.4, -29.375)
+[node name="Stair17" type="MeshInstance3D" parent="NavReg/Stairs" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0.899998)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair17" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair17/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h1il3")
-
-[node name="Stair18" type="MeshInstance3D" parent="NavReg" index="49"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 56.6, 4.475, -29.375)
+[node name="Stair18" type="MeshInstance3D" parent="NavReg/Stairs" index="6"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.375, 0.75)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair18" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair18/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ye2ui")
-
-[node name="Stair26" type="MeshInstance3D" parent="NavReg" index="50"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 56.3, 4.325, -29.375)
+[node name="Stair26" type="MeshInstance3D" parent="NavReg/Stairs" index="7"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.525, 1.05)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair26" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair26/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h42wc")
-
-[node name="Stair27" type="MeshInstance3D" parent="NavReg" index="51"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 55.1, 3.725, -29.375)
+[node name="Stair27" type="MeshInstance3D" parent="NavReg/Stairs" index="8"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -1.125, 2.25)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair27" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair27/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair19" type="MeshInstance3D" parent="NavReg" index="52"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.15, 4.25, -29.375)
+[node name="Stair19" type="MeshInstance3D" parent="NavReg/Stairs" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 1.2)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair19" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair19/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_23v3g")
-
-[node name="Stair20" type="MeshInstance3D" parent="NavReg" index="53"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.85, 4.1, -29.375)
+[node name="Stair20" type="MeshInstance3D" parent="NavReg/Stairs" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 1.5)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair20" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair20/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_s2fdm")
-
-[node name="Stair21" type="MeshInstance3D" parent="NavReg" index="54"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 56, 4.175, -29.375)
+[node name="Stair21" type="MeshInstance3D" parent="NavReg/Stairs" index="11"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.675, 1.35)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair21" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair21/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_rq6aj")
-
-[node name="Stair22" type="MeshInstance3D" parent="NavReg" index="55"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.55, 3.95, -29.375)
+[node name="Stair22" type="MeshInstance3D" parent="NavReg/Stairs" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 1.8)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair22" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair22/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_hm44a")
-
-[node name="Stair23" type="MeshInstance3D" parent="NavReg" index="56"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 55.7, 4.025, -29.375)
+[node name="Stair23" type="MeshInstance3D" parent="NavReg/Stairs" index="13"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.825, 1.65)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair23" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair23/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_gli6q")
-
-[node name="Stair24" type="MeshInstance3D" parent="NavReg" index="57"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.25, 3.8, -29.375)
+[node name="Stair24" type="MeshInstance3D" parent="NavReg/Stairs" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 2.1)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair24" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair24/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair28" type="MeshInstance3D" parent="NavReg" index="58"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 54.8, 3.575, -29.375)
+[node name="Stair28" type="MeshInstance3D" parent="NavReg/Stairs" index="15"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -1.275, 2.55)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair28" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair28/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair29" type="MeshInstance3D" parent="NavReg" index="59"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.95, 3.65, -29.375)
+[node name="Stair29" type="MeshInstance3D" parent="NavReg/Stairs" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 2.4)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair29" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair29/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair25" type="MeshInstance3D" parent="NavReg" index="60"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 55.4, 3.875, -29.375)
+[node name="Stair25" type="MeshInstance3D" parent="NavReg/Stairs" index="17"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -0.975, 1.95)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair25" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair25/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ldoky")
-
-[node name="Stair30" type="MeshInstance3D" parent="NavReg" index="61"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.65, 3.5, -29.375)
+[node name="Stair30" type="MeshInstance3D" parent="NavReg/Stairs" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35, 2.7)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair30" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair30/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_3n7kx")
-
-[node name="Stair31" type="MeshInstance3D" parent="NavReg" index="62"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.35, 3.35, -29.375)
+[node name="Stair31" type="MeshInstance3D" parent="NavReg/Stairs" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 3)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair31" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair31/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_wxhuv")
-
-[node name="Stair32" type="MeshInstance3D" parent="NavReg" index="63"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 54.5, 3.425, -29.375)
+[node name="Stair32" type="MeshInstance3D" parent="NavReg/Stairs" index="20"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -1.425, 2.85)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair32" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair32/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_2beoj")
-
-[node name="Stair33" type="MeshInstance3D" parent="NavReg" index="64"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.05, 3.2, -29.375)
+[node name="Stair33" type="MeshInstance3D" parent="NavReg/Stairs" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.65, 3.3)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair33" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair33/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_2vqim")
-
-[node name="Stair34" type="MeshInstance3D" parent="NavReg" index="65"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 54.2, 3.275, -29.375)
+[node name="Stair34" type="MeshInstance3D" parent="NavReg/Stairs" index="22"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -1.575, 3.15)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair34" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair34/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ueluc")
-
-[node name="Stair35" type="MeshInstance3D" parent="NavReg" index="66"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.75, 3.05, -29.375)
+[node name="Stair35" type="MeshInstance3D" parent="NavReg/Stairs" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, 3.6)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair35" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair35/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h1il3")
-
-[node name="Stair36" type="MeshInstance3D" parent="NavReg" index="67"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 53.9, 3.125, -29.375)
+[node name="Stair36" type="MeshInstance3D" parent="NavReg/Stairs" index="24"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -1.725, 3.45)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair36" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair36/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ye2ui")
-
-[node name="Stair37" type="MeshInstance3D" parent="NavReg" index="68"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 53.6, 2.975, -29.375)
+[node name="Stair37" type="MeshInstance3D" parent="NavReg/Stairs" index="25"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -1.875, 3.75)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair37" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair37/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h42wc")
-
-[node name="Stair38" type="MeshInstance3D" parent="NavReg" index="69"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 52.4, 2.375, -29.375)
+[node name="Stair38" type="MeshInstance3D" parent="NavReg/Stairs" index="26"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.475, 4.95)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair38" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair38/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair39" type="MeshInstance3D" parent="NavReg" index="70"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.45, 2.9, -29.375)
+[node name="Stair39" type="MeshInstance3D" parent="NavReg/Stairs" index="27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95, 3.9)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair39" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair39/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_23v3g")
-
-[node name="Stair40" type="MeshInstance3D" parent="NavReg" index="71"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.15, 2.75, -29.375)
+[node name="Stair40" type="MeshInstance3D" parent="NavReg/Stairs" index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1, 4.2)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair40" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair40/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_s2fdm")
-
-[node name="Stair41" type="MeshInstance3D" parent="NavReg" index="72"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 53.3, 2.825, -29.375)
+[node name="Stair41" type="MeshInstance3D" parent="NavReg/Stairs" index="29"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.025, 4.05)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair41" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair41/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_rq6aj")
-
-[node name="Stair42" type="MeshInstance3D" parent="NavReg" index="73"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.85, 2.6, -29.375)
+[node name="Stair42" type="MeshInstance3D" parent="NavReg/Stairs" index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25, 4.5)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair42" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair42/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_hm44a")
-
-[node name="Stair43" type="MeshInstance3D" parent="NavReg" index="74"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 53, 2.675, -29.375)
+[node name="Stair43" type="MeshInstance3D" parent="NavReg/Stairs" index="31"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.175, 4.35)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair43" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair43/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_gli6q")
-
-[node name="Stair44" type="MeshInstance3D" parent="NavReg" index="75"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.55, 2.45, -29.375)
+[node name="Stair44" type="MeshInstance3D" parent="NavReg/Stairs" index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 4.8)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair44" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair44/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair45" type="MeshInstance3D" parent="NavReg" index="76"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 52.1, 2.225, -29.375)
+[node name="Stair45" type="MeshInstance3D" parent="NavReg/Stairs" index="33"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.625, 5.25)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair45" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair45/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair46" type="MeshInstance3D" parent="NavReg" index="77"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.25, 2.3, -29.375)
+[node name="Stair46" type="MeshInstance3D" parent="NavReg/Stairs" index="34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.55, 5.1)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair46" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair46/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair47" type="MeshInstance3D" parent="NavReg" index="78"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 52.7, 2.525, -29.375)
+[node name="Stair47" type="MeshInstance3D" parent="NavReg/Stairs" index="35"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.325, 4.65)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair47" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair47/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ldoky")
-
-[node name="Stair48" type="MeshInstance3D" parent="NavReg" index="79"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.95, 2.15, -29.375)
+[node name="Stair48" type="MeshInstance3D" parent="NavReg/Stairs" index="36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 5.4)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair48" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair48/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_3n7kx")
-
-[node name="Stair49" type="MeshInstance3D" parent="NavReg" index="80"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.65, 2, -29.375)
+[node name="Stair49" type="MeshInstance3D" parent="NavReg/Stairs" index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.85, 5.7)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair49" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair49/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_wxhuv")
-
-[node name="Stair50" type="MeshInstance3D" parent="NavReg" index="81"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 51.8, 2.075, -29.375)
+[node name="Stair50" type="MeshInstance3D" parent="NavReg/Stairs" index="38"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.775, 5.55)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair50" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair50/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_2beoj")
-
-[node name="Stair51" type="MeshInstance3D" parent="NavReg" index="82"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.35, 1.85, -29.375)
+[node name="Stair51" type="MeshInstance3D" parent="NavReg/Stairs" index="39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 6)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair51" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair51/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_2vqim")
-
-[node name="Stair52" type="MeshInstance3D" parent="NavReg" index="83"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 51.5, 1.925, -29.375)
+[node name="Stair52" type="MeshInstance3D" parent="NavReg/Stairs" index="40"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -2.925, 5.85)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair52" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair52/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ueluc")
-
-[node name="Stair53" type="MeshInstance3D" parent="NavReg" index="84"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.05, 1.7, -29.375)
+[node name="Stair53" type="MeshInstance3D" parent="NavReg/Stairs" index="41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.15, 6.3)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair53" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair53/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h1il3")
-
-[node name="Stair54" type="MeshInstance3D" parent="NavReg" index="85"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 51.2, 1.775, -29.375)
+[node name="Stair54" type="MeshInstance3D" parent="NavReg/Stairs" index="42"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.075, 6.15)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair54" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair54/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ye2ui")
-
-[node name="Stair55" type="MeshInstance3D" parent="NavReg" index="86"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 50.9, 1.625, -29.375)
+[node name="Stair55" type="MeshInstance3D" parent="NavReg/Stairs" index="43"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.225, 6.45)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair55" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair55/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h42wc")
-
-[node name="Stair56" type="MeshInstance3D" parent="NavReg" index="87"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 49.7, 1.025, -29.375)
+[node name="Stair56" type="MeshInstance3D" parent="NavReg/Stairs" index="44"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.825, 7.65)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair56" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair56/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair57" type="MeshInstance3D" parent="NavReg" index="88"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.75, 1.55, -29.375)
+[node name="Stair57" type="MeshInstance3D" parent="NavReg/Stairs" index="45"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, 6.6)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair57" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair57/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_23v3g")
-
-[node name="Stair58" type="MeshInstance3D" parent="NavReg" index="89"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.45, 1.4, -29.375)
+[node name="Stair58" type="MeshInstance3D" parent="NavReg/Stairs" index="46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45, 6.9)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair58" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair58/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_s2fdm")
-
-[node name="Stair59" type="MeshInstance3D" parent="NavReg" index="90"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 50.6, 1.475, -29.375)
+[node name="Stair59" type="MeshInstance3D" parent="NavReg/Stairs" index="47"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.375, 6.75)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair59" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair59/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_rq6aj")
-
-[node name="Stair60" type="MeshInstance3D" parent="NavReg" index="91"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.15, 1.25, -29.375)
+[node name="Stair60" type="MeshInstance3D" parent="NavReg/Stairs" index="48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.6, 7.2)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair60" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair60/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_hm44a")
-
-[node name="Stair61" type="MeshInstance3D" parent="NavReg" index="92"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 50.3, 1.325, -29.375)
+[node name="Stair61" type="MeshInstance3D" parent="NavReg/Stairs" index="49"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.525, 7.05)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair61" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair61/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_gli6q")
-
-[node name="Stair62" type="MeshInstance3D" parent="NavReg" index="93"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 49.85, 1.1, -29.375)
+[node name="Stair62" type="MeshInstance3D" parent="NavReg/Stairs" index="50"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.75, 7.5)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair62" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair62/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair63" type="MeshInstance3D" parent="NavReg" index="94"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 49.4, 0.875, -29.375)
+[node name="Stair63" type="MeshInstance3D" parent="NavReg/Stairs" index="51"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.975, 7.95)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair63" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair63/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair64" type="MeshInstance3D" parent="NavReg" index="95"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 49.55, 0.95, -29.375)
+[node name="Stair64" type="MeshInstance3D" parent="NavReg/Stairs" index="52"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9, 7.8)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair64" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair64/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair66" type="MeshInstance3D" parent="NavReg" index="96"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 49.1, 0.725, -29.375)
+[node name="Stair66" type="MeshInstance3D" parent="NavReg/Stairs" index="53"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -4.125, 8.25)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair66" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair66/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair67" type="MeshInstance3D" parent="NavReg" index="97"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 49.25, 0.8, -29.375)
+[node name="Stair67" type="MeshInstance3D" parent="NavReg/Stairs" index="54"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.05, 8.1)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair67" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair67/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair68" type="MeshInstance3D" parent="NavReg" index="98"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 48.8, 0.575, -29.375)
+[node name="Stair68" type="MeshInstance3D" parent="NavReg/Stairs" index="55"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -4.275, 8.55)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair68" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair68/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0m2yp")
-
-[node name="Stair69" type="MeshInstance3D" parent="NavReg" index="99"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48.95, 0.65, -29.375)
+[node name="Stair69" type="MeshInstance3D" parent="NavReg/Stairs" index="56"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 8.4)
 mesh = SubResource("PlaneMesh_sqsni")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair69" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair69/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_icbvg")
-
-[node name="Stair65" type="MeshInstance3D" parent="NavReg" index="100"]
-transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 50, 1.175, -29.375)
+[node name="Stair65" type="MeshInstance3D" parent="NavReg/Stairs" index="57"]
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 0, -3.675, 7.35)
 mesh = SubResource("PlaneMesh_y7vgq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsokn")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stair65" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Stairs" index="58"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -0.150002)
+collision_mask = 50
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stair65/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ldoky")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Stairs/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_rwc2v")
 
-[node name="Wall32" type="MeshInstance3D" parent="NavReg" index="101"]
-transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 62.5, 7.5, -40)
-mesh = SubResource("PlaneMesh_8oare")
-surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
-metadata/_edit_group_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall32" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall32/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_mohvq")
-
-[node name="Wall33" type="MeshInstance3D" parent="NavReg" index="102"]
+[node name="Wall33" type="MeshInstance3D" parent="NavReg" index="59"]
 transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 57.5, 2.5, -35)
 mesh = SubResource("PlaneMesh_6liwx")
 surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
@@ -1580,7 +1529,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall33/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_urcsm")
 
-[node name="Wall48" type="MeshInstance3D" parent="NavReg" index="103"]
+[node name="Wall48" type="MeshInstance3D" parent="NavReg" index="60"]
 transform = Transform3D(-5.73205e-15, -4.37112e-08, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, -4.37112e-08, 53.15, 2.75, -31.25)
 mesh = SubResource("PlaneMesh_qp8tn")
 surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
@@ -1591,7 +1540,18 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall48/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_wn3ax")
 
-[node name="Wall34" type="MeshInstance3D" parent="NavReg" index="104"]
+[node name="Wall50" type="MeshInstance3D" parent="NavReg" index="61"]
+transform = Transform3D(1.91068e-15, -4.37116e-08, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, -4.37116e-08, 53.15, 2.75, -35)
+mesh = SubResource("PlaneMesh_qp8tn")
+surface_material_override/0 = SubResource("StandardMaterial3D_41by1")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall50" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall50/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_wn3ax")
+
+[node name="Wall34" type="MeshInstance3D" parent="NavReg" index="62"]
 transform = Transform3D(-5.73205e-15, -4.37112e-08, -1, -1, 4.37114e-08, 3.82138e-15, 4.37114e-08, 1, -4.37112e-08, 60, 7.5, -42.5)
 mesh = SubResource("PlaneMesh_8oare")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -1602,7 +1562,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall34/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mfbn8")
 
-[node name="Wall35" type="MeshInstance3D" parent="NavReg" index="105"]
+[node name="Wall35" type="MeshInstance3D" parent="NavReg" index="63"]
 transform = Transform3D(9.55342e-15, 1.31134e-07, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, 1.31134e-07, 60, 7.5, -27.5)
 mesh = SubResource("PlaneMesh_8oare")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
@@ -1613,18 +1573,29 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall35/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mpp5v")
 
-[node name="Wall36" type="MeshInstance3D" parent="NavReg" index="106"]
-transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 62.5, 7.5, -30)
-mesh = SubResource("PlaneMesh_8oare")
+[node name="Wall36" type="MeshInstance3D" parent="NavReg" index="64"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 62.5, 7.5, -30.625)
+mesh = SubResource("PlaneMesh_gxw2q")
 surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall36" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall36/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_nb1gv")
+shape = SubResource("ConcavePolygonShape3D_oichv")
 
-[node name="Wall19" type="MeshInstance3D" parent="NavReg" index="107"]
+[node name="Wall59" type="MeshInstance3D" parent="NavReg" index="65"]
+transform = Transform3D(-4.37114e-08, -1, 8.74226e-08, -1, 4.37114e-08, 3.82138e-15, -7.64274e-15, -8.74226e-08, -1, 62.5, 7.5, -39.375)
+mesh = SubResource("PlaneMesh_gxw2q")
+surface_material_override/0 = SubResource("StandardMaterial3D_74mtp")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Wall59" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall59/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_7k8wa")
+
+[node name="Wall19" type="MeshInstance3D" parent="NavReg" index="66"]
 transform = Transform3D(3.55271e-15, -1, -8.7423e-08, -1, -7.10543e-15, 4.37114e-08, -4.37114e-08, 8.7423e-08, -1, 12.5, 7.5, -27.5)
 mesh = SubResource("PlaneMesh_3dr6m")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ke21")
@@ -1635,7 +1606,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall19/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_6x1hf")
 
-[node name="Wall20" type="MeshInstance3D" parent="NavReg" index="108"]
+[node name="Wall20" type="MeshInstance3D" parent="NavReg" index="67"]
 transform = Transform3D(3.55271e-15, -1, -8.7423e-08, -1, -7.10543e-15, 4.37114e-08, -4.37114e-08, 8.7423e-08, -1, 12.5, 7.5, -42.5)
 mesh = SubResource("PlaneMesh_3dr6m")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ke21")
@@ -1646,7 +1617,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall20/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_62gx4")
 
-[node name="Wall16" type="MeshInstance3D" parent="NavReg" index="109"]
+[node name="Wall16" type="MeshInstance3D" parent="NavReg" index="68"]
 transform = Transform3D(-4.37114e-08, 1, 1.63425e-13, -1, -4.37114e-08, 0, -2.11758e-21, -1.63425e-13, 1, -12.5, 5, -35)
 mesh = SubResource("PlaneMesh_84igk")
 surface_material_override/0 = SubResource("StandardMaterial3D_38g3l")
@@ -1657,7 +1628,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall16/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_moefq")
 
-[node name="Wall21" type="MeshInstance3D" parent="NavReg" index="110"]
+[node name="Wall21" type="MeshInstance3D" parent="NavReg" index="69"]
 transform = Transform3D(1.91069e-15, -4.37112e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37112e-08, 0, 5, -47.5)
 mesh = SubResource("PlaneMesh_84igk")
 surface_material_override/0 = SubResource("StandardMaterial3D_38g3l")
@@ -1668,7 +1639,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall21/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jdk7r")
 
-[node name="Wall3" type="MeshInstance3D" parent="NavReg" index="111"]
+[node name="Wall3" type="MeshInstance3D" parent="NavReg" index="70"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -12.5, 2.5, -7.5)
 mesh = SubResource("PlaneMesh_yfjf0")
 surface_material_override/0 = SubResource("StandardMaterial3D_c72pd")
@@ -1679,7 +1650,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall3/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_h65xb")
 
-[node name="Wall8" type="MeshInstance3D" parent="NavReg" index="112"]
+[node name="Wall8" type="MeshInstance3D" parent="NavReg" index="71"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -12.5, 2.5, 7.5)
 mesh = SubResource("PlaneMesh_yfjf0")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1690,7 +1661,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall8/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jc4uy")
 
-[node name="Wall4" type="MeshInstance3D" parent="NavReg" index="113"]
+[node name="Wall4" type="MeshInstance3D" parent="NavReg" index="72"]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -7.5, 2.5, -12.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1701,7 +1672,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall4/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_fpb7s")
 
-[node name="Wall5" type="MeshInstance3D" parent="NavReg" index="114"]
+[node name="Wall5" type="MeshInstance3D" parent="NavReg" index="73"]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 7.5, 2.5, -12.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1712,7 +1683,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall5/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3qe24")
 
-[node name="Wall14" type="MeshInstance3D" parent="NavReg" index="115"]
+[node name="Wall14" type="MeshInstance3D" parent="NavReg" index="74"]
 transform = Transform3D(-5.73206e-15, 1.31134e-07, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, 1.31134e-07, 7.5, 5, -22.5)
 mesh = SubResource("PlaneMesh_is4ck")
 surface_material_override/0 = SubResource("StandardMaterial3D_qnai6")
@@ -1723,7 +1694,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall14/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jpwvv")
 
-[node name="Wall15" type="MeshInstance3D" parent="NavReg" index="116"]
+[node name="Wall15" type="MeshInstance3D" parent="NavReg" index="75"]
 transform = Transform3D(-5.73206e-15, 1.31134e-07, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, 1.31134e-07, -7.5, 5, -22.5)
 mesh = SubResource("PlaneMesh_is4ck")
 surface_material_override/0 = SubResource("StandardMaterial3D_qnai6")
@@ -1734,7 +1705,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall15/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_27kyj")
 
-[node name="Wall6" type="MeshInstance3D" parent="NavReg" index="117"]
+[node name="Wall6" type="MeshInstance3D" parent="NavReg" index="76"]
 transform = Transform3D(3.55271e-15, -1, 8.74228e-08, -1, 0, 4.37114e-08, -4.37114e-08, -8.74228e-08, -1, 2.5, 2.5, -17.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1745,7 +1716,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall6/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o0vbh")
 
-[node name="Wall7" type="MeshInstance3D" parent="NavReg" index="118"]
+[node name="Wall7" type="MeshInstance3D" parent="NavReg" index="77"]
 transform = Transform3D(3.55271e-15, 1, -1.74846e-07, -1, -4.35869e-15, -4.37114e-08, -4.37114e-08, 1.74846e-07, 1, -2.5, 2.5, -17.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1756,7 +1727,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall7/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_halea")
 
-[node name="Wall9" type="MeshInstance3D" parent="NavReg" index="119"]
+[node name="Wall9" type="MeshInstance3D" parent="NavReg" index="78"]
 transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, -1, 0, 4.37114e-08, -1.64202e-15, 1, -4.37114e-08, -17.5, 2.5, -2.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ajyo")
@@ -1767,7 +1738,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall9/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_42syl")
 
-[node name="Wall11" type="MeshInstance3D" parent="NavReg" index="120"]
+[node name="Wall11" type="MeshInstance3D" parent="NavReg" index="79"]
 transform = Transform3D(2.68662e-16, 1, -2.13163e-14, -1, 0, 4.37114e-08, 4.37114e-08, 2.13163e-14, 1, -22.5, 5, 0)
 mesh = SubResource("PlaneMesh_bqvsn")
 surface_material_override/0 = SubResource("StandardMaterial3D_glkee")
@@ -1778,7 +1749,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall11/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_6jwu7")
 
-[node name="Wall26" type="MeshInstance3D" parent="NavReg" index="121"]
+[node name="Wall26" type="MeshInstance3D" parent="NavReg" index="80"]
 transform = Transform3D(2.68662e-16, 1, -2.13163e-14, -1, 0, 4.37114e-08, 4.37114e-08, 2.13163e-14, 1, -22.5, 7.5, 5)
 mesh = SubResource("PlaneMesh_wnft2")
 surface_material_override/0 = SubResource("StandardMaterial3D_wpfae")
@@ -1789,7 +1760,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall26/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_nke2c")
 
-[node name="Wall10" type="MeshInstance3D" parent="NavReg" index="122"]
+[node name="Wall10" type="MeshInstance3D" parent="NavReg" index="81"]
 transform = Transform3D(-4.37114e-08, 1.31135e-07, 1, -1, -4.35869e-15, -4.37114e-08, -1.64202e-15, -1, 1.31135e-07, -17.5, 2.5, 2.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1800,7 +1771,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall10/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_e18wq")
 
-[node name="Wall12" type="MeshInstance3D" parent="NavReg" index="123"]
+[node name="Wall12" type="MeshInstance3D" parent="NavReg" index="82"]
 transform = Transform3D(-4.37114e-08, 1.31135e-07, 1, -1, -4.35869e-15, -4.37114e-08, -1.64202e-15, -1, 1.31135e-07, -17.5, 7.5, 7.5)
 mesh = SubResource("PlaneMesh_7svpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_j2gb4")
@@ -1811,7 +1782,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Wall12/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_e18wq")
 
-[node name="Box1" type="MeshInstance3D" parent="NavReg" index="124"]
+[node name="Box1" type="MeshInstance3D" parent="NavReg" index="83"]
 transform = Transform3D(0.822898, 0, -0.568188, 0, 1, 0, 0.568188, 0, 0.822898, -6.55802, 1, 7.96631)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1823,7 +1794,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box1/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box2" type="MeshInstance3D" parent="NavReg" index="125"]
+[node name="Box2" type="MeshInstance3D" parent="NavReg" index="84"]
 transform = Transform3D(0.997909, 0, -0.0646369, 0, 1, 0, 0.0646369, 0, 0.997909, -4.11387, 1, 8.345)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1835,7 +1806,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box2/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box3" type="MeshInstance3D" parent="NavReg" index="126"]
+[node name="Box3" type="MeshInstance3D" parent="NavReg" index="85"]
 transform = Transform3D(0.905798, 0, 0.423709, 0, 1, 0, -0.423709, 0, 0.905798, -4.98456, 1, 6.04625)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1847,7 +1818,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box3/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box28" type="MeshInstance3D" parent="NavReg" index="127"]
+[node name="Box28" type="MeshInstance3D" parent="NavReg" index="86"]
 transform = Transform3D(-0.758612, 0, 0.651542, 0, 1, 0, -0.651542, 0, -0.758612, -6.66523, 1, 4.27538)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1859,7 +1830,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box28/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box29" type="MeshInstance3D" parent="NavReg" index="128"]
+[node name="Box29" type="MeshInstance3D" parent="NavReg" index="87"]
 transform = Transform3D(-0.945319, 0, -0.326145, 0, 1, 0, 0.326145, 0, -0.945319, -8.43181, 1, 6.0194)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1871,7 +1842,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box29/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box33" type="MeshInstance3D" parent="NavReg" index="129"]
+[node name="Box33" type="MeshInstance3D" parent="NavReg" index="88"]
 transform = Transform3D(0.0342717, 0, -0.999411, 0, 1, 0, 0.999411, 0, 0.0342717, -6.72168, 1, -0.657434)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1883,7 +1854,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box33/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box34" type="MeshInstance3D" parent="NavReg" index="130"]
+[node name="Box34" type="MeshInstance3D" parent="NavReg" index="89"]
 transform = Transform3D(0.880121, 0, -0.474749, 0, 1, 0, 0.474749, 0, 0.880121, -4.24211, 1, -0.538501)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1895,7 +1866,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box34/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box35" type="MeshInstance3D" parent="NavReg" index="131"]
+[node name="Box35" type="MeshInstance3D" parent="NavReg" index="90"]
 transform = Transform3D(-0.899687, 0, 0.436534, 0, 1, 0, -0.436534, 0, -0.899687, -7.89698, 1, -3.13724)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1907,7 +1878,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box35/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box36" type="MeshInstance3D" parent="NavReg" index="132"]
+[node name="Box36" type="MeshInstance3D" parent="NavReg" index="91"]
 transform = Transform3D(0.0664472, 0, -0.99779, 0, 1, 0, 0.99779, 0, 0.0664472, -8.90836, 1, -0.61628)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_wp1fj")
@@ -1919,7 +1890,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box36/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box4" type="MeshInstance3D" parent="NavReg" index="133"]
+[node name="Box4" type="MeshInstance3D" parent="NavReg" index="92"]
 transform = Transform3D(0.905798, 0, 0.423709, 0, 1, 0, -0.423709, 0, 0.905798, -5.09067, 3, 7.33896)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_esle6")
@@ -1931,7 +1902,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box4/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box30" type="MeshInstance3D" parent="NavReg" index="134"]
+[node name="Box30" type="MeshInstance3D" parent="NavReg" index="93"]
 transform = Transform3D(0.37234, 0, 0.928096, 0, 1, 0, -0.928096, 0, 0.37234, -7.08351, 3, 5.73004)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -1943,7 +1914,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box30/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box37" type="MeshInstance3D" parent="NavReg" index="135"]
+[node name="Box37" type="MeshInstance3D" parent="NavReg" index="94"]
 transform = Transform3D(0.298774, 0, 0.954323, 0, 1, 0, -0.954323, 0, 0.298774, -7.67357, 3, -1.77226)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -1955,7 +1926,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box37/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box38" type="MeshInstance3D" parent="NavReg" index="136"]
+[node name="Box38" type="MeshInstance3D" parent="NavReg" index="95"]
 transform = Transform3D(0.0325622, 0, 0.999469, 0, 1, 0, -0.999469, 0, 0.0325622, -5.66951, 3, -0.472072)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -1967,7 +1938,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box38/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box40" type="MeshInstance3D" parent="NavReg" index="137"]
+[node name="Box40" type="MeshInstance3D" parent="NavReg" index="96"]
 transform = Transform3D(0.605044, 0, 0.796192, 0, 1, 0, -0.796192, 0, 0.605044, 0.594693, 3, 3.11453)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -1979,7 +1950,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box40/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box41" type="MeshInstance3D" parent="NavReg" index="138"]
+[node name="Box41" type="MeshInstance3D" parent="NavReg" index="97"]
 transform = Transform3D(0.759907, 0, 0.650031, 0, 1, 0, -0.650031, 0, 0.759907, 1.65112, 3, 7.4604)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -1991,7 +1962,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box41/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box5" type="MeshInstance3D" parent="NavReg" index="139"]
+[node name="Box5" type="MeshInstance3D" parent="NavReg" index="98"]
 transform = Transform3D(0.216746, 0, 0.976228, 0, 1, 0, -0.976228, 0, 0.216746, 0.655483, 0.999999, 4.29372)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2003,7 +1974,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box5/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box6" type="MeshInstance3D" parent="NavReg" index="140"]
+[node name="Box6" type="MeshInstance3D" parent="NavReg" index="99"]
 transform = Transform3D(-0.31565, 0, 0.948876, 0, 1, 0, -0.948876, 0, -0.31565, 0.0865546, 0.999999, 1.88673)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2015,7 +1986,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box6/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box31" type="MeshInstance3D" parent="NavReg" index="141"]
+[node name="Box31" type="MeshInstance3D" parent="NavReg" index="100"]
 transform = Transform3D(-0.315185, 0, 0.94903, 0, 1, 0, -0.94903, 0, -0.315185, 2.67689, 0.999999, 8.66076)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2027,7 +1998,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box31/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box32" type="MeshInstance3D" parent="NavReg" index="142"]
+[node name="Box32" type="MeshInstance3D" parent="NavReg" index="101"]
 transform = Transform3D(-0.758021, 0, 0.65223, 0, 1, 0, -0.65223, 0, -0.758021, 0.952934, 0.999999, 6.88728)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2039,7 +2010,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box32/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box7" type="MeshInstance3D" parent="NavReg" index="143"]
+[node name="Box7" type="MeshInstance3D" parent="NavReg" index="102"]
 transform = Transform3D(0.877942, 0, 0.478769, 0, 1, 0, -0.478769, 0, 0.877942, 8.00743, 0.999999, 5.59291)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2050,7 +2021,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box7/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box39" type="MeshInstance3D" parent="NavReg" index="144"]
+[node name="Box39" type="MeshInstance3D" parent="NavReg" index="103"]
 transform = Transform3D(0.877942, 0, 0.478769, 0, 1, 0, -0.478769, 0, 0.877942, 8.89641, 0.999999, 7.46962)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2061,7 +2032,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box39/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box8" type="MeshInstance3D" parent="NavReg" index="145"]
+[node name="Box8" type="MeshInstance3D" parent="NavReg" index="104"]
 transform = Transform3D(0.73644, 0, 0.676504, 0, 1, 0, -0.676504, 0, 0.73644, 8.40586, 3, 6.64517)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2073,7 +2044,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box8/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box9" type="MeshInstance3D" parent="NavReg" index="146"]
+[node name="Box9" type="MeshInstance3D" parent="NavReg" index="105"]
 transform = Transform3D(0.782478, 0, -0.622679, 0, 1, 0, 0.622679, 0, 0.782478, -3.62836, 0.999998, -7.01462)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2085,7 +2056,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box9/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box10" type="MeshInstance3D" parent="NavReg" index="147"]
+[node name="Box10" type="MeshInstance3D" parent="NavReg" index="106"]
 transform = Transform3D(0.991229, 0, -0.132153, 0, 1, 0, 0.132153, 0, 0.991229, -1.21551, 0.999998, -6.47108)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2097,7 +2068,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box10/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box11" type="MeshInstance3D" parent="NavReg" index="148"]
+[node name="Box11" type="MeshInstance3D" parent="NavReg" index="107"]
 transform = Transform3D(0.932444, 0, 0.361315, 0, 1, 0, -0.361315, 0, 0.932444, -1.92832, 0.999998, -8.82357)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2109,7 +2080,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box11/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box17" type="MeshInstance3D" parent="NavReg" index="149"]
+[node name="Box17" type="MeshInstance3D" parent="NavReg" index="108"]
 transform = Transform3D(1, 0, 0.000296265, 0, 1, 0, -0.000296265, 0, 1, 6.53425, 0.999998, -2.62872)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2121,7 +2092,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box17/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box18" type="MeshInstance3D" parent="NavReg" index="150"]
+[node name="Box18" type="MeshInstance3D" parent="NavReg" index="109"]
 transform = Transform3D(0.876374, 0, 0.481631, 0, 1, 0, -0.481631, 0, 0.876374, 5.51614, 0.999998, -4.86607)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2133,7 +2104,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box18/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box26" type="MeshInstance3D" parent="NavReg" index="151"]
+[node name="Box26" type="MeshInstance3D" parent="NavReg" index="110"]
 transform = Transform3D(0.876374, 0, 0.481631, 0, 1, 0, -0.481631, 0, 0.876374, 6.64496, 0.999998, -9.31009)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2145,7 +2116,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box26/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box21" type="MeshInstance3D" parent="NavReg" index="152"]
+[node name="Box21" type="MeshInstance3D" parent="NavReg" index="111"]
 transform = Transform3D(0.949737, 0, -0.313048, 0, 1, 0, 0.313048, 0, 0.949737, 9.1266, 0.999998, -8.66353)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2157,7 +2128,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box21/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box22" type="MeshInstance3D" parent="NavReg" index="153"]
+[node name="Box22" type="MeshInstance3D" parent="NavReg" index="112"]
 transform = Transform3D(0.587588, 0, 0.80916, 0, 1, 0, -0.80916, 0, 0.587588, 6.77315, 0.999998, 3.62196)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2168,7 +2139,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box22/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box19" type="MeshInstance3D" parent="NavReg" index="154"]
+[node name="Box19" type="MeshInstance3D" parent="NavReg" index="113"]
 transform = Transform3D(0.794351, 0, 0.607458, 0, 1, 0, -0.607458, 0, 0.794351, 3.11447, 0.999998, -4.25726)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2180,7 +2151,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box19/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box20" type="MeshInstance3D" parent="NavReg" index="155"]
+[node name="Box20" type="MeshInstance3D" parent="NavReg" index="114"]
 transform = Transform3D(0.403849, 0, 0.914826, 0, 1, 0, -0.914826, 0, 0.403849, 0.946978, 0.999998, -5.41669)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2192,7 +2163,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box20/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box12" type="MeshInstance3D" parent="NavReg" index="156"]
+[node name="Box12" type="MeshInstance3D" parent="NavReg" index="115"]
 transform = Transform3D(0.932444, 0, 0.361315, 0, 1, 0, -0.361315, 0, 0.932444, -2.12185, 3, -7.54104)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2204,7 +2175,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box12/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box23" type="MeshInstance3D" parent="NavReg" index="157"]
+[node name="Box23" type="MeshInstance3D" parent="NavReg" index="116"]
 transform = Transform3D(0.511369, 0, 0.859362, 0, 1, 0, -0.859362, 0, 0.511369, 0.00233603, 3, -5.91286)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2216,7 +2187,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box23/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box24" type="MeshInstance3D" parent="NavReg" index="158"]
+[node name="Box24" type="MeshInstance3D" parent="NavReg" index="117"]
 transform = Transform3D(0.511369, 0, 0.859362, 0, 1, 0, -0.859362, 0, 0.511369, 4.24702, 3, -4.35837)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2228,7 +2199,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box24/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box27" type="MeshInstance3D" parent="NavReg" index="159"]
+[node name="Box27" type="MeshInstance3D" parent="NavReg" index="118"]
 transform = Transform3D(0.511369, 0, 0.859362, 0, 1, 0, -0.859362, 0, 0.511369, 8.00626, 3, -9.07504)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2240,7 +2211,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box27/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box25" type="MeshInstance3D" parent="NavReg" index="160"]
+[node name="Box25" type="MeshInstance3D" parent="NavReg" index="119"]
 transform = Transform3D(0.242397, 0, 0.970177, 0, 1, 0, -0.970177, 0, 0.242397, 6.30568, 3, -3.39069)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2252,8 +2223,8 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box25/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box13" type="MeshInstance3D" parent="NavReg" index="161"]
-transform = Transform3D(-0.913765, 0, 0.406242, 0, 1, 0, -0.406242, 0, -0.913765, -3.65389, 0.999999, -11.1048)
+[node name="Box13" type="MeshInstance3D" parent="NavReg" index="120"]
+transform = Transform3D(-0.76419, 0, 0.644991, 0, 1, 0, -0.644991, 0, -0.76419, -3.51077, 0.999999, -10.9156)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
 metadata/_edit_group_ = true
@@ -2264,7 +2235,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box13/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box42" type="MeshInstance3D" parent="NavReg" index="162"]
+[node name="Box42" type="MeshInstance3D" parent="NavReg" index="121"]
 transform = Transform3D(-0.995948, 0, 0.0899197, 0, 1, 0, -0.0899197, 0, -0.995948, -1.31128, 0.999999, -15.3881)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2276,7 +2247,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box42/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box43" type="MeshInstance3D" parent="NavReg" index="163"]
+[node name="Box43" type="MeshInstance3D" parent="NavReg" index="122"]
 transform = Transform3D(-0.995948, 0, 0.0899197, 0, 1, 0, -0.0899197, 0, -0.995948, 1.3212, 1, -19.6612)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2288,7 +2259,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box43/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box44" type="MeshInstance3D" parent="NavReg" index="164"]
+[node name="Box44" type="MeshInstance3D" parent="NavReg" index="123"]
 transform = Transform3D(-0.995948, 0, 0.0899197, 0, 1, 0, -0.0899197, 0, -0.995948, -11.2239, 1, -23.8684)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2300,7 +2271,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box44/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box45" type="MeshInstance3D" parent="NavReg" index="165"]
+[node name="Box45" type="MeshInstance3D" parent="NavReg" index="124"]
 transform = Transform3D(-0.996024, 0, -0.0890682, 0, 1, 0, 0.0890682, 0, -0.996024, -11.253, 1, -26.2838)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2312,7 +2283,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box45/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box46" type="MeshInstance3D" parent="NavReg" index="166"]
+[node name="Box46" type="MeshInstance3D" parent="NavReg" index="125"]
 transform = Transform3D(-0.996024, 0, -0.0890682, 0, 1, 0, 0.0890682, 0, -0.996024, -8.86672, 1, -23.8102)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2324,7 +2295,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box46/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box47" type="MeshInstance3D" parent="NavReg" index="167"]
+[node name="Box47" type="MeshInstance3D" parent="NavReg" index="126"]
 transform = Transform3D(-0.996024, 0, -0.0890682, 0, 1, 0, 0.0890682, 0, -0.996024, -11.3071, 3, -23.8102)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2336,7 +2307,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box47/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box48" type="MeshInstance3D" parent="NavReg" index="168"]
+[node name="Box48" type="MeshInstance3D" parent="NavReg" index="127"]
 transform = Transform3D(-0.0899197, 0, -0.995948, 0, 1, 0, 0.995948, 0, -0.0899197, 11.2189, 1, -23.882)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2348,7 +2319,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box48/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box49" type="MeshInstance3D" parent="NavReg" index="169"]
+[node name="Box49" type="MeshInstance3D" parent="NavReg" index="128"]
 transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 8.80351, 1, -23.8529)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2360,8 +2331,20 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box49/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box50" type="MeshInstance3D" parent="NavReg" index="170"]
-transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 11.2771, 1, -26.2391)
+[node name="Box78" type="MeshInstance3D" parent="NavReg" index="129"]
+transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 3.70255, 1, -23.6361)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box78" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box78/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box50" type="MeshInstance3D" parent="NavReg" index="130"]
+transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 10.7939, 1, -26.2391)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
 metadata/_edit_group_ = true
@@ -2372,7 +2355,79 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box50/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box52" type="MeshInstance3D" parent="NavReg" index="171"]
+[node name="Box79" type="MeshInstance3D" parent="NavReg" index="131"]
+transform = Transform3D(-0.0366262, 0, -0.999328, 0, 1, 0, 0.999328, 0, -0.0366262, 11.277, 3, -26.239)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box79" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box79/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box80" type="MeshInstance3D" parent="NavReg" index="132"]
+transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 10.7939, 1, -28.4752)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box80" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box80/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box81" type="MeshInstance3D" parent="NavReg" index="133"]
+transform = Transform3D(-0.0366262, 0, -0.999328, 0, 1, 0, 0.999328, 0, -0.0366262, 11.4155, 3, -28.4751)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box81" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box81/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box84" type="MeshInstance3D" parent="NavReg" index="134"]
+transform = Transform3D(-0.0366262, 0, -0.999328, 0, 1, 0, 0.999328, 0, -0.0366262, 11.415, 5, -30.0372)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box84" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box84/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box82" type="MeshInstance3D" parent="NavReg" index="135"]
+transform = Transform3D(0.979141, 0, -0.20318, 0, 1, 0, 0.20318, 0, 0.979141, 10.7445, 1, -30.8189)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box82" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box82/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box83" type="MeshInstance3D" parent="NavReg" index="136"]
+transform = Transform3D(0.945904, 0, -0.324446, 0, 1, 0, 0.324446, 0, 0.945904, 10.7847, 3, -30.9513)
+mesh = SubResource("BoxMesh_beyri")
+surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavReg/Box83" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box83/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_l6em7")
+
+[node name="Box52" type="MeshInstance3D" parent="NavReg" index="137"]
 transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 11.2771, 1, -34.8747)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2384,7 +2439,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box52/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box53" type="MeshInstance3D" parent="NavReg" index="172"]
+[node name="Box53" type="MeshInstance3D" parent="NavReg" index="138"]
 transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 6.12211, 1, -34.8747)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2396,7 +2451,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box53/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box56" type="MeshInstance3D" parent="NavReg" index="173"]
+[node name="Box56" type="MeshInstance3D" parent="NavReg" index="139"]
 transform = Transform3D(-0.619326, 0, -0.785133, 0, 1, 0, 0.785133, 0, -0.619326, -4.86857, 1, -38.7076)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2408,7 +2463,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box56/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box57" type="MeshInstance3D" parent="NavReg" index="174"]
+[node name="Box57" type="MeshInstance3D" parent="NavReg" index="140"]
 transform = Transform3D(-0.619326, 0, -0.785133, 0, 1, 0, 0.785133, 0, -0.619326, -10.8257, 1, -45.9577)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2420,7 +2475,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box57/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box58" type="MeshInstance3D" parent="NavReg" index="175"]
+[node name="Box58" type="MeshInstance3D" parent="NavReg" index="141"]
 transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, -11.3799, 1, -43.3255)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2432,7 +2487,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box58/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box59" type="MeshInstance3D" parent="NavReg" index="176"]
+[node name="Box59" type="MeshInstance3D" parent="NavReg" index="142"]
 transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, -11.426, 3, -45.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2444,7 +2499,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box59/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box61" type="MeshInstance3D" parent="NavReg" index="177"]
+[node name="Box61" type="MeshInstance3D" parent="NavReg" index="143"]
 transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 30.597, 6, -35.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2456,7 +2511,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box61/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box75" type="MeshInstance3D" parent="NavReg" index="178"]
+[node name="Box75" type="MeshInstance3D" parent="NavReg" index="144"]
 transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 23.5578, 6, -28.5667)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2468,7 +2523,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box75/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box76" type="MeshInstance3D" parent="NavReg" index="179"]
+[node name="Box76" type="MeshInstance3D" parent="NavReg" index="145"]
 transform = Transform3D(-0.0262293, 0, -0.999655, 0, 1, 0, 0.999655, 0, -0.0262293, 26.4473, 6, -28.5667)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2480,7 +2535,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box76/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box77" type="MeshInstance3D" parent="NavReg" index="180"]
+[node name="Box77" type="MeshInstance3D" parent="NavReg" index="146"]
 transform = Transform3D(-0.0262293, 0, -0.999655, 0, 1, 0, 0.999655, 0, -0.0262293, 26.4473, 6, -41.4214)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2492,7 +2547,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box77/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box62" type="MeshInstance3D" parent="NavReg" index="181"]
+[node name="Box62" type="MeshInstance3D" parent="NavReg" index="147"]
 transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 35.074, 6, -35.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2504,7 +2559,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box62/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box63" type="MeshInstance3D" parent="NavReg" index="182"]
+[node name="Box63" type="MeshInstance3D" parent="NavReg" index="148"]
 transform = Transform3D(-0.0627382, 0, -0.998029, 0, 1, 0, 0.998029, 0, -0.0627382, 37.2621, 6, -35.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2516,7 +2571,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box63/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box64" type="MeshInstance3D" parent="NavReg" index="183"]
+[node name="Box64" type="MeshInstance3D" parent="NavReg" index="149"]
 transform = Transform3D(0.0500002, 0, -0.998748, 0, 1, 0, 0.998748, 0, 0.0500002, 39.4219, 6, -35.6203)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2528,7 +2583,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box64/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box70" type="MeshInstance3D" parent="NavReg" index="184"]
+[node name="Box70" type="MeshInstance3D" parent="NavReg" index="150"]
 transform = Transform3D(-0.0310619, 0, -0.999517, 0, 1, 0, 0.999517, 0, -0.0310619, 40.4219, 8, -35.6203)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2540,7 +2595,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box70/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box71" type="MeshInstance3D" parent="NavReg" index="185"]
+[node name="Box71" type="MeshInstance3D" parent="NavReg" index="151"]
 transform = Transform3D(0.0500002, 0, -0.998748, 0, 1, 0, 0.998748, 0, 0.0500002, 38.1719, 8, -35.6203)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2552,7 +2607,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box71/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box72" type="MeshInstance3D" parent="NavReg" index="186"]
+[node name="Box72" type="MeshInstance3D" parent="NavReg" index="152"]
 transform = Transform3D(0.0500002, 0, -0.998748, 0, 1, 0, 0.998748, 0, 0.0500002, 47.6682, 8, -35.1303)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2564,7 +2619,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box72/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box73" type="MeshInstance3D" parent="NavReg" index="187"]
+[node name="Box73" type="MeshInstance3D" parent="NavReg" index="153"]
 transform = Transform3D(-0.178081, 0, -0.984015, 0, 1, 0, 0.984015, 0, -0.178081, 54.5821, 8, -34.8269)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2576,7 +2631,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box73/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box74" type="MeshInstance3D" parent="NavReg" index="188"]
+[node name="Box74" type="MeshInstance3D" parent="NavReg" index="154"]
 transform = Transform3D(0.174473, 0, -0.984661, 0, 1, 0, 0.984661, 0, 0.174473, 50.5701, 8, -35.6203)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2588,7 +2643,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box74/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box65" type="MeshInstance3D" parent="NavReg" index="189"]
+[node name="Box65" type="MeshInstance3D" parent="NavReg" index="155"]
 transform = Transform3D(-0.136718, 0, -0.990609, 0, 1, 0, 0.990609, 0, -0.136718, 41.5818, 6, -34.6003)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2600,7 +2655,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box65/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box66" type="MeshInstance3D" parent="NavReg" index="190"]
+[node name="Box66" type="MeshInstance3D" parent="NavReg" index="156"]
 transform = Transform3D(-0.136718, 0, -0.990609, 0, 1, 0, 0.990609, 0, -0.136718, 46.5614, 6, -35.5003)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2612,7 +2667,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box66/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box67" type="MeshInstance3D" parent="NavReg" index="191"]
+[node name="Box67" type="MeshInstance3D" parent="NavReg" index="157"]
 transform = Transform3D(0.0395563, 0, -0.999217, 0, 1, 0, 0.999217, 0, 0.0395563, 48.6612, 6, -34.2404)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2624,7 +2679,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box67/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box68" type="MeshInstance3D" parent="NavReg" index="192"]
+[node name="Box68" type="MeshInstance3D" parent="NavReg" index="158"]
 transform = Transform3D(0.0395563, 0, -0.999217, 0, 1, 0, 0.999217, 0, 0.0395563, 50.731, 6, -35.4103)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2636,7 +2691,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box68/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box69" type="MeshInstance3D" parent="NavReg" index="193"]
+[node name="Box69" type="MeshInstance3D" parent="NavReg" index="159"]
 transform = Transform3D(-0.203112, 0, -0.979155, 0, 1, 0, 0.979155, 0, -0.203112, 54.6281, 6, -34.8328)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2648,7 +2703,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box69/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box55" type="MeshInstance3D" parent="NavReg" index="194"]
+[node name="Box55" type="MeshInstance3D" parent="NavReg" index="160"]
 transform = Transform3D(0.0240658, 0, -0.99971, 0, 1, 0, 0.99971, 0, 0.0240658, 6.12211, 3, -34.8747)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2660,7 +2715,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box55/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box54" type="MeshInstance3D" parent="NavReg" index="195"]
+[node name="Box54" type="MeshInstance3D" parent="NavReg" index="161"]
 transform = Transform3D(-0.103035, 0, -0.994677, 0, 1, 0, 0.994677, 0, -0.103035, 11.2771, 1, -37.1836)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2672,7 +2727,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box54/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box60" type="MeshInstance3D" parent="NavReg" index="196"]
+[node name="Box60" type="MeshInstance3D" parent="NavReg" index="162"]
 transform = Transform3D(-0.103035, 0, -0.994677, 0, 1, 0, 0.994677, 0, -0.103035, 11.2771, 1, -46.3271)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2684,7 +2739,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box60/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box51" type="MeshInstance3D" parent="NavReg" index="197"]
+[node name="Box51" type="MeshInstance3D" parent="NavReg" index="163"]
 transform = Transform3D(0.0890681, 0, -0.996025, 0, 1, 0, 0.996025, 0, 0.0890681, 11.2771, 3, -23.7988)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2696,7 +2751,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box51/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box14" type="MeshInstance3D" parent="NavReg" index="198"]
+[node name="Box14" type="MeshInstance3D" parent="NavReg" index="164"]
 transform = Transform3D(-0.992654, 0, -0.120986, 0, 1, 0, 0.120986, 0, -0.992654, -6.12591, 0.999999, -11.025)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2708,7 +2763,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box14/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box15" type="MeshInstance3D" parent="NavReg" index="199"]
+[node name="Box15" type="MeshInstance3D" parent="NavReg" index="165"]
 transform = Transform3D(-0.811839, 0, -0.583881, 0, 1, 0, 0.583881, 0, -0.811839, -4.84521, 0.999999, -8.92691)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")
@@ -2720,7 +2775,7 @@ collision_mask = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavReg/Box15/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_l6em7")
 
-[node name="Box16" type="MeshInstance3D" parent="NavReg" index="200"]
+[node name="Box16" type="MeshInstance3D" parent="NavReg" index="166"]
 transform = Transform3D(-0.811839, 0, -0.583881, 0, 1, 0, 0.583881, 0, -0.811839, -4.97994, 3, -10.2169)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_4wtp0")

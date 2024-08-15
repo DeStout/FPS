@@ -222,7 +222,7 @@ func _die() -> void:
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 	
-	queue_free()
+	call_deferred("queue_free")
 
 
 func _unequip_weapon(old_weapon) -> void:
