@@ -1,6 +1,7 @@
 extends CharacterBase
 
 
+@onready var state_machine := $StateMachine
 @onready var nav_agent := $NavAgent
 @export var guard_path : Node3D
 
@@ -8,11 +9,10 @@ var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
 
 @export var starting_weapon : Globals.WEAPONS
-@export_exp_easing() var accuracy = 1.0
-var shoot_speed_mod := 1.0/1.75
+var shoot_speed_mod := 1.0/2.5
 var shoot_speed_variance := Vector2(0.3, 1.0)
 
-const GUARD_SPEED := 2.5
+const GUARD_SPEED := 3.5
 const TURN_SPEED := 6.0
 const AIM_SPEED := 1.0
 var move_speed_mod := 0.8
@@ -20,12 +20,6 @@ var move_speed_mod := 0.8
 
 func _ready() -> void:
 	super()
-	
-	if !guard_path:
-		guard_path = Node3D.new()
-		add_child(guard_path)
-		guard_path.top_level = true
-		guard_path.transform = transform
 	
 	enemies_vis.resize(enemies.size())
 	enemies_vis.fill(false)
@@ -42,6 +36,10 @@ func _ready() -> void:
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
 	#weapons.append(Globals.WEAPONS.SNIPER)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
+	
+	state_machine.set_physics_process(false)
+	await NavigationServer3D.map_changed
+	state_machine.set_physics_process(true)
 
 
 func _process(delta: float) -> void:
@@ -53,40 +51,46 @@ func _physics_process(delta):
 
 
 func guard(delta) -> void:
-	nav_agent.target_position = guard_path.global_position
+	if !guard_path:
+		return
+	if guard_path is Path3D:
+		nav_agent.target_position = guard_path.path_follow.global_position
+	else:
+		nav_agent.target_position = guard_path.global_position
 	var next_path_pos : Vector3 = nav_agent.get_next_path_position()
 	next_path_pos.y = global_position.y
 	
 	var new_transform : Transform3D
-	if nav_agent.is_navigation_finished():
+	if nav_agent.is_navigation_finished() and !(guard_path is Path3D):
 		new_transform = guard_path.transform
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
-		state_machine.travel("IdleFall")
-		return
+		anim_state_machine.travel("IdleFall")
+		if is_on_floor():
+			return
 	else:
 		new_transform = transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
+	
+	
+	#var dist_to = global_position.distance_to(target.global_position)
 
 	# Move
 	var input_dir := Vector2.ZERO
 	if !nav_agent.is_navigation_finished():
 		input_dir = Vector2.UP
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if global_position.distance_to(guard_path.global_position) < speed:
-		speed = global_position.distance_to(guard_path.global_position)
 	if direction:
 		if is_on_floor():
-			state_machine.travel("Run")
+			anim_state_machine.travel("Run")
 		velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 		velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 	else:
-		state_machine.travel("IdleFall")
+		anim_state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	velocity.x *= move_speed_mod
 	velocity.z *= move_speed_mod
 	move_and_slide()
-	speed = SPEED
 
 
 func aim(delta) -> void:
@@ -136,11 +140,11 @@ func move_to_target(delta) -> void:
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		if is_on_floor():
-			state_machine.travel("Run")
+			anim_state_machine.travel("Run")
 		velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 		velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 	else:
-		state_machine.travel("IdleFall")
+		anim_state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	velocity.x *= move_speed_mod
@@ -150,7 +154,7 @@ func move_to_target(delta) -> void:
 
 func target_lost() -> void:
 	target = null
-	state_machine.travel("IdleFall")
+	anim_state_machine.travel("IdleFall")
 
 
 func check_enemies_visible() -> bool:
@@ -208,7 +212,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 									$StateMachine.current_state.active == true:
 		target = shooter
 		$StateMachine.current_state.alert()
-	super(body_seg, damage, shooter)
+	super(body_seg, damage*1.5, shooter)
 
 
 func _die() -> void:

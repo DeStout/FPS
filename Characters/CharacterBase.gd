@@ -16,9 +16,11 @@ const AIR_ACCEL := 10.5
 const AIR_DEACCEL := 1.5
 const SPEED = 5.5
 const ZOOM_SPEED = 4.75
+const LADDER_SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
+var on_ladder := false
 var accel := ACCEL
 var deaccel := DEACCEL
 var speed = SPEED
@@ -66,7 +68,7 @@ var t_recoil := 0.0
 
 #Animation
 @onready var anim_tree = $Puppet/AnimationTree
-@onready var state_machine = $Puppet/AnimationTree["parameters/playback"]
+@onready var anim_state_machine = $Puppet/AnimationTree["parameters/playback"]
 
 
 func _ready() -> void:
@@ -84,13 +86,22 @@ func _process(delta) -> void:
 
 
 func _physics_process(delta) -> void:
-	if !is_on_floor():
+	if on_ladder:
+		accel = ACCEL
+		deaccel = DEACCEL
+		speed = LADDER_SPEED
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(anim_tree, \
+			"parameters/IdleFall/LowerIdleFall/blend_position", -1, 0.05)
+	elif !is_on_floor():
 		accel = AIR_ACCEL
 		deaccel = AIR_DEACCEL
+		speed = SPEED
 		velocity.y -= gravity * delta
 		
 		if was_on_floor:
-			state_machine.travel("IdleFall")
+			anim_state_machine.travel("IdleFall")
 			var tween = get_tree().create_tween()
 			tween.tween_property(anim_tree, \
 				"parameters/IdleFall/LowerIdleFall/blend_position", 1, 0.05)
@@ -98,6 +109,7 @@ func _physics_process(delta) -> void:
 	elif is_on_floor() and !was_on_floor:
 		accel = ACCEL
 		deaccel = DEACCEL
+		speed = SPEED
 		
 		was_on_floor = true
 		var tween = get_tree().create_tween()
@@ -116,6 +128,17 @@ func _pull_trigger() -> void:
 		_reload()
 		return
 	_switch_to_next_weapon()
+
+
+func set_on_ladder(is_on_ladder : bool) -> void:
+	on_ladder = is_on_ladder
+	if is_on_ladder:
+		speed = LADDER_SPEED
+		return
+	elif zoomed:
+		speed = ZOOM_SPEED
+		return
+	speed = SPEED
 
 
 func _pull_alt() -> void:
@@ -293,13 +316,11 @@ func _pick_up_health(new_pick_up : Node3D) -> void:
 	match new_pick_up.health_type:
 		Globals.HEALTHS.HEALTH_PACK:
 			if health < MAX_HEALTH:
-				#print(name, " picked up a health pack")
 				health += new_pick_up.health_amount
 				health = min(health, MAX_HEALTH)
 				new_pick_up.picked_up()
 		Globals.HEALTHS.ARMOR:
 			if armor < MAX_ARMOR:
-				#print(name, " picked up body armor")
 				armor += new_pick_up.health_amount
 				armor = min(armor, MAX_ARMOR)
 				new_pick_up.picked_up()
@@ -332,7 +353,6 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 		if new_weapon.stats.weapon_type > weapon_held.stats.weapon_type:
 			_switch_weapon(new_weapon)
 		if new_pick_up is PickUp:
-			#print(name, " picked up ", Globals.WEAPON_NAMES[new_pick_up.weapon_type])
 			new_pick_up.picked_up()
 		return new_weapon
 	else:
@@ -346,8 +366,6 @@ func _pick_up_ammo(new_pick_up : Node3D) -> void:
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
 		if weapon_for.can_pick_up_ammo():
 			weapon_for.add_ammo(weapon_held.get_mag_size())
-			#print(name, " picked up ammo for the ", 
-									#Globals.WEAPON_NAMES[new_pick_up.weapon_type])
 			new_pick_up.picked_up()
 
 

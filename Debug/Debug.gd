@@ -48,7 +48,8 @@ func _process(_delta) -> void:
 # Emitted from Globals.start_match()
 func game_started(new_level) -> void:
 	level = new_level
-	players_container = level.get_node("Players")
+	#players_container = level.get_node("Players")
+	players_container = player.get_parent()
 	player = players_container.player
 
 func game_ended() -> void:
@@ -63,23 +64,25 @@ func _swap_cameras() -> void:
 	cam_swap = !cam_swap
 	if cam_swap:
 		player_pos = player.transform
+		if !players_container:
+			players_container = player.get_parent()
 		players_container.remove_child(player)
-		for bot in players_container.bots:
-			bot.character_killed(player)
+		#for bot in players_container.bots:
+			#bot.character_killed(player)
 		
 		if !debug_camera:
 			debug_camera = debug_camera_.instantiate()
 			debug_camera.transform = player_pos
-			players_container.add_child(debug_camera)
+			add_child(debug_camera)
 			debug_camera.global_position.y += 1.5
 		else:
-			players_container.add_child(debug_camera)
+			add_child(debug_camera)
 	else:
-		players_container.remove_child(debug_camera)
+		remove_child(debug_camera)
 		players_container.add_child(player)
 		player.transform = player_pos
-		for bot in players_container.bots:
-			bot.character_spawned(player, true)
+		#for bot in players_container.bots:
+			#bot.character_spawned(player, true)
 
 
 func _invincible() -> void:

@@ -74,11 +74,11 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		if is_on_floor():
-			state_machine.travel("Run")
+			anim_state_machine.travel("Run")
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, accel * delta)
 		velocity.z = move_toward(velocity.z, direction.z * SPEED, accel * delta)
 	else:
-		state_machine.travel("IdleFall")
+		anim_state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	velocity.x *= move_speed_mod
