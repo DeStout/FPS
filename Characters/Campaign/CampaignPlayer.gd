@@ -271,7 +271,7 @@ func _fade_dmg(delta) -> void:
 
 
 func _die() -> void:
-	super()
+	#super()
 	get_tree().reload_current_scene()
 
 

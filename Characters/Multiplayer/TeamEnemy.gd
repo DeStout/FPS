@@ -60,7 +60,7 @@ func _physics_process(delta):
 		_new_rand_nav_point()
 	
 	var back_up = target and -basis.z.dot(next_path_pos - global_position) <= 0
-	if next_path_pos and transform.origin != next_path_pos:
+	if next_path_pos and !transform.origin.is_equal_approx(next_path_pos):
 		var new_transform : Transform3D
 		if back_up:
 			input_dir = Vector2.DOWN

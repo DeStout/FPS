@@ -60,3 +60,10 @@ func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> vo
 	var new_pick_up = weapon_pick_up_.instantiate()
 	$Pickups.add_child(new_pick_up)
 	new_pick_up.set_up_drop(dropped_position, weapon_info)
+
+
+func character_out_of_bounds(body : Node3D) -> void:
+	if body == player:
+		get_tree().reload_current_scene()
+		return
+	body.call_deferred("queue_free")

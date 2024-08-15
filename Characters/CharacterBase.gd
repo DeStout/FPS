@@ -17,13 +17,14 @@ const AIR_DEACCEL := 1.5
 const SPEED = 5.5
 const ZOOM_SPEED = 4.75
 const LADDER_SPEED = 4.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
 var on_ladder := false
 var accel := ACCEL
 var deaccel := DEACCEL
 var speed = SPEED
+var step_height := 0.0
 
 # Health
 const MAX_HEALTH := 100
@@ -86,6 +87,9 @@ func _process(delta) -> void:
 
 
 func _physics_process(delta) -> void:
+	step_height = 0.0
+	if is_on_wall() and $StepCast.is_colliding():
+		step_height = to_local($StepCast.get_collision_point()).y
 	if on_ladder:
 		accel = ACCEL
 		deaccel = DEACCEL
