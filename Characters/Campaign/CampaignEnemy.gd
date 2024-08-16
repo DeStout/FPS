@@ -95,7 +95,7 @@ func guard(delta) -> void:
 
 func aim(delta) -> void:
 	if target and enemies_vis[enemies.find(target)]:
-		var target_pos = target.global_position + Vector3(0, 1.5, 0)
+		var target_pos = target.global_position + Vector3(0, 1.2, 0)
 		var new_trans : Transform3D = $AimHelper.global_transform.looking_at(target_pos)
 		$AimHelper.global_transform = $AimHelper.global_transform.interpolate_with \
 													(new_trans, AIM_SPEED * delta)

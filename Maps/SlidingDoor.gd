@@ -1,22 +1,23 @@
 class_name Door
-extends MeshInstance3D
+extends Node3D
 
 
 @onready var starting_pos := global_position
-@export var closed := true
+@export var open_on_start := false
 @export var open_dist := 2.4
 @export var open_pos_z := true
 @export var move_time := 2.5
 @export var locked := false
 @export var auto_close := true
 @export var open_time := 10.0
+var closed := true
 var moving := false
 
 
 func _ready() -> void:
-	$UseArea.global_position = global_position
-	if !closed:
-		_activate()
+	if open_on_start:
+		position += basis.z * (open_dist * (int(open_pos_z) * 2 - 1))
+		closed = false
 
 
 func _input(event: InputEvent) -> void:
@@ -29,15 +30,15 @@ func _input(event: InputEvent) -> void:
 func _activate() -> void:
 	$CloseTimer.stop()
 	
-	var tween = create_tween()
+	var tween = $Door.create_tween()
 	moving = true
 	$MoveSound.play(0.0)
 	if closed:
-		tween.tween_property(self, "position:z", position.z + \
-							(open_dist * (int(open_pos_z) * 2 - 1)), move_time)
+		tween.tween_property(self, "position", position + (basis.z * \
+							(open_dist * (int(open_pos_z) * 2 - 1))), move_time)
 	else:
-		tween.tween_property(self, "position:z", position.z - \
-							(open_dist * (int(open_pos_z) * 2 - 1)), move_time)
+		tween.tween_property(self, "position", position - (basis.z * \
+							(open_dist * (int(open_pos_z) * 2 - 1))), move_time)
 	await tween.finished
 	
 	moving = false

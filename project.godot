@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MannequinShooter"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Maps/Campaign/TestCampaign.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 run/size/window_height_override=608
@@ -227,7 +227,7 @@ behavior_tree/user_task_dir_1="res://Characters/AI/Tasks"
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
-3d/default_gravity=15.0
+3d/default_gravity=25.0
 
 [rendering]
 

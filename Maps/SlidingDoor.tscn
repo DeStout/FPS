@@ -18,10 +18,12 @@ data = PackedVector3Array(-0.05, 1.75, 1.25, 0.05, 1.75, 1.25, -0.05, -1.75, 1.2
 [sub_resource type="SphereShape3D" id="SphereShape3D_eb2os"]
 radius = 2.5
 
-[node name="Door" type="MeshInstance3D"]
+[node name="Door" type="Node3D"]
+script = ExtResource("1_70yfs")
+
+[node name="Door" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_mve0h")
 surface_material_override/0 = SubResource("StandardMaterial3D_u77tx")
-script = ExtResource("1_70yfs")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -31,7 +33,7 @@ collision_mask = 2
 shape = SubResource("ConcavePolygonShape3D_8lp7g")
 
 [node name="UseArea" type="Area3D" parent="."]
-top_level = true
+visible = false
 collision_layer = 64
 collision_mask = 2
 input_ray_pickable = false
