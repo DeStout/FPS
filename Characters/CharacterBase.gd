@@ -172,8 +172,13 @@ func _shoot() -> void:
 						%ShootCast.get_collider().body_seg_shot(
 												weapon_held.get_body_dmg(), self)
 					elif current_level != null:
-						current_level.spawn_bullet_hole(%ShootCast.get_collision_point(),
-											%ShootCast.get_collision_normal())
+						if %ShootCast.get_collider() is Door:
+							pass
+						else:
+							current_level.spawn_bullet_hole(\
+											%ShootCast.get_collision_point(), \
+											%ShootCast.get_collision_normal(), \
+											%ShootCast.get_collider())
 				else:
 					current_level.spawn_shot_trail(nozzle.global_position, \
 							%ShootCast.to_global(%ShootCast.target_position))

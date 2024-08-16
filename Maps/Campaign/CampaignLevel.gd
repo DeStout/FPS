@@ -25,9 +25,10 @@ func spawn_shot_trail(nozzle_point, collision_point) -> void:
 	shot_trail.align_and_scale(nozzle_point, collision_point)
 
 
-func spawn_bullet_hole(pos : Vector3, normal : Vector3) -> void:
+func spawn_bullet_hole(pos : Vector3, normal : Vector3, \
+												parent : Node3D = $FX) -> void:
 	var bullet_hole := bullet_hole_.instantiate()
-	$FX.add_child(bullet_hole)
+	parent.add_child(bullet_hole)
 	bullet_hole.global_position = pos
 	bullet_hole.project_to(normal)
 
