@@ -2,6 +2,8 @@ class_name Door
 extends Node3D
 
 
+signal finished
+
 @export var open_on_start := false
 @export var open_dist := 2.4
 @export var open_pos_z := true
@@ -49,6 +51,7 @@ func activate() -> void:
 	
 	tween.tween_property($Door, "global_position", tween_to, time_to)
 	await tween.finished
+	finished.emit()
 	
 	$MoveSound.stop()
 	$FinishSound.play()

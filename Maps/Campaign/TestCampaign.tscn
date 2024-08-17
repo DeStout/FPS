@@ -4099,7 +4099,7 @@ shape = SubResource("ConcavePolygonShape3D_5aoyt")
 
 [node name="Player" parent="Players" index="0" node_paths=PackedStringArray("current_level", "enemies") instance=ExtResource("4_wkxqv")]
 unique_name_in_owner = true
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 67.9292, 5.03985, -35.0669)
+transform = Transform3D(-4.37112e-08, 0, -1, 0, 1, 0, 1, 0, -4.37112e-08, 67.9292, 5.03985, -35.0669)
 current_level = NodePath("../..")
 enemies = [NodePath("../CampaignEnemy1"), NodePath("../CampaignEnemy2"), NodePath("../CampaignEnemy3"), NodePath("../CampaignEnemy4"), NodePath("../CampaignEnemy5")]
 
@@ -4295,9 +4295,11 @@ locked = true
 
 [node name="Door5" parent="FX" index="4" instance=ExtResource("5_8nld0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 73, 6.75, -45.25)
+open_on_start = true
 
 [node name="Door6" parent="FX" index="5" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 73, 6.75, -24.75)
+open_on_start = true
 open_pos_z = false
 
 [node name="Ladder1" type="Area3D" parent="FX" index="6"]
@@ -4419,9 +4421,10 @@ stream = ExtResource("13_ksbh3")
 max_distance = 35.0
 bus = &"SFX"
 
-[node name="EnemySpawner1" type="Node3D" parent="FX" index="10" node_paths=PackedStringArray("players")]
+[node name="EnemySpawner1" type="Node3D" parent="FX" index="10" node_paths=PackedStringArray("door", "players")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 5, -21.5)
 script = ExtResource("14_3svvp")
+door = NodePath("../Door6")
 players = NodePath("../../Players")
 
 [node name="Area3D" type="Area3D" parent="FX/EnemySpawner1" index="0"]
@@ -4434,9 +4437,10 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_d6x3r")
 
-[node name="EnemySpawner2" type="Node3D" parent="FX" index="11" node_paths=PackedStringArray("players")]
+[node name="EnemySpawner2" type="Node3D" parent="FX" index="11" node_paths=PackedStringArray("door", "players")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 73, 5, -48.5)
 script = ExtResource("14_3svvp")
+door = NodePath("../Door5")
 players = NodePath("../../Players")
 
 [node name="Area3D" type="Area3D" parent="FX/EnemySpawner2" index="0"]
