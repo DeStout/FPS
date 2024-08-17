@@ -78,7 +78,6 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
-	_apply_recoil(delta)
 	if weapon_held:
 		if trigger_pulled:
 			_shoot()
@@ -87,9 +86,7 @@ func _process(delta) -> void:
 
 
 func _physics_process(delta) -> void:
-	step_height = 0.0
-	if is_on_wall() and $StepCast.is_colliding():
-		step_height = to_local($StepCast.get_collision_point()).y
+	_apply_recoil(delta)
 	if on_ladder:
 		accel = ACCEL
 		deaccel = DEACCEL

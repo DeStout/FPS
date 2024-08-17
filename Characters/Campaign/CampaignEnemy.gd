@@ -7,6 +7,7 @@ extends CharacterBase
 
 var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
+var alert := false
 
 @export var starting_weapon : Globals.WEAPONS
 var shoot_speed_mod := 1.0/2.5
@@ -26,16 +27,6 @@ func _ready() -> void:
 	
 	weapons.append(starting_weapon)
 	_switch_weapon(_get_weapon(starting_weapon))
-	#weapons.append(Globals.WEAPONS.PISTOL)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
-	#weapons.append(Globals.WEAPONS.SMG)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
-	#weapons.append(Globals.WEAPONS.RIFLE)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
-	#weapons.append(Globals.WEAPONS.SHOTGUN)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
-	#weapons.append(Globals.WEAPONS.SNIPER)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
 	
 	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
@@ -70,9 +61,6 @@ func guard(delta) -> void:
 	else:
 		new_transform = transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
-	
-	
-	#var dist_to = global_position.distance_to(target.global_position)
 
 	# Move
 	var input_dir := Vector2.ZERO
@@ -113,7 +101,8 @@ func move_to_target(delta) -> void:
 		trigger_pulled = true
 	
 	# Start timer to switch to GuardState if no target visible
-	if !is_enemy_visible(target) and $TargetTimer.is_stopped():
+	if !is_enemy_visible(target) and $TargetTimer.is_stopped() and !alert:
+		print(alert)
 		$TargetTimer.start(5.0)
 	
 	# Set the desired destination
@@ -206,10 +195,10 @@ func _jump() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	if $StateMachine.current_state.name == "GuardState" and \
-									$StateMachine.current_state.active == true:
+	if state_machine.current_state.name == "GuardState" and \
+									state_machine.current_state.active == true:
 		target = shooter
-		$StateMachine.current_state.alert()
+		state_machine.current_state.alert()
 	super(body_seg, damage*1.5, shooter)
 
 

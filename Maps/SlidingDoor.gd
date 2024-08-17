@@ -12,6 +12,7 @@ extends Node3D
 
 @onready var starting_pos := global_position
 var closed := true
+var moving := false
 var tween : Tween = null
 
 
@@ -22,20 +23,22 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Use"):
-		if $UseArea.overlaps_body(%Player):
-			if !locked:
-				activate()
+	if $UseArea.overlaps_body(%Player) and Input.is_action_just_pressed("Use"):
+		if !locked:
+			activate()
+			return
+		print("Door Locked")
 
 
 func activate() -> void:
 	if tween:
 		tween.kill()
 	tween = $Door.create_tween()
-		
+	
 	$CloseTimer.stop()
 	$MoveSound.play(0.0)
 	closed = !closed
+	moving = true
 	
 	var open_pos = ($Door.global_basis.z * (open_dist * (int(open_pos_z) * 2 - 1)))
 	var tween_to = starting_pos + open_pos
@@ -49,6 +52,17 @@ func activate() -> void:
 	
 	$MoveSound.stop()
 	$FinishSound.play()
-	
+	moving = false
 	if !closed and auto_close:
 		$CloseTimer.start(open_time)
+
+
+func open(open) -> void:
+	if closed == open:
+		activate()
+
+
+func set_auto_close(new_auto) -> void:
+	auto_close = new_auto
+	if !auto_close:
+		$CloseTimer.stop()

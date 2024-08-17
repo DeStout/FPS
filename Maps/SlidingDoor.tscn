@@ -48,6 +48,7 @@ volume_db = 10.0
 unit_size = 1.0
 max_db = 2.0
 pitch_scale = 2.0
+max_distance = 10.0
 bus = &"SFX"
 
 [node name="FinishSound" type="AudioStreamPlayer3D" parent="."]
@@ -56,6 +57,7 @@ volume_db = 10.0
 unit_size = 1.0
 max_db = 2.0
 pitch_scale = 0.7
+max_distance = 15.0
 bus = &"SFX"
 
 [node name="CloseTimer" type="Timer" parent="."]
