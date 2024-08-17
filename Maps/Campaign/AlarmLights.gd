@@ -2,6 +2,7 @@
 extends Node3D
 
 
+var alarm_time := 10.0
 var SPIN_SPEED := 5.0
 
 
@@ -13,8 +14,17 @@ func _physics_process(delta: float) -> void:
 	rotate_y(5.0 * delta)
 
 
-func activate() -> void:
-	$Light1.visible = true
-	$Light2.visible = true
-	$Siren.play()
-	set_physics_process(true)
+func set_activated(activated) -> void:
+	$Light1.visible = activated
+	$Light2.visible = activated
+	set_physics_process(activated)
+	if activated:
+		$Siren.play()
+		$SirenTimer.start(alarm_time)
+	else:
+		$Siren.stop()
+		$SirenTimer.stop()
+
+
+func alarm_timeout() -> void:
+	$Siren.stop()

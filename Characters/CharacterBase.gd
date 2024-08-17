@@ -2,8 +2,7 @@ class_name CharacterBase
 extends CharacterBody3D
 
 
-#signal died
-#signal add_score
+signal defeated
 
 @export var current_level : Node3D
 @export var enemies : Array[CharacterBase] = []
@@ -289,6 +288,8 @@ func is_enemy(character):
 
 
 func _die() -> void:
+	defeated.emit(self)
+	
 	var body_color = $Puppet/Skeleton3D/Body.get_surface_override_material(0).albedo_color
 	current_level.spawn_rag_doll(skeleton, transform, \
 						last_shot_by, last_body_seg_shot.name, body_color)

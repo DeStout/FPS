@@ -102,7 +102,6 @@ func move_to_target(delta) -> void:
 	
 	# Start timer to switch to GuardState if no target visible
 	if !is_enemy_visible(target) and $TargetTimer.is_stopped() and !alert:
-		print(alert)
 		$TargetTimer.start(5.0)
 	
 	# Set the desired destination
