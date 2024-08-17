@@ -13,8 +13,7 @@ func _ready() -> void:
 	add_child(event)
 	event.player = player
 	event.resources = resources
-	print(event.resources)
 
 
 func trigger() -> void:
-	event_script.trigger()
+	event.trigger()

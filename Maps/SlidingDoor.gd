@@ -2,7 +2,6 @@ class_name Door
 extends Node3D
 
 
-@onready var starting_pos := global_position
 @export var open_on_start := false
 @export var open_dist := 2.4
 @export var open_pos_z := true
@@ -10,39 +9,44 @@ extends Node3D
 @export var locked := false
 @export var auto_close := true
 @export var open_time := 10.0
+
+@onready var starting_pos := global_position
 var closed := true
-var moving := false
+var tween : Tween = null
 
 
 func _ready() -> void:
 	if open_on_start:
-		position += basis.z * (open_dist * (int(open_pos_z) * 2 - 1))
+		$Door.position += $Door.basis.z * (open_dist * (int(open_pos_z) * 2 - 1))
 		closed = false
 
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use"):
 		if $UseArea.overlaps_body(%Player):
-			if !moving and !locked:
-				_activate()
+			if !locked:
+				activate()
 
 
-func _activate() -> void:
+func activate() -> void:
+	if tween:
+		tween.kill()
+	tween = $Door.create_tween()
+		
 	$CloseTimer.stop()
-	
-	var tween = $Door.create_tween()
-	moving = true
 	$MoveSound.play(0.0)
+	closed = !closed
+	
+	var open_pos = ($Door.global_basis.z * (open_dist * (int(open_pos_z) * 2 - 1)))
+	var tween_to = starting_pos + open_pos
 	if closed:
-		tween.tween_property(self, "position", position + (basis.z * \
-							(open_dist * (int(open_pos_z) * 2 - 1))), move_time)
-	else:
-		tween.tween_property(self, "position", position - (basis.z * \
-							(open_dist * (int(open_pos_z) * 2 - 1))), move_time)
+		tween_to = starting_pos
+	var move_perc = $Door.global_position.distance_to(tween_to) / open_dist
+	var time_to = move_time * move_perc
+	
+	tween.tween_property($Door, "global_position", tween_to, time_to)
 	await tween.finished
 	
-	moving = false
-	closed = !closed
 	$MoveSound.stop()
 	$FinishSound.play()
 	

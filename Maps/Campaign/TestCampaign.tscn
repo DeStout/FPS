@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=3 uid="uid://bv0rwydo3odmv"]
+[gd_scene load_steps=177 format=3 uid="uid://bv0rwydo3odmv"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_l4ff0"]
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Campaign1_tex_7.png" id="2_4rklu"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ci6uy4jghak2i" path="res://Maps/SlidingDoor.tscn" id="5_8nld0"]
 [ext_resource type="Script" path="res://Maps/Campaign/GuardPath.gd" id="6_sy76j"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="8_ns3r5"]
-[ext_resource type="Script" path="res://Maps/Event.gd" id="10_dmfyx"]
+[ext_resource type="Script" path="res://Maps/UseEvent.gd" id="10_un8kn"]
 [ext_resource type="Script" path="res://Maps/Campaign/EnemyAmbush.gd" id="11_f2ggd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p6ejw"]
@@ -547,11 +547,20 @@ albedo_texture = ExtResource("4_sfoun")
 [sub_resource type="BoxMesh" id="BoxMesh_47m87"]
 size = Vector3(1, 1.5, 1)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wkn8m"]
+data = PackedVector3Array(-0.5, 0.75, 0.5, 0.5, 0.75, 0.5, -0.5, -0.75, 0.5, 0.5, 0.75, 0.5, 0.5, -0.75, 0.5, -0.5, -0.75, 0.5, 0.5, 0.75, -0.5, -0.5, 0.75, -0.5, 0.5, -0.75, -0.5, -0.5, 0.75, -0.5, -0.5, -0.75, -0.5, 0.5, -0.75, -0.5, 0.5, 0.75, 0.5, 0.5, 0.75, -0.5, 0.5, -0.75, 0.5, 0.5, 0.75, -0.5, 0.5, -0.75, -0.5, 0.5, -0.75, 0.5, -0.5, 0.75, -0.5, -0.5, 0.75, 0.5, -0.5, -0.75, -0.5, -0.5, 0.75, 0.5, -0.5, -0.75, 0.5, -0.5, -0.75, -0.5, 0.5, 0.75, 0.5, -0.5, 0.75, 0.5, 0.5, 0.75, -0.5, -0.5, 0.75, 0.5, -0.5, 0.75, -0.5, 0.5, 0.75, -0.5, -0.5, -0.75, 0.5, 0.5, -0.75, 0.5, -0.5, -0.75, -0.5, 0.5, -0.75, 0.5, 0.5, -0.75, -0.5, -0.5, -0.75, -0.5)
+
 [sub_resource type="BoxMesh" id="BoxMesh_j3mah"]
 size = Vector3(0.25, 2.5, 1)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t1ofx"]
+data = PackedVector3Array(-0.125, 1.25, 0.5, 0.125, 1.25, 0.5, -0.125, -1.25, 0.5, 0.125, 1.25, 0.5, 0.125, -1.25, 0.5, -0.125, -1.25, 0.5, 0.125, 1.25, -0.5, -0.125, 1.25, -0.5, 0.125, -1.25, -0.5, -0.125, 1.25, -0.5, -0.125, -1.25, -0.5, 0.125, -1.25, -0.5, 0.125, 1.25, 0.5, 0.125, 1.25, -0.5, 0.125, -1.25, 0.5, 0.125, 1.25, -0.5, 0.125, -1.25, -0.5, 0.125, -1.25, 0.5, -0.125, 1.25, -0.5, -0.125, 1.25, 0.5, -0.125, -1.25, -0.5, -0.125, 1.25, 0.5, -0.125, -1.25, 0.5, -0.125, -1.25, -0.5, 0.125, 1.25, 0.5, -0.125, 1.25, 0.5, 0.125, 1.25, -0.5, -0.125, 1.25, 0.5, -0.125, 1.25, -0.5, 0.125, 1.25, -0.5, -0.125, -1.25, 0.5, 0.125, -1.25, 0.5, -0.125, -1.25, -0.5, 0.125, -1.25, 0.5, 0.125, -1.25, -0.5, -0.125, -1.25, -0.5)
+
 [sub_resource type="PrismMesh" id="PrismMesh_ggl0o"]
 left_to_right = 1.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5aoyt"]
+data = PackedVector3Array(0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wvpcf"]
 radius = 3.0
@@ -3513,7 +3522,7 @@ shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Player" parent="Players" index="0" node_paths=PackedStringArray("current_level", "enemies") instance=ExtResource("4_wkxqv")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 67.9292, 5.03985, -35.0669)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 67.9292, 5.03985, -35.0669)
 current_level = NodePath("../..")
 enemies = [NodePath("../CampaignEnemy1"), NodePath("../CampaignEnemy2"), NodePath("../CampaignEnemy3"), NodePath("../CampaignEnemy4"), NodePath("../CampaignEnemy5")]
 
@@ -3633,17 +3642,6 @@ enemies = [NodePath("../Player")]
 transform = Transform3D(-0.999925, 0, 0.0122172, 0, 1, 0, -0.0122172, 0, -0.999925, 46.925, 0.5, -32.9)
 top_level = true
 
-[node name="CampaignEnemy13" parent="Players" index="13" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("4_yerhm")]
-transform = Transform3D(0.0122172, 0, 0.999925, 0, 1, 0, -0.999925, 0, 0.0122172, 76.75, 5, -35)
-guard_path = NodePath("GuardPoint13")
-starting_weapon = 2
-current_level = NodePath("../..")
-enemies = [NodePath("../Player")]
-
-[node name="GuardPoint13" type="Node3D" parent="Players/CampaignEnemy13" index="14"]
-transform = Transform3D(-0.999925, 0, 0.0122172, 0, 1, 0, -0.0122172, 0, -0.999925, 0, 0, 0)
-top_level = true
-
 [node name="GuardPaths" type="Node3D" parent="." index="4"]
 
 [node name="GuardPath1" type="Path3D" parent="GuardPaths" index="0" node_paths=PackedStringArray("follower")]
@@ -3712,6 +3710,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 6.75, -35)
 
 [node name="Door3" parent="FX" index="2" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.75, 6.75, -35)
+open_on_start = true
+open_time = 2.0
 
 [node name="Door4" parent="FX" index="3" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.05, 2.25, -33.125)
@@ -3720,12 +3720,14 @@ locked = true
 
 [node name="Door5" parent="FX" index="4" instance=ExtResource("5_8nld0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 73, 6.75, -45.25)
-auto_close = false
+open_on_start = true
+open_time = 2.0
 
 [node name="Door6" parent="FX" index="5" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 73, 6.75, -24.75)
+open_on_start = true
 open_pos_z = false
-auto_close = false
+open_time = 2.0
 
 [node name="Ladder1" type="Area3D" parent="FX" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -40)
@@ -3755,10 +3757,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_aj1ov")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Ladder2" index="1"]
 shape = SubResource("ConcavePolygonShape3D_h1s7q")
 
-[node name="Terminal" type="Node3D" parent="FX" index="8" node_paths=PackedStringArray("resources")]
+[node name="Terminal" type="Node3D" parent="FX" index="8" node_paths=PackedStringArray("use_area", "player", "resources")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 5, -35)
-script = ExtResource("10_dmfyx")
+script = ExtResource("10_un8kn")
+use_area = NodePath("UseArea")
 event_script = ExtResource("11_f2ggd")
+player = NodePath("../../Players/Player")
 resources = [NodePath("../Door3"), NodePath("../Door5"), NodePath("../Door6")]
 
 [node name="Base" type="MeshInstance3D" parent="FX/Terminal" index="0"]
@@ -3767,11 +3771,23 @@ mesh = SubResource("BoxMesh_47m87")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="FX/Terminal/Base" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Terminal/Base/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_wkn8m")
+
 [node name="Back" type="MeshInstance3D" parent="FX/Terminal" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 1.25, 0)
 mesh = SubResource("BoxMesh_j3mah")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FX/Terminal/Back" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Terminal/Back/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_t1ofx")
 
 [node name="Top" type="MeshInstance3D" parent="FX/Terminal" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2, 0)
@@ -3779,8 +3795,17 @@ mesh = SubResource("PrismMesh_ggl0o")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="FX/Terminal/Top" index="0"]
+collision_mask = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Terminal/Top/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_5aoyt")
+
 [node name="UseArea" type="Area3D" parent="FX/Terminal" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 1.5, 0)
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Terminal/UseArea" index="0"]
 shape = SubResource("SphereShape3D_wvpcf")

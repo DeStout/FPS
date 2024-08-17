@@ -2,8 +2,8 @@ class_name EventScript
 extends Node
 
 
-var player : CharacterBase = null
-var resources := []
+static var player : CharacterBase = null
+static var resources := []
 
 
 func trigger():

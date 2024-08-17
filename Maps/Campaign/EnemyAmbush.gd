@@ -1,5 +1,7 @@
 extends EventScript
 
 
-func _ready() -> void:
-	pass
+func trigger() -> void:
+	for door in resources:
+		door.activate()
+	print("Doors Opened")

@@ -26,10 +26,10 @@ mesh = SubResource("BoxMesh_mve0h")
 surface_material_override/0 = SubResource("StandardMaterial3D_u77tx")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_mask = 2
+[node name="StaticBody3D" type="StaticBody3D" parent="Door"]
+collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8lp7g")
 
 [node name="UseArea" type="Area3D" parent="."]
@@ -61,4 +61,4 @@ bus = &"SFX"
 [node name="CloseTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="CloseTimer" to="." method="_activate"]
+[connection signal="timeout" from="CloseTimer" to="." method="activate"]
