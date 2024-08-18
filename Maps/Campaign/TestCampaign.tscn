@@ -577,7 +577,7 @@ size = Vector3(3, 3.5, 3.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mp0dj"]
 size = Vector3(111.878, 23.3652, 81.6015)
 
-[node name="Level" node_paths=PackedStringArray("player") instance=ExtResource("1_l4ff0")]
+[node name="TestCampaign" node_paths=PackedStringArray("player") instance=ExtResource("1_l4ff0")]
 player = NodePath("Players/Player")
 
 [node name="Env" type="WorldEnvironment" parent="." index="0"]
@@ -2781,203 +2781,203 @@ metadata/_edit_group_ = true
 
 [node name="Stair12" type="MeshInstance3D" parent="NavReg/Stairs" index="0"]
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair13" type="MeshInstance3D" parent="NavReg/Stairs" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0.299999)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair15" type="MeshInstance3D" parent="NavReg/Stairs" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.599998)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair17" type="MeshInstance3D" parent="NavReg/Stairs" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0.899998)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair19" type="MeshInstance3D" parent="NavReg/Stairs" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 1.2)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair20" type="MeshInstance3D" parent="NavReg/Stairs" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 1.5)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair22" type="MeshInstance3D" parent="NavReg/Stairs" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 1.8)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair24" type="MeshInstance3D" parent="NavReg/Stairs" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 2.1)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair29" type="MeshInstance3D" parent="NavReg/Stairs" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 2.4)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair30" type="MeshInstance3D" parent="NavReg/Stairs" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35, 2.7)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair31" type="MeshInstance3D" parent="NavReg/Stairs" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 3)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair33" type="MeshInstance3D" parent="NavReg/Stairs" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.65, 3.3)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair35" type="MeshInstance3D" parent="NavReg/Stairs" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, 3.6)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair39" type="MeshInstance3D" parent="NavReg/Stairs" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95, 3.9)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair40" type="MeshInstance3D" parent="NavReg/Stairs" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1, 4.2)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair42" type="MeshInstance3D" parent="NavReg/Stairs" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25, 4.5)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair44" type="MeshInstance3D" parent="NavReg/Stairs" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 4.8)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair46" type="MeshInstance3D" parent="NavReg/Stairs" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.55, 5.1)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair48" type="MeshInstance3D" parent="NavReg/Stairs" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 5.4)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair49" type="MeshInstance3D" parent="NavReg/Stairs" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.85, 5.7)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair51" type="MeshInstance3D" parent="NavReg/Stairs" index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 6)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair53" type="MeshInstance3D" parent="NavReg/Stairs" index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.15, 6.3)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair57" type="MeshInstance3D" parent="NavReg/Stairs" index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, 6.6)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair58" type="MeshInstance3D" parent="NavReg/Stairs" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45, 6.9)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair60" type="MeshInstance3D" parent="NavReg/Stairs" index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.6, 7.2)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair62" type="MeshInstance3D" parent="NavReg/Stairs" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.75, 7.5)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair64" type="MeshInstance3D" parent="NavReg/Stairs" index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9, 7.8)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair67" type="MeshInstance3D" parent="NavReg/Stairs" index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.05, 8.1)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
 [node name="Stair69" type="MeshInstance3D" parent="NavReg/Stairs" index="28"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 8.4)
 mesh = SubResource("PlaneMesh_sqsni")
-skeleton = NodePath("../../../NavReg")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qdv6q")
 metadata/_edit_group_ = true
 
@@ -4140,7 +4140,6 @@ shape = SubResource("BoxShape3D_l6em7")
 [node name="Wall88" type="MeshInstance3D" parent="NavReg" index="84"]
 transform = Transform3D(1.91068e-15, -4.37116e-08, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, -4.37116e-08, 73, 7.5, -30.25)
 mesh = SubResource("BoxMesh_bchi1")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4152,7 +4151,6 @@ shape = SubResource("ConcavePolygonShape3D_6evx8")
 [node name="Wall89" type="MeshInstance3D" parent="NavReg" index="85"]
 transform = Transform3D(1.91068e-15, -4.37116e-08, 1, -1, 4.37114e-08, 3.82138e-15, -4.37114e-08, -1, -4.37116e-08, 73, 7.5, -39.75)
 mesh = SubResource("BoxMesh_bchi1")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4164,7 +4162,6 @@ shape = SubResource("ConcavePolygonShape3D_yj7jv")
 [node name="Wall71" type="MeshInstance3D" parent="NavReg" index="86"]
 transform = Transform3D(-4.37114e-08, -1, 2.62268e-07, -1, 4.37114e-08, 3.82138e-15, -1.52855e-14, -2.62268e-07, -1, 17.25, 6.75, -36.875)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4176,7 +4173,6 @@ shape = SubResource("ConcavePolygonShape3D_um4rc")
 [node name="Wall75" type="MeshInstance3D" parent="NavReg" index="87"]
 transform = Transform3D(-4.37114e-08, -1, 2.62268e-07, -1, 4.37114e-08, 3.82138e-15, -1.52855e-14, -2.62268e-07, -1, 17.25, 9.25, -35)
 mesh = SubResource("PlaneMesh_apweb")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4188,7 +4184,6 @@ shape = SubResource("ConcavePolygonShape3D_lyyee")
 [node name="Wall76" type="MeshInstance3D" parent="NavReg" index="88"]
 transform = Transform3D(4.37114e-08, 1, -3.49691e-07, -1, 4.37114e-08, 3.82138e-15, 1.91069e-14, 3.49691e-07, 1, 17.75, 9.25, -35)
 mesh = SubResource("PlaneMesh_apweb")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4200,7 +4195,6 @@ shape = SubResource("ConcavePolygonShape3D_lyyee")
 [node name="Wall72" type="MeshInstance3D" parent="NavReg" index="89"]
 transform = Transform3D(-4.37114e-08, -1, 2.62268e-07, -1, 4.37114e-08, 3.82138e-15, -1.52855e-14, -2.62268e-07, -1, 17.25, 6.75, -33.125)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4212,7 +4206,6 @@ shape = SubResource("ConcavePolygonShape3D_1dfkn")
 [node name="Wall73" type="MeshInstance3D" parent="NavReg" index="90"]
 transform = Transform3D(4.37114e-08, 1, -3.49691e-07, -1, 4.37114e-08, 3.82138e-15, 1.91069e-14, 3.49691e-07, 1, 17.75, 6.75, -33.125)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4224,7 +4217,6 @@ shape = SubResource("ConcavePolygonShape3D_0vgdd")
 [node name="Wall74" type="MeshInstance3D" parent="NavReg" index="91"]
 transform = Transform3D(4.37114e-08, 1, -3.49691e-07, -1, 4.37114e-08, 3.82138e-15, 1.91069e-14, 3.49691e-07, 1, 17.75, 6.75, -36.875)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4236,7 +4228,6 @@ shape = SubResource("ConcavePolygonShape3D_kmtgm")
 [node name="Wall80" type="MeshInstance3D" parent="NavReg" index="92"]
 transform = Transform3D(-4.37114e-08, -1, 2.62268e-07, -1, 4.37114e-08, 3.82138e-15, -1.52855e-14, -2.62268e-07, -1, -13, 1.75, -1.875)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4248,7 +4239,6 @@ shape = SubResource("ConcavePolygonShape3D_um4rc")
 [node name="Wall81" type="MeshInstance3D" parent="NavReg" index="93"]
 transform = Transform3D(-4.37114e-08, -1, 2.62268e-07, -1, 4.37114e-08, 3.82138e-15, -1.52855e-14, -2.62268e-07, -1, -13, 4.25, 0)
 mesh = SubResource("PlaneMesh_apweb")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4260,7 +4250,6 @@ shape = SubResource("ConcavePolygonShape3D_lyyee")
 [node name="Wall82" type="MeshInstance3D" parent="NavReg" index="94"]
 transform = Transform3D(4.37114e-08, 1, -3.49691e-07, -1, 4.37114e-08, 3.82138e-15, 1.91069e-14, 3.49691e-07, 1, -12.5, 4.25, 0)
 mesh = SubResource("PlaneMesh_apweb")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4272,7 +4261,6 @@ shape = SubResource("ConcavePolygonShape3D_lyyee")
 [node name="Wall83" type="MeshInstance3D" parent="NavReg" index="95"]
 transform = Transform3D(-4.37114e-08, -1, 2.62268e-07, -1, 4.37114e-08, 3.82138e-15, -1.52855e-14, -2.62268e-07, -1, -13, 1.75, 1.875)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4284,7 +4272,6 @@ shape = SubResource("ConcavePolygonShape3D_1dfkn")
 [node name="Wall84" type="MeshInstance3D" parent="NavReg" index="96"]
 transform = Transform3D(4.37114e-08, 1, -3.49691e-07, -1, 4.37114e-08, 3.82138e-15, 1.91069e-14, 3.49691e-07, 1, -12.5, 1.75, 1.875)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 
@@ -4296,7 +4283,6 @@ shape = SubResource("ConcavePolygonShape3D_0vgdd")
 [node name="Wall85" type="MeshInstance3D" parent="NavReg" index="97"]
 transform = Transform3D(4.37114e-08, 1, -3.49691e-07, -1, 4.37114e-08, 3.82138e-15, 1.91069e-14, 3.49691e-07, 1, -12.5, 1.75, -1.875)
 mesh = SubResource("PlaneMesh_16ohh")
-skeleton = NodePath("../../NavReg")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ox3h")
 metadata/_edit_group_ = true
 

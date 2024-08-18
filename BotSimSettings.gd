@@ -1,5 +1,5 @@
 extends Resource
-class_name MatchSettings
+class_name BotSimSettings
 
 
 var game_mode := 0

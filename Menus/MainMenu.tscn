@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://xqigunpk3hx3"]
+[gd_scene load_steps=8 format=3 uid="uid://xqigunpk3hx3"]
 
 [ext_resource type="Theme" uid="uid://c1t8b0kfqb6ey" path="res://Menus/MenuTheme.tres" id="1_hpr53"]
 [ext_resource type="Script" path="res://Menus/MainMenu.gd" id="1_u2ktr"]
 [ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="2_keuxs"]
-[ext_resource type="Script" path="res://Menus/PlayMenu.gd" id="3_co3mv"]
+[ext_resource type="Script" path="res://Menus/SinglePlayerMenu.gd" id="3_c06co"]
+[ext_resource type="Script" path="res://Menus/BotSimMenu.gd" id="3_co3mv"]
 [ext_resource type="Texture2D" uid="uid://c3076nl1psi7c" path="res://Menus/DropDownCarot.png" id="4_rvtwg"]
 [ext_resource type="PackedScene" uid="uid://sr0hwfx8k4q2" path="res://Menus/OptionsMenu.tscn" id="5_ueokc"]
 
@@ -42,14 +43,23 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Layout" type="VBoxContainer" parent="MainMenu/MarginContainer"]
+layout_direction = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="MainMenu/MarginContainer/Layout"]
+[node name="SinglePlayer" type="Button" parent="MainMenu/MarginContainer/Layout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
 theme_override_font_sizes/font_size = 64
-text = "Play"
+text = "Single Player"
+flat = true
+alignment = 0
+
+[node name="BotSim" type="Button" parent="MainMenu/MarginContainer/Layout"]
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_font_sizes/font_size = 64
+text = "Bot Sim"
 flat = true
 alignment = 0
 
@@ -78,23 +88,17 @@ text = "Quit"
 flat = true
 alignment = 0
 
-[node name="PlayMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "score_to_win", "time_m", "time_s", "num_bots", "ff")]
+[node name="SinglePlayerMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode")]
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -0.240051
 offset_right = -65.0
-script = ExtResource("3_co3mv")
-game_mode = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout/ModeOptions")
-map = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout/LevelOptions")
-score_to_win = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout/Score")
-time_m = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Minutes")
-time_s = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Seconds")
-num_bots = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout/BotOptions")
-ff = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout/FFOptions")
+script = ExtResource("3_c06co")
+game_mode = NodePath("Layout/Settings/Settings/Tabs/Game/Margin/VLayout/Level/VLayout/ModeOptions")
 
-[node name="Layout" type="VBoxContainer" parent="PlayMenu"]
+[node name="Layout" type="VBoxContainer" parent="SinglePlayerMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,14 +107,14 @@ offset_left = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Control" parent="PlayMenu/Layout"]
+[node name="Title" type="Control" parent="SinglePlayerMenu/Layout"]
 layout_mode = 2
 
-[node name="Title" type="Control" parent="PlayMenu/Layout/Title"]
+[node name="Title" type="Control" parent="SinglePlayerMenu/Layout/Title"]
 layout_mode = 1
 anchors_preset = 0
 
-[node name="Layout" type="MarginContainer" parent="PlayMenu/Layout/Title/Title"]
+[node name="Layout" type="MarginContainer" parent="SinglePlayerMenu/Layout/Title/Title"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,7 +126,7 @@ offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Title/Title/Layout"]
+[node name="Label" type="Label" parent="SinglePlayerMenu/Layout/Title/Title/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 75
@@ -131,27 +135,29 @@ text = "Match Settings
 vertical_alignment = 1
 tab_stops = PackedFloat32Array(3)
 
-[node name="Settings" type="Control" parent="PlayMenu/Layout"]
+[node name="Settings" type="Control" parent="SinglePlayerMenu/Layout"]
 layout_mode = 2
 
-[node name="Settings" type="Control" parent="PlayMenu/Layout/Settings"]
+[node name="Settings" type="Control" parent="SinglePlayerMenu/Layout/Settings"]
 layout_mode = 1
 anchors_preset = 0
 offset_top = 169.0
 offset_right = 1333.0
 offset_bottom = 929.0
 
-[node name="Tabs" type="TabContainer" parent="PlayMenu/Layout/Settings/Settings"]
+[node name="Tabs" type="TabContainer" parent="SinglePlayerMenu/Layout/Settings/Settings"]
 layout_mode = 1
 offset_right = 1333.0
 offset_bottom = 760.0
 theme = ExtResource("1_hpr53")
 theme_override_font_sizes/font_size = 48
+current_tab = 0
 
-[node name="Match" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs"]
+[node name="Game" type="Control" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs"]
 layout_mode = 2
+metadata/_tab_index = 0
 
-[node name="Margin" type="MarginContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match"]
+[node name="Margin" type="MarginContainer" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs/Game"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,73 +168,215 @@ theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 1000
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin"]
+[node name="VLayout" type="VBoxContainer" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs/Game/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 170
 
-[node name="Mode" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout"]
+[node name="Level" type="Control" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs/Game/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode"]
+[node name="VLayout" type="VBoxContainer" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs/Game/Margin/VLayout/Level"]
 layout_mode = 1
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout"]
+[node name="Label" type="Label" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs/Game/Margin/VLayout/Level/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Level"
+
+[node name="ModeOptions" type="OptionButton" parent="SinglePlayerMenu/Layout/Settings/Settings/Tabs/Game/Margin/VLayout/Level/VLayout"]
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_constants/h_separation = 95
+theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
+theme_override_icons/arrow = ExtResource("4_rvtwg")
+selected = 0
+item_count = 1
+popup/item_0/text = "Test Level"
+
+[node name="Buttons" type="Control" parent="SinglePlayerMenu/Layout"]
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="SinglePlayerMenu/Layout/Buttons"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 925.0
+offset_right = 1333.0
+offset_bottom = 1072.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SinglePlayerMenu/Layout/Buttons/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 64
+
+[node name="Layout" type="HBoxContainer" parent="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 2.91
+alignment = 2
+
+[node name="Start" type="Button" parent="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer/Layout"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+flat = true
+
+[node name="Back" type="Button" parent="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer/Layout"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+flat = true
+
+[node name="BotSimMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.272
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.240051
+offset_right = -65.0
+script = ExtResource("3_co3mv")
+
+[node name="Layout" type="VBoxContainer" parent="BotSimMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="BotSimMenu/Layout"]
+layout_mode = 2
+
+[node name="Title" type="Control" parent="BotSimMenu/Layout/Title"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Layout" type="MarginContainer" parent="BotSimMenu/Layout/Title/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1333.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Title/Title/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 75
+text = "Bot Simulator"
+vertical_alignment = 1
+tab_stops = PackedFloat32Array(3)
+
+[node name="Settings" type="Control" parent="BotSimMenu/Layout"]
+layout_mode = 2
+
+[node name="Settings" type="Control" parent="BotSimMenu/Layout/Settings"]
+layout_mode = 1
+anchors_preset = 0
+offset_top = 169.0
+offset_right = 1333.0
+offset_bottom = 929.0
+
+[node name="Tabs" type="TabContainer" parent="BotSimMenu/Layout/Settings/Settings"]
+layout_mode = 1
+offset_right = 1333.0
+offset_bottom = 760.0
+theme = ExtResource("1_hpr53")
+theme_override_font_sizes/font_size = 48
+current_tab = 0
+
+[node name="Match" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Margin" type="MarginContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 1000
+
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="Mode" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode"]
+layout_mode = 1
+offset_right = 274.0
+offset_bottom = 129.0
+
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Mode Type"
 
-[node name="ModeOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout"]
+[node name="ModeOptions" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
-theme_override_constants/h_separation = 95
-theme_override_constants/arrow_margin = 20
-theme_override_font_sizes/font_size = 36
-theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Lone Wolf"
-popup/item_0/id = 0
 popup/item_1/text = "Free For All"
 popup/item_1/id = 1
 popup/item_2/text = "Team Battle"
 popup/item_2/id = 2
 
-[node name="Map" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout"]
+[node name="Map" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map"]
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout"]
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Map"
 
-[node name="LevelOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout"]
+[node name="LevelOptions" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
 theme_override_constants/h_separation = 175
-theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 3
 selected = 2
+item_count = 3
 popup/item_0/text = "Square"
-popup/item_0/id = 0
 popup/item_1/text = "Bridge"
 popup/item_1/id = 1
 popup/item_2/text = "Temple"
 popup/item_2/id = 2
 
-[node name="Settings" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs"]
+[node name="Settings" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
-[node name="Margin" type="MarginContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings"]
+[node name="Margin" type="MarginContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,33 +387,32 @@ theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 1000
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin"]
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 170
 
-[node name="ScoreToWin" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+[node name="ScoreToWin" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin"]
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout"]
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Score To Win"
 
-[node name="Score" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout"]
+[node name="Score" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
-theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 15
 selected = 10
+item_count = 15
 popup/item_0/text = "None"
-popup/item_0/id = 0
 popup/item_1/text = "5"
 popup/item_1/id = 5
 popup/item_2/text = "10"
@@ -295,32 +442,31 @@ popup/item_13/id = 150
 popup/item_14/text = "250"
 popup/item_14/id = 250
 
-[node name="MatchTime" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+[node name="MatchTime" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime"]
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout"]
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Match Length"
 
-[node name="HLayout" type="HBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout"]
+[node name="HLayout" type="HBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout"]
 layout_mode = 2
 
-[node name="Minutes" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout"]
+[node name="Minutes" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
-theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 26
 selected = 6
+item_count = 26
 popup/item_0/text = "Unlimited"
-popup/item_0/id = 0
 popup/item_1/text = "0"
 popup/item_1/id = 1
 popup/item_2/text = "1"
@@ -372,16 +518,15 @@ popup/item_24/id = 24
 popup/item_25/text = "60"
 popup/item_25/id = 25
 
-[node name="Seconds" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout"]
+[node name="Seconds" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
-theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 13
 selected = 1
+item_count = 13
 popup/item_0/text = "Unlimited"
-popup/item_0/id = 0
 popup/item_1/text = "0"
 popup/item_1/id = 1
 popup/item_2/text = "5"
@@ -407,29 +552,28 @@ popup/item_11/id = 11
 popup/item_12/text = "55"
 popup/item_12/id = 12
 
-[node name="Bots" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+[node name="Bots" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots"]
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout"]
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Number of Bots"
 
-[node name="BotOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout"]
+[node name="BotOptions" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
-theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 17
 selected = 5
+item_count = 17
 popup/item_0/text = "0"
-popup/item_0/id = 0
 popup/item_1/text = "1"
 popup/item_1/id = 1
 popup/item_2/text = "2"
@@ -463,44 +607,43 @@ popup/item_15/id = 15
 popup/item_16/text = "16"
 popup/item_16/id = 16
 
-[node name="FF" type="Control" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
+[node name="FF" type="Control" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout"]
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF"]
+[node name="VLayout" type="VBoxContainer" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF"]
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 129.0
 
-[node name="Label" type="Label" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout"]
+[node name="Label" type="Label" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Friendly Fire"
 
-[node name="FFOptions" type="OptionButton" parent="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout"]
+[node name="FFOptions" type="OptionButton" parent="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout"]
 layout_mode = 2
 theme = ExtResource("1_hpr53")
 theme_override_constants/h_separation = 250
-theme_override_constants/arrow_margin = 20
 theme_override_font_sizes/font_size = 36
+theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
-item_count = 2
 selected = 1
+item_count = 2
 popup/item_0/text = "Off"
-popup/item_0/id = 0
 popup/item_1/text = "On"
 popup/item_1/id = 1
 
-[node name="Buttons" type="Control" parent="PlayMenu/Layout"]
+[node name="Buttons" type="Control" parent="BotSimMenu/Layout"]
 layout_mode = 2
 
-[node name="Buttons" type="Control" parent="PlayMenu/Layout/Buttons"]
+[node name="Buttons" type="Control" parent="BotSimMenu/Layout/Buttons"]
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 925.0
 offset_right = 1333.0
 offset_bottom = 1072.0
 
-[node name="MarginContainer" type="MarginContainer" parent="PlayMenu/Layout/Buttons/Buttons"]
+[node name="MarginContainer" type="MarginContainer" parent="BotSimMenu/Layout/Buttons/Buttons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -509,12 +652,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_right = 64
 
-[node name="Layout" type="HBoxContainer" parent="PlayMenu/Layout/Buttons/Buttons/MarginContainer"]
+[node name="Layout" type="HBoxContainer" parent="BotSimMenu/Layout/Buttons/Buttons/MarginContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 2.91
 alignment = 2
 
-[node name="Start" type="Button" parent="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout"]
+[node name="Start" type="Button" parent="BotSimMenu/Layout/Buttons/Buttons/MarginContainer/Layout"]
 custom_minimum_size = Vector2(250, 125)
 layout_mode = 2
 theme = ExtResource("1_hpr53")
@@ -522,7 +665,7 @@ theme_override_font_sizes/font_size = 64
 text = "Start"
 flat = true
 
-[node name="Back" type="Button" parent="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout"]
+[node name="Back" type="Button" parent="BotSimMenu/Layout/Buttons/Buttons/MarginContainer/Layout"]
 custom_minimum_size = Vector2(250, 125)
 layout_mode = 2
 theme = ExtResource("1_hpr53")
@@ -533,6 +676,12 @@ flat = true
 [node name="OptionsMenu" parent="." instance=ExtResource("5_ueokc")]
 layout_mode = 1
 
+[node name="Tabs" parent="OptionsMenu/Layout/Settings/Settings" index="0"]
+current_tab = 0
+
+[node name="Audio" parent="OptionsMenu/Layout/Settings/Settings/Tabs" index="1"]
+metadata/_tab_index = 0
+
 [node name="MasterSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout" index="1"]
 default_value = 75.0
 
@@ -541,6 +690,9 @@ default_value = 60.0
 
 [node name="SFXSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout" index="1"]
 default_value = 40.0
+
+[node name="Controls" parent="OptionsMenu/Layout/Settings/Settings/Tabs" index="2"]
+metadata/_tab_index = 1
 
 [node name="Boop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_keuxs")
@@ -558,19 +710,25 @@ mix_target = 2
 max_polyphony = 2
 bus = &"SFX"
 
-[connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/Play" to="Boop" method="play"]
-[connection signal="pressed" from="MainMenu/MarginContainer/Layout/Play" to="." method="play_button"]
+[connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/SinglePlayer" to="Boop" method="play"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Layout/SinglePlayer" to="." method="single_player_button"]
+[connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/BotSim" to="Boop" method="play"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Layout/BotSim" to="." method="bot_sim_button"]
 [connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/Options" to="Boop" method="play"]
 [connection signal="pressed" from="MainMenu/MarginContainer/Layout/Options" to="." method="options_button"]
 [connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/Controls" to="Boop" method="play"]
 [connection signal="mouse_entered" from="MainMenu/MarginContainer/Layout/Quit" to="Boop" method="play"]
 [connection signal="pressed" from="MainMenu/MarginContainer/Layout/Quit" to="." method="quit_button"]
-[connection signal="item_selected" from="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Minutes" to="PlayMenu" method="_set_time"]
-[connection signal="item_selected" from="PlayMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Seconds" to="PlayMenu" method="_set_time"]
-[connection signal="mouse_entered" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="Boop" method="play"]
-[connection signal="pressed" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="PlayMenu" method="start_button"]
-[connection signal="mouse_entered" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="Boop" method="play"]
-[connection signal="pressed" from="PlayMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="PlayMenu" method="back_button"]
+[connection signal="mouse_entered" from="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="Boop" method="play"]
+[connection signal="pressed" from="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="SinglePlayerMenu" method="start_button"]
+[connection signal="mouse_entered" from="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="Boop" method="play"]
+[connection signal="pressed" from="SinglePlayerMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="SinglePlayerMenu" method="back_button"]
+[connection signal="item_selected" from="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Minutes" to="BotSimMenu" method="_set_time"]
+[connection signal="item_selected" from="BotSimMenu/Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Seconds" to="BotSimMenu" method="_set_time"]
+[connection signal="mouse_entered" from="BotSimMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="Boop" method="play"]
+[connection signal="pressed" from="BotSimMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Start" to="BotSimMenu" method="start_button"]
+[connection signal="mouse_entered" from="BotSimMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="Boop" method="play"]
+[connection signal="pressed" from="BotSimMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="BotSimMenu" method="back_button"]
 [connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" to="." method="play_select"]
 [connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" to="." method="play_boop"]
 [connection signal="drag_started" from="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" to="." method="play_select"]

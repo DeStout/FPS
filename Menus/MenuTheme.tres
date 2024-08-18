@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c1t8b0kfqb6ey"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c1t8b0kfqb6ey"]
 
 [ext_resource type="Texture2D" uid="uid://c3076nl1psi7c" path="res://Menus/DropDownCarot.png" id="1_jwgjr"]
 
@@ -17,8 +17,27 @@ thickness = 12
 
 [sub_resource type="ImageTexture" id="ImageTexture_0jp2k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6x2d"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_58f3o"]
+color = Color(0, 0, 1, 1)
+grow_begin = 5.0
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btc5b"]
+content_margin_left = 25.0
+content_margin_right = 25.0
 bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p2l5"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [resource]
 default_font_size = 36
@@ -30,10 +49,15 @@ HSlider/icons/grabber = ExtResource("1_jwgjr")
 HSlider/styles/grabber_area = SubResource("StyleBoxLine_vlkh3")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4jvsl")
 HSlider/styles/slider = SubResource("StyleBoxLine_462eb")
-TabContainer/colors/drop_mark_color = Color(1, 0, 0, 1)
-TabContainer/colors/font_hovered_color = Color(0, 0, 1, 1)
-TabContainer/colors/font_selected_color = Color(1, 1, 1, 1)
+OptionButton/constants/arrow_margin = 20
+OptionButton/constants/h_separation = 95
+OptionButton/font_sizes/font_size = 36
+OptionButton/icons/arrow = ExtResource("1_jwgjr")
+TabContainer/colors/font_hovered_color = Color(1, 0, 0, 1)
+TabContainer/colors/font_selected_color = Color(0, 0, 1, 1)
 TabContainer/colors/font_unselected_color = Color(0.337255, 0.337255, 0.337255, 1)
 TabContainer/constants/side_margin = 50
 TabContainer/icons/drop_mark = SubResource("ImageTexture_0jp2k")
-TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_w6x2d")
+TabContainer/styles/tab_focus = SubResource("StyleBoxLine_58f3o")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_btc5b")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_3p2l5")

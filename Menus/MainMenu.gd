@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready() -> void:
-	$PlayMenu.visible = false
+	$BotSimMenu.visible = false
 	$OptionsMenu.visible = false
 	$OptionsMenu.default()
 
@@ -11,15 +11,24 @@ func update() -> void:
 	$OptionsMenu.update()
 
 
-func play_button() -> void:
+func single_player_button() -> void:
 	play_select()
+	$BotSimMenu.visible = false
 	$OptionsMenu.visible = false
-	$PlayMenu.visible = !$PlayMenu.visible
+	$SinglePlayerMenu.visible = !$SinglePlayerMenu.visible
+
+
+func bot_sim_button() -> void:
+	play_select()
+	$SinglePlayerMenu.visible = false
+	$OptionsMenu.visible = false
+	$BotSimMenu.visible = !$BotSimMenu.visible
 
 
 func options_button() -> void:
 	play_select()
-	$PlayMenu.visible = false
+	$SinglePlayerMenu.visible = false
+	$BotSimMenu.visible = false
 	$OptionsMenu.visible = !$OptionsMenu.visible
 
 
