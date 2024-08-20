@@ -31,4 +31,4 @@ func play_select(t := 0) -> void:
 
 
 func quit_button() -> void:
-	Globals.quit_game()
+	Globals.quit_bot_sim()

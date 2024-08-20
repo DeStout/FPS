@@ -62,5 +62,5 @@ func _load_complete() -> void:
 	address = ""
 	return_callable = Callable()
 	set_process(false)
-	Globals.start_match()
+	Globals.start_bot_sim()
 	

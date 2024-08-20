@@ -170,7 +170,7 @@ func _zoom_crosshairs(show) -> void:
 
 
 func _update_time_UI() -> void:
-	if %MatchTimer and Globals.match_settings.time != 0:
+	if %MatchTimer and Globals.bot_sim_settings.time != 0:
 		%MatchTimer.set_time(current_level.get_match_time())
 
 

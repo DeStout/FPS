@@ -29,7 +29,7 @@ func set_up() -> void:
 	spawn_character(player, spawn_point)
 	connect_signals(player)
 	
-	match Globals.match_settings.game_mode:
+	match Globals.bot_sim_settings.game_mode:
 		0:				# Lone Wolf
 			_set_up_lone_wolf(used_spawns)
 		
@@ -44,7 +44,7 @@ func set_up() -> void:
 func _set_up_lone_wolf(used_spawns : Array) -> void:
 	#print("Game Type: Lone Wolf")
 	var spawn_point = level.get_spawn_point()
-	for x in range(Globals.match_settings.num_bots):
+	for x in range(Globals.bot_sim_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
 		enemy.set_color(team_colors[1])
 		bots.append(enemy)

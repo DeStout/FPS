@@ -88,7 +88,8 @@ text = "Quit"
 flat = true
 alignment = 0
 
-[node name="SinglePlayerMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode")]
+[node name="SinglePlayerMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
@@ -96,7 +97,6 @@ anchor_bottom = 1.0
 offset_left = -0.240051
 offset_right = -65.0
 script = ExtResource("3_c06co")
-game_mode = NodePath("Layout/Settings/Settings/Tabs/Game/Margin/VLayout/Level/VLayout/ModeOptions")
 
 [node name="Layout" type="VBoxContainer" parent="SinglePlayerMenu"]
 layout_mode = 1
@@ -236,8 +236,7 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 flat = true
 
-[node name="BotSimMenu" type="Control" parent="."]
-visible = false
+[node name="BotSimMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "score_to_win", "time_m", "time_s", "num_bots", "ff")]
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
@@ -245,6 +244,13 @@ anchor_bottom = 1.0
 offset_left = -0.240051
 offset_right = -65.0
 script = ExtResource("3_co3mv")
+game_mode = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout/ModeOptions")
+map = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout/LevelOptions")
+score_to_win = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout/Score")
+time_m = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Minutes")
+time_s = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/MatchTime/VLayout/HLayout/Seconds")
+num_bots = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/Bots/VLayout/BotOptions")
+ff = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/FF/VLayout/FFOptions")
 
 [node name="Layout" type="VBoxContainer" parent="BotSimMenu"]
 layout_mode = 1

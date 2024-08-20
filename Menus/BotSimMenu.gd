@@ -12,16 +12,16 @@ extends Control
 func start_button() -> void:
 	$"..".play_select()
 	
-	var match_settings : MatchSettings = MatchSettings.new()
-	match_settings.game_mode = game_mode.selected
-	match_settings.map = map.selected
-	match_settings.score_to_win = _get_win_score()
-	match_settings.time = _convert_time()
-	match_settings.num_bots = num_bots.selected
-	match_settings.friendly_fire = ff.selected
-	Globals.set_match_settings(match_settings)
+	var bot_sim_settings : BotSimSettings = BotSimSettings.new()
+	bot_sim_settings.game_mode = game_mode.selected
+	bot_sim_settings.map = map.selected
+	bot_sim_settings.score_to_win = _get_win_score()
+	bot_sim_settings.time = _convert_time()
+	bot_sim_settings.num_bots = num_bots.selected
+	bot_sim_settings.friendly_fire = ff.selected
+	Globals.set_bot_sim_settings(bot_sim_settings)
 	
-	Globals.load_game()
+	Globals.load_bot_sim_game()
 
 
 func _get_win_score() -> int:

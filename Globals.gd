@@ -31,8 +31,8 @@ func set_bot_sim_settings(new_bot_sim_settings : BotSimSettings) -> void:
 	bot_sim_settings = new_bot_sim_settings
 
 
-# Called from PlayMenu.start_button()
-func load_bot_sim() -> void:
+# Called from BotSimMenu.start_button()
+func load_bot_sim_game() -> void:
 	game.remove_child(main_menu)
 	LoadingScreen.load(_select_bot_sim_map(), add_map)
 

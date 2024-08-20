@@ -2,7 +2,7 @@ extends Label
 
 
 func _ready() -> void:
-	if Globals.match_settings.time != 0:
+	if Globals.bot_sim_settings.time != 0:
 		visible = true
 
 

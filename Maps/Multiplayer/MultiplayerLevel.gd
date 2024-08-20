@@ -25,8 +25,8 @@ func open() -> void:
 	await tween.finished
 	
 	_start_match()
-	if Globals.match_settings.time != 0:
-		$MatchTime.start(Globals.match_settings.time)
+	if Globals.bot_sim_settings.time != 0:
+		$MatchTime.start(Globals.bot_sim_settings.time)
 
 
 func _start_match() -> void:
@@ -50,7 +50,7 @@ func end_match() -> void:
 	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 1.2, post_time)
 	await tween.finished
 	
-	Globals.quit_game()
+	Globals.quit_bot_sim()
 
 
 # Called from CharacterBase.shoot()

@@ -49,7 +49,7 @@ func _starting_weapons() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	if !Globals.match_settings.friendly_fire and !is_enemy(shooter):
+	if !Globals.bot_sim_settings.friendly_fire and !is_enemy(shooter):
 		return
 	
 	super(body_seg, damage, shooter)
