@@ -12,9 +12,7 @@ var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 
 func _ready() -> void:
 	Debug.player = player
-	
-	Globals.match_settings.time = 0
-	Globals.map = self
+	Globals.bot_sim_settings.time = 0
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

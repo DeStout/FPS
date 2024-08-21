@@ -237,6 +237,7 @@ text = "Back"
 flat = true
 
 [node name="BotSimMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "score_to_win", "time_m", "time_s", "num_bots", "ff")]
+visible = false
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
@@ -680,13 +681,8 @@ text = "Back"
 flat = true
 
 [node name="OptionsMenu" parent="." instance=ExtResource("5_ueokc")]
+visible = true
 layout_mode = 1
-
-[node name="Tabs" parent="OptionsMenu/Layout/Settings/Settings" index="0"]
-current_tab = 0
-
-[node name="Audio" parent="OptionsMenu/Layout/Settings/Settings/Tabs" index="1"]
-metadata/_tab_index = 0
 
 [node name="MasterSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout" index="1"]
 default_value = 75.0
@@ -697,8 +693,21 @@ default_value = 60.0
 [node name="SFXSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout" index="1"]
 default_value = 40.0
 
-[node name="Controls" parent="OptionsMenu/Layout/Settings/Settings/Tabs" index="2"]
-metadata/_tab_index = 1
+[node name="Defaults" type="Button" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="0"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_font_sizes/font_size = 64
+text = "Defaults"
+flat = true
+
+[node name="Back" type="Button" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="1"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("1_hpr53")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+flat = true
 
 [node name="Boop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_keuxs")

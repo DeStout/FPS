@@ -74,9 +74,11 @@ offset_right = 1333.0
 offset_bottom = 760.0
 theme = ExtResource("2_v235q")
 theme_override_font_sizes/font_size = 48
+current_tab = 0
 
 [node name="Audio" type="Control" parent="Layout/Settings/Settings/Tabs"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Margin" type="MarginContainer" parent="Layout/Settings/Settings/Tabs/Audio"]
 layout_mode = 1
@@ -174,6 +176,7 @@ default_value = 20.0
 [node name="Controls" type="Control" parent="Layout/Settings/Settings/Tabs"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Margin" type="MarginContainer" parent="Layout/Settings/Settings/Tabs/Controls"]
 layout_mode = 1
@@ -293,27 +296,9 @@ size_flags_stretch_ratio = 2.91
 theme_override_constants/separation = 160
 alignment = 2
 
-[node name="Defaults" type="Button" parent="Layout/Buttons/Buttons/MarginContainer/Layout"]
-custom_minimum_size = Vector2(250, 125)
-layout_mode = 2
-theme = ExtResource("2_v235q")
-theme_override_font_sizes/font_size = 64
-text = "Defaults"
-flat = true
-
-[node name="Back" type="Button" parent="Layout/Buttons/Buttons/MarginContainer/Layout"]
-custom_minimum_size = Vector2(250, 125)
-layout_mode = 2
-theme = ExtResource("2_v235q")
-theme_override_font_sizes/font_size = 64
-text = "Back"
-flat = true
-
 [connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" to="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout/MasterSlider" method="audio_level_changed"]
 [connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" to="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout/MusicSlider" method="audio_level_changed"]
 [connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider" to="Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout/SFXSlider" method="audio_level_changed"]
 [connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens" to="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens" method="_sensitivity_changed"]
 [connection signal="value_changed" from="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" to="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" method="_sensitivity_changed"]
 [connection signal="toggled" from="Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="invert_y_change"]
-[connection signal="pressed" from="Layout/Buttons/Buttons/MarginContainer/Layout/Defaults" to="." method="default_button"]
-[connection signal="pressed" from="Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="." method="back_button"]

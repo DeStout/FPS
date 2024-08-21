@@ -66,7 +66,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 	#print("Game Type: Free For All")
 	var spawn_point = level.get_spawn_point()
 	var enemies : Array[CharacterBase] = [player]
-	for x in range(Globals.match_settings.num_bots):
+	for x in range(Globals.bot_sim_settings.num_bots):
 		var enemy = team_enemy_.instantiate()
 		enemy.set_color(team_colors[x+1])
 		enemies.append(enemy)
@@ -91,9 +91,9 @@ func _set_up_team_battle(used_spawns) -> void:
 	var team1 : Array[CharacterBase] = [player]
 	var team2 : Array[CharacterBase] = []
 	var team_color : Color
-	for x in range(Globals.match_settings.num_bots):
+	for x in range(Globals.bot_sim_settings.num_bots):
 		var bot = team_enemy_.instantiate()
-		if x < Globals.match_settings.num_bots / 2:
+		if x < Globals.bot_sim_settings.num_bots / 2:
 			team_color = team_colors[0]
 			bot.set_color(team_color)
 			team1.append(bot)
@@ -102,7 +102,7 @@ func _set_up_team_battle(used_spawns) -> void:
 			team_color = team_colors[1]
 			bot.set_color(team_color)
 			team2.append(bot)
-			bot.new_name("Enemy" + str(x-(Globals.match_settings.num_bots / 2)+1))
+			bot.new_name("Enemy" + str(x-(Globals.bot_sim_settings.num_bots / 2)+1))
 		bots.append(bot)
 		
 		while(used_spawns.has(spawn_point)):

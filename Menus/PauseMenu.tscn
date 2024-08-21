@@ -27,21 +27,21 @@ visible = true
 offset_left = -231.24
 offset_right = -296.0
 
-[node name="Defaults" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="0"]
-visible = false
-
-[node name="Back" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="1"]
-visible = false
-
-[node name="QuitButton" type="Button" parent="."]
+[node name="Close" type="Button" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="0"]
 custom_minimum_size = Vector2(250, 125)
-offset_left = 1335.0
-offset_top = 936.0
-offset_right = 1585.0
-offset_bottom = 1061.0
+layout_mode = 2
 theme = ExtResource("3_6tdwi")
 theme_override_font_sizes/font_size = 64
-text = "Quit"
+text = "Close"
+flat = true
+
+[node name="Quit" type="Button" parent="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout" index="1"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+theme = ExtResource("3_6tdwi")
+theme_override_font_sizes/font_size = 64
+text = "Quit
+"
 flat = true
 
 [node name="Boop" type="AudioStreamPlayer" parent="."]
@@ -72,6 +72,7 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" to="." method="play_boop"]
 [connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="play_boop"]
 [connection signal="pressed" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="play_select"]
-[connection signal="pressed" from="QuitButton" to="." method="quit_button"]
+[connection signal="pressed" from="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Close" to="." method="close_button"]
+[connection signal="pressed" from="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Quit" to="." method="quit_button"]
 
 [editable path="OptionsMenu"]

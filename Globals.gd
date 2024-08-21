@@ -1,8 +1,8 @@
 extends Node
 
 
-signal game_started
-signal game_ended
+signal bot_sim_started
+signal bot_sim_ended
 
 
 @onready var game = get_tree().current_scene
@@ -31,10 +31,16 @@ func set_bot_sim_settings(new_bot_sim_settings : BotSimSettings) -> void:
 	bot_sim_settings = new_bot_sim_settings
 
 
+# Called from SinglePlayerMenu.start_button()
+func load_single_player() -> void:
+	game.remove_child(main_menu)
+	LoadingScreen.load("res://Maps/Campaign/TestCampaign.tscn", add_map, start_single_player)
+
+
 # Called from BotSimMenu.start_button()
 func load_bot_sim_game() -> void:
 	game.remove_child(main_menu)
-	LoadingScreen.load(_select_bot_sim_map(), add_map)
+	LoadingScreen.load(_select_bot_sim_map(), add_map, start_bot_sim)
 
 
 func _select_bot_sim_map() -> String:
@@ -55,9 +61,29 @@ func add_map(new_map) -> void:
 	game.add_child(map)
 
 
+func start_single_player() -> void:
+	pass
+
+
+func quit_single_player() -> void:
+	Engine.time_scale = 1.0
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	map.queue_free()
+	await get_tree().process_frame
+	map = null
+	
+	if main_menu:
+		game.add_child(main_menu)
+		main_menu.update()
+	else:
+		get_tree().quit()
+
+
 func start_bot_sim() -> void:
-	# Signals to Debug.game_start()
-	game_started.emit(map)
+	# Signals to Debug.bot_sim_start()
+	bot_sim_started.emit(map)
 	map.open()
 
 
@@ -68,9 +94,9 @@ func quit_bot_sim() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	map.queue_free()
-	map = null
 	bot_sim_settings = BotSimSettings.new()
 	await get_tree().process_frame
+	map = null
 	
 	if main_menu:
 		game.add_child(main_menu)
@@ -78,8 +104,8 @@ func quit_bot_sim() -> void:
 	else:
 		get_tree().quit()
 		
-	# Signal to Debug.game_ended()
-	game_ended.emit()
+	# Signal to Debug.bot_sim_ended()
+	bot_sim_ended.emit()
 
 
 func invert_y_to_int() -> int:

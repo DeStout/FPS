@@ -10,7 +10,7 @@ var invincible := false
 var infinite_ammo := false
 var bottomless_clip := false
 
-var level : MultiplayerLevel = null
+var bot_sim_level : MultiplayerLevel = null
 var players_container = null
 var player : CharacterBase = null
 var player_pos : Transform3D
@@ -24,8 +24,8 @@ func _ready() -> void:
 	visible = debug_visible
 	$FPS.visible = fps_visible
 	
-	Globals.game_started.connect(game_started)
-	Globals.game_ended.connect(game_ended)
+	Globals.bot_sim_started.connect(bot_sim_started)
+	Globals.bot_sim_ended.connect(bot_sim_ended)
 
 
 func _process(_delta) -> void:
@@ -46,14 +46,14 @@ func _process(_delta) -> void:
 
 
 # Emitted from Globals.start_match()
-func game_started(new_level) -> void:
-	level = new_level
-	players_container = level.get_node("Players")
+func bot_sim_started(new_level) -> void:
+	bot_sim_level = new_level
+	players_container = bot_sim_level.get_node("Players")
 	#players_container = player.get_parent()
 	player = players_container.player
 
-func game_ended() -> void:
-	level = null
+func bot_sim_ended() -> void:
+	bot_sim_level = null
 	players_container = null
 	player = null
 	debug_camera = null

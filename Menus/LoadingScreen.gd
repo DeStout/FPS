@@ -3,7 +3,8 @@ extends CanvasLayer
 
 var address := ""
 var progress := [0]
-var return_callable := Callable()
+var map_return := Callable()
+var map_load := Callable()
 
 var status : int
 var fake_progress := 0
@@ -14,7 +15,7 @@ func _ready() -> void:
 	set_process(false)
 
 
-func load(load_path : String, callback : Callable) -> void:
+func load(load_path : String, new_map_return : Callable, new_map_load : Callable) -> void:
 	ResourceLoader.load_threaded_request(load_path)
 	status = ResourceLoader.load_threaded_get_status(load_path, progress)
 	
@@ -22,7 +23,8 @@ func load(load_path : String, callback : Callable) -> void:
 		get_tree().quit()
 	visible = true
 	address = load_path
-	return_callable = callback
+	map_return = new_map_return
+	map_load = new_map_load
 	set_process(true)
 
 
@@ -50,7 +52,7 @@ func _update_load() -> void:
 	elif status == ResourceLoader.THREAD_LOAD_LOADED:
 		$Percent.modulate = Color.BLUE
 		$Continue.visible = true
-		return_callable.call_deferred(ResourceLoader.load_threaded_get(address))
+		map_return.call_deferred(ResourceLoader.load_threaded_get(address))
 
 
 func _load_complete() -> void:
@@ -60,7 +62,8 @@ func _load_complete() -> void:
 	$Continue.modulate.a = 1
 	$Percent.modulate = Color.RED
 	address = ""
-	return_callable = Callable()
+	map_return = Callable()
 	set_process(false)
-	Globals.start_bot_sim()
+	map_load.call_deferred()
+	map_load = Callable()
 	
