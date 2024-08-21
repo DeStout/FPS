@@ -9,7 +9,7 @@ var direction := 1
 
 
 func _ready() -> void:
-	path_follow.loop
+	path_follow.loop = loop
 	speed = follower.GUARD_SPEED
 
 

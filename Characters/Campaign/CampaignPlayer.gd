@@ -10,6 +10,7 @@ signal weapon_picked_up
 
 func _ready() -> void:
 	super()
+	current_level = Globals.map
 	weapons.append(Globals.WEAPONS.PISTOL)
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	update_UI()

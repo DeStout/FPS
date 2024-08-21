@@ -19,15 +19,9 @@ func set_color(new_color : Color) -> void:
 	mat.albedo_color = new_color
 
 
-func set_processing(new_process) -> void:
-	set_process(new_process)
-	set_physics_process(new_process)
-
-
 func _ready() -> void:
 	super()
-	current_level = get_parent().get_parent()
-	set_processing(false)
+	current_level = Globals.map
 	
 	_starting_weapons()
 

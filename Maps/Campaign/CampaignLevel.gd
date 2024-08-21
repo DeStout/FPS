@@ -17,6 +17,29 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
+func open() -> void:
+	$MusicPlayer.play()
+	$FX/ScoreLayer/FadeInOut.visible = true
+	$FX/ScoreLayer/FadeInOut.color.a = 1
+	
+	var open_time = 3.0
+	var tween = create_tween()
+	tween.tween_property($FX/ScoreLayer/FadeInOut, "color:a", 0, open_time)
+	await tween.finished
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	for char in $Players.get_children():
+		if char.name == "Player":
+			char.set_process_input(true)
+		char.set_processing(true)
+
+
+func clean_up() -> void:
+	$KillArea.monitoring = false
+	for body in $Players.get_children():
+		body.queue_free()
+
+
 func spawn_shot_trail(nozzle_point, collision_point) -> void:
 	var shot_trail = shot_trail_.instantiate()
 	$FX.add_child(shot_trail)

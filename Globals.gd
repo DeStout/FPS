@@ -62,7 +62,7 @@ func add_map(new_map) -> void:
 
 
 func start_single_player() -> void:
-	pass
+	map.open()
 
 
 func quit_single_player() -> void:
@@ -70,8 +70,9 @@ func quit_single_player() -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+	map.clean_up()
 	map.queue_free()
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	map = null
 	
 	if main_menu:

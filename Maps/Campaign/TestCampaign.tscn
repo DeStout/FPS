@@ -4484,6 +4484,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.75, 6.75, -35)
 
 [node name="Door4" parent="FX" index="3" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.05, 2.25, -33.125)
+open_on_start = true
 open_pos_z = false
 locked = true
 
@@ -4685,12 +4686,6 @@ respawn = false
 [node name="Health1" parent="Pickups" index="2" instance=ExtResource("8_ns3r5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 5, -21.5)
 respawn = false
-
-[node name="MusicPlayer" parent="." index="9"]
-autoplay = true
-
-[node name="Pause" parent="." index="10"]
-visible = false
 
 [node name="KillArea" type="Area3D" parent="." index="11"]
 collision_mask = 2

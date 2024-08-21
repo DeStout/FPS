@@ -72,8 +72,15 @@ var t_recoil := 0.0
 
 
 func _ready() -> void:
+	set_processing(false)
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
+
+
+func set_processing(new_process) -> void:
+	set_process(new_process)
+	set_physics_process(new_process)
+	set_process_input(new_process)
 
 
 func _process(delta) -> void:

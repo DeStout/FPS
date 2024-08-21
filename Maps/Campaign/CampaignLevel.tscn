@@ -13,6 +13,17 @@ script = ExtResource("1_byqwd")
 
 [node name="FX" type="Node3D" parent="."]
 
+[node name="ScoreLayer" type="CanvasLayer" parent="FX"]
+layer = 2
+
+[node name="FadeInOut" type="ColorRect" parent="FX/ScoreLayer"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1082.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="NavPoints" type="Node3D" parent="."]
 
 [node name="Pickups" type="Node3D" parent="."]
@@ -23,3 +34,4 @@ volume_db = -20.0
 bus = &"Music"
 
 [node name="Pause" parent="." instance=ExtResource("3_wjaqp")]
+visible = false

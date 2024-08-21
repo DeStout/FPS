@@ -21,6 +21,7 @@ offset_right = 1920.0
 offset_bottom = 1082.0
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="Control" parent="Players/ScoreLayer"]
 unique_name_in_owner = true
