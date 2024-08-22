@@ -78,8 +78,7 @@ func quit_single_player() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	game.remove_child.call_deferred(map)
-	await map.tree_exited
-	map.queue_free()
+	await get_tree().physics_frame
 	map = null
 	
 	if main_menu:
@@ -103,7 +102,7 @@ func quit_bot_sim() -> void:
 	
 	map.queue_free()
 	bot_sim_settings = BotSimSettings.new()
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	map = null
 	
 	if main_menu:

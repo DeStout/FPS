@@ -35,8 +35,6 @@ func open() -> void:
 
 # Called by LevelFinish.level_finished()
 func level_finished() -> void:
-	end_game()
-	
 	var post_time := 2.0
 	var timer = get_tree().create_timer(post_time, false, false, true)
 	var tween = create_tween().set_parallel()
@@ -99,7 +97,7 @@ func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> vo
 
 # Signaled by KillArea.body_exited
 func character_out_of_bounds(body : Node3D) -> void:
-	if body == player:
+	if body == player and $KillArea.monitoring:
 		Globals.reset_single_player()
 		return
 	body.queue_free()
