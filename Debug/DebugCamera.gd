@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _update_time_UI() -> void:
-	if Globals.match_settings.time != 0:
+	if Globals.bot_sim_settings.time != 0:
 		%MatchTimer.set_time($"..".level.get_match_time())
 
 

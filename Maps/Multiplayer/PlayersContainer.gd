@@ -164,6 +164,7 @@ func character_killed(character) -> void:
 			respawn_timer.start()
 			return
 
+
 func respawn_character(character) -> void:
 	add_child(character)
 	character.respawn()

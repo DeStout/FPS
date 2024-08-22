@@ -4663,11 +4663,12 @@ shape = SubResource("BoxShape3D_d6x3r")
 
 [node name="SpawnTimer" type="Timer" parent="FX/EnemySpawner2" index="1"]
 
-[node name="LevelFinish" type="Area3D" parent="FX" index="12"]
+[node name="LevelFinish" type="Area3D" parent="FX" index="12" node_paths=PackedStringArray("current_level")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.05, 1.75, -33.125)
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("15_vgxwi")
+current_level = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/LevelFinish" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)

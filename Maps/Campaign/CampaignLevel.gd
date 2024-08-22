@@ -19,25 +19,38 @@ func _ready() -> void:
 
 func open() -> void:
 	$MusicPlayer.play()
-	$FX/ScoreLayer/FadeInOut.visible = true
-	$FX/ScoreLayer/FadeInOut.color.a = 1
 	
+	$FX/FadeLayer/FadeInOut.visible = true
+	$FX/FadeLayer/FadeInOut.color.a = 1
 	var open_time = 3.0
 	var tween = create_tween()
-	tween.tween_property($FX/ScoreLayer/FadeInOut, "color:a", 0, open_time)
+	tween.tween_property($FX/FadeLayer/FadeInOut, "color:a", 0, open_time)
 	await tween.finished
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	for char in $Players.get_children():
-		if char.name == "Player":
-			char.set_process_input(true)
 		char.set_processing(true)
 
 
-func clean_up() -> void:
+# Called by LevelFinish.level_finished()
+func level_finished() -> void:
+	end_game()
+	
+	var post_time := 2.0
+	var timer = get_tree().create_timer(post_time, false, false, true)
+	var tween = create_tween().set_parallel()
+	tween.tween_property(Engine, "time_scale", 0.1, post_time)
+	tween.tween_property($FX/FadeLayer/FadeInOut, "color:a", 1.2, post_time)
+	await tween.finished
+	
+	Globals.quit_single_player()
+
+
+func end_game() -> void:
 	$KillArea.monitoring = false
-	for body in $Players.get_children():
-		body.queue_free()
+	for char in $Players.get_children():
+		char.set_processing(false)
 
 
 func spawn_shot_trail(nozzle_point, collision_point) -> void:
@@ -84,8 +97,9 @@ func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> vo
 	new_pick_up.set_up_drop(dropped_position, weapon_info)
 
 
+# Signaled by KillArea.body_exited
 func character_out_of_bounds(body : Node3D) -> void:
 	if body == player:
-		get_tree().reload_current_scene()
+		Globals.reset_single_player()
 		return
-	body.call_deferred("queue_free")
+	body.queue_free()

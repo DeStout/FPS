@@ -58,7 +58,7 @@ func guard(delta) -> void:
 		anim_state_machine.travel("IdleFall")
 		if is_on_floor():
 			return
-	else:
+	elif !global_position.is_equal_approx(next_path_pos):
 		new_transform = transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 

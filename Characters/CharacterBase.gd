@@ -16,7 +16,7 @@ const AIR_DEACCEL := 1.5
 const SPEED = 5.5
 const ZOOM_SPEED = 4.75
 const LADDER_SPEED = 4.0
-const JUMP_VELOCITY = 8.0
+const JUMP_VELOCITY = 6.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
 var on_ladder := false
@@ -303,7 +303,7 @@ func _die() -> void:
 	
 	visible = false
 	_disable_collisions(true)
-	set_physics_process(false)
+	set_processing(false)
 	
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()

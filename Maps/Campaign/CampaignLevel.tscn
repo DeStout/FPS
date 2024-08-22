@@ -13,10 +13,10 @@ script = ExtResource("1_byqwd")
 
 [node name="FX" type="Node3D" parent="."]
 
-[node name="ScoreLayer" type="CanvasLayer" parent="FX"]
+[node name="FadeLayer" type="CanvasLayer" parent="FX"]
 layer = 2
 
-[node name="FadeInOut" type="ColorRect" parent="FX/ScoreLayer"]
+[node name="FadeInOut" type="ColorRect" parent="FX/FadeLayer"]
 visible = false
 offset_right = 1920.0
 offset_bottom = 1082.0

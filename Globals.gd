@@ -33,7 +33,7 @@ func set_bot_sim_settings(new_bot_sim_settings : BotSimSettings) -> void:
 
 # Called from SinglePlayerMenu.start_button()
 func load_single_player() -> void:
-	game.remove_child(main_menu)
+	game.remove_child.call_deferred(main_menu)
 	LoadingScreen.load("res://Maps/Campaign/TestCampaign.tscn", add_map, start_single_player)
 
 
@@ -65,14 +65,21 @@ func start_single_player() -> void:
 	map.open()
 
 
+# Called from CampaignLevel.character_out_of_bounds()
+func reset_single_player() -> void:
+	game.remove_child.call_deferred(map)
+	load_single_player()
+
+
 func quit_single_player() -> void:
+	map.end_game()
 	Engine.time_scale = 1.0
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	map.clean_up()
+	game.remove_child.call_deferred(map)
+	await map.tree_exited
 	map.queue_free()
-	#await get_tree().process_frame
 	map = null
 	
 	if main_menu:

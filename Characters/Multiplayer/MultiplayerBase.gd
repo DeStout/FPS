@@ -79,7 +79,7 @@ func respawn() -> void:
 	
 	visible = true
 	health = 100
-	set_physics_process(true)
+	set_processing(true)
 	_disable_collisions(false)
 	
 	var spawn_weapon = _rand_weapon()
