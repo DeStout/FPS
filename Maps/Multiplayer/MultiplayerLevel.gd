@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func open() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$MusicPlayer.play()
+	#$MusicPlayer.play()
 	$Players/ScoreLayer/FadeInOut.color.a = 1
 	
 	var open_time = 3.0

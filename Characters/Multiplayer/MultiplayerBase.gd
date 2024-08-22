@@ -50,10 +50,9 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 
 
 func _die() -> void:
-	super()
-	
-	# Signal to PlayerContainer.add_to_score_board
 	add_score.emit(self, last_shot_by)
+	await super()
+	# Signal to PlayerContainer.add_to_score_board
 	
 	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
 		var weapon_info := [weapon_held.stats.weapon_type,

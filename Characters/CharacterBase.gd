@@ -295,6 +295,7 @@ func is_enemy(character):
 
 
 func _die() -> void:
+	# No Connections
 	defeated.emit(self)
 	
 	var body_color = $Puppet/Skeleton3D/Body.get_surface_override_material(0).albedo_color
@@ -430,7 +431,7 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 func _anim_weapon_switch(old_weapon, new_weapon) -> void:
 	await _unequip_weapon(old_weapon)
 	
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	var anim_pos = weapon_held.get_anim_pos()
 	tween.tween_property(anim_tree, \
 		"parameters/IdleFall/UpperIdle/blend_position", anim_pos, 0.15)
