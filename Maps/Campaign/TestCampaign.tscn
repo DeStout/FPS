@@ -4484,7 +4484,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.75, 6.75, -35)
 
 [node name="Door4" parent="FX" index="3" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.05, 2.25, -33.125)
-open_on_start = true
 open_pos_z = false
 locked = true
 

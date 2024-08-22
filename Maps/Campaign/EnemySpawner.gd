@@ -55,6 +55,7 @@ func _spawn() -> void:
 		enemy.alert = true
 		enemy.state_machine.set_physics_process(true)
 		enemy.defeated.connect(enemy_defeated)
+		enemy.set_processing(true)
 
 
 func set_ready_to_spawn() -> void:
@@ -80,7 +81,7 @@ func char_entered(_body) -> void:
 	door.auto_close = false
 
 
-func char_exited(_body) -> void:
-	if !$SpawnArea.has_overlapping_bodies():
+func char_exited(body) -> void:
+	if !$SpawnArea.has_overlapping_bodies() and body is CharacterBase:
 		door.open(false)
 		door.auto_close = true

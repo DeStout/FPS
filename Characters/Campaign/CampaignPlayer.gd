@@ -272,8 +272,7 @@ func _fade_dmg(delta) -> void:
 
 
 func _die() -> void:
-	#super()
-	get_tree().reload_current_scene()
+	super()
 
 
 func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:

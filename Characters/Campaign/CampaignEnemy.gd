@@ -96,6 +96,7 @@ func aim(delta) -> void:
 
 func move_to_target(delta) -> void:
 	if !target:
+		print(name, ": No target")
 		return
 	if is_enemy_visible(target) and $ShootTimer.is_stopped():
 		trigger_pulled = true
