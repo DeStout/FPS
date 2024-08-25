@@ -163,11 +163,13 @@ func _shoot() -> void:
 			if weapon_held.is_burst_fire():
 				num_shots = weapon_held.get_burst_num()
 			for shot in range(num_shots):
+				%ShootCast.target_position = Vector3.FORWARD * \
+												weapon_held.stats.dmg_falloff[1]
 				if weapon_held.is_burst_fire():
 					%ShootCast.rotate_x(randf_range(-weapon_held.get_burst_variance(),
 													weapon_held.get_burst_variance()))
 					%ShootCast.rotate_z(randf_range(-PI, PI))
-					%ShootCast.force_raycast_update()
+				%ShootCast.force_raycast_update()
 				if %ShootCast.is_colliding():
 					current_level.spawn_shot_trail(nozzle.global_position,
 												%ShootCast.get_collision_point())
@@ -186,6 +188,8 @@ func _shoot() -> void:
 					current_level.spawn_shot_trail(nozzle.global_position, \
 							%ShootCast.to_global(%ShootCast.target_position))
 				%ShootCast.rotation = Vector3(0, 0, 0)
+				%ShootCast.target_position = Vector3.FORWARD * \
+												weapon_held.stats.dmg_falloff[1]
 			
 			# set recoil
 			v_recoil = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
@@ -258,6 +262,13 @@ func _reload() -> void:
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	last_shot_by = shooter
 	last_body_seg_shot = body_seg.get_parent()
+	
+	var shot_dist := global_position.distance_to(shooter.global_position)
+	var dmg_falloff : Vector2 = shooter.weapon_held.stats.dmg_falloff
+	if shot_dist >= dmg_falloff[0]:
+		shot_dist -= dmg_falloff[0]
+		var weight := shot_dist / (dmg_falloff[1] - dmg_falloff[0])
+		damage = int(lerp(damage, damage / 2, weight))
 	
 	if armor > 0:
 		var armor_dmg : int = damage / 2

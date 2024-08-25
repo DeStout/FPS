@@ -199,7 +199,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 									state_machine.current_state.active == true:
 		target = shooter
 		state_machine.current_state.alert()
-	super(body_seg, damage*1.5, shooter)
+	super(body_seg, damage*2.5, shooter)
 
 
 func _die() -> void:

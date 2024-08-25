@@ -95,5 +95,6 @@ func _infinite_ammo() -> void:
 	player.update_UI()
 
 func _bottomless_clip() -> void:
-	player.weapon_held.ammo_in_mag = player.weapon_held.stats.mag_size
-	player.update_UI()
+	if player:
+		player.weapon_held.ammo_in_mag = player.weapon_held.stats.mag_size
+		player.update_UI()

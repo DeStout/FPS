@@ -205,7 +205,7 @@ func _pick_up_health(new_health : Node3D) -> void:
 
 func take_damage(body_seg : Area3D, 
 								damage : int, shooter : CharacterBase) -> void:
-	damage *= (2.0/3.0)
+	damage *= (2.0/5.0)
 	super(body_seg, damage, shooter)
 	_show_damage(shooter)
 	update_health_UI()

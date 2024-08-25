@@ -21,6 +21,7 @@ body_dmg = {
 1: 13,
 2: 7
 }
+dmg_falloff = Vector2(10, 40)
 range = 4.0
 impulse = 300.0
 pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)

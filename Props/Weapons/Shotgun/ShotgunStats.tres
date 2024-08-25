@@ -10,7 +10,7 @@ can_zoom = false
 zoom_level = 1.0
 burst_fire = true
 burst_num = 8
-burst_variance = 0.2
+burst_variance = 0.15
 shots_per_second = 2.25
 max_ammo = 40
 mag_size = 10
@@ -21,6 +21,7 @@ body_dmg = {
 1: 8,
 2: 4
 }
+dmg_falloff = Vector2(1, 25)
 range = 2.5
 impulse = 350.0
 pos_offset = Vector3(-0.044263, -0.00856596, 0.0186746)
