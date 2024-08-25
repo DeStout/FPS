@@ -10,12 +10,12 @@ can_zoom = false
 zoom_level = 1.0
 burst_fire = true
 burst_num = 8
-burst_variance = 0.15
+burst_variance = 0.11
 shots_per_second = 2.25
 max_ammo = 40
 mag_size = 10
-v_recoil = 10.0
-h_recoil = 4.0
+v_recoil = 8.0
+h_recoil = 3.0
 body_dmg = {
 0: 15,
 1: 8,

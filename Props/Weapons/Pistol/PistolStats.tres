@@ -14,14 +14,14 @@ burst_variance = 0.0
 shots_per_second = 10.0
 max_ammo = 60
 mag_size = 15
-v_recoil = 5.0
-h_recoil = 2.5
+v_recoil = 6.5
+h_recoil = 2.0
 body_dmg = {
 0: 18,
 1: 10,
 2: 6
 }
-dmg_falloff = Vector2(15, 30)
+dmg_falloff = Vector2(7.5, 30)
 range = 3.0
 impulse = 150.0
 pos_offset = Vector3(-0.0382926, -0.0126591, 0.00222373)
