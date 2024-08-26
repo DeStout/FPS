@@ -1,5 +1,8 @@
 extends Control
 
+
+@export var main_menu : Control = null
+
 @export var game_mode : OptionButton
 @export var map : OptionButton
 @export var score_to_win : OptionButton
@@ -19,9 +22,9 @@ func start_button() -> void:
 	bot_sim_settings.time = _convert_time()
 	bot_sim_settings.num_bots = num_bots.selected
 	bot_sim_settings.friendly_fire = ff.selected
-	Globals.set_bot_sim_settings(bot_sim_settings)
+	main_menu.game.set_bot_sim_settings(bot_sim_settings)
 	
-	Globals.load_bot_sim_game()
+	main_menu.game.load_bot_sim_game()
 
 
 func _get_win_score() -> int:

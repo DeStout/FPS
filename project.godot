@@ -24,8 +24,7 @@ run/stretch/mode="viewport"
 [autoload]
 
 Globals="*res://Globals.gd"
-Debug="*res://Debug/Debug.tscn"
-LoadingScreen="*res://Menus/LoadingScreen.tscn"
+HUD="*res://HUD.tscn"
 
 [debug]
 

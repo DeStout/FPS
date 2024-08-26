@@ -88,7 +88,7 @@ text = "Quit"
 flat = true
 alignment = 0
 
-[node name="SinglePlayerMenu" type="Control" parent="."]
+[node name="SinglePlayerMenu" type="Control" parent="." node_paths=PackedStringArray("main_menu")]
 visible = false
 layout_mode = 1
 anchor_left = 0.272
@@ -97,6 +97,7 @@ anchor_bottom = 1.0
 offset_left = -0.240051
 offset_right = -65.0
 script = ExtResource("3_c06co")
+main_menu = NodePath("..")
 
 [node name="Layout" type="VBoxContainer" parent="SinglePlayerMenu"]
 layout_mode = 1
@@ -236,7 +237,7 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 flat = true
 
-[node name="BotSimMenu" type="Control" parent="." node_paths=PackedStringArray("game_mode", "map", "score_to_win", "time_m", "time_s", "num_bots", "ff")]
+[node name="BotSimMenu" type="Control" parent="." node_paths=PackedStringArray("main_menu", "game_mode", "map", "score_to_win", "time_m", "time_s", "num_bots", "ff")]
 visible = false
 layout_mode = 1
 anchor_left = 0.272
@@ -245,6 +246,7 @@ anchor_bottom = 1.0
 offset_left = -0.240051
 offset_right = -65.0
 script = ExtResource("3_co3mv")
+main_menu = NodePath("..")
 game_mode = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Mode/VLayout/ModeOptions")
 map = NodePath("Layout/Settings/Settings/Tabs/Match/Margin/VLayout/Map/VLayout/LevelOptions")
 score_to_win = NodePath("Layout/Settings/Settings/Tabs/Settings/Margin/VLayout/ScoreToWin/VLayout/Score")
@@ -680,9 +682,9 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 flat = true
 
-[node name="OptionsMenu" parent="." instance=ExtResource("5_ueokc")]
-visible = true
+[node name="OptionsMenu" parent="." node_paths=PackedStringArray("main_menu") instance=ExtResource("5_ueokc")]
 layout_mode = 1
+main_menu = NodePath("..")
 
 [node name="MasterSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Master/VLayout" index="1"]
 default_value = 75.0

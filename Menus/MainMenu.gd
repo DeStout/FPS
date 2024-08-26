@@ -1,7 +1,11 @@
 extends Control
 
 
+@export var game : Node = null
+
+
 func _ready() -> void:
+	$SinglePlayerMenu.visible = false
 	$BotSimMenu.visible = false
 	$OptionsMenu.visible = false
 	$OptionsMenu.default()

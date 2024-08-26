@@ -1,6 +1,8 @@
 extends Control
 
 
+@export var main_menu : Control = null
+
 const INVERT_DEFAULT := false
 
 @export var master_slider : HSlider
