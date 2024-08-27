@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://715bel8u8beu"]
+[gd_scene load_steps=5 format=3 uid="uid://cvygx6yicse0l"]
 
-[ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Maps/Multiplayer/MultiplayerLevel.tscn" id="1_jfgit"]
-[ext_resource type="PackedScene" uid="uid://bc3s64pryrj37" path="res://Maps/Multiplayer/TempleBase.tscn" id="2_v1ojq"]
-[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_w03wq"]
-[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="4_if10g"]
+[ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Archive/PuppetEra/PuppetMultiplayerLevel.tscn" id="1_bqmv0"]
+[ext_resource type="PackedScene" uid="uid://bc3s64pryrj37" path="res://Maps/Multiplayer/TempleBase.tscn" id="2_dg5rw"]
+[ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_36e2o"]
+[ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="4_f0cib"]
 
-[node name="Level3" instance=ExtResource("1_jfgit")]
+[node name="Level3" instance=ExtResource("1_bqmv0")]
 
-[node name="LevelBase" parent="." index="0" instance=ExtResource("2_v1ojq")]
+[node name="LevelBase" parent="." index="0" instance=ExtResource("2_dg5rw")]
+
+[node name="Players" parent="." index="1"]
+script = null
 
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, -10, 5, -31)
@@ -294,77 +297,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, -0.5)
 [node name="Marker3D8" type="Marker3D" parent="NavPoints" index="34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -0.5)
 
-[node name="Pistol1" parent="Pickups" index="0" instance=ExtResource("3_w03wq")]
+[node name="Pistol1" parent="Pickups" index="0" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.25, 2.5)
 respawn_time = 20.0
 
-[node name="Pistol2" parent="Pickups" index="1" instance=ExtResource("3_w03wq")]
+[node name="Pistol2" parent="Pickups" index="1" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.25, 2.5)
 respawn_time = 20.0
 
-[node name="Pistol3" parent="Pickups" index="2" instance=ExtResource("3_w03wq")]
+[node name="Pistol3" parent="Pickups" index="2" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 17.5)
 respawn_time = 20.0
 
-[node name="Pistol4" parent="Pickups" index="3" instance=ExtResource("3_w03wq")]
+[node name="Pistol4" parent="Pickups" index="3" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 5.25, -34.5)
 respawn_time = 20.0
 
-[node name="Pistol5" parent="Pickups" index="4" instance=ExtResource("3_w03wq")]
+[node name="Pistol5" parent="Pickups" index="4" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 5.25, -34.5)
 respawn_time = 20.0
 
-[node name="Pistol6" parent="Pickups" index="5" instance=ExtResource("3_w03wq")]
+[node name="Pistol6" parent="Pickups" index="5" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -20)
 respawn_time = 20.0
 
-[node name="Pistol7" parent="Pickups" index="6" instance=ExtResource("3_w03wq")]
+[node name="Pistol7" parent="Pickups" index="6" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.25, 32)
 
-[node name="Pistol8" parent="Pickups" index="7" instance=ExtResource("3_w03wq")]
+[node name="Pistol8" parent="Pickups" index="7" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.25, 32)
 
-[node name="SMG1" parent="Pickups" index="8" instance=ExtResource("3_w03wq")]
+[node name="SMG1" parent="Pickups" index="8" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 0.25, 1)
 weapon_type = 2
 respawn_time = 45.0
 
-[node name="SMG2" parent="Pickups" index="9" instance=ExtResource("3_w03wq")]
+[node name="SMG2" parent="Pickups" index="9" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 0.25, 1)
 weapon_type = 2
 respawn_time = 45.0
 
-[node name="Rifle1" parent="Pickups" index="10" instance=ExtResource("3_w03wq")]
+[node name="Rifle1" parent="Pickups" index="10" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 39.5)
 weapon_type = 3
 
-[node name="Shotgun1" parent="Pickups" index="11" instance=ExtResource("3_w03wq")]
+[node name="Shotgun1" parent="Pickups" index="11" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 weapon_type = 4
 
-[node name="Sniper1" parent="Pickups" index="12" instance=ExtResource("3_w03wq")]
+[node name="Sniper1" parent="Pickups" index="12" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -36)
 weapon_type = 5
 respawn_time = 45.0
 
-[node name="Health1" parent="Pickups" index="13" instance=ExtResource("4_if10g")]
+[node name="Health1" parent="Pickups" index="13" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.25, 20)
 
-[node name="Health2" parent="Pickups" index="14" instance=ExtResource("4_if10g")]
+[node name="Health2" parent="Pickups" index="14" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.25, 20)
 
-[node name="Health3" parent="Pickups" index="15" instance=ExtResource("4_if10g")]
+[node name="Health3" parent="Pickups" index="15" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 5.25, -18.5)
 
-[node name="Health4" parent="Pickups" index="16" instance=ExtResource("4_if10g")]
+[node name="Health4" parent="Pickups" index="16" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 5.25, -18.5)
 
-[node name="Armor1" parent="Pickups" index="17" instance=ExtResource("4_if10g")]
+[node name="Armor1" parent="Pickups" index="17" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 28.5)
 health_type = 1
 respawn_time = 45.0
 
-[node name="Armor2" parent="Pickups" index="18" instance=ExtResource("4_if10g")]
+[node name="Armor2" parent="Pickups" index="18" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -27)
 health_type = 1
 respawn_time = 45.0
