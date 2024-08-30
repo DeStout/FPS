@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://66i27eym44bx"
-path="res://.godot/imported/SMG.glb-f0b3c337aafe54c37c1683ef001db785.scn"
+uid="uid://cleimibtjluur"
+path="res://.godot/imported/SMG_old.glb-71701d7e5bae59b16f76be898f3d2538.scn"
 
 [deps]
 
-source_file="res://Props/Weapons/SMG/SMG.glb"
-dest_files=["res://.godot/imported/SMG.glb-f0b3c337aafe54c37c1683ef001db785.scn"]
+source_file="res://Archive/PuppetEra/SMG_old.glb"
+dest_files=["res://.godot/imported/SMG_old.glb-71701d7e5bae59b16f76be898f3d2538.scn"]
 
 [params]
 

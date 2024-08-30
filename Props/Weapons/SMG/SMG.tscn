@@ -10,6 +10,7 @@
 stats = ExtResource("2_bv6ih")
 
 [node name="Mesh" parent="." index="0" instance=ExtResource("2_qy2yi")]
+layers = 4
 
 [node name="ShootAudio" parent="." index="1"]
 stream = ExtResource("3_dipjs")
