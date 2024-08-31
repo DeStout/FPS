@@ -16,5 +16,5 @@ enum HEALTHS {HEALTH_PACK, ARMOR}
 enum BODY_SEGS {HEAD, TORSO, LIMB}
 
 
-#func invert_y_to_int() -> int:
-	#return (int(invert_y_axis) * 2) - 1
+func invert_y_to_int() -> int:
+	return (int(invert_y_axis) * 2) - 1

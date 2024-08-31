@@ -24,8 +24,9 @@ func _ready() -> void:
 	visible = debug_visible
 	$FPS.visible = fps_visible
 	
-	Globals.bot_sim_started.connect(bot_sim_started)
-	Globals.bot_sim_ended.connect(bot_sim_ended)
+	if Globals.game is MultiplayerLevel:
+		Globals.game.bot_sim_started.connect(bot_sim_started)
+		Globals.game.bot_sim_ended.connect(bot_sim_ended)
 
 
 func _process(_delta) -> void:

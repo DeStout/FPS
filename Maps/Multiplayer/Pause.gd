@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 
 func _ready() -> void:
@@ -15,10 +15,10 @@ func _toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
 
 	if get_tree().paused:
-		if Globals.map is MultiplayerLevel:
+		if Globals.game is MultiplayerLevel:
 			%Players.player.update_health_UI()
-		elif Globals.map is CampaignLevel:
-			get_parent().player.update_health_UI()
+		#elif Globals.game is CampaignLevel:
+			#get_parent().player.update_health_UI()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		visible = true
 	else:

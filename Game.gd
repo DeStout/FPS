@@ -48,7 +48,7 @@ func _select_bot_sim_map() -> String:
 
 # Called from loading_screen._load_complete()
 func add_map(new_map) -> void:
-	loading_screen.queue_free()
+	#loading_screen.queue_free()
 	map = new_map.instantiate()
 	add_child(map)
 

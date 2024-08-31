@@ -3,7 +3,7 @@ extends Node3D
 
 signal enemies_defeated
 
-var enemy_ = preload("res://Characters/Campaign/CampaignEnemy.tscn")
+#var enemy_ = preload("res://Characters/Campaign/CampaignEnemy.tscn")
 
 @export var players_node : Node3D = null
 @export var spawn_time := 2.0
@@ -38,24 +38,25 @@ func _process(delta: float) -> void:
 
 
 func _spawn() -> void:
-	for i in range(spawn_num):
-		var enemy = enemy_.instantiate()
-		enemy.starting_weapon = Globals.WEAPONS.PISTOL
-		enemy.current_level = Globals.map
-		enemy.enemies.append(Globals.map.player)
-		
-		var spawn_point = Vector3(0, 0, randf_range(0.25, spawn_radius))
-		spawn_point = spawn_point.rotated(Vector3.UP, randf() * TAU)
-		enemy.position = global_position + spawn_point
-		
-		enemies.append(enemy)
-		players_node.add_child(enemy)
-		enemy.target = Globals.map.player
-		enemy.state_machine.current_state.alert()
-		enemy.alert = true
-		enemy.state_machine.set_physics_process(true)
-		enemy.defeated.connect(enemy_defeated)
-		enemy.set_processing(true)
+	pass
+	#for i in range(spawn_num):
+		#var enemy = enemy_.instantiate()
+		#enemy.starting_weapon = Globals.WEAPONS.PISTOL
+		#enemy.current_level = Globals.map
+		#enemy.enemies.append(Globals.map.player)
+		#
+		#var spawn_point = Vector3(0, 0, randf_range(0.25, spawn_radius))
+		#spawn_point = spawn_point.rotated(Vector3.UP, randf() * TAU)
+		#enemy.position = global_position + spawn_point
+		#
+		#enemies.append(enemy)
+		#players_node.add_child(enemy)
+		#enemy.target = Globals.map.player
+		#enemy.state_machine.current_state.alert()
+		#enemy.alert = true
+		#enemy.state_machine.set_physics_process(true)
+		#enemy.defeated.connect(enemy_defeated)
+		#enemy.set_processing(true)
 
 
 func set_ready_to_spawn() -> void:

@@ -1,16 +1,19 @@
 extends Path3D
 
 
-@export var follower : CharacterBase
-var speed : float
+@export var follower : CharacterBase = null
+var speed : float = 0.0
 @onready var path_follow = $PathFollow
 @export var loop := true
 var direction := 1
 
 
 func _ready() -> void:
-	path_follow.loop = loop
-	speed = follower.GUARD_SPEED
+	if follower:
+		path_follow.loop = loop
+		speed = follower.GUARD_SPEED
+		return
+	set_physics_process(false)
 
 
 func _physics_process(delta: float) -> void:

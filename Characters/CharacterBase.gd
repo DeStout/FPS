@@ -38,18 +38,18 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 						$Mannequin/Mannequin/Skeleton3D/Neck/NeckArea,
 						$Mannequin/Mannequin/Skeleton3D/Chest/ChestArea,
 						$Mannequin/Mannequin/Skeleton3D/Stomach/StomachArea,
-						$Mannequin/Mannequin/Skeleton3D/R_UpperArm/R_UpperArmArea,
-						$Mannequin/Mannequin/Skeleton3D/R_Forearm/R_ForearmArea,
-						$Mannequin/Mannequin/Skeleton3D/R_Hand/R_HandArea,
-						$Mannequin/Mannequin/Skeleton3D/L_UpperArm/L_UpperArmArea,
-						$Mannequin/Mannequin/Skeleton3D/L_Forearm/L_ForearmArea,
-						$Mannequin/Mannequin/Skeleton3D/L_Hand/L_HandArea,
-						$Mannequin/Mannequin/Skeleton3D/R_Thigh/R_ThighArea,
-						$Mannequin/Mannequin/Skeleton3D/R_Shin/R_ShinArea,
-						$Mannequin/Mannequin/Skeleton3D/R_Foot/R_FootArea,
-						$Mannequin/Mannequin/Skeleton3D/L_Thigh/L_ThighArea,
-						$Mannequin/Mannequin/Skeleton3D/L_Shin/L_ShinArea,
-						$Mannequin/Mannequin/Skeleton3D/L_Foot/L_FootArea]
+						$Mannequin/Mannequin/Skeleton3D/R_UpperArm/UpperArmArea,
+						$Mannequin/Mannequin/Skeleton3D/R_Forearm/ForearmArea,
+						$Mannequin/Mannequin/Skeleton3D/R_Hand/HandArea,
+						$Mannequin/Mannequin/Skeleton3D/L_UpperArm/UpperArmArea,
+						$Mannequin/Mannequin/Skeleton3D/L_Forearm/ForearmArea,
+						$Mannequin/Mannequin/Skeleton3D/L_Hand/HandArea,
+						$Mannequin/Mannequin/Skeleton3D/R_Thigh/ThighArea,
+						$Mannequin/Mannequin/Skeleton3D/R_Shin/ShinArea,
+						$Mannequin/Mannequin/Skeleton3D/R_Foot/FootArea,
+						$Mannequin/Mannequin/Skeleton3D/L_Thigh/ThighArea,
+						$Mannequin/Mannequin/Skeleton3D/L_Shin/ShinArea,
+						$Mannequin/Mannequin/Skeleton3D/L_Foot/FootArea]
 var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
@@ -67,8 +67,8 @@ var h_recoil := 0.0
 var t_recoil := 0.0
 
 #Animation
-@onready var anim_tree = $Mannequin/Mannequin/AnimationTree
-@onready var anim_state_machine = $Mannequin/Mannequin/AnimationTree["parameters/playback"]
+@onready var anim_tree = $Mannequin/AnimTree
+@onready var anim_state_machine = $Mannequin/AnimTree["parameters/playback"]
 
 
 func _ready() -> void:
