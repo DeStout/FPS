@@ -17,5 +17,3 @@ max_db = -4.0
 
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_1n1px")
-
-[editable path="Mesh"]
