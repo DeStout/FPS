@@ -1,10 +1,6 @@
 extends Control
 
 
-func _ready() -> void:
-	$OptionsMenu.update()
-
-
 func _input(event) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
 		if Input.is_action_just_pressed("Pause"):
@@ -15,6 +11,7 @@ func _toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
 
 	if get_tree().paused:
+		$OptionsMenu.update()
 		if Globals.game is MultiplayerLevel:
 			%Players.player.update_health_UI()
 		#elif Globals.game is CampaignLevel:

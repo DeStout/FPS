@@ -13,7 +13,7 @@ extends Control
 
 
 func start_button() -> void:
-	$"..".play_select()
+	main_menu.play_select()
 	
 	var bot_sim_settings : BotSimSettings = BotSimSettings.new()
 	bot_sim_settings.game_mode = game_mode.selected
@@ -56,5 +56,5 @@ func _set_time(new_time) -> void:
 
 
 func back_button() -> void:
-	$"..".play_select()
+	main_menu.play_select()
 	visible = false

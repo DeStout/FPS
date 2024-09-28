@@ -189,7 +189,7 @@ active = false
 parameters/Run/Weapon/blend_amount = 0.0
 
 [node name="Weapons" type="Node3D" parent="."]
-transform = Transform3D(-5.2908e-07, 0.99983, -8.63319e-05, -0.1873, -8.48983e-05, -0.982181, -0.982138, 1.5652e-05, 0.187308, 0.737824, 1.21911, -0.021368)
+transform = Transform3D(-5.2908e-07, 0.999829, -8.63319e-05, -0.1873, -8.48982e-05, -0.982181, -0.982138, 1.5652e-05, 0.187308, 0.737824, 1.21911, -0.021368)
 
 [node name="Slapper" parent="Weapons" instance=ExtResource("2_e1vp6")]
 visible = false

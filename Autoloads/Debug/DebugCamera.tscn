@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://lmnl710ipqwn"]
 
-[ext_resource type="Script" path="res://Debug/DebugCamera.gd" id="1_in0u3"]
+[ext_resource type="Script" path="res://Autoloads/Debug/DebugCamera.gd" id="1_in0u3"]
 [ext_resource type="Script" path="res://Characters/Multiplayer/UI.gd" id="2_objhq"]
 [ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="3_reoch"]
 [ext_resource type="Script" path="res://Characters/Multiplayer/MatchTimer.gd" id="4_hlhmk"]

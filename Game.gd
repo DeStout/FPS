@@ -13,18 +13,22 @@ var map : Node3D = null
 var bot_sim_settings : BotSimSettings = BotSimSettings.new()
 
 
+func _add_loading_screen() -> CanvasLayer:
+	var load_screen = loading_screen_.instantiate()
+	add_child(load_screen)
+	return load_screen
+
+
 # Called from SinglePlayerMenu.start_button()
 func load_single_player() -> void:
-	loading_screen = loading_screen_.instantiate()
-	add_child(loading_screen)
+	loading_screen = _add_loading_screen()
 	remove_child(main_menu)
 	loading_screen.load("res://Maps/Campaign/TestCampaign.tscn", add_map, start_single_player)
 
 
 # Called from BotSimMenu.start_button()
 func load_bot_sim_game() -> void:
-	loading_screen = loading_screen_.instantiate()
-	add_child(loading_screen)
+	loading_screen = _add_loading_screen()
 	remove_child(main_menu)
 	loading_screen.load(_select_bot_sim_map(), add_map, start_bot_sim)
 
@@ -46,13 +50,13 @@ func _select_bot_sim_map() -> String:
 	return map_address
 
 
-# Called from loading_screen._load_complete()
+# Called from loading_screen._update_load()
 func add_map(new_map) -> void:
-	#loading_screen.queue_free()
 	map = new_map.instantiate()
 	add_child(map)
 
 
+# Called from loading_screen._update_UI()
 func start_single_player() -> void:
 	map.open()
 
@@ -79,9 +83,10 @@ func quit_single_player() -> void:
 		get_tree().quit()
 
 
+# Called from loading_screen._update_UI()
 func start_bot_sim() -> void:
 	# Signals to Debug.bot_sim_start()
-	bot_sim_started.emit(map)
+	#bot_sim_started.emit(map)
 	map.open()
 
 

@@ -19,12 +19,7 @@ func _ready() -> void:
 func open() -> void:
 	$MusicPlayer.play()
 	
-	$FX/FadeLayer/FadeInOut.visible = true
-	$FX/FadeLayer/FadeInOut.color.a = 1
-	var open_time = 3.0
-	var tween = create_tween()
-	tween.tween_property($FX/FadeLayer/FadeInOut, "color:a", 0, open_time)
-	await tween.finished
+	await HUD.fade_in()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	

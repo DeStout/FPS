@@ -19,8 +19,7 @@ func load(load_path : String, new_map_return : Callable, new_map_load : Callable
 	ResourceLoader.load_threaded_request(load_path)
 	status = ResourceLoader.load_threaded_get_status(load_path, progress)
 	
-	if status != 1:
-		get_tree().quit()
+	assert(status == 1, "Map Loading Failed")
 	visible = true
 	address = load_path
 	map_return = new_map_return
@@ -41,7 +40,8 @@ func _update_UI(delta : float) -> void:
 		$Continue.modulate.a = (cos(time*2)+2)/3
 		
 		if Input.is_anything_pressed():
-			_load_complete()
+			map_load.call_deferred()
+			queue_free()
 
 
 func _update_load() -> void:
@@ -53,17 +53,3 @@ func _update_load() -> void:
 		$Percent.modulate = Color.BLUE
 		$Continue.visible = true
 		map_return.call_deferred(ResourceLoader.load_threaded_get(address))
-
-
-func _load_complete() -> void:
-	visible = false
-	fake_progress = 0
-	$Continue.visible = false
-	$Continue.modulate.a = 1
-	$Percent.modulate = Color.RED
-	address = ""
-	map_return = Callable()
-	set_process(false)
-	map_load.call_deferred()
-	map_load = Callable()
-	

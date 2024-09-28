@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://g1mw1dptu8qr"]
 
-[ext_resource type="Script" path="res://Debug/Debug.gd" id="1_3d6yx"]
+[ext_resource type="Script" path="res://Autoloads/Debug/Debug.gd" id="1_3d6yx"]
 
 [node name="Debug" type="CanvasLayer"]
 process_mode = 3

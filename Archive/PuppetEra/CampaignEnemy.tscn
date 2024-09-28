@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1s5qidco641t" path="res://Archive/PuppetEra/PuppetCharacter.tscn" id="1_rf7ub"]
 [ext_resource type="Script" path="res://Archive/PuppetEra/CampaignEnemy.gd" id="2_pqw3d"]
-[ext_resource type="PackedScene" uid="uid://cy12nf62sv60i" path="res://Debug/VectorCube.tscn" id="3_3vsup"]
+[ext_resource type="PackedScene" uid="uid://cy12nf62sv60i" path="res://Autoloads/Debug/VectorCube.tscn" id="3_3vsup"]
 [ext_resource type="Script" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_7r2cl"]
 [ext_resource type="Script" path="res://Characters/Campaign/GuardState.gd" id="3_h5c2t"]
 [ext_resource type="PackedScene" uid="uid://bd2fp3xjnl5vp" path="res://Characters/Campaign/VisionCone.tscn" id="3_u6o4h"]

@@ -38,10 +38,10 @@ func invert_y_change(new_value : bool) -> void:
 
 
 func default_button() -> void:
-	$"..".play_select()
+	main_menu.play_select()
 	default()
 
 
 func back_button() -> void:
-	$"..".play_select()
+	main_menu.play_select()
 	visible = false

@@ -3,21 +3,22 @@ extends CharacterBase
 
 signal weapon_picked_up
 
-@onready var fp_weapon : Node3D = $AimHelper/FPWeapons/Slapper
+@onready var fp_animator : AnimationPlayer = $AimHelper/FPView/FPAnimator
+@onready var fp_weapon : Node3D = $AimHelper/FPView/Weapons/Pistol
 
 @export_exp_easing() var health_fade
 
 
 func _ready() -> void:
 	super()
-	update_UI()
+	current_level = Globals.game.map
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	update_weapon_UI()
 
 
 func _process(delta: float) -> void:
 	super(delta)
-	_fade_dmg(delta)
-	_fade_health(delta)
-	_update_time_UI()
 
 
 func _physics_process(delta) -> void:
@@ -41,14 +42,21 @@ func _physics_process(delta) -> void:
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:
-		if is_on_floor():
+		if on_ladder:
 			anim_state_machine.travel("Run")
-		velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
-		velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
+			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
+			velocity.y = move_toward(velocity.y, direction.z * speed, accel * delta)
+		else:
+			if is_on_floor():
+				anim_state_machine.travel("Run")
+			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
+			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 	else:
 		anim_state_machine.travel("IdleFall")
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
+		if on_ladder:
+			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
 	move_and_slide()
 
 
@@ -112,9 +120,9 @@ func _input(event) -> void:
 
 func _swing() -> void:
 	super()
-	if %FPAnimator.is_playing():
-		%FPAnimator.stop()
-	%FPAnimator.play("Slap")
+	if fp_animator.is_playing():
+		fp_animator.stop()
+	fp_animator.play("Slap")
 
 
 func _shoot() -> void:
@@ -122,10 +130,10 @@ func _shoot() -> void:
 	super()
 	if can_shoot and weapon_held.get_weapon_type() != Globals.WEAPONS.SLAPPER \
 			and !switching_weapons:
-		if %FPAnimator.is_playing():
-			%FPAnimator.stop()
-		%FPAnimator.play(weapon_held.stats.shoot_anim)
-	update_UI()
+		if fp_animator.is_playing():
+			fp_animator.stop()
+		fp_animator.play(weapon_held.stats.shoot_anim)
+	update_weapon_UI()
 
 
 func _zoom() -> void:
@@ -154,11 +162,10 @@ func _zoom() -> void:
 
 
 # Signal from Weapon.finished_reloading
-func update_UI() -> void:
+func update_weapon_UI() -> void:
 	if weapon_held:
-		%AmmoInMag.text = str(weapon_held.ammo_in_mag) + \
-							" / " + str(weapon_held.get_mag_size())
-		%ExtraAmmo.text = str(weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.stats.mag_size, \
+														weapon_held.extra_ammo)
 
 
 func _show_crosshairs(show) -> void:
@@ -167,11 +174,6 @@ func _show_crosshairs(show) -> void:
 
 func _zoom_crosshairs(show) -> void:
 	$FPCanvas/UI/Scope.visible = show
-
-
-func _update_time_UI() -> void:
-	if %MatchTimer and Globals.bot_sim_settings.time != 0:
-		%MatchTimer.set_time(current_level.get_match_time())
 
 
 func update_leaders_UI(team_list) -> void:
@@ -185,13 +187,13 @@ func _pick_up_weapon(new_weapon) -> Node3D:
 		# Signal to Debug
 		weapon_picked_up.emit(added_weapon)
 
-		update_UI()
+		update_weapon_UI()
 	return added_weapon
 
 
 func _pick_up_ammo(new_ammo : Node3D) -> void:
 	super(new_ammo)
-	update_UI()
+	update_weapon_UI()
 
 
 func _pick_up_health(new_health : Node3D) -> void:
@@ -201,78 +203,24 @@ func _pick_up_health(new_health : Node3D) -> void:
 
 func take_damage(body_seg : Area3D, 
 								damage : int, shooter : CharacterBase) -> void:
-	damage *= (2.0/3.0)
+	damage *= (2.0/5.0)
 	super(body_seg, damage, shooter)
 	_show_damage(shooter)
 	update_health_UI()
 
 
 func update_health_UI() -> void:
-	%HealthMod.color.a = 1
-	
-	# Health Boxes
-	var box_count := %HealthMod/HealthBar.get_child_count()
-	var health_per_box : int = MAX_HEALTH / box_count
-	var filled_boxes : int = health / health_per_box
-	for box_num in range(0, box_count):
-		var box : ColorRect = %HealthMod/HealthBar.get_child(box_count - box_num - 1)
-		if box_num < filled_boxes:
-			box.color.a = 1
-		elif box_num == filled_boxes:
-			box.color.a = fmod(health, health_per_box) / float(health_per_box)
-		else:
-			box.color.a = 0
-
-	# Armor Boxes
-	box_count = %HealthMod/ArmorBar.get_child_count()
-	var armor_per_box : int = MAX_ARMOR / box_count
-	filled_boxes = armor / armor_per_box
-	for box_num in range(0, box_count):
-		var box : ColorRect = %HealthMod/ArmorBar.get_child(box_count - box_num - 1)
-		if box_num < filled_boxes:
-			box.color.a = 1
-		elif box_num == filled_boxes:
-			box.color.a = fmod(armor, armor_per_box) / float(armor_per_box)
-		else:
-			box.color.a = 0
-
-
-func _fade_health(delta) -> void:
-	if %HealthMod.color.a > 0:
-		%HealthMod.color.a -= delta
+	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
 func _show_damage(shooter : CharacterBase) -> void:
 	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
 								-to_local(shooter.global_position).z).normalized()
-	
-	if dmg_dir.y > 0:
-		$FPCanvas/UI/DMG_Up.modulate.a = dmg_dir.y
-	else:
-		$FPCanvas/UI/DMG_Down.modulate.a = abs(dmg_dir.y)
-	if dmg_dir.x > 0:
-		$FPCanvas/UI/DMG_Right.modulate.a = dmg_dir.x
-	else:
-		$FPCanvas/UI/DMG_Left.modulate.a = abs(dmg_dir.x)
-
-
-func _fade_dmg(delta) -> void:
-	if $FPCanvas/UI/DMG_Up.modulate.a > 0:
-		$FPCanvas/UI/DMG_Up.modulate.a -= delta
-	if $FPCanvas/UI/DMG_Left.modulate.a > 0:
-		$FPCanvas/UI/DMG_Left.modulate.a -= delta
-	if $FPCanvas/UI/DMG_Down.modulate.a > 0:
-		$FPCanvas/UI/DMG_Down.modulate.a -= delta
-	if $FPCanvas/UI/DMG_Right.modulate.a > 0:
-		$FPCanvas/UI/DMG_Right.modulate.a -= delta
+	HUD.show_damage(dmg_dir)
 
 
 func _die() -> void:
 	super()
-	%Camera.current = false
-	last_shot_by.set_current_camera(true)
-	#print("Death cam on ", last_shot_by.name)
-	$FPCanvas/UI.visible = false
 
 
 func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
@@ -290,7 +238,7 @@ func _switch_weapon(new_weapon) -> void:
 	if zoomed:
 		_gun_alt()
 	super(new_weapon)
-	update_UI()
+	update_weapon_UI()
 
 
 func _cycle_switch_weapon() -> void:
@@ -313,8 +261,8 @@ func _cycle_switch_weapon() -> void:
 
 
 func _unequip_weapon(old_weapon) -> void:
-	%FPAnimator.play(old_weapon.stats.unequip_anim)
-	await %FPAnimator.animation_finished
+	fp_animator.play(old_weapon.stats.unequip_anim)
+	await fp_animator.animation_finished
 	old_weapon.visible = false
 	get_fp_weapon(old_weapon).visible = false
 
@@ -325,11 +273,11 @@ func _equip_weapon(new_weapon) -> void:
 	else:
 		_show_crosshairs(true)
 		
-	%FPAnimator.play(new_weapon.stats.equip_anim)
+	fp_animator.play(new_weapon.stats.equip_anim)
 	await get_tree().process_frame
 	fp_weapon = get_fp_weapon(new_weapon)
 	new_weapon.visible = true
 	fp_weapon.visible = true
 	nozzle = fp_weapon.nozzle
-	await %FPAnimator.animation_finished
+	await fp_animator.animation_finished
 	super(new_weapon)

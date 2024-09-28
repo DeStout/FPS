@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcesl64wxrgro"]
+[gd_scene load_steps=3 format=3 uid="uid://dcesl64wxrgro"]
 
 [ext_resource type="Script" path="res://Maps/Campaign/CampaignLevel.gd" id="1_byqwd"]
-[ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="3_wjaqp"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Maps/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_ho10k"]
 
 [node name="Level" type="Node3D"]
@@ -13,17 +12,6 @@ script = ExtResource("1_byqwd")
 
 [node name="FX" type="Node3D" parent="."]
 
-[node name="FadeLayer" type="CanvasLayer" parent="FX"]
-layer = 2
-
-[node name="FadeInOut" type="ColorRect" parent="FX/FadeLayer"]
-visible = false
-offset_right = 1920.0
-offset_bottom = 1082.0
-mouse_filter = 1
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="NavPoints" type="Node3D" parent="."]
 
 [node name="Pickups" type="Node3D" parent="."]
@@ -32,6 +20,3 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("4_ho10k")
 volume_db = -20.0
 bus = &"Music"
-
-[node name="Pause" parent="." instance=ExtResource("3_wjaqp")]
-visible = false

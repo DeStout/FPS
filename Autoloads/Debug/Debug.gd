@@ -15,7 +15,7 @@ var players_container = null
 var player : CharacterBase = null
 var player_pos : Transform3D
 
-var debug_camera_ = preload("res://Debug/DebugCamera.tscn")
+var debug_camera_ = preload("res://Autoloads/Debug/DebugCamera.tscn")
 var debug_camera : CharacterBody3D = null
 var cam_swap := false
 
