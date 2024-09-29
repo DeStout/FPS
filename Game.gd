@@ -22,7 +22,8 @@ func _add_loading_screen() -> CanvasLayer:
 # Called from SinglePlayerMenu.start_button()
 func load_single_player() -> void:
 	loading_screen = _add_loading_screen()
-	remove_child(main_menu)
+	if main_menu:
+		remove_child(main_menu)
 	loading_screen.load("res://Maps/Campaign/TestCampaign.tscn", add_map, start_single_player)
 
 
@@ -64,6 +65,7 @@ func start_single_player() -> void:
 # Called from CampaignLevel.character_out_of_bounds()
 func reset_single_player() -> void:
 	remove_child(map)
+	HUD.exit_game()
 	load_single_player()
 
 

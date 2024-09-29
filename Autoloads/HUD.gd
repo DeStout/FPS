@@ -17,6 +17,10 @@ func setup_single_player() -> void:
 	$FadeInOut.visible = true
 
 
+func exit_game() -> void:
+	visible = false
+
+
 func fade_in() -> void:
 	visible = true
 	$FadeInOut.color.a = 1

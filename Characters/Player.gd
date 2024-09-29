@@ -4,7 +4,7 @@ extends CharacterBase
 signal weapon_picked_up
 
 @onready var fp_animator : AnimationPlayer = $AimHelper/FPView/FPAnimator
-@onready var fp_weapon : Node3D = %FPWeapons/Pistol
+@onready var fp_weapon : Node3D = %FPWeapons/SMG
 
 
 func _ready() -> void:
@@ -12,6 +12,7 @@ func _ready() -> void:
 	current_level = Globals.game.map
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	nozzle = fp_weapon.nozzle
 	update_weapon_UI()
 
 

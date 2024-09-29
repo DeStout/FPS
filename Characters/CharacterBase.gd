@@ -54,9 +54,9 @@ var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
 #var weapon_held : Node3D = $Weapons/Slapper
-@onready var weapon_held : Node3D = %Weapons/Pistol
-@onready var weapons := [Globals.WEAPONS.PISTOL]
-@onready var nozzle : Node3D = %Weapons/Pistol/Mesh/Nozzle
+@onready var weapon_held : Node3D = %Weapons/SMG
+@onready var weapons := [Globals.WEAPONS.SMG]
+@onready var nozzle : Node3D = %Weapons/SMG/Mesh/Nozzle
 var trigger_pulled := false
 var alt_pulled := false
 var zoomed := false
@@ -73,7 +73,7 @@ var t_recoil := 0.0
 
 func _ready() -> void:
 	set_processing(false)
-	_switch_weapon(%Weapons/Pistol)
+	_switch_weapon(%Weapons/SMG)
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
 

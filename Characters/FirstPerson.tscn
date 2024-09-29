@@ -1,9 +1,6 @@
-[gd_scene load_steps=19 format=4 uid="uid://cm6pnkpd4ohs5"]
+[gd_scene load_steps=16 format=4 uid="uid://cm6pnkpd4ohs5"]
 
-[ext_resource type="PackedScene" uid="uid://by7wwhoru7x60" path="res://Props/Weapons/Pistol/FPPistol.tscn" id="1_u54fo"]
-[ext_resource type="PackedScene" uid="uid://kwpmppcj56nl" path="res://Props/Weapons/SMG/FPSMG.tscn" id="2_g3v02"]
 [ext_resource type="Animation" uid="uid://bryw4eyxd4nn3" path="res://Characters/Anims/IdlePistol.res" id="3_ur0g2"]
-[ext_resource type="PackedScene" uid="uid://btj7bcwc5cjwk" path="res://Props/Weapons/Rifle/FPRifle.tscn" id="3_xai3b"]
 [ext_resource type="Animation" uid="uid://cmlotf3f0cv62" path="res://Characters/Anims/IdleSMG.res" id="4_wy7t6"]
 [ext_resource type="Animation" uid="uid://cj46ow3y84dvb" path="res://Characters/Anims/IdleRifle.res" id="5_1lx88"]
 [ext_resource type="Animation" uid="uid://w72uakivl1ms" path="res://Characters/Anims/RunPistol.res" id="5_i5qou"]
@@ -604,21 +601,6 @@ skin = SubResource("Skin_f250k")
 transform = Transform3D(-0.0107859, 0.0368033, -0.999265, 0.998539, 0.0533199, -0.00881432, 0.052956, -0.997899, -0.0373245, 17.6871, -6.37666, -17.8402)
 bone_name = "mixamorig_RightHand"
 bone_idx = 28
-
-[node name="FPWeapons" type="Node3D" parent="Mannequin/Skeleton3D/HandAttach"]
-unique_name_in_owner = true
-transform = Transform3D(1, 1.43074e-08, -3.42782e-09, -1.43074e-08, 1, 2.86145e-08, 3.42782e-09, -2.86145e-08, 1, 0, 0, 0)
-
-[node name="Pistol" parent="Mannequin/Skeleton3D/HandAttach/FPWeapons" instance=ExtResource("1_u54fo")]
-transform = Transform3D(-1.22747, 99.9843, -1.27495, 1.09224, -1.26158, -99.9861, -99.9865, -1.24122, -1.07657, 2.13686, 7.49473, 3.19918)
-visible = false
-
-[node name="SMG" parent="Mannequin/Skeleton3D/HandAttach/FPWeapons" instance=ExtResource("2_g3v02")]
-transform = Transform3D(1.90598, 99.8881, 4.32834, 4.11762, 4.24704, -99.8249, -99.897, 2.08085, -4.03206, 0.982015, 10.8305, 3.41445)
-visible = false
-
-[node name="Rifle" parent="Mannequin/Skeleton3D/HandAttach/FPWeapons" instance=ExtResource("3_xai3b")]
-transform = Transform3D(-0.0221794, 99.8075, 6.2025, 5.2994, 6.19495, -99.6672, -99.8595, 0.306574, -5.29057, -0.402056, 6.48742, 3.17827)
 
 [node name="FPAnimator" type="AnimationPlayer" parent="."]
 libraries = {

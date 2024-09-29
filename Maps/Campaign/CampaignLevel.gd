@@ -90,7 +90,8 @@ func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> vo
 
 # Signaled by KillArea.body_exited
 func character_out_of_bounds(body : Node3D) -> void:
-	if body == player and $KillArea.monitoring:
-		Globals.reset_single_player()
+	if body == player:
+		HUD.update_health(player.MAX_HEALTH, player.MAX_ARMOR, player.MAX_HEALTH, 0)
+		Globals.game.reset_single_player()
 		return
 	body.queue_free()
