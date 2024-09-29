@@ -16,7 +16,7 @@ const AIR_DEACCEL := 1.5
 const SPEED = 5.5
 const ZOOM_SPEED = 4.75
 const LADDER_SPEED = 4.0
-const JUMP_VELOCITY = 6.5
+const JUMP_VELOCITY = 6.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
 var on_ladder := false
@@ -53,10 +53,10 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
-@onready
-var weapon_held : Node3D = $Weapons/Slapper
-@onready var weapons := [Globals.WEAPONS.SLAPPER]
-var nozzle : Node3D = null
+#var weapon_held : Node3D = $Weapons/Slapper
+@onready var weapon_held : Node3D = %Weapons/Pistol
+@onready var weapons := [Globals.WEAPONS.PISTOL]
+@onready var nozzle : Node3D = %Weapons/Pistol/Mesh/Nozzle
 var trigger_pulled := false
 var alt_pulled := false
 var zoomed := false
@@ -73,6 +73,7 @@ var t_recoil := 0.0
 
 func _ready() -> void:
 	set_processing(false)
+	_switch_weapon(%Weapons/Pistol)
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
 

@@ -12,13 +12,12 @@ var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
 
 func _ready() -> void:
 	Debug.player = player
-	
+	HUD.setup_single_player()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func open() -> void:
-	$MusicPlayer.play()
-	
+	#$MusicPlayer.play()
 	await HUD.fade_in()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

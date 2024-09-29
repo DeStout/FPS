@@ -1,23 +1,41 @@
 extends CanvasLayer
 
 
+func _ready() -> void:
+	set_process(false)
+	visible = false
+
+
 func _process(delta: float) -> void:
+	#_fade_health(delta)
 	_fade_dmg(delta)
-	_fade_health(delta)
+
+
+func setup_single_player() -> void:
+	$MatchTimer.visible = false
+	$UI.visible = true
+	$FadeInOut.visible = true
 
 
 func fade_in() -> void:
-	$FadeInOut.visible = true
+	visible = true
 	$FadeInOut.color.a = 1
 	var open_time = 3.0
 	var tween = create_tween()
-	tween.tween_property($FadeInOut, "color:a", 0, open_time)
+	tween.tween_property($FadeInOut, "color:a", 0.0, open_time)
 	await tween.finished
+	set_process(true)
 	return
 
 
 func fade_out() -> void:
-	pass
+	$FadeInOut.visible = true
+	$FadeInOut.color.a = 0
+	var close_time = 3.0
+	var tween = create_tween()
+	tween.tween_property($FadeInOut, "color:a", 1.0, close_time)
+	await tween.finished
+	return
 
 
 func update_weapon(ammo_in_mag, mag_size, extra_ammo) -> void:
@@ -67,9 +85,8 @@ func show_damage(dmg_dir) -> void:
 
 
 func _fade_health(delta) -> void:
-	pass
-	#if %HealthMod.color.a > 0:
-		#%HealthMod.color.a -= delta
+	if %HealthMod.color.a > 0:
+		%HealthMod.color.a -= delta
 
 
 func _fade_dmg(delta) -> void:
