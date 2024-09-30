@@ -29,5 +29,7 @@ rot_offset = Vector3(1.54396, 1.08048, 1.51289)
 anim_pos = Vector2(-1, -1)
 equip_anim = ""
 unequip_anim = ""
+idle_anim = "IdlePistol"
+run_anim = "RunPistol"
 shoot_anim = "ShootPistol"
 reload_anim = ""

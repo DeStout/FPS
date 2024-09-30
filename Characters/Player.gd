@@ -40,22 +40,28 @@ func _physics_process(delta) -> void:
 			velocity.y = JUMP_VELOCITY
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
+	
+	var tween = create_tween()
 	if direction:
+		var dir2 := Vector2(direction.x, direction.z)
+		tween.tween_property(anim_tree, "parameters/LowerBody/IdleRun/blend_position", dir2, 0.1)
 		if on_ladder:
-			anim_state_machine.travel("Run")
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.y = move_toward(velocity.y, direction.z * speed, accel * delta)
 		else:
-			if is_on_floor():
-				anim_state_machine.travel("Run")
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
+		if fp_animator.current_animation != weapon_held.stats.run_anim:
+			fp_animator.play(weapon_held.stats.run_anim)
 	else:
-		anim_state_machine.travel("IdleFall")
+		tween.tween_property(anim_tree, \
+								"parameters/LowerBody/IdleRun/blend_position", Vector2.ZERO, 0.1)
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 		if on_ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
+		if fp_animator.current_animation != weapon_held.stats.idle_anim:
+			fp_animator.play(weapon_held.stats.idle_anim)
 	move_and_slide()
 
 

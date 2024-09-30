@@ -68,7 +68,8 @@ var t_recoil := 0.0
 
 #Animation
 @onready var anim_tree = $Mannequin/AnimTree
-@onready var anim_state_machine = $Mannequin/AnimTree["parameters/playback"]
+@onready var upper_state_machine = $Mannequin/AnimTree["parameters/UpperBody/playback"]
+@onready var lower_state_machine = $Mannequin/AnimTree["parameters/LowerBody/playback"]
 
 
 func _ready() -> void:
@@ -99,9 +100,7 @@ func _physics_process(delta) -> void:
 		deaccel = DEACCEL
 		speed = LADDER_SPEED
 		
-		var tween = get_tree().create_tween()
-		tween.tween_property(anim_tree, \
-			"parameters/IdleFall/LowerIdleFall/blend_position", -1, 0.05)
+		lower_state_machine.travel("IdleRun")
 	elif !is_on_floor():
 		accel = AIR_ACCEL
 		deaccel = AIR_DEACCEL
@@ -109,20 +108,15 @@ func _physics_process(delta) -> void:
 		velocity.y -= gravity * delta
 		
 		if was_on_floor:
-			anim_state_machine.travel("IdleFall")
-			var tween = get_tree().create_tween()
-			tween.tween_property(anim_tree, \
-				"parameters/IdleFall/LowerIdleFall/blend_position", 1, 0.05)
+			lower_state_machine.travel("Fall")
 		was_on_floor = false
 	elif is_on_floor() and !was_on_floor:
 		accel = ACCEL
 		deaccel = DEACCEL
 		speed = SPEED
 		
+		lower_state_machine.travel("IdleRun")
 		was_on_floor = true
-		var tween = get_tree().create_tween()
-		tween.tween_property(anim_tree, \
-			"parameters/IdleFall/LowerIdleFall/blend_position", -1, 0.05)
 
 
 func _pull_trigger() -> void:

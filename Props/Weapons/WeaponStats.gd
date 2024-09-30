@@ -23,7 +23,10 @@ class_name WeaponStats
 @export var pos_offset : Vector3
 @export var rot_offset : Vector3
 @export var anim_pos : Vector2
+
 @export var equip_anim : String
 @export var unequip_anim : String
+@export var idle_anim : String
+@export var run_anim : String
 @export var shoot_anim : String
 @export var reload_anim : String
