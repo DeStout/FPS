@@ -33,7 +33,6 @@ collision_mask = 34
 shape = SubResource("ConcavePolygonShape3D_8lp7g")
 
 [node name="UseArea" type="Area3D" parent="."]
-visible = false
 collision_layer = 64
 collision_mask = 2
 input_ray_pickable = false

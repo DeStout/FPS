@@ -4404,11 +4404,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_aj1ov")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Ladder2" index="1"]
 shape = SubResource("ConcavePolygonShape3D_h1s7q")
 
-[node name="Terminal" type="Node3D" parent="FX" index="8" node_paths=PackedStringArray("use_area", "resources")]
+[node name="Terminal" type="Node3D" parent="FX" index="8" node_paths=PackedStringArray("use_area", "player", "resources")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 5, -35)
 script = ExtResource("10_un8kn")
 use_area = NodePath("UseArea")
 event_script = ExtResource("11_f2ggd")
+player = NodePath("../../Players/Player")
 resources = [NodePath("../Door3"), NodePath("../Door5"), NodePath("../Door6"), NodePath("../AlarmLights"), NodePath("../EnemySpawner1"), NodePath("../EnemySpawner2"), NodePath("../Door4")]
 metadata/_edit_group_ = true
 

@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func open() -> void:
-	#$MusicPlayer.play()
+	$MusicPlayer.play()
 	await HUD.fade_in()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -30,9 +30,10 @@ func open() -> void:
 func level_finished() -> void:
 	var post_time := 2.0
 	var timer = get_tree().create_timer(post_time, false, false, true)
+	HUD.fade_out()
 	var tween = create_tween().set_parallel()
 	tween.tween_property(Engine, "time_scale", 0.1, post_time)
-	tween.tween_property($FX/FadeLayer/FadeInOut, "color:a", 1.2, post_time)
+	#tween.tween_property($FX/FadeLayer/FadeInOut, "color:a", 1.2, post_time)
 	await tween.finished
 	
 	Globals.game.quit_single_player()

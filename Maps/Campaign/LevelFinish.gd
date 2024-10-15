@@ -5,5 +5,5 @@ extends Area3D
 
 
 func level_finished(body) -> void:
-	if body == Globals.map.player:
+	if body == Globals.game.map.player:
 		current_level.level_finished()
