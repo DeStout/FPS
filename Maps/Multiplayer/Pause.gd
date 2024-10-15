@@ -4,7 +4,8 @@ extends Control
 func _input(event) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
 		if Input.is_action_just_pressed("Pause"):
-			_toggle_pause()
+			if Globals.game.can_be_paused:
+				_toggle_pause()
 
 
 func _toggle_pause() -> void:

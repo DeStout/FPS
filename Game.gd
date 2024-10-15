@@ -11,6 +11,7 @@ var loading_screen : CanvasLayer = null
 
 var map : Node3D = null
 var bot_sim_settings : BotSimSettings = BotSimSettings.new()
+var can_be_paused := false
 
 
 func _add_loading_screen() -> CanvasLayer:
@@ -22,7 +23,7 @@ func _add_loading_screen() -> CanvasLayer:
 # Called from SinglePlayerMenu.start_button()
 func load_single_player() -> void:
 	loading_screen = _add_loading_screen()
-	if main_menu:
+	if main_menu.is_inside_tree():
 		remove_child(main_menu)
 	loading_screen.load("res://Maps/Campaign/TestCampaign.tscn", add_map, start_single_player)
 
@@ -59,13 +60,15 @@ func add_map(new_map) -> void:
 
 # Called from loading_screen._update_UI()
 func start_single_player() -> void:
+	can_be_paused = true
 	map.open()
 
 
 # Called from CampaignLevel.character_out_of_bounds()
 func reset_single_player() -> void:
 	if !map.is_queued_for_deletion():
-		remove_child(map)
+		can_be_paused = false
+		map.queue_free()
 		HUD.exit_game()
 		load_single_player()
 
@@ -74,9 +77,10 @@ func quit_single_player() -> void:
 	Engine.time_scale = 1.0
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	HUD.exit_game()
 	map.end_game()
 	map.queue_free()
+	can_be_paused = false
+	HUD.exit_game()
 	
 	if main_menu:
 		add_child(main_menu)
@@ -89,6 +93,7 @@ func quit_single_player() -> void:
 func start_bot_sim() -> void:
 	# Signals to Debug.bot_sim_start()
 	#bot_sim_started.emit(map)
+	can_be_paused = true
 	map.open()
 
 
@@ -102,6 +107,7 @@ func quit_bot_sim() -> void:
 	bot_sim_settings = BotSimSettings.new()
 	await get_tree().physics_frame
 	map = null
+	can_be_paused = false
 	
 	if main_menu:
 		add_child(main_menu)

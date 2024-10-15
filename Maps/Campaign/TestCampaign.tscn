@@ -4363,7 +4363,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.75, 6.75, -35)
 [node name="Door4" parent="FX" index="3" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.05, 2.25, -33.125)
 open_pos_z = false
-locked = true
 
 [node name="Door5" parent="FX" index="4" instance=ExtResource("5_8nld0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 73, 6.75, -45.25)

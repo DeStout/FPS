@@ -28,8 +28,8 @@ func load(load_path : String, new_map_return : Callable, new_map_load : Callable
 
 
 func _process(delta: float) -> void:
-	_update_UI(delta)
 	_update_load()
+	_update_UI(delta)
 
 
 func _update_UI(delta : float) -> void:
@@ -52,4 +52,4 @@ func _update_load() -> void:
 	elif status == ResourceLoader.THREAD_LOAD_LOADED:
 		$Percent.modulate = Color.BLUE
 		$Continue.visible = true
-		map_return.call_deferred(ResourceLoader.load_threaded_get(address))
+		map_return.call(ResourceLoader.load_threaded_get(address))

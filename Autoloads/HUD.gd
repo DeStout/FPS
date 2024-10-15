@@ -24,7 +24,7 @@ func exit_game() -> void:
 func fade_in() -> void:
 	visible = true
 	$FadeInOut.color.a = 1
-	var open_time = 3.0
+	var open_time = 1.0
 	var tween = create_tween()
 	tween.tween_property($FadeInOut, "color:a", 0.0, open_time)
 	await tween.finished
