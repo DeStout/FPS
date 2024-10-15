@@ -109,9 +109,6 @@ max_columns = 3
 same_column_width = true
 fixed_column_width = 353
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_l1osx")]
-visible = false
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -314,5 +311,9 @@ metadata/_edit_group_ = true
 visible = false
 offset_right = 1920.0
 offset_bottom = 1082.0
-mouse_filter = 1
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_l1osx")]
+visible = false
+top_level = true

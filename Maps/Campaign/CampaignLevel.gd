@@ -35,11 +35,10 @@ func level_finished() -> void:
 	tween.tween_property($FX/FadeLayer/FadeInOut, "color:a", 1.2, post_time)
 	await tween.finished
 	
-	Globals.quit_single_player()
+	Globals.game.quit_single_player()
 
 
 func end_game() -> void:
-	$KillArea.monitoring = false
 	for char in $Players.get_children():
 		char.set_processing(false)
 

@@ -64,19 +64,19 @@ func start_single_player() -> void:
 
 # Called from CampaignLevel.character_out_of_bounds()
 func reset_single_player() -> void:
-	remove_child(map)
-	HUD.exit_game()
-	load_single_player()
+	if !map.is_queued_for_deletion():
+		remove_child(map)
+		HUD.exit_game()
+		load_single_player()
 
 
 func quit_single_player() -> void:
-	map.end_game()
 	Engine.time_scale = 1.0
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+	HUD.exit_game()
+	map.end_game()
 	map.queue_free()
-	await get_tree().physics_frame
 	
 	if main_menu:
 		add_child(main_menu)

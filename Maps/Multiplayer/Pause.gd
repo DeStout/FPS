@@ -36,7 +36,8 @@ func close_button() -> void:
 
 
 func quit_button() -> void:
-	if Globals.map is MultiplayerLevel:
-		Globals.quit_bot_sim()
-	elif Globals.map is CampaignLevel:
-		Globals.quit_single_player()
+	_toggle_pause()
+	if Globals.game.map is MultiplayerLevel:
+		Globals.game.quit_bot_sim()
+	elif Globals.game.map is CampaignLevel:
+		Globals.game.quit_single_player()
