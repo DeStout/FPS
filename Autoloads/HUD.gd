@@ -77,7 +77,15 @@ func update_health(max_health, max_armor, health, armor) -> void:
 			box.color.a = 0
 
 
-func show_damage(dmg_dir) -> void:	
+func show_crosshairs(show) -> void:
+	$UI/Crosshair.visible = show
+
+
+func zoom_crosshairs(show) -> void:
+	$UI/Scope.visible = show
+
+
+func show_damage(dmg_dir) -> void:
 	if dmg_dir.y > 0:
 		%Damage/Up.modulate.a = dmg_dir.y
 	else:

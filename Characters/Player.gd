@@ -4,7 +4,7 @@ extends CharacterBase
 signal weapon_picked_up
 
 @onready var fp_animator : AnimationPlayer = $AimHelper/FPView/FPAnimator
-@onready var fp_weapon : Node3D = %FPWeapons/SMG
+@onready var fp_weapon : Node3D = %FPWeapons/Pistol
 
 
 func _ready() -> void:
@@ -43,8 +43,9 @@ func _physics_process(delta) -> void:
 	
 	var tween = create_tween()
 	if direction:
-		var dir2 := Vector2(direction.x, direction.z)
-		tween.tween_property(anim_tree, "parameters/LowerBody/IdleRun/blend_position", dir2, 0.1)
+		var dir2 := Vector2(input_dir.x, input_dir.y)
+		tween.tween_property(anim_tree, lower_blend_pos, dir2, 0.1)
+		
 		if on_ladder:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.y = move_toward(velocity.y, direction.z * speed, accel * delta)
@@ -54,8 +55,8 @@ func _physics_process(delta) -> void:
 		if fp_animator.current_animation != weapon_held.stats.run_anim:
 			fp_animator.play(weapon_held.stats.run_anim)
 	else:
-		tween.tween_property(anim_tree, \
-								"parameters/LowerBody/IdleRun/blend_position", Vector2.ZERO, 0.1)
+		tween.tween_property(anim_tree, lower_blend_pos, Vector2.ZERO, 0.1)
+		
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 		if on_ladder:
@@ -135,8 +136,8 @@ func _shoot() -> void:
 	super()
 	if can_shoot and weapon_held.get_weapon_type() != Globals.WEAPONS.SLAPPER \
 			and !switching_weapons:
-		if fp_animator.is_playing():
-			fp_animator.stop()
+		#if fp_animator.is_playing():
+			#fp_animator.stop()
 		fp_animator.play(weapon_held.stats.shoot_anim)
 	update_weapon_UI()
 
@@ -155,9 +156,9 @@ func _zoom() -> void:
 		Globals.zoom_sensitibity = 0.5
 		$Weapons.visible = false
 		$AimHelper/FPWeapons.visible = false
-		_zoom_crosshairs(true)
+		HUD.zoom_crosshairs(true)
 	else:
-		_zoom_crosshairs(false)
+		HUD.zoom_crosshairs(false)
 		Globals.zoom_sensitibity = 1.0
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(cam, "fov", 75, zoom_time)
@@ -171,14 +172,6 @@ func update_weapon_UI() -> void:
 	if weapon_held:
 		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.stats.mag_size, \
 														weapon_held.extra_ammo)
-
-
-func _show_crosshairs(show) -> void:
-	$FPCanvas/UI/Crosshair.visible = show
-
-
-func _zoom_crosshairs(show) -> void:
-	$FPCanvas/UI/Scope.visible = show
 
 
 func update_leaders_UI(team_list) -> void:
@@ -231,8 +224,7 @@ func _die() -> void:
 func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
 	var new_fp_weapon : MeshInstance3D = null
 	if weapon != null:
-		var fp_weapons := $AimHelper/FPWeapons.get_children()
-		fp_weapons.erase($AimHelper/FPWeapons/FPAnimator)
+		var fp_weapons := %FPWeapons.get_children()
 		for fpweapon in fp_weapons:
 			if fpweapon.weapon_type == weapon.get_weapon_type():
 				new_fp_weapon = fpweapon
@@ -266,23 +258,23 @@ func _cycle_switch_weapon() -> void:
 
 
 func _unequip_weapon(old_weapon) -> void:
-	fp_animator.play(old_weapon.stats.unequip_anim)
-	await fp_animator.animation_finished
+	#fp_animator.play(old_weapon.stats.unequip_anim)
+	#await fp_animator.animation_finished
 	old_weapon.visible = false
 	get_fp_weapon(old_weapon).visible = false
 
 
 func _equip_weapon(new_weapon) -> void:
 	if weapon_held.stats.weapon_type == Globals.WEAPONS.SNIPER:
-		_show_crosshairs(false)
+		HUD.show_crosshairs(false)
 	else:
-		_show_crosshairs(true)
+		HUD.show_crosshairs(true)
 		
-	fp_animator.play(new_weapon.stats.equip_anim)
-	await get_tree().process_frame
+	#fp_animator.play(new_weapon.stats.equip_anim)
+	#await get_tree().process_frame
 	fp_weapon = get_fp_weapon(new_weapon)
 	new_weapon.visible = true
 	fp_weapon.visible = true
 	nozzle = fp_weapon.nozzle
-	await fp_animator.animation_finished
+	#await fp_animator.animation_finished
 	super(new_weapon)

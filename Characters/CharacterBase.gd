@@ -54,9 +54,9 @@ var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
 #var weapon_held : Node3D = $Weapons/Slapper
-@onready var weapon_held : Node3D = %Weapons/SMG
-@onready var weapons := [Globals.WEAPONS.SMG]
-@onready var nozzle : Node3D = %Weapons/SMG/Mesh/Nozzle
+@onready var weapon_held : Node3D = %Weapons/Pistol
+@onready var weapons := [Globals.WEAPONS.PISTOL, Globals.WEAPONS.RIFLE]
+@onready var nozzle : Node3D = %Weapons/Pistol/Mesh/Nozzle
 var trigger_pulled := false
 var alt_pulled := false
 var zoomed := false
@@ -68,13 +68,14 @@ var t_recoil := 0.0
 
 #Animation
 @onready var anim_tree = $Mannequin/AnimTree
-@onready var upper_state_machine = $Mannequin/AnimTree["parameters/UpperBody/playback"]
-@onready var lower_state_machine = $Mannequin/AnimTree["parameters/LowerBody/playback"]
+@onready var upper_state_machine = $Mannequin/AnimTree["parameters/Upper/playback"]
+@onready var lower_state_machine = $Mannequin/AnimTree["parameters/Lower/playback"]
+var lower_blend_pos := "parameters/Lower/RunIdle/blend_position"
 
 
 func _ready() -> void:
 	set_processing(false)
-	_switch_weapon(%Weapons/SMG)
+	_switch_weapon(%Weapons/Pistol)
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
 
@@ -100,7 +101,7 @@ func _physics_process(delta) -> void:
 		deaccel = DEACCEL
 		speed = LADDER_SPEED
 		
-		lower_state_machine.travel("IdleRun")
+		lower_state_machine.travel("RunIdle")
 	elif !is_on_floor():
 		accel = AIR_ACCEL
 		deaccel = AIR_DEACCEL
@@ -115,7 +116,7 @@ func _physics_process(delta) -> void:
 		deaccel = DEACCEL
 		speed = SPEED
 		
-		lower_state_machine.travel("IdleRun")
+		lower_state_machine.travel("RunIdle")
 		was_on_floor = true
 
 
@@ -397,7 +398,7 @@ func _have_weapon(weapon_type : int ) -> bool:
 
 func _get_weapon(weapon_type : int) -> Node3D:
 	var new_weapon : Node3D = null
-	for weapon in $Weapons.get_children():
+	for weapon in %Weapons.get_children():
 		if weapon.get_weapon_type() == weapon_type:
 			new_weapon = weapon
 	return new_weapon
@@ -438,12 +439,8 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 func _anim_weapon_switch(old_weapon, new_weapon) -> void:
 	await _unequip_weapon(old_weapon)
 	
-	var tween = create_tween()
-	var anim_pos = weapon_held.get_anim_pos()
-	tween.tween_property(anim_tree, \
-		"parameters/IdleFall/UpperIdle/blend_position", anim_pos, 0.15)
-	tween.tween_property(anim_tree, \
-		"parameters/Run/UpperRun/blend_position", anim_pos, 0.15)
+	#var tween = create_tween()
+	upper_state_machine.travel(weapon_held.stats.state_name)
 		
 	await _equip_weapon(new_weapon)
 	return
