@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv1xbqlbbiyub"]
+
+[ext_resource type="Script" path="res://Characters/Campaign/CampaignEnemy.gd" id="1_6r1n6"]
+[ext_resource type="PackedScene" uid="uid://65jhlh1xbkow" path="res://Characters/CharacterBase.tscn" id="1_ywjkl"]
+[ext_resource type="Script" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_2ytcc"]
+[ext_resource type="Script" path="res://Characters/Campaign/GuardState.gd" id="4_y83vb"]
+[ext_resource type="Script" path="res://Characters/Campaign/AlertState.gd" id="5_f7e51"]
+[ext_resource type="PackedScene" uid="uid://bd2fp3xjnl5vp" path="res://Characters/Campaign/VisionCone.tscn" id="6_oihj4"]
+
+[node name="CampaignEnemy" instance=ExtResource("1_ywjkl")]
+script = ExtResource("1_6r1n6")
+starting_weapon = 1
+
+[node name="NavAgent" type="NavigationAgent3D" parent="." index="1"]
+
+[node name="StateMachine" type="Node" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_2ytcc")
+initial_state = NodePath("GuardState")
+
+[node name="GuardState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_y83vb")
+enemy = NodePath("../..")
+
+[node name="AlertState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_f7e51")
+enemy = NodePath("../..")
+
+[node name="TargetCast" type="RayCast3D" parent="." index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+visible = false
+target_position = Vector3(0, 0, -1)
+collision_mask = 3
+debug_shape_custom_color = Color(0, 0.54902, 0.282353, 1)
+
+[node name="LookHelper" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+
+[node name="VisionCone" parent="LookHelper" index="0" instance=ExtResource("6_oihj4")]
+unique_name_in_owner = true
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+
+[node name="HipsArea" parent="Mannequin/Mannequin/Skeleton3D/Hips" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="StomachArea" parent="Mannequin/Mannequin/Skeleton3D/Stomach" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="ChestArea" parent="Mannequin/Mannequin/Skeleton3D/Chest" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="NeckArea" parent="Mannequin/Mannequin/Skeleton3D/Neck" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="HeadArea" parent="Mannequin/Mannequin/Skeleton3D/Head" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="UpperArmArea" parent="Mannequin/Mannequin/Skeleton3D/L_UpperArm" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="ForearmArea" parent="Mannequin/Mannequin/Skeleton3D/L_Forearm" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/L_Hand" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="UpperArmArea" parent="Mannequin/Mannequin/Skeleton3D/R_UpperArm" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="ForearmArea" parent="Mannequin/Mannequin/Skeleton3D/R_Forearm" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/R_Hand" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="ThighArea" parent="Mannequin/Mannequin/Skeleton3D/L_Thigh" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="L_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="14"]
+transform = Transform3D(0.998529, -0.0536208, -0.00803158, -0.0540083, -0.996722, -0.0602317, -0.00477557, 0.060577, -0.998152, -11.937, 52.5153, -15.3532)
+
+[node name="ShinArea" parent="Mannequin/Mannequin/Skeleton3D/L_Shin" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="L_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="15"]
+transform = Transform3D(0.977992, -0.207892, 0.0176905, -0.119975, -0.490976, 0.862872, -0.170698, -0.846004, -0.505112, -14.1944, 10.5543, -12.803)
+
+[node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/L_Foot" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="ThighArea" parent="Mannequin/Mannequin/Skeleton3D/R_Thigh" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="R_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="17"]
+transform = Transform3D(0.998401, 0.0419605, 0.0378697, 0.0531097, -0.925712, -0.374481, 0.019343, 0.375894, -0.926461, 11.5704, 49.7878, 5.30787)
+
+[node name="ShinArea" parent="Mannequin/Mannequin/Skeleton3D/R_Shin" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="R_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="18"]
+transform = Transform3D(0.972901, 0.231212, 0.00204985, 0.120863, -0.516091, 0.847964, 0.197117, -0.824737, -0.53005, 13.3369, 10.8162, 21.1326)
+
+[node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/R_Foot" index="0"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="TargetTimer" type="Timer" parent="." index="8"]
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="." index="9"]
+one_shot = true
+
+[editable path="Mannequin"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Pistol"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Pistol/Mesh"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/SMG"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/SMG/Mesh"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Rifle"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Shotgun"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Sniper"]

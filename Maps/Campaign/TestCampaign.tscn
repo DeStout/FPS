@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://bv0rwydo3odmv"]
+[gd_scene load_steps=189 format=3 uid="uid://bv0rwydo3odmv"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_l4ff0"]
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Campaign1_tex_7.png" id="2_8hd7j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bb1otskk4hdc6" path="res://Characters/Player.tscn" id="4_r8i4x"]
 [ext_resource type="Texture2D" uid="uid://41faj8pfp84a" path="res://Maps/T_Orange_D.png" id="4_sfoun"]
 [ext_resource type="PackedScene" uid="uid://ci6uy4jghak2i" path="res://Maps/SlidingDoor.tscn" id="5_8nld0"]
+[ext_resource type="PackedScene" uid="uid://cv1xbqlbbiyub" path="res://Characters/Campaign/CampaignEnemy.tscn" id="5_ejj15"]
 [ext_resource type="Script" path="res://Maps/Campaign/GuardPath.gd" id="6_sy76j"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="8_ns3r5"]
 [ext_resource type="Script" path="res://Maps/UseEvent.gd" id="10_un8kn"]
@@ -4294,6 +4295,11 @@ shape = SubResource("ConcavePolygonShape3D_kmtgm")
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 0)
 current_level = NodePath("../..")
+
+[node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9316, 0, 0)
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
 
 [node name="GuardPaths" type="Node3D" parent="." index="5"]
 

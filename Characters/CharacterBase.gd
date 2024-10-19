@@ -305,8 +305,7 @@ func _die() -> void:
 	# No Connections
 	defeated.emit(self)
 	
-	var body_color = $Mannequin/Mannequin/Skeleton3D/ \
-							Body.get_surface_override_material(0).albedo_color
+	var body_color = $Mannequin/Mannequin/Skeleton3D/Alpha_Surface.mesh.surface_get_material(0).albedo_color
 	current_level.spawn_rag_doll(skeleton, transform, \
 						last_shot_by, last_body_seg_shot.name, body_color)
 	

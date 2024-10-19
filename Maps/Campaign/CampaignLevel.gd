@@ -17,12 +17,15 @@ func _ready() -> void:
 
 
 func open() -> void:
-	$MusicPlayer.play()
+	#$MusicPlayer.play()
 	await HUD.fade_in()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	for char in $Players.get_children():
+		if char is Skeleton3D:
+			char.get_node("PhysBoneSim").physical_bones_start_simulation()
+			continue
 		char.set_processing(true)
 
 
