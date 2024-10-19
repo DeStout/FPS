@@ -4,7 +4,7 @@ extends Skeleton3D
 var fadeout := false
 @export var vis_time := 10.0
 @export var fade_time := 0.5
-@onready var surf_mat : BaseMaterial3D = $Alpha_Surface.mesh.surface_get_material(0)
+@onready var surf_mat : BaseMaterial3D = $Surface.mesh.surface_get_material(0)
 
 
 func _process(delta: float) -> void:
@@ -41,4 +41,4 @@ func add_impulse(shooter_pos : Vector3, body_seg_shot : String,
 													gun_impulse : float) -> void:
 	var body_seg : PhysicalBone3D = $PhysBoneSim.get_node(body_seg_shot)
 	var impulse = shooter_pos.direction_to(global_position) * gun_impulse
-	body_seg.apply_central_impulse(impulse)
+	#body_seg.apply_central_impulse(impulse)
