@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://0muoy77ipjrp"
-path="res://.godot/imported/PuppetRig.glb-0d0ef84a354d0273a9f8c7bff2e6fb3f.scn"
+valid=false
 
 [deps]
 
 source_file="res://Archive/PuppetEra/PuppetRig.glb"
-dest_files=["res://.godot/imported/PuppetRig.glb-0d0ef84a354d0273a9f8c7bff2e6fb3f.scn"]
 
 [params]
 

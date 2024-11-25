@@ -54,7 +54,7 @@ var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
 #var weapon_held : Node3D = $Weapons/Slapper
-@onready var weapon_held : Node3D = %Weapons/Pistol
+@onready var weapon_held : Node3D = null
 @onready var weapons := [Globals.WEAPONS.PISTOL, Globals.WEAPONS.RIFLE]
 @onready var nozzle : Node3D = %Weapons/Pistol/Mesh/Nozzle
 var trigger_pulled := false
@@ -305,9 +305,11 @@ func _die() -> void:
 	# No Connections
 	defeated.emit(self)
 	
-	var body_color = $Mannequin/Mannequin/Skeleton3D/Alpha_Surface.mesh.surface_get_material(0).albedo_color
+	var body_mat = $Mannequin/Mannequin/Skeleton3D/Surface.mesh.surface_get_material(0)
+	if $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0):
+		body_mat = $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0)
 	current_level.spawn_rag_doll(skeleton, transform, \
-						last_shot_by, last_body_seg_shot.name, body_color)
+						last_shot_by, last_body_seg_shot.name, body_mat)
 	
 	visible = false
 	_disable_collisions(true)
@@ -321,7 +323,7 @@ func _die() -> void:
 func _disable_collisions(is_disabled : bool) -> void:
 	$Collision.disabled = is_disabled
 	for body_seg in body_segs:
-		body_seg.get_node("Collision").disabled = is_disabled
+		body_seg.get_node("Shape").disabled = is_disabled
 
 
 func pick_up(new_pick_up : Node3D) -> void:
@@ -436,6 +438,7 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 
 
 func _anim_weapon_switch(old_weapon, new_weapon) -> void:
+	upper_state_machine.travel("Holster")
 	await _unequip_weapon(old_weapon)
 	
 	#var tween = create_tween()

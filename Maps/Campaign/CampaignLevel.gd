@@ -4,11 +4,15 @@ class_name CampaignLevel
 
 @export var player : CharacterBase
 
-var rag_doll_ := preload("res://Characters/RagDoll.tscn")
-var shot_trail_ := preload("res://Props/ShotTrail.tscn")
-var bullet_hole_ := preload("res://Props/BulletHole.tscn")
-var damage_label_ := preload("res://Characters/DamageLabel.tscn")
-var weapon_pick_up_ := preload("res://Props/PickUps/WeaponPickUp.tscn")
+var rag_doll_ := load("res://Characters/RagDoll.tscn")
+var shot_trail_ := load("res://Props/ShotTrail.tscn")
+var bullet_hole_ := load("res://Props/BulletHole.tscn")
+var damage_label_ := load("res://Characters/DamageLabel.tscn")
+var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
+
+var enemy_ := load("res://Characters/Campaign/CampaignEnemy.tscn")
+
+@onready var spawn_loc = $Players/CampaignEnemy.transform
 
 func _ready() -> void:
 	Debug.player = player
@@ -23,9 +27,6 @@ func open() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	for char in $Players.get_children():
-		if char is Skeleton3D:
-			char.get_node("PhysBoneSim").physical_bones_start_simulation()
-			continue
 		char.set_processing(true)
 
 
@@ -55,7 +56,7 @@ func spawn_shot_trail(nozzle_point, collision_point) -> void:
 
 func spawn_bullet_hole(pos : Vector3, normal : Vector3, \
 												parent : Node3D = $FX) -> void:
-	var bullet_hole := bullet_hole_.instantiate()
+	var bullet_hole : Decal = bullet_hole_.instantiate()
 	parent.add_child(bullet_hole)
 	bullet_hole.global_position = pos
 	bullet_hole.project_to(normal)
@@ -76,13 +77,22 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 # Called from CharacterBase.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 								shooter : CharacterBase, body_seg_shot : String, \
-													body_color : Color) -> void:
+												body_mat : BaseMaterial3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
-	rag_doll.set_color(body_color)
-	rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
+	rag_doll.set_material(body_mat)
+	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
 											shooter.weapon_held.stats.impulse)
+
+
+func spawn_enemy() -> void:
+	var enemy = enemy_.instantiate()
+	enemy.enemies.append(%Player)
+	enemy.transform = spawn_loc
+	enemy.current_level = self
+	$Players.add_child(enemy)
+	enemy.set_processing(true)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

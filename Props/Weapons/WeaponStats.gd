@@ -27,7 +27,6 @@ class_name WeaponStats
 @export var state_name : String
 @export var blend_pos_name : String
 @export var equip_anim : String
-@export var unequip_anim : String
 @export var idle_anim : String
 @export var run_anim : String
 @export var shoot_anim : String

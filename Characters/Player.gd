@@ -3,7 +3,7 @@ extends CharacterBase
 
 signal weapon_picked_up
 
-@onready var fp_animator : AnimationPlayer = $AimHelper/FPView/FPAnimator
+@onready var fp_animator : AnimationPlayer = $AimHelper/FPView/AnimationPlayer
 @onready var fp_weapon : Node3D = %FPWeapons/Pistol
 
 
@@ -52,7 +52,8 @@ func _physics_process(delta) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
-		if fp_animator.current_animation != weapon_held.stats.run_anim:
+		
+		if !fp_animator.is_playing():
 			fp_animator.play(weapon_held.stats.run_anim)
 	else:
 		tween.tween_property(anim_tree, lower_blend_pos, Vector2.ZERO, 0.1)
@@ -61,8 +62,10 @@ func _physics_process(delta) -> void:
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 		if on_ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
-		if fp_animator.current_animation != weapon_held.stats.idle_anim:
+			
+		if !fp_animator.is_playing():
 			fp_animator.play(weapon_held.stats.idle_anim)
+			
 	move_and_slide()
 
 
@@ -136,8 +139,8 @@ func _shoot() -> void:
 	super()
 	if can_shoot and weapon_held.get_weapon_type() != Globals.WEAPONS.SLAPPER \
 			and !switching_weapons:
-		#if fp_animator.is_playing():
-			#fp_animator.stop()
+		if fp_animator.is_playing():
+			fp_animator.stop()
 		fp_animator.play(weapon_held.stats.shoot_anim)
 	update_weapon_UI()
 
@@ -258,8 +261,10 @@ func _cycle_switch_weapon() -> void:
 
 
 func _unequip_weapon(old_weapon) -> void:
-	#fp_animator.play(old_weapon.stats.unequip_anim)
-	#await fp_animator.animation_finished
+	if old_weapon == null:
+		return
+	fp_animator.play(old_weapon.stats.equip_anim)
+	await fp_animator.animation_finished
 	old_weapon.visible = false
 	get_fp_weapon(old_weapon).visible = false
 
@@ -270,11 +275,11 @@ func _equip_weapon(new_weapon) -> void:
 	else:
 		HUD.show_crosshairs(true)
 		
-	#fp_animator.play(new_weapon.stats.equip_anim)
+	fp_animator.play(new_weapon.stats.equip_anim, true)
 	#await get_tree().process_frame
 	fp_weapon = get_fp_weapon(new_weapon)
 	new_weapon.visible = true
 	fp_weapon.visible = true
 	nozzle = fp_weapon.nozzle
-	#await fp_animator.animation_finished
+	await fp_animator.animation_finished
 	super(new_weapon)

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Characters/Campaign/GuardState.gd" id="3_3inax"]
 [ext_resource type="Script" path="res://Characters/Campaign/AlertState.gd" id="4_x3xq4"]
 [ext_resource type="PackedScene" uid="uid://bd2fp3xjnl5vp" path="res://Characters/Campaign/VisionCone.tscn" id="5_gkesb"]
-[ext_resource type="PackedScene" uid="uid://bf4x61feslkq2" path="res://Characters/MannyBase.tscn" id="6_too56"]
+[ext_resource type="PackedScene" uid="uid://bf4x61feslkq2" path="res://Characters/MannyBase_crap.tscn" id="6_too56"]
 [ext_resource type="PackedScene" uid="uid://ckqtvo1inhvtn" path="res://Props/Weapons/Slapper/Slapper.tscn" id="7_qvp12"]
 [ext_resource type="PackedScene" uid="uid://bwie7ixf4v1vw" path="res://Props/Weapons/Pistol/Pistol.tscn" id="8_garcs"]
 [ext_resource type="PackedScene" uid="uid://dh23vd3s1cpss" path="res://Props/Weapons/SMG/SMG.tscn" id="9_r5tpj"]

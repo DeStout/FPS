@@ -28,9 +28,17 @@ func _ready() -> void:
 	weapons.append(starting_weapon)
 	_switch_weapon(_get_weapon(starting_weapon))
 	
-	state_machine.set_physics_process(false)
+	#state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
 	state_machine.set_physics_process(true)
+
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("EmoteWave"):
+		#$Mannequin/AnimPlayer.play("Waving")
+		anim_tree["parameters/Wave/request"] = \
+									AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
 
 
 func _process(delta: float) -> void:
@@ -99,7 +107,6 @@ func aim(delta) -> void:
 
 func move_to_target(delta) -> void:
 	if !target:
-		print(name, ": No target")
 		return
 	if is_enemy_visible(target) and $ShootTimer.is_stopped():
 		trigger_pulled = true
@@ -220,6 +227,8 @@ func _die() -> void:
 
 
 func _unequip_weapon(old_weapon) -> void:
+	if old_weapon == null:
+		return
 	old_weapon.visible = false
 
 
