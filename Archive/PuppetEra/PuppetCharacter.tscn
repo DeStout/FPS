@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bj70y5rv73685" path="res://Archive/PuppetEra/PuppetBase.tscn" id="6_7o0ro"]
 [ext_resource type="PackedScene" uid="uid://dlgv171g6as4t" path="res://Props/Weapons/Sniper/Sniper.tscn" id="7_3u6w3"]
 [ext_resource type="AudioStream" uid="uid://b56r0e1ges6xc" path="res://Characters/Audio/footstep1.ogg" id="9_4go11"]
-[ext_resource type="Script" path="res://RandomAudio.gd" id="9_druge"]
+[ext_resource type="Script" path="res://Utilities/RandomAudio.gd" id="9_druge"]
 [ext_resource type="AudioStream" uid="uid://doju4xf4dtgt" path="res://Characters/Audio/footstep2.ogg" id="10_i4x8w"]
 [ext_resource type="AudioStream" uid="uid://cxbr801up84rw" path="res://Characters/Audio/footstep4.ogg" id="12_hl0ln"]
 

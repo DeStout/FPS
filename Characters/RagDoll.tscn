@@ -831,16 +831,10 @@ visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
-joint_type = 2
 body_offset = Transform3D(1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 0, 0, 0)
 mass = 4.0
 angular_damp = 25.0
 bone_name = "mixamorig_Neck"
-joint_constraints/swing_span = 20.0
-joint_constraints/twist_span = 25.0
-joint_constraints/bias = 0.3
-joint_constraints/softness = 0.8
-joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysBoneSim/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85469e-17, 0.0498475, -0.0180299)
@@ -936,7 +930,7 @@ collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, -6.38377e-16, 0, -6.38377e-16, 1, 0, 0, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 6.38377e-16, 0, -6.38377e-16, 1, 0, 0, 0)
 joint_rotation = Vector3(-6.38377e-16, 0, 0)
 body_offset = Transform3D(1, 2.14204e-08, -2.98023e-08, -2.14204e-08, 1, -1.86265e-08, 2.98023e-08, 1.86265e-08, 1, 0, 0, 0)
 mass = 5.0

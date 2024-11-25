@@ -275,8 +275,7 @@ func _equip_weapon(new_weapon) -> void:
 	else:
 		HUD.show_crosshairs(true)
 		
-	fp_animator.play(new_weapon.stats.equip_anim, true)
-	#await get_tree().process_frame
+	fp_animator.play_backwards(new_weapon.stats.equip_anim)
 	fp_weapon = get_fp_weapon(new_weapon)
 	new_weapon.visible = true
 	fp_weapon.visible = true

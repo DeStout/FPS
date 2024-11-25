@@ -10,6 +10,7 @@ var loading_screen : CanvasLayer = null
 @onready var main_menu : Control = $MainMenu
 
 var map : Node3D = null
+var single_player_settings := 0
 var bot_sim_settings : BotSimSettings = BotSimSettings.new()
 var can_be_paused := false
 
@@ -21,11 +22,22 @@ func _add_loading_screen() -> CanvasLayer:
 
 
 # Called from SinglePlayerMenu.start_button()
-func load_single_player() -> void:
+func load_single_player(map_selected) -> void:
 	loading_screen = _add_loading_screen()
 	if main_menu.is_inside_tree():
 		remove_child(main_menu)
-	loading_screen.load("res://Maps/Campaign/TestCampaign.tscn", add_map, start_single_player)
+	single_player_settings = map_selected
+	loading_screen.load(_select_single_player_map(), add_map, start_single_player)
+
+
+func _select_single_player_map() -> String:
+	var map_address := ""
+	match single_player_settings:
+		0:
+			map_address = "res://Maps/Campaign/TestCampaign.tscn"
+		1:
+			map_address = "res://Maps/Campaign/Reuben.tscn"
+	return map_address
 
 
 # Called from BotSimMenu.start_button()
@@ -70,7 +82,7 @@ func reset_single_player() -> void:
 		can_be_paused = false
 		map.queue_free()
 		HUD.exit_game()
-		load_single_player()
+		load_single_player(single_player_settings)
 
 
 func quit_single_player() -> void:
