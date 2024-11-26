@@ -53,7 +53,8 @@ func _physics_process(delta) -> void:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 		
-		if !fp_animator.is_playing():
+		if !fp_animator.current_animation == weapon_held.stats.shoot_anim and \
+							!weapon_held.is_reloading and !switching_weapons:
 			fp_animator.play(weapon_held.stats.run_anim)
 	else:
 		tween.tween_property(anim_tree, lower_blend_pos, Vector2.ZERO, 0.1)
@@ -62,10 +63,10 @@ func _physics_process(delta) -> void:
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 		if on_ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
-			
-		if !fp_animator.is_playing():
+		
+		if fp_animator.current_animation == weapon_held.stats.run_anim or \
+							!fp_animator.is_playing() and !switching_weapons:
 			fp_animator.play(weapon_held.stats.idle_anim)
-			
 	move_and_slide()
 
 

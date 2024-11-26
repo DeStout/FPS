@@ -35,7 +35,6 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("EmoteWave"):
-		#$Mannequin/AnimPlayer.play("Waving")
 		anim_tree["parameters/Wave/request"] = \
 									AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 

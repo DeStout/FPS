@@ -74,3 +74,7 @@ layers = 8
 transform = Transform3D(0.0190598, 0.0411762, -0.99897, 0.998881, 0.0424705, 0.0208086, 0.0432836, -0.998249, -0.0403207, 7.84934, -1.29411, -32.3239)
 bone_name = "mixamorig_RightHand"
 bone_idx = 28
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_auto_capture = false
+playback_default_blend_time = 0.2
