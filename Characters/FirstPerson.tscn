@@ -71,7 +71,7 @@ layers = 8
 layers = 8
 
 [node name="FPGunAttach" type="BoneAttachment3D" parent="Mannequin/Skeleton3D" index="2"]
-transform = Transform3D(0.0190598, 0.0411762, -0.99897, 0.998881, 0.0424705, 0.0208086, 0.0432836, -0.998249, -0.0403207, 7.84934, -1.29411, -32.3239)
+transform = Transform3D(0.0190604, 0.0411749, -0.99897, 0.998881, 0.0424701, 0.0208092, 0.043283, -0.998249, -0.0403192, 7.84927, -1.29408, -32.3239)
 bone_name = "mixamorig_RightHand"
 bone_idx = 28
 
