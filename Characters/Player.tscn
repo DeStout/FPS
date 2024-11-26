@@ -12,22 +12,12 @@ script = ExtResource("2_y7402")
 
 [node name="Skeleton3D" parent="Mannequin/Mannequin" index="0"]
 bones/0/position = Vector3(-5.98654e-06, 0.965301, 4.69101e-06)
-bones/0/rotation = Quaternion(-8.68664e-05, -2.73902e-16, 3.54008e-15, 1)
 bones/6/rotation = Quaternion(0, 0, 0, 1)
-bones/8/rotation = Quaternion(3.63016e-08, 0.764342, 0.644811, -8.36621e-09)
-bones/9/rotation = Quaternion(0.220233, -0.671936, 0.220233, 0.671936)
-bones/10/rotation = Quaternion(-0.0942288, 0.7008, 0.0942288, 0.7008)
-bones/11/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/12/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/14/rotation = Quaternion(0, 0, 0, 1)
 bones/18/rotation = Quaternion(0, 0, 0, 1)
 bones/22/rotation = Quaternion(0, 0, 0, 1)
 bones/26/rotation = Quaternion(0, 0, 0, 1)
 bones/30/rotation = Quaternion(0, 0, 0, 1)
-bones/33/rotation = Quaternion(0.204459, 0.676902, -0.204459, 0.676902)
-bones/34/rotation = Quaternion(-0.117357, -0.6973, -0.117357, 0.6973)
-bones/35/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/36/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/38/rotation = Quaternion(0, 0, 0, 1)
 bones/42/rotation = Quaternion(0, 0, 0, 1)
 bones/46/rotation = Quaternion(0, 0, 0, 1)
@@ -166,6 +156,14 @@ transform = Transform3D(-0.982461, 0.176556, 0.0599851, 0.0677981, 0.038552, 0.9
 
 [node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/L_Foot" index="0"]
 collision_layer = 4
+
+[node name="AnimTree" parent="Mannequin" index="2"]
+parameters/Upper/Pistol/Alert/blend_position = 0
+parameters/Upper/Pistol/Guard/blend_position = 0
+parameters/Upper/SMG/Alert/blend_position = 0
+parameters/Upper/SMG/Guard/blend_position = 0
+parameters/Upper/Slapper/Alert/blend_position = 0
+parameters/Upper/Slapper/Guard/blend_position = 0
 
 [node name="Camera" parent="AimHelper" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

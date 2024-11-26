@@ -5,20 +5,21 @@ extends State
 var update_interval := 10
 
 
-func enter():
+func enter() -> void:
 	#print(enemy.name, ": Enter AlertState")
+	if enemy.weapon_held != null:
+		enemy.weapon_state_machine.travel("Alert")
+
+
+func exit() -> void:
 	pass
 
 
-func exit():
+func update(_delta) -> void:
 	pass
 
 
-func update(_delta):
-	pass
-
-
-func physics_update(delta):
+func physics_update(delta) -> void:
 	if get_tree().get_frame() % update_interval == 0:
 		check_priorities()
 	

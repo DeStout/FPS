@@ -70,12 +70,14 @@ var t_recoil := 0.0
 @onready var anim_tree = $Mannequin/AnimTree
 @onready var upper_state_machine = $Mannequin/AnimTree["parameters/Upper/playback"]
 @onready var lower_state_machine = $Mannequin/AnimTree["parameters/Lower/playback"]
+@onready var weapon_state_machine : AnimationNodeStateMachinePlayback = null
 var lower_blend_pos := "parameters/Lower/RunIdle/blend_position"
 
 
 func _ready() -> void:
 	set_processing(false)
 	_switch_weapon(%Weapons/Pistol)
+	#weapon_state_machine.travel("Guard")
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
 
@@ -425,6 +427,9 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 			old_weapon = weapon_held
 			weapon_held = new_weapon
 			nozzle = weapon_held.nozzle
+			weapon_state_machine = $Mannequin/AnimTree["parameters/Upper/" + \
+									weapon_held.stats.state_name + "/playback"]
+			print(weapon_state_machine)
 			
 			await _anim_weapon_switch(old_weapon, weapon_held)
 			switching_weapons = false

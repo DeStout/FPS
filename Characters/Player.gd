@@ -12,6 +12,7 @@ func _ready() -> void:
 	current_level = Globals.game.map
 	#weapons.append(Globals.WEAPONS.PISTOL)
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	weapon_state_machine.travel("Alert")
 	nozzle = fp_weapon.nozzle
 	update_weapon_UI()
 
@@ -278,6 +279,7 @@ func _equip_weapon(new_weapon) -> void:
 		
 	fp_animator.play_backwards(new_weapon.stats.equip_anim)
 	fp_weapon = get_fp_weapon(new_weapon)
+	weapon_state_machine.travel("Alert")
 	new_weapon.visible = true
 	fp_weapon.visible = true
 	nozzle = fp_weapon.nozzle

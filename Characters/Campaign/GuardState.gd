@@ -6,7 +6,9 @@ var update_interval := 10
 
 
 func enter() -> void:
-	pass
+	#print(enemy.name, ": Enter GuardState")
+	if enemy.weapon_held != null:
+		enemy.weapon_state_machine.travel("Guard")
 
 
 func exit() -> void:

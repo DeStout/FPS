@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://31u0y7afils0"]
+[gd_scene load_steps=88 format=4 uid="uid://31u0y7afils0"]
 
 [ext_resource type="Animation" uid="uid://dngc0lg2ahfx" path="res://Characters/Anims/LowerIdleFall.res" id="2_iawr8"]
 [ext_resource type="Animation" uid="uid://xxw2j8cy3sso" path="res://Characters/Anims/LowerIdleStanding.res" id="3_lomd3"]
@@ -412,81 +412,192 @@ states/RunIdle/position = Vector2(440, 100)
 transitions = ["Start", "RunIdle", SubResource("AnimationNodeStateMachineTransition_k08w5"), "RunIdle", "Fall", SubResource("AnimationNodeStateMachineTransition_yd1ay"), "Fall", "RunIdle", SubResource("AnimationNodeStateMachineTransition_v875w")]
 graph_offset = Vector2(-104, -80)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_64sdm"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xw834"]
 animation = &"Holster"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jkpdj"]
-animation = &"UpperIdlePistol"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_12rbi"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rf8ea"]
 animation = &"UpperRunPistol"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_40ojd"]
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_se6oc"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_rf8ea")
+blend_point_0/pos = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t6ket"]
+animation = &"UpperIdlePistol"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4yfpy"]
 animation = &"UpperWalkPistol"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_uvdby"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jkpdj")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_12rbi")
-blend_point_1/pos = Vector2(-1, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_40ojd")
-blend_point_2/pos = Vector2(1, -1)
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_7v83b"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_t6ket")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_4yfpy")
+blend_point_1/pos = 1.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_13v42"]
-animation = &"UpperIdleRifle"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cv4e3"]
+xfade_time = 0.25
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u36ni"]
-animation = &"UpperRunRifle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a6mi1"]
-animation = &"UpperWalkRifle"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_v00o0"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_13v42")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_u36ni")
-blend_point_1/pos = Vector2(-1, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_a6mi1")
-blend_point_2/pos = Vector2(1, -1)
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_finkg"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7qdd"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kwek5"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ifg6e"]
 xfade_time = 0.25
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nxwuo"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gtxh1"]
+states/Alert/node = SubResource("AnimationNodeBlendSpace1D_se6oc")
+states/Alert/position = Vector2(523, 100)
+states/Guard/node = SubResource("AnimationNodeBlendSpace1D_7v83b")
+states/Guard/position = Vector2(348, 100)
+states/Start/position = Vector2(205, 100)
+transitions = ["Guard", "Alert", SubResource("AnimationNodeStateMachineTransition_cv4e3"), "Start", "Guard", SubResource("AnimationNodeStateMachineTransition_n7qdd"), "Alert", "Guard", SubResource("AnimationNodeStateMachineTransition_ifg6e")]
+graph_offset = Vector2(22, -110)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bm0c8"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wixdf"]
+animation = &"UpperRunSMG"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_gitt1"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wixdf")
+blend_point_0/pos = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_moepc"]
+animation = &"UpperIdleSMG"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e0ex3"]
+animation = &"UpperWalkSMG"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4bxbs"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_moepc")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_e0ex3")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_raex5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmt1i"]
 xfade_time = 0.25
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uimh7"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xsk17"]
 xfade_time = 0.25
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8bhjk"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hepy2"]
+states/Alert/node = SubResource("AnimationNodeBlendSpace1D_gitt1")
+states/Alert/position = Vector2(496, 100)
+states/Guard/node = SubResource("AnimationNodeBlendSpace1D_4bxbs")
+states/Guard/position = Vector2(346, 100)
+transitions = ["Start", "Guard", SubResource("AnimationNodeStateMachineTransition_raex5"), "Guard", "Alert", SubResource("AnimationNodeStateMachineTransition_kmt1i"), "Alert", "Guard", SubResource("AnimationNodeStateMachineTransition_xsk17")]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5ypbm"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rea83"]
+animation = &"UpperRunSlapper"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_j7dkp"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_rea83")
+blend_point_0/pos = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_csu6b"]
+animation = &"UpperIdleSlapper"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xukch"]
+animation = &"UpperWalkSlapper"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_uqgoh"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_csu6b")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_xukch")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gs0kf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wv1gm"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x8esd"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4rirw"]
+states/Alert/node = SubResource("AnimationNodeBlendSpace1D_j7dkp")
+states/Alert/position = Vector2(466, 100)
+states/Guard/node = SubResource("AnimationNodeBlendSpace1D_uqgoh")
+states/Guard/position = Vector2(327, 100)
+transitions = ["Start", "Guard", SubResource("AnimationNodeStateMachineTransition_gs0kf"), "Guard", "Alert", SubResource("AnimationNodeStateMachineTransition_wv1gm"), "Alert", "Guard", SubResource("AnimationNodeStateMachineTransition_x8esd")]
+graph_offset = Vector2(-109, -40)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i5xsk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k78yl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7jk0o"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u8vpq"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ejct5"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8tlyp"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h7tbp"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hul2m"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dsh8h"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r3spl"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_42xd0"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qso4f"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nj3q4"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6k6g"]
 xfade_time = 0.25
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t3gdo"]
-states/Holster/node = SubResource("AnimationNodeAnimation_64sdm")
-states/Holster/position = Vector2(323, 100)
-states/Pistol/node = SubResource("AnimationNodeBlendSpace2D_uvdby")
-states/Pistol/position = Vector2(323, -14)
-states/Rifle/node = SubResource("AnimationNodeBlendSpace2D_v00o0")
-states/Rifle/position = Vector2(489, 100)
-states/Start/position = Vector2(116, 100)
-transitions = ["Start", "Holster", SubResource("AnimationNodeStateMachineTransition_finkg"), "Holster", "Pistol", SubResource("AnimationNodeStateMachineTransition_kwek5"), "Pistol", "Holster", SubResource("AnimationNodeStateMachineTransition_nxwuo"), "Holster", "Rifle", SubResource("AnimationNodeStateMachineTransition_uimh7"), "Rifle", "Holster", SubResource("AnimationNodeStateMachineTransition_8bhjk")]
-graph_offset = Vector2(-27, -96)
+states/Holster/node = SubResource("AnimationNodeAnimation_xw834")
+states/Holster/position = Vector2(322, 100)
+states/Pistol/node = SubResource("AnimationNodeStateMachine_gtxh1")
+states/Pistol/position = Vector2(450, -89)
+states/Rifle/node = SubResource("AnimationNodeStateMachine_bm0c8")
+states/Rifle/position = Vector2(450, 313)
+states/SMG/node = SubResource("AnimationNodeStateMachine_hepy2")
+states/SMG/position = Vector2(597, 100)
+states/Shotgun/node = SubResource("AnimationNodeStateMachine_5ypbm")
+states/Shotgun/position = Vector2(187, 313)
+states/Slapper/node = SubResource("AnimationNodeStateMachine_4rirw")
+states/Slapper/position = Vector2(187, -89)
+states/Sniper/node = SubResource("AnimationNodeStateMachine_i5xsk")
+states/Sniper/position = Vector2(82, 100)
+states/Start/position = Vector2(187, 33)
+transitions = ["Start", "Holster", SubResource("AnimationNodeStateMachineTransition_k78yl"), "Holster", "Slapper", SubResource("AnimationNodeStateMachineTransition_7jk0o"), "SMG", "Holster", SubResource("AnimationNodeStateMachineTransition_u8vpq"), "Rifle", "Holster", SubResource("AnimationNodeStateMachineTransition_ejct5"), "Shotgun", "Holster", SubResource("AnimationNodeStateMachineTransition_8tlyp"), "Holster", "Shotgun", SubResource("AnimationNodeStateMachineTransition_h7tbp"), "Holster", "Rifle", SubResource("AnimationNodeStateMachineTransition_hul2m"), "Holster", "SMG", SubResource("AnimationNodeStateMachineTransition_dsh8h"), "Slapper", "Holster", SubResource("AnimationNodeStateMachineTransition_r3spl"), "Sniper", "Holster", SubResource("AnimationNodeStateMachineTransition_42xd0"), "Holster", "Sniper", SubResource("AnimationNodeStateMachineTransition_qso4f"), "Holster", "Pistol", SubResource("AnimationNodeStateMachineTransition_nj3q4"), "Pistol", "Holster", SubResource("AnimationNodeStateMachineTransition_s6k6g")]
+graph_offset = Vector2(-197, -117)
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ybog2"]
 filter_enabled = true
 filters = ["", "Mannequin/Skeleton3D:mixamorig_Head", "Mannequin/Skeleton3D:mixamorig_LeftArm", "Mannequin/Skeleton3D:mixamorig_LeftForeArm", "Mannequin/Skeleton3D:mixamorig_LeftHand", "Mannequin/Skeleton3D:mixamorig_LeftHandIndex1", "Mannequin/Skeleton3D:mixamorig_LeftHandIndex2", "Mannequin/Skeleton3D:mixamorig_LeftHandIndex3", "Mannequin/Skeleton3D:mixamorig_LeftHandMiddle1", "Mannequin/Skeleton3D:mixamorig_LeftHandMiddle2", "Mannequin/Skeleton3D:mixamorig_LeftHandMiddle3", "Mannequin/Skeleton3D:mixamorig_LeftHandPinky1", "Mannequin/Skeleton3D:mixamorig_LeftHandPinky2", "Mannequin/Skeleton3D:mixamorig_LeftHandPinky3", "Mannequin/Skeleton3D:mixamorig_LeftHandRing1", "Mannequin/Skeleton3D:mixamorig_LeftHandRing2", "Mannequin/Skeleton3D:mixamorig_LeftHandRing3", "Mannequin/Skeleton3D:mixamorig_LeftHandThumb1", "Mannequin/Skeleton3D:mixamorig_LeftHandThumb2", "Mannequin/Skeleton3D:mixamorig_LeftHandThumb3", "Mannequin/Skeleton3D:mixamorig_LeftShoulder", "Mannequin/Skeleton3D:mixamorig_Neck", "Mannequin/Skeleton3D:mixamorig_RightArm", "Mannequin/Skeleton3D:mixamorig_RightForeArm", "Mannequin/Skeleton3D:mixamorig_RightHand", "Mannequin/Skeleton3D:mixamorig_RightHandIndex1", "Mannequin/Skeleton3D:mixamorig_RightHandIndex2", "Mannequin/Skeleton3D:mixamorig_RightHandIndex3", "Mannequin/Skeleton3D:mixamorig_RightHandMiddle1", "Mannequin/Skeleton3D:mixamorig_RightHandMiddle2", "Mannequin/Skeleton3D:mixamorig_RightHandMiddle3", "Mannequin/Skeleton3D:mixamorig_RightHandPinky1", "Mannequin/Skeleton3D:mixamorig_RightHandPinky2", "Mannequin/Skeleton3D:mixamorig_RightHandPinky3", "Mannequin/Skeleton3D:mixamorig_RightHandRing1", "Mannequin/Skeleton3D:mixamorig_RightHandRing2", "Mannequin/Skeleton3D:mixamorig_RightHandRing3", "Mannequin/Skeleton3D:mixamorig_RightHandThumb1", "Mannequin/Skeleton3D:mixamorig_RightHandThumb2", "Mannequin/Skeleton3D:mixamorig_RightHandThumb3", "Mannequin/Skeleton3D:mixamorig_RightShoulder", "Mannequin/Skeleton3D:mixamorig_Spine", "Mannequin/Skeleton3D:mixamorig_Spine1", "Mannequin/Skeleton3D:mixamorig_Spine2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v2cao"]
-graph_offset = Vector2(-468.618, -143.75)
+graph_offset = Vector2(-509.357, -138.627)
 nodes/Add/node = SubResource("AnimationNodeAdd2_rfv1t")
 nodes/Add/position = Vector2(120, 40)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_v35em")
-nodes/Animation/position = Vector2(-260, 0)
+nodes/Animation/position = Vector2(-280, 20)
 nodes/Lower/node = SubResource("AnimationNodeStateMachine_0v5d8")
-nodes/Lower/position = Vector2(-260, 180)
+nodes/Lower/position = Vector2(-80, 140)
 nodes/Upper/node = SubResource("AnimationNodeStateMachine_t3gdo")
 nodes/Upper/position = Vector2(-280, -160)
 nodes/Wave/node = SubResource("AnimationNodeOneShot_ybog2")
@@ -504,7 +615,7 @@ bones/0/name = "mixamorig_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75702e-08, 0.997919, -4.09133e-07)
 bones/0/enabled = true
-bones/0/position = Vector3(-6.04859e-06, 0.964187, 0.00012281)
+bones/0/position = Vector3(-6.00867e-06, 0.958826, 4.90126e-05)
 bones/0/rotation = Quaternion(-0.00133952, -8.39384e-15, 5.54967e-14, 0.999999)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "mixamorig_Spine"
@@ -533,14 +644,14 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29424e-05, 0.150325, -0.00792902)
 bones/4/enabled = true
 bones/4/position = Vector3(1.29424e-05, 0.150325, -0.00792902)
-bones/4/rotation = Quaternion(0, 0, -7.27596e-12, 1)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "mixamorig_Head"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.02709e-06, 0.103218, -0.0314243)
 bones/5/enabled = true
 bones/5/position = Vector3(9.02709e-06, 0.103218, -0.0314243)
-bones/5/rotation = Quaternion(-3.55271e-15, 8.52653e-14, 0, 1)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "mixamorig_HeadTop_End"
 bones/6/parent = 5
@@ -561,21 +672,21 @@ bones/8/parent = 7
 bones/8/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0260093, -0.126551, -0.00264822)
 bones/8/enabled = true
 bones/8/position = Vector3(0.0260093, -0.126551, -0.00264822)
-bones/8/rotation = Quaternion(3.63016e-08, 0.764342, 0.644811, -8.36621e-09)
+bones/8/rotation = Quaternion(0, 1, 0, 0)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "mixamorig_LeftForeArm"
 bones/9/parent = 8
 bones/9/rest = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -6.16802e-08, -0.274047, -2.45867e-05)
 bones/9/enabled = true
 bones/9/position = Vector3(-6.16802e-08, -0.274047, -2.45867e-05)
-bones/9/rotation = Quaternion(0.220233, -0.671936, 0.220233, 0.671936)
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2.45452e-05, -0.276145, -8.2633e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(-2.45452e-05, -0.276145, -8.2633e-08)
-bones/10/rotation = Quaternion(-0.0942288, 0.7008, 0.0942288, 0.7008)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "mixamorig_LeftHandThumb1"
 bones/11/parent = 10
@@ -729,21 +840,21 @@ bones/32/parent = 31
 bones/32/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.0260089, -0.12655, -0.00267134)
 bones/32/enabled = true
 bones/32/position = Vector3(-0.0260089, -0.12655, -0.00267134)
-bones/32/rotation = Quaternion(5.92377e-09, 0.795024, 0.606578, 4.51965e-09)
+bones/32/rotation = Quaternion(0, 1, 0, 0)
 bones/32/scale = Vector3(1, 1, 1)
 bones/33/name = "mixamorig_RightForeArm"
 bones/33/parent = 32
 bones/33/rest = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.38783e-07, -0.274047, 2.36315e-05)
 bones/33/enabled = true
 bones/33/position = Vector3(-1.38783e-07, -0.274047, 2.36315e-05)
-bones/33/rotation = Quaternion(0.204459, 0.676902, -0.204459, 0.676902)
+bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
 bones/33/scale = Vector3(1, 1, 1)
 bones/34/name = "mixamorig_RightHand"
 bones/34/parent = 33
 bones/34/rest = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2.40321e-05, -0.276145, -2.57196e-07)
 bones/34/enabled = true
 bones/34/position = Vector3(-2.40321e-05, -0.276145, -2.57196e-07)
-bones/34/rotation = Quaternion(-0.117357, -0.6973, -0.117357, 0.6973)
+bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/name = "mixamorig_RightHandThumb1"
 bones/35/parent = 34
@@ -890,28 +1001,28 @@ bones/55/parent = 0
 bones/55/rest = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, -0.0912446, -0.0665639, 0.00055376)
 bones/55/enabled = true
 bones/55/position = Vector3(-0.0912446, -0.0665639, 0.00055376)
-bones/55/rotation = Quaternion(0.0153228, -0.204181, 0.978393, 0.0286893)
+bones/55/rotation = Quaternion(0.0159309, -0.202585, 0.978617, 0.0318574)
 bones/55/scale = Vector3(1, 1, 1)
 bones/56/name = "mixamorig_LeftLeg"
 bones/56/parent = 55
 bones/56/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.00244682, 0.405954, 0.00515617)
 bones/56/enabled = true
 bones/56/position = Vector3(0.00244682, 0.405954, 0.00515617)
-bones/56/rotation = Quaternion(0.000730643, 0.977123, 0.211787, -0.0194075)
+bones/56/rotation = Quaternion(0.000575337, 0.9788, 0.203893, -0.0194374)
 bones/56/scale = Vector3(1, 1, 1)
 bones/57/name = "mixamorig_LeftFoot"
 bones/57/parent = 56
 bones/57/rest = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, 0.00244668, 0.420479, -0.0205915)
 bones/57/enabled = true
 bones/57/position = Vector3(0.00244668, 0.420479, -0.0205915)
-bones/57/rotation = Quaternion(0.0594534, 0.691857, -0.716934, 0.0616909)
+bones/57/rotation = Quaternion(0.0580182, 0.69025, -0.718674, 0.0608063)
 bones/57/scale = Vector3(1, 1, 1)
 bones/58/name = "mixamorig_LeftToeBase"
 bones/58/parent = 57
 bones/58/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.00373533, -0.139666, -0.0720854)
 bones/58/enabled = true
 bones/58/position = Vector3(0.00373533, -0.139666, -0.0720854)
-bones/58/rotation = Quaternion(-0.00600263, 0.986493, -0.161365, -0.0275251)
+bones/58/rotation = Quaternion(-0.00624249, 0.986113, -0.163428, -0.02887)
 bones/58/scale = Vector3(1, 1, 1)
 bones/59/name = "mixamorig_LeftToe_End"
 bones/59/parent = 58
@@ -925,28 +1036,28 @@ bones/60/parent = 0
 bones/60/rest = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, 0.0912445, -0.066564, 0.000553792)
 bones/60/enabled = true
 bones/60/position = Vector3(0.0912445, -0.066564, 0.000553792)
-bones/60/rotation = Quaternion(0.00327198, 0.0525436, 0.998266, -0.0263375)
+bones/60/rotation = Quaternion(0.00371512, 0.055477, 0.998044, -0.0285827)
 bones/60/scale = Vector3(1, 1, 1)
 bones/61/name = "mixamorig_RightLeg"
 bones/61/parent = 60
 bones/61/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.00244681, 0.405955, 0.00514289)
 bones/61/enabled = true
 bones/61/position = Vector3(-0.00244681, 0.405955, 0.00514289)
-bones/61/rotation = Quaternion(-0.000513607, 0.992862, 0.118423, -0.014173)
+bones/61/rotation = Quaternion(0.000446387, 0.992898, 0.118086, -0.0144668)
 bones/61/scale = Vector3(1, 1, 1)
 bones/62/name = "mixamorig_RightFoot"
 bones/62/parent = 61
 bones/62/rest = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -0.00244669, 0.420479, -0.0206053)
 bones/62/enabled = true
 bones/62/position = Vector3(-0.00244669, 0.420479, -0.0206053)
-bones/62/rotation = Quaternion(-0.0725776, 0.788593, -0.608099, -0.0554065)
+bones/62/rotation = Quaternion(-0.0744819, 0.796525, -0.597592, -0.0537043)
 bones/62/scale = Vector3(1, 1, 1)
 bones/63/name = "mixamorig_RightToeBase"
 bones/63/parent = 62
 bones/63/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.00373537, -0.139666, -0.0720854)
 bones/63/enabled = true
 bones/63/position = Vector3(-0.00373537, -0.139666, -0.0720854)
-bones/63/rotation = Quaternion(0.0100511, 0.992805, -0.118207, 0.0162622)
+bones/63/rotation = Quaternion(0.00980079, 0.992874, -0.11763, 0.016392)
 bones/63/scale = Vector3(1, 1, 1)
 bones/64/name = "mixamorig_RightToe_End"
 bones/64/parent = 63
@@ -976,8 +1087,12 @@ tree_root = SubResource("AnimationNodeBlendTree_v2cao")
 anim_player = NodePath("../AnimPlayer")
 parameters/Add/add_amount = 1.0
 parameters/Lower/RunIdle/blend_position = Vector2(0.0107317, -0.00450456)
-parameters/Upper/Pistol/blend_position = Vector2(0, 1)
-parameters/Upper/Rifle/blend_position = Vector2(0, 1)
+parameters/Upper/Pistol/Alert/blend_position = 0
+parameters/Upper/Pistol/Guard/blend_position = -1.0
+parameters/Upper/SMG/Alert/blend_position = 0
+parameters/Upper/SMG/Guard/blend_position = -1.0
+parameters/Upper/Slapper/Alert/blend_position = 0
+parameters/Upper/Slapper/Guard/blend_position = -0.1
 parameters/Wave/active = false
 parameters/Wave/internal_active = false
 parameters/Wave/request = 0
