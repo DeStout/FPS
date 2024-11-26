@@ -4297,7 +4297,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0
 current_level = NodePath("../..")
 
 [node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9316, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6519, 0, 0)
+starting_weapon = 2
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 

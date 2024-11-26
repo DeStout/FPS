@@ -53,9 +53,10 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
-#var weapon_held : Node3D = $Weapons/Slapper
+#Globals.WEAPONS.SLAPPER
+@onready var weapons := [Globals.WEAPONS.PISTOL, \
+									Globals.WEAPONS.SMG, Globals.WEAPONS.RIFLE]
 @onready var weapon_held : Node3D = null
-@onready var weapons := [Globals.WEAPONS.PISTOL, Globals.WEAPONS.RIFLE]
 @onready var nozzle : Node3D = %Weapons/Pistol/Mesh/Nozzle
 var trigger_pulled := false
 var alt_pulled := false
@@ -359,15 +360,15 @@ func _pick_up_weapon(new_pick_up : Node3D) -> Node3D:
 			Globals.WEAPONS.SLAPPER:
 				pass
 			Globals.WEAPONS.PISTOL:
-				new_weapon = $Weapons/Pistol
+				new_weapon = %Weapons/Pistol
 			Globals.WEAPONS.SMG:
-				new_weapon = $Weapons/SMG
+				new_weapon = %Weapons/SMG
 			Globals.WEAPONS.RIFLE:
-				new_weapon = $Weapons/Rifle
+				new_weapon = %Weapons/Rifle
 			Globals.WEAPONS.SHOTGUN:
-				new_weapon = $Weapons/Shotgun
+				new_weapon = %Weapons/Shotgun
 			Globals.WEAPONS.SNIPER:
-				new_weapon = $Weapons/Sniper
+				new_weapon = %Weapons/Sniper
 		if new_pick_up.weapon_info.size() == 0:
 			new_weapon.reset()
 		else:
@@ -429,7 +430,6 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 			nozzle = weapon_held.nozzle
 			weapon_state_machine = $Mannequin/AnimTree["parameters/Upper/" + \
 									weapon_held.stats.state_name + "/playback"]
-			print(weapon_state_machine)
 			
 			await _anim_weapon_switch(old_weapon, weapon_held)
 			switching_weapons = false
