@@ -12,7 +12,6 @@ var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 var enemy_ := load("res://Characters/Campaign/CampaignEnemy.tscn")
 
-@onready var spawn_loc = $Players/CampaignEnemy.transform
 
 func _ready() -> void:
 	Debug.player = player
@@ -21,7 +20,7 @@ func _ready() -> void:
 
 
 func open() -> void:
-	#$MusicPlayer.play()
+	$MusicPlayer.play()
 	await HUD.fade_in()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -84,18 +83,6 @@ func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
 											shooter.weapon_held.stats.impulse)
-
-
-func spawn_enemy() -> void:
-	var enemy = enemy_.instantiate()
-	enemy.enemies.append(%Player)
-	enemy.transform = spawn_loc
-	enemy.current_level = self
-	enemy.guard_path = $GuardPaths/GuardPath1
-	enemy.starting_weapon = randi_range(0, 3)
-	$GuardPaths/GuardPath1.follower = enemy
-	$Players.add_child(enemy)
-	enemy.set_processing(true)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 		joint_mat.albedo_color.a -= delta / fade_time
 		if surf_mat.albedo_color.a <= 0:
 			queue_free()
-			$"../..".spawn_enemy()
 
 
 func set_material(new_mat : BaseMaterial3D) -> void:
@@ -29,14 +28,9 @@ func match_pose_transform(manny_skel, manny_trans, body_seg_shot) -> void:
 		
 		if find_bone($PhysBoneSim.get_node(body_seg_shot).bone_name) == bone:
 			$PhysBoneSim.get_node(body_seg_shot).joint_type = PhysicalBone3D.JOINT_TYPE_NONE
-			#unparent_bone_and_rest(bone)
-			
-			
-	#$PhysBoneSim.get_node(body_seg_shot).joint_type = PhysicalBone3D.JOINT_TYPE_NONE
 	
 	await get_tree().create_timer(.01).timeout
 	$PhysBoneSim.physical_bones_start_simulation()
-	#Engine.time_scale = 0.25
 	
 	$FadeoutTimer.start(vis_time)
 	return

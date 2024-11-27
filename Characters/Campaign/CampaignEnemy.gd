@@ -28,7 +28,7 @@ func _ready() -> void:
 	weapons.append(starting_weapon)
 	_switch_weapon(_get_weapon(starting_weapon))
 	
-	#state_machine.set_physics_process(false)
+	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
 	state_machine.set_physics_process(true)
 
@@ -62,8 +62,8 @@ func guard(delta) -> void:
 	if nav_agent.is_navigation_finished() and !(guard_path is Path3D):
 		new_transform = guard_path.transform
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
-		if is_on_floor():
-			return
+		#if is_on_floor():
+			#return
 	elif !global_position.is_equal_approx(next_path_pos):
 		new_transform = transform.looking_at(next_path_pos)
 		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
@@ -74,11 +74,12 @@ func guard(delta) -> void:
 		input_dir = Vector2.UP
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	var tween := create_tween()
+	var tween := create_tween().set_parallel()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						weapon_held.stats.state_name + "/Guard/blend_position"
 	if direction:
-		var dir2 := Vector2(input_dir.x, input_dir.y)
+		speed = GUARD_SPEED
+		var dir2 := Vector2(input_dir.x, (GUARD_SPEED / SPEED) * input_dir.y)
 		tween.tween_property(anim_tree, lower_blend_pos, dir2, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)
 		
@@ -142,6 +143,7 @@ func move_to_target(delta) -> void:
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						weapon_held.stats.state_name + "/Alert/blend_position"
 	if direction:
+		speed = SPEED
 		var dir2 := Vector2(input_dir.x, input_dir.y)
 		tween.tween_property(anim_tree, lower_blend_pos, dir2, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)

@@ -54,10 +54,9 @@ var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
 #Globals.WEAPONS.SLAPPER
-@onready var weapons := [Globals.WEAPONS.PISTOL, \
-									Globals.WEAPONS.SMG, Globals.WEAPONS.RIFLE]
+@onready var weapons := []
 @onready var weapon_held : Node3D = null
-@onready var nozzle : Node3D = %Weapons/Pistol/Mesh/Nozzle
+@onready var nozzle : Node3D = null
 var trigger_pulled := false
 var alt_pulled := false
 var zoomed := false

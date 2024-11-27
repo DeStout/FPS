@@ -749,7 +749,6 @@ bones/64/position = Vector3(-0.00141796, -0.0999746, 0.00175008)
 bones/64/rotation = Quaternion(0, 0, 0, 1)
 bones/64/scale = Vector3(1, 1, 1)
 script = ExtResource("1_wih3r")
-vis_time = 2.0
 
 [node name="Joints" type="MeshInstance3D" parent="."]
 layers = 2
@@ -831,10 +830,16 @@ visible = false
 collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
+joint_type = 2
 body_offset = Transform3D(1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 0, 0, 0)
 mass = 4.0
 angular_damp = 25.0
 bone_name = "mixamorig_Neck"
+joint_constraints/swing_span = 20.0
+joint_constraints/twist_span = 25.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysBoneSim/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85469e-17, 0.0498475, -0.0180299)

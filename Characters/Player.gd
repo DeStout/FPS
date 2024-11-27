@@ -9,9 +9,8 @@ signal weapon_picked_up
 
 func _ready() -> void:
 	super()
-	current_level = Globals.game.map
-	#weapons.append(Globals.WEAPONS.PISTOL)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	weapons.append(Globals.WEAPONS.PISTOL)
+	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_state_machine.travel("Alert")
 	nozzle = fp_weapon.nozzle
 	update_weapon_UI()

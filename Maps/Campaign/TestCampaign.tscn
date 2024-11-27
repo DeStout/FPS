@@ -528,10 +528,10 @@ height = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_l67qi"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, -1.30116, -2.68809, 0.979584, 0, 0, 0, 0, 0, 0, -0.482082, -2.41927, 0.381332),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 4
+point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_rc30m"]
 _data = {
@@ -4296,10 +4296,80 @@ unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 0)
 current_level = NodePath("../..")
 
-[node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+[node name="CampaignEnemy1" parent="Players" index="1" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
 transform = Transform3D(-0.0299804, 0, -0.999551, 0, 1, 0, 0.999551, 0, -0.0299804, -10.003, 5.68434e-14, 1.5754)
 guard_path = NodePath("../../GuardPaths/GuardPath1")
 starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy2" parent="Players" index="2" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 0)
+guard_path = NodePath("../../GuardPaths/Guard1")
+starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy3" parent="Players" index="3" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 11)
+guard_path = NodePath("../../GuardPaths/Guard2")
+starting_weapon = 2
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy4" parent="Players" index="4" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.62939e-06, 0, -22.5)
+guard_path = NodePath("../../GuardPaths/Guard3")
+starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy5" parent="Players" index="5" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.62268e-07, 5, -32)
+guard_path = NodePath("../../GuardPaths/Guard4")
+starting_weapon = 2
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy6" parent="Players" index="6" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49794, 0, -45)
+guard_path = NodePath("../../GuardPaths/GuardPath2")
+starting_weapon = 2
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy7" parent="Players" index="7" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 24, 5, -41.5)
+guard_path = NodePath("../../GuardPaths/Guard5")
+starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy8" parent="Players" index="8" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 5, -37.75)
+guard_path = NodePath("../../GuardPaths/GuardPath3")
+starting_weapon = 3
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy9" parent="Players" index="9" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-4.3711e-08, 0, -1.00001, 0, 1, 0, 0.999992, 0, -4.37117e-08, 56.5, 5, -32.25)
+guard_path = NodePath("../../GuardPaths/GuardPath4")
+starting_weapon = 3
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy10" parent="Players" index="10" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -33.875)
+guard_path = NodePath("../../GuardPaths/Guard6")
+starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy11" parent="Players" index="11" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.74221e-08, 0, -1.00001, 46.925, 0.5, -34)
+guard_path = NodePath("../../GuardPaths/Guard7")
+starting_weapon = 3
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
@@ -4309,7 +4379,7 @@ enemies = [NodePath("../Player")]
 transform = Transform3D(0.637599, 0, -0.770369, 0, 1, 0, 0.770369, 0, 0.637599, -4.72002, -9.53674e-07, -4.21486)
 curve = SubResource("Curve3D_veube")
 script = ExtResource("6_sy76j")
-follower = NodePath("../../Players/CampaignEnemy")
+follower = NodePath("../../Players/CampaignEnemy1")
 
 [node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath1" index="0"]
 transform = Transform3D(0.581639, 0, -0.813442, 0, 0.999989, 0, 0.813435, 0, 0.581644, 1.50288, 9.53674e-07, 7.26552)
@@ -4317,47 +4387,71 @@ progress = 9.70739
 
 [node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath1/PathFollow" index="0"]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_g4k3r")
 
-[node name="GuardPath5" type="Path3D" parent="GuardPaths" index="1"]
+[node name="GuardPath2" type="Path3D" parent="GuardPaths" index="1" node_paths=PackedStringArray("follower")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
 curve = SubResource("Curve3D_l67qi")
 script = ExtResource("6_sy76j")
+follower = NodePath("../../Players/CampaignEnemy6")
 loop = false
 
-[node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath5" index="0"]
+[node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath2" index="0"]
 transform = Transform3D(-4.3711e-08, 0, 1, 0, 0.999989, 0, -0.999992, 0, -4.37114e-08, 8.49794, 0, 0)
 progress = 1.50267
 
-[node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath5/PathFollow" index="0"]
+[node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath2/PathFollow" index="0"]
 visible = false
 mesh = SubResource("SphereMesh_g4k3r")
 
-[node name="GuardPath9" type="Path3D" parent="GuardPaths" index="2"]
+[node name="GuardPath3" type="Path3D" parent="GuardPaths" index="2" node_paths=PackedStringArray("follower")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 5, -35)
-top_level = true
 curve = SubResource("Curve3D_rc30m")
 script = ExtResource("6_sy76j")
+follower = NodePath("../../Players/CampaignEnemy8")
 
-[node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath9" index="0"]
+[node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath3" index="0"]
 transform = Transform3D(-0.999992, 0, -8.74228e-08, 0, 0.999989, 0, 8.74221e-08, 0, -1, -14, 0, -2.75)
 
-[node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath9/PathFollow" index="0"]
+[node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath3/PathFollow" index="0"]
 visible = false
 mesh = SubResource("SphereMesh_g4k3r")
 
-[node name="GuardPath10" type="Path3D" parent="GuardPaths" index="3"]
+[node name="GuardPath4" type="Path3D" parent="GuardPaths" index="3" node_paths=PackedStringArray("follower")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 5, -35)
 curve = SubResource("Curve3D_rc30m")
 script = ExtResource("6_sy76j")
+follower = NodePath("../../Players/CampaignEnemy9")
 
-[node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath10" index="0"]
+[node name="PathFollow" type="PathFollow3D" parent="GuardPaths/GuardPath4" index="0"]
 transform = Transform3D(-4.3711e-08, 0, -1, 0, 0.999989, 0, 0.999992, 0, -4.37114e-08, 14, 0, 2.75)
 progress = 33.5
 
-[node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath10/PathFollow" index="0"]
+[node name="Debug" type="MeshInstance3D" parent="GuardPaths/GuardPath4/PathFollow" index="0"]
 visible = false
 mesh = SubResource("SphereMesh_g4k3r")
+
+[node name="Guard1" type="Marker3D" parent="GuardPaths" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 0)
+
+[node name="Guard2" type="Marker3D" parent="GuardPaths" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 11)
+
+[node name="Guard3" type="Marker3D" parent="GuardPaths" index="6"]
+transform = Transform3D(-1, 0, -8.74229e-08, 0, 1, 0, 8.74229e-08, 0, -1, -7.62939e-06, 0, -22.5)
+
+[node name="Guard4" type="Marker3D" parent="GuardPaths" index="7"]
+transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 2.62268e-07, 5, -32)
+
+[node name="Guard5" type="Marker3D" parent="GuardPaths" index="8"]
+transform = Transform3D(-1, 0, 8.74229e-08, 0, 1, 0, -8.74229e-08, 0, -1, 24, 5, -41.5)
+
+[node name="Guard6" type="Marker3D" parent="GuardPaths" index="9"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -35)
+
+[node name="Guard7" type="Marker3D" parent="GuardPaths" index="10"]
+transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.74221e-08, 0, -1.00001, 46.925, 0.5, -34)
 
 [node name="Door1" parent="FX" index="0" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.75, 1.75, 0)
@@ -4371,6 +4465,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.75, 6.75, -35)
 [node name="Door4" parent="FX" index="3" instance=ExtResource("5_8nld0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.05, 2.25, -33.125)
 open_pos_z = false
+locked = true
 
 [node name="Door5" parent="FX" index="4" instance=ExtResource("5_8nld0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 73, 6.75, -45.25)
@@ -4505,9 +4600,10 @@ bus = &"SFX"
 [node name="SirenTimer" type="Timer" parent="FX/AlarmLights" index="4"]
 one_shot = true
 
-[node name="EnemySpawner1" type="Node3D" parent="FX" index="10" node_paths=PackedStringArray("players_node", "door")]
+[node name="EnemySpawner1" type="Node3D" parent="FX" index="10" node_paths=PackedStringArray("level", "players_node", "door")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 5, -21.5)
 script = ExtResource("14_3svvp")
+level = NodePath("../..")
 players_node = NodePath("../../Players")
 spawn_time = 10.0
 spawn_num = 2
@@ -4526,9 +4622,10 @@ shape = SubResource("BoxShape3D_d6x3r")
 
 [node name="SpawnTimer" type="Timer" parent="FX/EnemySpawner1" index="1"]
 
-[node name="EnemySpawner2" type="Node3D" parent="FX" index="11" node_paths=PackedStringArray("players_node", "door")]
+[node name="EnemySpawner2" type="Node3D" parent="FX" index="11" node_paths=PackedStringArray("level", "players_node", "door")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 73, 5, -48.5)
 script = ExtResource("14_3svvp")
+level = NodePath("../..")
 players_node = NodePath("../../Players")
 spawn_time = 10.0
 spawn_num = 2
