@@ -91,6 +91,9 @@ func spawn_enemy() -> void:
 	enemy.enemies.append(%Player)
 	enemy.transform = spawn_loc
 	enemy.current_level = self
+	enemy.guard_path = $GuardPaths/GuardPath1
+	enemy.starting_weapon = randi_range(0, 3)
+	$GuardPaths/GuardPath1.follower = enemy
 	$Players.add_child(enemy)
 	enemy.set_processing(true)
 

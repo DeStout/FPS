@@ -40,6 +40,12 @@ window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://Archive/": "red"
+}
+
 [input]
 
 Forward={
