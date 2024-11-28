@@ -56,11 +56,11 @@ func _select_bot_sim_map() -> String:
 	var map_address := ""
 	match bot_sim_settings.map:
 		0:
-			map_address = "res://Maps/Multiplayer/Square.tscn"
+			map_address = "res://Maps/BotSim/Square.tscn"
 		1:
-			map_address = "res://Maps/Multiplayer/Bridge.tscn"
+			map_address = "res://Maps/BotSim/Bridge.tscn"
 		2:
-			map_address = "res://Maps/Multiplayer/Temple.tscn"
+			map_address = "res://Maps/BotSim/Temple.tscn"
 	return map_address
 
 
@@ -103,7 +103,7 @@ func quit_single_player() -> void:
 
 # Called from loading_screen._update_UI()
 func start_bot_sim() -> void:
-	# Signals to Debug.bot_sim_start()
+	# Signal to Debug.bot_sim_start()
 	#bot_sim_started.emit(map)
 	can_be_paused = true
 	map.open()

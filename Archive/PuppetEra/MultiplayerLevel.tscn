@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk81uto5qnobg"]
+
+[ext_resource type="Script" path="res://Archive/PuppetEra/PuppetMultiplayerLevel.gd" id="1_ux7ga"]
+[ext_resource type="PackedScene" uid="uid://bc3s64pryrj37" path="res://Maps/BotSim/TempleBase.tscn" id="2_tw8d1"]
+[ext_resource type="Script" path="res://Archive/PuppetEra/PuppetPlayersContainer.gd" id="3_sd16y"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Maps/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_31jq4"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_ux7ga")
+
+[node name="LevelBase" parent="." instance=ExtResource("2_tw8d1")]
+
+[node name="Players" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_sd16y")
+
+[node name="FX" type="Node3D" parent="."]
+
+[node name="Spawns" type="Node3D" parent="."]
+visible = false
+
+[node name="NavPoints" type="Node3D" parent="."]
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_31jq4")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="MatchTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MatchTime" to="." method="end_match"]

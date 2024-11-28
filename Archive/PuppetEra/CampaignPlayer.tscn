@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://btj7bcwc5cjwk" path="res://Props/Weapons/Rifle/FPRifle.tscn" id="6_o6wkc"]
 [ext_resource type="PackedScene" uid="uid://cokxjgyi8s31g" path="res://Props/Weapons/Shotgun/FPShotgun.tscn" id="7_7bspr"]
 [ext_resource type="PackedScene" uid="uid://dn7ssygjxfd3q" path="res://Props/Weapons/Sniper/FPSniper.tscn" id="8_y7naf"]
-[ext_resource type="Script" path="res://Characters/Multiplayer/UI.gd" id="9_b4dyo"]
+[ext_resource type="Script" path="res://Characters/BotSim/UI.gd" id="9_b4dyo"]
 [ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="10_dfcab"]
 [ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="11_842hl"]
-[ext_resource type="Script" path="res://Characters/Multiplayer/MatchTimer.gd" id="12_dsica"]
+[ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="12_dsica"]
 [ext_resource type="Texture2D" uid="uid://crqwjsvsfkcig" path="res://Characters/DmgArrow.png" id="14_c57qt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm4ms"]

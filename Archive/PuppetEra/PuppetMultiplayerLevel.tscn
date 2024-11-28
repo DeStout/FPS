@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://7eh2d0yb5a1h"]
 
 [ext_resource type="Script" path="res://Archive/PuppetEra/PuppetMultiplayerLevel.gd" id="1_0o4k2"]
-[ext_resource type="Script" path="res://Archive/PuppetEra/PlayersContainer.gd" id="2_0vpn7"]
+[ext_resource type="Script" path="res://Archive/PuppetEra/PuppetPlayersContainer.gd" id="2_0vpn7"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Maps/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_nn75l"]
 
 [node name="Level" type="Node3D"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgcxjmexv8vhf"]
 
 [ext_resource type="PackedScene" uid="uid://7eh2d0yb5a1h" path="res://Archive/PuppetEra/PuppetMultiplayerLevel.tscn" id="1_komsv"]
-[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Maps/Multiplayer/BridgeBase.tscn" id="1_vufbv"]
+[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Maps/BotSim/BridgeBase.tscn" id="1_vufbv"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_2tcup"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="5_i8p46"]
 

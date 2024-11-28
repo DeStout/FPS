@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhxw75oi8yofw" path="res://Props/Weapons/Rifle/Rifle.tscn" id="5_nv5n8"]
 [ext_resource type="PackedScene" uid="uid://barsvh0ntyosw" path="res://Props/Weapons/Shotgun/Shotgun.tscn" id="6_8xy63"]
 [ext_resource type="PackedScene" uid="uid://dlgv171g6as4t" path="res://Props/Weapons/Sniper/Sniper.tscn" id="7_rtaje"]
-[ext_resource type="Script" path="res://Characters/Multiplayer/Voice.gd" id="9_hj0ir"]
+[ext_resource type="Script" path="res://Characters/BotSim/Voice.gd" id="9_hj0ir"]
 [ext_resource type="AudioStream" uid="uid://dvwslqt03fwb6" path="res://Props/Weapons/Slapper/Slap.ogg" id="10_n02aa"]
 [ext_resource type="Script" path="res://Utilities/RandomAudio.gd" id="11_ntang"]
 [ext_resource type="AudioStream" uid="uid://b56r0e1ges6xc" path="res://Characters/Audio/footstep1.ogg" id="12_8kevp"]

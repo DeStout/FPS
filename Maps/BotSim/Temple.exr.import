@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://dst54w4re5nr8"
+path="res://.godot/imported/Temple.exr-75e769a16fb0eab923ad3af1dc1e2d8e.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Maps/BotSim/Temple.exr"
+dest_files=["res://.godot/imported/Temple.exr-75e769a16fb0eab923ad3af1dc1e2d8e.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

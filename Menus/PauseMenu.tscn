@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7bpadmpmu5g3"]
 
-[ext_resource type="Script" path="res://Maps/Multiplayer/Pause.gd" id="1_8ue3a"]
+[ext_resource type="Script" path="res://Maps/BotSim/Pause.gd" id="1_8ue3a"]
 [ext_resource type="PackedScene" uid="uid://sr0hwfx8k4q2" path="res://Menus/OptionsMenu.tscn" id="2_5rsrr"]
 [ext_resource type="Theme" uid="uid://c1t8b0kfqb6ey" path="res://Menus/MenuTheme.tres" id="3_6tdwi"]
 [ext_resource type="AudioStream" uid="uid://bald4fr15ru7" path="res://Menus/Audio/boop.wav" id="4_et666"]

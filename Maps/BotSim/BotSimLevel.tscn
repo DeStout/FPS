@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cktnv6xx6yxxn"]
+
+[ext_resource type="Script" path="res://Maps/BotSim/BotSimLevel.gd" id="1_vsad3"]
+[ext_resource type="Script" path="res://Maps/BotSim/PlayersContainer.gd" id="2_ojsgy"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Maps/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="3_napbo"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_vsad3")
+
+[node name="Players" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ojsgy")
+
+[node name="FX" type="Node3D" parent="."]
+
+[node name="Spawns" type="Node3D" parent="."]
+visible = false
+
+[node name="NavPoints" type="Node3D" parent="."]
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_napbo")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="MatchTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MatchTime" to="." method="end_match"]

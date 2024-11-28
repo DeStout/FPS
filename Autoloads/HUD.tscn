@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
-[ext_resource type="Script" path="res://Maps/Multiplayer/ScoreBoard.gd" id="2_ooany"]
+[ext_resource type="Script" path="res://Maps/BotSim/ScoreBoard.gd" id="2_ooany"]
 [ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="5_7v388"]
 [ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="6_1t7b4"]
-[ext_resource type="Script" path="res://Characters/Multiplayer/MatchTimer.gd" id="7_7tmu3"]
+[ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="7_7tmu3"]
 [ext_resource type="Texture2D" uid="uid://crqwjsvsfkcig" path="res://Characters/DmgArrow.png" id="8_yj7y2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr44o"]
