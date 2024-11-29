@@ -1,9 +1,9 @@
 extends Control
 
 
-var leader_label_ := preload("res://Characters/Multiplayer/LeaderLabel.tscn")
+var leader_label_ := load("res://Characters/BotSim/LeaderLabel.tscn")
 
-@export var list : VBoxContainer
+@onready var list : VBoxContainer = $List
 var teams := []
 
 

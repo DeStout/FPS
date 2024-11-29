@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2bya7jvn8luj"]
+[gd_scene load_steps=12 format=3 uid="uid://c2bya7jvn8luj"]
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
-[ext_resource type="Script" path="res://Maps/BotSim/ScoreBoard.gd" id="2_ooany"]
+[ext_resource type="Script" path="res://Autoloads/ScoreBoard.gd" id="2_ooany"]
 [ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="5_7v388"]
 [ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="6_1t7b4"]
 [ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="7_7tmu3"]
+[ext_resource type="Script" path="res://Characters/BotSim/LeaderList.gd" id="7_28wp2"]
 [ext_resource type="Texture2D" uid="uid://crqwjsvsfkcig" path="res://Characters/DmgArrow.png" id="8_yj7y2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr44o"]
@@ -44,70 +45,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_7tmu3")
 metadata/_edit_use_anchors_ = true
-
-[node name="Score" type="Control" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -570.0
-offset_top = -310.0
-offset_right = 1350.0
-offset_bottom = 770.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.603867, 0.603867)
-script = ExtResource("2_ooany")
-
-[node name="Name" type="Label" parent="Score"]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 108.0
-offset_right = 289.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 72
-text = "Name"
-
-[node name="Kill" type="Label" parent="Score"]
-layout_mode = 0
-offset_left = 646.0
-offset_top = 108.0
-offset_right = 787.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 72
-text = "Kills"
-
-[node name="Deaths" type="Label" parent="Score"]
-layout_mode = 0
-offset_left = 1237.0
-offset_top = 108.0
-offset_right = 1482.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 72
-text = "Deaths"
-
-[node name="List" type="ItemList" parent="Score"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -888.0
-offset_top = -326.0
-offset_right = 888.0
-offset_bottom = 436.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 233
-theme_override_font_sizes/font_size = 72
-max_columns = 3
-same_column_width = true
-fixed_column_width = 353
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -306,6 +243,92 @@ rotation = 1.57081
 scale = Vector2(1.38477, 2.15647)
 texture = ExtResource("8_yj7y2")
 metadata/_edit_group_ = true
+
+[node name="Score" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -570.0
+offset_top = -310.0
+offset_right = 1350.0
+offset_bottom = 770.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.603867, 0.603867)
+script = ExtResource("2_ooany")
+
+[node name="Name" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 108.0
+offset_right = 289.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 72
+text = "Name"
+
+[node name="Kill" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 108.0
+offset_right = 787.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 72
+text = "Kills"
+
+[node name="Deaths" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 1237.0
+offset_top = 108.0
+offset_right = 1482.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 72
+text = "Deaths"
+
+[node name="List" type="ItemList" parent="Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -888.0
+offset_top = -326.0
+offset_right = 888.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 233
+theme_override_font_sizes/font_size = 72
+max_columns = 3
+same_column_width = true
+fixed_column_width = 353
+
+[node name="LeaderList" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 188.0
+offset_top = 706.0
+offset_right = 466.0
+offset_bottom = 976.0
+script = ExtResource("7_28wp2")
+
+[node name="List" type="VBoxContainer" parent="LeaderList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.167
+offset_top = 125.0
+offset_bottom = -0.0900269
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 2
 
 [node name="FadeInOut" type="ColorRect" parent="."]
 visible = false

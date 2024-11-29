@@ -182,11 +182,6 @@ func update_weapon_UI() -> void:
 														weapon_held.extra_ammo)
 
 
-func update_leaders_UI(team_list) -> void:
-	#print(team_list)
-	%LeaderList.update(team_list)
-
-
 func _pick_up_weapon(new_weapon) -> Node3D:
 	var added_weapon = super(new_weapon)
 	if added_weapon:

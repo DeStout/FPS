@@ -1,6 +1,13 @@
 extends CanvasLayer
 
 
+@onready var score_board := $Score
+@onready var leader_list := $LeaderList
+
+@export var open_time := 1.0
+@export var close_time := 1.5
+
+
 func _ready() -> void:
 	set_process(false)
 	visible = false
@@ -17,6 +24,12 @@ func setup_single_player() -> void:
 	$FadeInOut.visible = true
 
 
+func setup_bot_sim() -> void:
+	$MatchTimer.visible = true
+	$UI.visible = true
+	$FadeInOut.visible = true
+
+
 func exit_game() -> void:
 	visible = false
 
@@ -24,7 +37,6 @@ func exit_game() -> void:
 func fade_in() -> void:
 	visible = true
 	$FadeInOut.color.a = 1
-	var open_time = 1.0
 	var tween = create_tween()
 	tween.tween_property($FadeInOut, "color:a", 0.0, open_time)
 	await tween.finished
@@ -35,7 +47,6 @@ func fade_in() -> void:
 func fade_out() -> void:
 	$FadeInOut.visible = true
 	$FadeInOut.color.a = 0
-	var close_time = 1.75
 	var tween = create_tween()
 	tween.tween_property($FadeInOut, "color:a", 1.0, close_time)
 	await tween.finished

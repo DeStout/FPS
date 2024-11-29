@@ -72,8 +72,8 @@ func add_map(new_map) -> void:
 
 # Called from loading_screen._update_UI()
 func start_single_player() -> void:
-	can_be_paused = true
 	map.open()
+	can_be_paused = true
 
 
 # Called from CampaignLevel.character_out_of_bounds()
@@ -105,8 +105,8 @@ func quit_single_player() -> void:
 func start_bot_sim() -> void:
 	# Signal to Debug.bot_sim_start()
 	#bot_sim_started.emit(map)
-	can_be_paused = true
 	map.open()
+	can_be_paused = true
 
 
 # Called from Pause.quit_button() and MultiplayerLevel.end_match()

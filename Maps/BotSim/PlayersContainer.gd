@@ -6,7 +6,7 @@ var bot_ = load("res://Characters/BotSim/BotSimEnemy.tscn")
 
 var respawn_timer_ = load("res://Maps/BotSim/RespawnTimer.tscn")
 
-var level : MultiplayerLevel = null
+@export var level : MultiplayerLevel = null
 var player : CharacterBase
 var bots : Array[CharacterBase] = []
 var team_colors := [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, \
@@ -24,7 +24,7 @@ func set_up() -> void:
 	var spawn_point = level.get_spawn_point()
 	used_spawns.append(spawn_point)
 
-	%Score.add_character(player.name, team_colors[0])
+	HUD.score_board.add_character(player.name, team_colors[0])
 	player.set_color(team_colors[0])
 	spawn_character(player, spawn_point)
 	connect_signals(player)
@@ -38,7 +38,7 @@ func set_up() -> void:
 		
 		2:				# Teams
 			_set_up_team_battle(used_spawns)
-	player.update_leaders_UI(%Score.get_leader_list())
+	HUD.leader_list.update(HUD.score_board.get_leader_list())
 
 
 func _set_up_lone_wolf(used_spawns : Array) -> void:

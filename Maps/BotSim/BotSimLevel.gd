@@ -10,19 +10,15 @@ var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 
 func _ready() -> void:
-	%Players.level = self
 	%Players.set_up()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func open() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#$MusicPlayer.play()
-	$Players/ScoreLayer/FadeInOut.color.a = 1
+	await  HUD.fade_in()
 	
-	var open_time = 3.0
-	var tween = get_tree().create_tween()
-	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 0, open_time)
-	await tween.finished
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_start_match()
 	if Globals.bot_sim_settings.time != 0:

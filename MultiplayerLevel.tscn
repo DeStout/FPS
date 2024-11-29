@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://7eh2d0yb5a1h"]
+
+[ext_resource type="Script" path="res://Maps/Multiplayer/MultiplayerLevel.gd" id="1_0o4k2"]
+[ext_resource type="Script" path="res://Maps/Multiplayer/PlayersContainer.gd" id="2_0vpn7"]
+[ext_resource type="Script" path="res://Maps/Multiplayer/ScoreBoard.gd" id="3_15644"]
+[ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Maps/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="4_nn75l"]
+[ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="5_0qwuh"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_0o4k2")
+
+[node name="Players" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_0vpn7")
+
+[node name="ScoreLayer" type="CanvasLayer" parent="Players"]
+layer = 2
+
+[node name="FadeInOut" type="ColorRect" parent="Players/ScoreLayer"]
+offset_right = 1920.0
+offset_bottom = 1082.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Control" parent="Players/ScoreLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -570.0
+offset_top = -310.0
+offset_right = 1350.0
+offset_bottom = 770.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.603867, 0.603867)
+script = ExtResource("3_15644")
+
+[node name="Name" type="Label" parent="Players/ScoreLayer/Score"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 108.0
+offset_right = 289.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 72
+text = "Name"
+
+[node name="Kill" type="Label" parent="Players/ScoreLayer/Score"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 108.0
+offset_right = 787.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 72
+text = "Kills"
+
+[node name="Deaths" type="Label" parent="Players/ScoreLayer/Score"]
+layout_mode = 0
+offset_left = 1237.0
+offset_top = 108.0
+offset_right = 1482.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 72
+text = "Deaths"
+
+[node name="List" type="ItemList" parent="Players/ScoreLayer/Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -888.0
+offset_top = -326.0
+offset_right = 888.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 233
+theme_override_font_sizes/font_size = 72
+max_columns = 3
+same_column_width = true
+fixed_column_width = 353
+
+[node name="FX" type="Node3D" parent="."]
+
+[node name="Spawns" type="Node3D" parent="."]
+visible = false
+
+[node name="NavPoints" type="Node3D" parent="."]
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nn75l")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="Pause" parent="." instance=ExtResource("5_0qwuh")]
+layer = 3
+visible = false
+
+[node name="MatchTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MatchTime" to="." method="end_match"]

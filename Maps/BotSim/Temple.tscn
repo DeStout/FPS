@@ -9,6 +9,9 @@
 
 [node name="TempleBase" parent="." index="0" instance=ExtResource("2_dg5rw")]
 
+[node name="Players" parent="." index="1" node_paths=PackedStringArray("level")]
+level = NodePath("..")
+
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, -10, 5, -31)
 
