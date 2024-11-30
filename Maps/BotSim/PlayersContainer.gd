@@ -21,7 +21,7 @@ func set_up() -> void:
 	player = player_.instantiate()
 
 	var used_spawns := []
-	var spawn_point = level.get_spawn_point()
+	var spawn_point : Marker3D = level.get_spawn_point()
 	used_spawns.append(spawn_point)
 
 	HUD.scoreboard.add_character(player.name, team_colors[0])
@@ -43,7 +43,7 @@ func set_up() -> void:
 
 func _set_up_lone_wolf(used_spawns : Array) -> void:
 	#print("Game Type: Lone Wolf")
-	var spawn_point = level.get_spawn_point()
+	var spawn_point : Marker3D = level.get_spawn_point()
 	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var enemy = bot_.instantiate()
 		enemy.set_color(team_colors[1])
@@ -64,7 +64,7 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 
 func _set_up_ffa(used_spawns : Array) -> void:
 	#print("Game Type: Free For All")
-	var spawn_point = level.get_spawn_point()
+	var spawn_point : Marker3D = level.get_spawn_point()
 	var enemies : Array[CharacterBase] = [player]
 	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var enemy = bot_.instantiate()
@@ -87,7 +87,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 
 func _set_up_team_battle(used_spawns) -> void:
 	#print("Game Type: Team Battle")
-	var spawn_point = level.get_spawn_point()
+	var spawn_point : Marker3D = level.get_spawn_point()
 	var team1 : Array[CharacterBase] = [player]
 	var team2 : Array[CharacterBase] = []
 	var team_color : Color

@@ -92,9 +92,9 @@ func set_current_camera(is_current : bool) -> void:
 
 
 func _rand_weapon() -> int:
-	var spawn_weapon = randf_range(1, pow(Globals.WEAPONS.size(), 2))
+	var spawn_weapon = randf_range(1, pow(Globals.WEAPONS.size()-2, 2))
 	spawn_weapon = int(sqrt(spawn_weapon))
-	return Globals.WEAPONS.size() - spawn_weapon
+	return Globals.WEAPONS.size() - spawn_weapon - 2
 
 
 func character_killed(deceased) -> void:

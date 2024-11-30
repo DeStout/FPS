@@ -67,6 +67,7 @@ visible = false
 texture = ExtResource("6_1t7b4")
 
 [node name="Weapon" type="VBoxContainer" parent="UI"]
+layout_mode = 0
 offset_left = 637.0
 offset_top = 331.0
 offset_right = 735.0

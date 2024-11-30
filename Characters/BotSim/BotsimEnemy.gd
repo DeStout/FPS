@@ -22,11 +22,11 @@ var move_speed_mod := 0.8
 func _ready() -> void:
 	super()
 	
-	enemies_vis.resize(enemies.size())
-	enemies_vis.fill(false)
+	#enemies_vis.resize(enemies.size())
+	#enemies_vis.fill(false)
 	
-	weapons.append(starting_weapon)
-	_switch_weapon(_get_weapon(starting_weapon))
+	#weapons.append(starting_weapon)
+	#_switch_weapon(_get_weapon(starting_weapon))
 	
 	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
@@ -46,6 +46,12 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	super(delta)
+
+
+func set_enemies(new_enemies : Array[CharacterBase]) -> void:
+	super(new_enemies)
+	enemies_vis.resize(new_enemies.size())
+	enemies_vis.fill(false)
 
 
 func guard(delta) -> void:
@@ -186,7 +192,7 @@ func set_closest_to_target() -> void:
 	target = enemies[0]
 	var dist = global_position.distance_squared_to(target.global_position)
 	for enemy in enemies:
-		if enemy == target:
+		if enemy == target or !enemy.is_inside_tree():
 			continue
 		var temp_dist = global_position.distance_squared_to(enemy.global_position)
 		if temp_dist < dist:
@@ -232,7 +238,7 @@ func _die() -> void:
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 	
-	call_deferred("queue_free")
+	#call_deferred("queue_free")
 
 
 func _unequip_weapon(old_weapon) -> void:
