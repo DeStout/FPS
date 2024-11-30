@@ -34,7 +34,7 @@ func add_kill(character, points := 1) -> void:
 	$List.set_item_text(list_index, str(num_kills))
 	
 	teams[character.team] += points
-	if Globals.bot_sim_settings.score_to_win > 0:
+	if Globals.game.bot_sim_settings.score_to_win > 0:
 		_check_win()
 
 
@@ -51,5 +51,5 @@ func get_leader_list() -> Dictionary:
 
 func _check_win() -> void:
 	for team in teams:
-		if teams[team] >= Globals.bot_sim_settings.score_to_win:
+		if teams[team] >= Globals.game.bot_sim_settings.score_to_win:
 			$"../..".level.end_match()

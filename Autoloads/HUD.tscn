@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
-[ext_resource type="Script" path="res://Autoloads/ScoreBoard.gd" id="2_ooany"]
+[ext_resource type="Script" path="res://Autoloads/Scoreboard.gd" id="2_ooany"]
 [ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="5_7v388"]
 [ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="6_1t7b4"]
 [ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="7_7tmu3"]
@@ -57,6 +57,71 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 metadata/_edit_use_anchors_ = true
+
+[node name="Crosshair" type="Sprite2D" parent="UI"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_7v388")
+
+[node name="Scope" type="Sprite2D" parent="UI"]
+visible = false
+texture = ExtResource("6_1t7b4")
+
+[node name="Weapon" type="VBoxContainer" parent="UI"]
+offset_left = 637.0
+offset_top = 331.0
+offset_right = 735.0
+offset_bottom = 469.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoInMag" type="Label" parent="UI/Weapon"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_vgpdo")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ExtraAmmo" type="Label" parent="UI/Weapon"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0pkc5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Damage" type="Node2D" parent="UI"]
+unique_name_in_owner = true
+
+[node name="Left" type="Sprite2D" parent="UI/Damage"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1397, -107)
+rotation = -3.14159
+scale = Vector2(1.38477, 1.38477)
+texture = ExtResource("8_yj7y2")
+metadata/_edit_group_ = true
+
+[node name="Right" type="Sprite2D" parent="UI/Damage"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1413, 61)
+scale = Vector2(1.38477, 1.38477)
+texture = ExtResource("8_yj7y2")
+metadata/_edit_group_ = true
+
+[node name="Up" type="Sprite2D" parent="UI/Damage"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(164, -1046)
+rotation = -1.57079
+scale = Vector2(1.38477, 2.15647)
+texture = ExtResource("8_yj7y2")
+metadata/_edit_group_ = true
+
+[node name="Down" type="Sprite2D" parent="UI/Damage"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-142, 1034)
+rotation = 1.57081
+scale = Vector2(1.38477, 2.15647)
+texture = ExtResource("8_yj7y2")
+metadata/_edit_group_ = true
 
 [node name="HealthMod" type="CanvasModulate" parent="UI"]
 unique_name_in_owner = true
@@ -178,72 +243,6 @@ custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
-[node name="Crosshair" type="Sprite2D" parent="UI"]
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("5_7v388")
-
-[node name="Scope" type="Sprite2D" parent="UI"]
-visible = false
-texture = ExtResource("6_1t7b4")
-
-[node name="Weapon" type="VBoxContainer" parent="UI"]
-layout_mode = 0
-offset_left = 637.0
-offset_top = 331.0
-offset_right = 734.0
-offset_bottom = 469.0
-metadata/_edit_use_anchors_ = true
-
-[node name="AmmoInMag" type="Label" parent="UI/Weapon"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0 / 0"
-label_settings = SubResource("LabelSettings_vgpdo")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="ExtraAmmo" type="Label" parent="UI/Weapon"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_0pkc5")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Damage" type="Node2D" parent="UI"]
-unique_name_in_owner = true
-
-[node name="Left" type="Sprite2D" parent="UI/Damage"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-1397, -107)
-rotation = -3.14159
-scale = Vector2(1.38477, 1.38477)
-texture = ExtResource("8_yj7y2")
-metadata/_edit_group_ = true
-
-[node name="Right" type="Sprite2D" parent="UI/Damage"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(1413, 61)
-scale = Vector2(1.38477, 1.38477)
-texture = ExtResource("8_yj7y2")
-metadata/_edit_group_ = true
-
-[node name="Up" type="Sprite2D" parent="UI/Damage"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(164, -1046)
-rotation = -1.57079
-scale = Vector2(1.38477, 2.15647)
-texture = ExtResource("8_yj7y2")
-metadata/_edit_group_ = true
-
-[node name="Down" type="Sprite2D" parent="UI/Damage"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-142, 1034)
-rotation = 1.57081
-scale = Vector2(1.38477, 2.15647)
-texture = ExtResource("8_yj7y2")
-metadata/_edit_group_ = true
-
 [node name="Score" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -313,9 +312,9 @@ unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 188.0
-offset_top = 706.0
+offset_top = 526.0
 offset_right = 466.0
-offset_bottom = 976.0
+offset_bottom = 796.0
 script = ExtResource("7_28wp2")
 
 [node name="List" type="VBoxContainer" parent="LeaderList"]
@@ -323,8 +322,6 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.167
-offset_top = 125.0
-offset_bottom = -0.0900269
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 100

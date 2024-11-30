@@ -1,13 +1,13 @@
 extends Node3D
 
 
-var player_ = load("res://Characters/Player.tscn")
+var player_ = load("res://Characters/BotSim/BotSimPlayer.tscn")
 var bot_ = load("res://Characters/BotSim/BotSimEnemy.tscn")
 
 var respawn_timer_ = load("res://Maps/BotSim/RespawnTimer.tscn")
 
-@export var level : MultiplayerLevel = null
-var player : CharacterBase
+@export var level : BotSimLevel = null
+var player : CharacterBase = null
 var bots : Array[CharacterBase] = []
 var team_colors := [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, \
 	Color.MAGENTA, Color.CYAN, Color.ORANGE, Color.INDIGO, Color.ORANGE_RED, \
@@ -24,12 +24,12 @@ func set_up() -> void:
 	var spawn_point = level.get_spawn_point()
 	used_spawns.append(spawn_point)
 
-	HUD.score_board.add_character(player.name, team_colors[0])
+	HUD.scoreboard.add_character(player.name, team_colors[0])
 	player.set_color(team_colors[0])
 	spawn_character(player, spawn_point)
 	connect_signals(player)
 	
-	match Globals.bot_sim_settings.game_mode:
+	match Globals.game.bot_sim_settings.game_mode:
 		0:				# Lone Wolf
 			_set_up_lone_wolf(used_spawns)
 		
@@ -38,13 +38,13 @@ func set_up() -> void:
 		
 		2:				# Teams
 			_set_up_team_battle(used_spawns)
-	HUD.leader_list.update(HUD.score_board.get_leader_list())
+	HUD.leader_list.update(HUD.scoreboard.get_leader_list())
 
 
 func _set_up_lone_wolf(used_spawns : Array) -> void:
 	#print("Game Type: Lone Wolf")
 	var spawn_point = level.get_spawn_point()
-	for x in range(Globals.bot_sim_settings.num_bots):
+	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var enemy = bot_.instantiate()
 		enemy.set_color(team_colors[1])
 		bots.append(enemy)
@@ -56,7 +56,7 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		%Score.add_character(enemy.name, team_colors[1])
+		HUD.scoreboard.add_character(enemy.name, team_colors[1])
 		spawn_character(enemy, spawn_point)
 		connect_signals(enemy)
 	player.set_enemies(bots)
@@ -66,7 +66,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 	#print("Game Type: Free For All")
 	var spawn_point = level.get_spawn_point()
 	var enemies : Array[CharacterBase] = [player]
-	for x in range(Globals.bot_sim_settings.num_bots):
+	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var enemy = bot_.instantiate()
 		enemy.set_color(team_colors[x+1])
 		enemies.append(enemy)
@@ -77,7 +77,7 @@ func _set_up_ffa(used_spawns : Array) -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		%Score.add_character(enemy.name, team_colors[x+1])
+		HUD.scoreboard.add_character(enemy.name, team_colors[x+1])
 		spawn_character(enemy, spawn_point)
 		connect_signals(enemy)
 	
@@ -91,9 +91,9 @@ func _set_up_team_battle(used_spawns) -> void:
 	var team1 : Array[CharacterBase] = [player]
 	var team2 : Array[CharacterBase] = []
 	var team_color : Color
-	for x in range(Globals.bot_sim_settings.num_bots):
+	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var bot = bot_.instantiate()
-		if x < Globals.bot_sim_settings.num_bots / 2:
+		if x < Globals.game.bot_sim_settings.num_bots / 2:
 			team_color = team_colors[0]
 			bot.set_color(team_color)
 			team1.append(bot)
@@ -102,14 +102,14 @@ func _set_up_team_battle(used_spawns) -> void:
 			team_color = team_colors[1]
 			bot.set_color(team_color)
 			team2.append(bot)
-			bot.new_name("Enemy" + str(x-(Globals.bot_sim_settings.num_bots / 2)+1))
+			bot.new_name("Enemy" + str(x-(Globals.game.bot_sim_settings.num_bots / 2)+1))
 		bots.append(bot)
 		
 		while(used_spawns.has(spawn_point)):
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		%Score.add_character(bot.name, team_color)
+		HUD.scoreboard.add_character(bot.name, team_color)
 		spawn_character(bot, spawn_point)
 		connect_signals(bot)
 	
@@ -133,7 +133,7 @@ func spawn_character(character : CharacterBase, spawn_point : Marker3D) -> void:
 
 func connect_signals(character) -> void:
 	character.died.connect(character_killed)
-	character.add_score.connect(add_to_score_board)
+	character.add_score.connect(add_to_scoreboard)
 
 
 func set_characters_processing(new_process) -> void:
@@ -144,13 +144,13 @@ func set_characters_processing(new_process) -> void:
 
 
 # Signaled from CharacterBase._die()
-func add_to_score_board(killed, killer) -> void:
-	%Score.add_death(killed.name)
+func add_to_scoreboard(killed, killer) -> void:
+	HUD.scoreboard.add_death(killed.name)
 	if killer.is_enemy(killed):
-		%Score.add_kill(killer)
+		HUD.scoreboard.add_kill(killer)
 	else:
-		%Score.add_kill(killer, -1)
-	player.update_leaders_UI(%Score.get_leader_list())
+		HUD.scoreboard.add_kill(killer, -1)
+	HUD.leader_list.update(HUD.scoreboard.get_leader_list())
 
 
 func character_killed(character) -> void:

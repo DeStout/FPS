@@ -10,7 +10,7 @@ var invincible := false
 var infinite_ammo := false
 var bottomless_clip := false
 
-var bot_sim_level : MultiplayerLevel = null
+var bot_sim_level : BotSimLevel = null
 var players_container = null
 var player : CharacterBase = null
 var player_pos : Transform3D
@@ -24,7 +24,7 @@ func _ready() -> void:
 	visible = debug_visible
 	$FPS.visible = fps_visible
 	
-	if Globals.game is MultiplayerLevel:
+	if Globals.game is BotSimLevel:
 		Globals.game.bot_sim_started.connect(bot_sim_started)
 		Globals.game.bot_sim_ended.connect(bot_sim_ended)
 

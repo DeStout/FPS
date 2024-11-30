@@ -13,7 +13,7 @@ func _toggle_pause() -> void:
 
 	if get_tree().paused:
 		$OptionsMenu.update()
-		if Globals.game is MultiplayerLevel:
+		if Globals.game is BotSimLevel:
 			%Players.player.update_health_UI()
 		#elif Globals.game is CampaignLevel:
 			#get_parent().player.update_health_UI()
@@ -38,7 +38,7 @@ func close_button() -> void:
 
 func quit_button() -> void:
 	_toggle_pause()
-	if Globals.game.map is MultiplayerLevel:
+	if Globals.game.map is BotSimLevel:
 		Globals.game.quit_bot_sim()
 	elif Globals.game.map is CampaignLevel:
 		Globals.game.quit_single_player()

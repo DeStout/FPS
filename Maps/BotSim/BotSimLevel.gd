@@ -1,5 +1,5 @@
 extends Node3D
-class_name MultiplayerLevel
+class_name BotSimLevel
 
 
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
@@ -21,8 +21,8 @@ func open() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_start_match()
-	if Globals.bot_sim_settings.time != 0:
-		$MatchTime.start(Globals.bot_sim_settings.time)
+	if Globals.game.bot_sim_settings.time != 0:
+		$MatchTime.start(Globals.game.bot_sim_settings.time)
 
 
 func _start_match() -> void:
@@ -80,11 +80,11 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 
 # Called from CharacterBase.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
-								shooter : CharacterBase, body_seg_shot : String, \
-													body_color : Color) -> void:
+							shooter : CharacterBase, body_seg_shot : String, \
+											body_mat : BaseMaterial3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
-	rag_doll.set_color(body_color)
+	rag_doll.set_material(body_mat)
 	rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
 											shooter.weapon_held.stats.impulse)

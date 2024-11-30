@@ -1,0 +1,237 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfamn5prsuim3"]
+
+[ext_resource type="PackedScene" uid="uid://65jhlh1xbkow" path="res://Characters/CharacterBase.tscn" id="1_bc4nm"]
+[ext_resource type="Script" path="res://Characters/BotSim/BotSimPlayer.gd" id="2_cieth"]
+[ext_resource type="Material" uid="uid://b561iqjqjd0b" path="res://Characters/BotSim/BotSimMat.tres" id="3_2f0iw"]
+[ext_resource type="PackedScene" uid="uid://cm6pnkpd4ohs5" path="res://Characters/FirstPerson.tscn" id="3_leuv2"]
+[ext_resource type="PackedScene" uid="uid://0r6eljbdbyqv" path="res://Props/Weapons/Slapper/FPSlapper.tscn" id="4_mgk1t"]
+[ext_resource type="PackedScene" uid="uid://by7wwhoru7x60" path="res://Props/Weapons/Pistol/FPPistol.tscn" id="5_vepfr"]
+[ext_resource type="PackedScene" uid="uid://kwpmppcj56nl" path="res://Props/Weapons/SMG/FPSMG.tscn" id="6_w1fje"]
+[ext_resource type="PackedScene" uid="uid://btj7bcwc5cjwk" path="res://Props/Weapons/Rifle/FPRifle.tscn" id="7_7q6l1"]
+
+[node name="Player" instance=ExtResource("1_bc4nm")]
+script = ExtResource("2_cieth")
+
+[node name="Skeleton3D" parent="Mannequin/Mannequin" index="0"]
+bones/0/position = Vector3(-5.98402e-06, 0.965154, -4.11726e-07)
+bones/56/rotation = Quaternion(0.000656489, 0.978593, 0.204903, -0.0192362)
+bones/57/rotation = Quaternion(0.058572, 0.690831, -0.718008, 0.0615289)
+bones/61/rotation = Quaternion(0.000657434, 0.993793, 0.110207, -0.0151805)
+bones/62/rotation = Quaternion(-0.0746216, 0.788724, -0.607677, -0.0554517)
+
+[node name="Joints" parent="Mannequin/Mannequin/Skeleton3D" index="0"]
+cast_shadow = 3
+
+[node name="Surface" parent="Mannequin/Mannequin/Skeleton3D" index="1"]
+cast_shadow = 3
+surface_material_override/0 = ExtResource("3_2f0iw")
+
+[node name="Head" parent="Mannequin/Mannequin/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85028e-05, 1.56799, 0.00340767)
+
+[node name="HeadArea" parent="Mannequin/Mannequin/Skeleton3D/Head" index="0"]
+collision_layer = 4
+
+[node name="Neck" parent="Mannequin/Mannequin/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94757e-05, 1.46477, 0.034832)
+
+[node name="NeckArea" parent="Mannequin/Mannequin/Skeleton3D/Neck" index="0"]
+collision_layer = 4
+
+[node name="R_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="4"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.187632, 1.40287, 0.0617143)
+
+[node name="UpperArmArea" parent="Mannequin/Mannequin/Skeleton3D/R_UpperArm" index="0"]
+collision_layer = 4
+
+[node name="R_Forearm" parent="Mannequin/Mannequin/Skeleton3D" index="5"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.461679, 1.40285, 0.0617141)
+
+[node name="ForearmArea" parent="Mannequin/Mannequin/Skeleton3D/R_Forearm" index="0"]
+collision_layer = 4
+
+[node name="R_Hand" parent="Mannequin/Mannequin/Skeleton3D" index="6"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.737823, 1.40283, 0.0617139)
+
+[node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/R_Hand" index="0"]
+collision_layer = 4
+
+[node name="Mesh" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Pistol" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/SMG" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Rifle" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Shotgun" index="0"]
+cast_shadow = 3
+
+[node name="Mesh" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Sniper" index="0"]
+cast_shadow = 3
+
+[node name="L_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="7"]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.187585, 1.40291, 0.0617148)
+
+[node name="UpperArmArea" parent="Mannequin/Mannequin/Skeleton3D/L_UpperArm" index="0"]
+collision_layer = 4
+
+[node name="L_Forearm" parent="Mannequin/Mannequin/Skeleton3D" index="8"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.461632, 1.40293, 0.0617149)
+
+[node name="ForearmArea" parent="Mannequin/Mannequin/Skeleton3D/L_Forearm" index="0"]
+collision_layer = 4
+
+[node name="L_Hand" parent="Mannequin/Mannequin/Skeleton3D" index="9"]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.737777, 1.40296, 0.0617148)
+
+[node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/L_Hand" index="0"]
+collision_layer = 4
+
+[node name="Chest" parent="Mannequin/Mannequin/Skeleton3D" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65333e-05, 1.31445, 0.042761)
+
+[node name="ChestArea" parent="Mannequin/Mannequin/Skeleton3D/Chest" index="0"]
+collision_layer = 4
+
+[node name="Stomach" parent="Mannequin/Mannequin/Skeleton3D" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71302e-06, 1.18084, 0.0264964)
+
+[node name="StomachArea" parent="Mannequin/Mannequin/Skeleton3D/Stomach" index="0"]
+collision_layer = 4
+
+[node name="Hips" parent="Mannequin/Mannequin/Skeleton3D" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98402e-06, 0.965154, -4.11726e-07)
+
+[node name="HipsArea" parent="Mannequin/Mannequin/Skeleton3D/Hips" index="0"]
+collision_layer = 4
+
+[node name="R_Thigh" parent="Mannequin/Mannequin/Skeleton3D" index="13"]
+transform = Transform3D(-0.998513, 0.0541688, 0.00623332, -0.0530647, -0.991668, 0.117387, 0.0125401, 0.116882, 0.993067, 0.0912385, 0.89859, 0.00055338)
+
+[node name="ThighArea" parent="Mannequin/Mannequin/Skeleton3D/R_Thigh" index="0"]
+collision_layer = 4
+
+[node name="R_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="14"]
+transform = Transform3D(0.99813, 0.0495724, 0.0357705, 0.0586214, -0.942114, -0.330129, 0.0173346, 0.331608, -0.943258, 0.115704, 0.496751, 0.0530787)
+
+[node name="ShinArea" parent="Mannequin/Mannequin/Skeleton3D/R_Shin" index="0"]
+collision_layer = 4
+
+[node name="R_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="15"]
+transform = Transform3D(-0.976997, -0.206343, -0.0538483, -0.0690194, 0.0670403, 0.99536, -0.201775, 0.97618, -0.0797398, 0.133369, 0.107271, 0.211907)
+
+[node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/R_Foot" index="0"]
+collision_layer = 4
+
+[node name="L_Thigh" parent="Mannequin/Mannequin/Skeleton3D" index="16"]
+transform = Transform3D(-0.997805, -0.0634927, 0.018828, 0.0509921, -0.917988, -0.393317, 0.0422567, -0.391493, 0.91921, -0.0912506, 0.89859, 0.000553348)
+
+[node name="ThighArea" parent="Mannequin/Mannequin/Skeleton3D/L_Thigh" index="0"]
+collision_layer = 4
+
+[node name="L_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="17"]
+transform = Transform3D(0.998198, -0.0597588, -0.00539971, -0.0598109, -0.998159, -0.0100752, -0.00478769, 0.0103799, -0.999935, -0.11937, 0.524026, -0.153532)
+
+[node name="ShinArea" parent="Mannequin/Mannequin/Skeleton3D/L_Shin" index="0"]
+collision_layer = 4
+
+[node name="L_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="18"]
+transform = Transform3D(-0.982434, 0.176563, 0.0604055, 0.0680676, 0.0376606, 0.99697, 0.173753, 0.983569, -0.0490172, -0.141944, 0.104382, -0.128589)
+
+[node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/L_Foot" index="0"]
+collision_layer = 4
+
+[node name="AnimTree" parent="Mannequin" index="2"]
+parameters/Upper/Pistol/Guard/blend_position = 0
+parameters/Upper/Rifle/Guard/blend_position = 0
+parameters/Upper/SMG/Guard/blend_position = 0
+parameters/Upper/Slapper/Guard/blend_position = 0
+
+[node name="Camera" parent="AimHelper" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="AimHelper/Camera" index="0"]
+remote_path = NodePath("../../FPView/FPCanvas/SubViewportContainer/SubViewport/FPCamera")
+update_scale = false
+
+[node name="ShootCast" parent="AimHelper" index="1"]
+visible = true
+
+[node name="FPView" parent="AimHelper" index="2" instance=ExtResource("3_leuv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0)
+
+[node name="FPCanvas" type="CanvasLayer" parent="AimHelper/FPView" index="0"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="AimHelper/FPView/FPCanvas" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="AimHelper/FPView/FPCanvas/SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="FPCamera" type="Camera3D" parent="AimHelper/FPView/FPCanvas/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+top_level = true
+cull_mask = 8
+current = true
+
+[node name="Skeleton3D" parent="AimHelper/FPView/Mannequin" index="0"]
+bones/1/scale = Vector3(1, 1, 1)
+bones/5/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.00914619, 0.125638, 0.0720726, 0.989412)
+bones/16/rotation = Quaternion(-1.15074e-06, 0.00457943, -0.000654139, 0.999989)
+bones/16/scale = Vector3(1, 1, 1)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/scale = Vector3(1, 1, 1)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(0.0092324, -0.127131, -0.0723282, 0.989202)
+bones/36/rotation = Quaternion(-7.25753e-05, -0.0067093, 0.00137476, 0.999977)
+bones/36/scale = Vector3(1, 1, 1)
+bones/40/rotation = Quaternion(-5.08276e-05, -0.00669526, -0.00170839, 0.999976)
+bones/44/rotation = Quaternion(-6.06545e-05, -0.00761333, -0.000300492, 0.999971)
+bones/48/rotation = Quaternion(-8.30166e-05, -0.00849887, 0.00220636, 0.999961)
+bones/48/scale = Vector3(1, 1, 1)
+
+[node name="FPGunAttach" parent="AimHelper/FPView/Mannequin/Skeleton3D" index="2"]
+transform = Transform3D(0.0190604, 0.0411749, -0.99897, 0.998881, 0.0424702, 0.0208092, 0.0432831, -0.998249, -0.0403192, 7.84927, -1.29408, -32.3239)
+
+[node name="FPWeapons" type="Node3D" parent="AimHelper/FPView/Mannequin/Skeleton3D/FPGunAttach" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 3.72529e-09, 6.98492e-10, -3.72529e-09, 1, 0, 0, 0, 1, -0.0731659, 1.37864, 0.0515652)
+
+[node name="Slapper" parent="AimHelper/FPView/Mannequin/Skeleton3D/FPGunAttach/FPWeapons" index="0" instance=ExtResource("4_mgk1t")]
+transform = Transform3D(-1, -3.72529e-09, -8.44011e-08, 3.72529e-09, 1, 0, 8.76607e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="Pistol" parent="AimHelper/FPView/Mannequin/Skeleton3D/FPGunAttach/FPWeapons" index="1" instance=ExtResource("5_vepfr")]
+transform = Transform3D(-1.22747, 99.9843, -1.27495, 1.09224, -1.26158, -99.9861, -99.9865, -1.24122, -1.07657, 2.13686, 7.49473, 3.19918)
+visible = false
+
+[node name="SMG" parent="AimHelper/FPView/Mannequin/Skeleton3D/FPGunAttach/FPWeapons" index="2" instance=ExtResource("6_w1fje")]
+transform = Transform3D(1.90598, 99.8881, 4.32834, 4.11762, 4.24704, -99.8249, -99.897, 2.08085, -4.03206, 0.982015, 10.8305, 3.41445)
+visible = false
+
+[node name="Rifle" parent="AimHelper/FPView/Mannequin/Skeleton3D/FPGunAttach/FPWeapons" index="3" instance=ExtResource("7_7q6l1")]
+transform = Transform3D(-0.0221798, 99.8075, 6.2025, 5.2994, 6.19495, -99.6672, -99.8595, 0.306574, -5.29057, -0.402056, 6.48742, 3.17827)
+visible = false
+
+[editable path="Mannequin"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Pistol"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/SMG"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/SMG/Mesh"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Rifle"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Shotgun"]
+[editable path="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons/Sniper"]
+[editable path="AimHelper/FPView"]

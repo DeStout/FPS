@@ -1,4 +1,4 @@
-extends CharacterBase
+extends BotSimCharacter
 
 
 @onready var state_machine := $StateMachine

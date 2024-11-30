@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-@onready var score_board := $Score
+@onready var scoreboard := $Score
 @onready var leader_list := $LeaderList
 
 @export var open_time := 1.0
@@ -13,8 +13,13 @@ func _ready() -> void:
 	visible = false
 
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("ScoreBoard"):
+		%HealthMod.modulate.a = 1
+
+
 func _process(delta: float) -> void:
-	#_fade_health(delta)
+	_fade_health(delta)
 	_fade_dmg(delta)
 
 
@@ -59,7 +64,7 @@ func update_weapon(ammo_in_mag, mag_size, extra_ammo) -> void:
 
 
 func update_health(max_health, max_armor, health, armor) -> void:
-	%HealthMod.color.a = 1
+	%HealthMod.modulate.a = 1
 	
 	# Health Boxes
 	var box_count := %HealthMod/HealthBar.get_child_count()
@@ -108,8 +113,8 @@ func show_damage(dmg_dir) -> void:
 
 
 func _fade_health(delta) -> void:
-	if %HealthMod.color.a > 0:
-		%HealthMod.color.a -= delta
+	if %HealthMod.modulate.a > 0:
+		%HealthMod.modulate.a -= delta
 
 
 func _fade_dmg(delta) -> void:

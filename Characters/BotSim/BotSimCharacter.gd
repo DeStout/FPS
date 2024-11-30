@@ -1,4 +1,4 @@
-class_name MultiplayerCharacter
+class_name BotSimCharacter
 extends CharacterBase
 
 
@@ -8,21 +8,19 @@ signal add_score
 var team : Color
 
 
-func new_name(new_name_ : String) -> void:
-	name = new_name_
+func new_name(new_name : String) -> void:
+	name = new_name
 	$NameLabel.text = name
 
 
 func set_color(new_color : Color) -> void:
 	team = new_color
-	var mat = $Puppet/Skeleton3D/Body.get_surface_override_material(0)
+	var mat = $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0)
 	mat.albedo_color = new_color
 
 
 func _ready() -> void:
-	super()
-	current_level = Globals.map
-	
+	super()	
 	_starting_weapons()
 
 
@@ -43,7 +41,7 @@ func _starting_weapons() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	if !Globals.bot_sim_settings.friendly_fire and !is_enemy(shooter):
+	if !Globals.game.bot_sim_settings.friendly_fire and !is_enemy(shooter):
 		return
 	
 	super(body_seg, damage, shooter)
@@ -52,7 +50,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 func _die() -> void:
 	add_score.emit(self, last_shot_by)
 	await super()
-	# Signal to PlayerContainer.add_to_score_board
+	# Signal to PlayerContainer.add_to_scoreboard
 	
 	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
 		var weapon_info := [weapon_held.stats.weapon_type,
