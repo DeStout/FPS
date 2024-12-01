@@ -10,6 +10,9 @@ var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 
 func _ready() -> void:
+	if Globals.game.bot_sim_settings.time != 0:
+		$MatchTime.start(Globals.game.bot_sim_settings.time)
+		$MatchTime.paused = true
 	%Players.set_up()
 	HUD.setup_bot_sim()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -22,9 +25,6 @@ func open() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_start_match()
-	if Globals.game.bot_sim_settings.time != 0:
-		
-		$MatchTime.start(Globals.game.bot_sim_settings.time)
 
 
 func _process(delta: float) -> void:
@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 
 func _start_match() -> void:
 	$Players.set_characters_processing(true)
+	$MatchTime.paused = false
 
 
 func get_match_time() -> int:

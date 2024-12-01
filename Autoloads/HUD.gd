@@ -53,7 +53,10 @@ func setup_single_player() -> void:
 func setup_bot_sim() -> void:
 	ui.visible = true
 	fade_in_out.visible = true
-	match_timer.visible = true
+	if Globals.game.bot_sim_settings.time > 0:
+		match_timer.visible = true
+	else:
+		match_timer.visible = false
 	scoreboard.visible = false
 
 
