@@ -120,6 +120,8 @@ func quit_bot_sim() -> void:
 	await get_tree().physics_frame
 	map = null
 	can_be_paused = false
+	HUD.reset_scoreboard()
+	HUD.exit_game()
 	
 	if main_menu:
 		add_child(main_menu)

@@ -42,3 +42,9 @@ func _top_teams() -> void:
 		list.remove_child(old_leader)
 	for leader in top_teams:
 		list.add_child(leader)
+
+
+func reset() -> void:
+	for leader_item in $List.get_children():
+		leader_item.queue_free()
+	teams = []

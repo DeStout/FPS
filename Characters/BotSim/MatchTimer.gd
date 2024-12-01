@@ -1,11 +1,6 @@
 extends Label
 
 
-func _ready() -> void:
-	if Globals.game.bot_sim_settings.time != 0:
-		visible = true
-
-
 func set_time(match_time : int) -> void:
 	var minutes = match_time / 60
 	var seconds = match_time % 60

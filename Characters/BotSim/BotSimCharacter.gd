@@ -58,8 +58,9 @@ func _die() -> void:
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 	armor = 0
-	weapons = [Globals.WEAPONS.SLAPPER]
-	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
+	#weapons = [Globals.WEAPONS.SLAPPER]
+	#_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
+	weapons = []
 	
 	# Do this now and in respawn() because Godot has priority issues
 	global_position = current_level.get_spawn_point().position

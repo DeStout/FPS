@@ -1,8 +1,27 @@
 extends CanvasLayer
 
 
+var game_over = false
+
+@onready var fade_in_out := $FadeInOut
+@onready var match_timer := $MatchTimer
 @onready var scoreboard := $Score
+@onready var score_list := $Score/List
 @onready var leader_list := $LeaderList
+
+@onready var ui := $UI
+@onready var crosshair := $UI/Crosshair
+@onready var scope := $UI/Scope
+@onready var ammo_in_mag := $UI/Weapon/AmmoInMag
+@onready var extra_ammo := $UI/Weapon/ExtraAmmo
+@onready var health_mod := $UI/HealthMod
+@onready var health_bar := $UI/HealthMod/HealthBar
+@onready var armor_bar := $UI/HealthMod/ArmorBar
+@onready var damage_up := $UI/Damage/Up
+@onready var damage_down := $UI/Damage/Down
+@onready var damage_left := $UI/Damage/Left
+@onready var damage_right := $UI/Damage/Right
+
 
 @export var open_time := 1.0
 @export var close_time := 1.5
@@ -15,63 +34,81 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ScoreBoard"):
-		%HealthMod.modulate.a = 1
+		health_mod.modulate.a = 1
 
 
 func _process(delta: float) -> void:
-	_fade_health(delta)
+	if !game_over and !Input.is_action_pressed("ScoreBoard"):
+		_fade_health(delta)
 	_fade_dmg(delta)
 
 
 func setup_single_player() -> void:
-	$MatchTimer.visible = false
-	$UI.visible = true
-	$FadeInOut.visible = true
+	ui.visible = true
+	fade_in_out.visible = true
+	match_timer.visible = false
+	scoreboard.visible = false
 
 
 func setup_bot_sim() -> void:
-	$MatchTimer.visible = true
-	$UI.visible = true
-	$FadeInOut.visible = true
+	ui.visible = true
+	fade_in_out.visible = true
+	match_timer.visible = true
+	scoreboard.visible = false
+
+
+func reset_scoreboard() -> void:
+	scoreboard.characters.clear()
+	scoreboard.teams.clear()
+	score_list.clear()
+	leader_list.reset()
+
+
+func set_game_over() -> void:
+	game_over = true
+	scoreboard.visible = true
+	health_mod.modulate.a = 1
+	$MatchTimer.visible = false
 
 
 func exit_game() -> void:
+	game_over = false
 	visible = false
 
 
 func fade_in() -> void:
 	visible = true
-	$FadeInOut.color.a = 1
+	fade_in_out.color.a = 1
 	var tween = create_tween()
-	tween.tween_property($FadeInOut, "color:a", 0.0, open_time)
+	tween.tween_property(fade_in_out, "color:a", 0.0, open_time)
 	await tween.finished
 	set_process(true)
 	return
 
 
 func fade_out() -> void:
-	$FadeInOut.visible = true
-	$FadeInOut.color.a = 0
+	fade_in_out.visible = true
+	fade_in_out.color.a = 0
 	var tween = create_tween()
-	tween.tween_property($FadeInOut, "color:a", 1.0, close_time)
+	tween.tween_property(fade_in_out, "color:a", 1.0, close_time)
 	await tween.finished
 	return
 
 
-func update_weapon(ammo_in_mag, mag_size, extra_ammo) -> void:
-	%AmmoInMag.text = str(ammo_in_mag) + " / " + str(mag_size)
-	%ExtraAmmo.text = str(extra_ammo)
+func update_weapon(mag_ammo, mag_size, ammo_extra) -> void:
+	ammo_in_mag.text = str(mag_ammo) + " / " + str(mag_size)
+	extra_ammo.text = str(ammo_extra)
 
 
 func update_health(max_health, max_armor, health, armor) -> void:
-	%HealthMod.modulate.a = 1
+	health_mod.modulate.a = 1
 	
 	# Health Boxes
-	var box_count := %HealthMod/HealthBar.get_child_count()
+	var box_count := health_bar.get_child_count()
 	var health_per_box : int = max_health / box_count
 	var filled_boxes : int = health / health_per_box
 	for box_num in range(0, box_count):
-		var box : ColorRect = %HealthMod/HealthBar.get_child(box_count - box_num - 1)
+		var box : ColorRect = health_bar.get_child(box_count - box_num - 1)
 		if box_num < filled_boxes:
 			box.color.a = 1
 		elif box_num == filled_boxes:
@@ -80,11 +117,11 @@ func update_health(max_health, max_armor, health, armor) -> void:
 			box.color.a = 0
 
 	# Armor Boxes
-	box_count = %HealthMod/ArmorBar.get_child_count()
+	box_count = armor_bar.get_child_count()
 	var armor_per_box : int = max_armor / box_count
 	filled_boxes = armor / armor_per_box
 	for box_num in range(0, box_count):
-		var box : ColorRect = %HealthMod/ArmorBar.get_child(box_count - box_num - 1)
+		var box : ColorRect = armor_bar.get_child(box_count - box_num - 1)
 		if box_num < filled_boxes:
 			box.color.a = 1
 		elif box_num == filled_boxes:
@@ -94,35 +131,35 @@ func update_health(max_health, max_armor, health, armor) -> void:
 
 
 func show_crosshairs(show) -> void:
-	$UI/Crosshair.visible = show
+	crosshair.visible = show
 
 
 func zoom_crosshairs(show) -> void:
-	$UI/Scope.visible = show
+	scope.visible = show
 
 
 func show_damage(dmg_dir) -> void:
 	if dmg_dir.y > 0:
-		%Damage/Up.modulate.a = dmg_dir.y
+		damage_up.modulate.a = dmg_dir.y
 	else:
-		%Damage/Down.modulate.a = abs(dmg_dir.y)
+		damage_down.modulate.a = abs(dmg_dir.y)
 	if dmg_dir.x > 0:
-		%Damage/Right.modulate.a = dmg_dir.x
+		damage_right.modulate.a = dmg_dir.x
 	else:
-		%Damage/Left.modulate.a = abs(dmg_dir.x)
+		damage_left.modulate.a = abs(dmg_dir.x)
 
 
 func _fade_health(delta) -> void:
-	if %HealthMod.modulate.a > 0:
-		%HealthMod.modulate.a -= delta
+	if health_mod.modulate.a > 0:
+		health_mod.modulate.a -= delta
 
 
 func _fade_dmg(delta) -> void:
-	if %Damage/Up.modulate.a > 0:
-		%Damage/Up.modulate.a -= delta
-	if %Damage/Left.modulate.a > 0:
-		%Damage/Left.modulate.a -= delta
-	if %Damage/Down.modulate.a > 0:
-		%Damage/Down.modulate.a -= delta
-	if %Damage/Right.modulate.a > 0:
-		%Damage/Right.modulate.a -= delta
+	if damage_up.modulate.a > 0:
+		damage_up.modulate.a -= delta
+	if damage_left.modulate.a > 0:
+		damage_left.modulate.a -= delta
+	if damage_down.modulate.a > 0:
+		damage_down.modulate.a -= delta
+	if damage_right.modulate.a > 0:
+		damage_right.modulate.a -= delta

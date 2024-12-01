@@ -11,6 +11,7 @@ var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 func _ready() -> void:
 	%Players.set_up()
+	HUD.setup_bot_sim()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -22,7 +23,12 @@ func open() -> void:
 	
 	_start_match()
 	if Globals.game.bot_sim_settings.time != 0:
+		
 		$MatchTime.start(Globals.game.bot_sim_settings.time)
+
+
+func _process(delta: float) -> void:
+	HUD.match_timer.set_time(int($MatchTime.time_left))
 
 
 func _start_match() -> void:
@@ -35,18 +41,17 @@ func get_match_time() -> int:
 
 # Called by $MatchTime.timeout and ScoreBoard._check_win()
 func end_match() -> void:
-	%Score.visible = true
-	%Score.game_over = true
+	HUD.set_game_over()
+	HUD.fade_out()
 	
 	var post_time := 2.0
 	var timer = get_tree().create_timer(post_time, false, false, true)
 	
 	var tween = create_tween().set_parallel()
 	tween.tween_property(Engine, "time_scale", 0.1, post_time)
-	tween.tween_property($Players/ScoreLayer/FadeInOut, "color:a", 1.2, post_time)
 	await tween.finished
 	
-	Globals.quit_bot_sim()
+	Globals.game.quit_bot_sim()
 
 
 # Called from CharacterBase.shoot()

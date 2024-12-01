@@ -28,9 +28,9 @@ font_color = Color(0.121569, 0.121569, 0.121569, 1)
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_ih3gh")
+metadata/_edit_horizontal_guides_ = [976.0]
 
 [node name="MatchTimer" type="Label" parent="."]
-unique_name_in_owner = true
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -75,7 +75,6 @@ offset_bottom = 469.0
 metadata/_edit_use_anchors_ = true
 
 [node name="AmmoInMag" type="Label" parent="UI/Weapon"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "0 / 0"
 label_settings = SubResource("LabelSettings_vgpdo")
@@ -83,7 +82,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ExtraAmmo" type="Label" parent="UI/Weapon"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_0pkc5")
@@ -91,7 +89,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Damage" type="Node2D" parent="UI"]
-unique_name_in_owner = true
 
 [node name="Left" type="Sprite2D" parent="UI/Damage"]
 modulate = Color(1, 1, 1, 0)
@@ -125,7 +122,6 @@ texture = ExtResource("8_yj7y2")
 metadata/_edit_group_ = true
 
 [node name="HealthMod" type="CanvasModulate" parent="UI"]
-unique_name_in_owner = true
 position = Vector2(-959, -540)
 
 [node name="HealthBar" type="VBoxContainer" parent="UI/HealthMod"]
@@ -245,7 +241,6 @@ layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
 [node name="Score" type="Control" parent="."]
-unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -309,20 +304,20 @@ same_column_width = true
 fixed_column_width = 353
 
 [node name="LeaderList" type="Control" parent="."]
-unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 188.0
-offset_top = 526.0
+offset_top = 685.0
 offset_right = 466.0
-offset_bottom = 796.0
+offset_bottom = 976.0
 script = ExtResource("7_28wp2")
 
 [node name="List" type="VBoxContainer" parent="LeaderList"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.167
+anchor_bottom = 1.0
+offset_bottom = -90.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 100

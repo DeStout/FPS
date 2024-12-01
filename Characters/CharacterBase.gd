@@ -76,7 +76,6 @@ var lower_blend_pos := "parameters/Lower/RunIdle/blend_position"
 
 func _ready() -> void:
 	set_processing(false)
-	_switch_weapon(%Weapons/Pistol)
 	for body_seg in body_segs:
 		%ShootCast.add_exception(body_seg)
 

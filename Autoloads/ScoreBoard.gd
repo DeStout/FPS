@@ -1,13 +1,12 @@
 extends Control
 
 
-var game_over := false
 var characters := {}
 var teams := {}
 
 
 func _input(_event : InputEvent) -> void:
-	if !game_over:
+	if !HUD.game_over:
 		if Input.is_action_just_pressed("ScoreBoard"):
 			visible = true
 		elif Input.is_action_just_released("ScoreBoard"):
@@ -52,4 +51,4 @@ func get_leader_list() -> Dictionary:
 func _check_win() -> void:
 	for team in teams:
 		if teams[team] >= Globals.game.bot_sim_settings.score_to_win:
-			$"../..".level.end_match()
+			Globals.game.map.end_match()

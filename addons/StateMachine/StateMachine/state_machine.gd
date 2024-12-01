@@ -1,12 +1,12 @@
-## State machine for managing States.
 extends Node
 class_name StateMachine
 
-## State for the StateMachine to start in.
+
 @export var initial_state : State
 
 var current_state : State
 var states : Dictionary = {}
+
 
 func _ready() -> void:
 	if initial_state:
@@ -22,11 +22,14 @@ func _ready() -> void:
 	current_state.enter()
 	current_state.active = true
 
+
 func _process(delta : float) -> void:
 	current_state.update(delta)
 
+
 func _physics_process(delta : float) -> void:
 	current_state.physics_update(delta)
+
 
 func on_state_transitioned(state : State, new_state_name : String) -> void:
 	if state != current_state:
