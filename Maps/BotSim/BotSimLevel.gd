@@ -3,6 +3,7 @@ class_name BotSimLevel
 
 
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
+var mat_ := load("res://Characters/BotSim/BotSimMat.tres")
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
 var bullet_hole_ := load("res://Props/BulletHole.tscn")
 var damage_label_ := load("res://Characters/DamageLabel.tscn")
@@ -89,9 +90,11 @@ func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 							shooter : CharacterBase, body_seg_shot : String, \
 											body_mat : BaseMaterial3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
+	var temp_mat = mat_.duplicate()
+	temp_mat.albedo_color = body_mat.albedo_color
 	$FX.add_child(rag_doll)
-	rag_doll.set_material(body_mat)
-	rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
+	rag_doll.set_material(temp_mat)
+	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
 											shooter.weapon_held.stats.impulse)
 

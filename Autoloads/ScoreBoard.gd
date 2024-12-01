@@ -1,12 +1,14 @@
 extends Control
 
 
+var locked = false
+
 var characters := {}
 var teams := {}
 
 
 func _input(_event : InputEvent) -> void:
-	if !HUD.game_over:
+	if !HUD.game_over and !locked:
 		if Input.is_action_just_pressed("ScoreBoard"):
 			visible = true
 		elif Input.is_action_just_released("ScoreBoard"):

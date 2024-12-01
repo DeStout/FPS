@@ -48,6 +48,7 @@ func setup_single_player() -> void:
 	fade_in_out.visible = true
 	match_timer.visible = false
 	scoreboard.visible = false
+	scoreboard.locked = true
 
 
 func setup_bot_sim() -> void:
@@ -58,6 +59,7 @@ func setup_bot_sim() -> void:
 	else:
 		match_timer.visible = false
 	scoreboard.visible = false
+	scoreboard.locked = false
 
 
 func reset_scoreboard() -> void:
