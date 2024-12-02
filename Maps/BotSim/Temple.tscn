@@ -343,7 +343,7 @@ weapon_type = 3
 
 [node name="Shotgun1" parent="Pickups" index="11" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-weapon_type = 2
+weapon_type = 4
 
 [node name="Sniper1" parent="Pickups" index="12" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -36)

@@ -14,6 +14,13 @@ func _ready() -> void:
 	update_weapon_UI()
 
 
+func set_color(new_color : Color) -> void:
+	super(new_color)
+	var fp_mat : BaseMaterial3D = $AimHelper/FPView/Mannequin/Skeleton3D/Surface. \
+												get_surface_override_material(0)
+	fp_mat.albedo_color = new_color
+
+
 func _process(delta: float) -> void:
 	super(delta)
 
@@ -210,10 +217,6 @@ func _show_damage(shooter : CharacterBase) -> void:
 	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
 								-to_local(shooter.global_position).z).normalized()
 	HUD.show_damage(dmg_dir)
-
-
-func _die() -> void:
-	super()
 
 
 func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:

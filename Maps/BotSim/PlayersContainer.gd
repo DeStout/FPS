@@ -147,7 +147,7 @@ func set_characters_processing(new_process) -> void:
 		character.set_processing(new_process)
 
 
-# Signaled from CharacterBase._die()
+# Signaled from BotSimCharacter._die()
 func add_to_scoreboard(killed, killer) -> void:
 	HUD.scoreboard.add_death(killed.name)
 	if killer.is_enemy(killed):
@@ -157,7 +157,9 @@ func add_to_scoreboard(killed, killer) -> void:
 	HUD.leader_list.update(HUD.scoreboard.get_leader_list())
 
 
+# Signaled from BotSimCharacter._die
 func character_killed(character) -> void:
+	assert(character.is_inside_tree())
 	remove_child(character)
 
 	for bot in bots:

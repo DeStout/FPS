@@ -15,7 +15,8 @@ func new_name(new_name : String) -> void:
 
 func set_color(new_color : Color) -> void:
 	team = new_color
-	var mat = $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0)
+	var mat : BaseMaterial3D = $Mannequin/Mannequin/Skeleton3D/Surface \
+												.get_surface_override_material(0)
 	mat.albedo_color = new_color
 
 
@@ -41,6 +42,12 @@ func _starting_weapons() -> void:
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
 
 
+func _switch_weapon(new_weapon : Node3D) -> void:
+	super(new_weapon)
+	
+	weapon_state_machine.travel("Alert")
+
+
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	if !Globals.game.bot_sim_settings.friendly_fire and !is_enemy(shooter):
 		return
@@ -49,15 +56,17 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 
 
 func _die() -> void:
-	add_score.emit(self, last_shot_by)
-	await super()
 	# Signal to PlayerContainer.add_to_scoreboard
+	add_score.emit(self, last_shot_by)
 	
 	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
 		var weapon_info := [weapon_held.stats.weapon_type,
 								weapon_held.extra_ammo,
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
+		
+	await super()
+	
 	armor = 0
 	#weapons = [Globals.WEAPONS.SLAPPER]
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
@@ -94,9 +103,9 @@ func set_current_camera(is_current : bool) -> void:
 
 
 func _rand_weapon() -> int:
-	var spawn_weapon = randf_range(1, pow(Globals.WEAPONS.size()-2, 2))
+	var spawn_weapon = randf_range(1, pow(Globals.WEAPONS.size()-1, 2))
 	spawn_weapon = int(sqrt(spawn_weapon))
-	return Globals.WEAPONS.size() - spawn_weapon - 2
+	return Globals.WEAPONS.size() - spawn_weapon - 1
 
 
 func character_killed(deceased) -> void:

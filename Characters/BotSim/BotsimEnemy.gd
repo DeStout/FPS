@@ -5,9 +5,12 @@ extends BotSimCharacter
 @onready var state_machine := $StateMachine
 @onready var nav_agent := $NavAgent
 
+@onready var aim_helper := $AimHelper
+@onready var target_timer := $TargetTimer
 var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
 
+@onready var shoot_timer := $ShootTimer
 @export var starting_weapon : Globals.WEAPONS
 var shoot_speed_mod := 1.0/2.5
 var shoot_speed_variance := Vector2(0.3, 1.0)
@@ -30,9 +33,6 @@ func _ready() -> void:
 	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
 	state_machine.set_physics_process(true)
-	
-	if weapon_held != null:
-		weapon_state_machine.travel("Alert")
 
 
 func _input(event: InputEvent) -> void:
@@ -100,18 +100,24 @@ func set_closest_to_target() -> void:
 		return
 		
 	target = enemies[0]
-	var dist = global_position.distance_squared_to(target.global_position)
-	for enemy in enemies:
-		if enemy == target or !enemy.is_inside_tree():
-			continue
-		var temp_dist = global_position.distance_squared_to(enemy.global_position)
-		if temp_dist < dist:
-			target = enemy
-			dist = temp_dist
+	if is_inside_tree() and target.is_inside_tree():
+		var dist = global_position.distance_squared_to(target.global_position)
+		for enemy in enemies:
+			if enemy == target or !enemy.is_inside_tree():
+				continue
+			var temp_dist = global_position.distance_squared_to(enemy.global_position)
+			if temp_dist < dist:
+				target = enemy
+				dist = temp_dist
 
 
 func is_enemy_visible(enemy) -> bool:
 	return enemies.has(enemy) and enemies_vis[enemies.find(enemy)]
+
+
+func character_killed(deceased) -> void:
+	if deceased == target:
+		target = null
 
 
 func get_closest_healths(healths_type : Globals.HEALTHS) -> PickUp:
@@ -183,17 +189,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 									state_machine.current_state.active == true:
 		target = shooter
 		state_machine.current_state.alert()
-	super(body_seg, damage*2.5, shooter)
-
-
-func _die() -> void:
-	super()
-	
-	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
-		var weapon_info := [weapon_held.stats.weapon_type,
-								weapon_held.extra_ammo,
-								weapon_held.ammo_in_mag]
-		current_level.spawn_weapon_pick_up(global_position, weapon_info)
+	super(body_seg, damage, shooter)
 
 
 func _unequip_weapon(old_weapon) -> void:

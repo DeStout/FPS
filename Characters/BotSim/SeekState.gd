@@ -2,7 +2,7 @@ class_name EngageState
 extends State
 
 
-var update_interval := 20
+var update_interval := 10
 var interval_offset := randi_range(0, update_interval)
 var goal : Node3D = null
 
@@ -27,7 +27,7 @@ func update(_delta) -> void:
 func physics_update(delta) -> void:
 	if get_tree().get_frame() % update_interval == interval_offset:
 		if enemy.check_enemies_visible():
-			#transition.emit(self, "EngageState")
+			transition.emit(self, "EngageState")
 			return
 	if goal == null:
 		set_goal()
@@ -78,8 +78,7 @@ func _seek_goal(delta : float) -> void:
 
 
 func alert() -> void:
-	pass
-	#transition.emit(self, "EngageState")
+	transition.emit(self, "EngageState")
 
 
 func set_goal() -> void:

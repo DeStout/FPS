@@ -9,27 +9,26 @@ automatic = true
 can_zoom = false
 zoom_level = 1.0
 burst_fire = true
-burst_num = 8
-burst_variance = 0.11
+burst_num = 10
+burst_variance = 0.08
 shots_per_second = 2.25
 max_ammo = 40
-mag_size = 10
+mag_size = 8
 v_recoil = 8.0
 h_recoil = 3.0
 body_dmg = {
-0: 15,
+0: 12,
 1: 8,
 2: 4
 }
-dmg_falloff = Vector2(1, 25)
+dmg_falloff = Vector2(5, 25)
 range = 2.5
 impulse = 350.0
 pos_offset = Vector3(-0.044263, -0.00856596, 0.0186746)
 rot_offset = Vector3(1.54514, 1.42313, 1.92299)
-anim_pos = Vector2(1, -1)
 state_name = "Shotgun"
-equip_anim = "FPShotgunEquip"
-idle_anim = "FPIdleShotgun"
-run_anim = "FPRunShotgun"
-shoot_anim = "FPShotgunShoot"
+equip_anim = "FPEquipRifle"
+idle_anim = "FPIdleRifle"
+run_anim = "FPRunRifle"
+shoot_anim = "FPShootRifle"
 reload_anim = ""
