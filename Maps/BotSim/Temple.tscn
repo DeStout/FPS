@@ -259,39 +259,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 34)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 34)
 
 [node name="Marker3D31" type="Marker3D" parent="NavPoints" index="23"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 34)
 
-[node name="Marker3D32" type="Marker3D" parent="NavPoints" index="24"]
+[node name="Marker3D36" type="Marker3D" parent="NavPoints" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 34)
+
+[node name="Marker3D32" type="Marker3D" parent="NavPoints" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
 
-[node name="Marker3D33" type="Marker3D" parent="NavPoints" index="25"]
+[node name="Marker3D33" type="Marker3D" parent="NavPoints" index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 30)
 
-[node name="Marker3D34" type="Marker3D" parent="NavPoints" index="26"]
+[node name="Marker3D34" type="Marker3D" parent="NavPoints" index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 19)
 
-[node name="Marker3D35" type="Marker3D" parent="NavPoints" index="27"]
+[node name="Marker3D35" type="Marker3D" parent="NavPoints" index="28"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 19)
 
-[node name="Marker3D2" type="Marker3D" parent="NavPoints" index="28"]
+[node name="Marker3D2" type="Marker3D" parent="NavPoints" index="29"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5)
 
-[node name="Marker3D3" type="Marker3D" parent="NavPoints" index="29"]
+[node name="Marker3D3" type="Marker3D" parent="NavPoints" index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 5.5)
 
-[node name="Marker3D4" type="Marker3D" parent="NavPoints" index="30"]
+[node name="Marker3D4" type="Marker3D" parent="NavPoints" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 5.5)
 
-[node name="Marker3D5" type="Marker3D" parent="NavPoints" index="31"]
+[node name="Marker3D5" type="Marker3D" parent="NavPoints" index="32"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
 
-[node name="Marker3D6" type="Marker3D" parent="NavPoints" index="32"]
+[node name="Marker3D6" type="Marker3D" parent="NavPoints" index="33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
 
-[node name="Marker3D7" type="Marker3D" parent="NavPoints" index="33"]
+[node name="Marker3D7" type="Marker3D" parent="NavPoints" index="34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, -0.5)
 
-[node name="Marker3D8" type="Marker3D" parent="NavPoints" index="34"]
+[node name="Marker3D8" type="Marker3D" parent="NavPoints" index="35"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -0.5)
 
 [node name="Pistol1" parent="Pickups" index="0" instance=ExtResource("3_36e2o")]

@@ -134,6 +134,10 @@ func spawn_character(character : CharacterBase, spawn_point : Marker3D) -> void:
 func connect_signals(character) -> void:
 	character.died.connect(character_killed)
 	character.add_score.connect(add_to_scoreboard)
+	
+	if character is BotSimEnemy:
+		for pickup in level.get_all_pickups():
+			pickup.removed.connect(character.pickup_removed)
 
 
 func set_characters_processing(new_process) -> void:

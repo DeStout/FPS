@@ -1,3 +1,4 @@
+class_name BotSimEnemy
 extends BotSimCharacter
 
 
@@ -6,16 +7,15 @@ extends BotSimCharacter
 
 var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
-var alert := false
 
 @export var starting_weapon : Globals.WEAPONS
 var shoot_speed_mod := 1.0/2.5
 var shoot_speed_variance := Vector2(0.3, 1.0)
 
-const GUARD_SPEED := 3.0
 const TURN_SPEED := 6.0
 const AIM_SPEED := 1.0
-var move_speed_mod := 0.8
+var move_speed_mod := 0.9
+var bot_blocking := false
 
 
 func _ready() -> void:
@@ -30,6 +30,9 @@ func _ready() -> void:
 	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
 	state_machine.set_physics_process(true)
+	
+	if weapon_held != null:
+		weapon_state_machine.travel("Alert")
 
 
 func _input(event: InputEvent) -> void:
@@ -38,19 +41,27 @@ func _input(event: InputEvent) -> void:
 									AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 
-
 func _process(delta: float) -> void:
 	super(delta)
 
 
 func _physics_process(delta):
 	super(delta)
+	for i in range(get_slide_collision_count()):
+		if get_slide_collision(i).get_collider(0) is CharacterBase:
+			bot_blocking = true
 
 
 func set_enemies(new_enemies : Array[CharacterBase]) -> void:
 	super(new_enemies)
 	enemies_vis.resize(new_enemies.size())
 	enemies_vis.fill(false)
+
+
+func goal_reached() -> void:
+	if state_machine.current_state.name == "SeekState":
+		state_machine.current_state.set_goal()
+		#print(name, ": ", state_machine.current_state.goal.name)
 
 
 func aim(delta) -> void:
@@ -103,6 +114,53 @@ func is_enemy_visible(enemy) -> bool:
 	return enemies.has(enemy) and enemies_vis[enemies.find(enemy)]
 
 
+func get_closest_healths(healths_type : Globals.HEALTHS) -> PickUp:
+	var healths_list = current_level.get_healths_pickups(healths_type)
+	if !healths_list.size():
+		return null
+	elif healths_list.size() == 1:
+		return healths_list[0]
+
+	var healths_i := 0
+	var temp_dist := global_position.distance_squared_to \
+									(healths_list[healths_i].global_position)
+	var healths_dist := temp_dist
+	for i in range(1, healths_list.size()):
+		temp_dist = global_position.distance_squared_to\
+											(healths_list[i].global_position)
+		if temp_dist < healths_dist:
+			healths_dist = temp_dist
+			healths_i = i
+			
+	return healths_list[healths_i]
+
+
+func get_closest_weapon(weapon_type : Globals.WEAPONS) -> PickUp:
+	var weapon_list = current_level.get_weapon_pickups(weapon_type)
+	if !weapon_list.size():
+		return null
+	elif weapon_list.size() == 1:
+		return weapon_list[0]
+
+	var weapon_i := 0
+	var temp_dist := global_position.distance_squared_to \
+									(weapon_list[weapon_i].global_position)
+	var weapon_dist := temp_dist
+	for i in range(1, weapon_list.size()):
+		temp_dist = global_position.distance_squared_to\
+											(weapon_list[i].global_position)
+		if temp_dist < weapon_dist:
+			weapon_dist = temp_dist
+			weapon_i = i
+			
+	return weapon_list[weapon_i]
+
+
+func pickup_removed(pickup) -> void:
+	if state_machine.current_state.name == "SeekState":
+		state_machine.current_state.check_pickup(pickup)
+
+
 func _shoot() -> void:
 	super()
 	trigger_pulled = false
@@ -121,7 +179,7 @@ func _jump() -> void:
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
-	if state_machine.current_state.name == "GuardState" and \
+	if state_machine.current_state.name == "SeekState" and \
 									state_machine.current_state.active == true:
 		target = shooter
 		state_machine.current_state.alert()
@@ -136,8 +194,6 @@ func _die() -> void:
 								weapon_held.extra_ammo,
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
-	
-	#call_deferred("queue_free")
 
 
 func _unequip_weapon(old_weapon) -> void:

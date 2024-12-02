@@ -3,6 +3,7 @@ extends State
 
 
 var update_interval := 10
+var interval_offset := randi_range(0, update_interval)
 
 
 func enter() -> void:
@@ -20,7 +21,7 @@ func update(_delta) -> void:
 
 
 func physics_update(delta) -> void:
-	if get_tree().get_frame() % update_interval == 0:
+	if get_tree().get_frame() % update_interval == interval_offset:
 		check_priorities()
 	
 	enemy.aim(delta)

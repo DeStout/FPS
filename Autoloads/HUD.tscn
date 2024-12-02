@@ -28,7 +28,6 @@ font_color = Color(0.121569, 0.121569, 0.121569, 1)
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_ih3gh")
-metadata/_edit_horizontal_guides_ = [976.0]
 
 [node name="MatchTimer" type="Label" parent="."]
 anchors_preset = 4
@@ -297,8 +296,10 @@ offset_right = 888.0
 offset_bottom = 436.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 233
 theme_override_font_sizes/font_size = 72
+allow_search = false
 max_columns = 3
 same_column_width = true
 fixed_column_width = 353

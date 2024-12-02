@@ -109,6 +109,26 @@ func get_spawn_point() -> Marker3D:
 	return $Spawns.get_children().pick_random()
 
 
+func get_all_pickups() -> Array:
+	return $Pickups.get_children()
+
+
+func get_healths_pickups(healths_type : Globals.HEALTHS) -> Array:
+	return $Pickups.get_children().filter(
+		func(healths) -> bool:
+			return healths.pick_up_type == Globals.PICK_UPS.HEALTH and \
+					healths.health_type == healths_type
+			)
+
+
+func get_weapon_pickups(weapon_type : Globals.WEAPONS) -> Array:
+	return $Pickups.get_children().filter(
+		func(weapon) -> bool:
+			return weapon.pick_up_type == Globals.PICK_UPS.WEAPON and \
+					weapon.weapon_type == weapon_type
+	)
+
+
 func get_nav_point() -> Node3D:
 	var nav_points : Array = $NavPoints.get_children() + $Pickups.get_children()
 	return nav_points.pick_random()
