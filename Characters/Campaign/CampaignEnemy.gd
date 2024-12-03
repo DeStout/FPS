@@ -8,6 +8,7 @@ extends CharacterBase
 var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
 var alert := false
+var damage_mod := 1.5
 
 @export var starting_weapon : Globals.WEAPONS
 var shoot_speed_mod := 1.0/2.5
@@ -220,7 +221,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 									state_machine.current_state.active == true:
 		target = shooter
 		state_machine.current_state.alert()
-	super(body_seg, damage*2.5, shooter)
+	super(body_seg, damage * damage_mod, shooter)
 
 
 func _die() -> void:

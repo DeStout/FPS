@@ -42,7 +42,7 @@ func _spawn() -> void:
 	#pass
 	for i in range(spawn_num):
 		var enemy = enemy_.instantiate()
-		enemy.starting_weapon = Globals.WEAPONS.PISTOL
+		enemy.starting_weapon = Globals.WEAPONS.SMG
 		enemy.current_level = level
 		enemy.enemies.append(level.player)
 		

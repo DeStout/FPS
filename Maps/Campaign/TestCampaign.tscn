@@ -4359,17 +4359,31 @@ starting_weapon = 3
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
-[node name="CampaignEnemy10" parent="Players" index="10" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -33.875)
+[node name="CampaignEnemy12" parent="Players" index="10" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.7422e-08, 0, -1.00001, 60, 5, -40.625)
 guard_path = NodePath("../../GuardPaths/Guard6")
+starting_weapon = 4
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy10" parent="Players" index="11" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -33.875)
+guard_path = NodePath("../../GuardPaths/Guard8")
 starting_weapon = 1
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
-[node name="CampaignEnemy11" parent="Players" index="11" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.74221e-08, 0, -1.00001, 46.925, 0.5, -34)
+[node name="CampaignEnemy13" parent="Players" index="12" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 73, 5, -37.625)
 guard_path = NodePath("../../GuardPaths/Guard7")
-starting_weapon = 3
+starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy11" parent="Players" index="13" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.74221e-08, 0, -1.00001, 46.925, 0.5, -34)
+guard_path = NodePath("../../GuardPaths/Guard9")
+starting_weapon = 4
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
@@ -4448,9 +4462,15 @@ transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 2.6226
 transform = Transform3D(-1, 0, 8.74229e-08, 0, 1, 0, -8.74229e-08, 0, -1, 24, 5, -41.5)
 
 [node name="Guard6" type="Marker3D" parent="GuardPaths" index="9"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -35)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 60, 5, -40.625)
 
 [node name="Guard7" type="Marker3D" parent="GuardPaths" index="10"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 73, 5, -37.625)
+
+[node name="Guard8" type="Marker3D" parent="GuardPaths" index="11"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -33.875)
+
+[node name="Guard9" type="Marker3D" parent="GuardPaths" index="12"]
 transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.74221e-08, 0, -1.00001, 46.925, 0.5, -34)
 
 [node name="Door1" parent="FX" index="0" instance=ExtResource("5_8nld0")]
@@ -4627,7 +4647,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 73, 5,
 script = ExtResource("14_3svvp")
 level = NodePath("../..")
 players_node = NodePath("../../Players")
-spawn_time = 10.0
+spawn_time = 6.0
 spawn_num = 2
 door = NodePath("../Door5")
 
