@@ -35,12 +35,12 @@ func _ready() -> void:
 	state_machine.set_physics_process(true)
 
 
-#func set_processing(new_process) -> void:
-	#super(new_process)
-	#if new_process:
-		#state_machine.process_mode = Node.PROCESS_MODE_INHERIT
-	#else:
-		#state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+func set_processing(new_process) -> void:
+	super(new_process)
+	if new_process:
+		state_machine.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		state_machine.process_mode = Node.PROCESS_MODE_DISABLED
 	#state_machine.set_process(new_process)
 	#state_machine.set_physics_process(new_process)
 
@@ -71,20 +71,6 @@ func set_enemies(new_enemies : Array[CharacterBase]) -> void:
 func goal_reached() -> void:
 	if state_machine.current_state.name == "SeekState":
 		state_machine.current_state.set_goal()
-		#print(name, ": ", state_machine.current_state.goal.name)
-
-
-func aim(delta) -> void:
-	if target and enemies_vis[enemies.find(target)]:
-		var target_pos = target.global_position + Vector3(0, 1.2, 0)
-		var new_trans : Transform3D = $AimHelper.global_transform.looking_at(target_pos)
-		$AimHelper.global_transform = $AimHelper.global_transform.interpolate_with \
-													(new_trans, AIM_SPEED * delta)
-	else:
-		$AimHelper.rotation = $AimHelper.rotation.lerp(Vector3.ZERO, AIM_SPEED * delta)
-	$AimHelper.rotation.x = clamp($AimHelper.rotation.x, deg_to_rad(-90), rad_to_deg(90))
-	$AimHelper.rotation.y = clamp($AimHelper.rotation.y, deg_to_rad(-80), rad_to_deg(80))
-	$AimHelper.rotation.z = 0
 
 
 func target_lost() -> void:
@@ -108,9 +94,10 @@ func check_enemies_visible() -> bool:
 func set_closest_to_target() -> void:
 	if enemies.size() == 0:
 		return
-		
-	target = enemies[0]
-	if is_inside_tree() and target.is_inside_tree():
+	
+	if is_inside_tree():
+		var vis_enemies = enemies.filter(is_enemy_visible)
+		target = vis_enemies[0]
 		var dist = global_position.distance_squared_to(target.global_position)
 		for enemy in enemies:
 			if enemy == target or !enemy.is_inside_tree():
