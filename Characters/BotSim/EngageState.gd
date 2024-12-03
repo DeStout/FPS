@@ -7,7 +7,6 @@ var update_interval := 10
 
 func enter() -> void:
 	#print(enemy.name, ": Enter EngageState")
-	
 	if !enemy.target and enemy.check_enemies_visible():
 		enemy.set_closest_to_target()
 

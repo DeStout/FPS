@@ -85,6 +85,10 @@ func set_processing(new_process) -> void:
 	set_process(new_process)
 	set_physics_process(new_process)
 	set_process_input(new_process)
+	#if new_process:
+		#process_mode = PROCESS_MODE_INHERIT
+	#else:
+		#process_mode = PROCESS_MODE_DISABLED
 
 
 func _process(delta) -> void:

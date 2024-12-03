@@ -35,6 +35,16 @@ func _ready() -> void:
 	state_machine.set_physics_process(true)
 
 
+#func set_processing(new_process) -> void:
+	#super(new_process)
+	#if new_process:
+		#state_machine.process_mode = Node.PROCESS_MODE_INHERIT
+	#else:
+		#state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	#state_machine.set_process(new_process)
+	#state_machine.set_physics_process(new_process)
+
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("EmoteWave"):
 		anim_tree["parameters/Wave/request"] = \

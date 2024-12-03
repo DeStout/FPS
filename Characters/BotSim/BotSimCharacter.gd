@@ -21,9 +21,8 @@ func set_color(new_color : Color) -> void:
 
 
 func _ready() -> void:
-	super()	
+	super()
 	_starting_weapons()
-	set_processing(false)
 
 
 func _starting_weapons() -> void:
