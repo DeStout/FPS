@@ -38,6 +38,7 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 						$Mannequin/Mannequin/Skeleton3D/Neck/NeckArea,
 						$Mannequin/Mannequin/Skeleton3D/Chest/ChestArea,
 						$Mannequin/Mannequin/Skeleton3D/Stomach/StomachArea,
+						$Mannequin/Mannequin/Skeleton3D/Hips/HipsArea,
 						$Mannequin/Mannequin/Skeleton3D/R_UpperArm/UpperArmArea,
 						$Mannequin/Mannequin/Skeleton3D/R_Forearm/ForearmArea,
 						$Mannequin/Mannequin/Skeleton3D/R_Hand/HandArea,
@@ -305,15 +306,15 @@ func _die() -> void:
 	# No Connections
 	defeated.emit(self)
 	
+	visible = false
+	_disable_collisions(true)
+	set_processing(false)
+	
 	var body_mat = $Mannequin/Mannequin/Skeleton3D/Surface.mesh.surface_get_material(0)
 	if $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0):
 		body_mat = $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0)
 	current_level.spawn_rag_doll(skeleton, transform, \
 						last_shot_by, last_body_seg_shot.name, body_mat)
-	
-	visible = false
-	_disable_collisions(true)
-	set_processing(false)
 	
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()
