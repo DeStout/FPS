@@ -2,10 +2,6 @@ extends Node3D
 class_name BotSimLevel
 
 
-var rag_doll_ := load("res://Characters/RagDoll.tscn")
-var mat_ := load("res://Characters/BotSim/BotSimMat.tres")
-var shot_trail_ := load("res://Props/ShotTrail.tscn")
-var damage_label_ := load("res://Characters/DamageLabel.tscn")
 var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 @onready var fx := $FX
@@ -59,10 +55,8 @@ func end_match() -> void:
 
 
 # Called from CharacterBase.shoot()
-func spawn_shot_trail(nozzle_point, collision_point) -> void:
-	var shot_trail = shot_trail_.instantiate()
-	$FX.add_child(shot_trail)
-	shot_trail.align_and_scale(nozzle_point, collision_point)
+func spawn_shot_trail(nozzle_point : Vector3, collision_point : Vector3) -> void:
+	fx.add_shot_trail(nozzle_point, collision_point)
 
 
 # Called from CharacterBase.shoot()
@@ -72,29 +66,14 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3, parent : Node3D = null) 
 
 # Called from CharacterBase.take_damage()
 func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> void:
-	var damage_label = damage_label_.instantiate()
-	$FX.add_child(damage_label)
-	var color : Color
-	match body_seg_type:
-		Globals.BODY_SEGS.HEAD:
-			color = Color.GOLD
-		_:
-			color = Color.BROWN
-	damage_label.set_txt_pos_color(pos, dmg, color)
+	fx.add_damage_label(body_seg_type, pos, dmg)
 
 
 # Called from CharacterBase.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 							shooter : CharacterBase, body_seg_shot : String, \
 											body_mat : BaseMaterial3D) -> void:
-	var rag_doll = rag_doll_.instantiate()
-	var temp_mat = mat_.duplicate()
-	temp_mat.albedo_color = body_mat.albedo_color
-	$FX.add_child(rag_doll)
-	rag_doll.set_material(temp_mat)
-	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
-	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
-											shooter.weapon_held.stats.impulse)
+	fx.add_rag_doll(dead_skel, dead_trans, shooter, body_seg_shot, body_mat)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

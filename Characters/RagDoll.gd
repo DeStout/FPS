@@ -1,6 +1,8 @@
 extends Skeleton3D
 
 
+signal exiting
+
 var fadeout := false
 @export var vis_time := 10.0
 @export var fade_time := 0.5
@@ -13,6 +15,7 @@ func _process(delta: float) -> void:
 		surf_mat.albedo_color.a -= delta / fade_time
 		joint_mat.albedo_color.a -= delta / fade_time
 		if surf_mat.albedo_color.a <= 0:
+			exiting.emit(self)
 			queue_free()
 
 

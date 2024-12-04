@@ -1,6 +1,8 @@
 extends Decal
 
 
+signal exiting
+
 const RICOCHET_CHANCE := 10
 const LINGER_TIME := 30.0
 const FADE_OUT_TIME := 5.0
@@ -22,6 +24,7 @@ func _process(delta) -> void:
 		fade_time += delta
 		
 		if modulate.a <= 0:
+			exiting.emit(self)
 			queue_free()
 
 

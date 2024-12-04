@@ -761,8 +761,6 @@ layers = 2
 mesh = SubResource("ArrayMesh_xdvon")
 skin = SubResource("Skin_b67ut")
 
-[node name="FadeoutTimer" type="Timer" parent="."]
-
 [node name="PhysBoneSim" type="PhysicalBoneSimulator3D" parent="."]
 
 [node name="Hips" type="PhysicalBone3D" parent="PhysBoneSim"]
@@ -1124,5 +1122,7 @@ joint_constraints/relaxation = 1.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysBoneSim/R_Foot"]
 transform = Transform3D(1, 0, 0, 0, 0.963975, -0.265994, 0, 0.265994, 0.963975, 6.98492e-10, -0.0794752, -0.044097)
 shape = SubResource("CapsuleShape3D_yboge")
+
+[node name="FadeoutTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="FadeoutTimer" to="." method="set_fadeout"]
