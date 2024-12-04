@@ -66,7 +66,6 @@ func goal_reached() -> void:
 
 
 func target_lost() -> void:
-	#print(name, ": target escaped - ", target.name)
 	target = null
 
 
@@ -168,10 +167,6 @@ func _shoot() -> void:
 func _swing() -> void:
 	super()
 	_slap()
-
-
-func _jump() -> void:
-	velocity.y = JUMP_VELOCITY
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:

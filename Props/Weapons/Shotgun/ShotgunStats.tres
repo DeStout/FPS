@@ -9,17 +9,17 @@ automatic = true
 can_zoom = false
 zoom_level = 1.0
 burst_fire = true
-burst_num = 10
-burst_variance = 0.08
+burst_num = 8
+burst_variance = 0.07
 shots_per_second = 2.25
 max_ammo = 40
 mag_size = 8
 v_recoil = 8.0
 h_recoil = 3.0
 body_dmg = {
-0: 12,
-1: 8,
-2: 4
+0: 16,
+1: 9,
+2: 5
 }
 dmg_falloff = Vector2(7.5, 25)
 impulse = 350.0

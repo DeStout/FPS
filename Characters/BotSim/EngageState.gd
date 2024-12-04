@@ -49,10 +49,8 @@ func _move_to_target(delta) -> void:
 	
 	# Start or stop target timer based on target visibility
 	if !enemy.is_enemy_visible(enemy.target) and enemy.target_timer.is_stopped():
-		#print(enemy.name, ": target lost - ", enemy.target.name)
 		enemy.target_timer.start(enemy.target_seek_time)
 	elif enemy.is_enemy_visible(enemy.target) and enemy.target_timer.time_left:
-		#print(enemy.name, ": target spotted - ", enemy.target.name)
 		enemy.target_timer.stop()
 	
 	# Set the desired destination
@@ -61,16 +59,9 @@ func _move_to_target(delta) -> void:
 	next_path_pos = enemy.nav_agent.get_next_path_position()
 	next_path_pos.y = enemy.global_position.y
 	
-	# Set Input_dir based on direction to next_path_pos
 	var input_dir : Vector2 = set_input(next_path_pos)
-	#var input_dir := Vector2.ZERO
-	#var range : float = enemy.weapon_held.stats.range
-	#var dist_to = enemy.global_position.distance_to(enemy.target.global_position)
-	#if (dist_to > range and enemy.is_enemy_visible(enemy.target)) or \
-									#!enemy.is_enemy_visible(enemy.target):
-		#input_dir = Vector2.UP
 	
-	## Turn to look at the target
+	# Turn to look at the target or path based on target visibility
 	var new_transform : Transform3D
 	if !enemy.is_enemy_visible(enemy.target):
 		new_transform = enemy.transform.looking_at(next_path_pos)
@@ -81,7 +72,7 @@ func _move_to_target(delta) -> void:
 	enemy.transform = enemy.transform. \
 						interpolate_with(new_transform, enemy.TURN_SPEED * delta)
 
-	## Move
+	# Move
 	var direction = (enemy.transform.basis * \
 								Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var tween = create_tween()

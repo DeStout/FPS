@@ -17,9 +17,9 @@ mag_size = 32
 v_recoil = 7.0
 h_recoil = 4.0
 body_dmg = {
-0: 22,
-1: 13,
-2: 7
+0: 33,
+1: 18,
+2: 10
 }
 dmg_falloff = Vector2(10, 40)
 impulse = 300.0

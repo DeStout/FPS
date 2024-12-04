@@ -41,6 +41,10 @@ func _starting_weapons() -> void:
 	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
 
 
+func _jump() -> void:
+	velocity.y = JUMP_VELOCITY
+
+
 func _switch_weapon(new_weapon : Node3D) -> void:
 	super(new_weapon)
 	

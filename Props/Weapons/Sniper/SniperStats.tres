@@ -22,11 +22,9 @@ body_dmg = {
 2: 35
 }
 dmg_falloff = Vector2(15, 75)
-range = 4.5
 impulse = 350.0
 pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
 rot_offset = Vector3(1.54272, 1.58703, 2.09439)
-anim_pos = Vector2(1, -1)
 state_name = "Sniper"
 equip_anim = "FPEquipSniper"
 idle_anim = "FPIdleSniper"
