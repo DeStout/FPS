@@ -2,6 +2,9 @@ class_name SeekState
 extends State
 
 
+var frame := 0
+var next_path_pos := Vector3.ZERO
+
 var move_dir := Vector2.ZERO
 var move_timer := Timer.new()
 var move_time := Vector2(0.25, 1.0)
@@ -15,6 +18,7 @@ func _ready() -> void:
 
 func enter() -> void:
 	#print(enemy.name, ": Enter EngageState")
+	next_path_pos = Vector3.ZERO
 	if !enemy.target and enemy.check_enemies_visible():
 		enemy.set_closest_to_target()
 
@@ -24,6 +28,8 @@ func exit() -> void:
 
 
 func update(_delta) -> void:
+	frame = get_tree().get_frame()
+	
 	if enemy.check_enemies_visible():
 		enemy.set_closest_to_target()
 	
@@ -65,9 +71,9 @@ func _move_to_target(delta) -> void:
 		enemy.target_timer.stop()
 	
 	# Set the desired destination
-	var next_path_pos := Vector3.ZERO
-	enemy.nav_agent.target_position = enemy.target.global_position
-	next_path_pos = enemy.nav_agent.get_next_path_position()
+	if frame % enemy.update_interval == enemy.update_offset:
+		enemy.nav_agent.target_position = enemy.target.global_position
+		next_path_pos = enemy.nav_agent.get_next_path_position()
 	next_path_pos.y = enemy.global_position.y
 	
 	var input_dir : Vector2 = set_input(next_path_pos)
@@ -75,8 +81,8 @@ func _move_to_target(delta) -> void:
 	# Turn to look at the target or path based on target visibility
 	var new_transform : Transform3D
 	if !enemy.is_enemy_visible(enemy.target) and enemy.is_on_floor():
-		#if !enemy.transform.origin.is_equal_approx(next_path_pos):
-		new_transform = enemy.transform.looking_at(next_path_pos)
+		if !enemy.transform.origin.is_equal_approx(next_path_pos):
+			new_transform = enemy.transform.looking_at(next_path_pos)
 	else:
 		var temp_transform = enemy.target.global_position
 		temp_transform.y = enemy.global_position.y
@@ -112,7 +118,7 @@ func _move_to_target(delta) -> void:
 	enemy.move_and_slide()
 
 
-func set_input(next_path_pos : Vector3) -> Vector2:
+func set_input(path_goal : Vector3) -> Vector2:
 	if !enemy.is_enemy_visible(enemy.target):
 		return Vector2.UP
 	
@@ -121,8 +127,8 @@ func set_input(next_path_pos : Vector3) -> Vector2:
 					enemy.global_position.distance_to(enemy.target.global_position)
 	if dist_to_target > enemy.weapon_held.stats.dmg_falloff[1] / 2:
 		move_dir = Vector2.ZERO
-		return Vector2(enemy.to_local(next_path_pos).x, 
-										enemy.to_local(next_path_pos).z).normalized()
+		return Vector2(enemy.to_local(path_goal).x, 
+										enemy.to_local(path_goal).z).normalized()
 	elif dist_to_target < enemy.weapon_held.stats.dmg_falloff[0] / 2:
 		move_dir = Vector2.ZERO
 		return Vector2.DOWN
@@ -130,7 +136,9 @@ func set_input(next_path_pos : Vector3) -> Vector2:
 	# Move randomly if within an appropriate distance of the target
 	if move_timer.is_stopped():
 		move_timer.start(randf_range(move_time.x, move_time.y))
-		move_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+		move_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0))
+		if move_dir.length() > 1:
+			move_dir.normalized()
 		
 	# Randomly jump
 	if randi() % jump_probability == 0:

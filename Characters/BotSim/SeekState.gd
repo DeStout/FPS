@@ -2,9 +2,9 @@ class_name EngageState
 extends State
 
 
-var update_interval := 10
-var interval_offset := randi_range(0, update_interval)
+var frame := 0
 var goal : Node3D = null
+var next_path_pos := Vector3.ZERO
 
 const HEALTH_THRESHOLD := 33
 const ARMOR_THRESHOLD := 25
@@ -13,7 +13,8 @@ const ARMOR_RANGE := 10.0
 
 func enter() -> void:
 	#print(enemy.name, ": Enter SeekState")
-	pass
+	goal = null
+	next_path_pos = Vector3.ZERO
 
 
 func exit() -> void:
@@ -21,11 +22,11 @@ func exit() -> void:
 
 
 func update(_delta) -> void:
-	pass
+	frame = get_tree().get_frame()
 
 
 func physics_update(delta) -> void:
-	if get_tree().get_frame() % update_interval == interval_offset:
+	if frame % enemy.update_interval == enemy.update_offset:
 		if enemy.check_enemies_visible():
 			transition.emit(self, "EngageState")
 			return
@@ -36,20 +37,21 @@ func physics_update(delta) -> void:
 
 
 func _seek_goal(delta : float) -> void:
-	enemy.nav_agent.target_position = goal.global_position
-	var next_path_pos : Vector3 = enemy.nav_agent.get_next_path_position()
+	if frame % enemy.update_interval == enemy.update_offset:
+		enemy.nav_agent.target_position = goal.global_position
+		next_path_pos = enemy.nav_agent.get_next_path_position()
 	next_path_pos.y = enemy.global_position.y
 	
 	if !enemy.global_position.is_equal_approx(next_path_pos):
 		var new_transform : Transform3D = enemy.transform.looking_at(next_path_pos)
-		enemy.transform = \
-					enemy.transform.interpolate_with(new_transform, enemy.TURN_SPEED * delta)
-		
+		enemy.transform = enemy.transform. \
+						interpolate_with(new_transform, enemy.TURN_SPEED * delta)
+	
 	# Move
 	var input_dir := Vector2.ZERO
 	if !enemy.nav_agent.is_navigation_finished():
 		input_dir = Vector2.UP
-	if enemy.bot_blocking and get_tree().get_frame() % update_interval == interval_offset:
+	if enemy.bot_blocking and frame % enemy.update_interval == enemy.update_offset:
 		input_dir.x = (randi_range(0, 1) * 2) - 1
 		enemy.bot_blocking = false
 	var direction = (enemy.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

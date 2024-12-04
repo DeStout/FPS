@@ -5,6 +5,9 @@ extends BotSimCharacter
 @onready var state_machine := $StateMachine
 @onready var nav_agent := $NavAgent
 
+var update_interval := 15
+var update_offset := randi_range(0, update_interval)
+
 @onready var aim_helper := $AimHelper
 @onready var target_timer := $TargetTimer
 var target_seek_time := 4.0
