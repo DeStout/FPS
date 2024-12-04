@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cktnv6xx6yxxn"]
+[gd_scene load_steps=5 format=3 uid="uid://cktnv6xx6yxxn"]
 
 [ext_resource type="Script" path="res://Maps/BotSim/BotSimLevel.gd" id="1_vsad3"]
 [ext_resource type="Script" path="res://Maps/BotSim/PlayersContainer.gd" id="2_ojsgy"]
 [ext_resource type="AudioStream" uid="uid://xiktlu310cm4" path="res://Maps/Audio/Music/PerfectEye_v1_Looping_Demo.ogg" id="3_napbo"]
+[ext_resource type="Script" path="res://Maps/BotSim/FX.gd" id="3_yfkck"]
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_vsad3")
@@ -12,6 +13,7 @@ unique_name_in_owner = true
 script = ExtResource("2_ojsgy")
 
 [node name="FX" type="Node3D" parent="."]
+script = ExtResource("3_yfkck")
 
 [node name="Spawns" type="Node3D" parent="."]
 visible = false

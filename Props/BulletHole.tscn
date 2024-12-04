@@ -8,10 +8,14 @@
 size = Vector3(0.1, 0.01, 0.1)
 texture_albedo = ExtResource("1_se2qb")
 script = ExtResource("2_hk442")
-linger_time = 30.0
 
 [node name="Ricochet" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_tjw7r")
 volume_db = -2.0
 max_db = 0.0
 bus = &"SFX"
+
+[node name="FadeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FadeTimer" to="." method="set_fade"]

@@ -5,9 +5,10 @@ class_name BotSimLevel
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
 var mat_ := load("res://Characters/BotSim/BotSimMat.tres")
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
-var bullet_hole_ := load("res://Props/BulletHole.tscn")
 var damage_label_ := load("res://Characters/DamageLabel.tscn")
 var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
+
+@onready var fx := $FX
 
 
 func _ready() -> void:
@@ -65,12 +66,8 @@ func spawn_shot_trail(nozzle_point, collision_point) -> void:
 
 
 # Called from CharacterBase.shoot()
-func spawn_bullet_hole(pos : Vector3, normal : Vector3, \
-												parent : Node3D = $FX) -> void:
-	var bullet_hole = bullet_hole_.instantiate()
-	$FX.add_child(bullet_hole)
-	bullet_hole.global_position = pos
-	bullet_hole.project_to(normal)
+func spawn_bullet_hole(pos : Vector3, normal : Vector3, parent : Node3D = null) -> void:
+	fx.add_bullet_hole(pos, normal, parent)
 
 
 # Called from CharacterBase.take_damage()
