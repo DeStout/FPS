@@ -2,7 +2,7 @@ extends EventScript
 
 
 var ambush_timer := Timer.new()
-var ambush_time := 20.0
+var ambush_time := 30.0
 
 
 func _ready() -> void:

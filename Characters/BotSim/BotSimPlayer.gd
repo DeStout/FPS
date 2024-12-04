@@ -178,12 +178,6 @@ func _zoom() -> void:
 		$AimHelper/FPWeapons.visible = true
 
 
-#func update_weapon_UI() -> void:
-	#if weapon_held:
-		#HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.stats.mag_size, \
-														#weapon_held.extra_ammo)
-
-
 func _reload() -> void:
 	await super()
 	HUD.update_weapon(weapon_held.ammo_in_mag, \

@@ -128,7 +128,7 @@ func move_to_target(delta) -> void:
 	
 	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO
-	var range : float = weapon_held.stats.range
+	var range : float = weapon_held.stats.dmg_falloff[0]
 	var dist_to = global_position.distance_to(target.global_position)
 	if ((dist_to > range) and is_enemy_visible(target)) or !is_enemy_visible(target):
 		input_dir = Vector2.UP

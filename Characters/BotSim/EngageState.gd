@@ -131,7 +131,6 @@ func set_input(next_path_pos : Vector3) -> Vector2:
 	if move_timer.is_stopped():
 		move_timer.start(randf_range(move_time.x, move_time.y))
 		move_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
-		print(enemy.name, ": New move dir - ", move_dir)
 		
 	# Randomly jump
 	if randi() % jump_probability == 0:

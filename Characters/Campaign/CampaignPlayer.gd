@@ -13,7 +13,8 @@ func _ready() -> void:
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_state_machine.travel("Alert")
 	nozzle = fp_weapon.nozzle
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _process(delta: float) -> void:
@@ -144,7 +145,8 @@ func _shoot() -> void:
 		if fp_animator.is_playing():
 			fp_animator.stop()
 		fp_animator.play(weapon_held.stats.shoot_anim)
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _zoom() -> void:
@@ -172,11 +174,10 @@ func _zoom() -> void:
 		$AimHelper/FPWeapons.visible = true
 
 
-# Signal from Weapon.finished_reloading
-func update_weapon_UI() -> void:
-	if weapon_held:
-		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.stats.mag_size, \
-														weapon_held.extra_ammo)
+func _reload() -> void:
+	await super()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _pick_up_weapon(new_weapon) -> Node3D:
@@ -185,13 +186,15 @@ func _pick_up_weapon(new_weapon) -> Node3D:
 		# Signal to Debug
 		weapon_picked_up.emit(added_weapon)
 
-		update_weapon_UI()
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 	return added_weapon
 
 
 func _pick_up_ammo(new_ammo : Node3D) -> void:
 	super(new_ammo)
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _pick_up_health(new_health : Node3D) -> void:
@@ -235,7 +238,8 @@ func _switch_weapon(new_weapon) -> void:
 	if zoomed:
 		_gun_alt()
 	super(new_weapon)
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _cycle_switch_weapon() -> void:
