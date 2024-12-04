@@ -2,6 +2,16 @@ class_name SeekState
 extends State
 
 
+var move_dir := Vector2.ZERO
+var move_timer := Timer.new()
+var move_time := Vector2(0.25, 1.0)
+
+
+func _ready() -> void:
+	move_timer.one_shot = true
+	add_child(move_timer)
+
+
 func enter() -> void:
 	#print(enemy.name, ": Enter EngageState")
 	if !enemy.target and enemy.check_enemies_visible():
@@ -71,6 +81,10 @@ func _move_to_target(delta) -> void:
 		new_transform = enemy.transform.looking_at(temp_transform)
 	enemy.transform = enemy.transform. \
 						interpolate_with(new_transform, enemy.TURN_SPEED * delta)
+	
+	# Randomly jump
+	if randi() % 120 == 0:
+		enemy.jump()
 
 	# Move
 	var direction = (enemy.transform.basis * \
@@ -102,13 +116,20 @@ func _move_to_target(delta) -> void:
 func set_input(next_path_pos : Vector3) -> Vector2:
 	if !enemy.is_enemy_visible(enemy.target):
 		return Vector2.UP
-		
+	
+	# Prioritize moving to within the current weapon's range of the target
 	var dist_to_target := \
 					enemy.global_position.distance_to(enemy.target.global_position)
 	if dist_to_target > enemy.weapon_held.stats.dmg_falloff[1] / 2:
+		move_dir = Vector2.ZERO
 		return Vector2(enemy.to_local(next_path_pos).x, 
 										enemy.to_local(next_path_pos).z).normalized()
 	elif dist_to_target < enemy.weapon_held.stats.dmg_falloff[0] / 2:
+		move_dir = Vector2.ZERO
 		return Vector2.DOWN
 	
-	return Vector2.ZERO
+	# Move randomly if within an appropriate distance of the target
+	if move_timer.is_stopped():
+		move_timer.start(randf_range(move_time.x, move_time.y))
+		move_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+	return move_dir

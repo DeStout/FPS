@@ -9,7 +9,6 @@ var ammo_in_mag : int
 var slappable := []
 
 # Signal to Player._update_UI and Debug._inifite_ammo
-signal finished_reloading
 var is_reloading := false
 
 
@@ -47,8 +46,6 @@ func reload() -> void:
 		extra_ammo = max(extra_ammo - ammo_to_add, 0)
 
 		is_reloading = false
-		# Signals to Player _update_UI
-		finished_reloading.emit()
 
 
 func interrupt_reload() -> void:

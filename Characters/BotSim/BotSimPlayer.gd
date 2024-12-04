@@ -10,7 +10,8 @@ func _ready() -> void:
 	weapons.append(Globals.WEAPONS.PISTOL)
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	nozzle = fp_weapon.nozzle
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func set_color(new_color : Color) -> void:
@@ -39,9 +40,9 @@ func _physics_process(delta) -> void:
 																-look_dir.x)
 		rotation.z = 0
 
-	if is_on_floor():
-		if Input.is_action_just_pressed("Jump"):
-			velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("Jump"):
+		jump()
+		
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	
@@ -148,7 +149,8 @@ func _shoot() -> void:
 		if fp_animator.is_playing():
 			fp_animator.stop()
 		fp_animator.play(weapon_held.stats.shoot_anim)
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _zoom() -> void:
@@ -176,23 +178,30 @@ func _zoom() -> void:
 		$AimHelper/FPWeapons.visible = true
 
 
-# Signal from Weapon.finished_reloading
-func update_weapon_UI() -> void:
-	if weapon_held:
-		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.stats.mag_size, \
-														weapon_held.extra_ammo)
+#func update_weapon_UI() -> void:
+	#if weapon_held:
+		#HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.stats.mag_size, \
+														#weapon_held.extra_ammo)
+
+
+func _reload() -> void:
+	await super()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _pick_up_weapon(new_weapon) -> Node3D:
 	var added_weapon = super(new_weapon)
 	if added_weapon:
-		update_weapon_UI()
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 	return added_weapon
 
 
 func _pick_up_ammo(new_ammo : Node3D) -> void:
 	super(new_ammo)
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _pick_up_health(new_health : Node3D) -> void:
@@ -231,7 +240,8 @@ func _switch_weapon(new_weapon) -> void:
 	if zoomed:
 		_gun_alt()
 	super(new_weapon)
-	update_weapon_UI()
+	HUD.update_weapon(weapon_held.ammo_in_mag, \
+								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
 
 func _cycle_switch_weapon() -> void:
