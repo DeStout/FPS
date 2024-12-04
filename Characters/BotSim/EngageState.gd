@@ -5,6 +5,7 @@ extends State
 var move_dir := Vector2.ZERO
 var move_timer := Timer.new()
 var move_time := Vector2(0.25, 1.0)
+var jump_probability := 300
 
 
 func _ready() -> void:
@@ -73,7 +74,8 @@ func _move_to_target(delta) -> void:
 	
 	# Turn to look at the target or path based on target visibility
 	var new_transform : Transform3D
-	if !enemy.is_enemy_visible(enemy.target):
+	if !enemy.is_enemy_visible(enemy.target) and enemy.is_on_floor():
+		#if !enemy.transform.origin.is_equal_approx(next_path_pos):
 		new_transform = enemy.transform.looking_at(next_path_pos)
 	else:
 		var temp_transform = enemy.target.global_position
@@ -81,10 +83,6 @@ func _move_to_target(delta) -> void:
 		new_transform = enemy.transform.looking_at(temp_transform)
 	enemy.transform = enemy.transform. \
 						interpolate_with(new_transform, enemy.TURN_SPEED * delta)
-	
-	# Randomly jump
-	if randi() % 120 == 0:
-		enemy.jump()
 
 	# Move
 	var direction = (enemy.transform.basis * \
@@ -110,6 +108,7 @@ func _move_to_target(delta) -> void:
 		enemy.velocity.z = move_toward(enemy.velocity.z, 0, enemy.deaccel * delta)
 	enemy.velocity.x *= enemy.move_speed_mod
 	enemy.velocity.z *= enemy.move_speed_mod
+	
 	enemy.move_and_slide()
 
 
@@ -132,4 +131,10 @@ func set_input(next_path_pos : Vector3) -> Vector2:
 	if move_timer.is_stopped():
 		move_timer.start(randf_range(move_time.x, move_time.y))
 		move_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+		print(enemy.name, ": New move dir - ", move_dir)
+		
+	# Randomly jump
+	if randi() % jump_probability == 0:
+		enemy.jump()
+		
 	return move_dir
