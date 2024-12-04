@@ -21,12 +21,10 @@ body_dmg = {
 1: 8,
 2: 6
 }
-dmg_falloff = Vector2(4, 30)
-range = 3.5
+dmg_falloff = Vector2(7.5, 30)
 impulse = 200.0
 pos_offset = Vector3(-0.033591, -0.0112215, -0.00850368)
 rot_offset = Vector3(1.5708, -0.453786, 0)
-anim_pos = Vector2(-1, -1)
 state_name = "SMG"
 equip_anim = "FPEquipSMG"
 idle_anim = "FPIdleSMG"

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bct0wpf7d6sdh"
 path.s3tc="res://.godot/imported/Rifle_Rifle_A.png-b335d901af4512eb6ae2868d8c914549.s3tc.ctex"
+path.etc2="res://.godot/imported/Rifle_Rifle_A.png-b335d901af4512eb6ae2868d8c914549.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Props/Weapons/Rifle/Rifle_Rifle_A.png"
-dest_files=["res://.godot/imported/Rifle_Rifle_A.png-b335d901af4512eb6ae2868d8c914549.s3tc.ctex"]
+dest_files=["res://.godot/imported/Rifle_Rifle_A.png-b335d901af4512eb6ae2868d8c914549.s3tc.ctex", "res://.godot/imported/Rifle_Rifle_A.png-b335d901af4512eb6ae2868d8c914549.etc2.ctex"]
 
 [params]
 

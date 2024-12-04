@@ -21,12 +21,10 @@ body_dmg = {
 1: 20,
 2: 20
 }
-dmg_falloff = Vector2(10, 30)
-range = 0.0
+dmg_falloff = Vector2(2, 5)
 impulse = 100.0
 pos_offset = Vector3(0.00662899, -0.0015403, 0.0135412)
 rot_offset = Vector3(-0.400822, 2.00414, -0.449278)
-anim_pos = Vector2(0, 1)
 state_name = "Slapper"
 equip_anim = "FPEquipSlapper"
 idle_anim = "FPIdleSlapper"

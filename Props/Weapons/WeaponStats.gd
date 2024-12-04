@@ -34,8 +34,6 @@ class_name WeaponStats
 									Globals.BODY_SEGS.LIMB : 0}
 ## The distance where the damage begins falling off, and the max distance the weapon can reach
 @export var dmg_falloff := Vector2(10, 30)
-## The distance the weilding AI will attempt to engage at
-@export var range : float
 ## The strength of the kick given to rag dolls
 @export var impulse := 0.0
 ## Position for lining up the weapon

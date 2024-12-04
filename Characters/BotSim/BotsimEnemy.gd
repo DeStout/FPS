@@ -7,11 +7,11 @@ extends BotSimCharacter
 
 @onready var aim_helper := $AimHelper
 @onready var target_timer := $TargetTimer
+var target_seek_time := 4.0
 var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
 
 @onready var shoot_timer := $ShootTimer
-@export var starting_weapon : Globals.WEAPONS
 var shoot_speed_mod := 1.0/2.5
 var shoot_speed_variance := Vector2(0.3, 1.0)
 
@@ -24,12 +24,6 @@ var bot_blocking := false
 func _ready() -> void:
 	super()
 	
-	#enemies_vis.resize(enemies.size())
-	#enemies_vis.fill(false)
-	
-	#weapons.append(starting_weapon)
-	#_switch_weapon(_get_weapon(starting_weapon))
-	
 	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
 	state_machine.set_physics_process(true)
@@ -41,8 +35,6 @@ func set_processing(new_process) -> void:
 		state_machine.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
 		state_machine.process_mode = Node.PROCESS_MODE_DISABLED
-	#state_machine.set_process(new_process)
-	#state_machine.set_physics_process(new_process)
 
 
 func _input(event: InputEvent) -> void:
@@ -74,6 +66,7 @@ func goal_reached() -> void:
 
 
 func target_lost() -> void:
+	#print(name, ": target escaped - ", target.name)
 	target = null
 
 
@@ -94,12 +87,12 @@ func check_enemies_visible() -> bool:
 func set_closest_to_target() -> void:
 	if enemies.size() == 0:
 		return
-	
+		
 	if is_inside_tree():
 		var vis_enemies = enemies.filter(is_enemy_visible)
 		target = vis_enemies[0]
 		var dist = global_position.distance_squared_to(target.global_position)
-		for enemy in enemies:
+		for enemy in vis_enemies:
 			if enemy == target or !enemy.is_inside_tree():
 				continue
 			var temp_dist = global_position.distance_squared_to(enemy.global_position)
