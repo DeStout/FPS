@@ -35,6 +35,7 @@ glow_normalized = true
 size = Vector2(3.75, 0.15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvaw5"]
+cull_mode = 2
 albedo_texture = ExtResource("3_escdo")
 uv1_scale = Vector3(1.5, 1, 1)
 

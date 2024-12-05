@@ -38,10 +38,11 @@ window/size/viewport_height=1080
 window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/linecounter/plugin.cfg")
+enabled=PackedStringArray("res://addons/cyclops_level_builder/plugin.cfg", "res://addons/linecounter/plugin.cfg")
 
 [input]
 
@@ -237,6 +238,7 @@ behavior_tree/user_task_dir_1="res://Characters/AI/Tasks"
 
 [physics]
 
+3d/run_on_separate_thread=true
 3d/physics_engine="JoltPhysics3D"
 3d/default_gravity=15.0
 

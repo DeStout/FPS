@@ -197,6 +197,7 @@ item_count = 2
 popup/item_0/text = "Test Level"
 popup/item_1/text = "Reuben"
 popup/item_1/id = 1
+popup/item_1/disabled = true
 
 [node name="Buttons" type="Control" parent="SinglePlayerMenu/Layout"]
 layout_mode = 2

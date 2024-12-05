@@ -80,7 +80,7 @@ func guard(delta) -> void:
 						weapon_held.stats.state_name + "/Guard/blend_position"
 	if direction:
 		speed = GUARD_SPEED
-		var dir2 := Vector2(input_dir.x, (GUARD_SPEED / SPEED) * input_dir.y)
+		var dir2 := Vector2(input_dir.x, (GUARD_SPEED / FORE_SPEED) * input_dir.y)
 		tween.tween_property(anim_tree, lower_blend_pos, dir2, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)
 		
@@ -128,10 +128,12 @@ func move_to_target(delta) -> void:
 	
 	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO
-	var range : float = weapon_held.stats.dmg_falloff[0]
+	var range := Vector2(weapon_held.stats.dmg_falloff[0] / 4, weapon_held.stats.dmg_falloff[1] / 4)
 	var dist_to = global_position.distance_to(target.global_position)
-	if ((dist_to > range) and is_enemy_visible(target)) or !is_enemy_visible(target):
+	if ((dist_to > range[1]) and is_enemy_visible(target)) or !is_enemy_visible(target):
 		input_dir = Vector2.UP
+	elif dist_to < range[0] and is_enemy_visible(target):
+		input_dir = Vector2.DOWN
 	
 	# Turn to look at the target
 	var new_transform : Transform3D
@@ -143,10 +145,9 @@ func move_to_target(delta) -> void:
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						weapon_held.stats.state_name + "/Alert/blend_position"
+	_set_speed(input_dir)
 	if direction:
-		speed = SPEED
-		var dir2 := Vector2(input_dir.x, input_dir.y)
-		tween.tween_property(anim_tree, lower_blend_pos, dir2, 0.1)
+		tween.tween_property(anim_tree, lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)
 		
 		velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)

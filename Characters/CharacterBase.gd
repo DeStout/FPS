@@ -9,12 +9,14 @@ signal defeated
 var last_shot_by : CharacterBase = null
 
 # Movement
-const ACCEL := 140
-const DEACCEL := 50.5
+const ACCEL := 80
+const DEACCEL := 35
 const AIR_ACCEL := 10.5
 const AIR_DEACCEL := 1.5
-const SPEED = 5.5
-const ZOOM_SPEED = 4.75
+const FORE_SPEED = 5.5
+const STRAIF_SPEED = 4.75
+const BACK_SPEED = 3.5
+const ZOOM_SPEED = 3.5
 const LADDER_SPEED = 4.0
 const JUMP_VELOCITY = 6.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -22,7 +24,7 @@ var was_on_floor := false
 var on_ladder := false
 var accel := ACCEL
 var deaccel := DEACCEL
-var speed = SPEED
+var speed = FORE_SPEED
 var step_height := 0.0
 
 # Health
@@ -101,28 +103,39 @@ func _process(delta) -> void:
 
 func _physics_process(delta) -> void:
 	_apply_recoil(delta)
+	
 	if on_ladder:
 		accel = ACCEL
 		deaccel = DEACCEL
-		speed = LADDER_SPEED
-		
 		lower_state_machine.travel("RunIdle")
 	elif !is_on_floor():
 		accel = AIR_ACCEL
 		deaccel = AIR_DEACCEL
-		speed = SPEED
 		velocity.y -= gravity * delta
-		
 		if was_on_floor:
 			lower_state_machine.travel("Fall")
 		was_on_floor = false
 	elif is_on_floor() and !was_on_floor:
 		accel = ACCEL
 		deaccel = DEACCEL
-		speed = SPEED
-		
 		lower_state_machine.travel("RunIdle")
 		was_on_floor = true
+
+
+func _set_speed(input_dir : Vector2) -> void:
+		if on_ladder:
+			speed = LADDER_SPEED
+			return
+		if zoomed:
+			speed = ZOOM_SPEED
+			return
+			
+		var temp_speed := Vector2(input_dir.x * STRAIF_SPEED, 0)
+		if input_dir.y < 0:
+			temp_speed.y = input_dir.y * FORE_SPEED
+		else:
+			temp_speed.y = input_dir.y * BACK_SPEED
+		speed = temp_speed.length()
 
 
 func _pull_trigger() -> void:
@@ -140,13 +153,6 @@ func _pull_trigger() -> void:
 
 func set_on_ladder(is_on_ladder : bool) -> void:
 	on_ladder = is_on_ladder
-	if is_on_ladder:
-		speed = LADDER_SPEED
-		return
-	elif zoomed:
-		speed = ZOOM_SPEED
-		return
-	speed = SPEED
 
 
 func _pull_alt() -> void:
@@ -194,6 +200,7 @@ func _shoot() -> void:
 			
 			# set recoil
 			v_recoil = ((randf() * 0.75) + 0.25) * weapon_held.get_v_recoil()
+			#v_recoil = randf_range(-0.75, 1) * weapon_held.get_v_recoil()
 			h_recoil = randf_range(-1, 1) * weapon_held.get_h_recoil()
 			t_recoil = (1.0 / weapon_held.stats.shots_per_second) * .75
 			if weapon_held.stats.weapon_type == Globals.WEAPONS.SHOTGUN or \
@@ -217,10 +224,6 @@ func _gun_alt() -> void:
 
 func _zoom() -> void:
 	zoomed = !zoomed
-	if zoomed:
-		speed = ZOOM_SPEED
-	else:
-		speed = SPEED
 
 
 func _apply_recoil(delta) -> void:

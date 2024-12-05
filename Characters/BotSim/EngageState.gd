@@ -96,10 +96,9 @@ func _move_to_target(delta) -> void:
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						enemy.weapon_held.stats.state_name + "/Alert/blend_position"
+	enemy._set_speed(input_dir)
 	if direction:
-		enemy.speed = enemy.SPEED
-		var dir2 := Vector2(input_dir.x, input_dir.y)
-		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, dir2, 0.1)
+		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(enemy.anim_tree, weapon_blend_pos, 1, 0.1)
 		
 		enemy.velocity.x = move_toward(enemy.velocity.x, \
@@ -137,11 +136,11 @@ func set_input(path_goal : Vector3) -> Vector2:
 	if move_timer.is_stopped():
 		move_timer.start(randf_range(move_time.x, move_time.y))
 		move_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0))
-		if move_dir.length() > 1:
-			move_dir.normalized()
+	if move_dir.length() > 1:
+		move_dir = move_dir.normalized()
 		
 	# Randomly jump
 	if randi() % jump_probability == 0:
 		enemy.jump()
-		
+	
 	return move_dir

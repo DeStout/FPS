@@ -36,7 +36,7 @@ func _select_single_player_map() -> String:
 		0:
 			map_address = "res://Maps/Campaign/TestCampaign.tscn"
 		1:
-			map_address = "res://Maps/Campaign/Reuben.tscn"
+			map_address = "res://Maps/Campaign/Reuben/Reuben.tscn"
 	return map_address
 
 

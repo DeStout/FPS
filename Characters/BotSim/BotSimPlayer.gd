@@ -49,9 +49,10 @@ func _physics_process(delta) -> void:
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						weapon_held.stats.state_name + "/Guard/blend_position"
+	
+	_set_speed(input_dir)
 	if direction:
-		var dir2 := Vector2(input_dir.x, input_dir.y)
-		tween.tween_property(anim_tree, lower_blend_pos, dir2, 0.1)
+		tween.tween_property(anim_tree, lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)
 		
 		if on_ladder:

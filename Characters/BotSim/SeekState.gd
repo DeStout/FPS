@@ -59,9 +59,9 @@ func _seek_goal(delta : float) -> void:
 	var tween := create_tween().set_parallel()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						enemy.weapon_held.stats.state_name + "/Guard/blend_position"
+	enemy._set_speed(input_dir)
 	if direction:
-		var dir2 := Vector2(input_dir.x, input_dir.y)
-		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, dir2, 0.1)
+		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(enemy.anim_tree, weapon_blend_pos, 1, 0.1)
 		
 		enemy.velocity.x = \
