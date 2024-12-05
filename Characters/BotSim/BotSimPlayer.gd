@@ -201,17 +201,13 @@ func _pick_up_ammo(new_ammo : Node3D) -> void:
 
 func _pick_up_health(new_health : Node3D) -> void:
 	super(new_health)
-	update_health_UI()
+	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	damage *= (2.0/5.0)
 	super(body_seg, damage, shooter)
 	_show_damage(shooter)
-	update_health_UI()
-
-
-func update_health_UI() -> void:
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
@@ -219,6 +215,11 @@ func _show_damage(shooter : CharacterBase) -> void:
 	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
 								-to_local(shooter.global_position).z).normalized()
 	HUD.show_damage(dmg_dir)
+
+
+func respawn() -> void:
+	await super()
+	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
 func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:

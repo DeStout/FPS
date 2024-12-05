@@ -28,6 +28,7 @@ font_color = Color(0.121569, 0.121569, 0.121569, 1)
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_ih3gh")
+metadata/_edit_horizontal_guides_ = [976.0]
 
 [node name="MatchTimer" type="Label" parent="."]
 anchors_preset = 4
@@ -132,52 +133,32 @@ offset_bottom = 976.0
 theme_override_constants/separation = 15
 
 [node name="Health1" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 color = Color(0.94902, 0.137255, 0.196078, 1)
 
 [node name="Health2" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 color = Color(0.94902, 0.137255, 0.196078, 1)
 
 [node name="Health3" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 color = Color(0.94902, 0.137255, 0.196078, 1)
 
 [node name="Health4" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 color = Color(0.94902, 0.137255, 0.196078, 1)
 
 [node name="Health5" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 color = Color(0.94902, 0.137255, 0.196078, 1)
 
 [node name="Health6" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.94902, 0.137255, 0.196078, 1)
-
-[node name="Health7" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.94902, 0.137255, 0.196078, 1)
-
-[node name="Health8" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.94902, 0.137255, 0.196078, 1)
-
-[node name="Health9" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.94902, 0.137255, 0.196078, 1)
-
-[node name="Health10" type="ColorRect" parent="UI/HealthMod/HealthBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 color = Color(0.94902, 0.137255, 0.196078, 1)
 
@@ -190,52 +171,22 @@ offset_bottom = 976.0
 theme_override_constants/separation = 15
 
 [node name="Armor1" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
 [node name="Armor2" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
 [node name="Armor3" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
 [node name="Armor4" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.207843, 0.368627, 1, 0)
-
-[node name="Armor5" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.207843, 0.368627, 1, 0)
-
-[node name="Armor6" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.207843, 0.368627, 1, 0)
-
-[node name="Armor7" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.207843, 0.368627, 1, 0)
-
-[node name="Armor8" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.207843, 0.368627, 1, 0)
-
-[node name="Armor9" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-color = Color(0.207843, 0.368627, 1, 0)
-
-[node name="Armor10" type="ColorRect" parent="UI/HealthMod/ArmorBar"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
