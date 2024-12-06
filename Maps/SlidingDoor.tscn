@@ -54,7 +54,6 @@ bus = &"SFX"
 [node name="MoveSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_bmnfj")
 volume_db = 10.0
-unit_size = 1.0
 max_db = 2.0
 pitch_scale = 2.0
 max_distance = 10.0
@@ -63,7 +62,7 @@ bus = &"SFX"
 [node name="FinishSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_egfpd")
 volume_db = 10.0
-unit_size = 1.0
+unit_size = 15.0
 max_db = 2.0
 pitch_scale = 0.7
 max_distance = 15.0

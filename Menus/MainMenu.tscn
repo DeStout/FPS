@@ -193,11 +193,8 @@ theme_override_font_sizes/font_size = 36
 theme_override_constants/arrow_margin = 20
 theme_override_icons/arrow = ExtResource("4_rvtwg")
 selected = 0
-item_count = 2
-popup/item_0/text = "Test Level"
-popup/item_1/text = "Reuben"
-popup/item_1/id = 1
-popup/item_1/disabled = true
+item_count = 1
+popup/item_0/text = "Infiltration"
 
 [node name="Buttons" type="Control" parent="SinglePlayerMenu/Layout"]
 layout_mode = 2

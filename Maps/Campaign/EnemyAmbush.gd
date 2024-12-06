@@ -39,7 +39,6 @@ func trigger() -> void:
 
 
 func ambush_finished() -> void:
-	print("Ambush finished")
 	resources[3].set_activated(false)
 	resources[4].set_spawning(false)
 	resources[5].set_spawning(false)
@@ -58,3 +57,4 @@ func end_ambush() -> void:
 	resources[1].locked = false
 	resources[2].locked = false
 	resources[6].locked = false
+	resources[9].play()

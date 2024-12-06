@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 signal defeated
 
-@export var current_level : CampaignLevel
+@export var current_level : Node3D
 @export var enemies : Array[CharacterBase] = []
 var last_shot_by : CharacterBase = null
 
@@ -14,14 +14,14 @@ const DEACCEL := 35
 const AIR_ACCEL := 10.5
 const AIR_DEACCEL := 1.5
 const FORE_SPEED = 5.5
-const STRAIF_SPEED = 4.75
+const STRIFE_SPEED = 4.75
 const BACK_SPEED = 3.5
 const ZOOM_SPEED = 3.5
 const LADDER_SPEED = 4.0
 const JUMP_VELOCITY = 6.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
-var on_ladder := false
+var ladder : Area3D = null
 var accel := ACCEL
 var deaccel := DEACCEL
 var speed = FORE_SPEED
@@ -104,7 +104,7 @@ func _process(delta) -> void:
 func _physics_process(delta) -> void:
 	_apply_recoil(delta)
 	
-	if on_ladder:
+	if ladder:
 		accel = ACCEL
 		deaccel = DEACCEL
 		lower_state_machine.travel("RunIdle")
@@ -123,19 +123,24 @@ func _physics_process(delta) -> void:
 
 
 func _set_speed(input_dir : Vector2) -> void:
-		if on_ladder:
+		if ladder:
 			speed = LADDER_SPEED
 			return
 		if zoomed:
 			speed = ZOOM_SPEED
 			return
 			
-		var temp_speed := Vector2(input_dir.x * STRAIF_SPEED, 0)
+		var temp_speed := Vector2(input_dir.x * STRIFE_SPEED, 0)
 		if input_dir.y < 0:
 			temp_speed.y = input_dir.y * FORE_SPEED
 		else:
 			temp_speed.y = input_dir.y * BACK_SPEED
 		speed = temp_speed.length()
+
+
+func jump() -> void:
+	if is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 
 func _pull_trigger() -> void:
@@ -151,8 +156,8 @@ func _pull_trigger() -> void:
 	_switch_to_next_weapon()
 
 
-func set_on_ladder(is_on_ladder : bool) -> void:
-	on_ladder = is_on_ladder
+func set_on_ladder(new_ladder : Area3D) -> void:
+	ladder = new_ladder
 
 
 func _pull_alt() -> void:

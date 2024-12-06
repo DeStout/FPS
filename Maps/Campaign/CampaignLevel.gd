@@ -20,11 +20,10 @@ func _ready() -> void:
 
 
 func open() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Engine.time_scale = 1.0
 	$MusicPlayer.play()
 	await HUD.fade_in()
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	for char in $Players.get_children():
 		char.set_processing(true)

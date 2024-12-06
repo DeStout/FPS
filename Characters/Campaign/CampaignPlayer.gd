@@ -36,12 +36,12 @@ func _physics_process(delta) -> void:
 																-look_dir.x)
 		rotation.z = 0
 
-	if is_on_floor():
-		if Input.is_action_just_pressed("Jump"):
-			velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("Jump"):
+		jump()
+		
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
-	
+	var direction := basis * Vector3(input_dir.x, 0, input_dir.y)
+		
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 						weapon_held.stats.state_name + "/Guard/blend_position"
@@ -50,9 +50,11 @@ func _physics_process(delta) -> void:
 		tween.tween_property(anim_tree, lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)
 		
-		if on_ladder:
+		if ladder:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
-			velocity.y = move_toward(velocity.y, direction.z * speed, accel * delta)
+			velocity.y = move_toward(velocity.y, \
+							-ladder.basis.z.dot(direction) * speed, accel * delta)
+			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 		else:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
@@ -66,7 +68,7 @@ func _physics_process(delta) -> void:
 		
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
-		if on_ladder:
+		if ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
 		
 		if fp_animator.current_animation == weapon_held.stats.run_anim or \

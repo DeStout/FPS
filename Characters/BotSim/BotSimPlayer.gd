@@ -55,9 +55,12 @@ func _physics_process(delta) -> void:
 		tween.tween_property(anim_tree, lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, 1, 0.1)
 		
-		if on_ladder:
+		if ladder:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
-			velocity.y = move_toward(velocity.y, direction.z * speed, accel * delta)
+			velocity.y = move_toward(velocity.y, \
+							-ladder.basis.z.dot(direction) * speed, accel * delta)
+			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
+
 		else:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
@@ -71,7 +74,7 @@ func _physics_process(delta) -> void:
 		
 		velocity.x = move_toward(velocity.x, 0, deaccel * delta)
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
-		if on_ladder:
+		if ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
 		
 		if fp_animator.current_animation == weapon_held.stats.run_anim or \
