@@ -10,7 +10,6 @@ var enemy_ = preload("res://Characters/Campaign/CampaignEnemy.tscn")
 @export var spawn_time := 2.0
 @export var spawn_num := 1
 @export var spawn_radius := 3.0
-@export var frame_check_interval := 30
 @export var door : Node3D = null
 
 var enemies : Array[CharacterBase] = []
@@ -23,7 +22,6 @@ func _ready() -> void:
 
 func set_spawning(new_spawning : bool) -> void:
 	set_process(new_spawning)
-	$SpawnArea.monitoring = new_spawning
 	ready_to_spawn = new_spawning
 	if new_spawning:
 		$SpawnTimer.start(spawn_time)
@@ -32,14 +30,12 @@ func set_spawning(new_spawning : bool) -> void:
 
 
 func _process(delta: float) -> void:
-	if get_tree().get_frame() % frame_check_interval == 0:
-		if ready_to_spawn and is_enemies_defeated() and _is_door_closed():
-			_spawn()
-			ready_to_spawn = false
+	if ready_to_spawn and is_enemies_defeated() and _is_door_closed():
+		_spawn()
+		ready_to_spawn = false
 
 
 func _spawn() -> void:
-	#pass
 	for i in range(spawn_num):
 		var enemy = enemy_.instantiate()
 		enemy.starting_weapon = Globals.WEAPONS.SMG
@@ -68,10 +64,16 @@ func _is_door_closed() -> bool:
 	return door.closed and !door.moving
 
 
+# Signaled by CharacterBase._die()
 func enemy_defeated(enemy) -> void:
 	enemies.erase(enemy)
 	if is_enemies_defeated():
 		enemies_defeated.emit()
+	
+	await get_tree().process_frame
+	if !$SpawnArea.has_overlapping_bodies():
+		door.open(false)
+		door.auto_close = true
 
 
 func is_enemies_defeated() -> bool:
@@ -84,6 +86,6 @@ func char_entered(_body) -> void:
 
 
 func char_exited(body) -> void:
-	if !$SpawnArea.has_overlapping_bodies() and body is CharacterBase:
+	if !$SpawnArea.has_overlapping_bodies():
 		door.open(false)
 		door.auto_close = true

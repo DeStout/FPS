@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2bya7jvn8luj"]
+[gd_scene load_steps=14 format=3 uid="uid://c2bya7jvn8luj"]
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
@@ -24,6 +24,16 @@ font_color = Color(0.121569, 0.121569, 0.121569, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_0pkc5"]
 font_size = 48
 font_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0h550"]
+resource_local_to_scene = true
+font_size = 30
+font_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lxnu"]
+resource_local_to_scene = true
+font_size = 30
+font_color = Color(0.792969, 0.00544758, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 layer = 10
@@ -190,6 +200,69 @@ custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
 color = Color(0.207843, 0.368627, 1, 0)
 
+[node name="Activate" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 783.0
+offset_top = 561.0
+offset_right = -783.0
+offset_bottom = -471.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.109804)
+
+[node name="Label" type="Label" parent="Activate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 817.0
+offset_top = 515.0
+offset_right = -817.0
+offset_bottom = -516.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = " Press 'E' to activate"
+label_settings = SubResource("LabelSettings_0h550")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Locked" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 783.0
+offset_top = 561.0
+offset_right = -783.0
+offset_bottom = -471.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.109804)
+
+[node name="Label" type="Label" parent="Locked"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 817.0
+offset_top = 515.0
+offset_right = -817.0
+offset_bottom = -516.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Door is locked"
+label_settings = SubResource("LabelSettings_1lxnu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LockedTimer" type="Timer" parent="Locked"]
+one_shot = true
+
 [node name="Score" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -285,3 +358,5 @@ color = Color(0, 0, 0, 1)
 [node name="PauseMenu" parent="." instance=ExtResource("1_l1osx")]
 visible = false
 top_level = true
+
+[connection signal="timeout" from="Locked/LockedTimer" to="." method="_hide_locked"]

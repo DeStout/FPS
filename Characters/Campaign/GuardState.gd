@@ -2,10 +2,6 @@ class_name GuardState
 extends State
 
 
-var update_interval := 10
-var interval_offset := randi_range(0, update_interval)
-
-
 func enter() -> void:
 	#print(enemy.name, ": Enter GuardState")
 	if enemy.weapon_held != null:
@@ -21,7 +17,7 @@ func update(_delta) -> void:
 
 
 func physics_update(delta) -> void:
-	if get_tree().get_frame() % update_interval == interval_offset:
+	if get_tree().get_frame() % enemy.update_interval == enemy.update_offset:
 		if enemy.check_enemies_visible():
 			transition.emit(self, "AlertState")
 			return

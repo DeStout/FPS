@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 signal defeated
 
-@export var current_level : Node3D
+@export var current_level : CampaignLevel
 @export var enemies : Array[CharacterBase] = []
 var last_shot_by : CharacterBase = null
 

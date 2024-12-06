@@ -14,5 +14,16 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use"):
 		if use_area.has_overlapping_bodies() and use_area.overlaps_body(player):
 			if !activated or togglable:
+				HUD.show_activate(false)
 				activated = !activated
 				trigger()
+
+
+func _show_activate(body) -> void:
+	if body == %Player and !activated:
+		HUD.show_activate(true)
+
+
+func _hide_activate(body) -> void:
+	if body == %Player:
+		HUD.show_activate(false)

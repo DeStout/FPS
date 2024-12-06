@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=3 uid="uid://bv0rwydo3odmv"]
+[gd_scene load_steps=191 format=3 uid="uid://bv0rwydo3odmv"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_l4ff0"]
 [ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Campaign1_tex_7.png" id="2_8hd7j"]
@@ -12,8 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="8_ns3r5"]
 [ext_resource type="Script" path="res://Maps/UseEvent.gd" id="10_un8kn"]
 [ext_resource type="Script" path="res://Maps/Campaign/EnemyAmbush.gd" id="11_f2ggd"]
+[ext_resource type="AudioStream" uid="uid://bp0yj4w07i80a" path="res://Maps/Audio/Keyboard.wav" id="12_1x63h"]
 [ext_resource type="Script" path="res://Maps/Campaign/AlarmLights.gd" id="12_nqq5b"]
-[ext_resource type="AudioStream" uid="uid://xgeq2vsw5k0a" path="res://Maps/Campaign/Siren.wav" id="13_ksbh3"]
+[ext_resource type="AudioStream" uid="uid://xgeq2vsw5k0a" path="res://Maps/Audio/Siren.wav" id="13_ksbh3"]
+[ext_resource type="AudioStream" uid="uid://c5bcvta4fphhn" path="res://Maps/Audio/Error.wav" id="13_mmirg"]
 [ext_resource type="Script" path="res://Maps/Campaign/EnemySpawner.gd" id="14_3svvp"]
 [ext_resource type="Script" path="res://Maps/Campaign/LevelFinish.gd" id="15_vgxwi"]
 
@@ -4294,7 +4296,7 @@ shape = SubResource("ConcavePolygonShape3D_kmtgm")
 
 [node name="Player" parent="Players" index="0" node_paths=PackedStringArray("current_level") instance=ExtResource("4_r8i4x")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 68, 5, -35)
 current_level = NodePath("../..")
 
 [node name="CampaignEnemy1" parent="Players" index="1" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
@@ -4354,35 +4356,35 @@ current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
 [node name="CampaignEnemy9" parent="Players" index="9" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(-4.3711e-08, 0, -1.00001, 0, 1, 0, 0.999992, 0, -4.37117e-08, 56.5, 5, -32.25)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.5, 5, -32.25)
 guard_path = NodePath("../../GuardPaths/GuardPath4")
 starting_weapon = 3
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
-[node name="CampaignEnemy12" parent="Players" index="10" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.7422e-08, 0, -1.00001, 60, 5, -40.625)
+[node name="CampaignEnemy10" parent="Players" index="10" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 60, 5, -40.625)
 guard_path = NodePath("../../GuardPaths/Guard6")
 starting_weapon = 4
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
-[node name="CampaignEnemy10" parent="Players" index="11" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -33.875)
-guard_path = NodePath("../../GuardPaths/Guard8")
-starting_weapon = 1
-current_level = NodePath("../..")
-enemies = [NodePath("../Player")]
-
-[node name="CampaignEnemy13" parent="Players" index="12" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+[node name="CampaignEnemy11" parent="Players" index="11" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 73, 5, -37.625)
 guard_path = NodePath("../../GuardPaths/Guard7")
 starting_weapon = 1
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
-[node name="CampaignEnemy11" parent="Players" index="13" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
-transform = Transform3D(-0.999992, 0, 8.74235e-08, 0, 1, 0, -8.74221e-08, 0, -1.00001, 46.925, 0.5, -34)
+[node name="CampaignEnemy12" parent="Players" index="12" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 81.25, 5, -33.875)
+guard_path = NodePath("../../GuardPaths/Guard8")
+starting_weapon = 1
+current_level = NodePath("../..")
+enemies = [NodePath("../Player")]
+
+[node name="CampaignEnemy13" parent="Players" index="13" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 46.925, 0.5, -34)
 guard_path = NodePath("../../GuardPaths/Guard9")
 starting_weapon = 4
 current_level = NodePath("../..")
@@ -4533,7 +4535,7 @@ script = ExtResource("10_un8kn")
 use_area = NodePath("UseArea")
 event_script = ExtResource("11_f2ggd")
 player = NodePath("../../Players/Player")
-resources = [NodePath("../Door3"), NodePath("../Door5"), NodePath("../Door6"), NodePath("../AlarmLights"), NodePath("../EnemySpawner1"), NodePath("../EnemySpawner2"), NodePath("../Door4")]
+resources = [NodePath("../Door3"), NodePath("../Door5"), NodePath("../Door6"), NodePath("../AlarmLights"), NodePath("../EnemySpawner1"), NodePath("../EnemySpawner2"), NodePath("../Door4"), NodePath("SelectSound"), NodePath("ErrorSound")]
 metadata/_edit_group_ = true
 
 [node name="Base" type="MeshInstance3D" parent="FX/Terminal" index="0"]
@@ -4581,6 +4583,14 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Terminal/UseArea" index="0"]
 shape = SubResource("SphereShape3D_wvpcf")
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="FX/Terminal" index="4"]
+stream = ExtResource("12_1x63h")
+bus = &"SFX"
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="FX/Terminal" index="5"]
+stream = ExtResource("13_mmirg")
+bus = &"SFX"
 
 [node name="AlarmLights" type="Node3D" parent="FX" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 10, -35)
@@ -4633,7 +4643,6 @@ door = NodePath("../Door6")
 collision_layer = 64
 collision_mask = 2
 input_ray_pickable = false
-monitoring = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/EnemySpawner1/SpawnArea" index="0"]
@@ -4654,7 +4663,6 @@ door = NodePath("../Door5")
 collision_layer = 64
 collision_mask = 2
 input_ray_pickable = false
-monitoring = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FX/EnemySpawner2/SpawnArea" index="0"]
@@ -4685,6 +4693,10 @@ health_type = 1
 respawn = false
 
 [node name="Health1" parent="Pickups" index="2" instance=ExtResource("8_ns3r5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -28.5)
+respawn = false
+
+[node name="Health2" parent="Pickups" index="3" instance=ExtResource("8_ns3r5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 5, -27.5)
 respawn = false
 
@@ -4701,6 +4713,8 @@ shape = SubResource("BoxShape3D_mp0dj")
 [connection signal="body_exited" from="FX/Ladder1" to="FX/Ladder1" method="body_exited"]
 [connection signal="body_entered" from="FX/Ladder2" to="FX/Ladder2" method="body_entered"]
 [connection signal="body_exited" from="FX/Ladder2" to="FX/Ladder2" method="body_exited"]
+[connection signal="body_entered" from="FX/Terminal/UseArea" to="FX/Terminal" method="_show_activate"]
+[connection signal="body_exited" from="FX/Terminal/UseArea" to="FX/Terminal" method="_hide_activate"]
 [connection signal="timeout" from="FX/AlarmLights/SirenTimer" to="FX/AlarmLights" method="alarm_timeout"]
 [connection signal="body_entered" from="FX/EnemySpawner1/SpawnArea" to="FX/EnemySpawner1" method="char_entered"]
 [connection signal="body_exited" from="FX/EnemySpawner1/SpawnArea" to="FX/EnemySpawner1" method="char_exited"]

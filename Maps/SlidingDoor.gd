@@ -24,12 +24,25 @@ func _ready() -> void:
 		closed = false
 
 
+func _show_activate(body) -> void:
+	if body == %Player and !locked and closed:
+		HUD.show_activate(true)
+
+
+func _hide_activate(body) -> void:
+	if body == %Player:
+		HUD.show_activate(false)
+
+
 func _input(event: InputEvent) -> void:
 	if $UseArea.overlaps_body(%Player) and Input.is_action_just_pressed("Use"):
 		if !locked:
+			$ActivateSound.play()
 			activate()
+			HUD.show_activate(false)
 			return
-		print("Door Locked")
+		HUD.show_locked()
+		$ErrorSound.play()
 
 
 func activate() -> void:
@@ -58,6 +71,8 @@ func activate() -> void:
 	moving = false
 	if !closed and auto_close:
 		$CloseTimer.start(open_time)
+	if closed and $UseArea.overlaps_body(%Player):
+		HUD.show_activate(true)
 
 
 func open(open) -> void:

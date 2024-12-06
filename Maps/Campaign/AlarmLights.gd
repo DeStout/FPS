@@ -2,7 +2,7 @@
 extends Node3D
 
 
-var alarm_time := 10.0
+@export var alarm_time := 10.0
 var SPIN_SPEED := 5.0
 
 

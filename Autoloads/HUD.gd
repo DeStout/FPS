@@ -135,6 +135,19 @@ func update_health(max_health, max_armor, health, armor) -> void:
 			box.color.a = 0
 
 
+func show_activate(show : bool) -> void:
+	$Activate.visible = show
+
+
+func show_locked() -> void:
+	$Locked.visible = true
+	$Locked/LockedTimer.start(2)
+
+
+func _hide_locked() -> void:
+	$Locked.visible = false
+
+
 func show_crosshairs(show) -> void:
 	crosshair.visible = show
 

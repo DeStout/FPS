@@ -19,6 +19,9 @@ const TURN_SPEED := 6.0
 const AIM_SPEED := 1.0
 var move_speed_mod := 0.8
 
+var update_interval := 10
+var update_offset := randi_range(0, update_interval-1)
+
 
 func _ready() -> void:
 	super()
@@ -128,9 +131,11 @@ func move_to_target(delta) -> void:
 	
 	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO
-	var range := Vector2(weapon_held.stats.dmg_falloff[0] / 4, weapon_held.stats.dmg_falloff[1] / 4)
+	var range := Vector2(weapon_held.stats.dmg_falloff[0] / 2, \
+											weapon_held.stats.dmg_falloff[1] / 4)
 	var dist_to = global_position.distance_to(target.global_position)
-	if ((dist_to > range[1]) and is_enemy_visible(target)) or !is_enemy_visible(target):
+	if ((dist_to > range[1]) and is_enemy_visible(target)) or \
+														!is_enemy_visible(target):
 		input_dir = Vector2.UP
 	elif dist_to < range[0] and is_enemy_visible(target):
 		input_dir = Vector2.DOWN

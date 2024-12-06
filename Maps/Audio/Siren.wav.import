@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://xgeq2vsw5k0a"
-path="res://.godot/imported/Siren.wav-7f92611093fae79513b660d414599dc9.sample"
+path="res://.godot/imported/Siren.wav-7dbf1c323b96ab55db3b67a5e3a93a55.sample"
 
 [deps]
 
-source_file="res://Maps/Campaign/Siren.wav"
-dest_files=["res://.godot/imported/Siren.wav-7f92611093fae79513b660d414599dc9.sample"]
+source_file="res://Maps/Audio/Siren.wav"
+dest_files=["res://.godot/imported/Siren.wav-7dbf1c323b96ab55db3b67a5e3a93a55.sample"]
 
 [params]
 
