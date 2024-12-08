@@ -3,8 +3,16 @@ extends CharacterBase
 
 signal weapon_picked_up
 
-@onready var fp_animator : AnimationPlayer = $AimHelper/FPView/AnimationPlayer
+@onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
 @onready var fp_weapon : Node3D = %FPWeapons/Pistol
+@onready var fp_weapons := [null,
+				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 
+				$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolBody/PistolBody],
+				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGMag/SMGMag,
+				$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGBody/SMGBody],
+					[null],
+					[null],
+					[null]]
 
 
 func _ready() -> void:
@@ -177,6 +185,7 @@ func _zoom() -> void:
 
 
 func _reload() -> void:
+	fp_animator.play(weapon_held.stats.reload_anim)
 	await super()
 	HUD.update_weapon(weapon_held.ammo_in_mag, \
 								weapon_held.stats.mag_size, weapon_held.extra_ammo)
@@ -226,13 +235,12 @@ func _die() -> void:
 	super()
 
 
-func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
-	var new_fp_weapon : MeshInstance3D = null
+func get_fp_weapon(weapon : Node3D) -> Array:
+	var new_fp_weapon : Array = [null]
 	if weapon != null:
-		var fp_weapons := %FPWeapons.get_children()
-		for fpweapon in fp_weapons:
-			if fpweapon.weapon_type == weapon.get_weapon_type():
-				new_fp_weapon = fpweapon
+		for i in range(fp_weapons.size()):
+			if i == weapon.get_weapon_type():
+				new_fp_weapon = fp_weapons[i]
 	return new_fp_weapon
 
 
@@ -269,7 +277,10 @@ func _unequip_weapon(old_weapon) -> void:
 	fp_animator.play(old_weapon.stats.equip_anim)
 	await fp_animator.animation_finished
 	old_weapon.visible = false
-	get_fp_weapon(old_weapon).visible = false
+	var fpweapon : Array = get_fp_weapon(old_weapon)
+	if fpweapon[0] != null:
+		for mesh in fpweapon:
+			mesh.visible = false
 
 
 func _equip_weapon(new_weapon) -> void:
@@ -279,7 +290,12 @@ func _equip_weapon(new_weapon) -> void:
 		HUD.show_crosshairs(true)
 		
 	fp_animator.play_backwards(new_weapon.stats.equip_anim)
-	fp_weapon = get_fp_weapon(new_weapon)
+	
+	var fpweapon : Array = get_fp_weapon(new_weapon)
+	if fpweapon[0] != null:
+		for mesh in fpweapon:
+			mesh.visible = true
+			
 	weapon_state_machine.travel("Alert")
 	new_weapon.visible = true
 	fp_weapon.visible = true

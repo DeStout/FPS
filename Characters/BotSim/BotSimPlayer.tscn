@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://65jhlh1xbkow" path="res://Characters/CharacterBase.tscn" id="1_bc4nm"]
 [ext_resource type="Script" path="res://Characters/BotSim/BotSimPlayer.gd" id="2_cieth"]
-[ext_resource type="PackedScene" uid="uid://cm6pnkpd4ohs5" path="res://Characters/FirstPerson.tscn" id="3_leuv2"]
+[ext_resource type="PackedScene" uid="uid://cm6pnkpd4ohs5" path="res://Characters/FirstPerson_old.tscn" id="3_leuv2"]
 [ext_resource type="Material" uid="uid://b561iqjqjd0b" path="res://Characters/BotSim/BotSimMat.tres" id="4_d2w3d"]
 [ext_resource type="PackedScene" uid="uid://0r6eljbdbyqv" path="res://Props/Weapons/Slapper/FPSlapper.tscn" id="4_mgk1t"]
 [ext_resource type="PackedScene" uid="uid://by7wwhoru7x60" path="res://Props/Weapons/Pistol/FPPistol.tscn" id="5_vepfr"]

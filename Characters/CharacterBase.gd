@@ -455,10 +455,7 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 func _anim_weapon_switch(old_weapon, new_weapon) -> void:
 	upper_state_machine.travel("Holster")
 	await _unequip_weapon(old_weapon)
-	
-	#var tween = create_tween()
 	upper_state_machine.travel(weapon_held.stats.state_name)
-		
 	await _equip_weapon(new_weapon)
 	return
 
