@@ -19,7 +19,7 @@ func load(load_path : String, new_map_return : Callable, new_map_load : Callable
 	ResourceLoader.load_threaded_request(load_path)
 	status = ResourceLoader.load_threaded_get_status(load_path, progress)
 	
-	assert(status == 1, "Map Loading Failed")
+	assert(status == ResourceLoader.THREAD_LOAD_IN_PROGRESS, "Map Loading Failed")
 	visible = true
 	address = load_path
 	map_return = new_map_return

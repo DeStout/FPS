@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cx4qos30v047i"]
+
+[ext_resource type="Texture2D" uid="uid://6h5ceat4tji8" path="res://Props/Weapons/SMG/SMG_SMG_A.png" id="1_r1uos"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_r1uos")
+roughness = 0.5

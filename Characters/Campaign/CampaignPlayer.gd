@@ -4,7 +4,6 @@ extends CharacterBase
 signal weapon_picked_up
 
 @onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
-@onready var fp_weapon : Node3D = %FPWeapons/Pistol
 @onready var fp_weapons := [null,
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolBody/PistolBody],
@@ -20,7 +19,6 @@ func _ready() -> void:
 	weapons.append(Globals.WEAPONS.PISTOL)
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_state_machine.travel("Alert")
-	nozzle = fp_weapon.nozzle
 	HUD.update_weapon(weapon_held.ammo_in_mag, \
 								weapon_held.stats.mag_size, weapon_held.extra_ammo)
 
@@ -185,7 +183,8 @@ func _zoom() -> void:
 
 
 func _reload() -> void:
-	fp_animator.play(weapon_held.stats.reload_anim)
+	if weapon_held.can_reload() and !switching_weapons:
+		fp_animator.play(weapon_held.stats.reload_anim)
 	await super()
 	HUD.update_weapon(weapon_held.ammo_in_mag, \
 								weapon_held.stats.mag_size, weapon_held.extra_ammo)
@@ -298,7 +297,5 @@ func _equip_weapon(new_weapon) -> void:
 			
 	weapon_state_machine.travel("Alert")
 	new_weapon.visible = true
-	fp_weapon.visible = true
-	nozzle = fp_weapon.nozzle
 	await fp_animator.animation_finished
 	super(new_weapon)

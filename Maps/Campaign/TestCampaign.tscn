@@ -439,6 +439,7 @@ uv1_scale = Vector3(1.5, 1, 1)
 size = Vector2(25, 25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_567hk"]
+cull_mode = 2
 albedo_texture = ExtResource("2_8hd7j")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5g2gu"]
@@ -544,19 +545,18 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h1s7q"]
+data = PackedVector3Array(-0.375, 2.5, 0.05, 0.375, 2.5, 0.05, -0.375, -2.5, 0.05, 0.375, 2.5, 0.05, 0.375, -2.5, 0.05, -0.375, -2.5, 0.05, 0.375, 2.5, -0.05, -0.375, 2.5, -0.05, 0.375, -2.5, -0.05, -0.375, 2.5, -0.05, -0.375, -2.5, -0.05, 0.375, -2.5, -0.05, 0.375, 2.5, 0.05, 0.375, 2.5, -0.05, 0.375, -2.5, 0.05, 0.375, 2.5, -0.05, 0.375, -2.5, -0.05, 0.375, -2.5, 0.05, -0.375, 2.5, -0.05, -0.375, 2.5, 0.05, -0.375, -2.5, -0.05, -0.375, 2.5, 0.05, -0.375, -2.5, 0.05, -0.375, -2.5, -0.05, 0.375, 2.5, 0.05, -0.375, 2.5, 0.05, 0.375, 2.5, -0.05, -0.375, 2.5, 0.05, -0.375, 2.5, -0.05, 0.375, 2.5, -0.05, -0.375, -2.5, 0.05, 0.375, -2.5, 0.05, -0.375, -2.5, -0.05, 0.375, -2.5, 0.05, 0.375, -2.5, -0.05, -0.375, -2.5, -0.05)
+
 [sub_resource type="BoxMesh" id="BoxMesh_y7xpy"]
-size = Vector3(0.75, 5, 0.1)
+size = Vector3(0.1, 5, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_436qv"]
 albedo_color = Color(1, 0.850903, 0, 1)
 albedo_texture = ExtResource("4_sfoun")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h1s7q"]
-data = PackedVector3Array(-0.375, 2.5, 0.05, 0.375, 2.5, 0.05, -0.375, -2.5, 0.05, 0.375, 2.5, 0.05, 0.375, -2.5, 0.05, -0.375, -2.5, 0.05, 0.375, 2.5, -0.05, -0.375, 2.5, -0.05, 0.375, -2.5, -0.05, -0.375, 2.5, -0.05, -0.375, -2.5, -0.05, 0.375, -2.5, -0.05, 0.375, 2.5, 0.05, 0.375, 2.5, -0.05, 0.375, -2.5, 0.05, 0.375, 2.5, -0.05, 0.375, -2.5, -0.05, 0.375, -2.5, 0.05, -0.375, 2.5, -0.05, -0.375, 2.5, 0.05, -0.375, -2.5, -0.05, -0.375, 2.5, 0.05, -0.375, -2.5, 0.05, -0.375, -2.5, -0.05, 0.375, 2.5, 0.05, -0.375, 2.5, 0.05, 0.375, 2.5, -0.05, -0.375, 2.5, 0.05, -0.375, 2.5, -0.05, 0.375, 2.5, -0.05, -0.375, -2.5, 0.05, 0.375, -2.5, 0.05, -0.375, -2.5, -0.05, 0.375, -2.5, 0.05, 0.375, -2.5, -0.05, -0.375, -2.5, -0.05)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj1ov"]
-albedo_color = Color(1, 0.850903, 0, 1)
-albedo_texture = ExtResource("4_sfoun")
+[sub_resource type="BoxMesh" id="BoxMesh_k471t"]
+size = Vector3(0.1, 0.65, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wvpcf"]
 radius = 2.0
@@ -3962,7 +3962,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box61" type="MeshInstance3D" parent="NavReg" index="68"]
-transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 30.597, 6, -35.0803)
+transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 30.597, 6.01, -35.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4010,7 +4010,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box62" type="MeshInstance3D" parent="NavReg" index="72"]
-transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 35.074, 6, -35.0803)
+transform = Transform3D(0.0230188, 0, -0.999734, 0, 1, 0, 0.999734, 0, 0.0230188, 35.074, 6.01, -35.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4022,7 +4022,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box63" type="MeshInstance3D" parent="NavReg" index="73"]
-transform = Transform3D(-0.0627382, 0, -0.998029, 0, 1, 0, 0.998029, 0, -0.0627382, 37.2621, 6, -35.0803)
+transform = Transform3D(-0.0627382, 0, -0.998029, 0, 1, 0, 0.998029, 0, -0.0627382, 37.2621, 6.01, -35.0803)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4034,7 +4034,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box64" type="MeshInstance3D" parent="NavReg" index="74"]
-transform = Transform3D(0.0500002, 0, -0.998748, 0, 1, 0, 0.998748, 0, 0.0500002, 39.4219, 6, -35.6203)
+transform = Transform3D(0.0500002, 0, -0.998748, 0, 1, 0, 0.998748, 0, 0.0500002, 39.4219, 6.01, -35.6203)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4046,7 +4046,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box65" type="MeshInstance3D" parent="NavReg" index="75"]
-transform = Transform3D(-0.136718, 0, -0.990609, 0, 1, 0, 0.990609, 0, -0.136718, 41.5818, 6, -34.6003)
+transform = Transform3D(-0.136718, 0, -0.990609, 0, 1, 0, 0.990609, 0, -0.136718, 41.5818, 6.01, -34.6003)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4058,7 +4058,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box66" type="MeshInstance3D" parent="NavReg" index="76"]
-transform = Transform3D(-0.136718, 0, -0.990609, 0, 1, 0, 0.990609, 0, -0.136718, 46.5614, 6, -35.5003)
+transform = Transform3D(-0.136718, 0, -0.990609, 0, 1, 0, 0.990609, 0, -0.136718, 46.5614, 6.01, -35.5003)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4070,7 +4070,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box67" type="MeshInstance3D" parent="NavReg" index="77"]
-transform = Transform3D(0.0395563, 0, -0.999217, 0, 1, 0, 0.999217, 0, 0.0395563, 48.6612, 6, -34.2404)
+transform = Transform3D(0.0395563, 0, -0.999217, 0, 1, 0, 0.999217, 0, 0.0395563, 48.6612, 6.01, -34.2404)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4082,7 +4082,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box68" type="MeshInstance3D" parent="NavReg" index="78"]
-transform = Transform3D(0.0395563, 0, -0.999217, 0, 1, 0, 0.999217, 0, 0.0395563, 50.731, 6, -35.4103)
+transform = Transform3D(0.0395563, 0, -0.999217, 0, 1, 0, 0.999217, 0, 0.0395563, 50.731, 6.01, -35.4103)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4094,7 +4094,7 @@ collision_mask = 50
 shape = SubResource("BoxShape3D_l6em7")
 
 [node name="Box69" type="MeshInstance3D" parent="NavReg" index="79"]
-transform = Transform3D(-0.203112, 0, -0.979155, 0, 1, 0, 0.979155, 0, -0.203112, 54.6281, 6, -34.8328)
+transform = Transform3D(-0.203112, 0, -0.979155, 0, 1, 0, 0.979155, 0, -0.203112, 54.6281, 6.01, -34.8328)
 mesh = SubResource("BoxMesh_beyri")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhp4x")
 metadata/_edit_group_ = true
@@ -4515,33 +4515,163 @@ locked = true
 open_time = 5.0
 
 [node name="Ladder1" type="Area3D" parent="FX" index="6"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.6, -40)
-collision_mask = 2
-script = ExtResource("4_havcl")
-metadata/_edit_group_ = true
-
-[node name="Ladder" type="MeshInstance3D" parent="FX/Ladder1" index="0"]
-mesh = SubResource("BoxMesh_y7xpy")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Ladder1" index="1"]
-shape = SubResource("ConcavePolygonShape3D_h1s7q")
-
-[node name="Ladder2" type="Area3D" parent="FX" index="7"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.45, 2.5, 0)
 collision_mask = 2
 monitorable = false
 script = ExtResource("4_havcl")
 metadata/_edit_group_ = true
 
-[node name="Ladder" type="MeshInstance3D" parent="FX/Ladder2" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Ladder1" index="0"]
+shape = SubResource("ConcavePolygonShape3D_h1s7q")
+
+[node name="Side1" type="MeshInstance3D" parent="FX/Ladder1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, 0)
 mesh = SubResource("BoxMesh_y7xpy")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_aj1ov")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Ladder2" index="1"]
+[node name="Side2" type="MeshInstance3D" parent="FX/Ladder1" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, 0)
+mesh = SubResource("BoxMesh_y7xpy")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung1" type="MeshInstance3D" parent="FX/Ladder1" index="3"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.18556e-08, -2.2, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung2" type="MeshInstance3D" parent="FX/Ladder1" index="4"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.91752e-08, -1.575, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung3" type="MeshInstance3D" parent="FX/Ladder1" index="5"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 7.64949e-08, -0.95, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung4" type="MeshInstance3D" parent="FX/Ladder1" index="6"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.03815e-07, -0.325, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung5" type="MeshInstance3D" parent="FX/Ladder1" index="7"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 0.3, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung6" type="MeshInstance3D" parent="FX/Ladder1" index="8"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.58454e-07, 0.925, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung7" type="MeshInstance3D" parent="FX/Ladder1" index="9"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.85773e-07, 1.55, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung8" type="MeshInstance3D" parent="FX/Ladder1" index="10"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.13093e-07, 2.175, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Ladder2" type="Area3D" parent="FX" index="7"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.6, -40)
+collision_mask = 2
+script = ExtResource("4_havcl")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FX/Ladder2" index="0"]
 shape = SubResource("ConcavePolygonShape3D_h1s7q")
+
+[node name="Side1" type="MeshInstance3D" parent="FX/Ladder2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, 0)
+mesh = SubResource("BoxMesh_y7xpy")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Side2" type="MeshInstance3D" parent="FX/Ladder2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, 0)
+mesh = SubResource("BoxMesh_y7xpy")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung1" type="MeshInstance3D" parent="FX/Ladder2" index="3"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.18556e-08, -2.2, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung2" type="MeshInstance3D" parent="FX/Ladder2" index="4"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.91752e-08, -1.575, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung3" type="MeshInstance3D" parent="FX/Ladder2" index="5"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 7.64949e-08, -0.95, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung4" type="MeshInstance3D" parent="FX/Ladder2" index="6"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.03815e-07, -0.325, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung5" type="MeshInstance3D" parent="FX/Ladder2" index="7"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 0.3, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung6" type="MeshInstance3D" parent="FX/Ladder2" index="8"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.58454e-07, 0.925, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung7" type="MeshInstance3D" parent="FX/Ladder2" index="9"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.85773e-07, 1.55, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
+
+[node name="Rung8" type="MeshInstance3D" parent="FX/Ladder2" index="10"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.13093e-07, 2.175, 0)
+mesh = SubResource("BoxMesh_k471t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_436qv")
+metadata/_edit_group_ = true
 
 [node name="Terminal" type="Node3D" parent="FX" index="8" node_paths=PackedStringArray("use_area", "player", "resources")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 5, -35)

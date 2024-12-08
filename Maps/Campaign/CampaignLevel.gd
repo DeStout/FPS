@@ -16,7 +16,6 @@ var enemy_ := load("res://Characters/Campaign/CampaignEnemy.tscn")
 func _ready() -> void:
 	Debug.player = player
 	HUD.setup_single_player()
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func open() -> void:

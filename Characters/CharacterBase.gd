@@ -262,7 +262,7 @@ func _slap() -> void:
 
 
 func _reload() -> void:
-	if weapon_held and !weapon_held.is_reloading:
+	if weapon_held and !weapon_held.is_reloading and !switching_weapons:
 		await weapon_held.reload()
 	return
 

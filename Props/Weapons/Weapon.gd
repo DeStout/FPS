@@ -36,7 +36,7 @@ func shoot() -> void:
 
 
 func reload() -> void:
-	if extra_ammo > 0 and ammo_in_mag < stats.mag_size:
+	if can_reload():
 		is_reloading = true
 		$ReloadAudio.play()
 		await $ReloadAudio.finished
@@ -46,6 +46,10 @@ func reload() -> void:
 		extra_ammo = max(extra_ammo - ammo_to_add, 0)
 
 		is_reloading = false
+
+
+func can_reload() -> bool:
+	return extra_ammo > 0 and ammo_in_mag < stats.mag_size
 
 
 func interrupt_reload() -> void:

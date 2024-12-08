@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cqwagpvoohpyk"]
+
+[ext_resource type="Texture2D" uid="uid://rripmqvgbn08" path="res://Props/Weapons/Pistol/Pistol_Pistol_A.png" id="1_d2otg"]
+
+[resource]
+resource_name = "M_Pistol"
+cull_mode = 2
+albedo_texture = ExtResource("1_d2otg")
+metallic = 1.0
+roughness = 0.818898
