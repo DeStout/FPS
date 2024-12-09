@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://0r6eljbdbyqv"]
-
-[ext_resource type="PackedScene" uid="uid://cje6h18cutmm0" path="res://Props/Weapons/Slapper/SlapperBase.tscn" id="1_u5j6x"]
-[ext_resource type="Script" path="res://Props/Weapons/FPWeapon.gd" id="2_2w3p4"]
-
-[node name="Slapper" instance=ExtResource("1_u5j6x")]
-layers = 0
-surface_material_override/0 = null
-script = ExtResource("2_2w3p4")

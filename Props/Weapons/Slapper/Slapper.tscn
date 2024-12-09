@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckqtvo1inhvtn"]
+[gd_scene load_steps=5 format=3 uid="uid://ckqtvo1inhvtn"]
 
 [ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_283py"]
-[ext_resource type="PackedScene" uid="uid://cje6h18cutmm0" path="res://Props/Weapons/Slapper/SlapperBase.tscn" id="2_op7jl"]
 [ext_resource type="Resource" uid="uid://0vmjwnqanvpp" path="res://Props/Weapons/Slapper/SlapperStats.tres" id="2_pvw8n"]
 [ext_resource type="AudioStream" uid="uid://dbch5f7uhvslh" path="res://Props/Weapons/Slapper/Whoosh.ogg" id="4_nwom4"]
 
@@ -18,12 +17,7 @@ collision_mask = 2
 [node name="Collision" type="CollisionShape3D" parent="SlapArea" index="0"]
 shape = SubResource("SphereShape3D_b5hgt")
 
-[node name="Mesh" parent="." index="1" instance=ExtResource("2_op7jl")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
-layers = 0
-skeleton = NodePath("")
-
-[node name="ShootAudio" parent="." index="2"]
+[node name="ShootAudio" parent="." index="1"]
 stream = ExtResource("4_nwom4")
 
 [connection signal="body_entered" from="SlapArea" to="." method="_add_slappable"]

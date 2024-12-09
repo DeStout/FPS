@@ -67,9 +67,8 @@ func _die() -> void:
 	await super()
 	
 	armor = 0
-	#weapons = [Globals.WEAPONS.SLAPPER]
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
-	weapons = []
+	weapons = [Globals.WEAPONS.SLAPPER]
+	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
 	
 	# Do this now and in respawn() because Godot has priority issues
 	global_position = current_level.get_spawn_point().position

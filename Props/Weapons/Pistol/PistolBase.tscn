@@ -43,9 +43,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f2vat")
 
-[node name="Pistol2" type="MeshInstance3D"]
+[node name="Pistol" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_awglp")
 skeleton = NodePath("")
-
-[node name="Nozzle" type="Node3D" parent="."]
-transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, -1.01922e-07, 0.0613603, -0.675)

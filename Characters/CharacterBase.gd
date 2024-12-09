@@ -56,10 +56,9 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
-#Globals.WEAPONS.SLAPPER
-@onready var weapons := []
+@export var weapons := [Globals.WEAPONS.SLAPPER]
 @onready var weapon_held : Node3D = null
-@onready var nozzle : Node3D = null
+@onready var nozzle : Node3D = $Mannequin/Nozzle
 var trigger_pulled := false
 var alt_pulled := false
 var zoomed := false
@@ -87,10 +86,6 @@ func set_processing(new_process) -> void:
 	set_process(new_process)
 	set_physics_process(new_process)
 	set_process_input(new_process)
-	#if new_process:
-		#process_mode = PROCESS_MODE_INHERIT
-	#else:
-		#process_mode = PROCESS_MODE_DISABLED
 
 
 func _process(delta) -> void:
@@ -437,7 +432,7 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 				weapon_held.interrupt_reload()
 			old_weapon = weapon_held
 			weapon_held = new_weapon
-			nozzle = weapon_held.nozzle
+			#nozzle = weapon_held.nozzle
 			weapon_state_machine = $Mannequin/AnimTree["parameters/Upper/" + \
 									weapon_held.stats.state_name + "/playback"]
 			
@@ -449,7 +444,6 @@ func _switch_weapon(new_weapon : Node3D) -> void:
 			weapon_held.interrupt_reload()
 			weapon_held.visible = false
 		weapon_held = null
-		nozzle = null
 
 
 func _anim_weapon_switch(old_weapon, new_weapon) -> void:

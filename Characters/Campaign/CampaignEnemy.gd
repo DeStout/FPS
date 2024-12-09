@@ -43,7 +43,6 @@ func _input(event: InputEvent) -> void:
 									AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 
-
 func _process(delta: float) -> void:
 	super(delta)
 

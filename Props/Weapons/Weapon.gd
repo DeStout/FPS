@@ -5,7 +5,6 @@ extends Node3D
 var extra_ammo : int
 var ammo_in_mag : int
 
-@onready var nozzle : Node3D = get_node("Mesh/Nozzle")
 var slappable := []
 
 # Signal to Player._update_UI and Debug._inifite_ammo
@@ -24,7 +23,8 @@ func reset() -> void:
 
 func can_shoot() -> bool:
 	var able_to_shoot : bool = ((ammo_in_mag > 0 and !is_reloading) or \
-		stats.weapon_type == Globals.WEAPONS.SLAPPER) and $ShotTimer.is_stopped()
+								stats.weapon_type == Globals.WEAPONS.SLAPPER) \
+													and $ShotTimer.is_stopped()
 	return able_to_shoot
 
 
@@ -118,3 +118,11 @@ func get_anim_pos() -> Vector2:
 
 func get_body_dmg() -> Dictionary:
 	return stats.body_dmg
+
+
+func is_shoot_anim(shoot_anim : String) -> bool:
+	if stats.weapon_type == Globals.WEAPONS.SLAPPER:
+		var slap_anims := ["SlapperSlap1", "SlapperSlap2"]
+		return slap_anims.has(shoot_anim)
+	else:
+		return shoot_anim == stats.shoot_anim

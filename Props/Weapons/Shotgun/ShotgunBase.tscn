@@ -37,6 +37,3 @@ shadow_mesh = SubResource("ArrayMesh_p25ca")
 [node name="Shotgun" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_37dng")
 skeleton = NodePath("")
-
-[node name="Nozzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134402, -1.12461)

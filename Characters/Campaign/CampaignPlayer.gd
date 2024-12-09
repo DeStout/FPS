@@ -20,8 +20,7 @@ func _ready() -> void:
 	weapons.append(Globals.WEAPONS.PISTOL)
 	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
 	weapon_state_machine.travel("Alert")
-	HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
+	nozzle = $AimHelper/FirstPerson/Nozzle
 
 
 func _process(delta: float) -> void:
@@ -66,7 +65,7 @@ func _physics_process(delta) -> void:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 		
-		if !fp_animator.current_animation == weapon_held.stats.shoot_anim and \
+		if !weapon_held.is_shoot_anim(fp_animator.current_animation) and \
 							!weapon_held.is_reloading and !switching_weapons:
 			fp_animator.play(weapon_held.stats.run_anim)
 	else:
@@ -140,10 +139,10 @@ func _input(event) -> void:
 
 
 func _swing() -> void:
-	super()
-	if fp_animator.is_playing():
-		fp_animator.stop()
-	fp_animator.play("Slap")
+	if !switching_weapons:
+		if fp_animator.is_playing():
+			fp_animator.stop()
+		fp_animator.play(weapon_held.stats.shoot_anim + str(randi_range(1,2)))
 
 
 func _shoot() -> void:
@@ -236,6 +235,8 @@ func _die() -> void:
 
 
 func get_fp_weapon(weapon : Node3D) -> Array:
+	if weapon.get_weapon_type() == Globals.WEAPONS.SLAPPER:
+		return [null]
 	var new_fp_weapon : Array = [null]
 	if weapon != null:
 		for i in range(fp_weapons.size()):
@@ -291,10 +292,11 @@ func _equip_weapon(new_weapon) -> void:
 		
 	fp_animator.play_backwards(new_weapon.stats.equip_anim)
 	
-	var fpweapon : Array = get_fp_weapon(new_weapon)
-	if fpweapon[0] != null:
-		for mesh in fpweapon:
-			mesh.visible = true
+	if !new_weapon.get_weapon_type() == Globals.WEAPONS.SLAPPER:
+		var fpweapon : Array = get_fp_weapon(new_weapon)
+		if fpweapon[0] != null:
+			for mesh in fpweapon:
+				mesh.visible = true
 			
 	weapon_state_machine.travel("Alert")
 	new_weapon.visible = true
