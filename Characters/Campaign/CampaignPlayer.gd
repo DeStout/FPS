@@ -9,7 +9,8 @@ signal weapon_picked_up
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolBody/PistolBody],
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGMag/SMGMag,
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGBody/SMGBody],
-					[null],
+				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/RifleBody/RifleBody,
+				$AimHelper/FirstPerson/Mannequin/Skeleton3D/RifleMag/RifleMag],
 					[null],
 					[null]]
 
