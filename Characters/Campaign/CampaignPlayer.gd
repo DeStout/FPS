@@ -3,7 +3,8 @@ extends CharacterBase
 
 signal weapon_picked_up
 
-@onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
+@onready var fp_animator : AnimationPlayer = \
+								$AimHelper/FirstPerson/AnimationPlayer
 @onready var fp_weapons := [null,
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolBody/PistolBody],
@@ -11,7 +12,9 @@ signal weapon_picked_up
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGBody/SMGBody],
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/RifleBody/RifleBody,
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/RifleMag/RifleMag],
-					[null],
+			[$AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunBody/ShotgunBody,
+			 $AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunPump/ShotgunPump,
+			 $AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunShell/ShotgunShell],
 					[null]]
 
 
