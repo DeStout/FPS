@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckqtvo1inhvtn"]
 
 [ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_283py"]
-[ext_resource type="Resource" uid="uid://0vmjwnqanvpp" path="res://Props/Weapons/Slapper/SlapperStats.tres" id="2_pvw8n"]
-[ext_resource type="AudioStream" uid="uid://dbch5f7uhvslh" path="res://Props/Weapons/Slapper/Whoosh.ogg" id="4_nwom4"]
+[ext_resource type="AudioStream" uid="uid://dbch5f7uhvslh" path="res://Props/Weapons/Slapper/Whoosh.ogg" id="2_av7hk"]
+[ext_resource type="Script" path="res://Props/Weapons/Slapper/Slapper.gd" id="2_hurcw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b5hgt"]
 
 [node name="Slapper" instance=ExtResource("1_283py")]
-stats = ExtResource("2_pvw8n")
+script = ExtResource("2_hurcw")
+damage = 25
 
 [node name="SlapArea" type="Area3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00859919, -0.0917245)
@@ -17,8 +18,8 @@ collision_mask = 2
 [node name="Collision" type="CollisionShape3D" parent="SlapArea" index="0"]
 shape = SubResource("SphereShape3D_b5hgt")
 
-[node name="ShootAudio" parent="." index="1"]
-stream = ExtResource("4_nwom4")
+[node name="FireAudio" parent="." index="1"]
+stream = ExtResource("2_av7hk")
 
 [connection signal="body_entered" from="SlapArea" to="." method="_add_slappable"]
 [connection signal="body_exited" from="SlapArea" to="." method="_remove_slappable"]

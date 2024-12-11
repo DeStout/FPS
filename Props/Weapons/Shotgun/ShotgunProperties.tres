@@ -1,21 +1,17 @@
 [gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dfch3e5wm7ygn"]
 
-[ext_resource type="Script" path="res://Props/Weapons/WeaponStats.gd" id="1_xr2u8"]
+[ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_xr2u8"]
 
 [resource]
 script = ExtResource("1_xr2u8")
-weapon_type = 4
 automatic = false
 can_zoom = false
 zoom_level = 1.0
-burst_fire = true
-burst_num = 8
-burst_variance = 0.07
+num_shots = 8
+shot_variance = 0.07
 shots_per_second = 1.0
 max_ammo = 40
 mag_size = 8
-v_recoil = 3.0
-h_recoil = 3.0
 body_dmg = {
 0: 16,
 1: 9,

@@ -1,3 +1,4 @@
+class_name BodySeg
 extends Area3D
 
 
@@ -6,6 +7,6 @@ extends Area3D
 signal take_damage
 
 # Called from shooter CharacterBase
-func body_seg_shot(body_seg_dmg : Dictionary, shooter : CharacterBase) -> void:
+func body_seg_shot(damage : int, shooter : CharacterBase) -> void:
 	# Signal to CharacterBase take_damage()
-	take_damage.emit(self, body_seg_dmg[body_seg], shooter)
+	take_damage.emit(self, damage, shooter)

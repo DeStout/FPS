@@ -1,19 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwie7ixf4v1vw"]
+[gd_scene load_steps=7 format=3 uid="uid://bwie7ixf4v1vw"]
 
 [ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_ufvh7"]
 [ext_resource type="PackedScene" uid="uid://c7c70o2wmstqa" path="res://Props/Weapons/Pistol/PistolBase.tscn" id="2_7dgsw"]
-[ext_resource type="Resource" uid="uid://c0650j8mcrbva" path="res://Props/Weapons/Pistol/PistolStats.tres" id="2_nles1"]
-[ext_resource type="AudioStream" uid="uid://ddnxsubfu5btr" path="res://Props/Weapons/Pistol/PistolShoot.ogg" id="4_i5ooh"]
+[ext_resource type="Script" path="res://Props/Weapons/BulletWeapon.gd" id="2_lkq84"]
+[ext_resource type="Resource" uid="uid://c0650j8mcrbva" path="res://Props/Weapons/Pistol/PistolProperties.tres" id="2_nles1"]
 [ext_resource type="AudioStream" uid="uid://hhtniilpnas5" path="res://Props/Weapons/Pistol/PistolReload.ogg" id="5_1n1px"]
+[ext_resource type="AudioStream" uid="uid://ddnxsubfu5btr" path="res://Props/Weapons/Pistol/PistolShoot.ogg" id="5_32pkx"]
 
 [node name="Pistol" instance=ExtResource("1_ufvh7")]
-stats = ExtResource("2_nles1")
+script = ExtResource("2_lkq84")
+properties = ExtResource("2_nles1")
+weapon_type = 1
 
 [node name="Mesh" parent="." index="0" instance=ExtResource("2_7dgsw")]
 
-[node name="ShootAudio" parent="." index="1"]
-stream = ExtResource("4_i5ooh")
-max_db = -4.0
+[node name="FireAudio" parent="." index="1"]
+stream = ExtResource("5_32pkx")
 
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_1n1px")

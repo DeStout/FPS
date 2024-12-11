@@ -1,20 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhxw75oi8yofw"]
+[gd_scene load_steps=7 format=3 uid="uid://bhxw75oi8yofw"]
 
 [ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_2nk2o"]
-[ext_resource type="Resource" uid="uid://byfp57m203jiy" path="res://Props/Weapons/Rifle/RifleStats.tres" id="2_2wg8v"]
 [ext_resource type="PackedScene" uid="uid://c7isot5rpcwus" path="res://Props/Weapons/Rifle/RifleBase.tscn" id="2_oqy1o"]
-[ext_resource type="AudioStream" uid="uid://cqi8csv8ynwit" path="res://Props/Weapons/Rifle/RifleShoot.ogg" id="4_wxni8"]
+[ext_resource type="Script" path="res://Props/Weapons/BulletWeapon.gd" id="2_qgoj7"]
+[ext_resource type="Resource" uid="uid://byfp57m203jiy" path="res://Props/Weapons/Rifle/RifleProperties.tres" id="3_2b2pg"]
 [ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/Weapons/Rifle/RifleReload.ogg" id="5_kippd"]
+[ext_resource type="AudioStream" uid="uid://cqi8csv8ynwit" path="res://Props/Weapons/Rifle/RifleShoot.ogg" id="5_qrxmw"]
 
 [node name="Rifle" instance=ExtResource("1_2nk2o")]
-stats = ExtResource("2_2wg8v")
+script = ExtResource("2_qgoj7")
+properties = ExtResource("3_2b2pg")
+weapon_type = 3
 
 [node name="Mesh" parent="." index="0" instance=ExtResource("2_oqy1o")]
 layers = 4
 
-[node name="ShootAudio" parent="." index="1"]
-stream = ExtResource("4_wxni8")
-max_db = 0.0
+[node name="FireAudio" parent="." index="1"]
+stream = ExtResource("5_qrxmw")
 
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_kippd")

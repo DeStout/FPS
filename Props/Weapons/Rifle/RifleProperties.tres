@@ -1,21 +1,18 @@
 [gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://byfp57m203jiy"]
 
-[ext_resource type="Script" path="res://Props/Weapons/WeaponStats.gd" id="1_cni8a"]
+[ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_lpcpp"]
 
 [resource]
-script = ExtResource("1_cni8a")
-weapon_type = 3
+script = ExtResource("1_lpcpp")
 automatic = true
 can_zoom = false
 zoom_level = 1.0
 burst_fire = false
 burst_num = 0
-burst_variance = 0.0
+shot_variance = 0.04
 shots_per_second = 10.0
 max_ammo = 128
 mag_size = 32
-v_recoil = 3.0
-h_recoil = 3.0
 body_dmg = {
 0: 33,
 1: 18,
@@ -23,8 +20,8 @@ body_dmg = {
 }
 dmg_falloff = Vector2(10, 40)
 impulse = 300.0
-pos_offset = Vector3(-0.0376089, -0.0336642, 0.0125195)
-rot_offset = Vector3(1.54272, 1.58703, 2.09439)
+pos_offset = Vector3(0, 0, 0)
+rot_offset = Vector3(0, 0, 0)
 state_name = "Rifle"
 equip_anim = "RifleEquip"
 idle_anim = "RifleIdle"

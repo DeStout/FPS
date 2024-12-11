@@ -29,8 +29,7 @@ func _ready() -> void:
 	enemies_vis.resize(enemies.size())
 	enemies_vis.fill(false)
 	
-	weapons.append(starting_weapon)
-	_switch_weapon(_get_weapon(starting_weapon))
+	add_weapon(Globals.weapons[starting_weapon].instantiate())
 	
 	state_machine.set_physics_process(false)
 	await NavigationServer3D.map_changed
@@ -79,7 +78,7 @@ func guard(delta) -> void:
 	
 	var tween := create_tween().set_parallel()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
-						weapon_held.stats.state_name + "/Guard/blend_position"
+			Globals.WEAPON_NAMES[weapon_held.weapon_type] + "/Guard/blend_position"
 	if direction:
 		speed = GUARD_SPEED
 		var dir2 := Vector2(input_dir.x, (GUARD_SPEED / FORE_SPEED) * input_dir.y)
@@ -96,6 +95,7 @@ func guard(delta) -> void:
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	velocity.x *= move_speed_mod
 	velocity.z *= move_speed_mod
+	
 	move_and_slide()
 
 
@@ -130,8 +130,10 @@ func move_to_target(delta) -> void:
 	
 	# Set Input_dir based on direction to next_path_pos
 	var input_dir := Vector2.ZERO
-	var range := Vector2(weapon_held.stats.dmg_falloff[0] / 2, \
-											weapon_held.stats.dmg_falloff[1] / 4)
+	var range = Vector2(.75, 1.0)
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		range = Vector2(weapon_held.properties.dmg_falloff[0] / 2, \
+										weapon_held.properties.dmg_falloff[1] / 4)
 	var dist_to = global_position.distance_to(target.global_position)
 	if ((dist_to > range[1]) and is_enemy_visible(target)) or \
 														!is_enemy_visible(target):
@@ -148,7 +150,7 @@ func move_to_target(delta) -> void:
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
-						weapon_held.stats.state_name + "/Alert/blend_position"
+			Globals.WEAPON_NAMES[weapon_held.weapon_type] + "/Alert/blend_position"
 	_set_speed(input_dir)
 	if direction:
 		tween.tween_property(anim_tree, lower_blend_pos, input_dir, 0.1)
@@ -164,6 +166,7 @@ func move_to_target(delta) -> void:
 		velocity.z = move_toward(velocity.z, 0, deaccel * delta)
 	velocity.x *= move_speed_mod
 	velocity.z *= move_speed_mod
+	
 	move_and_slide()
 
 
@@ -204,11 +207,14 @@ func is_enemy_visible(enemy) -> bool:
 	return enemies.has(enemy) and enemies_vis[enemies.find(enemy)]
 
 
-func _shoot() -> void:
+func _fire() -> void:
 	super()
 	trigger_pulled = false
-	var speed_variance = randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
-	var shoot_speed = weapon_held.stats.shots_per_second * shoot_speed_mod * speed_variance
+	var speed_variance := randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
+	var shoot_speed := 0.25 * speed_variance
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		shoot_speed = weapon_held.properties.shots_per_second * \
+												shoot_speed_mod * speed_variance
 	$ShootTimer.start(1.0 / shoot_speed)
 
 
@@ -232,8 +238,8 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 func _die() -> void:
 	super()
 	
-	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
-		var weapon_info := [weapon_held.stats.weapon_type,
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		var weapon_info := [weapon_held.weapon_type,
 								weapon_held.extra_ammo,
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
