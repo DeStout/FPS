@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://byfp57m203jiy"]
+[gd_resource type="Resource" script_class="BulletWeaponProperties" load_steps=2 format=3 uid="uid://byfp57m203jiy"]
 
 [ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_lpcpp"]
 
@@ -7,8 +7,7 @@ script = ExtResource("1_lpcpp")
 automatic = true
 can_zoom = false
 zoom_level = 1.0
-burst_fire = false
-burst_num = 0
+num_shots = 1
 shot_variance = 0.04
 shots_per_second = 10.0
 max_ammo = 128
@@ -20,11 +19,5 @@ body_dmg = {
 }
 dmg_falloff = Vector2(10, 40)
 impulse = 300.0
-pos_offset = Vector3(0, 0, 0)
-rot_offset = Vector3(0, 0, 0)
-state_name = "Rifle"
-equip_anim = "RifleEquip"
-idle_anim = "RifleIdle"
-run_anim = "RifleRun"
-shoot_anim = "RifleShoot"
-reload_anim = "RifleReload"
+pos_offset = Vector3(0.0105493, -0.0931494, 0.0250436)
+rot_offset = Vector3(-1.2851, 1.5708, -1.55103e-07)

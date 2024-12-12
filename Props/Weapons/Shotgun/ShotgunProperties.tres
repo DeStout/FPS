@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dfch3e5wm7ygn"]
+[gd_resource type="Resource" script_class="BulletWeaponProperties" load_steps=2 format=3 uid="uid://dfch3e5wm7ygn"]
 
 [ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_xr2u8"]
 
@@ -19,11 +19,5 @@ body_dmg = {
 }
 dmg_falloff = Vector2(7.5, 25)
 impulse = 350.0
-pos_offset = Vector3(-0.044263, -0.00856596, 0.0186746)
-rot_offset = Vector3(1.54514, 1.42313, 1.92299)
-state_name = "Shotgun"
-equip_anim = "ShotgunEquip"
-idle_anim = "ShotgunIdle"
-run_anim = "ShotgunRun"
-shoot_anim = "ShotgunShoot"
-reload_anim = "ShotgunReload"
+pos_offset = Vector3(0.0182476, -0.108438, 0.0258621)
+rot_offset = Vector3(-1.20576, 1.5708, -1.22447e-07)

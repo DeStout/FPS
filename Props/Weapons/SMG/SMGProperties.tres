@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dspa676i0l216"]
+[gd_resource type="Resource" script_class="BulletWeaponProperties" load_steps=2 format=3 uid="uid://dspa676i0l216"]
 
 [ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_cd7ki"]
 
@@ -7,8 +7,7 @@ script = ExtResource("1_cd7ki")
 automatic = true
 can_zoom = false
 zoom_level = 0.0
-burst_fire = false
-burst_num = 0
+num_shots = 1
 shot_variance = 0.03
 shots_per_second = 14.0
 max_ammo = 140
@@ -20,11 +19,5 @@ body_dmg = {
 }
 dmg_falloff = Vector2(7.5, 30)
 impulse = 200.0
-pos_offset = Vector3(0, 0, 0)
-rot_offset = Vector3(0, 0, 0)
-state_name = "SMG"
-equip_anim = "SMGEquip"
-idle_anim = "SMGIdle"
-run_anim = "SMGRun"
-shoot_anim = "SMGShoot"
-reload_anim = "SMGReload"
+pos_offset = Vector3(-0.0147436, -0.116423, 0.0389635)
+rot_offset = Vector3(-1.39565, -1.5708, -3.14159)

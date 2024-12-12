@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c0650j8mcrbva"]
+[gd_resource type="Resource" script_class="BulletWeaponProperties" load_steps=2 format=3 uid="uid://c0650j8mcrbva"]
 
 [ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_cwun3"]
 
@@ -7,8 +7,7 @@ script = ExtResource("1_cwun3")
 automatic = false
 can_zoom = false
 zoom_level = 1.0
-burst_fire = false
-burst_num = 0
+num_shots = 1
 shot_variance = 0.02
 shots_per_second = 8.0
 max_ammo = 60
@@ -20,11 +19,5 @@ body_dmg = {
 }
 dmg_falloff = Vector2(7.5, 30)
 impulse = 150.0
-pos_offset = Vector3(0, 0, 0)
-rot_offset = Vector3(0, 0, 0)
-state_name = "Pistol"
-equip_anim = "PistolEquip"
-idle_anim = "PistolIdle"
-run_anim = "PistolRun"
-shoot_anim = "PistolShoot"
-reload_anim = "PistolReload"
+pos_offset = Vector3(-0.0177519, -0.0687797, 0.0268504)
+rot_offset = Vector3(-1.5708, 1.5708, 0)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c5yeg7feu1anw"]
+[gd_resource type="Resource" script_class="BulletWeaponProperties" load_steps=2 format=3 uid="uid://c5yeg7feu1anw"]
 
 [ext_resource type="Script" path="res://Props/Weapons/BulletWeaponProperties.gd" id="1_xrgia"]
 
@@ -7,8 +7,7 @@ script = ExtResource("1_xrgia")
 automatic = false
 can_zoom = false
 zoom_level = 3.0
-burst_fire = false
-burst_num = 0
+num_shots = 1
 shot_variance = 0.02
 shots_per_second = 1.5
 max_ammo = 28
@@ -20,11 +19,5 @@ body_dmg = {
 }
 dmg_falloff = Vector2(15, 75)
 impulse = 350.0
-pos_offset = Vector3(0, 0, 0)
-rot_offset = Vector3(0, 0, 0)
-state_name = "Sniper"
-equip_anim = "FPEquipSniper"
-idle_anim = "FPIdleSniper"
-run_anim = "FPRunSniper"
-shoot_anim = "FPShootSniper"
-reload_anim = ""
+pos_offset = Vector3(-0.0190888, -0.108876, 0.0337282)
+rot_offset = Vector3(-1.27062, 1.5708, -1.47828e-07)

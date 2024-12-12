@@ -238,6 +238,12 @@ func get_fp_weapon(weapon : int) -> Array:
 	return new_fp_weapon
 
 
+func add_weapon(new_weapon : Weapon) -> void:
+	super(new_weapon)
+	weapon_held.get_node("Mesh").cast_shadow = \
+						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+
+
 func _switch_weapon(new_weapon : Weapon) -> void:
 	if zoomed:
 		_gun_alt()
@@ -293,5 +299,5 @@ func _equip_weapon(new_weapon : Weapon) -> void:
 			mesh.visible = true
 			
 	weapon_state_machine.travel("Alert")
-	new_weapon.visible = true
+	#new_weapon.visible = true
 	await fp_animator.animation_finished

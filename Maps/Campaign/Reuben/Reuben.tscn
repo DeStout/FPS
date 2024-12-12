@@ -232,11 +232,13 @@ current_level = NodePath("../..")
 
 [node name="CampaignEnemy" parent="Players" index="1" node_paths=PackedStringArray("current_level", "enemies") instance=ExtResource("3_u7umk")]
 transform = Transform3D(1, 0, 0, 0, 0.999936, -0.0113095, 0, 0.0113095, 0.999936, 2.274, 0, -0.227)
+starting_weapon = 1
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 
 [node name="CampaignEnemy2" parent="Players" index="2" node_paths=PackedStringArray("current_level", "enemies") instance=ExtResource("3_u7umk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.909, 0, 0)
+starting_weapon = 2
 current_level = NodePath("../..")
 enemies = [NodePath("../Player")]
 

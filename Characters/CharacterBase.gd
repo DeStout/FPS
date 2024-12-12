@@ -338,7 +338,13 @@ func add_weapon(new_weapon : Weapon) -> void:
 	new_weapon.wielder = self
 	weapons.add_child(new_weapon)
 	
-	weapons.get_children().sort_custom(sort_weapons)
+	if new_weapon is BulletWeapon:
+		new_weapon.position = new_weapon.properties.pos_offset
+		new_weapon.rotation = new_weapon.properties.rot_offset
+	
+	# TODO: Sorts the returned array but not the tree order
+	#weapons.get_children().sort_custom(sort_weapons)
+	
 	if new_weapon.weapon_type > weapon_held.weapon_type:
 		_switch_weapon(new_weapon)
 
