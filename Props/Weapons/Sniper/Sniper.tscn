@@ -11,6 +11,7 @@
 script = ExtResource("2_w6es4")
 properties = ExtResource("3_2da2g")
 weapon_type = 5
+impulse = 350
 
 [node name="Mesh" parent="." index="0" instance=ExtResource("2_ja4ht")]
 layers = 4

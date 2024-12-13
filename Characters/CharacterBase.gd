@@ -206,8 +206,7 @@ func _slap() -> void:
 				if body_seg.name == "ChestArea":
 					chest_seg = body_seg
 			assert(chest_seg != null, "Character does not have Chest")
-			character.take_damage(chest_seg, 
-											weapon_held.damage, self)
+			character.take_damage(chest_seg, weapon_held.damage, self)
 			$Slapped.play()
 
 

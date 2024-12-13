@@ -81,7 +81,7 @@ func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 	rag_doll.set_material(body_mat)
 	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
-											shooter.weapon_held.properties.impulse)
+														shooter.weapon_held.impulse)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

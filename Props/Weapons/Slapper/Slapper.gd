@@ -19,9 +19,13 @@ func can_reload() -> bool:
 
 func get_anim(anim : String) -> String:
 	if anim == "Shoot":
-		return Globals.WEAPON_NAMES[weapon_type] + "Slap" + str(randi_range(1, 2))
+		return "SlapperSlap" + str(randi_range(1, 2))
 	else:
 		return super(anim)
+
+
+func is_fire_anim(anim : String) -> bool:
+	return anim.contains("Slap")
 
 
 func _add_slappable(body: Node3D) -> void:

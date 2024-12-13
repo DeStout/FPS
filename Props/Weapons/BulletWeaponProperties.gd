@@ -25,7 +25,6 @@ class_name BulletWeaponProperties
 ## The distance where the damage begins falling off, and the max distance the weapon can reach
 @export var dmg_falloff := Vector2(10, 30)
 ## The strength of the kick given to rag dolls
-@export var impulse := 0.0
 ## Position for lining up the weapon
 @export var pos_offset : Vector3
 ## Rotation for lining up the weapon

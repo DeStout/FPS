@@ -141,10 +141,7 @@ func _input(event) -> void:
 
 
 func _swing() -> void:
-	if !switching_weapons:
-		if fp_animator.is_playing():
-			fp_animator.stop()
-		fp_animator.play(weapon_held.get_anim("Shoot") + str(randi_range(1,2)))
+	pass
 
 
 func _fire() -> void:
@@ -297,7 +294,7 @@ func _equip_weapon(new_weapon : Weapon) -> void:
 	if fpweapon[0] != null:
 		for mesh in fpweapon:
 			mesh.visible = true
-			
+	
 	weapon_state_machine.travel("Alert")
-	#new_weapon.visible = true
+	new_weapon.visible = true
 	await fp_animator.animation_finished
