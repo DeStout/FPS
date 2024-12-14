@@ -329,7 +329,8 @@ func _pick_up_ammo(new_pick_up : PickUp) -> void:
 	if _have_weapon(new_pick_up.weapon_type):
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
 		if weapon_for is BulletWeapon and weapon_for.can_pick_up_ammo():
-			weapon_for.add_ammo(weapon_held.properties.mag_size)
+			weapon_for.add_ammo(_get_weapon(new_pick_up.weapon_type) \
+															.properties.mag_size)
 			new_pick_up.picked_up()
 
 

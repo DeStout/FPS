@@ -245,9 +245,11 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 	if zoomed:
 		_gun_alt()
 	super(new_weapon)
+	HUD.show_weapon_info(weapon_held.weapon_type != Globals.WEAPONS.SLAPPER)
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		
 
 
 func _cycle_switch_weapon() -> void:

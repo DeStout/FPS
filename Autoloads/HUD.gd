@@ -100,6 +100,10 @@ func fade_out() -> void:
 	return
 
 
+func show_weapon_info(show : bool) -> void:
+	$UI/Weapon.visible = show
+
+
 func update_weapon(mag_ammo, mag_size, ammo_extra) -> void:
 	ammo_in_mag.text = str(mag_ammo) + " / " + str(mag_size)
 	extra_ammo.text = str(ammo_extra)
