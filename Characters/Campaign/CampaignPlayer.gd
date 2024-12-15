@@ -1,8 +1,6 @@
 extends CharacterBase
 
 
-signal weapon_picked_up
-
 @onready var fp_animator : AnimationPlayer = \
 								$AimHelper/FirstPerson/AnimationPlayer
 @onready var fp_weapon_meshes := [[null],
@@ -53,6 +51,7 @@ func _physics_process(delta) -> void:
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
 			Globals.WEAPON_NAMES[weapon_held.weapon_type] + "/Guard/blend_position"
+			
 	_set_speed(input_dir)
 	if direction:
 		tween.tween_property(anim_tree, lower_blend_pos, input_dir, 0.1)
@@ -191,13 +190,9 @@ func _reload() -> void:
 
 func _pick_up_weapon(new_weapon : PickUp) -> Weapon:
 	var added_weapon = super(new_weapon)
-	if added_weapon:
-		# Signal to Debug
-		weapon_picked_up.emit(added_weapon)
-		
-		if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-			HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.properties.mag_size, weapon_held.extra_ammo)
+	if added_weapon and weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+							weapon_held.properties.mag_size, weapon_held.extra_ammo)
 	return added_weapon
 
 

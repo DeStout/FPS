@@ -58,7 +58,8 @@ func _seek_goal(delta : float) -> void:
 	
 	var tween := create_tween().set_parallel()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
-						enemy.weapon_held.stats.state_name + "/Guard/blend_position"
+						Globals.WEAPON_NAMES[enemy.weapon_held.weapon_type] + \
+														"/Alert/blend_position"
 	enemy._set_speed(input_dir)
 	if direction:
 		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, input_dir, 0.1)
@@ -91,7 +92,7 @@ func set_goal() -> void:
 			return
 	
 	if enemy.weapon_held:
-		if enemy.weapon_held.stats.weapon_type <= Globals.WEAPONS.PISTOL:
+		if enemy.weapon_held.weapon_type <= Globals.WEAPONS.PISTOL:
 			var new_weapon : Globals.WEAPONS = Globals.WEAPONS.SMG
 			var weapon_loc : Node3D = null
 			while !weapon_loc or new_weapon == Globals.WEAPONS.size():
@@ -102,8 +103,7 @@ func set_goal() -> void:
 				return
 		
 		if enemy.weapon_held.extra_ammo == 0:
-			var ammo_loc = \
-						enemy.get_closest_weapon(enemy.weapon_held.stats.weapon_type)
+			var ammo_loc = enemy.get_closest_weapon(enemy.weapon_held.weapon_type)
 			if ammo_loc and ammo_loc.is_available():
 				goal = ammo_loc
 				return

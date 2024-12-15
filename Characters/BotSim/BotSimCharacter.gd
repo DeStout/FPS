@@ -22,29 +22,20 @@ func set_color(new_color : Color) -> void:
 
 func _ready() -> void:
 	super()
-	_starting_weapons()
-
-
-func _starting_weapons() -> void:
-	var starting_weapon = _rand_weapon()
-	weapons.append(starting_weapon)
-	_switch_weapon(_get_weapon(starting_weapon))
-	#weapons.append(Globals.WEAPONS.PISTOL)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
-	#weapons.append(Globals.WEAPONS.SMG)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SMG))
-	#weapons.append(Globals.WEAPONS.RIFLE)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.RIFLE))
-	#weapons.append(Globals.WEAPONS.SHOTGUN)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SHOTGUN))
-	#weapons.append(Globals.WEAPONS.SNIPER)
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.SNIPER))
+	add_weapon(Globals.weapons[_rand_weapon()].instantiate())
 
 
 func _switch_weapon(new_weapon : Node3D) -> void:
 	super(new_weapon)
-	
 	weapon_state_machine.travel("Alert")
+
+
+func _reset_weapons() -> void:
+	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
+	
+	for weapon in weapons.get_children():
+		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
+			weapon.queue_free()
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
@@ -58,8 +49,8 @@ func _die() -> void:
 	# Signal to PlayerContainer.add_to_scoreboard
 	add_score.emit(self, last_shot_by)
 	
-	if weapon_held.stats.weapon_type != Globals.WEAPONS.SLAPPER:
-		var weapon_info := [weapon_held.stats.weapon_type,
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		var weapon_info := [weapon_held.weapon_type,
 								weapon_held.extra_ammo,
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
@@ -67,8 +58,6 @@ func _die() -> void:
 	await super()
 	
 	armor = 0
-	weapons = [Globals.WEAPONS.SLAPPER]
-	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
 	
 	# Do this now and in respawn() because Godot has priority issues
 	global_position = current_level.get_spawn_point().position
@@ -88,12 +77,8 @@ func respawn() -> void:
 	set_processing(true)
 	_disable_collisions(false)
 	
-	var spawn_weapon = _rand_weapon()
-	weapons.append(spawn_weapon)
-	_switch_weapon(_get_weapon(spawn_weapon))
-	#weapons.append(Globals.WEAPONS.PISTOL)
-	#_get_weapon(Globals.WEAPONS.PISTOL).reset()
-	#_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
+	_reset_weapons()
+	add_weapon(Globals.weapons[_rand_weapon()].instantiate())
 
 
 func set_current_camera(is_current : bool) -> void:

@@ -60,7 +60,7 @@ func add_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 	rag_doll.set_material(temp_mat)
 	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
 	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
-											shooter.weapon_held.stats.impulse)
+										shooter.weapon_held.impulse)
 	
 	rag_dolls.push_back(rag_doll)
 	if rag_dolls.size() > MAX_RAG_DOLLS:

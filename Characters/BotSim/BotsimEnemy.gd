@@ -159,14 +159,6 @@ func pickup_removed(pickup) -> void:
 		state_machine.current_state.check_pickup(pickup)
 
 
-func _shoot() -> void:
-	super()
-	trigger_pulled = false
-	var speed_variance = randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
-	var shoot_speed = weapon_held.stats.shots_per_second * shoot_speed_mod * speed_variance
-	$ShootTimer.start(1.0 / shoot_speed)
-
-
 func _swing() -> void:
 	super()
 	_slap()

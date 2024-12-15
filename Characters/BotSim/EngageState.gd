@@ -95,7 +95,8 @@ func _move_to_target(delta) -> void:
 								Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
-						enemy.weapon_held.stats.state_name + "/Alert/blend_position"
+						Globals.WEAPON_NAMES[enemy.weapon_held.weapon_type] + \
+														"/Alert/blend_position"
 	enemy._set_speed(input_dir)
 	if direction:
 		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, input_dir, 0.1)
@@ -124,11 +125,14 @@ func set_input(path_goal : Vector3) -> Vector2:
 	# Prioritize moving to within the current weapon's range of the target
 	var dist_to_target := \
 					enemy.global_position.distance_to(enemy.target.global_position)
-	if dist_to_target > enemy.weapon_held.stats.dmg_falloff[1] / 2:
+	var range := Vector2(0.75, 1.0)
+	if enemy.weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		range = enemy.weapon_held.properties.dmg_falloff
+	if dist_to_target > range[1] / 2:
 		move_dir = Vector2.ZERO
 		return Vector2(enemy.to_local(path_goal).x, 
 										enemy.to_local(path_goal).z).normalized()
-	elif dist_to_target < enemy.weapon_held.stats.dmg_falloff[0] / 2:
+	elif dist_to_target < range[0] / 2:
 		move_dir = Vector2.ZERO
 		return Vector2.DOWN
 	

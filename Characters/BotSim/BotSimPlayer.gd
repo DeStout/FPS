@@ -1,23 +1,32 @@
 extends BotSimCharacter
 
 
-@onready var fp_animator : AnimationPlayer = $AimHelper/FPView/AnimationPlayer
-@onready var fp_weapon : Node3D = %FPWeapons/Pistol
+@onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
+@onready var fp_weapon_meshes := [[null],
+				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 
+				$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolBody/PistolBody],
+				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGMag/SMGMag,
+				$AimHelper/FirstPerson/Mannequin/Skeleton3D/SMGBody/SMGBody],
+				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/RifleBody/RifleBody,
+				$AimHelper/FirstPerson/Mannequin/Skeleton3D/RifleMag/RifleMag],
+			[$AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunBody/ShotgunBody,
+			 $AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunPump/ShotgunPump,
+			 $AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunShell/ShotgunShell],
+					[null]]
 
 
 func _ready() -> void:
 	super()
-	weapons.append(Globals.WEAPONS.PISTOL)
-	_switch_weapon(_get_weapon(Globals.WEAPONS.PISTOL))
-	nozzle = fp_weapon.nozzle
-	HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
+	weapon_state_machine.travel("Alert")
+	nozzle = $AimHelper/FirstPerson/Nozzle
+	
 
 
 func set_color(new_color : Color) -> void:
 	super(new_color)
-	var fp_mat : BaseMaterial3D = $AimHelper/FPView/Mannequin/Skeleton3D/Surface. \
-												get_surface_override_material(0)
+	var fp_mat : BaseMaterial3D = \
+						$AimHelper/FirstPerson/Mannequin/Skeleton3D/MannySurface \
+												.get_surface_override_material(0)
 	fp_mat.albedo_color = new_color
 
 
@@ -44,11 +53,11 @@ func _physics_process(delta) -> void:
 		jump()
 		
 	var input_dir = Input.get_vector("StrifeLeft", "StrifeRight", "Forward", "Backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
+	var direction := basis * Vector3(input_dir.x, 0, input_dir.y)
 	
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
-						weapon_held.stats.state_name + "/Guard/blend_position"
+			Globals.WEAPON_NAMES[weapon_held.weapon_type] + "/Alert/blend_position"
 	
 	_set_speed(input_dir)
 	if direction:
@@ -65,9 +74,9 @@ func _physics_process(delta) -> void:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 		
-		if !fp_animator.current_animation == weapon_held.stats.shoot_anim and \
+		if !weapon_held.is_fire_anim(fp_animator.current_animation) and \
 							!weapon_held.is_reloading and !switching_weapons:
-			fp_animator.play(weapon_held.stats.run_anim)
+			fp_animator.play(weapon_held.get_anim("Run"))
 	else:
 		tween.tween_property(anim_tree, lower_blend_pos, Vector2.ZERO, 0.1)
 		tween.tween_property(anim_tree, weapon_blend_pos, -1, 0.1)
@@ -77,9 +86,9 @@ func _physics_process(delta) -> void:
 		if ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
 		
-		if fp_animator.current_animation == weapon_held.stats.run_anim or \
+		if !weapon_held.is_fire_anim(fp_animator.current_animation) or \
 							!fp_animator.is_playing() and !switching_weapons:
-			fp_animator.play(weapon_held.stats.idle_anim)
+			fp_animator.play(weapon_held.get_anim("Idle"))
 	move_and_slide()
 
 
@@ -138,23 +147,16 @@ func _input(event) -> void:
 				_cycle_switch_weapon()
 
 
-func _swing() -> void:
+func _fire() -> void:
+	var can_shoot : bool = weapon_held.can_fire()
 	super()
-	if fp_animator.is_playing():
-		fp_animator.stop()
-	fp_animator.play("Slap")
-
-
-func _shoot() -> void:
-	var can_shoot : bool = weapon_held.can_shoot()
-	super()
-	if can_shoot and weapon_held.get_weapon_type() != Globals.WEAPONS.SLAPPER \
-			and !switching_weapons:
+	if can_shoot and !switching_weapons:
 		if fp_animator.is_playing():
 			fp_animator.stop()
-		fp_animator.play(weapon_held.stats.shoot_anim)
-	HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
+		fp_animator.play(weapon_held.get_anim("Shoot"))
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+						weapon_held.properties.mag_size, weapon_held.extra_ammo)
 
 
 func _zoom() -> void:
@@ -164,7 +166,7 @@ func _zoom() -> void:
 	var cam = $AimHelper/Camera
 	var fps_cam = $FPCanvas/SubViewportContainer/SubViewport/FPCamera
 	if zoomed:
-		zoom_level = weapon_held.stats.zoom_level
+		zoom_level = weapon_held.properties.zoom_level
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
 		tween.tween_property(fps_cam, "fov", 75 / zoom_level, zoom_time)
@@ -183,23 +185,27 @@ func _zoom() -> void:
 
 
 func _reload() -> void:
+	if weapon_held.can_reload() and !switching_weapons:
+		fp_animator.play(weapon_held.get_anim("Reload"))
 	await super()
-	HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
-
-
-func _pick_up_weapon(new_weapon) -> Node3D:
-	var added_weapon = super(new_weapon)
-	if added_weapon:
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
+								weapon_held.properties.mag_size, weapon_held.extra_ammo)
+
+
+func _pick_up_weapon(new_weapon : PickUp) -> Weapon:
+	var added_weapon = super(new_weapon)
+	if added_weapon and weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+							weapon_held.properties.mag_size, weapon_held.extra_ammo)
 	return added_weapon
 
 
 func _pick_up_ammo(new_ammo : Node3D) -> void:
 	super(new_ammo)
-	HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+							weapon_held.properties.mag_size, weapon_held.extra_ammo)
 
 
 func _pick_up_health(new_health : Node3D) -> void:
@@ -225,22 +231,29 @@ func respawn() -> void:
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
-func get_fp_weapon(weapon : Node3D) -> MeshInstance3D:
-	var new_fp_weapon : MeshInstance3D = null
+func get_fp_weapon(weapon : int) -> Array:
+	var new_fp_weapon : Array = [null]
 	if weapon != null:
-		var fp_weapons := %FPWeapons.get_children()
-		for fpweapon in fp_weapons:
-			if fpweapon.weapon_type == weapon.get_weapon_type():
-				new_fp_weapon = fpweapon
+		for i in range(fp_weapon_meshes.size()):
+			if i == weapon:
+				new_fp_weapon = fp_weapon_meshes[i]
 	return new_fp_weapon
+
+
+func add_weapon(new_weapon : Weapon) -> void:
+	super(new_weapon)
+	weapon_held.get_node("Mesh").cast_shadow = \
+						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 
 
 func _switch_weapon(new_weapon) -> void:
 	if zoomed:
 		_gun_alt()
 	super(new_weapon)
-	HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.stats.mag_size, weapon_held.extra_ammo)
+	HUD.show_weapon_info(weapon_held.weapon_type != Globals.WEAPONS.SLAPPER)
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+						weapon_held.properties.mag_size, weapon_held.extra_ammo)
 
 
 func _cycle_switch_weapon() -> void:
@@ -254,34 +267,40 @@ func _cycle_switch_weapon() -> void:
 		if cycle_dir > 0: from = 0; to = Globals.WEAPONS.size()
 		else: from = Globals.WEAPONS.size(); to = 0
 		for weapon_type in range(from, to, cycle_dir):
-			weapon_type += weapon_held.stats.weapon_type + cycle_dir
+			weapon_type += weapon_held.weapon_type + cycle_dir
 			weapon_type %= Globals.WEAPONS.size()
-			for weapon in weapons:
-				if weapon == weapon_type:
-					_switch_weapon(_get_weapon(weapon))
+			for weapon in weapons.get_children():
+				if weapon.weapon_type == weapon_type:
+					_switch_weapon(_get_weapon(weapon.weapon_type))
 					return
 
 
-func _unequip_weapon(old_weapon) -> void:
+func _unequip_weapon(old_weapon : Weapon) -> void:
 	if old_weapon == null:
 		return
-	fp_animator.play(old_weapon.stats.equip_anim)
+	fp_animator.play(old_weapon.get_anim("Equip"))
 	await fp_animator.animation_finished
+	
 	old_weapon.visible = false
-	get_fp_weapon(old_weapon).visible = false
+	var fpweapon : Array = get_fp_weapon(old_weapon.weapon_type)
+	if fpweapon[0] != null:
+		for mesh in fpweapon:
+			mesh.visible = false
 
 
 func _equip_weapon(new_weapon) -> void:
-	if weapon_held.stats.weapon_type == Globals.WEAPONS.SNIPER:
+	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
 		HUD.show_crosshairs(false)
 	else:
 		HUD.show_crosshairs(true)
 		
-	fp_animator.play_backwards(new_weapon.stats.equip_anim)
-	fp_weapon = get_fp_weapon(new_weapon)
+	fp_animator.play_backwards(new_weapon.get_anim("Equip"))
+	
+	var fpweapon : Array = get_fp_weapon(new_weapon.weapon_type)
+	if fpweapon[0] != null:
+		for mesh in fpweapon:
+			mesh.visible = true
+	
 	weapon_state_machine.travel("Alert")
 	new_weapon.visible = true
-	fp_weapon.visible = true
-	nozzle = fp_weapon.nozzle
 	await fp_animator.animation_finished
-	super(new_weapon)
