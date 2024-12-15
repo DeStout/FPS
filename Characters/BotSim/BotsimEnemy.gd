@@ -161,7 +161,7 @@ func pickup_removed(pickup) -> void:
 
 func _swing() -> void:
 	super()
-	_slap()
+	slap()
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:

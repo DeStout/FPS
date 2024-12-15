@@ -23,7 +23,7 @@ func align_and_scale(nozzle_point : Vector3, collision_point : Vector3) -> void:
 	from = nozzle_point
 	global_position = nozzle_point
 	to = collision_point
-	basis = basis.looking_at(to_local(to))
+	basis = Basis.looking_at(to_local(to))
 	travel_time = (from - to).length() / travel_speed
 	
 	set_process(true)

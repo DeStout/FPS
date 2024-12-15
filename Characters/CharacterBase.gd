@@ -197,7 +197,7 @@ func _swing() -> void:
 	pass
 
 
-func _slap() -> void:
+func slap() -> void:
 	var slappable = _get_weapon(Globals.WEAPONS.SLAPPER).slappable
 	for character in slappable:
 		if character != self:

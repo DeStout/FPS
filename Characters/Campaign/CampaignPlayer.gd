@@ -231,9 +231,11 @@ func get_fp_weapon(weapon : int) -> Array:
 
 
 func add_weapon(new_weapon : Weapon) -> void:
-	super(new_weapon)
-	weapon_held.get_node("Mesh").cast_shadow = \
+	if _have_weapon(new_weapon.weapon_type):
+		return
+	new_weapon.get_node("Mesh").cast_shadow = \
 						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	super(new_weapon)
 
 
 func _switch_weapon(new_weapon : Weapon) -> void:
@@ -244,7 +246,6 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 						weapon_held.properties.mag_size, weapon_held.extra_ammo)
-		
 
 
 func _cycle_switch_weapon() -> void:

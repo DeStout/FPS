@@ -24,9 +24,9 @@ func _ready() -> void:
 
 func set_color(new_color : Color) -> void:
 	super(new_color)
-	var fp_mat : BaseMaterial3D = \
-						$AimHelper/FirstPerson/Mannequin/Skeleton3D/MannySurface \
-												.get_surface_override_material(0)
+	var fp_mat : BaseMaterial3D = mat.duplicate()
+	$AimHelper/FirstPerson/Mannequin/Skeleton3D/MannySurface \
+										.set_surface_override_material(0, fp_mat)
 	fp_mat.albedo_color = new_color
 
 
@@ -69,7 +69,6 @@ func _physics_process(delta) -> void:
 			velocity.y = move_toward(velocity.y, \
 							-ladder.basis.z.dot(direction) * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
-
 		else:
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
@@ -86,7 +85,7 @@ func _physics_process(delta) -> void:
 		if ladder:
 			velocity.y = move_toward(velocity.y, 0, deaccel * delta)
 		
-		if !weapon_held.is_fire_anim(fp_animator.current_animation) or \
+		if fp_animator.current_animation == weapon_held.get_anim("Run") or \
 							!fp_animator.is_playing() and !switching_weapons:
 			fp_animator.play(weapon_held.get_anim("Idle"))
 	move_and_slide()
@@ -227,7 +226,7 @@ func _show_damage(shooter : CharacterBase) -> void:
 
 
 func respawn() -> void:
-	await super()
+	super()
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
@@ -241,12 +240,14 @@ func get_fp_weapon(weapon : int) -> Array:
 
 
 func add_weapon(new_weapon : Weapon) -> void:
-	super(new_weapon)
-	weapon_held.get_node("Mesh").cast_shadow = \
+	if _have_weapon(new_weapon.weapon_type):
+		return
+	new_weapon.get_node("Mesh").cast_shadow = \
 						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	super(new_weapon)
 
 
-func _switch_weapon(new_weapon) -> void:
+func _switch_weapon(new_weapon : Weapon) -> void:
 	if zoomed:
 		_gun_alt()
 	super(new_weapon)
@@ -254,6 +255,21 @@ func _switch_weapon(new_weapon) -> void:
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+
+
+func _reset_weapons() -> void:
+	for weapon in weapons.get_children():
+		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
+			_show_fp_weapon(weapon.weapon_type, false)
+	super()
+	fp_animator.play("SlapperIdle")
+
+
+func _show_fp_weapon(weapon_type : Globals.WEAPONS, show : bool) -> void:
+	var fpweapon : Array = get_fp_weapon(weapon_type)
+	if fpweapon[0] != null:
+		for mesh in fpweapon:
+			mesh.visible = show
 
 
 func _cycle_switch_weapon() -> void:
@@ -282,25 +298,18 @@ func _unequip_weapon(old_weapon : Weapon) -> void:
 	await fp_animator.animation_finished
 	
 	old_weapon.visible = false
-	var fpweapon : Array = get_fp_weapon(old_weapon.weapon_type)
-	if fpweapon[0] != null:
-		for mesh in fpweapon:
-			mesh.visible = false
+	_show_fp_weapon(old_weapon.weapon_type, false)
 
 
-func _equip_weapon(new_weapon) -> void:
+func _equip_weapon(new_weapon : Weapon) -> void:
 	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
 		HUD.show_crosshairs(false)
 	else:
 		HUD.show_crosshairs(true)
+	
+	new_weapon.visible = true
+	_show_fp_weapon(new_weapon.weapon_type, true)
 		
 	fp_animator.play_backwards(new_weapon.get_anim("Equip"))
-	
-	var fpweapon : Array = get_fp_weapon(new_weapon.weapon_type)
-	if fpweapon[0] != null:
-		for mesh in fpweapon:
-			mesh.visible = true
-	
 	weapon_state_machine.travel("Alert")
-	new_weapon.visible = true
 	await fp_animator.animation_finished

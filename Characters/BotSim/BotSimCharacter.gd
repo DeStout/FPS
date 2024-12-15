@@ -5,6 +5,7 @@ extends CharacterBase
 signal died
 signal add_score
 
+var mat : BaseMaterial3D = load("res://Characters/BotSim/BotSimMat.tres")
 var team : Color
 
 
@@ -15,9 +16,10 @@ func new_name(new_name : String) -> void:
 
 func set_color(new_color : Color) -> void:
 	team = new_color
-	var mat : BaseMaterial3D = $Mannequin/Mannequin/Skeleton3D/Surface \
-												.get_surface_override_material(0)
-	mat.albedo_color = new_color
+	var team_mat : BaseMaterial3D = mat.duplicate()
+	$Mannequin/Mannequin/Skeleton3D/Surface. \
+										set_surface_override_material(0, team_mat)
+	team_mat.albedo_color = new_color
 
 
 func _ready() -> void:
@@ -25,18 +27,17 @@ func _ready() -> void:
 	add_weapon(Globals.weapons[_rand_weapon()].instantiate())
 
 
-func _switch_weapon(new_weapon : Node3D) -> void:
+func _switch_weapon(new_weapon : Weapon) -> void:
 	super(new_weapon)
 	weapon_state_machine.travel("Alert")
 
 
 func _reset_weapons() -> void:
-	_switch_weapon(_get_weapon(Globals.WEAPONS.SLAPPER))
-	
 	for weapon in weapons.get_children():
 		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
 			weapon.queue_free()
-
+	weapon_held = _get_weapon(Globals.WEAPONS.SLAPPER)
+	
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	if !Globals.game.bot_sim_settings.friendly_fire and !is_enemy(shooter):

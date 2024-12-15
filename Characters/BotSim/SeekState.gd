@@ -102,7 +102,8 @@ func set_goal() -> void:
 				goal = weapon_loc
 				return
 		
-		if enemy.weapon_held.extra_ammo == 0:
+		if enemy.weapon_held.weapon_type != Globals.WEAPONS.SLAPPER and \
+												enemy.weapon_held.extra_ammo == 0:
 			var ammo_loc = enemy.get_closest_weapon(enemy.weapon_held.weapon_type)
 			if ammo_loc and ammo_loc.is_available():
 				goal = ammo_loc

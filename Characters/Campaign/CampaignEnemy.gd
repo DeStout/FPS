@@ -220,7 +220,7 @@ func _fire() -> void:
 
 func _swing() -> void:
 	super()
-	_slap()
+	slap()
 
 
 func _jump() -> void:

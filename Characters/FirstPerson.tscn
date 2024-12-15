@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvpfdvyui6d4b"]
+[gd_scene load_steps=9 format=3 uid="uid://cvpfdvyui6d4b"]
 
 [ext_resource type="PackedScene" uid="uid://b688j3ddo1ufy" path="res://Characters/Anims/FirstPerson/FirstPersonAnims.blend" id="1_2rk1l"]
 [ext_resource type="Material" uid="uid://cqwagpvoohpyk" path="res://Props/Weapons/Pistol/Pistol_Mat.tres" id="2_fy0ol"]
+[ext_resource type="Script" path="res://Characters/Anims/FirstPerson/FirstPerson.gd" id="2_s7flq"]
 [ext_resource type="Material" uid="uid://cx4qos30v047i" path="res://Props/Weapons/SMG/SMG_Mat.tres" id="3_xemk3"]
 [ext_resource type="Material" uid="uid://d2cwb1tlpjtsi" path="res://Props/Weapons/Rifle/Rifle_Mat.tres" id="4_bceup"]
 [ext_resource type="Material" uid="uid://bgf07fdohwmm2" path="res://Props/Weapons/Shotgun/Shotgun_Mat.tres" id="5_p62lx"]
@@ -11,6 +12,7 @@
 albedo_texture = ExtResource("6_u5ils")
 
 [node name="FirstPerson" instance=ExtResource("1_2rk1l")]
+script = ExtResource("2_s7flq")
 
 [node name="Skeleton3D" parent="Mannequin" index="0"]
 bones/0/rotation = Quaternion(4.39052e-05, 0.999996, 0.00282772, -3.37466e-08)
@@ -147,6 +149,10 @@ transform = Transform3D(100, -2.22045e-14, 2.22045e-14, 2.22045e-14, 100, -7.549
 [node name="ShotgunShell" parent="Mannequin/Skeleton3D/ShotgunShell" index="0"]
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_5ay5l")
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_auto_capture = false
+playback_default_blend_time = 0.15
 
 [node name="Nozzle" type="Node3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128512, 0.108691, -2.43331)
