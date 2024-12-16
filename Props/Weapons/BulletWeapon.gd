@@ -5,11 +5,19 @@ extends Weapon
 @export var properties : BulletWeaponProperties = null
 var extra_ammo : int
 var ammo_in_mag : int
+@onready var variance := properties.default_variance
 
 
 func _ready() -> void:
 	super()
 	$FireTimer.wait_time = 1.0 / properties.shots_per_second
+
+
+func _process(delta: float) -> void:
+	if variance > properties.default_variance:
+		var reset_amt := properties.max_variance - properties.default_variance
+		reset_amt = reset_amt * (delta / properties.variance_reset)
+		variance = max(properties.default_variance, variance - reset_amt)
 
 
 func reset() -> void:
@@ -28,12 +36,13 @@ func fire() -> void:
 	for shot in range(properties.num_shots):
 		var target_pos := Vector3.FORWARD * float(properties.dmg_falloff[1])
 		wielder.shoot_cast.target_position = target_pos
-		wielder.shoot_cast.rotate_x(randf_range(0 , properties.shot_variance))
+		wielder.shoot_cast.rotate_x(randf_range(0 , variance))
 		wielder.shoot_cast.rotate_z(randf_range(-PI, PI))
 		
 		_check_shot_collision()
 		
 		wielder.shoot_cast.rotation = Vector3.ZERO
+	variance = min(properties.max_variance, variance + properties.variance_build)
 	
 	if !properties.automatic:
 		wielder.trigger_pulled = false
