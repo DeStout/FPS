@@ -63,6 +63,17 @@ func set_enemies(new_enemies : Array[CharacterBase]) -> void:
 	enemies_vis.fill(false)
 
 
+func _fire() -> void:
+	super()
+	trigger_pulled = false
+	var speed_variance := randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
+	var shoot_speed := 0.25 * speed_variance
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		shoot_speed = weapon_held.properties.shots_per_second * \
+												shoot_speed_mod * speed_variance
+	$ShootTimer.start(1.0 / shoot_speed)
+
+
 func goal_reached() -> void:
 	if state_machine.current_state.name == "SeekState":
 		state_machine.current_state.set_goal()
