@@ -25,6 +25,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
 func _physics_process(delta) -> void:
@@ -153,6 +155,7 @@ func _fire() -> void:
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
 func _zoom() -> void:
@@ -193,6 +196,7 @@ func _pick_up_weapon(new_weapon : PickUp) -> Weapon:
 	if added_weapon and weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 							weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.bloom_reticle(weapon_held.get_variance_perc())
 	return added_weapon
 
 
@@ -246,6 +250,7 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
 func _cycle_switch_weapon() -> void:
@@ -282,9 +287,9 @@ func _unequip_weapon(old_weapon : Weapon) -> void:
 
 func _equip_weapon(new_weapon : Weapon) -> void:
 	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
-		HUD.show_crosshairs(false)
+		HUD.show_reticle(false)
 	else:
-		HUD.show_crosshairs(true)
+		HUD.show_reticle(true)
 		
 	fp_animator.play_backwards(new_weapon.get_anim("Equip"))
 	

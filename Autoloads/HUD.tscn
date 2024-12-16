@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2bya7jvn8luj"]
+[gd_scene load_steps=15 format=3 uid="uid://c2bya7jvn8luj"]
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
 [ext_resource type="Script" path="res://Autoloads/Scoreboard.gd" id="2_ooany"]
+[ext_resource type="Texture2D" uid="uid://ba26jwpggkqi2" path="res://Characters/Reticle.svg" id="3_c486t"]
 [ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="5_7v388"]
 [ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="6_1t7b4"]
 [ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="7_7tmu3"]
@@ -68,9 +69,26 @@ grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 metadata/_edit_use_anchors_ = true
 
-[node name="Crosshair" type="Sprite2D" parent="UI"]
-scale = Vector2(1.2, 1.2)
+[node name="Reticle" type="Node2D" parent="UI"]
+
+[node name="L_Crosshair" type="Sprite2D" parent="UI/Reticle"]
+modulate = Color(1, 1, 1, 0.6)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_c486t")
+offset = Vector2(-50, 0)
+
+[node name="R_Crosshair" type="Sprite2D" parent="UI/Reticle"]
+modulate = Color(1, 1, 1, 0.6)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_c486t")
+offset = Vector2(50, 0)
+flip_h = true
+
+[node name="Crosshair" type="Sprite2D" parent="UI/Reticle"]
+modulate = Color(1, 1, 1, 0.6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_7v388")
+flip_h = true
 
 [node name="Scope" type="Sprite2D" parent="UI"]
 visible = false

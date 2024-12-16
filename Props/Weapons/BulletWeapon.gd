@@ -48,6 +48,11 @@ func fire() -> void:
 		wielder.trigger_pulled = false
 
 
+func get_variance_perc() -> float:
+	return (variance - properties.default_variance) / \
+						(properties.max_variance - properties.default_variance)
+
+
 func _check_shot_collision() -> void:
 	wielder.shoot_cast.force_raycast_update()
 	var level := wielder.current_level

@@ -10,7 +10,7 @@ var game_over = false
 @onready var leader_list := $LeaderList
 
 @onready var ui := $UI
-@onready var crosshair := $UI/Crosshair
+@onready var reticle := $UI/Reticle
 @onready var scope := $UI/Scope
 @onready var ammo_in_mag := $UI/Weapon/AmmoInMag
 @onready var extra_ammo := $UI/Weapon/ExtraAmmo
@@ -22,9 +22,11 @@ var game_over = false
 @onready var damage_left := $UI/Damage/Left
 @onready var damage_right := $UI/Damage/Right
 
-
 @export var open_time := 1.0
 @export var close_time := 1.5
+
+var default_reticle_pos := 50
+var max_reticle_bloom := 150
 
 
 func _ready() -> void:
@@ -152,8 +154,14 @@ func _hide_locked() -> void:
 	$Locked.visible = false
 
 
-func show_crosshairs(show) -> void:
-	crosshair.visible = show
+func show_reticle(show) -> void:
+	reticle.visible = show
+
+
+func bloom_reticle(bloom_perc : float) -> void:
+	var bloom = bloom_perc * (max_reticle_bloom - default_reticle_pos)
+	reticle.get_child(0).offset.x = -bloom - default_reticle_pos
+	reticle.get_child(1).offset.x = bloom + default_reticle_pos
 
 
 func zoom_crosshairs(show) -> void:
