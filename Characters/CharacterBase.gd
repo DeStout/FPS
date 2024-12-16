@@ -336,6 +336,7 @@ func _pick_up_ammo(new_pick_up : PickUp) -> void:
 
 func add_weapon(new_weapon : Weapon) -> void:
 	if _have_weapon(new_weapon.weapon_type):
+		breakpoint
 		return
 		
 	new_weapon.wielder = self

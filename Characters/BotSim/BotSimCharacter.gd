@@ -35,6 +35,7 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 func _reset_weapons() -> void:
 	for weapon in weapons.get_children():
 		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
+			weapons.remove_child(weapon)
 			weapon.queue_free()
 	weapon_held = _get_weapon(Globals.WEAPONS.SLAPPER)
 	
@@ -87,9 +88,11 @@ func set_current_camera(is_current : bool) -> void:
 
 
 func _rand_weapon() -> int:
-	var spawn_weapon = randf_range(1, pow(Globals.WEAPONS.size()-1, 2))
-	spawn_weapon = int(sqrt(spawn_weapon))
-	return Globals.WEAPONS.size() - spawn_weapon - 1
+	var weight := 4.0
+	var spawn_weapon = randf_range(1, (Globals.WEAPONS.size()-1) ** weight)
+	spawn_weapon = int(pow(spawn_weapon, 1.0 / weight))
+	spawn_weapon = Globals.WEAPONS.size()-1 - spawn_weapon
+	return spawn_weapon
 
 
 func character_killed(deceased) -> void:

@@ -9,15 +9,16 @@ radial_segments = 9
 rings = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcg63"]
-transparency = 1
-cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.0392157)
+albedo_color = Color(0, 1, 0.99641, 1)
 emission_enabled = true
-emission = Color(0.994931, 1, 0.678262, 1)
+emission = Color(1, 0.395197, 0, 1)
+emission_energy_multiplier = 16.0
+subsurf_scatter_strength = 1.0
+texture_repeat = false
 disable_receive_shadows = true
 distance_fade_mode = 1
-distance_fade_min_distance = 0.25
-distance_fade_max_distance = 1.0
+distance_fade_min_distance = 1.0
+distance_fade_max_distance = 20.0
 
 [node name="ShotTrail" type="Node3D"]
 top_level = true
