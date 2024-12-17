@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://barsvh0ntyosw"]
 
 [ext_resource type="PackedScene" uid="uid://cqknl4fa1ofy" path="res://Props/Weapons/WeaponBase.tscn" id="1_pxpne"]
-[ext_resource type="Script" path="res://Props/Weapons/BulletWeapon.gd" id="2_3mp5q"]
+[ext_resource type="Script" path="res://Props/Weapons/Shotgun/Shotgun.gd" id="2_w6rp5"]
 [ext_resource type="PackedScene" uid="uid://ddpoj4h308su2" path="res://Props/Weapons/Shotgun/ShotgunBase.tscn" id="3_ejx6r"]
 [ext_resource type="Resource" uid="uid://dfch3e5wm7ygn" path="res://Props/Weapons/Shotgun/ShotgunProperties.tres" id="3_l708d"]
 [ext_resource type="AudioStream" uid="uid://osy8548poupm" path="res://Props/Weapons/Shotgun/ShotgunShoot.ogg" id="5_lrs1d"]
 [ext_resource type="AudioStream" uid="uid://c1rwua6fwo1vq" path="res://Props/Weapons/Rifle/RifleReload.ogg" id="5_sodi4"]
 
 [node name="Shotgun" instance=ExtResource("1_pxpne")]
-script = ExtResource("2_3mp5q")
+script = ExtResource("2_w6rp5")
 properties = ExtResource("3_l708d")
 weapon_type = 4
 impulse = 350

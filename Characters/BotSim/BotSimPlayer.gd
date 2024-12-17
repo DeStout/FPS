@@ -149,9 +149,8 @@ func _input(event) -> void:
 
 
 func _fire() -> void:
-	var can_shoot : bool = weapon_held.can_fire()
-	super()
-	if can_shoot and !switching_weapons:
+	if weapon_held.can_fire() and !switching_weapons:
+		super()
 		if fp_animator.is_playing():
 			fp_animator.stop()
 		fp_animator.play(weapon_held.get_anim("Shoot"))
@@ -192,7 +191,17 @@ func _reload() -> void:
 	await super()
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
-								weapon_held.properties.mag_size, weapon_held.extra_ammo)
+						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+
+
+func shell_loaded() -> void:
+	if weapon_held.weapon_type == Globals.WEAPONS.SHOTGUN:
+		weapon_held.load_shell()
+		HUD.update_weapon(weapon_held.ammo_in_mag, \
+					weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		if weapon_held.ammo_in_mag < weapon_held.properties.mag_size:
+			fp_animator.seek(0.4)
+			fp_animator.play(weapon_held.get_anim("Reload"))
 
 
 func _pick_up_weapon(new_weapon : PickUp) -> Weapon:

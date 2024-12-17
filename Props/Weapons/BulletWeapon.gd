@@ -81,11 +81,6 @@ func calculate_damage(body_seg : BodySeg) -> int:
 										properties.dmg_falloff[1], \
 										damage, damage / 3))
 	return damage
-	
-	#if shot_dist >= properties.dmg_falloff[0]:
-		#shot_dist -= properties.dmg_falloff[0]
-		#var weight := shot_dist / (dmg_falloff[1] - dmg_falloff[0])
-		#damage = int(lerp(damage, damage / 2, weight))
 
 
 func can_reload() -> bool:

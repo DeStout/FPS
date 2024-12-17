@@ -44,6 +44,7 @@ func reload() -> void:
 
 func interrupt_reload() -> void:
 	if is_reloading:
+		wielder.interrupt_reload()
 		$ReloadAudio.stop()
 		is_reloading = false
 

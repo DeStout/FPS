@@ -164,10 +164,7 @@ func _pull_alt() -> void:
 
 
 func _fire() -> void:
-	if weapon_held.can_fire() and !switching_weapons:
-		weapon_held.fire()
-	elif weapon_held is BulletWeapon and weapon_held.ammo_in_mag == 0:
-		_reload()
+	weapon_held.fire()
 
 
 func _gun_alt() -> void:
@@ -179,18 +176,6 @@ func _gun_alt() -> void:
 
 func _zoom() -> void:
 	zoomed = !zoomed
-
-
-#func _apply_recoil(delta) -> void:
-	#if t_recoil > 0:
-		#rotation.y += h_recoil
-		#$AimHelper.rotation.x += v_recoil
-		#$AimHelper.rotation.x = min($AimHelper.rotation.x, deg_to_rad(89))
-		#t_recoil -= delta
-	#else:
-		#v_recoil = 0.0
-		#h_recoil = 0.0
-		#t_recoil = 0.0
 
 
 func _swing() -> void:
@@ -213,6 +198,14 @@ func slap() -> void:
 func _reload() -> void:
 	if weapon_held and !weapon_held.is_reloading and !switching_weapons:
 		await weapon_held.reload()
+
+
+func interrupt_reload() -> void:
+	pass
+
+
+func shell_loaded() -> void:
+	pass
 
 
 # Signaled from BodySeg
@@ -336,7 +329,6 @@ func _pick_up_ammo(new_pick_up : PickUp) -> void:
 
 func add_weapon(new_weapon : Weapon) -> void:
 	if _have_weapon(new_weapon.weapon_type):
-		breakpoint
 		return
 		
 	new_weapon.wielder = self

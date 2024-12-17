@@ -6,3 +6,7 @@ extends Node3D
 
 func _slap() -> void:
 	player.slap()
+
+
+func _shell_loaded() -> void:
+	player.shell_loaded()

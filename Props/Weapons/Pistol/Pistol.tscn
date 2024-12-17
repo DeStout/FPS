@@ -16,6 +16,7 @@ weapon_type = 1
 
 [node name="FireAudio" parent="." index="1"]
 stream = ExtResource("5_32pkx")
+volume_db = -5.0
 
 [node name="ReloadAudio" parent="." index="2"]
 stream = ExtResource("5_1n1px")
