@@ -19,7 +19,6 @@ extends CharacterBase
 func _ready() -> void:
 	super()
 	add_weapon(Globals.weapons[Globals.WEAPONS.PISTOL].instantiate())
-	add_weapon(Globals.weapons[Globals.WEAPONS.SHOTGUN].instantiate())
 	weapon_state_machine.travel("Alert")
 	nozzle = $AimHelper/FirstPerson/Nozzle
 

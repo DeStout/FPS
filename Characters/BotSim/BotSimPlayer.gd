@@ -187,6 +187,7 @@ func _zoom() -> void:
 
 func _reload() -> void:
 	if weapon_held.can_reload() and !switching_weapons:
+		fp_animator.stop()
 		fp_animator.play(weapon_held.get_anim("Reload"))
 	await super()
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
