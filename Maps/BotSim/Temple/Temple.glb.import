@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://6ehaeks78e2r"
-path="res://.godot/imported/Temple.glb-cb011dfeaa28a5731574b8a0bff15074.scn"
+path="res://.godot/imported/Temple.glb-fbeae1df898740e51e7b979991a81e0f.scn"
 
 [deps]
 
-source_file="res://Maps/BotSim/Temple.glb"
-dest_files=["res://.godot/imported/Temple.glb-cb011dfeaa28a5731574b8a0bff15074.scn"]
+source_file="res://Maps/BotSim/Temple/Temple.glb"
+dest_files=["res://.godot/imported/Temple.glb-fbeae1df898740e51e7b979991a81e0f.scn"]
 
 [params]
 

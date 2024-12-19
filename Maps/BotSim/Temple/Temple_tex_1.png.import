@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0av11wcbxy2h"
-path.s3tc="res://.godot/imported/Temple_tex_1.png-885fb548a4c13875aeb90ce08b6a6bd1.s3tc.ctex"
-path.etc2="res://.godot/imported/Temple_tex_1.png-885fb548a4c13875aeb90ce08b6a6bd1.etc2.ctex"
+path.s3tc="res://.godot/imported/Temple_tex_1.png-f80090661b04abaab4ff762edff65933.s3tc.ctex"
+path.etc2="res://.godot/imported/Temple_tex_1.png-f80090661b04abaab4ff762edff65933.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Maps/BotSim/Temple_tex_1.png"
-dest_files=["res://.godot/imported/Temple_tex_1.png-885fb548a4c13875aeb90ce08b6a6bd1.s3tc.ctex", "res://.godot/imported/Temple_tex_1.png-885fb548a4c13875aeb90ce08b6a6bd1.etc2.ctex"]
+source_file="res://Maps/BotSim/Temple/Temple_tex_1.png"
+dest_files=["res://.godot/imported/Temple_tex_1.png-f80090661b04abaab4ff762edff65933.s3tc.ctex", "res://.godot/imported/Temple_tex_1.png-f80090661b04abaab4ff762edff65933.etc2.ctex"]
 
 [params]
 

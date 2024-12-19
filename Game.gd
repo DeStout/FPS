@@ -60,7 +60,7 @@ func _select_bot_sim_map() -> String:
 		1:
 			map_address = "res://Maps/BotSim/Bridge.tscn"
 		2:
-			map_address = "res://Maps/BotSim/Temple.tscn"
+			map_address = "res://Maps/BotSim/Temple/Temple.tscn"
 	return map_address
 
 

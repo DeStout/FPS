@@ -1,0 +1,181 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://nkubx7uw2s6c"
+path="res://.godot/imported/Temple.blend-2af94176ad679bbe8eaf1b63fbd9306a.scn"
+
+[deps]
+
+source_file="res://Maps/BotSim/Temple/Temple.blend"
+dest_files=["res://.godot/imported/Temple.blend-2af94176ad679bbe8eaf1b63fbd9306a.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:CenterRoom": {
+"generate/occluder": 1
+},
+"PATH:LargePillar1": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:LargePillar2": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:LargePillar3": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:LargePillar4": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:LargeShelves": {
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:Level": {
+"generate/occluder": 1
+},
+"PATH:Level_001": {
+"generate/occluder": 1
+},
+"PATH:Level_002": {
+"generate/occluder": 1,
+"physics/mask": 34
+},
+"PATH:Level_004": {
+"generate/occluder": 1,
+"physics/mask": 34
+},
+"PATH:Level_005": {
+"generate/occluder": 1
+},
+"PATH:Level_006": {
+"generate/occluder": 1
+},
+"PATH:Level_007": {
+"generate/occluder": 1
+},
+"PATH:Level_008": {
+"generate/occluder": 1
+},
+"PATH:Level_009": {
+"generate/occluder": 1
+},
+"PATH:Level_010": {
+"generate/occluder": 1
+},
+"PATH:Level_011": {
+"generate/occluder": 1
+},
+"PATH:Level_012": {
+"generate/occluder": 1
+},
+"PATH:Level_013": {
+"generate/occluder": 1
+},
+"PATH:Level_014": {
+"generate/occluder": 1
+},
+"PATH:Level_015": {
+"generate/occluder": 1
+},
+"PATH:Level_017": {
+"generate/occluder": 1
+},
+"PATH:Level_018": {
+"generate/occluder": 1
+},
+"PATH:Level_019": {
+"generate/occluder": 1
+},
+"PATH:Level_021": {
+"generate/occluder": 1
+},
+"PATH:Level_026": {
+"generate/occluder": 1
+},
+"PATH:Level_028": {
+"generate/occluder": 1
+},
+"PATH:Level_030": {
+"generate/occluder": 1
+},
+"PATH:Level_031": {
+"generate/occluder": 1
+},
+"PATH:MedPillar": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:SmallPillar1": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:SmallPillar2": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:SmallPillar3": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:SmallPillar4": {
+"generate/occluder": 1,
+"generate/physics": true,
+"physics/mask": 34
+},
+"PATH:SmallShelves": {
+"generate/physics": true,
+"physics/mask": 34
+}
+}
+}
+blender/nodes/visible=0
+blender/nodes/active_collection_only=false
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
+blender/nodes/custom_properties=true
+blender/nodes/modifiers=1
+blender/meshes/colors=false
+blender/meshes/uvs=true
+blender/meshes/normals=true
+blender/meshes/tangents=true
+blender/meshes/skins=2
+blender/meshes/export_bones_deforming_mesh_only=false
+blender/materials/unpack_enabled=true
+blender/materials/export_materials=1
+blender/animation/limit_playback=true
+blender/animation/always_sample=true
+blender/animation/group_tracks=true
