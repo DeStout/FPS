@@ -1,61 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://o2h1ckasd2vt"]
 
 [ext_resource type="PackedScene" uid="uid://nkubx7uw2s6c" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_up6nt"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_yvavh"]
-sky_material = SubResource("ProceduralSkyMaterial_up6nt")
-
-[sub_resource type="Environment" id="Environment_l7tmp"]
-background_mode = 2
-sky = SubResource("Sky_yvavh")
-tonemap_mode = 3
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-sdfgi_use_occlusion = true
-sdfgi_bounce_feedback = 0.75
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 3.64
-glow_strength = 0.6
-glow_blend_mode = 0
-glow_hdr_threshold = 1.69
-glow_hdr_scale = 4.0
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.608, 0.519645, 0.573032, 1)
-fog_sun_scatter = 1.0
-fog_density = 1.0
-fog_height = 0.35
-fog_height_density = 0.65
-fog_depth_begin = 0.0
-fog_depth_end = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0136
-volumetric_fog_albedo = Color(1, 0.822878, 0.966277, 1)
-volumetric_fog_anisotropy = 0.9
-volumetric_fog_sky_affect = 0.573
-volumetric_fog_temporal_reprojection_enabled = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_deu13"]
-rim_enabled = true
-rim_tint = 0.0
+[ext_resource type="Environment" uid="uid://d3ucr2cqu80q2" path="res://Maps/BotSim/Temple/TempleEnv.tres" id="2_capgd"]
+[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/RedGlow.tres" id="3_ko4bh"]
+[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/BlueGlow.tres" id="3_v3wx6"]
+[ext_resource type="Material" uid="uid://ctgsfnqfckqbr" path="res://Maps/BotSim/Temple/WhiteGlow.tres" id="5_6telk"]
 
 [node name="Temple" instance=ExtResource("1_c7hqf")]
 
 [node name="Env" type="WorldEnvironment" parent="." index="0"]
-environment = SubResource("Environment_l7tmp")
+environment = ExtResource("2_capgd")
 
 [node name="Sun" type="DirectionalLight3D" parent="." index="1"]
 transform = Transform3D(0.978882, -0.204311, -0.00682955, 0.183179, 0.861826, 0.47297, -0.0907475, -0.464233, 0.881052, 0, 15, 0)
 light_color = Color(1, 0.549245, 0.305039, 1)
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
-light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 3.579
@@ -123,7 +83,16 @@ collision_mask = 34
 collision_mask = 34
 
 [node name="SmallPillar3" parent="." index="22"]
-surface_material_override/0 = SubResource("StandardMaterial3D_deu13")
+surface_material_override/0 = ExtResource("3_v3wx6")
+
+[node name="SmallPillar4" parent="." index="23"]
+surface_material_override/0 = ExtResource("3_ko4bh")
+
+[node name="LargePillar3" parent="." index="24"]
+surface_material_override/0 = ExtResource("3_ko4bh")
+
+[node name="LargePillar4" parent="." index="25"]
+surface_material_override/0 = ExtResource("3_v3wx6")
 
 [node name="WindowBlock1" parent="." index="26"]
 collision_mask = 2
@@ -137,11 +106,62 @@ collision_mask = 2
 [node name="WindowBlock4" parent="." index="29"]
 collision_mask = 2
 
+[node name="LargePillar5" parent="." index="30"]
+surface_material_override/0 = ExtResource("3_v3wx6")
+
+[node name="LargePillar6" parent="." index="31"]
+surface_material_override/0 = ExtResource("3_ko4bh")
+
+[node name="StaticBody3D" parent="LargeDoorway1" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway2" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway3" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway4" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway5" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway6" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway7" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway8" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway9" index="0"]
+collision_mask = 34
+
+[node name="StaticBody3D" parent="LargeDoorway10" index="0"]
+collision_mask = 34
+
 [node name="StaticBody3D" parent="CenterRoom" index="0"]
 collision_mask = 34
 
+[node name="SmallPillar1" parent="." index="43"]
+surface_material_override/0 = ExtResource("5_6telk")
+
+[node name="SmallPillar2" parent="." index="44"]
+surface_material_override/0 = ExtResource("5_6telk")
+
+[node name="LargePillar1" parent="." index="47"]
+surface_material_override/0 = ExtResource("5_6telk")
+
+[node name="LargePillar2" parent="." index="48"]
+surface_material_override/0 = ExtResource("5_6telk")
+
 [node name="StaticBody3D" parent="Level_001" index="0"]
 collision_mask = 34
+
+[node name="MedPillar" parent="." index="50"]
+surface_material_override/0 = ExtResource("5_6telk")
 
 [node name="StaticBody3D" parent="Level" index="0"]
 collision_mask = 34

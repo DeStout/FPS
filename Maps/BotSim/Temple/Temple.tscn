@@ -329,10 +329,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -20)
 respawn_time = 20.0
 
 [node name="Pistol7" parent="Pickups" index="6" instance=ExtResource("3_36e2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.25, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, 0.25, 35.25)
 
 [node name="Pistol8" parent="Pickups" index="7" instance=ExtResource("3_36e2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.25, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0.25, 35.25)
 
 [node name="SMG1" parent="Pickups" index="8" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.25, 5)
