@@ -9,9 +9,11 @@ sky_material = SubResource("ProceduralSkyMaterial_up6nt")
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_yvavh")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 2.0
 tonemap_mode = 3
 ssao_enabled = true
 ssil_enabled = true
@@ -22,6 +24,7 @@ glow_enabled = true
 glow_normalized = true
 glow_intensity = 3.64
 glow_strength = 0.6
+glow_mix = 0.295
 glow_blend_mode = 0
 glow_hdr_threshold = 1.69
 glow_hdr_scale = 4.0

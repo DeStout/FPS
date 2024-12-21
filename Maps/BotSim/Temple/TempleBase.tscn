@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://o2h1ckasd2vt"]
+[gd_scene load_steps=7 format=3 uid="uid://o2h1ckasd2vt"]
 
-[ext_resource type="PackedScene" uid="uid://nkubx7uw2s6c" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
+[ext_resource type="PackedScene" uid="uid://ddao41v7s3ovx" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
 [ext_resource type="Environment" uid="uid://d3ucr2cqu80q2" path="res://Maps/BotSim/Temple/TempleEnv.tres" id="2_capgd"]
-[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/RedGlow.tres" id="3_ko4bh"]
-[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/BlueGlow.tres" id="3_v3wx6"]
-[ext_resource type="Material" uid="uid://ctgsfnqfckqbr" path="res://Maps/BotSim/Temple/WhiteGlow.tres" id="5_6telk"]
+[ext_resource type="Material" uid="uid://b80w2toxnescd" path="res://Maps/BotSim/Temple/BrownStone.tres" id="3_xjmej"]
+[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/BlueGlow.tres" id="4_welqx"]
+[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/RedGlow.tres" id="5_xh2gp"]
+[ext_resource type="Material" uid="uid://ctgsfnqfckqbr" path="res://Maps/BotSim/Temple/WhiteGlow.tres" id="6_4gkpw"]
 
 [node name="Temple" instance=ExtResource("1_c7hqf")]
 
@@ -14,7 +15,8 @@ environment = ExtResource("2_capgd")
 [node name="Sun" type="DirectionalLight3D" parent="." index="1"]
 transform = Transform3D(0.978882, -0.204311, -0.00682955, 0.183179, 0.861826, 0.47297, -0.0907475, -0.464233, 0.881052, 0, 15, 0)
 light_color = Color(1, 0.549245, 0.305039, 1)
-light_indirect_energy = 2.0
+light_energy = 1.5
+light_indirect_energy = 3.0
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
 shadow_bias = 0.0
@@ -22,146 +24,277 @@ shadow_normal_bias = 3.579
 shadow_reverse_cull_face = true
 directional_shadow_max_distance = 50.0
 
-[node name="StaticBody3D" parent="Level_002" index="0"]
-collision_mask = 34
+[node name="Lights" type="Node3D" parent="." index="2"]
 
-[node name="StaticBody3D" parent="Level_004" index="0"]
-collision_mask = 34
+[node name="BlueLightUpperSide" type="OmniLight3D" parent="Lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 7.5, -34.5)
+light_color = Color(0.258824, 0.619608, 1, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 12.5
 
-[node name="StaticBody3D" parent="Level_005" index="0"]
-collision_mask = 34
+[node name="BlueLightCorner3" type="OmniLight3D" parent="Lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.75, 6.875, -15.75)
+light_color = Color(0.26, 0.617666, 1, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_006" index="0"]
-collision_mask = 34
+[node name="BlueLightCorner4" type="OmniLight3D" parent="Lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, 6.875, -20.25)
+light_color = Color(0.26, 0.617666, 1, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_007" index="0"]
-collision_mask = 34
+[node name="BlueLightMiddleSide1" type="OmniLight3D" parent="Lights" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6.875, 1)
+light_color = Color(0.258824, 0.619608, 1, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_008" index="0"]
-collision_mask = 34
+[node name="BlueLightMiddleSide2" type="OmniLight3D" parent="Lights" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 3.125, 1)
+light_color = Color(0.258824, 0.619608, 1, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_009" index="0"]
-collision_mask = 34
+[node name="BlueLightLowerSide1" type="OmniLight3D" parent="Lights" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6.875, 32)
+light_color = Color(0.258824, 0.619608, 1, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_010" index="0"]
-collision_mask = 34
+[node name="BlueLightLowerSide2" type="OmniLight3D" parent="Lights" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 3.125, 32)
+light_color = Color(0.258824, 0.619608, 1, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_011" index="0"]
-collision_mask = 34
+[node name="RedLightUpperSide" type="OmniLight3D" parent="Lights" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 7.5, -34.5)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_012" index="0"]
-collision_mask = 34
+[node name="RedLightCorner1" type="OmniLight3D" parent="Lights" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.75, 6.875, -15.75)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_013" index="0"]
-collision_mask = 34
+[node name="RedLightCorner2" type="OmniLight3D" parent="Lights" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 6.875, -20.25)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_014" index="0"]
-collision_mask = 34
+[node name="RedLightMiddleSide1" type="OmniLight3D" parent="Lights" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 6.875, 1)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_015" index="0"]
-collision_mask = 34
+[node name="RedLightMiddleSide2" type="OmniLight3D" parent="Lights" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3.125, 1)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_018" index="0"]
-collision_mask = 34
+[node name="RedLightLowerSide1" type="OmniLight3D" parent="Lights" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 6.875, 32)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_019" index="0"]
-collision_mask = 34
+[node name="RedLightLowerSide2" type="OmniLight3D" parent="Lights" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3.125, 32)
+light_color = Color(1, 0.49, 0.49, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_021" index="0"]
-collision_mask = 34
+[node name="WhiteLightTemple1" type="OmniLight3D" parent="Lights" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6.875, -20)
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_026" index="0"]
-collision_mask = 34
+[node name="WhiteLightTemple2" type="OmniLight3D" parent="Lights" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.125, -20)
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_028" index="0"]
-collision_mask = 34
+[node name="WhiteLightTemple3" type="OmniLight3D" parent="Lights" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6.875, -20)
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_030" index="0"]
-collision_mask = 34
+[node name="WhiteLightTemple4" type="OmniLight3D" parent="Lights" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.125, -20)
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="StaticBody3D" parent="Level_031" index="0"]
-collision_mask = 34
+[node name="WhiteLightCenter1" type="OmniLight3D" parent="Lights" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.125, -4)
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="SmallPillar3" parent="." index="22"]
-surface_material_override/0 = ExtResource("3_v3wx6")
+[node name="WhiteLightCenter2" type="OmniLight3D" parent="Lights" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.125, 4)
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="SmallPillar4" parent="." index="23"]
-surface_material_override/0 = ExtResource("3_ko4bh")
+[node name="WhiteLightCorner1" type="OmniLight3D" parent="Lights" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 2.5, 27.1)
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="LargePillar3" parent="." index="24"]
-surface_material_override/0 = ExtResource("3_ko4bh")
+[node name="WhiteLightCorner2" type="OmniLight3D" parent="Lights" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 2.5, 17.9)
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="LargePillar4" parent="." index="25"]
-surface_material_override/0 = ExtResource("3_v3wx6")
+[node name="WhiteLightCorner3" type="OmniLight3D" parent="Lights" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 2.5, 27.1)
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="WindowBlock1" parent="." index="26"]
-collision_mask = 2
+[node name="WhiteLightCorner4" type="OmniLight3D" parent="Lights" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 2.5, 17.9)
+shadow_enabled = true
+shadow_opacity = 0.61
+omni_range = 25.0
 
-[node name="WindowBlock2" parent="." index="27"]
-collision_mask = 2
+[node name="WhiteLightEntrance" type="OmniLight3D" parent="Lights" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.125, 34)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 25.0
 
-[node name="WindowBlock3" parent="." index="28"]
-collision_mask = 2
+[node name="MiddleSideRoom" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
-[node name="WindowBlock4" parent="." index="29"]
-collision_mask = 2
+[node name="MidSideRoom" parent="." index="8"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
-[node name="LargePillar5" parent="." index="30"]
-surface_material_override/0 = ExtResource("3_v3wx6")
+[node name="TopSideRoom" parent="." index="10"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
-[node name="LargePillar6" parent="." index="31"]
-surface_material_override/0 = ExtResource("3_ko4bh")
+[node name="TopSideConnector" parent="." index="11"]
+surface_material_override/0 = ExtResource("3_xjmej")
+surface_material_override/1 = ExtResource("6_4gkpw")
 
-[node name="StaticBody3D" parent="LargeDoorway1" index="0"]
-collision_mask = 34
+[node name="BottomSideConnector" parent="." index="12"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
-[node name="StaticBody3D" parent="LargeDoorway2" index="0"]
-collision_mask = 34
+[node name="BottomSideRoom" parent="." index="15"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
-[node name="StaticBody3D" parent="LargeDoorway3" index="0"]
-collision_mask = 34
+[node name="SmallPillar3" parent="." index="23"]
+surface_material_override/0 = ExtResource("4_welqx")
 
-[node name="StaticBody3D" parent="LargeDoorway4" index="0"]
-collision_mask = 34
+[node name="SmallPillar4" parent="." index="24"]
+surface_material_override/0 = ExtResource("5_xh2gp")
 
-[node name="StaticBody3D" parent="LargeDoorway5" index="0"]
-collision_mask = 34
+[node name="LargePillar3" parent="." index="25"]
+surface_material_override/0 = ExtResource("5_xh2gp")
 
-[node name="StaticBody3D" parent="LargeDoorway6" index="0"]
-collision_mask = 34
+[node name="LargePillar4" parent="." index="26"]
+surface_material_override/0 = ExtResource("4_welqx")
 
-[node name="StaticBody3D" parent="LargeDoorway7" index="0"]
-collision_mask = 34
+[node name="WindowBlock1" parent="." index="27"]
+collision_mask = 0
 
-[node name="StaticBody3D" parent="LargeDoorway8" index="0"]
-collision_mask = 34
+[node name="WindowBlock2" parent="." index="28"]
+collision_mask = 0
 
-[node name="StaticBody3D" parent="LargeDoorway9" index="0"]
-collision_mask = 34
+[node name="WindowBlock3" parent="." index="29"]
+collision_mask = 0
 
-[node name="StaticBody3D" parent="LargeDoorway10" index="0"]
-collision_mask = 34
+[node name="WindowBlock4" parent="." index="30"]
+collision_mask = 0
+
+[node name="LargePillar5" parent="." index="31"]
+surface_material_override/0 = ExtResource("4_welqx")
+
+[node name="LargePillar6" parent="." index="32"]
+surface_material_override/0 = ExtResource("5_xh2gp")
+
+[node name="CenterRoom" parent="." index="43"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
 [node name="StaticBody3D" parent="CenterRoom" index="0"]
 collision_mask = 34
 
-[node name="SmallPillar1" parent="." index="43"]
-surface_material_override/0 = ExtResource("5_6telk")
+[node name="SmallPillar1" parent="." index="44"]
+surface_material_override/0 = ExtResource("6_4gkpw")
 
-[node name="SmallPillar2" parent="." index="44"]
-surface_material_override/0 = ExtResource("5_6telk")
+[node name="SmallPillar2" parent="." index="45"]
+surface_material_override/0 = ExtResource("6_4gkpw")
 
-[node name="LargePillar1" parent="." index="47"]
-surface_material_override/0 = ExtResource("5_6telk")
+[node name="LargePillar1" parent="." index="48"]
+surface_material_override/0 = ExtResource("6_4gkpw")
 
-[node name="LargePillar2" parent="." index="48"]
-surface_material_override/0 = ExtResource("5_6telk")
+[node name="LargePillar2" parent="." index="49"]
+surface_material_override/0 = ExtResource("6_4gkpw")
 
-[node name="StaticBody3D" parent="Level_001" index="0"]
-collision_mask = 34
+[node name="TempleRoom" parent="." index="50"]
+surface_material_override/0 = ExtResource("3_xjmej")
 
-[node name="MedPillar" parent="." index="50"]
-surface_material_override/0 = ExtResource("5_6telk")
+[node name="MedPillar" parent="." index="51"]
+surface_material_override/0 = ExtResource("6_4gkpw")
 
-[node name="StaticBody3D" parent="Level" index="0"]
-collision_mask = 34
+[node name="Entrance" parent="." index="52"]
+surface_material_override/0 = ExtResource("3_xjmej")
+surface_material_override/1 = ExtResource("6_4gkpw")

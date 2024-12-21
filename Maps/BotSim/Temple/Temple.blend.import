@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nkubx7uw2s6c"
+uid="uid://ddao41v7s3ovx"
 path="res://.godot/imported/Temple.blend-2af94176ad679bbe8eaf1b63fbd9306a.scn"
 
 [deps]
@@ -33,132 +33,71 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
+"PATH:BottomSideConnector": {
+"generate/occluder": 1
+},
+"PATH:BottomSideRoom": {
+"generate/occluder": 1
+},
 "PATH:CenterRoom": {
 "generate/occluder": 1
 },
+"PATH:DoorwayDeep1": {
+"generate/occluder": 1
+},
+"PATH:DoorwayDeep2": {
+"generate/occluder": 1
+},
+"PATH:Entrance": {
+"generate/occluder": 1
+},
 "PATH:LargePillar1": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
 "PATH:LargePillar2": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
 "PATH:LargePillar3": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
 "PATH:LargePillar4": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
-},
-"PATH:LargeShelves": {
-"generate/physics": true,
-"physics/mask": 34
-},
-"PATH:Level": {
 "generate/occluder": 1
 },
-"PATH:Level_001": {
+"PATH:LargePillar5": {
 "generate/occluder": 1
 },
-"PATH:Level_002": {
-"generate/occluder": 1,
-"physics/mask": 34
-},
-"PATH:Level_004": {
-"generate/occluder": 1,
-"physics/mask": 34
-},
-"PATH:Level_005": {
-"generate/occluder": 1
-},
-"PATH:Level_006": {
-"generate/occluder": 1
-},
-"PATH:Level_007": {
-"generate/occluder": 1
-},
-"PATH:Level_008": {
-"generate/occluder": 1
-},
-"PATH:Level_009": {
-"generate/occluder": 1
-},
-"PATH:Level_010": {
-"generate/occluder": 1
-},
-"PATH:Level_011": {
-"generate/occluder": 1
-},
-"PATH:Level_012": {
-"generate/occluder": 1
-},
-"PATH:Level_013": {
-"generate/occluder": 1
-},
-"PATH:Level_014": {
-"generate/occluder": 1
-},
-"PATH:Level_015": {
-"generate/occluder": 1
-},
-"PATH:Level_017": {
-"generate/occluder": 1
-},
-"PATH:Level_018": {
-"generate/occluder": 1
-},
-"PATH:Level_019": {
-"generate/occluder": 1
-},
-"PATH:Level_021": {
-"generate/occluder": 1
-},
-"PATH:Level_026": {
-"generate/occluder": 1
-},
-"PATH:Level_028": {
-"generate/occluder": 1
-},
-"PATH:Level_030": {
-"generate/occluder": 1
-},
-"PATH:Level_031": {
+"PATH:LargePillar6": {
 "generate/occluder": 1
 },
 "PATH:MedPillar": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
+},
+"PATH:MidSideRoom": {
+"generate/occluder": 1
+},
+"PATH:MiddleSideRoom": {
+"generate/occluder": 1
 },
 "PATH:SmallPillar1": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
 "PATH:SmallPillar2": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
 "PATH:SmallPillar3": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
 "PATH:SmallPillar4": {
-"generate/occluder": 1,
-"generate/physics": true,
-"physics/mask": 34
+"generate/occluder": 1
 },
-"PATH:SmallShelves": {
-"generate/physics": true,
-"physics/mask": 34
+"PATH:TempleRoom": {
+"generate/occluder": 1
+},
+"PATH:TopSideConnector": {
+"generate/occluder": 1
+},
+"PATH:TopSideRoom": {
+"generate/occluder": 1
 }
 }
 }

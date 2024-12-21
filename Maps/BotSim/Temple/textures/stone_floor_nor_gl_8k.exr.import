@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dmejyrp1teus4"
+path.bptc="res://.godot/imported/stone_floor_nor_gl_8k.exr-b6a4ab0e5b94bbca92a993617248e2ae.bptc.ctex"
+path.astc="res://.godot/imported/stone_floor_nor_gl_8k.exr-b6a4ab0e5b94bbca92a993617248e2ae.astc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Maps/BotSim/Temple/textures/stone_floor_nor_gl_8k.exr"
+dest_files=["res://.godot/imported/stone_floor_nor_gl_8k.exr-b6a4ab0e5b94bbca92a993617248e2ae.bptc.ctex", "res://.godot/imported/stone_floor_nor_gl_8k.exr-b6a4ab0e5b94bbca92a993617248e2ae.astc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Maps/BotSim/Temple/textures/stone_floor_nor_gl_8k.exr"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
