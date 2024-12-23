@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cewr1gno80bp4"]
+
+[ext_resource type="Texture2D" uid="uid://chbjgfyb7d125" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/GreyStone/stone-162_diffuse.jpg" id="1_5842j"]
+[ext_resource type="Texture2D" uid="uid://1nftx06jgvw5" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/GreyStone/stone-162_normal.jpg" id="2_58uyv"]
+[ext_resource type="Texture2D" uid="uid://b4vsi6qbxk37o" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/GreyStone/stone-162_roughness.jpg" id="3_41i54"]
+
+[resource]
+resource_name = "Stone Wall or Floor"
+albedo_texture = ExtResource("1_5842j")
+metallic_specular = 0.0
+roughness_texture = ExtResource("3_41i54")
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("2_58uyv")
+uv1_scale = Vector3(1.5, 1.5, 1)
+uv1_offset = Vector3(0, -0.5, 0)

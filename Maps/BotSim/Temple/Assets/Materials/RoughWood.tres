@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b63ha2txgh2r4"]
+
+[ext_resource type="Texture2D" uid="uid://ctabj8hcj50cm" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/RoughWood/wood-71_diffuse.jpg" id="1_33v7y"]
+[ext_resource type="Texture2D" uid="uid://b3q7kpm6oqdew" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/RoughWood/wood-71_smooth.jpg" id="2_sxh68"]
+[ext_resource type="Texture2D" uid="uid://dloxfiv6cpcb5" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/RoughWood/wood-71_normal.jpg" id="3_0d716"]
+[ext_resource type="Texture2D" uid="uid://pmubu4f3bfhq" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/RoughWood/wood-71_bump.jpg" id="4_6oobj"]
+
+[resource]
+resource_name = "Rough Wood"
+albedo_color = Color(1, 0.653388, 0.486035, 1)
+albedo_texture = ExtResource("1_33v7y")
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_sxh68")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("4_6oobj")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 0.72
+normal_texture = ExtResource("3_0d716")

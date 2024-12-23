@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b80w2toxnescd"]
+
+[ext_resource type="Texture2D" uid="uid://dj3md52vm6igd" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/BrownStone/stone_floor_diff_8k.jpg" id="1_858lo"]
+[ext_resource type="Texture2D" uid="uid://fhe2jpqb37tw" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/BrownStone/stone_floor_rough_8k.exr" id="2_pihk2"]
+[ext_resource type="Texture2D" uid="uid://c77di8esw3jx2" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/BrownStone/stone_floor_nor_gl_8k.exr" id="3_psbfh"]
+
+[resource]
+resource_name = "stone_floor"
+albedo_texture = ExtResource("1_858lo")
+metallic_texture = ExtResource("2_pihk2")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_pihk2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_psbfh")
+uv1_scale = Vector3(0.2, 0.2, 1)
