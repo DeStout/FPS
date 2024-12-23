@@ -13,7 +13,6 @@ config_version=5
 config/name="MannequinShooter"
 run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=60
 config/icon="res://icon.svg"
 run/size/window_height_override=608
 run/size/window_width_override=1080
