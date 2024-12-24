@@ -1,9 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://it15dhmdaegw"]
 
 [resource]
-albedo_color = Color(1, 0.506265, 0.543606, 1)
 emission_enabled = true
-emission = Color(0.625, 0.380592, 0.375929, 1)
 emission_energy_multiplier = 2.0
 rim_enabled = true
-rim = 0.3
+rim = 0.5
+rim_tint = 0.0
