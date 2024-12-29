@@ -22,7 +22,7 @@ size = Vector3(15.25, 14.045, 1)
 environment = ExtResource("2_ocyhd")
 
 [node name="Sun" type="DirectionalLight3D" parent="." index="1"]
-transform = Transform3D(0.524462, -0.678256, 0.514693, 0.53229, 0.732995, 0.423539, -0.664536, 0.0518357, 0.745457, 0, 15, 0)
+transform = Transform3D(0.954287, -0.08989, 0.285057, -0.0708942, 0.858418, 0.508028, -0.290364, -0.505013, 0.812804, 0, 15, 0)
 light_color = Color(1, 0.549245, 0.305039, 1)
 light_energy = 5.0
 light_indirect_energy = 8.0
@@ -32,10 +32,9 @@ shadow_reverse_cull_face = true
 directional_shadow_max_distance = 50.0
 
 [node name="VoxelGI" type="VoxelGI" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6153, -0.20459)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.0019, -0.691898)
 subdiv = 3
-size = Vector3(60.0654, 11.3773, 83.6914)
+size = Vector3(60.0654, 24.1506, 84.666)
 data = ExtResource("4_ei8r0")
 
 [node name="NavRegion" type="NavigationRegion3D" parent="." index="3"]
