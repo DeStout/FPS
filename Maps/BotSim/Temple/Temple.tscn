@@ -33,6 +33,7 @@ directional_shadow_max_distance = 50.0
 
 [node name="VoxelGI" type="VoxelGI" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.0019, -0.691898)
+visible = false
 subdiv = 3
 size = Vector3(60.0654, 24.1506, 84.666)
 data = ExtResource("4_ei8r0")

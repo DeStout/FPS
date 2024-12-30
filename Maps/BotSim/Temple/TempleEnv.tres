@@ -38,4 +38,3 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.349205, 0.00606084, 1)
 volumetric_fog_anisotropy = 0.7
 volumetric_fog_length = 4.0
-adjustment_enabled = true
