@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func open() -> void:
 	Engine.time_scale = 1.0
-	#$MusicPlayer.play()
+	$MusicPlayer.play()
 	await  HUD.fade_in()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
