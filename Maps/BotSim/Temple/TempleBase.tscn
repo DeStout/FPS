@@ -5,11 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://djk7mxbgsy43v" path="res://Maps/BotSim/Temple/Assets/Props/Misc/RubbleA.blend" id="3_w0ikm"]
 [ext_resource type="PackedScene" uid="uid://cs3ybux8en50" path="res://Maps/BotSim/Temple/Assets/Props/Misc/SupportArch.blend" id="4_ni7mr"]
 [ext_resource type="PackedScene" uid="uid://c7kw14f0rdw0x" path="res://Maps/BotSim/Temple/Assets/Props/Misc/StoneDoorway.blend" id="4_oftx4"]
+[ext_resource type="Material" uid="uid://cewr1gno80bp4" path="res://Maps/BotSim/Temple/Assets/Materials/GreyStone.tres" id="5_ja8of"]
+[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/Assets/Materials/BlueGlow.tres" id="5_rhdqm"]
 [ext_resource type="PackedScene" uid="uid://sx2qh810nrqp" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/MedMonument.blend" id="5_u64bw"]
-[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/Assets/Materials/RedGlow.tres" id="5_xh2gp"]
 [ext_resource type="Material" uid="uid://ctgsfnqfckqbr" path="res://Maps/BotSim/Temple/Assets/Materials/WhiteGlow.tres" id="6_4gkpw"]
 [ext_resource type="PackedScene" uid="uid://cjnxieq6a3k6j" path="res://Maps/BotSim/Temple/Assets/Props/Logs/6MLog.blend" id="7_fv1se"]
 [ext_resource type="PackedScene" uid="uid://quvmcav0pm1r" path="res://Maps/BotSim/Temple/Assets/Props/Logs/2MLog.blend" id="7_rpeem"]
+[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/Assets/Materials/RedGlow.tres" id="8_1ifek"]
 [ext_resource type="PackedScene" uid="uid://848xp5s7pa2p" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/LargeMonument.blend" id="8_6iy6e"]
 [ext_resource type="PackedScene" uid="uid://c1yfii2ty5pop" path="res://Maps/BotSim/Temple/Assets/Props/Logs/4MLog.blend" id="8_7phul"]
 [ext_resource type="PackedScene" uid="uid://barphhjc2tbna" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimA.blend" id="9_atiog"]
@@ -18,9 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tsxtveorf4p" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimB.blend" id="10_tc77q"]
 [ext_resource type="PackedScene" uid="uid://dds7gd65l0ud2" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimC.blend" id="11_ryetl"]
 [ext_resource type="Material" uid="uid://b80w2toxnescd" path="res://Maps/BotSim/Temple/Assets/Materials/BrownStone.tres" id="12_f2neo"]
-[ext_resource type="Material" uid="uid://cewr1gno80bp4" path="res://Maps/BotSim/Temple/Assets/Materials/GreyStone.tres" id="12_vit10"]
 [ext_resource type="PackedScene" uid="uid://bet8unvahm04" path="res://Maps/BotSim/Temple/Assets/Props/Misc/IndividualDoorway.blend" id="13_8yid6"]
-[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/Assets/Materials/BlueGlow.tres" id="14_a6u4d"]
 [ext_resource type="Material" uid="uid://cp7p06yppjmon" path="res://Maps/BotSim/Temple/Assets/Materials/CobbleStone.tres" id="15_vw7fy"]
 [ext_resource type="Material" uid="uid://b63ha2txgh2r4" path="res://Maps/BotSim/Temple/Assets/Materials/RoughWood.tres" id="16_dbeog"]
 
@@ -99,22 +99,22 @@ height = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 5, -34.5)
 
 [node name="SmallMonument" parent="BlueSide/Details/Monuments/SmallMonumentBlue1" index="0"]
-surface_material_override/0 = ExtResource("14_a6u4d")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/0 = ExtResource("5_rhdqm")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="SmallMonumentWhite1" parent="BlueSide/Details/Monuments" index="1" instance=ExtResource("2_se5mt")]
 
 [node name="SmallMonument" parent="BlueSide/Details/Monuments/SmallMonumentWhite1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="SmallMonument2" type="MeshInstance3D" parent="BlueSide/Details/Monuments/SmallMonumentWhite1" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 mesh = SubResource("ArrayMesh_5i766")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Details/Monuments/SmallMonumentWhite1/SmallMonument2" index="0"]
 
@@ -125,43 +125,43 @@ shape = SubResource("ConcavePolygonShape3D_rc0wa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 5, -34.5)
 
 [node name="SmallMonument" parent="BlueSide/Details/Monuments/SmallMonumentRed1" index="0"]
-surface_material_override/0 = ExtResource("5_xh2gp")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/0 = ExtResource("8_1ifek")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="MedMonumentWhite1" parent="BlueSide/Details/Monuments" index="3" instance=ExtResource("5_u64bw")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 34)
 
 [node name="MedMonument" parent="BlueSide/Details/Monuments/MedMonumentWhite1" index="0"]
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="LargeMonumentBlue1" parent="BlueSide/Details/Monuments" index="4" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 1)
 
 [node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentBlue1" index="0"]
-surface_material_override/0 = ExtResource("14_a6u4d")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/0 = ExtResource("5_rhdqm")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="LargeMonumentBlue2" parent="BlueSide/Details/Monuments" index="5" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 32)
 
 [node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentBlue2" index="0"]
-surface_material_override/0 = ExtResource("14_a6u4d")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/0 = ExtResource("5_rhdqm")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="LargeMonumentRed1" parent="BlueSide/Details/Monuments" index="6" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 1)
 
 [node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentRed1" index="0"]
-surface_material_override/0 = ExtResource("5_xh2gp")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/0 = ExtResource("8_1ifek")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="LargeMonumentRed2" parent="BlueSide/Details/Monuments" index="7" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 32)
 
 [node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentRed2" index="0"]
-surface_material_override/0 = ExtResource("5_xh2gp")
-surface_material_override/1 = ExtResource("12_vit10")
+surface_material_override/0 = ExtResource("8_1ifek")
+surface_material_override/1 = ExtResource("5_ja8of")
 
 [node name="TempleMonument" type="MeshInstance3D" parent="BlueSide/Details/Monuments" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -25)
@@ -170,14 +170,16 @@ surface_material_override/0 = ExtResource("6_4gkpw")
 script = ExtResource("9_oem5g")
 
 [node name="WhiteLightTemple" type="OmniLight3D" parent="BlueSide/Details/Monuments/TempleMonument" index="0"]
-light_energy = 3.0
-light_indirect_energy = 10.0
-light_volumetric_fog_energy = 10.0
+light_energy = 5.0
+light_volumetric_fog_energy = 3.0
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
 shadow_blur = 2.315
-omni_range = 80.0
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 15.0
 
 [node name="RubbleA" parent="BlueSide/Details" index="1" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(-1.38693, 0.890622, 2.5226, 0, 2.84145, -1.0032, -2.6752, -0.461732, -1.30781, 25.3393, -0.559517, -5.24215)
@@ -4106,24 +4108,30 @@ collision_mask = 0
 [node name="WindowBlock4" parent="." index="27"]
 collision_mask = 0
 
-[node name="CenterRoom" parent="." index="28"]
+[node name="BottomSideRoomHull" parent="." index="28"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="CenterRoom" parent="." index="29"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
 [node name="StaticBody3D" parent="CenterRoom" index="0"]
 collision_mask = 34
 
-[node name="LargeShelves" parent="." index="29"]
+[node name="LargeShelves" parent="." index="30"]
 surface_material_override/0 = ExtResource("16_dbeog")
 
-[node name="SmallShelves" parent="." index="30"]
+[node name="SmallShelves" parent="." index="31"]
 surface_material_override/0 = ExtResource("16_dbeog")
 
-[node name="TempleRoom" parent="." index="31"]
+[node name="TempleRoom" parent="." index="32"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="Entrance" parent="." index="32"]
+[node name="Entrance" parent="." index="33"]
 surface_material_override/0 = ExtResource("12_f2neo")
 surface_material_override/1 = ExtResource("6_4gkpw")
+
+[node name="EntranceHull" parent="." index="34"]
+surface_material_override/0 = ExtResource("12_f2neo")
 
 [editable path="BlueSide/Details/Monuments/SmallMonumentBlue1"]
 [editable path="BlueSide/Details/Monuments/SmallMonumentWhite1"]

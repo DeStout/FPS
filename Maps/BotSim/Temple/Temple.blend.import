@@ -32,6 +32,26 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"meshes": {
+"Temple_Cube_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 2,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+},
+"Temple_Cube_005": {
+"generate/lightmap_uv": 0,
+"generate/lods": 2,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+}
+},
 "nodes": {
 "PATH:BottomSideConnector": {
 "generate/occluder": 1
@@ -51,43 +71,10 @@ _subresources={
 "PATH:Entrance": {
 "generate/occluder": 1
 },
-"PATH:LargePillar1": {
-"generate/occluder": 1
-},
-"PATH:LargePillar2": {
-"generate/occluder": 1
-},
-"PATH:LargePillar3": {
-"generate/occluder": 1
-},
-"PATH:LargePillar4": {
-"generate/occluder": 1
-},
-"PATH:LargePillar5": {
-"generate/occluder": 1
-},
-"PATH:LargePillar6": {
-"generate/occluder": 1
-},
-"PATH:MedPillar": {
-"generate/occluder": 1
-},
 "PATH:MidSideRoom": {
 "generate/occluder": 1
 },
 "PATH:MiddleSideRoom": {
-"generate/occluder": 1
-},
-"PATH:SmallPillar1": {
-"generate/occluder": 1
-},
-"PATH:SmallPillar2": {
-"generate/occluder": 1
-},
-"PATH:SmallPillar3": {
-"generate/occluder": 1
-},
-"PATH:SmallPillar4": {
 "generate/occluder": 1
 },
 "PATH:TempleRoom": {
