@@ -13,10 +13,7 @@ func _toggle_pause() -> void:
 
 	if get_tree().paused:
 		$OptionsMenu.update()
-		if Globals.game is BotSimLevel:
-			%Players.player.update_health_UI()
-		elif Globals.game is CampaignLevel:
-			%Players.player.update_health_UI()
+		HUD.show_health()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		visible = true
 	else:

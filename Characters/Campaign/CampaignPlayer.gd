@@ -18,6 +18,7 @@ extends CharacterBase
 
 func _ready() -> void:
 	super()
+	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 	add_weapon(Globals.weapons[Globals.WEAPONS.PISTOL].instantiate())
 	weapon_state_machine.travel("Alert")
 	nozzle = $AimHelper/FirstPerson/Nozzle
@@ -224,6 +225,7 @@ func _pick_up_ammo(new_ammo : PickUp) -> void:
 func _pick_up_health(new_health : PickUp) -> void:
 	super(new_health)
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
+	HUD.show_health()
 
 
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
@@ -231,6 +233,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 	super(body_seg, damage, shooter)
 	_show_damage(shooter)
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
+	HUD.show_health()
 
 
 func _show_damage(shooter : CharacterBase) -> void:

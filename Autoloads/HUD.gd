@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ScoreBoard"):
-		health_mod.modulate.a = 1
+		show_health()
 
 
 func _process(delta: float) -> void:
@@ -74,17 +74,19 @@ func reset_scoreboard() -> void:
 func set_game_over() -> void:
 	game_over = true
 	scoreboard.visible = true
-	health_mod.modulate.a = 1
+	show_health()
 	$MatchTimer.visible = false
 
 
 func exit_game() -> void:
 	game_over = false
 	visible = false
+	set_process(false)
 
 
 func fade_in() -> void:
 	visible = true
+	HUD.show_health()
 	fade_in_out.color.a = 1
 	var tween = create_tween()
 	tween.tween_property(fade_in_out, "color:a", 0.0, open_time)
@@ -111,9 +113,11 @@ func update_weapon(mag_ammo, mag_size, ammo_extra) -> void:
 	extra_ammo.text = str(ammo_extra)
 
 
-func update_health(max_health, max_armor, health, armor) -> void:
+func show_health() -> void:
 	health_mod.modulate.a = 1
-	
+
+
+func update_health(max_health, max_armor, health, armor) -> void:
 	# Health Boxes
 	var box_count := health_bar.get_child_count()
 	var health_per_box : int = max_health / box_count

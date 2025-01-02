@@ -48,6 +48,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 
 
 func _die() -> void:
+	trigger_pulled = false
 	# Signal to PlayerContainer.add_to_scoreboard
 	add_score.emit(self, last_shot_by)
 	
