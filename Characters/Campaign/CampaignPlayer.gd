@@ -146,8 +146,11 @@ func _swing() -> void:
 
 
 func _fire() -> void:
+	if weapon_held is BulletWeapon and weapon_held.ammo_in_mag == 0:
+		_reload()
+		return
 	if weapon_held.can_fire() and !switching_weapons:
-		super()
+		weapon_held.fire()
 		if fp_animator.is_playing():
 			fp_animator.stop()
 		fp_animator.play(weapon_held.get_anim("Shoot"))
@@ -182,7 +185,7 @@ func _zoom() -> void:
 
 
 func _reload() -> void:
-	if weapon_held.can_reload() and !switching_weapons:
+	if weapon_held.can_reload() and !switching_weapons and !weapon_held.is_reloading:
 		fp_animator.play(weapon_held.get_anim("Reload"))
 	await super()
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
@@ -195,10 +198,11 @@ func shell_loaded() -> void:
 		weapon_held.load_shell()
 		HUD.update_weapon(weapon_held.ammo_in_mag, \
 					weapon_held.properties.mag_size, weapon_held.extra_ammo)
-		if weapon_held.ammo_in_mag < weapon_held.properties.mag_size:
-			fp_animator.seek(0.4)
-			fp_animator.play(weapon_held.get_anim("Reload"))
-		
+		if weapon_held.extra_ammo <= 0 or \
+						weapon_held.ammo_in_mag >= weapon_held.properties.mag_size:
+			return
+		fp_animator.seek(0.4)
+		fp_animator.play(weapon_held.get_anim("Reload"))
 
 
 func _pick_up_weapon(new_weapon : PickUp) -> Weapon:

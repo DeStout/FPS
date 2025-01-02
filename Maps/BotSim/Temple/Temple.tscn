@@ -170,18 +170,7 @@ shadow_opacity = 0.61
 shadow_blur = 2.315
 omni_range = 25.0
 
-[node name="WhiteLightTemple" type="OmniLight3D" parent="Lights" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -25)
-light_energy = 3.0
-light_indirect_energy = 10.0
-light_volumetric_fog_energy = 10.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.61
-shadow_blur = 2.315
-omni_range = 80.0
-
-[node name="WhiteLightCenter1" type="OmniLight3D" parent="Lights" index="15"]
+[node name="WhiteLightCenter1" type="OmniLight3D" parent="Lights" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.125, -4)
 light_bake_mode = 1
 shadow_enabled = true
@@ -189,7 +178,7 @@ shadow_opacity = 0.61
 shadow_blur = 2.315
 omni_range = 25.0
 
-[node name="WhiteLightCenter2" type="OmniLight3D" parent="Lights" index="16"]
+[node name="WhiteLightCenter2" type="OmniLight3D" parent="Lights" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.125, 4)
 light_bake_mode = 1
 shadow_enabled = true
@@ -197,35 +186,35 @@ shadow_opacity = 0.61
 shadow_blur = 2.315
 omni_range = 25.0
 
-[node name="WhiteLightCorner1" type="OmniLight3D" parent="Lights" index="17"]
+[node name="WhiteLightCorner1" type="OmniLight3D" parent="Lights" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, 27)
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
 omni_range = 25.0
 
-[node name="WhiteLightCorner2" type="OmniLight3D" parent="Lights" index="18"]
+[node name="WhiteLightCorner2" type="OmniLight3D" parent="Lights" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 18)
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
 omni_range = 25.0
 
-[node name="WhiteLightCorner3" type="OmniLight3D" parent="Lights" index="19"]
+[node name="WhiteLightCorner3" type="OmniLight3D" parent="Lights" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00011, 2.5, 27)
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
 omni_range = 25.0
 
-[node name="WhiteLightCorner4" type="OmniLight3D" parent="Lights" index="20"]
+[node name="WhiteLightCorner4" type="OmniLight3D" parent="Lights" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 18)
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
 omni_range = 25.0
 
-[node name="WhiteLightEntrance" type="OmniLight3D" parent="Lights" index="21"]
+[node name="WhiteLightEntrance" type="OmniLight3D" parent="Lights" index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.125, 34)
 light_energy = 2.0
 light_bake_mode = 1
@@ -583,6 +572,7 @@ weapon_type = 3
 [node name="Shotgun1" parent="Pickups" index="11" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 weapon_type = 4
+respawn_time = 0.0
 
 [node name="Sniper1" parent="Pickups" index="12" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -36)

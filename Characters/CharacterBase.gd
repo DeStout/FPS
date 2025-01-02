@@ -164,9 +164,10 @@ func _pull_alt() -> void:
 
 
 func _fire() -> void:
-	weapon_held.fire()
 	if weapon_held is BulletWeapon and weapon_held.ammo_in_mag == 0:
 		_reload()
+		return
+	weapon_held.fire()
 
 
 func _gun_alt() -> void:

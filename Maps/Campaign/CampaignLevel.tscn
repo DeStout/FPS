@@ -17,6 +17,7 @@ script = ExtResource("1_byqwd")
 [node name="Pickups" type="Node3D" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_ho10k")
 volume_db = -20.0
 bus = &"Music"

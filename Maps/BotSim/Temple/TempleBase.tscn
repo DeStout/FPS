@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://o2h1ckasd2vt"]
+[gd_scene load_steps=30 format=4 uid="uid://o2h1ckasd2vt"]
 
 [ext_resource type="PackedScene" uid="uid://ddao41v7s3ovx" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
 [ext_resource type="PackedScene" uid="uid://c2a65bh4o4yo8" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/SmallMonument.blend" id="2_se5mt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c1yfii2ty5pop" path="res://Maps/BotSim/Temple/Assets/Props/Logs/4MLog.blend" id="8_7phul"]
 [ext_resource type="PackedScene" uid="uid://barphhjc2tbna" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimA.blend" id="9_atiog"]
 [ext_resource type="PackedScene" uid="uid://ctlrdjxy1qx2s" path="res://Maps/BotSim/Temple/Assets/Props/Logs/1MLog.blend" id="9_nlpdx"]
+[ext_resource type="Script" path="res://Maps/BotSim/Temple/GlowBall.gd" id="9_oem5g"]
 [ext_resource type="PackedScene" uid="uid://b3tsxtveorf4p" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimB.blend" id="10_tc77q"]
 [ext_resource type="PackedScene" uid="uid://dds7gd65l0ud2" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimC.blend" id="11_ryetl"]
 [ext_resource type="Material" uid="uid://b80w2toxnescd" path="res://Maps/BotSim/Temple/Assets/Materials/BrownStone.tres" id="12_f2neo"]
@@ -166,6 +167,17 @@ surface_material_override/1 = ExtResource("12_vit10")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -25)
 mesh = SubResource("SphereMesh_hfgph")
 surface_material_override/0 = ExtResource("6_4gkpw")
+script = ExtResource("9_oem5g")
+
+[node name="WhiteLightTemple" type="OmniLight3D" parent="BlueSide/Details/Monuments/TempleMonument" index="0"]
+light_energy = 3.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 10.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.61
+shadow_blur = 2.315
+omni_range = 80.0
 
 [node name="RubbleA" parent="BlueSide/Details" index="1" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(-1.38693, 0.890622, 2.5226, 0, 2.84145, -1.0032, -2.6752, -0.461732, -1.30781, 25.3393, -0.559517, -5.24215)
