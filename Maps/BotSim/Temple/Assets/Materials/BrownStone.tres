@@ -6,7 +6,6 @@
 
 [resource]
 resource_name = "stone_floor"
-cull_mode = 2
 albedo_texture = ExtResource("1_858lo")
 metallic_texture = ExtResource("2_pihk2")
 metallic_texture_channel = 2

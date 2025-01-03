@@ -5,4 +5,4 @@ emission_enabled = true
 emission = Color(0.8125, 0.8125, 0.8125, 1)
 emission_energy_multiplier = 3.0
 rim_enabled = true
-rim = 0.6
+rim = 0.37
