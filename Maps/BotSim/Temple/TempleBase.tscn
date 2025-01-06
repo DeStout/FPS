@@ -1,12 +1,15 @@
-[gd_scene load_steps=27 format=4 uid="uid://o2h1ckasd2vt"]
+[gd_scene load_steps=30 format=4 uid="uid://o2h1ckasd2vt"]
 
 [ext_resource type="PackedScene" uid="uid://ddao41v7s3ovx" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
 [ext_resource type="PackedScene" uid="uid://c2a65bh4o4yo8" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/SmallMonument.blend" id="2_se5mt"]
+[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/Assets/Materials/BlueGlow.tres" id="3_03kfy"]
 [ext_resource type="PackedScene" uid="uid://djk7mxbgsy43v" path="res://Maps/BotSim/Temple/Assets/Props/Misc/RubbleA.blend" id="3_w0ikm"]
 [ext_resource type="PackedScene" uid="uid://cs3ybux8en50" path="res://Maps/BotSim/Temple/Assets/Props/Misc/SupportArch.blend" id="4_ni7mr"]
 [ext_resource type="PackedScene" uid="uid://c7kw14f0rdw0x" path="res://Maps/BotSim/Temple/Assets/Props/Misc/StoneDoorway.blend" id="4_oftx4"]
+[ext_resource type="Material" uid="uid://cewr1gno80bp4" path="res://Maps/BotSim/Temple/Assets/Materials/GreyStone.tres" id="4_tpqa0"]
 [ext_resource type="PackedScene" uid="uid://sx2qh810nrqp" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/MedMonument.blend" id="5_u64bw"]
 [ext_resource type="Material" uid="uid://ctgsfnqfckqbr" path="res://Maps/BotSim/Temple/Assets/Materials/WhiteGlow.tres" id="6_4gkpw"]
+[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/Assets/Materials/RedGlow.tres" id="6_nx7kh"]
 [ext_resource type="PackedScene" uid="uid://cjnxieq6a3k6j" path="res://Maps/BotSim/Temple/Assets/Props/Logs/6MLog.blend" id="7_fv1se"]
 [ext_resource type="PackedScene" uid="uid://quvmcav0pm1r" path="res://Maps/BotSim/Temple/Assets/Props/Logs/2MLog.blend" id="7_rpeem"]
 [ext_resource type="PackedScene" uid="uid://848xp5s7pa2p" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/LargeMonument.blend" id="8_6iy6e"]
@@ -95,15 +98,23 @@ height = 5.0
 [node name="SmallMonumentBlue1" parent="BlueSide/Details/Monuments" index="0" instance=ExtResource("2_se5mt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 5, -34.5)
 
+[node name="SmallMonument" parent="BlueSide/Details/Monuments/SmallMonumentBlue1" index="0"]
+surface_material_override/0 = ExtResource("3_03kfy")
+surface_material_override/1 = ExtResource("4_tpqa0")
+
 [node name="SmallMonumentWhite1" parent="BlueSide/Details/Monuments" index="1" instance=ExtResource("2_se5mt")]
 
 [node name="SmallMonument" parent="BlueSide/Details/Monuments/SmallMonumentWhite1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+surface_material_override/0 = ExtResource("6_4gkpw")
+surface_material_override/1 = ExtResource("4_tpqa0")
 
 [node name="SmallMonument2" type="MeshInstance3D" parent="BlueSide/Details/Monuments/SmallMonumentWhite1" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 mesh = SubResource("ArrayMesh_5i766")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_4gkpw")
+surface_material_override/1 = ExtResource("4_tpqa0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Details/Monuments/SmallMonumentWhite1/SmallMonument2" index="0"]
 
@@ -113,20 +124,44 @@ shape = SubResource("ConcavePolygonShape3D_rc0wa")
 [node name="SmallMonumentRed1" parent="BlueSide/Details/Monuments" index="2" instance=ExtResource("2_se5mt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 5, -34.5)
 
+[node name="SmallMonument" parent="BlueSide/Details/Monuments/SmallMonumentRed1" index="0"]
+surface_material_override/0 = ExtResource("6_nx7kh")
+surface_material_override/1 = ExtResource("4_tpqa0")
+
 [node name="MedMonumentWhite1" parent="BlueSide/Details/Monuments" index="3" instance=ExtResource("5_u64bw")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 34)
+
+[node name="MedMonument" parent="BlueSide/Details/Monuments/MedMonumentWhite1" index="0"]
+surface_material_override/0 = ExtResource("6_4gkpw")
+surface_material_override/1 = ExtResource("4_tpqa0")
 
 [node name="LargeMonumentBlue1" parent="BlueSide/Details/Monuments" index="4" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 1)
 
+[node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentBlue1" index="0"]
+surface_material_override/0 = ExtResource("3_03kfy")
+surface_material_override/1 = ExtResource("4_tpqa0")
+
 [node name="LargeMonumentBlue2" parent="BlueSide/Details/Monuments" index="5" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 32)
+
+[node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentBlue2" index="0"]
+surface_material_override/0 = ExtResource("3_03kfy")
+surface_material_override/1 = ExtResource("4_tpqa0")
 
 [node name="LargeMonumentRed1" parent="BlueSide/Details/Monuments" index="6" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 1)
 
+[node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentRed1" index="0"]
+surface_material_override/0 = ExtResource("6_nx7kh")
+surface_material_override/1 = ExtResource("4_tpqa0")
+
 [node name="LargeMonumentRed2" parent="BlueSide/Details/Monuments" index="7" instance=ExtResource("8_6iy6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 32)
+
+[node name="LargeMonument" parent="BlueSide/Details/Monuments/LargeMonumentRed2" index="0"]
+surface_material_override/0 = ExtResource("6_nx7kh")
+surface_material_override/1 = ExtResource("4_tpqa0")
 
 [node name="TempleMonument" type="MeshInstance3D" parent="BlueSide/Details/Monuments" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -25)
@@ -1437,1025 +1472,1076 @@ transform = Transform3D(-0.707107, 1.35106e-15, -0.707107, 2.75858e-37, 1, -8.35
 transform = Transform3D(-5.96046e-08, 1.35106e-15, -1, 1.20524e-16, 1, 2.99309e-15, 1, -3.67324e-15, -5.96046e-08, 6.25384, 10.75, -39.2469)
 
 [node name="6MLog144" parent="WhiteMiddle/Supports" index="53" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-4.37114e-08, -1.64203e-15, -1, 0, 1, -8.35187e-23, 1, -3.55271e-15, -4.37114e-08, 1.75, 10.75, -43.25)
+transform = Transform3D(-4.37114e-08, -1.64203e-15, 1, -7.10542e-15, 1, 3.28406e-15, -1, -3.55271e-15, -4.37114e-08, 1.75, 10.75, -43.25)
 
 [node name="6MLog146" parent="WhiteMiddle/Supports" index="54" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-0.707107, -1.64203e-15, -0.707107, -2.20166e-15, 1, -2.03121e-15, 0.707107, -3.55271e-15, -0.707107, 2.45711, 4.875, -42.8964)
+transform = Transform3D(0.707107, -1.64203e-15, 0.707107, -4.90377e-15, 1, 5.31526e-15, -0.707107, -3.55271e-15, 0.707107, 2.45711, 4.875, -42.8964)
 
 [node name="6MLog147" parent="WhiteMiddle/Supports" index="55" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.707107, -1.64203e-15, -0.707107, -2.20166e-15, 1, -2.03121e-15, 0.707107, -3.55271e-15, -0.707107, 2.45711, 10.75, -42.8964)
 
 [node name="6MLog145" parent="WhiteMiddle/Supports" index="56" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-4.37114e-08, -1.64203e-15, -1, 0, 1, -8.35187e-23, 1, -3.55271e-15, -4.37114e-08, -1.75, 10.75, -43.25)
+transform = Transform3D(1, -1.64203e-15, -1.06581e-14, -1.91068e-15, 1, 5.19474e-15, 1.06581e-14, -3.55271e-15, 1, -1.75, 10.75, -43.25)
 
 [node name="4MLog37" parent="WhiteMiddle/Supports" index="57" instance=ExtResource("8_7phul")]
-transform = Transform3D(1.91068e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, -3.55271e-15, -4.37114e-08, -2, 16.625, -43.25)
+transform = Transform3D(1.91068e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, -3.55271e-15, -4.37114e-08, -2, 15.662, -43.3124)
 
-[node name="6MLog148" parent="WhiteMiddle/Supports" index="58" instance=ExtResource("7_fv1se")]
-transform = Transform3D(0.707107, -1.64203e-15, -0.707107, 1.20524e-16, 1, 2.99309e-15, 0.707107, -3.55271e-15, 0.707107, -2.45711, 4.875, -42.8964)
+[node name="4MLog38" parent="WhiteMiddle/Supports" index="58" instance=ExtResource("8_7phul")]
+transform = Transform3D(1.91068e-15, 1, 4.37114e-08, -0.707107, -3.09086e-08, 0.707107, 0.707107, -3.09086e-08, 0.707107, -2, 16.4859, -42.9162)
 
-[node name="6MLog149" parent="WhiteMiddle/Supports" index="59" instance=ExtResource("7_fv1se")]
+[node name="6MLog148" parent="WhiteMiddle/Supports" index="59" instance=ExtResource("7_fv1se")]
+transform = Transform3D(-0.707107, -1.64203e-15, -0.707107, -2.20166e-15, 1, -2.0312e-15, 0.707107, -3.55271e-15, -0.707107, -2.45711, 4.875, -42.8964)
+
+[node name="6MLog149" parent="WhiteMiddle/Supports" index="60" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, -1.64203e-15, -0.707107, 1.20524e-16, 1, 2.99309e-15, 0.707107, -3.55271e-15, 0.707107, -2.45711, 10.75, -42.8964)
 
-[node name="6MLog93" parent="WhiteMiddle/Supports" index="60" instance=ExtResource("7_fv1se")]
+[node name="6MLog93" parent="WhiteMiddle/Supports" index="61" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 3.82137e-15, 4.37114e-08, -1, -1, 1.31134e-07, 1.91069e-15, -0.018306, 4.666, -33.292)
 
-[node name="6MLog94" parent="WhiteMiddle/Supports" index="61" instance=ExtResource("7_fv1se")]
+[node name="6MLog94" parent="WhiteMiddle/Supports" index="62" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 3.82137e-15, 4.37114e-08, -1, -1, 1.31134e-07, 1.91069e-15, 5.98169, 4.666, -29.292)
 
-[node name="6MLog96" parent="WhiteMiddle/Supports" index="62" instance=ExtResource("7_fv1se")]
+[node name="6MLog96" parent="WhiteMiddle/Supports" index="63" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 5.674e-16, -1, 0, -1, -2.50556e-22, -1, 1.42109e-14, -1.31134e-07, 11.7317, 5.541, -29.292)
 
-[node name="6MLog171" parent="WhiteMiddle/Supports" index="63" instance=ExtResource("7_fv1se")]
+[node name="6MLog171" parent="WhiteMiddle/Supports" index="64" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 12.3251, 4.75, -38.75)
 
-[node name="6MLog176" parent="WhiteMiddle/Supports" index="64" instance=ExtResource("7_fv1se")]
+[node name="6MLog176" parent="WhiteMiddle/Supports" index="65" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 11.7001, 4.75, -39.25)
 
-[node name="6MLog177" parent="WhiteMiddle/Supports" index="65" instance=ExtResource("7_fv1se")]
+[node name="6MLog177" parent="WhiteMiddle/Supports" index="66" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 11.7001, 10.625, -39.25)
 
-[node name="6MLog210" parent="WhiteMiddle/Supports" index="66" instance=ExtResource("7_fv1se")]
+[node name="6MLog210" parent="WhiteMiddle/Supports" index="67" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -5.54987e-15, 1, -1.19209e-07, 1, 3.39071e-16, -1, -1.19209e-07, -4.37114e-08, -11.7, 4.75, -39.25)
 
-[node name="6MLog211" parent="WhiteMiddle/Supports" index="67" instance=ExtResource("7_fv1se")]
+[node name="6MLog211" parent="WhiteMiddle/Supports" index="68" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -5.54987e-15, 1, -1.19209e-07, 1, 3.39071e-16, -1, -1.19209e-07, -4.37114e-08, -11.7, 10.625, -39.25)
 
-[node name="6MLog172" parent="WhiteMiddle/Supports" index="68" instance=ExtResource("7_fv1se")]
+[node name="6MLog172" parent="WhiteMiddle/Supports" index="69" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 12.3251, 10.5, -38.75)
 
-[node name="6MLog208" parent="WhiteMiddle/Supports" index="69" instance=ExtResource("7_fv1se")]
+[node name="6MLog208" parent="WhiteMiddle/Supports" index="70" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -5.54987e-15, 1, -1.19209e-07, 1, 3.39071e-16, -1, -1.19209e-07, -4.37114e-08, -12.325, 4.75, -38.75)
 
-[node name="6MLog209" parent="WhiteMiddle/Supports" index="70" instance=ExtResource("7_fv1se")]
+[node name="6MLog209" parent="WhiteMiddle/Supports" index="71" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -5.54987e-15, 1, -1.19209e-07, 1, 3.39071e-16, -1, -1.19209e-07, -4.37114e-08, -12.325, 10.5, -38.75)
 
-[node name="6MLog204" parent="WhiteMiddle/Supports" index="71" instance=ExtResource("7_fv1se")]
+[node name="6MLog204" parent="WhiteMiddle/Supports" index="72" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 12.3251, 4.75, -38.75)
 
-[node name="6MLog205" parent="WhiteMiddle/Supports" index="72" instance=ExtResource("7_fv1se")]
+[node name="6MLog205" parent="WhiteMiddle/Supports" index="73" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 11.7001, 4.75, -39.25)
 
-[node name="6MLog206" parent="WhiteMiddle/Supports" index="73" instance=ExtResource("7_fv1se")]
+[node name="6MLog206" parent="WhiteMiddle/Supports" index="74" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 11.7001, 10.625, -39.25)
 
-[node name="6MLog207" parent="WhiteMiddle/Supports" index="74" instance=ExtResource("7_fv1se")]
+[node name="6MLog207" parent="WhiteMiddle/Supports" index="75" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1.52933e-14, -1, -1.19209e-07, 1, 0, 1, 1.19209e-07, -1.31134e-07, 12.3251, 10.5, -38.75)
 
-[node name="6MLog178" parent="WhiteMiddle/Supports" index="75" instance=ExtResource("7_fv1se")]
+[node name="6MLog178" parent="WhiteMiddle/Supports" index="76" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -0.45399, -0.891006, 0, 0.891006, -0.45399, 1, -1.98446e-08, -3.89471e-08, 12.4327, 15.8137, -38.75)
 
-[node name="6MLog213" parent="WhiteMiddle/Supports" index="76" instance=ExtResource("7_fv1se")]
+[node name="6MLog213" parent="WhiteMiddle/Supports" index="77" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0.45399, 0.891006, 0, 0.891006, -0.45399, -1, -1.98446e-08, -3.89471e-08, -12.433, 15.814, -38.75)
 
-[node name="6MLog179" parent="WhiteMiddle/Supports" index="77" instance=ExtResource("7_fv1se")]
+[node name="6MLog179" parent="WhiteMiddle/Supports" index="78" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -0.45399, -0.891006, 0, 0.891006, -0.45399, 1, -1.98446e-08, -3.89471e-08, 11.7206, 15.768, -39.25)
 
-[node name="6MLog212" parent="WhiteMiddle/Supports" index="78" instance=ExtResource("7_fv1se")]
+[node name="6MLog212" parent="WhiteMiddle/Supports" index="79" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0.45399, 0.891006, 0, 0.891006, -0.45399, -1, -1.98446e-08, -3.89471e-08, -11.721, 15.768, -39.25)
 
-[node name="6MLog97" parent="WhiteMiddle/Supports" index="79" instance=ExtResource("7_fv1se")]
+[node name="6MLog97" parent="WhiteMiddle/Supports" index="80" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 5.674e-16, -1, 0, -1, -2.50556e-22, -1, 1.42109e-14, -1.31134e-07, -11.732, 5.541, -29.292)
 
-[node name="6MLog98" parent="WhiteMiddle/Supports" index="80" instance=ExtResource("7_fv1se")]
+[node name="6MLog98" parent="WhiteMiddle/Supports" index="81" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 1.14641e-14, 8.74228e-08, 4.38878e-15, -1, -12.357, 2.375, -20.292)
 
-[node name="6MLog104" parent="WhiteMiddle/Supports" index="81" instance=ExtResource("7_fv1se")]
+[node name="6MLog104" parent="WhiteMiddle/Supports" index="82" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -8.21015e-15, 1, 8.74228e-08, 1, 1.14641e-14, -1, 8.74228e-08, -4.37114e-08, -13.25, 2.375, -14.375)
 
-[node name="6MLog105" parent="WhiteMiddle/Supports" index="82" instance=ExtResource("7_fv1se")]
+[node name="6MLog105" parent="WhiteMiddle/Supports" index="83" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 1.14641e-14, 8.74228e-08, 4.38878e-15, -1, -12.625, 2.375, -13.75)
 
-[node name="6MLog101" parent="WhiteMiddle/Supports" index="83" instance=ExtResource("7_fv1se")]
+[node name="6MLog101" parent="WhiteMiddle/Supports" index="84" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74227e-08, 1, 4.37114e-08, -12.357, 2.25, -20.667)
 
-[node name="2MLog20" parent="WhiteMiddle/Supports" index="84" instance=ExtResource("7_rpeem")]
+[node name="2MLog20" parent="WhiteMiddle/Supports" index="85" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 8.74228e-08, 1, 8.74228e-08, 1, -8.74227e-08, -1, 8.74227e-08, -2.18557e-07, -12.357, 8.125, -20.292)
 
-[node name="6MLog99" parent="WhiteMiddle/Supports" index="85" instance=ExtResource("7_fv1se")]
+[node name="6MLog99" parent="WhiteMiddle/Supports" index="86" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 1.14641e-14, 8.74228e-08, 4.38878e-15, -1, -6.732, 2.375, -14.667)
 
-[node name="6MLog100" parent="WhiteMiddle/Supports" index="86" instance=ExtResource("7_fv1se")]
+[node name="6MLog100" parent="WhiteMiddle/Supports" index="87" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, -6.357, 2.25, -14.667)
 
-[node name="6MLog106" parent="WhiteMiddle/Supports" index="87" instance=ExtResource("7_fv1se")]
+[node name="6MLog106" parent="WhiteMiddle/Supports" index="88" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, 3, 5.25, -14.75)
 
-[node name="6MLog108" parent="WhiteMiddle/Supports" index="88" instance=ExtResource("7_fv1se")]
+[node name="6MLog108" parent="WhiteMiddle/Supports" index="89" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, 3, 10.75, -14.75)
 
-[node name="6MLog107" parent="WhiteMiddle/Supports" index="89" instance=ExtResource("7_fv1se")]
+[node name="6MLog107" parent="WhiteMiddle/Supports" index="90" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, 2.75, 5, -14.75)
 
-[node name="6MLog109" parent="WhiteMiddle/Supports" index="90" instance=ExtResource("7_fv1se")]
+[node name="6MLog109" parent="WhiteMiddle/Supports" index="91" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, -2.75, 5, -14.75)
 
-[node name="2MLog21" parent="WhiteMiddle/Supports" index="91" instance=ExtResource("7_rpeem")]
+[node name="2MLog21" parent="WhiteMiddle/Supports" index="92" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, -2.75, 5.875, -14.75)
 
-[node name="2MLog24" parent="WhiteMiddle/Supports" index="92" instance=ExtResource("7_rpeem")]
+[node name="2MLog24" parent="WhiteMiddle/Supports" index="93" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, 2.75, 5.875, -14.75)
 
-[node name="2MLog25" parent="WhiteMiddle/Supports" index="93" instance=ExtResource("7_rpeem")]
+[node name="2MLog25" parent="WhiteMiddle/Supports" index="94" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, -2.75, 10.125, -14.75)
 
-[node name="2MLog26" parent="WhiteMiddle/Supports" index="94" instance=ExtResource("7_rpeem")]
+[node name="2MLog26" parent="WhiteMiddle/Supports" index="95" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, 2.75, 10.125, -14.75)
 
-[node name="2MLog22" parent="WhiteMiddle/Supports" index="95" instance=ExtResource("7_rpeem")]
+[node name="2MLog22" parent="WhiteMiddle/Supports" index="96" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, -2.125, 5.25, -14.75)
 
-[node name="2MLog23" parent="WhiteMiddle/Supports" index="96" instance=ExtResource("7_rpeem")]
+[node name="2MLog23" parent="WhiteMiddle/Supports" index="97" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, 2.125, 5.25, -14.75)
 
-[node name="2MLog27" parent="WhiteMiddle/Supports" index="97" instance=ExtResource("7_rpeem")]
+[node name="2MLog27" parent="WhiteMiddle/Supports" index="98" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, -2.125, 10.75, -14.75)
 
-[node name="2MLog28" parent="WhiteMiddle/Supports" index="98" instance=ExtResource("7_rpeem")]
+[node name="2MLog28" parent="WhiteMiddle/Supports" index="99" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 1, -1.19209e-07, 2.18557e-07, 1.19209e-07, 1, -1.31134e-07, 2.125, 10.75, -14.75)
 
-[node name="6MLog110" parent="WhiteMiddle/Supports" index="99" instance=ExtResource("7_fv1se")]
+[node name="6MLog110" parent="WhiteMiddle/Supports" index="100" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, 3, 5.25, -13.375)
 
-[node name="6MLog111" parent="WhiteMiddle/Supports" index="100" instance=ExtResource("7_fv1se")]
+[node name="6MLog111" parent="WhiteMiddle/Supports" index="101" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, 3, 10.75, -13.375)
 
-[node name="6MLog116" parent="WhiteMiddle/Supports" index="101" instance=ExtResource("7_fv1se")]
+[node name="6MLog116" parent="WhiteMiddle/Supports" index="102" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, 3, 10.125, -12.75)
 
-[node name="6MLog117" parent="WhiteMiddle/Supports" index="102" instance=ExtResource("7_fv1se")]
+[node name="6MLog117" parent="WhiteMiddle/Supports" index="103" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, 3, 5.875, -12.75)
 
-[node name="6MLog112" parent="WhiteMiddle/Supports" index="103" instance=ExtResource("7_fv1se")]
+[node name="6MLog112" parent="WhiteMiddle/Supports" index="104" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, 2.75, 5, -13.375)
 
-[node name="6MLog114" parent="WhiteMiddle/Supports" index="104" instance=ExtResource("7_fv1se")]
+[node name="6MLog114" parent="WhiteMiddle/Supports" index="105" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, 2.125, 5, -12.75)
 
-[node name="6MLog115" parent="WhiteMiddle/Supports" index="105" instance=ExtResource("7_fv1se")]
+[node name="6MLog115" parent="WhiteMiddle/Supports" index="106" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, -2.125, 5, -12.75)
 
-[node name="6MLog113" parent="WhiteMiddle/Supports" index="106" instance=ExtResource("7_fv1se")]
+[node name="6MLog113" parent="WhiteMiddle/Supports" index="107" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, -2.75, 5, -13.375)
 
-[node name="4MLog26" parent="WhiteMiddle/Supports" index="107" instance=ExtResource("8_7phul")]
+[node name="4MLog26" parent="WhiteMiddle/Supports" index="108" instance=ExtResource("8_7phul")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, -11.607, -1.25, -14.792)
 
-[node name="1MLog2" parent="WhiteMiddle/Supports" index="108" instance=ExtResource("9_nlpdx")]
+[node name="1MLog2" parent="WhiteMiddle/Supports" index="109" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.625, 1.625, -14.375)
 
-[node name="1MLog3" parent="WhiteMiddle/Supports" index="109" instance=ExtResource("9_nlpdx")]
+[node name="1MLog3" parent="WhiteMiddle/Supports" index="110" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.625, 9.875, -14.375)
 
-[node name="1MLog4" parent="WhiteMiddle/Supports" index="110" instance=ExtResource("9_nlpdx")]
+[node name="1MLog4" parent="WhiteMiddle/Supports" index="111" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.625, 1.625, -14.375)
 
-[node name="1MLog5" parent="WhiteMiddle/Supports" index="111" instance=ExtResource("9_nlpdx")]
+[node name="1MLog5" parent="WhiteMiddle/Supports" index="112" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.625, 9.875, -14.375)
 
-[node name="4MLog27" parent="WhiteMiddle/Supports" index="112" instance=ExtResource("8_7phul")]
+[node name="4MLog27" parent="WhiteMiddle/Supports" index="113" instance=ExtResource("8_7phul")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, -12.232, -1.25, -15.417)
 
-[node name="4MLog28" parent="WhiteMiddle/Supports" index="113" instance=ExtResource("8_7phul")]
+[node name="4MLog28" parent="WhiteMiddle/Supports" index="114" instance=ExtResource("8_7phul")]
 transform = Transform3D(-2.18557e-07, 1.31134e-07, 1, 7.54979e-08, 1, -1.31134e-07, -1, 7.54979e-08, -2.18557e-07, -12.232, 10.5, -15.417)
 
-[node name="6MLog102" parent="WhiteMiddle/Supports" index="114" instance=ExtResource("7_fv1se")]
+[node name="6MLog102" parent="WhiteMiddle/Supports" index="115" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74227e-08, 1, 4.37114e-08, -12.357, 10.25, -20.667)
 
-[node name="6MLog103" parent="WhiteMiddle/Supports" index="115" instance=ExtResource("7_fv1se")]
+[node name="6MLog103" parent="WhiteMiddle/Supports" index="116" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-7.54979e-08, -1, 8.74228e-08, -2.18557e-07, 8.74228e-08, 1, -1, 7.54979e-08, -2.18557e-07, -6.357, 10.25, -14.667)
 
-[node name="2MLog19" parent="WhiteMiddle/Supports" index="116" instance=ExtResource("7_rpeem")]
+[node name="2MLog19" parent="WhiteMiddle/Supports" index="117" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.31134e-07, 6.56811e-15, -1, 8.74227e-08, 1, 7.10543e-15, 1, -8.74227e-08, 1.31134e-07, -6.732, 8.125, -14.667)
 
-[node name="6MLog118" parent="WhiteMiddle/Supports" index="117" instance=ExtResource("7_fv1se")]
+[node name="6MLog118" parent="WhiteMiddle/Supports" index="118" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 5.67404e-16, -1, 8.74228e-08, 1, 1.14641e-14, 1, -8.74228e-08, 1.31134e-07, 6.73954, 2.375, -14.7114)
 
-[node name="6MLog119" parent="WhiteMiddle/Supports" index="118" instance=ExtResource("7_fv1se")]
+[node name="6MLog119" parent="WhiteMiddle/Supports" index="119" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74228e-08, -8.74228e-08, 8.74227e-08, 1, 1.14641e-14, 8.74228e-08, 4.38878e-15, -1, 12.6565, 2.375, -13.8184)
 
-[node name="6MLog120" parent="WhiteMiddle/Supports" index="119" instance=ExtResource("7_fv1se")]
+[node name="6MLog120" parent="WhiteMiddle/Supports" index="120" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 5.67404e-16, -1, 8.74228e-08, 1, 1.14641e-14, 1, -8.74228e-08, 1.31134e-07, 13.2815, 2.375, -14.4434)
 
-[node name="2MLog31" parent="WhiteMiddle/Supports" index="120" instance=ExtResource("7_rpeem")]
+[node name="2MLog31" parent="WhiteMiddle/Supports" index="121" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1, 8.74227e-08, -8.74227e-08, 8.74227e-08, 1, 2.84217e-14, 8.74228e-08, 9.85217e-15, -1, 13.2815, 8.125, -14.4434)
 
-[node name="2MLog32" parent="WhiteMiddle/Supports" index="121" instance=ExtResource("7_rpeem")]
+[node name="2MLog32" parent="WhiteMiddle/Supports" index="122" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1, 8.74227e-08, -8.74227e-08, 8.74227e-08, 1, 4.9738e-14, 8.74227e-08, 3.11685e-14, -1, 12.2815, 10.5, -15.3184)
 
-[node name="2MLog33" parent="WhiteMiddle/Supports" index="122" instance=ExtResource("7_rpeem")]
+[node name="2MLog33" parent="WhiteMiddle/Supports" index="123" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37113e-08, -3.49898e-14, 1, 8.74227e-08, 1, 4.9738e-14, -1, 8.74228e-08, -4.37113e-08, 12.6565, 8.125, -13.8184)
 
-[node name="6MLog121" parent="WhiteMiddle/Supports" index="123" instance=ExtResource("7_fv1se")]
+[node name="6MLog121" parent="WhiteMiddle/Supports" index="124" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 1, 4.37114e-08, -8.74228e-08, -4.37114e-08, 1, 1, -1.31134e-07, 8.74228e-08, 6.36454, 2.25, -14.7114)
 
-[node name="2MLog29" parent="WhiteMiddle/Supports" index="124" instance=ExtResource("7_rpeem")]
+[node name="2MLog29" parent="WhiteMiddle/Supports" index="125" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1, 8.74227e-08, -2.62268e-07, 8.74228e-08, 1, -8.74227e-08, 2.62268e-07, -8.74228e-08, -1, 6.73954, 8.125, -14.7114)
 
-[node name="6MLog122" parent="WhiteMiddle/Supports" index="125" instance=ExtResource("7_fv1se")]
+[node name="6MLog122" parent="WhiteMiddle/Supports" index="126" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 8.74227e-08, -2.62268e-07, 8.74227e-08, 1, 1.14641e-14, 2.62268e-07, -1.08967e-14, -1, 12.25, 2.375, -20.336)
 
-[node name="6MLog123" parent="WhiteMiddle/Supports" index="126" instance=ExtResource("7_fv1se")]
+[node name="6MLog123" parent="WhiteMiddle/Supports" index="127" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 1.19209e-07, -2.18557e-07, -2.18557e-07, 8.74228e-08, 1, 1.19209e-07, 1, -8.74227e-08, 12.25, 2.25, -20.7114)
 
-[node name="4MLog29" parent="WhiteMiddle/Supports" index="127" instance=ExtResource("8_7phul")]
+[node name="4MLog29" parent="WhiteMiddle/Supports" index="128" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 7.54978e-08, -2.62268e-07, 7.54979e-08, 1, -1.31134e-07, 2.62268e-07, -1.31134e-07, -1, 12.2395, -1.25, -15.4614)
 
-[node name="4MLog30" parent="WhiteMiddle/Supports" index="128" instance=ExtResource("8_7phul")]
+[node name="4MLog30" parent="WhiteMiddle/Supports" index="129" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 7.54979e-08, -2.62268e-07, 7.54979e-08, 1, -1.31134e-07, 2.62268e-07, -1.31134e-07, -1, 11.6145, -1.25, -14.8364)
 
-[node name="4MLog31" parent="WhiteMiddle/Supports" index="129" instance=ExtResource("8_7phul")]
+[node name="4MLog31" parent="WhiteMiddle/Supports" index="130" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 7.54979e-08, -2.62268e-07, 7.54979e-08, 1, -1.31134e-07, 2.62268e-07, -1.31134e-07, -1, 11.6145, 10.5, -14.8364)
 
-[node name="6MLog126" parent="WhiteMiddle/Supports" index="130" instance=ExtResource("7_fv1se")]
+[node name="6MLog126" parent="WhiteMiddle/Supports" index="131" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 7.54978e-08, -2.62268e-07, 2.38837e-07, 0.707107, -0.707107, 1.32067e-07, -0.707107, -0.707107, 11.6145, 12.25, -14.8364)
 
-[node name="6MLog223" parent="WhiteMiddle/Supports" index="131" instance=ExtResource("7_fv1se")]
+[node name="6MLog223" parent="WhiteMiddle/Supports" index="132" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 7.54978e-08, -2.62268e-07, 2.38837e-07, 0.707107, -0.707107, 1.32067e-07, -0.707107, -0.707107, -11.615, 12.25, -14.836)
 
-[node name="6MLog127" parent="WhiteMiddle/Supports" index="132" instance=ExtResource("7_fv1se")]
+[node name="6MLog127" parent="WhiteMiddle/Supports" index="133" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 7.54978e-08, -2.62268e-07, 2.38837e-07, 0.707107, -0.707107, 1.32067e-07, -0.707107, -0.707107, 12.2395, 12.0303, -15.3667)
 
-[node name="6MLog222" parent="WhiteMiddle/Supports" index="133" instance=ExtResource("7_fv1se")]
+[node name="6MLog222" parent="WhiteMiddle/Supports" index="134" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -6.18173e-08, -6.18173e-08, 0, 0.707107, -0.707107, 8.74228e-08, -0.707107, -0.707107, -12.24, 12.03, -15.367)
 
-[node name="6MLog128" parent="WhiteMiddle/Supports" index="134" instance=ExtResource("7_fv1se")]
+[node name="6MLog128" parent="WhiteMiddle/Supports" index="135" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.939855, -0.338937, -0.0423664, -0.208768, 0.668167, -0.714121, 0.27035, -0.662326, -0.698739, 11.6068, 16.1347, -20.8157)
 
-[node name="6MLog221" parent="WhiteMiddle/Supports" index="135" instance=ExtResource("7_fv1se")]
+[node name="6MLog221" parent="WhiteMiddle/Supports" index="136" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.939417, 0.340105, 0.0427135, 0.209228, 0.667647, -0.714473, -0.271513, -0.662251, -0.698358, -11.616, 16.117, -20.798)
 
-[node name="6MLog130" parent="WhiteMiddle/Supports" index="136" instance=ExtResource("7_fv1se")]
+[node name="6MLog130" parent="WhiteMiddle/Supports" index="137" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.62446, 20.2926, -25.3145)
 
-[node name="4MLog41" parent="WhiteMiddle/Supports" index="137" instance=ExtResource("8_7phul")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 3.74946, 20.2926, -25.3145)
-
-[node name="4MLog42" parent="WhiteMiddle/Supports" index="138" instance=ExtResource("8_7phul")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.12446, 20.2926, -25.3145)
-
-[node name="6MLog133" parent="WhiteMiddle/Supports" index="139" instance=ExtResource("7_fv1se")]
+[node name="6MLog133" parent="WhiteMiddle/Supports" index="138" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, 9.62446, 20.2926, -24.9395)
 
-[node name="6MLog136" parent="WhiteMiddle/Supports" index="140" instance=ExtResource("7_fv1se")]
+[node name="6MLog136" parent="WhiteMiddle/Supports" index="139" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, 8.375, 20.25, -26.875)
 
-[node name="6MLog139" parent="WhiteMiddle/Supports" index="141" instance=ExtResource("7_fv1se")]
+[node name="6MLog139" parent="WhiteMiddle/Supports" index="140" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.422618, 3.9616e-08, -0.906308, 0.906308, 1.84732e-08, -0.422618, 1.77636e-15, -1, -4.37114e-08, 8.15848, 20.2851, -26.875)
 
-[node name="6MLog140" parent="WhiteMiddle/Supports" index="142" instance=ExtResource("7_fv1se")]
+[node name="6MLog140" parent="WhiteMiddle/Supports" index="141" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.422618, 3.9616e-08, -0.906308, 0.906308, 1.84732e-08, -0.422618, 1.77636e-15, -1, -4.37114e-08, 8.15848, 20.2851, -32.75)
 
-[node name="6MLog180" parent="WhiteMiddle/Supports" index="143" instance=ExtResource("7_fv1se")]
+[node name="6MLog180" parent="WhiteMiddle/Supports" index="142" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.282863, -0.344061, -0.895327, -0.606603, 0.658894, -0.444849, 0.742981, 0.66894, -0.0223313, 8.17494, 20.3558, -38.4528)
 
-[node name="6MLog197" parent="WhiteMiddle/Supports" index="144" instance=ExtResource("7_fv1se")]
+[node name="6MLog197" parent="WhiteMiddle/Supports" index="143" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.318857, 0.328087, -0.889207, -0.606286, 0.650522, 0.457426, 0.728524, 0.684967, -0.00850909, -8.175, 20.356, -38.453)
 
-[node name="6MLog184" parent="WhiteMiddle/Supports" index="145" instance=ExtResource("7_fv1se")]
+[node name="6MLog184" parent="WhiteMiddle/Supports" index="144" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.318099, -0.327274, -0.889778, 0.603518, 0.653897, -0.456273, 0.731149, -0.682137, -0.0104875, 8.14138, 20.3108, -27.5951)
 
-[node name="6MLog198" parent="WhiteMiddle/Supports" index="146" instance=ExtResource("7_fv1se")]
+[node name="6MLog198" parent="WhiteMiddle/Supports" index="145" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.299931, 0.343047, -0.890146, 0.603706, 0.65423, 0.455545, 0.738634, -0.674019, -0.0108758, -8.141, 20.311, -27.595)
 
-[node name="6MLog191" parent="WhiteMiddle/Supports" index="147" instance=ExtResource("7_fv1se")]
+[node name="6MLog191" parent="WhiteMiddle/Supports" index="146" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.00558618, -0.312481, -0.949908, 0.709336, 0.6708, -0.216494, 0.704848, -0.672594, 0.225401, 7.39148, 20.5128, -27.1381)
 
-[node name="6MLog199" parent="WhiteMiddle/Supports" index="148" instance=ExtResource("7_fv1se")]
+[node name="6MLog199" parent="WhiteMiddle/Supports" index="147" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.00502263, 0.311873, 0.950111, -0.709352, 0.670801, -0.21644, -0.704837, -0.672876, 0.224597, -7.391, 20.513, -27.138)
 
-[node name="4MLog43" parent="WhiteMiddle/Supports" index="149" instance=ExtResource("8_7phul")]
+[node name="4MLog43" parent="WhiteMiddle/Supports" index="148" instance=ExtResource("8_7phul")]
 transform = Transform3D(0.455139, 0.00834851, -0.890381, -0.890269, -0.014175, -0.455214, -0.0164212, 0.999865, 0.00098091, 6.41098, 23.7736, -35.0723)
 
-[node name="4MLog47" parent="WhiteMiddle/Supports" index="150" instance=ExtResource("8_7phul")]
+[node name="4MLog47" parent="WhiteMiddle/Supports" index="149" instance=ExtResource("8_7phul")]
 transform = Transform3D(-0.455515, -0.00541032, -0.890211, -0.890103, -0.0139829, 0.455545, -0.0149124, 0.999888, 0.00155369, -6.411, 23.774, -35.072)
 
-[node name="4MLog44" parent="WhiteMiddle/Supports" index="151" instance=ExtResource("8_7phul")]
+[node name="4MLog44" parent="WhiteMiddle/Supports" index="150" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.625, 24.25, -35.125)
 
-[node name="4MLog46" parent="WhiteMiddle/Supports" index="152" instance=ExtResource("8_7phul")]
+[node name="4MLog46" parent="WhiteMiddle/Supports" index="151" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.625, 24.25, -35.125)
 
-[node name="6MLog185" parent="WhiteMiddle/Supports" index="153" instance=ExtResource("7_fv1se")]
+[node name="6MLog185" parent="WhiteMiddle/Supports" index="152" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 5.875, 24.25, -34.875)
 
-[node name="6MLog189" parent="WhiteMiddle/Supports" index="154" instance=ExtResource("7_fv1se")]
+[node name="6MLog189" parent="WhiteMiddle/Supports" index="153" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.36935e-08, -1, -1.251e-09, 0.727605, -3.09334e-08, -0.685996, 0.685996, -3.08838e-08, 0.727605, 5.875, 23.9937, -35.3739)
 
-[node name="6MLog192" parent="WhiteMiddle/Supports" index="155" instance=ExtResource("7_fv1se")]
+[node name="6MLog192" parent="WhiteMiddle/Supports" index="154" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.36935e-08, -1, -1.251e-09, 0.727605, -3.09334e-08, -0.685996, 0.685996, -3.08838e-08, 0.727605, 5.875, 23.9937, -30.6451)
 
-[node name="6MLog193" parent="WhiteMiddle/Supports" index="156" instance=ExtResource("7_fv1se")]
+[node name="6MLog193" parent="WhiteMiddle/Supports" index="155" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.62448e-08, 1, -6.36239e-08, 0.727773, -3.1812e-08, -0.685818, -0.685818, -5.74447e-08, -0.727773, -5.875, 23.994, -30.645)
 
-[node name="6MLog190" parent="WhiteMiddle/Supports" index="157" instance=ExtResource("7_fv1se")]
+[node name="6MLog190" parent="WhiteMiddle/Supports" index="156" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.62448e-08, 1, -6.36239e-08, 0.727773, -3.1812e-08, -0.685818, -0.685818, -5.74447e-08, -0.727773, -5.875, 23.994, -35.374)
 
-[node name="6MLog186" parent="WhiteMiddle/Supports" index="158" instance=ExtResource("7_fv1se")]
+[node name="6MLog186" parent="WhiteMiddle/Supports" index="157" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5.875, 24.25, -34.875)
 
-[node name="6MLog187" parent="WhiteMiddle/Supports" index="159" instance=ExtResource("7_fv1se")]
+[node name="6MLog187" parent="WhiteMiddle/Supports" index="158" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 5.875, 24.25, -31.375)
 
-[node name="6MLog188" parent="WhiteMiddle/Supports" index="160" instance=ExtResource("7_fv1se")]
+[node name="6MLog188" parent="WhiteMiddle/Supports" index="159" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5.875, 24.25, -31.375)
 
-[node name="6MLog181" parent="WhiteMiddle/Supports" index="161" instance=ExtResource("7_fv1se")]
+[node name="6MLog181" parent="WhiteMiddle/Supports" index="160" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.0205913, -0.331024, -0.943398, -0.703913, 0.665284, -0.248802, 0.709987, 0.669193, -0.219313, 7.84982, 20.1609, -39.2496)
 
-[node name="6MLog196" parent="WhiteMiddle/Supports" index="162" instance=ExtResource("7_fv1se")]
+[node name="6MLog196" parent="WhiteMiddle/Supports" index="161" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.0202602, 0.331104, 0.943377, 0.703748, 0.665501, -0.24869, -0.710161, 0.668938, -0.219531, -7.85, 20.161, -39.25)
 
-[node name="6MLog162" parent="WhiteMiddle/Supports" index="163" instance=ExtResource("7_fv1se")]
+[node name="6MLog162" parent="WhiteMiddle/Supports" index="162" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.422618, 7.56182e-08, -0.906308, 0.906308, 6.84243e-08, 0.422618, 9.39711e-08, -1, -3.9616e-08, -8.158, 20.2851, -26.875)
 
-[node name="6MLog163" parent="WhiteMiddle/Supports" index="164" instance=ExtResource("7_fv1se")]
+[node name="6MLog163" parent="WhiteMiddle/Supports" index="163" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.422618, 7.56182e-08, -0.906308, 0.906308, 6.84243e-08, 0.422618, 9.39711e-08, -1, -3.9616e-08, -8.158, 20.2851, -32.75)
 
-[node name="6MLog138" parent="WhiteMiddle/Supports" index="165" instance=ExtResource("7_fv1se")]
+[node name="6MLog138" parent="WhiteMiddle/Supports" index="164" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, 8.375, 20.25, -32.75)
 
-[node name="6MLog160" parent="WhiteMiddle/Supports" index="166" instance=ExtResource("7_fv1se")]
+[node name="6MLog160" parent="WhiteMiddle/Supports" index="165" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, -8.375, 20.25, -26.875)
 
-[node name="6MLog161" parent="WhiteMiddle/Supports" index="167" instance=ExtResource("7_fv1se")]
+[node name="6MLog161" parent="WhiteMiddle/Supports" index="166" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, -8.375, 20.25, -32.75)
 
-[node name="6MLog137" parent="WhiteMiddle/Supports" index="168" instance=ExtResource("7_fv1se")]
+[node name="6MLog137" parent="WhiteMiddle/Supports" index="167" instance=ExtResource("7_fv1se")]
 transform = Transform3D(5.4634e-15, -1, 3.55271e-15, 1, 0, -4.37114e-08, 4.37114e-08, 0, 1, 8, 20.25, -26.625)
 
-[node name="2MLog49" parent="WhiteMiddle/Supports" index="169" instance=ExtResource("7_rpeem")]
+[node name="2MLog49" parent="WhiteMiddle/Supports" index="168" instance=ExtResource("7_rpeem")]
 transform = Transform3D(7.10543e-15, 0.707107, 0.707107, 1, -3.09086e-08, 3.09086e-08, 4.37114e-08, 0.707107, -0.707107, 8.19553, 20.25, -27.064)
 
-[node name="2MLog52" parent="WhiteMiddle/Supports" index="170" instance=ExtResource("7_rpeem")]
+[node name="2MLog52" parent="WhiteMiddle/Supports" index="169" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, 1, -4.37114e-08, 0, 3.09086e-08, 0.707107, 0.707107, -8.196, 20.25, -27.064)
 
-[node name="2MLog50" parent="WhiteMiddle/Supports" index="171" instance=ExtResource("7_rpeem")]
+[node name="2MLog50" parent="WhiteMiddle/Supports" index="170" instance=ExtResource("7_rpeem")]
 transform = Transform3D(7.10543e-15, 0.707107, 0.707107, 1, -3.09086e-08, 3.09086e-08, 4.37114e-08, 0.707107, -0.707107, 7.84198, 20.25, -26.7105)
 
-[node name="2MLog51" parent="WhiteMiddle/Supports" index="172" instance=ExtResource("7_rpeem")]
+[node name="2MLog51" parent="WhiteMiddle/Supports" index="171" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, 1, -4.37114e-08, 0, 3.09086e-08, 0.707107, 0.707107, -7.842, 20.25, -26.71)
 
-[node name="1MLog7" parent="WhiteMiddle/Supports" index="173" instance=ExtResource("9_nlpdx")]
+[node name="1MLog7" parent="WhiteMiddle/Supports" index="172" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(7.10543e-15, 1, 8.74228e-08, 1, -1.80322e-14, 4.37114e-08, 4.37114e-08, 8.74228e-08, -1, -8.75, 20.25, -26.625)
 
-[node name="6MLog141" parent="WhiteMiddle/Supports" index="174" instance=ExtResource("7_fv1se")]
-transform = Transform3D(5.4634e-15, -1, 3.55271e-15, 0.72559, 3.9954e-23, 0.688127, -0.688127, 9.96116e-23, 0.72559, 8, 20.375, -27)
+[node name="6MLog141" parent="WhiteMiddle/Supports" index="173" instance=ExtResource("7_fv1se")]
+transform = Transform3D(5.4634e-15, -1, 3.55271e-15, 0.72559, 3.9954e-23, 0.688127, -0.688127, 9.96116e-23, 0.72559, 8, 20.4245, -27.0469)
 
-[node name="6MLog164" parent="WhiteMiddle/Supports" index="175" instance=ExtResource("7_fv1se")]
+[node name="6MLog164" parent="WhiteMiddle/Supports" index="174" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.64203e-15, 1, 8.74228e-08, 1, 0, -4.37114e-08, -4.37114e-08, 8.74228e-08, -1, -8, 20.25, -26.625)
 
-[node name="6MLog167" parent="WhiteMiddle/Supports" index="176" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-1.64203e-15, 1, 8.74228e-08, 1, 0, -4.37114e-08, -4.37114e-08, 8.74228e-08, -1, -3.25, 20.25, -26.625)
+[node name="6MLog165" parent="WhiteMiddle/Supports" index="175" instance=ExtResource("7_fv1se")]
+transform = Transform3D(-6.01579e-08, 1, 6.34331e-08, 0.725591, 3.9954e-23, 0.688127, 0.688127, 8.74228e-08, -0.725591, -8, 20.4462, -27.075)
 
-[node name="6MLog165" parent="WhiteMiddle/Supports" index="177" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-6.01579e-08, 1, 6.34331e-08, 0.725591, 3.9954e-23, 0.688127, 0.688127, 8.74228e-08, -0.725591, -8, 20.375, -27)
-
-[node name="6MLog166" parent="WhiteMiddle/Supports" index="178" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-6.01579e-08, 1, 6.34331e-08, 0.725591, 3.9954e-23, 0.688127, 0.688127, 8.74228e-08, -0.725591, -3.125, 20.375, -27)
-
-[node name="6MLog131" parent="WhiteMiddle/Supports" index="179" instance=ExtResource("7_fv1se")]
+[node name="6MLog131" parent="WhiteMiddle/Supports" index="176" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, 0.707107, -4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 9.62446, 19.939, -24.5645)
 
-[node name="4MLog38" parent="WhiteMiddle/Supports" index="180" instance=ExtResource("8_7phul")]
-transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, 0.707107, -4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 3.87446, 19.939, -24.5645)
-
-[node name="4MLog39" parent="WhiteMiddle/Supports" index="181" instance=ExtResource("8_7phul")]
-transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, 0.707107, -4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 0.12446, 19.939, -24.5645)
-
-[node name="6MLog168" parent="WhiteMiddle/Supports" index="182" instance=ExtResource("7_fv1se")]
+[node name="6MLog168" parent="WhiteMiddle/Supports" index="177" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 3.82137e-15, 0, 8.74228e-08, -1, -9.624, 20.2926, -25.3145)
 
-[node name="6MLog169" parent="WhiteMiddle/Supports" index="183" instance=ExtResource("7_fv1se")]
+[node name="6MLog169" parent="WhiteMiddle/Supports" index="178" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-3.09086e-08, 1, 5.65142e-08, 0.707107, -1.81059e-08, 0.707107, 0.707107, 6.18172e-08, -0.707107, -9.624, 19.939, -24.5645)
 
-[node name="6MLog132" parent="WhiteMiddle/Supports" index="184" instance=ExtResource("7_fv1se")]
+[node name="6MLog132" parent="WhiteMiddle/Supports" index="179" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.422618, 4.37114e-08, -0.906308, 0.906308, 0, -0.422618, -1.84732e-08, -1, -3.9616e-08, 10.4273, 19.8257, -24.9395)
 
-[node name="6MLog134" parent="WhiteMiddle/Supports" index="185" instance=ExtResource("7_fv1se")]
+[node name="6MLog134" parent="WhiteMiddle/Supports" index="180" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, 9.62446, 20.2926, -30.8145)
 
-[node name="6MLog200" parent="WhiteMiddle/Supports" index="186" instance=ExtResource("7_fv1se")]
+[node name="6MLog200" parent="WhiteMiddle/Supports" index="181" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, -9.624, 20.2926, -24.9395)
 
-[node name="6MLog201" parent="WhiteMiddle/Supports" index="187" instance=ExtResource("7_fv1se")]
+[node name="6MLog201" parent="WhiteMiddle/Supports" index="182" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, -9.624, 20.2926, -30.8145)
 
-[node name="6MLog135" parent="WhiteMiddle/Supports" index="188" instance=ExtResource("7_fv1se")]
+[node name="6MLog135" parent="WhiteMiddle/Supports" index="183" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.422618, 4.37114e-08, -0.906308, 0.906308, 0, -0.422618, -1.84732e-08, -1, -3.9616e-08, 10.4273, 19.8257, -30.8145)
 
-[node name="2MLog38" parent="WhiteMiddle/Supports" index="189" instance=ExtResource("7_rpeem")]
+[node name="2MLog38" parent="WhiteMiddle/Supports" index="184" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, 9.62446, 20.2926, -36.5645)
 
-[node name="2MLog46" parent="WhiteMiddle/Supports" index="190" instance=ExtResource("7_rpeem")]
+[node name="2MLog46" parent="WhiteMiddle/Supports" index="185" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1, -4.37114e-08, -9.624, 20.293, -36.564)
 
-[node name="2MLog40" parent="WhiteMiddle/Supports" index="191" instance=ExtResource("7_rpeem")]
+[node name="2MLog40" parent="WhiteMiddle/Supports" index="186" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, -1.06581e-14, 1, -4.37114e-08, -1.91069e-15, 0, -1.06581e-14, 1, 9.8874, 20.2926, -38.6895)
 
-[node name="2MLog45" parent="WhiteMiddle/Supports" index="192" instance=ExtResource("7_rpeem")]
+[node name="2MLog45" parent="WhiteMiddle/Supports" index="187" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9.887, 20.293, -38.689)
 
-[node name="4MLog40" parent="WhiteMiddle/Supports" index="193" instance=ExtResource("8_7phul")]
+[node name="4MLog40" parent="WhiteMiddle/Supports" index="188" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, -1.06581e-14, 1, -4.37114e-08, -1.91069e-15, 0, -1.06581e-14, 1, 10, 19.625, -39.25)
 
-[node name="4MLog45" parent="WhiteMiddle/Supports" index="194" instance=ExtResource("8_7phul")]
+[node name="4MLog45" parent="WhiteMiddle/Supports" index="189" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -10, 19.625, -39.25)
 
-[node name="2MLog41" parent="WhiteMiddle/Supports" index="195" instance=ExtResource("7_rpeem")]
+[node name="2MLog41" parent="WhiteMiddle/Supports" index="190" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.15685e-08, -1, 1.35184e-08, 0.731175, -3.9616e-08, -0.68219, 0.68219, -1.84732e-08, 0.731175, 7.75, 20.3057, -39.0379)
 
-[node name="2MLog44" parent="WhiteMiddle/Supports" index="196" instance=ExtResource("7_rpeem")]
+[node name="2MLog44" parent="WhiteMiddle/Supports" index="191" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, 1, 0, -0.731354, -3.19685e-08, -0.681998, -0.681998, -2.98111e-08, 0.731354, -7.75, 20.306, -39.038)
 
-[node name="6MLog182" parent="WhiteMiddle/Supports" index="197" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-0.776255, -0.626272, -0.0721852, 0.454261, -0.476273, -0.752869, 0.437121, -0.61721, 0.6542, 6.10306, 20.3744, -38.9235)
+[node name="6MLog182" parent="WhiteMiddle/Supports" index="192" instance=ExtResource("7_fv1se")]
+transform = Transform3D(-0.783595, -0.62121, -0.00876892, 0.447783, -0.554938, -0.701096, 0.430661, -0.553302, 0.713013, 6.07937, 20.4436, -39.0243)
 
-[node name="6MLog194" parent="WhiteMiddle/Supports" index="198" instance=ExtResource("7_fv1se")]
-transform = Transform3D(0.0135846, 0.619751, -0.784681, 0.80119, -0.476273, -0.362296, -0.598256, -0.623757, -0.503009, -5.97006, 20.4354, -38.8388)
+[node name="6MLog183" parent="WhiteMiddle/Supports" index="193" instance=ExtResource("7_fv1se")]
+transform = Transform3D(-0.697669, -0.582825, 0.41662, -0.0109168, -0.572815, -0.819613, 0.716337, -0.576367, 0.393272, 5.99445, 19.3273, -39.3749)
 
-[node name="6MLog183" parent="WhiteMiddle/Supports" index="199" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-0.697669, -0.626272, 0.34791, -0.0109168, -0.476273, -0.87923, 0.716337, -0.61721, 0.325444, 5.99445, 19.3273, -39.3749)
+[node name="6MLog195" parent="WhiteMiddle/Supports" index="194" instance=ExtResource("7_fv1se")]
+transform = Transform3D(-0.810964, 0.574755, -0.109514, -0.3166, -0.588468, -0.743955, -0.492038, -0.568649, 0.659194, -5.3977, 19.924, -39.5567)
 
-[node name="6MLog195" parent="WhiteMiddle/Supports" index="200" instance=ExtResource("7_fv1se")]
-transform = Transform3D(-0.697656, 0.626012, -0.348403, 0.0108254, -0.477036, -0.878817, -0.716351, -0.616884, 0.32603, -5.994, 19.327, -39.375)
+[node name="6MLog240" parent="WhiteMiddle/Supports" index="195" instance=ExtResource("7_fv1se")]
+transform = Transform3D(-0.704426, 0.574755, -0.416461, -0.0021426, -0.588468, -0.808518, -0.709774, -0.568649, 0.415764, -5.97692, 19.3267, -39.5241)
 
-[node name="2MLog42" parent="WhiteMiddle/Supports" index="201" instance=ExtResource("7_rpeem")]
-transform = Transform3D(-0.776255, -0.626272, -0.0721852, 0.454261, -0.476273, -0.752869, 0.437121, -0.61721, 0.6542, 2.58028, 17.6953, -42.3953)
+[node name="2MLog43" parent="WhiteMiddle/Supports" index="196" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-0.810964, 0.574755, -0.109514, -0.3166, -0.588468, -0.743955, -0.492038, -0.568649, 0.659194, -6.00663, 20.5474, -38.9543)
 
-[node name="2MLog43" parent="WhiteMiddle/Supports" index="202" instance=ExtResource("7_rpeem")]
-transform = Transform3D(-0.805842, 0.590003, -0.0501475, -0.342473, -0.533491, -0.773369, -0.483043, -0.606039, 0.63197, -2.48518, 17.7554, -42.3636)
+[node name="2MLog42" parent="WhiteMiddle/Supports" index="197" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-0.776255, -0.626272, -0.0721852, 0.454261, -0.476273, -0.752869, 0.437121, -0.61721, 0.6542, 2.60147, 17.1974, -42.0326)
 
-[node name="2MLog39" parent="WhiteMiddle/Supports" index="203" instance=ExtResource("7_rpeem")]
+[node name="2MLog39" parent="WhiteMiddle/Supports" index="198" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-0.422618, 4.37114e-08, -0.906308, 0.906308, 0, -0.422618, -1.84732e-08, -1, -3.9616e-08, 10.4273, 19.8257, -36.5645)
 
-[node name="6MLog202" parent="WhiteMiddle/Supports" index="204" instance=ExtResource("7_fv1se")]
+[node name="6MLog202" parent="WhiteMiddle/Supports" index="199" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.422618, 2.52382e-08, -0.906308, 0.906308, -3.9616e-08, 0.422618, -2.52382e-08, -1, -3.9616e-08, -10.427, 19.8257, -24.8702)
 
-[node name="6MLog203" parent="WhiteMiddle/Supports" index="205" instance=ExtResource("7_fv1se")]
+[node name="6MLog203" parent="WhiteMiddle/Supports" index="200" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.422618, 2.52382e-08, -0.906308, 0.906308, -3.9616e-08, 0.422618, -2.52382e-08, -1, -3.9616e-08, -10.427, 19.8257, -30.7452)
 
-[node name="2MLog47" parent="WhiteMiddle/Supports" index="206" instance=ExtResource("7_rpeem")]
+[node name="2MLog47" parent="WhiteMiddle/Supports" index="201" instance=ExtResource("7_rpeem")]
 transform = Transform3D(0.422618, 2.52382e-08, -0.906308, 0.906308, -3.9616e-08, 0.422618, -2.52382e-08, -1, -3.9616e-08, -10.427, 19.8257, -36.4952)
 
-[node name="6MLog129" parent="WhiteMiddle/Supports" index="207" instance=ExtResource("7_fv1se")]
+[node name="6MLog129" parent="WhiteMiddle/Supports" index="202" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.899814, -0.318747, 0.297886, -0.436161, 0.641646, -0.630915, 0.00996482, -0.697632, -0.716387, 12.3178, 16.0047, -21.0318)
 
-[node name="6MLog220" parent="WhiteMiddle/Supports" index="208" instance=ExtResource("7_fv1se")]
+[node name="6MLog220" parent="WhiteMiddle/Supports" index="203" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.899799, 0.318465, -0.298231, 0.436203, 0.641853, -0.630676, -0.00942779, -0.697571, -0.716454, -12.318, 16.005, -21.032)
 
-[node name="4MLog32" parent="WhiteMiddle/Supports" index="209" instance=ExtResource("8_7phul")]
+[node name="4MLog32" parent="WhiteMiddle/Supports" index="204" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.3178, 15.6297, -21.5318)
 
-[node name="6MLog158" parent="WhiteMiddle/Supports" index="210" instance=ExtResource("7_fv1se")]
+[node name="6MLog158" parent="WhiteMiddle/Supports" index="205" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.3178, 15.6297, -27.2818)
 
-[node name="6MLog173" parent="WhiteMiddle/Supports" index="211" instance=ExtResource("7_fv1se")]
+[node name="6MLog173" parent="WhiteMiddle/Supports" index="206" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.906308, 0, 0.422618, 0.422618, -4.37114e-08, -0.906308, 1.84732e-08, 1, -3.9616e-08, 12.225, 16.325, -38.875)
 
-[node name="6MLog174" parent="WhiteMiddle/Supports" index="212" instance=ExtResource("7_fv1se")]
+[node name="6MLog174" parent="WhiteMiddle/Supports" index="207" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.906308, 0, 0.422618, 0.422618, -4.37114e-08, -0.906308, 1.84732e-08, 1, -3.9616e-08, 12.225, 16.325, -33.125)
 
-[node name="6MLog175" parent="WhiteMiddle/Supports" index="213" instance=ExtResource("7_fv1se")]
+[node name="6MLog175" parent="WhiteMiddle/Supports" index="208" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.906308, 0, 0.422618, 0.422618, -4.37114e-08, -0.906308, 1.84732e-08, 1, -3.9616e-08, 12.225, 16.325, -27.375)
 
-[node name="6MLog214" parent="WhiteMiddle/Supports" index="214" instance=ExtResource("7_fv1se")]
+[node name="6MLog214" parent="WhiteMiddle/Supports" index="209" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.906308, 1.91368e-07, 0.422618, 0.422618, -6.88533e-08, 0.906308, 2.02537e-07, 1, -1.84732e-08, -12.225, 16.325, -38.875)
 
-[node name="6MLog215" parent="WhiteMiddle/Supports" index="215" instance=ExtResource("7_fv1se")]
+[node name="6MLog215" parent="WhiteMiddle/Supports" index="210" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.906308, 1.91368e-07, 0.422618, 0.422618, -6.88533e-08, 0.906308, 2.02537e-07, 1, -1.84732e-08, -12.225, 16.325, -33.125)
 
-[node name="6MLog216" parent="WhiteMiddle/Supports" index="216" instance=ExtResource("7_fv1se")]
+[node name="6MLog216" parent="WhiteMiddle/Supports" index="211" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.906308, 1.91368e-07, 0.422618, 0.422618, -6.88533e-08, 0.906308, 2.02537e-07, 1, -1.84732e-08, -12.225, 16.325, -27.375)
 
-[node name="6MLog159" parent="WhiteMiddle/Supports" index="217" instance=ExtResource("7_fv1se")]
+[node name="6MLog159" parent="WhiteMiddle/Supports" index="212" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.3178, 15.6297, -33.0318)
 
-[node name="6MLog170" parent="WhiteMiddle/Supports" index="218" instance=ExtResource("7_fv1se")]
+[node name="6MLog170" parent="WhiteMiddle/Supports" index="213" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.3178, 15.6297, -38.7818)
 
-[node name="4MLog48" parent="WhiteMiddle/Supports" index="219" instance=ExtResource("8_7phul")]
+[node name="4MLog48" parent="WhiteMiddle/Supports" index="214" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.318, 15.6297, -21.5318)
 
-[node name="6MLog217" parent="WhiteMiddle/Supports" index="220" instance=ExtResource("7_fv1se")]
+[node name="6MLog217" parent="WhiteMiddle/Supports" index="215" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.318, 15.6297, -27.2818)
 
-[node name="6MLog218" parent="WhiteMiddle/Supports" index="221" instance=ExtResource("7_fv1se")]
+[node name="6MLog218" parent="WhiteMiddle/Supports" index="216" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.318, 15.6297, -33.0318)
 
-[node name="6MLog219" parent="WhiteMiddle/Supports" index="222" instance=ExtResource("7_fv1se")]
+[node name="6MLog219" parent="WhiteMiddle/Supports" index="217" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.318, 15.6297, -38.7818)
 
-[node name="2MLog37" parent="WhiteMiddle/Supports" index="223" instance=ExtResource("7_rpeem")]
+[node name="2MLog37" parent="WhiteMiddle/Supports" index="218" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 11.5678, 16.2547, -21.0318)
 
-[node name="4MLog49" parent="WhiteMiddle/Supports" index="224" instance=ExtResource("8_7phul")]
+[node name="4MLog49" parent="WhiteMiddle/Supports" index="219" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 11.4048, 16.2547, -20.6568)
 
-[node name="4MLog53" parent="WhiteMiddle/Supports" index="225" instance=ExtResource("8_7phul")]
+[node name="4MLog53" parent="WhiteMiddle/Supports" index="220" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 11.4048, 16.219, -19.2818)
 
-[node name="1MLog6" parent="WhiteMiddle/Supports" index="226" instance=ExtResource("9_nlpdx")]
+[node name="1MLog6" parent="WhiteMiddle/Supports" index="221" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 7.79274, 16.219, -19.4068)
 
-[node name="1MLog8" parent="WhiteMiddle/Supports" index="227" instance=ExtResource("9_nlpdx")]
+[node name="1MLog8" parent="WhiteMiddle/Supports" index="222" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 4.24684, 16.219, -19.4068)
 
-[node name="1MLog9" parent="WhiteMiddle/Supports" index="228" instance=ExtResource("9_nlpdx")]
+[node name="1MLog9" parent="WhiteMiddle/Supports" index="223" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 1.74205, 16.219, -19.4068)
 
-[node name="1MLog10" parent="WhiteMiddle/Supports" index="229" instance=ExtResource("9_nlpdx")]
+[node name="1MLog10" parent="WhiteMiddle/Supports" index="224" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1.78116, 16.219, -19.4068)
 
-[node name="1MLog11" parent="WhiteMiddle/Supports" index="230" instance=ExtResource("9_nlpdx")]
+[node name="1MLog11" parent="WhiteMiddle/Supports" index="225" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -4.27716, 16.219, -19.4068)
 
-[node name="1MLog12" parent="WhiteMiddle/Supports" index="231" instance=ExtResource("9_nlpdx")]
+[node name="1MLog12" parent="WhiteMiddle/Supports" index="226" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -7.81615, 16.219, -19.4068)
 
-[node name="4MLog55" parent="WhiteMiddle/Supports" index="232" instance=ExtResource("8_7phul")]
+[node name="4MLog55" parent="WhiteMiddle/Supports" index="227" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -11.405, 16.219, -19.282)
 
-[node name="2MLog61" parent="WhiteMiddle/Supports" index="233" instance=ExtResource("7_rpeem")]
+[node name="2MLog61" parent="WhiteMiddle/Supports" index="228" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 4.57806, 16.219, -19.2818)
 
-[node name="2MLog62" parent="WhiteMiddle/Supports" index="234" instance=ExtResource("7_rpeem")]
+[node name="2MLog62" parent="WhiteMiddle/Supports" index="229" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 3.38347, 16.219, -19.2818)
 
-[node name="2MLog69" parent="WhiteMiddle/Supports" index="235" instance=ExtResource("7_rpeem")]
+[node name="2MLog69" parent="WhiteMiddle/Supports" index="230" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, 3.38347, 16.1516, -18.7965)
 
-[node name="2MLog70" parent="WhiteMiddle/Supports" index="236" instance=ExtResource("7_rpeem")]
+[node name="2MLog70" parent="WhiteMiddle/Supports" index="231" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, 4.60341, 16.1516, -18.7965)
 
-[node name="2MLog71" parent="WhiteMiddle/Supports" index="237" instance=ExtResource("7_rpeem")]
+[node name="2MLog71" parent="WhiteMiddle/Supports" index="232" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, -2.63379, 16.1516, -18.7965)
 
-[node name="6MLog238" parent="WhiteMiddle/Supports" index="238" instance=ExtResource("7_fv1se")]
+[node name="6MLog238" parent="WhiteMiddle/Supports" index="233" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, -7.43456, 16.1516, -18.7965)
 
-[node name="6MLog239" parent="WhiteMiddle/Supports" index="239" instance=ExtResource("7_fv1se")]
+[node name="6MLog239" parent="WhiteMiddle/Supports" index="234" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, 13.3837, 16.1516, -18.7965)
 
-[node name="2MLog72" parent="WhiteMiddle/Supports" index="240" instance=ExtResource("7_rpeem")]
+[node name="2MLog72" parent="WhiteMiddle/Supports" index="235" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, -1.41385, 16.1516, -18.7965)
 
-[node name="4MLog54" parent="WhiteMiddle/Supports" index="241" instance=ExtResource("8_7phul")]
+[node name="4MLog54" parent="WhiteMiddle/Supports" index="236" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, 11.4048, 15.9259, -18.4856)
 
-[node name="4MLog57" parent="WhiteMiddle/Supports" index="242" instance=ExtResource("8_7phul")]
+[node name="4MLog57" parent="WhiteMiddle/Supports" index="237" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 7.7958, 15.9259, -18.4856)
 
-[node name="4MLog58" parent="WhiteMiddle/Supports" index="243" instance=ExtResource("8_7phul")]
+[node name="4MLog58" parent="WhiteMiddle/Supports" index="238" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 4.2268, 15.9259, -18.4856)
 
-[node name="4MLog59" parent="WhiteMiddle/Supports" index="244" instance=ExtResource("8_7phul")]
+[node name="4MLog59" parent="WhiteMiddle/Supports" index="239" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 1.7958, 15.9259, -18.4856)
 
-[node name="4MLog60" parent="WhiteMiddle/Supports" index="245" instance=ExtResource("8_7phul")]
+[node name="4MLog60" parent="WhiteMiddle/Supports" index="240" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -1.7732, 15.9259, -18.4856)
 
-[node name="4MLog61" parent="WhiteMiddle/Supports" index="246" instance=ExtResource("8_7phul")]
+[node name="4MLog61" parent="WhiteMiddle/Supports" index="241" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -4.2042, 15.9259, -18.4856)
 
-[node name="4MLog62" parent="WhiteMiddle/Supports" index="247" instance=ExtResource("8_7phul")]
+[node name="4MLog62" parent="WhiteMiddle/Supports" index="242" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -7.7732, 15.9259, -18.4856)
 
-[node name="4MLog63" parent="WhiteMiddle/Supports" index="248" instance=ExtResource("8_7phul")]
+[node name="4MLog63" parent="WhiteMiddle/Supports" index="243" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 7.7958, 19.3009, -23.8606)
 
-[node name="6MLog232" parent="WhiteMiddle/Supports" index="249" instance=ExtResource("7_fv1se")]
+[node name="6MLog232" parent="WhiteMiddle/Supports" index="244" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-8.58582e-08, -1, 0, -0.707107, 0, -0.707107, 0.707107, 0, -0.707107, 9.7958, 19.3893, -23.949)
 
-[node name="4MLog69" parent="WhiteMiddle/Supports" index="250" instance=ExtResource("8_7phul")]
-transform = Transform3D(-8.58582e-08, -1, 0, -0.707107, 0, -0.707107, 0.707107, 0, -0.707107, 3.9208, 19.3893, -23.949)
-
-[node name="6MLog233" parent="WhiteMiddle/Supports" index="251" instance=ExtResource("7_fv1se")]
+[node name="6MLog233" parent="WhiteMiddle/Supports" index="245" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.73281e-07, 1, -3.55271e-15, 0.707107, -6.18172e-08, -0.707107, -0.707107, 6.18172e-08, -0.707107, -9.796, 19.3894, -23.9494)
 
-[node name="4MLog70" parent="WhiteMiddle/Supports" index="252" instance=ExtResource("8_7phul")]
-transform = Transform3D(1.73281e-07, 1, -3.55271e-15, 0.707107, -6.18172e-08, -0.707107, -0.707107, 6.18172e-08, -0.707107, -3.921, 19.3894, -23.9494)
-
-[node name="6MLog234" parent="WhiteMiddle/Supports" index="253" instance=ExtResource("7_fv1se")]
+[node name="6MLog234" parent="WhiteMiddle/Supports" index="246" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-8.58582e-08, -1, 0, -0.707107, 0, -0.707107, 0.707107, 0, -0.707107, 11.2958, 13.0143, -15.699)
 
-[node name="6MLog237" parent="WhiteMiddle/Supports" index="254" instance=ExtResource("7_fv1se")]
+[node name="6MLog237" parent="WhiteMiddle/Supports" index="247" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-8.58582e-08, -1, 0, -0.707107, 0, -0.707107, 0.707107, 0, -0.707107, 5.5458, 13.0143, -15.699)
 
-[node name="6MLog235" parent="WhiteMiddle/Supports" index="255" instance=ExtResource("7_fv1se")]
+[node name="6MLog235" parent="WhiteMiddle/Supports" index="248" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.73281e-07, 1, -3.55271e-15, 0.707107, -6.18172e-08, -0.707107, -0.707107, 6.18172e-08, -0.707107, -11.296, 13.0144, -15.6994)
 
-[node name="6MLog236" parent="WhiteMiddle/Supports" index="256" instance=ExtResource("7_fv1se")]
+[node name="6MLog236" parent="WhiteMiddle/Supports" index="249" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.73281e-07, 1, -3.55271e-15, 0.707107, -6.18172e-08, -0.707107, -0.707107, 6.18172e-08, -0.707107, -5.546, 13.0144, -15.6994)
 
-[node name="4MLog64" parent="WhiteMiddle/Supports" index="257" instance=ExtResource("8_7phul")]
+[node name="4MLog64" parent="WhiteMiddle/Supports" index="250" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 4.2268, 19.3009, -23.8606)
 
-[node name="4MLog65" parent="WhiteMiddle/Supports" index="258" instance=ExtResource("8_7phul")]
+[node name="4MLog65" parent="WhiteMiddle/Supports" index="251" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 1.7958, 19.3009, -23.8606)
 
-[node name="4MLog66" parent="WhiteMiddle/Supports" index="259" instance=ExtResource("8_7phul")]
+[node name="2MLog83" parent="WhiteMiddle/Supports" index="252" instance=ExtResource("7_rpeem")]
+transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 1.7958, 20.2732, -24.8329)
+
+[node name="2MLog84" parent="WhiteMiddle/Supports" index="253" instance=ExtResource("7_rpeem")]
+transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -1.8292, 20.2732, -24.8329)
+
+[node name="4MLog66" parent="WhiteMiddle/Supports" index="254" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -1.7732, 19.3009, -23.8606)
 
-[node name="4MLog67" parent="WhiteMiddle/Supports" index="260" instance=ExtResource("8_7phul")]
+[node name="4MLog67" parent="WhiteMiddle/Supports" index="255" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -4.2042, 19.3009, -23.8606)
 
-[node name="4MLog68" parent="WhiteMiddle/Supports" index="261" instance=ExtResource("8_7phul")]
+[node name="4MLog68" parent="WhiteMiddle/Supports" index="256" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -7.7732, 19.3009, -23.8606)
 
-[node name="4MLog56" parent="WhiteMiddle/Supports" index="262" instance=ExtResource("8_7phul")]
+[node name="4MLog56" parent="WhiteMiddle/Supports" index="257" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, 1, 0, -0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0.707107, -11.405, 15.926, -18.486)
 
-[node name="2MLog63" parent="WhiteMiddle/Supports" index="263" instance=ExtResource("7_rpeem")]
+[node name="2MLog63" parent="WhiteMiddle/Supports" index="258" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, 4.59354, 15.9259, -18.4856)
 
-[node name="2MLog64" parent="WhiteMiddle/Supports" index="264" instance=ExtResource("7_rpeem")]
+[node name="2MLog64" parent="WhiteMiddle/Supports" index="259" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, 3.34354, 15.9259, -18.4856)
 
-[node name="2MLog65" parent="WhiteMiddle/Supports" index="265" instance=ExtResource("7_rpeem")]
+[node name="2MLog65" parent="WhiteMiddle/Supports" index="260" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -1.41281, 16.219, -19.2818)
 
-[node name="2MLog66" parent="WhiteMiddle/Supports" index="266" instance=ExtResource("7_rpeem")]
+[node name="2MLog66" parent="WhiteMiddle/Supports" index="261" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -2.6074, 16.219, -19.2818)
 
-[node name="2MLog67" parent="WhiteMiddle/Supports" index="267" instance=ExtResource("7_rpeem")]
+[node name="2MLog67" parent="WhiteMiddle/Supports" index="262" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, -1.39733, 15.9259, -18.4856)
 
-[node name="2MLog68" parent="WhiteMiddle/Supports" index="268" instance=ExtResource("7_rpeem")]
+[node name="2MLog68" parent="WhiteMiddle/Supports" index="263" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, -2.64733, 15.9259, -18.4856)
 
-[node name="2MLog55" parent="WhiteMiddle/Supports" index="269" instance=ExtResource("7_rpeem")]
+[node name="2MLog55" parent="WhiteMiddle/Supports" index="264" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 4.62283, 16.2547, -20.6568)
 
-[node name="2MLog56" parent="WhiteMiddle/Supports" index="270" instance=ExtResource("7_rpeem")]
+[node name="2MLog56" parent="WhiteMiddle/Supports" index="265" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 3.31654, 16.2547, -20.6568)
 
-[node name="4MLog52" parent="WhiteMiddle/Supports" index="271" instance=ExtResource("8_7phul")]
+[node name="4MLog52" parent="WhiteMiddle/Supports" index="266" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -11.405, 16.255, -20.657)
 
-[node name="4MLog50" parent="WhiteMiddle/Supports" index="272" instance=ExtResource("8_7phul")]
+[node name="4MLog50" parent="WhiteMiddle/Supports" index="267" instance=ExtResource("8_7phul")]
 transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, 11.4048, 16.4315, -21.0104)
 
-[node name="2MLog53" parent="WhiteMiddle/Supports" index="273" instance=ExtResource("7_rpeem")]
+[node name="2MLog53" parent="WhiteMiddle/Supports" index="268" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, 4.59274, 16.4315, -21.0104)
 
-[node name="2MLog54" parent="WhiteMiddle/Supports" index="274" instance=ExtResource("7_rpeem")]
+[node name="2MLog54" parent="WhiteMiddle/Supports" index="269" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, 3.34274, 16.4315, -21.0104)
 
-[node name="2MLog57" parent="WhiteMiddle/Supports" index="275" instance=ExtResource("7_rpeem")]
+[node name="2MLog57" parent="WhiteMiddle/Supports" index="270" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -1.38497, 16.2547, -20.6568)
 
-[node name="2MLog58" parent="WhiteMiddle/Supports" index="276" instance=ExtResource("7_rpeem")]
+[node name="2MLog58" parent="WhiteMiddle/Supports" index="271" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -2.69125, 16.2547, -20.6568)
 
-[node name="2MLog59" parent="WhiteMiddle/Supports" index="277" instance=ExtResource("7_rpeem")]
+[node name="2MLog59" parent="WhiteMiddle/Supports" index="272" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, -1.41505, 16.4315, -21.0104)
 
-[node name="2MLog60" parent="WhiteMiddle/Supports" index="278" instance=ExtResource("7_rpeem")]
+[node name="2MLog60" parent="WhiteMiddle/Supports" index="273" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, -2.66505, 16.4315, -21.0104)
 
-[node name="4MLog51" parent="WhiteMiddle/Supports" index="279" instance=ExtResource("8_7phul")]
+[node name="1MLog13" parent="WhiteMiddle/Supports" index="274" instance=ExtResource("9_nlpdx")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1.78116, 20.3027, -25.5231)
+
+[node name="1MLog16" parent="WhiteMiddle/Supports" index="275" instance=ExtResource("9_nlpdx")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 1.84384, 20.3027, -25.5231)
+
+[node name="2MLog73" parent="WhiteMiddle/Supports" index="276" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, -2.63379, 20.2353, -24.9128)
+
+[node name="2MLog74" parent="WhiteMiddle/Supports" index="277" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, -1.41385, 20.2353, -24.9128)
+
+[node name="4MLog69" parent="WhiteMiddle/Supports" index="278" instance=ExtResource("8_7phul")]
+transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, 1.7958, 23.3846, -29.9769)
+
+[node name="4MLog71" parent="WhiteMiddle/Supports" index="279" instance=ExtResource("8_7phul")]
+transform = Transform3D(-8.58582e-08, -1, 0, -0.707107, 0, -0.707107, 0.707107, 0, -0.707107, 2.01021, 23.3846, -29.9769)
+
+[node name="4MLog70" parent="WhiteMiddle/Supports" index="280" instance=ExtResource("8_7phul")]
+transform = Transform3D(1, 0, 0, -2.98023e-08, -0.707107, -0.707107, 2.98023e-08, 0.707107, -0.707107, -1.7732, 23.3846, -29.9769)
+
+[node name="2MLog75" parent="WhiteMiddle/Supports" index="281" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -1.41281, 20.3027, -25.3981)
+
+[node name="2MLog76" parent="WhiteMiddle/Supports" index="282" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -2.6074, 20.3027, -25.3981)
+
+[node name="2MLog77" parent="WhiteMiddle/Supports" index="283" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, -1.39733, 20.0096, -24.6019)
+
+[node name="2MLog78" parent="WhiteMiddle/Supports" index="284" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, -2.64733, 20.0096, -24.6019)
+
+[node name="2MLog79" parent="WhiteMiddle/Supports" index="285" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -1.38497, 20.3384, -26.7731)
+
+[node name="2MLog80" parent="WhiteMiddle/Supports" index="286" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -2.69125, 20.3384, -26.7731)
+
+[node name="2MLog81" parent="WhiteMiddle/Supports" index="287" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, -1.41505, 20.5152, -27.1267)
+
+[node name="2MLog85" parent="WhiteMiddle/Supports" index="288" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.15593e-08, -1, 1.35467e-08, -0.309913, 0, -0.950765, 0.950765, -4.37114e-08, -0.309913, 3.38082, 20.2353, -24.9128)
+
+[node name="2MLog86" parent="WhiteMiddle/Supports" index="289" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 3.43694, 20.3027, -25.3475)
+
+[node name="1MLog17" parent="WhiteMiddle/Supports" index="290" instance=ExtResource("9_nlpdx")]
+transform = Transform3D(-3.55271e-15, -1, -4.37114e-08, 1, 0, -1.06581e-14, 1.06581e-14, -4.37114e-08, 1, 4.10013, 20.3027, -25.3332)
+
+[node name="2MLog87" parent="WhiteMiddle/Supports" index="291" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, 3.39172, 19.9426, -24.5349)
+
+[node name="1MLog15" parent="WhiteMiddle/Supports" index="292" instance=ExtResource("9_nlpdx")]
+transform = Transform3D(-4.37114e-08, -1, 0, -0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, 4.07672, 19.9717, -24.564)
+
+[node name="2MLog88" parent="WhiteMiddle/Supports" index="293" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 3.4097, 20.3384, -26.7731)
+
+[node name="2MLog89" parent="WhiteMiddle/Supports" index="294" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, 3.45995, 20.5152, -27.1267)
+
+[node name="2MLog82" parent="WhiteMiddle/Supports" index="295" instance=ExtResource("7_rpeem")]
+transform = Transform3D(-3.09086e-08, -1, 3.09086e-08, -0.707107, 0, -0.707107, 0.707107, -4.37114e-08, -0.707107, -2.66505, 20.4836, -27.0951)
+
+[node name="4MLog51" parent="WhiteMiddle/Supports" index="296" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, 1, 0, -0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0.707107, -11.405, 16.431, -21.01)
 
-[node name="2MLog48" parent="WhiteMiddle/Supports" index="280" instance=ExtResource("7_rpeem")]
+[node name="2MLog48" parent="WhiteMiddle/Supports" index="297" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.6164, 16.255, -21.032)
 
-[node name="6MLog124" parent="WhiteMiddle/Supports" index="281" instance=ExtResource("7_fv1se")]
+[node name="6MLog124" parent="WhiteMiddle/Supports" index="298" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.31134e-07, 1, 4.37114e-08, -8.74228e-08, -4.37114e-08, 1, 1, -1.31134e-07, 8.74228e-08, 6.36454, 10.25, -14.7114)
 
-[node name="6MLog224" parent="WhiteMiddle/Supports" index="282" instance=ExtResource("7_fv1se")]
+[node name="6MLog224" parent="WhiteMiddle/Supports" index="299" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1, -1.31134e-07, 8.74228e-08, 1.31134e-07, -1, 1, -1.31134e-07, 8.74228e-08, 11.375, 11.625, -14.75)
 
-[node name="6MLog226" parent="WhiteMiddle/Supports" index="283" instance=ExtResource("7_fv1se")]
+[node name="6MLog226" parent="WhiteMiddle/Supports" index="300" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -11.375, 11.625, -14.75)
 
-[node name="6MLog227" parent="WhiteMiddle/Supports" index="284" instance=ExtResource("7_fv1se")]
+[node name="6MLog227" parent="WhiteMiddle/Supports" index="301" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5.625, 11.625, -14.75)
 
-[node name="6MLog225" parent="WhiteMiddle/Supports" index="285" instance=ExtResource("7_fv1se")]
+[node name="6MLog225" parent="WhiteMiddle/Supports" index="302" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1, -1.31134e-07, 8.74228e-08, 1.31134e-07, -1, 1, -1.31134e-07, 8.74228e-08, 5.625, 11.625, -14.75)
 
-[node name="6MLog228" parent="WhiteMiddle/Supports" index="286" instance=ExtResource("7_fv1se")]
+[node name="6MLog228" parent="WhiteMiddle/Supports" index="303" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1, -1.31134e-07, 0.707107, 1.20792e-13, -0.707107, 0.707107, -1.85452e-07, 0.707107, 11.375, 12.3384, -15.0152)
 
-[node name="6MLog229" parent="WhiteMiddle/Supports" index="287" instance=ExtResource("7_fv1se")]
+[node name="6MLog229" parent="WhiteMiddle/Supports" index="304" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -0.707107, -6.18172e-08, -0.707107, -0.707107, 0, 0.707107, -11.375, 12.3384, -15.0152)
 
-[node name="6MLog230" parent="WhiteMiddle/Supports" index="288" instance=ExtResource("7_fv1se")]
+[node name="6MLog230" parent="WhiteMiddle/Supports" index="305" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -0.707107, -6.18172e-08, -0.707107, -0.707107, 0, 0.707107, -5.625, 12.3384, -15.0152)
 
-[node name="6MLog231" parent="WhiteMiddle/Supports" index="289" instance=ExtResource("7_fv1se")]
+[node name="6MLog231" parent="WhiteMiddle/Supports" index="306" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.31134e-07, -1, -1.31134e-07, 0.707107, 1.20792e-13, -0.707107, 0.707107, -1.85452e-07, 0.707107, 5.625, 12.3384, -15.0152)
 
-[node name="6MLog125" parent="WhiteMiddle/Supports" index="290" instance=ExtResource("7_fv1se")]
+[node name="6MLog125" parent="WhiteMiddle/Supports" index="307" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, 1.19209e-07, -2.18557e-07, -2.18557e-07, 8.74228e-08, 1, 1.19209e-07, 1, -8.74227e-08, 12.25, 10.25, -20.7114)
 
-[node name="2MLog30" parent="WhiteMiddle/Supports" index="291" instance=ExtResource("7_rpeem")]
+[node name="2MLog30" parent="WhiteMiddle/Supports" index="308" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.31134e-07, 6.56811e-15, -1, 8.74227e-08, 1, 7.10542e-15, 1, -8.74227e-08, 1.31134e-07, 12.25, 8.125, -20.336)
 
-[node name="6MLog95" parent="WhiteMiddle/Supports" index="292" instance=ExtResource("7_fv1se")]
+[node name="6MLog95" parent="WhiteMiddle/Supports" index="309" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -5.982, 4.666, -29.292)
 
-[node name="6MLog89" parent="WhiteMiddle/Supports" index="293" instance=ExtResource("7_fv1se")]
+[node name="6MLog89" parent="WhiteMiddle/Supports" index="310" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0.848048, -0.529919, 0, 0.529919, 0.848048, 1, 3.70694e-08, -2.31635e-08, -6.833, -0.92, -25.294)
 
-[node name="4MLog25" parent="WhiteMiddle/Supports" index="294" instance=ExtResource("8_7phul")]
+[node name="4MLog25" parent="WhiteMiddle/Supports" index="311" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 1.96258, 2.18196, -25.294)
 
-[node name="6MLog69" parent="WhiteMiddle/Supports" index="295" instance=ExtResource("7_fv1se")]
+[node name="6MLog69" parent="WhiteMiddle/Supports" index="312" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.32108, -0.25, 8.1381)
 
-[node name="6MLog73" parent="WhiteMiddle/Supports" index="296" instance=ExtResource("7_fv1se")]
+[node name="6MLog73" parent="WhiteMiddle/Supports" index="313" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.321, -0.25, 8.138)
 
-[node name="6MLog78" parent="WhiteMiddle/Supports" index="297" instance=ExtResource("7_fv1se")]
+[node name="6MLog78" parent="WhiteMiddle/Supports" index="314" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.32108, -0.25, -8.138)
 visible = false
 
-[node name="6MLog79" parent="WhiteMiddle/Supports" index="298" instance=ExtResource("7_fv1se")]
+[node name="6MLog79" parent="WhiteMiddle/Supports" index="315" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.321, -0.25, -8.138)
 visible = false
 
-[node name="6MLog80" parent="WhiteMiddle/Supports" index="299" instance=ExtResource("7_fv1se")]
+[node name="6MLog80" parent="WhiteMiddle/Supports" index="316" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.32108, -0.25, -3.25)
 
-[node name="6MLog81" parent="WhiteMiddle/Supports" index="300" instance=ExtResource("7_fv1se")]
+[node name="6MLog81" parent="WhiteMiddle/Supports" index="317" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.321, -0.25, -3.25)
 
-[node name="6MLog57" parent="WhiteMiddle/Supports" index="301" instance=ExtResource("7_fv1se")]
+[node name="6MLog57" parent="WhiteMiddle/Supports" index="318" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, -5.125, 4.75, 12.125)
 
-[node name="6MLog59" parent="WhiteMiddle/Supports" index="302" instance=ExtResource("7_fv1se")]
+[node name="6MLog59" parent="WhiteMiddle/Supports" index="319" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, -5.125, 4.75, 11.875)
 
-[node name="6MLog60" parent="WhiteMiddle/Supports" index="303" instance=ExtResource("7_fv1se")]
+[node name="6MLog60" parent="WhiteMiddle/Supports" index="320" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, -5.125, 4.75, 6.125)
 
-[node name="6MLog61" parent="WhiteMiddle/Supports" index="304" instance=ExtResource("7_fv1se")]
+[node name="6MLog61" parent="WhiteMiddle/Supports" index="321" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, -5.125, 4.75, 0.375)
 
-[node name="4MLog23" parent="WhiteMiddle/Supports" index="305" instance=ExtResource("8_7phul")]
+[node name="4MLog23" parent="WhiteMiddle/Supports" index="322" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 0, 5, 3.75)
 
-[node name="4MLog24" parent="WhiteMiddle/Supports" index="306" instance=ExtResource("8_7phul")]
+[node name="4MLog24" parent="WhiteMiddle/Supports" index="323" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 0, 5, 0.125)
 
-[node name="6MLog62" parent="WhiteMiddle/Supports" index="307" instance=ExtResource("7_fv1se")]
+[node name="6MLog62" parent="WhiteMiddle/Supports" index="324" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, -5.125, 4.75, -5.375)
 
-[node name="2MLog15" parent="WhiteMiddle/Supports" index="308" instance=ExtResource("7_rpeem")]
+[node name="2MLog15" parent="WhiteMiddle/Supports" index="325" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, -5.125, 4.75, -11)
 
-[node name="6MLog63" parent="WhiteMiddle/Supports" index="309" instance=ExtResource("7_fv1se")]
+[node name="6MLog63" parent="WhiteMiddle/Supports" index="326" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 5.125, 4.75, 11.875)
 
-[node name="6MLog64" parent="WhiteMiddle/Supports" index="310" instance=ExtResource("7_fv1se")]
+[node name="6MLog64" parent="WhiteMiddle/Supports" index="327" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 5.125, 4.75, 6.125)
 
-[node name="6MLog65" parent="WhiteMiddle/Supports" index="311" instance=ExtResource("7_fv1se")]
+[node name="6MLog65" parent="WhiteMiddle/Supports" index="328" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 5.125, 4.75, 0.375)
 
-[node name="6MLog82" parent="WhiteMiddle/Supports" index="312" instance=ExtResource("7_fv1se")]
+[node name="6MLog82" parent="WhiteMiddle/Supports" index="329" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, 1.31134e-07, 4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1.31134e-07, 1, -4.37114e-08, 0, 5, 4.75)
 
-[node name="2MLog17" parent="WhiteMiddle/Supports" index="313" instance=ExtResource("7_rpeem")]
+[node name="2MLog17" parent="WhiteMiddle/Supports" index="330" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1, 1.31134e-07, 4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1.31134e-07, 1, -4.37114e-08, 0, 5, 10.5)
 
-[node name="6MLog85" parent="WhiteMiddle/Supports" index="314" instance=ExtResource("7_fv1se")]
+[node name="6MLog85" parent="WhiteMiddle/Supports" index="331" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, -2.5134e-07, 5, -4.75)
 
-[node name="2MLog18" parent="WhiteMiddle/Supports" index="315" instance=ExtResource("7_rpeem")]
+[node name="2MLog18" parent="WhiteMiddle/Supports" index="332" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 2.5134e-07, 5, -10.5)
 
-[node name="6MLog83" parent="WhiteMiddle/Supports" index="316" instance=ExtResource("7_fv1se")]
+[node name="6MLog83" parent="WhiteMiddle/Supports" index="333" instance=ExtResource("7_fv1se")]
 transform = Transform3D(8.74228e-08, -1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 1, 8.74228e-08, 4.37114e-08, 0, 5, 4)
 
-[node name="6MLog84" parent="WhiteMiddle/Supports" index="317" instance=ExtResource("7_fv1se")]
+[node name="6MLog84" parent="WhiteMiddle/Supports" index="334" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, -1.42109e-14, -4.37114e-08, 0, 5, 4)
 
-[node name="6MLog86" parent="WhiteMiddle/Supports" index="318" instance=ExtResource("7_fv1se")]
+[node name="6MLog86" parent="WhiteMiddle/Supports" index="335" instance=ExtResource("7_fv1se")]
 transform = Transform3D(8.74228e-08, -1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 1, 8.74228e-08, 4.37114e-08, 0, 5, -4)
 
-[node name="6MLog87" parent="WhiteMiddle/Supports" index="319" instance=ExtResource("7_fv1se")]
+[node name="6MLog87" parent="WhiteMiddle/Supports" index="336" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, -1.42109e-14, -4.37114e-08, 0, 5, -4)
 
-[node name="6MLog66" parent="WhiteMiddle/Supports" index="320" instance=ExtResource("7_fv1se")]
+[node name="6MLog66" parent="WhiteMiddle/Supports" index="337" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 5.125, 4.75, -5.375)
 
-[node name="2MLog16" parent="WhiteMiddle/Supports" index="321" instance=ExtResource("7_rpeem")]
+[node name="2MLog16" parent="WhiteMiddle/Supports" index="338" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 5.125, 4.75, -11)
 
-[node name="6MLog58" parent="WhiteMiddle/Supports" index="322" instance=ExtResource("7_fv1se")]
+[node name="6MLog58" parent="WhiteMiddle/Supports" index="339" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 0.125, 4.75, 12.125)
 
-[node name="6MLog67" parent="WhiteMiddle/Supports" index="323" instance=ExtResource("7_fv1se")]
+[node name="6MLog67" parent="WhiteMiddle/Supports" index="340" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, -5.125, 4.75, -12.125)
 
-[node name="6MLog68" parent="WhiteMiddle/Supports" index="324" instance=ExtResource("7_fv1se")]
+[node name="6MLog68" parent="WhiteMiddle/Supports" index="341" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 0.125, 4.75, -12.125)
 
-[node name="6MLog55" parent="WhiteMiddle/Supports" index="325" instance=ExtResource("7_fv1se")]
+[node name="6MLog55" parent="WhiteMiddle/Supports" index="342" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.375, -0.25, -12.375)
 
-[node name="6MLog56" parent="WhiteMiddle/Supports" index="326" instance=ExtResource("7_fv1se")]
+[node name="6MLog56" parent="WhiteMiddle/Supports" index="343" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.375, -0.25, -12.375)
 
-[node name="6MLog32" parent="WhiteMiddle/Supports" index="327" instance=ExtResource("7_fv1se")]
+[node name="6MLog32" parent="WhiteMiddle/Supports" index="344" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.706676, -0.0246777, 0.707107, 0.0348995, 0.999391, 0, -0.706676, 0.0246777, 0.707107, 1.15522, -0.241275, 20.1769)
 
-[node name="6MLog33" parent="WhiteMiddle/Supports" index="328" instance=ExtResource("7_fv1se")]
+[node name="6MLog33" parent="WhiteMiddle/Supports" index="345" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.706676, 0.0246777, 0.707107, 0.0348995, 0.999391, 0, -0.706676, 0.0246777, -0.707107, -1.12819, -0.25, 20.1692)
 
-[node name="6MLog34" parent="WhiteMiddle/Supports" index="329" instance=ExtResource("7_fv1se")]
+[node name="6MLog34" parent="WhiteMiddle/Supports" index="346" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1.78814e-07, -7.45058e-09, 1, 0.0348995, 0.999391, 4.44089e-16, -0.999391, 0.0348995, 1.49012e-07, -0.716583, -0.241275, 20.0077)
 
-[node name="6MLog26" parent="WhiteMiddle/Supports" index="330" instance=ExtResource("7_fv1se")]
+[node name="6MLog26" parent="WhiteMiddle/Supports" index="347" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0, 3.55271e-15, 1.11022e-16, 1, 5, -0.25, 15.5)
 
-[node name="4MLog" parent="WhiteMiddle/Supports" index="331" instance=ExtResource("8_7phul")]
+[node name="4MLog" parent="WhiteMiddle/Supports" index="348" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 2.7274, 17.625)
 
-[node name="4MLog2" parent="WhiteMiddle/Supports" index="332" instance=ExtResource("8_7phul")]
+[node name="4MLog2" parent="WhiteMiddle/Supports" index="349" instance=ExtResource("8_7phul")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5.42678, 2.70305, 17.9786)
 
-[node name="4MLog3" parent="WhiteMiddle/Supports" index="333" instance=ExtResource("8_7phul")]
+[node name="4MLog3" parent="WhiteMiddle/Supports" index="350" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, -1.71168, 17.625)
 
-[node name="4MLog4" parent="WhiteMiddle/Supports" index="334" instance=ExtResource("8_7phul")]
+[node name="4MLog4" parent="WhiteMiddle/Supports" index="351" instance=ExtResource("8_7phul")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5.42678, -1.71168, 17.9786)
 
-[node name="4MLog5" parent="WhiteMiddle/Supports" index="335" instance=ExtResource("8_7phul")]
+[node name="4MLog5" parent="WhiteMiddle/Supports" index="352" instance=ExtResource("8_7phul")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.34911, 2.73173, 17.9893)
 
-[node name="4MLog6" parent="WhiteMiddle/Supports" index="336" instance=ExtResource("8_7phul")]
+[node name="4MLog6" parent="WhiteMiddle/Supports" index="353" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, -1, 5.22411, 2.7274, 17.6143)
 
-[node name="4MLog7" parent="WhiteMiddle/Supports" index="337" instance=ExtResource("8_7phul")]
+[node name="4MLog7" parent="WhiteMiddle/Supports" index="354" instance=ExtResource("8_7phul")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.34911, -1.71168, 17.9893)
 
-[node name="4MLog8" parent="WhiteMiddle/Supports" index="338" instance=ExtResource("8_7phul")]
+[node name="4MLog8" parent="WhiteMiddle/Supports" index="355" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, -1, 5.22411, -1.71168, 17.6143)
 
-[node name="4MLog9" parent="WhiteMiddle/Supports" index="339" instance=ExtResource("8_7phul")]
+[node name="4MLog9" parent="WhiteMiddle/Supports" index="356" instance=ExtResource("8_7phul")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.59911, 2.73173, 26.9893)
 
-[node name="4MLog10" parent="WhiteMiddle/Supports" index="340" instance=ExtResource("8_7phul")]
+[node name="4MLog10" parent="WhiteMiddle/Supports" index="357" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, -2.36434e-07, 0, 1, 0, 2.36434e-07, 0, 1, 7.72411, 2.7274, 27.3643)
 
-[node name="4MLog11" parent="WhiteMiddle/Supports" index="341" instance=ExtResource("8_7phul")]
+[node name="4MLog11" parent="WhiteMiddle/Supports" index="358" instance=ExtResource("8_7phul")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.59911, -1.71168, 26.9893)
 
-[node name="4MLog12" parent="WhiteMiddle/Supports" index="342" instance=ExtResource("8_7phul")]
+[node name="4MLog12" parent="WhiteMiddle/Supports" index="359" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, 0, -2.36434e-07, 0, 1, 0, 2.36434e-07, 0, 1, 7.72411, -1.71168, 27.3643)
 
-[node name="4MLog13" parent="WhiteMiddle/Supports" index="343" instance=ExtResource("8_7phul")]
+[node name="4MLog13" parent="WhiteMiddle/Supports" index="360" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, -7.80178, 2.73173, 27.3536)
 
-[node name="4MLog14" parent="WhiteMiddle/Supports" index="344" instance=ExtResource("8_7phul")]
+[node name="4MLog14" parent="WhiteMiddle/Supports" index="361" instance=ExtResource("8_7phul")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -7.625, 2.7274, 27)
 
-[node name="4MLog15" parent="WhiteMiddle/Supports" index="345" instance=ExtResource("8_7phul")]
+[node name="4MLog15" parent="WhiteMiddle/Supports" index="362" instance=ExtResource("8_7phul")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, -7.80178, -1.71168, 27.3536)
 
-[node name="4MLog16" parent="WhiteMiddle/Supports" index="346" instance=ExtResource("8_7phul")]
+[node name="4MLog16" parent="WhiteMiddle/Supports" index="363" instance=ExtResource("8_7phul")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -7.625, -1.71168, 27)
 
-[node name="6MLog27" parent="WhiteMiddle/Supports" index="347" instance=ExtResource("7_fv1se")]
+[node name="6MLog27" parent="WhiteMiddle/Supports" index="364" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0, 1, -12, -0.25, 25.375)
 
-[node name="6MLog28" parent="WhiteMiddle/Supports" index="348" instance=ExtResource("7_fv1se")]
+[node name="6MLog28" parent="WhiteMiddle/Supports" index="365" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.706676, -0.0246777, -0.707107, 0.0348995, 0.999391, 0, 0.706676, -0.0246777, 0.707107, -11.7673, -0.244683, 24.7327)
 
-[node name="6MLog29" parent="WhiteMiddle/Supports" index="349" instance=ExtResource("7_fv1se")]
+[node name="6MLog29" parent="WhiteMiddle/Supports" index="366" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.706676, 0.0246777, -0.707107, 0.0348995, 0.999391, 0, 0.706676, -0.0246777, -0.707107, 11.7215, -0.25, 24.7445)
 
-[node name="6MLog30" parent="WhiteMiddle/Supports" index="350" instance=ExtResource("7_fv1se")]
+[node name="6MLog30" parent="WhiteMiddle/Supports" index="367" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.999391, 0.0348995, 0, 0.0348995, 0.999391, 2.22045e-16, 0, -1.86265e-09, -1, 12.0112, -0.244683, 25.3632)
 
-[node name="6MLog35" parent="WhiteMiddle/Supports" index="351" instance=ExtResource("7_fv1se")]
+[node name="6MLog35" parent="WhiteMiddle/Supports" index="368" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, -0.707107, 0, 0, -4.37114e-08, 1, -0.707107, -0.707107, 0, 5.21333, 4.99564, 30.2133)
 
-[node name="6MLog40" parent="WhiteMiddle/Supports" index="352" instance=ExtResource("7_fv1se")]
+[node name="6MLog40" parent="WhiteMiddle/Supports" index="369" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, 0.707107, 7.10543e-15, 0, -4.37114e-08, 1, 0.707107, -0.707107, 0, -5.26522, 4.99564, 30.2133)
 
-[node name="2MLog" parent="WhiteMiddle/Supports" index="353" instance=ExtResource("7_rpeem")]
+[node name="2MLog" parent="WhiteMiddle/Supports" index="370" instance=ExtResource("7_rpeem")]
 transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 6.83788, 5, 30.0879)
 
-[node name="2MLog2" parent="WhiteMiddle/Supports" index="354" instance=ExtResource("7_rpeem")]
+[node name="2MLog2" parent="WhiteMiddle/Supports" index="371" instance=ExtResource("7_rpeem")]
 transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 8.46238, 5, 30.0874)
 
-[node name="2MLog8" parent="WhiteMiddle/Supports" index="355" instance=ExtResource("7_rpeem")]
+[node name="2MLog8" parent="WhiteMiddle/Supports" index="372" instance=ExtResource("7_rpeem")]
 transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -6.28712, 5, 30.0879)
 
-[node name="2MLog9" parent="WhiteMiddle/Supports" index="356" instance=ExtResource("7_rpeem")]
+[node name="2MLog9" parent="WhiteMiddle/Supports" index="373" instance=ExtResource("7_rpeem")]
 transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -4.91262, 5, 30.0874)
 
-[node name="2MLog3" parent="WhiteMiddle/Supports" index="357" instance=ExtResource("7_rpeem")]
+[node name="2MLog3" parent="WhiteMiddle/Supports" index="374" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 8.091, 5, 30.341)
 
-[node name="2MLog4" parent="WhiteMiddle/Supports" index="358" instance=ExtResource("7_rpeem")]
+[node name="2MLog4" parent="WhiteMiddle/Supports" index="375" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 8.091, 5, 28.841)
 
-[node name="2MLog6" parent="WhiteMiddle/Supports" index="359" instance=ExtResource("7_rpeem")]
+[node name="2MLog6" parent="WhiteMiddle/Supports" index="376" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -8, 5, 28.875)
 
-[node name="2MLog7" parent="WhiteMiddle/Supports" index="360" instance=ExtResource("7_rpeem")]
+[node name="2MLog7" parent="WhiteMiddle/Supports" index="377" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -8, 5, 30.375)
 
-[node name="6MLog36" parent="WhiteMiddle/Supports" index="361" instance=ExtResource("7_fv1se")]
+[node name="6MLog36" parent="WhiteMiddle/Supports" index="378" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.13133e-08, -0.707107, 0.707107, -1, -2.18557e-08, -3.78552e-08, 4.2222e-08, -0.707107, -0.707107, 8.17939, 5, 27.1062)
 
-[node name="6MLog37" parent="WhiteMiddle/Supports" index="362" instance=ExtResource("7_fv1se")]
+[node name="6MLog37" parent="WhiteMiddle/Supports" index="379" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.13133e-08, -0.707107, 0.707107, -1, -2.18557e-08, -3.78552e-08, 4.2222e-08, -0.707107, -0.707107, 5.17418, 5, 24.101)
 
-[node name="6MLog38" parent="WhiteMiddle/Supports" index="363" instance=ExtResource("7_fv1se")]
+[node name="6MLog38" parent="WhiteMiddle/Supports" index="380" instance=ExtResource("7_fv1se")]
 transform = Transform3D(3.09086e-08, -0.707107, 0.707107, 1, 8.88178e-16, -4.37114e-08, 3.09086e-08, 0.707107, 0.707107, -0.780643, 5, 19.8931)
 
-[node name="6MLog39" parent="WhiteMiddle/Supports" index="364" instance=ExtResource("7_fv1se")]
+[node name="6MLog39" parent="WhiteMiddle/Supports" index="381" instance=ExtResource("7_fv1se")]
 transform = Transform3D(3.09086e-08, -0.707107, 0.707107, 1, 8.88178e-16, -4.37114e-08, 3.09086e-08, 0.707107, 0.707107, -3.87423, 5, 22.9867)
 
-[node name="2MLog5" parent="WhiteMiddle/Supports" index="365" instance=ExtResource("7_rpeem")]
+[node name="2MLog5" parent="WhiteMiddle/Supports" index="382" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1.13133e-08, -1, -1.19209e-07, -1, 1.13133e-08, -4.2222e-08, 4.2222e-08, 0, -1, 0.931543, 5, 19.9833)
 
-[node name="1MLog" parent="WhiteMiddle/Supports" index="366" instance=ExtResource("9_nlpdx")]
+[node name="1MLog" parent="WhiteMiddle/Supports" index="383" instance=ExtResource("9_nlpdx")]
 transform = Transform3D(-1.13133e-08, -1, -1.19209e-07, -1, 1.13133e-08, -4.2222e-08, 4.2222e-08, 0, -1, 1.18154, 5, 19.9833)
 
-[node name="4MLog17" parent="WhiteMiddle/Supports" index="367" instance=ExtResource("8_7phul")]
+[node name="4MLog17" parent="WhiteMiddle/Supports" index="384" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2, 5, 27)
 
-[node name="6MLog41" parent="WhiteMiddle/Supports" index="368" instance=ExtResource("7_fv1se")]
+[node name="6MLog41" parent="WhiteMiddle/Supports" index="385" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.707107, 0.707107, 7.10543e-15, 0, -4.37114e-08, 1, 0.707107, 0.707107, 7.10543e-15, -5.0762, 4.99564, 37.9095)
 
-[node name="6MLog42" parent="WhiteMiddle/Supports" index="369" instance=ExtResource("7_fv1se")]
+[node name="6MLog42" parent="WhiteMiddle/Supports" index="386" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-0.707107, -0.707107, -1.42109e-14, -2.51215e-15, -4.37114e-08, 1, -0.707107, 0.707107, 9.31764e-22, 5.10057, 4.99564, 37.9095)
 
-[node name="4MLog18" parent="WhiteMiddle/Supports" index="370" instance=ExtResource("8_7phul")]
+[node name="4MLog18" parent="WhiteMiddle/Supports" index="387" instance=ExtResource("8_7phul")]
 transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, -2.07626, 5, 41.0344)
 
-[node name="6MLog43" parent="WhiteMiddle/Supports" index="371" instance=ExtResource("7_fv1se")]
+[node name="6MLog43" parent="WhiteMiddle/Supports" index="388" instance=ExtResource("7_fv1se")]
 transform = Transform3D(-1.19209e-07, -1, -1.61135e-14, 2.51215e-15, -4.37114e-08, 1, -1, 8.9407e-08, 2.51215e-15, -4.78959, 4.99564, 38.0711)
 
-[node name="6MLog45" parent="WhiteMiddle/Supports" index="372" instance=ExtResource("7_fv1se")]
+[node name="6MLog45" parent="WhiteMiddle/Supports" index="389" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, -4.56956e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -7.54979e-08, -1, 2.51215e-15, -12, 4.99564, 37.8211)
 
-[node name="6MLog46" parent="WhiteMiddle/Supports" index="373" instance=ExtResource("7_fv1se")]
+[node name="6MLog46" parent="WhiteMiddle/Supports" index="390" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, -4.56956e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -7.54979e-08, -1, 2.51215e-15, -12, 4.99564, 32.0711)
 
-[node name="6MLog47" parent="WhiteMiddle/Supports" index="374" instance=ExtResource("7_fv1se")]
+[node name="6MLog47" parent="WhiteMiddle/Supports" index="391" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, 0.707107, -1.61135e-14, 9.61758e-15, -4.37114e-08, 1, 0.707107, -0.707107, 2.51215e-15, -12.0396, 4.99564, 25.0193)
 
-[node name="6MLog52" parent="WhiteMiddle/Supports" index="375" instance=ExtResource("7_fv1se")]
+[node name="6MLog52" parent="WhiteMiddle/Supports" index="392" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 12.04, 4.996, 25.019)
 
-[node name="6MLog48" parent="WhiteMiddle/Supports" index="376" instance=ExtResource("7_fv1se")]
+[node name="6MLog48" parent="WhiteMiddle/Supports" index="393" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, 0.707107, -1.61135e-14, 9.61758e-15, -4.37114e-08, 1, 0.707107, -0.707107, 2.51215e-15, -9.12278, 4.99564, 22.1025)
 
-[node name="6MLog51" parent="WhiteMiddle/Supports" index="377" instance=ExtResource("7_fv1se")]
+[node name="6MLog51" parent="WhiteMiddle/Supports" index="394" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 9.123, 4.996, 22.103)
 
-[node name="4MLog19" parent="WhiteMiddle/Supports" index="378" instance=ExtResource("8_7phul")]
+[node name="4MLog19" parent="WhiteMiddle/Supports" index="395" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, -5.96046e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -8.9407e-08, -1, 2.51215e-15, -5, 5, 18.104)
 
-[node name="4MLog21" parent="WhiteMiddle/Supports" index="379" instance=ExtResource("8_7phul")]
+[node name="4MLog21" parent="WhiteMiddle/Supports" index="396" instance=ExtResource("8_7phul")]
 transform = Transform3D(4.56956e-08, 1, -2.51215e-15, 1.61135e-14, -4.37114e-08, 1, 1, -1.58933e-08, -1.61135e-14, -4.75, 5, 15)
 
-[node name="2MLog14" parent="WhiteMiddle/Supports" index="380" instance=ExtResource("7_rpeem")]
+[node name="2MLog14" parent="WhiteMiddle/Supports" index="397" instance=ExtResource("7_rpeem")]
 transform = Transform3D(4.56956e-08, 1, -2.51215e-15, 1.61135e-14, -4.37114e-08, 1, 1, -1.58933e-08, -1.61135e-14, -1, 5, 15)
 
-[node name="4MLog22" parent="WhiteMiddle/Supports" index="381" instance=ExtResource("8_7phul")]
+[node name="4MLog22" parent="WhiteMiddle/Supports" index="398" instance=ExtResource("8_7phul")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 4.75, 5, 15)
 
-[node name="4MLog20" parent="WhiteMiddle/Supports" index="382" instance=ExtResource("8_7phul")]
+[node name="4MLog20" parent="WhiteMiddle/Supports" index="399" instance=ExtResource("8_7phul")]
 transform = Transform3D(1, -5.96046e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -8.9407e-08, -1, 2.51215e-15, 5, 5, 18.104)
 
-[node name="2MLog12" parent="WhiteMiddle/Supports" index="383" instance=ExtResource("7_rpeem")]
+[node name="2MLog12" parent="WhiteMiddle/Supports" index="400" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1, -4.56956e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -7.54979e-08, -1, 2.51215e-15, -12, 4.99564, 26.3211)
 
-[node name="6MLog49" parent="WhiteMiddle/Supports" index="384" instance=ExtResource("7_fv1se")]
+[node name="6MLog49" parent="WhiteMiddle/Supports" index="401" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, -4.56956e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -7.54979e-08, -1, 2.51215e-15, 12, 4.99564, 37.8211)
 
-[node name="6MLog50" parent="WhiteMiddle/Supports" index="385" instance=ExtResource("7_fv1se")]
+[node name="6MLog50" parent="WhiteMiddle/Supports" index="402" instance=ExtResource("7_fv1se")]
 transform = Transform3D(1, -4.56956e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -7.54979e-08, -1, 2.51215e-15, 12, 4.99564, 32.0711)
 
-[node name="2MLog13" parent="WhiteMiddle/Supports" index="386" instance=ExtResource("7_rpeem")]
+[node name="2MLog13" parent="WhiteMiddle/Supports" index="403" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1, -4.56956e-08, -1.61135e-14, 1.61135e-14, -4.37114e-08, 1, -7.54979e-08, -1, 2.51215e-15, 12, 4.99564, 26.3211)
 
-[node name="2MLog10" parent="WhiteMiddle/Supports" index="387" instance=ExtResource("7_rpeem")]
+[node name="2MLog10" parent="WhiteMiddle/Supports" index="404" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-1.19209e-07, -1, -1.61135e-14, 2.51215e-15, -4.37114e-08, 1, -1, 8.9407e-08, 2.51215e-15, -10.0396, 4.99564, 38.0711)
 
-[node name="2MLog11" parent="WhiteMiddle/Supports" index="388" instance=ExtResource("7_rpeem")]
+[node name="2MLog11" parent="WhiteMiddle/Supports" index="405" instance=ExtResource("7_rpeem")]
 transform = Transform3D(2.06632e-07, 1, -1.61135e-14, -2.51214e-15, -4.37114e-08, 1, 1, -1.7683e-07, 2.51215e-15, 10.5, 5, 38)
 
-[node name="6MLog44" parent="WhiteMiddle/Supports" index="389" instance=ExtResource("7_fv1se")]
+[node name="6MLog44" parent="WhiteMiddle/Supports" index="406" instance=ExtResource("7_fv1se")]
 transform = Transform3D(3.17865e-08, 1, -1.61135e-14, -2.51215e-15, -4.37114e-08, 1, 1, -1.98419e-09, 2.51215e-15, 4.875, 4.996, 38)
 
-[node name="2MLog34" parent="WhiteMiddle/Supports" index="390" instance=ExtResource("7_rpeem")]
+[node name="2MLog34" parent="WhiteMiddle/Supports" index="407" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -6.56811e-15, 1, 8.74227e-08, 1, 2.13163e-14, -1, 8.74227e-08, -4.37114e-08, -12.625, 8.125, -13.75)
 
-[node name="2MLog35" parent="WhiteMiddle/Supports" index="391" instance=ExtResource("7_rpeem")]
+[node name="2MLog35" parent="WhiteMiddle/Supports" index="408" instance=ExtResource("7_rpeem")]
 transform = Transform3D(-4.37114e-08, -2.78844e-14, 1, 8.74227e-08, 1, 4.26326e-14, -1, 8.74227e-08, -4.37113e-08, -11.75, 10.5, -14.75)
 
-[node name="2MLog36" parent="WhiteMiddle/Supports" index="392" instance=ExtResource("7_rpeem")]
+[node name="2MLog36" parent="WhiteMiddle/Supports" index="409" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1, -8.74227e-08, -4.26326e-14, 8.74227e-08, 1, 4.9738e-14, 5.68434e-14, -3.88112e-14, 1, -13.25, 8.125, -14.375)
 
 [node name="FloorTrim" type="Node3D" parent="WhiteMiddle" index="2"]
@@ -4100,6 +4186,7 @@ surface_material_override/0 = ExtResource("16_dbeog")
 surface_material_override/0 = ExtResource("12_f2neo")
 
 [node name="TempleRoom" parent="." index="35"]
+gi_lightmap_scale = 3
 surface_material_override/0 = ExtResource("12_f2neo")
 
 [node name="TempleRoomHull" parent="." index="36"]
@@ -4111,6 +4198,9 @@ surface_material_override/1 = ExtResource("6_4gkpw")
 
 [node name="EntranceHull" parent="." index="38"]
 surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="OccluderInstance3D" parent="." index="39"]
+layers = 9
 
 [editable path="BlueSide/Details/Monuments/SmallMonumentBlue1"]
 [editable path="BlueSide/Details/Monuments/SmallMonumentWhite1"]

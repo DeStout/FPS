@@ -1,6 +1,8 @@
 extends BotSimCharacter
 
 
+@onready var fp_shader : MeshInstance3D = $AimHelper/FirstPerson/FPCanvas/ \
+								SubViewportContainer/SubViewport/FPCamera/Shader
 @onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
 @onready var fp_weapon_meshes := [[null],
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 
@@ -147,6 +149,10 @@ func _input(event) -> void:
 										Input.is_action_pressed("WeaponDown"):
 			if !Input.is_action_pressed("ScoreBoard"):
 				_cycle_switch_weapon()
+
+
+func enable_screen_effect(enable : bool) -> void:
+	fp_shader.visible = enable
 
 
 func _fire() -> void:

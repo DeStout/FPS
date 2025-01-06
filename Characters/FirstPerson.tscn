@@ -105,56 +105,56 @@ bones/58/position = Vector3(17.4839, 4.42777, -44.7783)
 bones/58/rotation = Quaternion(-0.502867, -0.499763, 0.492194, 0.505081)
 
 [node name="PistolMag" parent="Mannequin/Skeleton3D" index="0"]
-transform = Transform3D(99.9994, 0.294326, -0.208515, -0.284556, 28.8421, -95.7499, -0.221696, 95.7499, 28.8427, 14.6338, 6.41874, -56.0931)
+transform = Transform3D(99.9993, 0.294506, -0.2086, -0.284692, 28.842, -95.75, -0.221821, 95.7499, 28.8426, 14.6337, 6.41879, -56.0931)
 
 [node name="PistolMag" parent="Mannequin/Skeleton3D/PistolMag" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("2_fy0ol")
 
 [node name="PistolBody" parent="Mannequin/Skeleton3D" index="1"]
-transform = Transform3D(99.9994, 0.217319, -0.287877, -0.284549, -1.52104, -99.988, -0.221691, 99.9882, -1.52042, 14.644, 9.50314, -55.4402)
+transform = Transform3D(99.9993, 0.217464, -0.288012, -0.284686, -1.52114, -99.988, -0.221816, 99.9882, -1.52051, 14.6439, 9.50319, -55.4402)
 
 [node name="PistolBody" parent="Mannequin/Skeleton3D/PistolBody" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("2_fy0ol")
 
 [node name="SMGMag" parent="Mannequin/Skeleton3D" index="2"]
-transform = Transform3D(0.551922, 99.9084, 4.24299, 0.973802, 4.23748, -99.9054, -99.9937, 0.592691, -0.949529, 17.5141, 4.92876, -55.7541)
+transform = Transform3D(0.551841, 99.9084, 4.243, 0.973852, 4.23748, -99.9054, -99.9937, 0.59264, -0.949568, 17.514, 4.9288, -55.7541)
 
 [node name="SMGMag" parent="Mannequin/Skeleton3D/SMGMag" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("3_xemk3")
 
 [node name="SMGBody" parent="Mannequin/Skeleton3D" index="3"]
-transform = Transform3D(0.551899, 99.9857, -1.59648, 0.973796, -1.60181, -99.9824, -99.9937, 0.536227, -0.982502, 17.5436, 4.53472, -55.7578)
+transform = Transform3D(0.551818, 99.9857, -1.59645, 0.973845, -1.60178, -99.9824, -99.9937, 0.536174, -0.982537, 17.5435, 4.53476, -55.7577)
 
 [node name="SMGBody" parent="Mannequin/Skeleton3D/SMGBody" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("3_xemk3")
 
 [node name="RifleMag" parent="Mannequin/Skeleton3D" index="4"]
-transform = Transform3D(0.551879, 99.8491, -5.46453, 0.973801, -5.46971, -99.8455, -99.9937, 0.497785, -1.00251, 19.9836, 4.38773, -44.7649)
+transform = Transform3D(0.551718, 99.849, -5.46458, 0.973733, -5.46978, -99.8455, -99.9937, 0.497662, -1.00245, 19.9835, 4.38777, -44.7649)
 
 [node name="RifleMag" parent="Mannequin/Skeleton3D/RifleMag" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("4_bceup")
 
 [node name="RifleBody" parent="Mannequin/Skeleton3D" index="5"]
-transform = Transform3D(0.551874, 99.9857, -1.59649, 0.973796, -1.60182, -99.9824, -99.9937, 0.536203, -0.982493, 19.9836, 4.38773, -44.7649)
+transform = Transform3D(0.551714, 99.9857, -1.59655, 0.973728, -1.60188, -99.9824, -99.9937, 0.536077, -0.982437, 19.9835, 4.38776, -44.7649)
 
 [node name="RifleBody" parent="Mannequin/Skeleton3D/RifleBody" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("4_bceup")
 
 [node name="ShotgunPump" parent="Mannequin/Skeleton3D" index="6"]
-transform = Transform3D(0.551884, 99.9857, -1.5964, 0.973828, -1.60173, -99.9824, -99.9937, 0.536215, -0.982527, 17.5439, 4.53471, -55.7578)
+transform = Transform3D(0.551717, 99.9857, -1.59631, 0.97395, -1.60164, -99.9824, -99.9937, 0.536068, -0.982637, 17.5438, 4.53477, -55.7577)
 
 [node name="ShotgunPump" parent="Mannequin/Skeleton3D/ShotgunPump" index="0"]
 visible = false
 surface_material_override/0 = ExtResource("5_p62lx")
 
 [node name="ShotgunBody" parent="Mannequin/Skeleton3D" index="7"]
-transform = Transform3D(0.569143, 99.9867, -1.53107, 0.981992, -1.53662, -99.9833, -99.9935, 0.553989, -0.990605, 17.5445, 4.53448, -55.7577)
+transform = Transform3D(0.568977, 99.9867, -1.53098, 0.982114, -1.53652, -99.9833, -99.9935, 0.553841, -0.990714, 17.5445, 4.53452, -55.7577)
 
 [node name="ShotgunBody" parent="Mannequin/Skeleton3D/ShotgunBody" index="0"]
 visible = false
