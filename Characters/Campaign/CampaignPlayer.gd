@@ -156,8 +156,7 @@ func _fire() -> void:
 			fp_animator.stop()
 		fp_animator.play(weapon_held.get_anim("Shoot"))
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.update_weapon(weapon_held.ammo_in_mag, \
-						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
@@ -190,15 +189,13 @@ func _reload() -> void:
 		fp_animator.play(weapon_held.get_anim("Reload"))
 	await super()
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.update_weapon(weapon_held.ammo_in_mag, \
-						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 
 
 func shell_loaded() -> void:
 	if weapon_held.weapon_type == Globals.WEAPONS.SHOTGUN:
 		weapon_held.load_shell()
-		HUD.update_weapon(weapon_held.ammo_in_mag, \
-					weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 		if weapon_held.extra_ammo <= 0 or \
 						weapon_held.ammo_in_mag >= weapon_held.properties.mag_size:
 			return
@@ -209,8 +206,7 @@ func shell_loaded() -> void:
 func _pick_up_weapon(new_weapon : PickUp) -> Weapon:
 	var added_weapon = super(new_weapon)
 	if added_weapon and weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.update_weapon(weapon_held.ammo_in_mag, \
-							weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
 	return added_weapon
 
@@ -218,8 +214,7 @@ func _pick_up_weapon(new_weapon : PickUp) -> Weapon:
 func _pick_up_ammo(new_ammo : PickUp) -> void:
 	super(new_ammo)
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.update_weapon(weapon_held.ammo_in_mag, \
-							weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 
 
 func _pick_up_health(new_health : PickUp) -> void:
@@ -265,8 +260,7 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 	super(new_weapon)
 	HUD.show_weapon_info(weapon_held.weapon_type != Globals.WEAPONS.SLAPPER)
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.update_weapon(weapon_held.ammo_in_mag, \
-						weapon_held.properties.mag_size, weapon_held.extra_ammo)
+		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 

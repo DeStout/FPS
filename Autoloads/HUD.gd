@@ -108,8 +108,8 @@ func show_weapon_info(show : bool) -> void:
 	$UI/Weapon.visible = show
 
 
-func update_weapon(mag_ammo, mag_size, ammo_extra) -> void:
-	ammo_in_mag.text = str(mag_ammo) + " / " + str(mag_size)
+func update_weapon(mag_ammo, ammo_extra) -> void:
+	ammo_in_mag.text = str(mag_ammo)
 	extra_ammo.text = str(ammo_extra)
 
 
@@ -164,8 +164,8 @@ func show_reticle(show) -> void:
 
 func bloom_reticle(bloom_perc : float) -> void:
 	var bloom = bloom_perc * (max_reticle_bloom - default_reticle_pos)
-	reticle.get_child(0).offset.x = -bloom - default_reticle_pos
-	reticle.get_child(1).offset.x = bloom + default_reticle_pos
+	reticle.get_child(1).offset.x = -bloom - default_reticle_pos
+	reticle.get_child(2).offset.x = bloom + default_reticle_pos
 
 
 func zoom_crosshairs(show) -> void:

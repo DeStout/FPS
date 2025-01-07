@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2bya7jvn8luj"]
+[gd_scene load_steps=16 format=3 uid="uid://c2bya7jvn8luj"]
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
 [ext_resource type="Script" path="res://Autoloads/Scoreboard.gd" id="2_ooany"]
 [ext_resource type="Texture2D" uid="uid://ba26jwpggkqi2" path="res://Characters/Reticle.svg" id="3_c486t"]
-[ext_resource type="Texture2D" uid="uid://dwg7182f40h5u" path="res://Characters/CrossHair.png" id="5_7v388"]
+[ext_resource type="Texture2D" uid="uid://b762t7r843oy8" path="res://Characters/Crosshair.svg" id="4_pbdnh"]
 [ext_resource type="Texture2D" uid="uid://bakhbfe2uhg4u" path="res://Characters/Scope.png" id="6_1t7b4"]
 [ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="7_7tmu3"]
 [ext_resource type="Script" path="res://Characters/BotSim/LeaderList.gd" id="7_28wp2"]
@@ -17,14 +17,21 @@ font_color = Color(0.121569, 0.121569, 0.121569, 1)
 outline_size = 5
 outline_color = Color(0.184314, 0.184314, 0.184314, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n8ts"]
+bg_color = Color(0, 0, 0, 0.137255)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
 [sub_resource type="LabelSettings" id="LabelSettings_vgpdo"]
 resource_local_to_scene = true
-font_size = 48
-font_color = Color(0.121569, 0.121569, 0.121569, 1)
+font_size = 72
+font_color = Color(0.8, 0.8, 0.8, 0.784314)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0pkc5"]
 font_size = 48
-font_color = Color(0.121569, 0.121569, 0.121569, 1)
+font_color = Color(0.6, 0.6, 0.6, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0h550"]
 resource_local_to_scene = true
@@ -39,7 +46,6 @@ font_color = Color(0.792969, 0.00544758, 0, 1)
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_ih3gh")
-metadata/_edit_horizontal_guides_ = [976.0]
 
 [node name="MatchTimer" type="Label" parent="."]
 anchors_preset = 4
@@ -67,44 +73,66 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
-metadata/_edit_use_anchors_ = true
 
 [node name="Reticle" type="Node2D" parent="UI"]
 
+[node name="PanelContainer" type="PanelContainer" parent="UI/Reticle"]
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1n8ts")
+
 [node name="L_Crosshair" type="Sprite2D" parent="UI/Reticle"]
-modulate = Color(1, 1, 1, 0.6)
-scale = Vector2(0.25, 0.25)
+self_modulate = Color(0.392, 0.7592, 0.8, 0.784314)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("3_c486t")
+offset = Vector2(-50, 0)
+
+[node name="L_Crosshair2" type="Sprite2D" parent="UI/Reticle/L_Crosshair"]
+self_modulate = Color(0.1, 0.1, 0.1, 0.8)
+position = Vector2(-12.012, 0)
 texture = ExtResource("3_c486t")
 offset = Vector2(-50, 0)
 
 [node name="R_Crosshair" type="Sprite2D" parent="UI/Reticle"]
-modulate = Color(1, 1, 1, 0.6)
-scale = Vector2(0.25, 0.25)
+self_modulate = Color(0.392, 0.7592, 0.8, 0.784314)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("3_c486t")
+offset = Vector2(50, 0)
+flip_h = true
+
+[node name="R_Crosshair2" type="Sprite2D" parent="UI/Reticle/R_Crosshair"]
+self_modulate = Color(0.1, 0.1, 0.1, 0.8)
+position = Vector2(12.0117, 0)
 texture = ExtResource("3_c486t")
 offset = Vector2(50, 0)
 flip_h = true
 
 [node name="Crosshair" type="Sprite2D" parent="UI/Reticle"]
-modulate = Color(1, 1, 1, 0.6)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_7v388")
-flip_h = true
+self_modulate = Color(0.392, 0.7592, 0.8, 0.784314)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_pbdnh")
 
 [node name="Scope" type="Sprite2D" parent="UI"]
 visible = false
 texture = ExtResource("6_1t7b4")
 
 [node name="Weapon" type="VBoxContainer" parent="UI"]
-layout_mode = 0
-offset_left = 637.0
-offset_top = 331.0
-offset_right = 735.0
-offset_bottom = 469.0
-metadata/_edit_use_anchors_ = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 780.0
+offset_top = 265.0
+offset_right = 862.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AmmoInMag" type="Label" parent="UI/Weapon"]
 layout_mode = 2
-text = "0 / 0"
+text = "32"
 label_settings = SubResource("LabelSettings_vgpdo")
 horizontal_alignment = 2
 vertical_alignment = 1
