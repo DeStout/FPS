@@ -5,7 +5,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_pxxmm")
-shader_parameter/display = false
 shader_parameter/albedo = Color(1, 0, 0.716667, 0.0196078)
 shader_parameter/roughness = 0.238
 shader_parameter/refraction = 0.5

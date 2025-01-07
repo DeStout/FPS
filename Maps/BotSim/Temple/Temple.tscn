@@ -28,11 +28,11 @@ subsurf_scatter_skin_mode = true
 refraction_scale = -1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yy2mr"]
-radius = 2.25
+radius = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_pixak"]
-radius = 2.0
-height = 4.0
+radius = 1.0
+height = 2.0
 radial_segments = 36
 rings = 18
 
@@ -104,7 +104,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mi78"]
 render_priority = 0
 shader = SubResource("Shader_fyjc6")
-shader_parameter/scale = 14.97
+shader_parameter/scale = 11.0
 
 [node name="Temple" instance=ExtResource("1_ov5jx")]
 
@@ -121,9 +121,10 @@ environment = ExtResource("2_ocyhd")
 [node name="Sun" type="DirectionalLight3D" parent="." index="2"]
 transform = Transform3D(0.951099, 0.114971, 0.28669, -0.238441, 0.863294, 0.444826, -0.196355, -0.491433, 0.848491, 0, 8.66966, -29.3949)
 layers = 9
-light_color = Color(1, 0.549245, 0.305039, 1)
+light_color = Color(1, 0.5125, 0.35, 1)
 light_energy = 5.0
-light_indirect_energy = 8.0
+light_indirect_energy = 9.54
+light_volumetric_fog_energy = 16.0
 light_angular_distance = 1.5
 light_bake_mode = 1
 shadow_enabled = true
@@ -133,7 +134,60 @@ directional_shadow_max_distance = 75.0
 
 [node name="Lights" type="Node3D" parent="." index="3"]
 
-[node name="BlueLightUpper" type="OmniLight3D" parent="Lights" index="0"]
+[node name="Blue" type="Node3D" parent="Lights" index="0"]
+
+[node name="LowerMonument" type="Node3D" parent="Lights/Blue" index="0"]
+
+[node name="Upper" type="SpotLight3D" parent="Lights/Blue/LowerMonument" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19, 9, 32)
+light_color = Color(0, 0.8, 1, 1)
+light_energy = 2.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.54
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+distance_fade_shadow = 12.0
+spot_range = 11.0
+spot_attenuation = 0.05
+spot_angle = 37.0
+spot_angle_attenuation = 0.164939
+
+[node name="Crystal" type="OmniLight3D" parent="Lights/Blue/LowerMonument" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19, 5, 32)
+light_color = Color(0, 0.633333, 1, 1)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.39
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+distance_fade_shadow = 12.0
+omni_range = 8.0
+omni_attenuation = 0.387
+
+[node name="Lower" type="SpotLight3D" parent="Lights/Blue/LowerMonument" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 19, 1, 32)
+light_color = Color(0, 0.8, 1, 1)
+light_energy = 2.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.54
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+distance_fade_shadow = 12.0
+spot_range = 11.0
+spot_attenuation = 0.05
+spot_angle = 37.0
+spot_angle_attenuation = 0.164939
+
+[node name="BlueLightUpper" type="OmniLight3D" parent="Lights/Blue" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 7.5, -34.5)
 layers = 9
 light_color = Color(0.258824, 0.619608, 1, 1)
@@ -149,7 +203,7 @@ distance_fade_shadow = 10.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
-[node name="BlueLightCorner1" type="OmniLight3D" parent="Lights" index="1"]
+[node name="BlueLightCorner1" type="OmniLight3D" parent="Lights/Blue" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 7, -16)
 layers = 9
 light_color = Color(0.26, 0.617666, 1, 1)
@@ -165,7 +219,7 @@ distance_fade_shadow = 10.0
 omni_range = 4.5
 omni_attenuation = 0.5
 
-[node name="BlueLightCorner2" type="OmniLight3D" parent="Lights" index="2"]
+[node name="BlueLightCorner2" type="OmniLight3D" parent="Lights/Blue" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 7, -20)
 layers = 9
 light_color = Color(0.26, 0.617666, 1, 1)
@@ -181,7 +235,7 @@ distance_fade_shadow = 10.0
 omni_range = 4.5
 omni_attenuation = 0.5
 
-[node name="BlueLightMiddle1" type="OmniLight3D" parent="Lights" index="3"]
+[node name="BlueLightMiddle1" type="OmniLight3D" parent="Lights/Blue" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6.875, 1)
 layers = 9
 light_color = Color(0.258824, 0.619608, 1, 1)
@@ -197,7 +251,7 @@ distance_fade_shadow = 12.0
 omni_range = 11.25
 omni_attenuation = 0.5
 
-[node name="BlueLightMiddle2" type="OmniLight3D" parent="Lights" index="4"]
+[node name="BlueLightMiddle2" type="OmniLight3D" parent="Lights/Blue" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 3.125, 1)
 layers = 9
 light_color = Color(0.258824, 0.619608, 1, 1)
@@ -213,13 +267,30 @@ distance_fade_shadow = 12.0
 omni_range = 11.25
 omni_attenuation = 0.5
 
-[node name="BlueLightLower1" type="OmniLight3D" parent="Lights" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6.875, 32)
-layers = 9
-light_color = Color(0.258824, 0.619608, 1, 1)
+[node name="White" type="Node3D" parent="Lights" index="1"]
+
+[node name="LowerMonument" type="OmniLight3D" parent="Lights/White" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 34)
+layers = 15
 light_energy = 5.0
 light_indirect_energy = 4.0
 light_volumetric_fog_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_opacity = 0.79
+shadow_blur = 7.147
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
+omni_range = 8.0
+omni_attenuation = 0.877
+
+[node name="WhiteLightCenter1" type="OmniLight3D" parent="Lights/White" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4)
+layers = 15
+light_energy = 3.0
+light_volumetric_fog_energy = 3.0
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
@@ -229,13 +300,11 @@ distance_fade_begin = 10.0
 distance_fade_shadow = 10.0
 omni_range = 7.0
 
-[node name="BlueLightLower2" type="OmniLight3D" parent="Lights" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 3.125, 32)
-layers = 9
-light_color = Color(0.258824, 0.619608, 1, 1)
-light_energy = 5.0
-light_indirect_energy = 4.0
-light_volumetric_fog_energy = 4.0
+[node name="WhiteLightCenter2" type="OmniLight3D" parent="Lights/White" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 4)
+layers = 15
+light_energy = 3.0
+light_volumetric_fog_energy = 3.0
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.61
@@ -245,7 +314,108 @@ distance_fade_begin = 10.0
 distance_fade_shadow = 10.0
 omni_range = 7.0
 
-[node name="RedLightUpper" type="OmniLight3D" parent="Lights" index="7"]
+[node name="WhiteLightCorner1" type="OmniLight3D" parent="Lights/White" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, 27)
+layers = 15
+light_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.49
+shadow_blur = 4.14
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
+omni_range = 4.5
+
+[node name="WhiteLightCorner2" type="OmniLight3D" parent="Lights/White" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 18)
+layers = 15
+light_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.49
+shadow_blur = 4.14
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
+omni_range = 4.5
+
+[node name="WhiteLightCorner3" type="OmniLight3D" parent="Lights/White" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00011, 2.5, 27)
+layers = 15
+light_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.49
+shadow_blur = 4.14
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
+omni_range = 4.5
+
+[node name="WhiteLightCorner4" type="OmniLight3D" parent="Lights/White" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 18)
+layers = 15
+light_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.49
+shadow_blur = 4.14
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
+omni_range = 4.5
+
+[node name="Red" type="Node3D" parent="Lights" index="2"]
+
+[node name="LowerMonument" type="Node3D" parent="Lights/Red" index="0"]
+
+[node name="Upper" type="SpotLight3D" parent="Lights/Red/LowerMonument" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -19, 9, 32)
+light_color = Color(1, 0, 0, 1)
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 3.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.52
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+distance_fade_shadow = 12.0
+spot_range = 11.0
+spot_attenuation = 0.51
+spot_angle = 37.0
+
+[node name="Crystal" type="OmniLight3D" parent="Lights/Red/LowerMonument" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -19, 5, 32)
+light_color = Color(0.68, 0.68, 0.68, 1)
+light_energy = 2.645
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.39
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+distance_fade_shadow = 12.0
+omni_range = 8.0
+omni_attenuation = 0.387
+
+[node name="Lower" type="SpotLight3D" parent="Lights/Red/LowerMonument" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -19, 1, 32)
+light_color = Color(1, 0, 0, 1)
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 3.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.52
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+distance_fade_shadow = 12.0
+spot_range = 11.0
+spot_attenuation = 0.51
+spot_angle = 37.0
+
+[node name="RedLightUpper" type="OmniLight3D" parent="Lights/Red" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 7.5, -34.5)
 layers = 9
 light_color = Color(1, 0.72, 0.72, 1)
@@ -261,7 +431,7 @@ distance_fade_shadow = 10.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
-[node name="RedLightCorner1" type="OmniLight3D" parent="Lights" index="8"]
+[node name="RedLightCorner1" type="OmniLight3D" parent="Lights/Red" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 7, -16)
 layers = 9
 light_color = Color(1, 0.72, 0.72, 1)
@@ -276,7 +446,7 @@ distance_fade_shadow = 10.0
 omni_range = 4.5
 omni_attenuation = 0.5
 
-[node name="RedLightCorner2" type="OmniLight3D" parent="Lights" index="9"]
+[node name="RedLightCorner2" type="OmniLight3D" parent="Lights/Red" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 7, -20)
 layers = 9
 light_color = Color(1, 0.72, 0.72, 1)
@@ -291,7 +461,7 @@ distance_fade_shadow = 10.0
 omni_range = 4.5
 omni_attenuation = 0.5
 
-[node name="RedLightMiddle1" type="OmniLight3D" parent="Lights" index="10"]
+[node name="RedLightMiddle1" type="OmniLight3D" parent="Lights/Red" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 6.875, 1)
 layers = 9
 light_color = Color(1, 0.59669, 0.656615, 1)
@@ -306,7 +476,7 @@ distance_fade_shadow = 10.0
 omni_range = 11.25
 omni_attenuation = 0.5
 
-[node name="RedLightMiddle2" type="OmniLight3D" parent="Lights" index="11"]
+[node name="RedLightMiddle2" type="OmniLight3D" parent="Lights/Red" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3.125, 1)
 layers = 9
 light_color = Color(1, 0.59669, 0.656615, 1)
@@ -320,132 +490,6 @@ distance_fade_begin = 12.0
 distance_fade_shadow = 10.0
 omni_range = 11.25
 omni_attenuation = 0.5
-
-[node name="RedLightLower1" type="OmniLight3D" parent="Lights" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 6.875, 32)
-layers = 9
-light_color = Color(1, 0.72, 0.72, 1)
-light_energy = 3.0
-light_volumetric_fog_energy = 2.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.61
-shadow_blur = 2.315
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 7.0
-omni_attenuation = 0.5
-
-[node name="RedLightLower2" type="OmniLight3D" parent="Lights" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3.125, 32)
-layers = 9
-light_color = Color(1, 0.72, 0.72, 1)
-light_energy = 3.0
-light_volumetric_fog_energy = 2.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.61
-shadow_blur = 2.315
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 7.0
-omni_attenuation = 0.5
-
-[node name="WhiteLightCenter1" type="OmniLight3D" parent="Lights" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4)
-layers = 9
-light_energy = 3.0
-light_volumetric_fog_energy = 3.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.61
-shadow_blur = 2.315
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 7.0
-
-[node name="WhiteLightCenter2" type="OmniLight3D" parent="Lights" index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 4)
-layers = 9
-light_energy = 3.0
-light_volumetric_fog_energy = 3.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.61
-shadow_blur = 2.315
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 7.0
-
-[node name="WhiteLightCorner1" type="OmniLight3D" parent="Lights" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, 27)
-layers = 9
-light_energy = 4.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.49
-shadow_blur = 4.14
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 4.5
-
-[node name="WhiteLightCorner2" type="OmniLight3D" parent="Lights" index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 18)
-layers = 9
-light_energy = 4.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.49
-shadow_blur = 4.14
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 4.5
-
-[node name="WhiteLightCorner3" type="OmniLight3D" parent="Lights" index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00011, 2.5, 27)
-layers = 9
-light_energy = 4.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.49
-shadow_blur = 4.14
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 4.5
-
-[node name="WhiteLightCorner4" type="OmniLight3D" parent="Lights" index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 18)
-layers = 9
-light_energy = 4.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.49
-shadow_blur = 4.14
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 4.5
-
-[node name="WhiteLightEntrance" type="OmniLight3D" parent="Lights" index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 34)
-layers = 9
-light_energy = 5.0
-light_indirect_energy = 4.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.71
-shadow_blur = 4.141
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
-omni_range = 8.0
 
 [node name="NavRegion" type="NavigationRegion3D" parent="." index="4"]
 navigation_mesh = SubResource("NavigationMesh_xuj3b")
@@ -700,6 +744,9 @@ speed_scale = 0.5
 [node name="Players" parent="." index="5" node_paths=PackedStringArray("level")]
 level = NodePath("..")
 
+[node name="Spawns" parent="." index="7"]
+visible = true
+
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, -10, 5, -31)
 
@@ -876,9 +923,6 @@ transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 
 
 [node name="Marker3D59" type="Marker3D" parent="Spawns" index="58"]
 transform = Transform3D(0.707107, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707107, -10, 0, 36)
-
-[node name="NavPoints" parent="." index="8"]
-visible = false
 
 [node name="Marker3D" type="Marker3D" parent="NavPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
@@ -1067,7 +1111,8 @@ respawn_time = 45.0
 
 [node name="MusicPlayer" parent="." index="10"]
 stream = ExtResource("7_ar8yn")
-volume_db = -5.0
+volume_db = -8.0
+mix_target = 1
 parameters/looping = true
 
 [connection signal="body_entered" from="NavRegion/Goddess/Goddess/Skeleton3D/BoneAttachment3D/SFX" to="NavRegion/Goddess/Goddess/Skeleton3D/BoneAttachment3D/SFX" method="_player_entered"]

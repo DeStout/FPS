@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://vo6bqqctmurm"]
+
+[ext_resource type="Texture2D" uid="uid://c12m0dracsyoj" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/BlackRock/Rock035_2K-PNG_Color.png" id="1_p6sfl"]
+[ext_resource type="Texture2D" uid="uid://dyofd0b1i64e2" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/BlackRock/Rock035_2K-PNG_NormalGL.png" id="2_83ccr"]
+[ext_resource type="Texture2D" uid="uid://ev5cdjt7703n" path="res://Maps/BotSim/Temple/Assets/Materials/Textures/BlackRock/Rock035_2K-PNG_Roughness.png" id="3_emhii"]
+
+[resource]
+albedo_texture = ExtResource("1_p6sfl")
+roughness_texture = ExtResource("3_emhii")
+normal_enabled = true
+normal_texture = ExtResource("2_83ccr")

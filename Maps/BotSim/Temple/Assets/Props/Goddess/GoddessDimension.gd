@@ -6,11 +6,13 @@ extends Area3D
 var _goddess_mat : ShaderMaterial = \
 				load("res://Maps/BotSim/Temple/Assets/Materials/GoddessMat.tres")
 @onready var _sfx_bus := AudioServer.get_bus_index("SFX")
+@onready var _music_bus := AudioServer.get_bus_index("Music")
 
 
 func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(_sfx_bus, 0, false)
 	AudioServer.set_bus_effect_enabled(_sfx_bus, 1, false)
+	AudioServer.set_bus_effect_enabled(_music_bus, 0, false)
 
 
 func _player_entered(body_entered : BotSimCharacter) -> void:
@@ -19,6 +21,7 @@ func _player_entered(body_entered : BotSimCharacter) -> void:
 		goddess_surface.set_surface_override_material(0, null)
 		AudioServer.set_bus_effect_enabled(_sfx_bus, 0, true)
 		AudioServer.set_bus_effect_enabled(_sfx_bus, 1, true)
+		AudioServer.set_bus_effect_enabled(_music_bus, 0, true)
 
 
 func _player_exited(body_exited : BotSimCharacter) -> void:
@@ -27,3 +30,4 @@ func _player_exited(body_exited : BotSimCharacter) -> void:
 		goddess_surface.set_surface_override_material(0, _goddess_mat)
 		AudioServer.set_bus_effect_enabled(_sfx_bus, 0, false)
 		AudioServer.set_bus_effect_enabled(_sfx_bus, 1, false)
+		AudioServer.set_bus_effect_enabled(_music_bus, 0, false)
