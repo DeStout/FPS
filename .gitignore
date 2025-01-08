@@ -3,4 +3,4 @@
 addons/limbo_demo/
 addons/godot-jolt/
 *.tmp
-Maps\BotSim\Temple\Assets\Materials\Textures\Terrain\Terrain003_8K_Color.png
+Maps/BotSim/Temple/Assets/Materials/Textures/Terrain/Terrain003_8K_Color.png
