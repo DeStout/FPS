@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgk0mejwh02ln"]
+[gd_scene load_steps=24 format=3 uid="uid://bgk0mejwh02ln"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_ov5jx"]
 [ext_resource type="VoxelGIData" uid="uid://bftyiwg0vwdwk" path="res://Maps/BotSim/Temple/Temple.VoxelGI_data.res" id="2_2cypd"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cykhq31st78s1" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Goddess.blend" id="5_r73wd"]
 [ext_resource type="Material" uid="uid://bi48kknnwrqgf" path="res://Maps/BotSim/Temple/Assets/Materials/GoddessMat.tres" id="6_suoll"]
 [ext_resource type="AudioStream" uid="uid://cukakob2orkkd" path="res://Maps/Audio/Music/TheHolyTemple.ogg" id="7_ar8yn"]
+[ext_resource type="Shader" path="res://Maps/BotSim/Temple/Assets/Materials/StaticDischarge.gdshader" id="7_kr4w0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o8tdu"]
 noise_type = 2
@@ -40,7 +41,7 @@ height = 2.5
 radial_segments = 36
 rings = 18
 
-[sub_resource type="Shader" id="Shader_fyjc6"]
+[sub_resource type="Shader" id="Shader_jjguu"]
 code = "shader_type spatial;
 render_mode unshaded;
 
@@ -107,8 +108,106 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mi78"]
 render_priority = 0
-shader = SubResource("Shader_fyjc6")
+shader = SubResource("Shader_jjguu")
 shader_parameter/scale = 10.52
+
+[sub_resource type="SphereMesh" id="SphereMesh_gltbo"]
+radius = 2.5
+height = 2.5
+radial_segments = 36
+rings = 18
+is_hemisphere = true
+
+[sub_resource type="Shader" id="Shader_fyjc6"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D screen_tex : hint_screen_texture;
+uniform sampler2D depth_tex : hint_depth_texture;
+uniform float scale;
+
+bool hit_sphere(vec3 ray_origin, vec3 ray_dir, vec3 sphere_origin, float radius) {
+	vec3 oc = ray_origin - sphere_origin;
+	float a = dot(ray_dir, ray_dir);
+	float b = 2.0 * dot(ray_dir, oc);
+	float c = dot(oc, oc) - (radius * radius);
+	float disc = (b * b) - 4.0 * a * c;
+	return disc > 0.0;
+}
+
+vec3 get_world_position_from_uv(vec2 uv, float depth, mat4 inv_proj_m, mat4 inv_view_m) {
+	vec4 ndc = vec4((uv * 2.0) - 1.0, depth, 1.0);
+	vec4 view_p = inv_proj_m * ndc;
+	view_p.xyz /= view_p.w;
+	view_p = (inv_view_m * vec4(view_p.xyz, 1.0));
+	return view_p.xyz;
+}
+
+vec2 get_uv_from_world_position(vec3 position_w, mat4 proj_m, mat4 view_m) {
+	vec3 position_v = (view_m * vec4(position_w, 1.0)).xyz;
+	vec4 position_cs = proj_m * vec4(position_v.xyz, 1.0);
+	vec2 ndc = position_cs.xy / position_cs.w;
+	return ndc.xy * 0.5 + 0.5;
+}
+
+float fresnel(float amount, vec3 normal, vec3 view) {
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+void fragment() {
+	float depth = texture(depth_tex, SCREEN_UV).x;
+	vec3 frag_p = get_world_position_from_uv(SCREEN_UV, depth, INV_PROJECTION_MATRIX, INV_VIEW_MATRIX);
+	vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
+
+	bool hit = hit_sphere(CAMERA_POSITION_WORLD, ray_dir, NODE_POSITION_WORLD, scale * .3);
+	
+	vec4 screen_color = texture(screen_tex, SCREEN_UV);
+	vec3 color;
+	if (hit) {
+		color = vec3(0.0);
+	}
+	else {
+		vec2 bh_p = get_uv_from_world_position(NODE_POSITION_WORLD, PROJECTION_MATRIX, VIEW_MATRIX);
+		vec2 dis_dir = normalize(bh_p - SCREEN_UV) * 0.5;
+		float f =  1.0 - fresnel(0.5, NORMAL, VIEW);
+		
+		float fov = atan(-1.0 / PROJECTION_MATRIX[1][1] * 2.0);
+		float dist = distance(CAMERA_POSITION_WORLD, NODE_POSITION_WORLD);
+		float s = (2.0 * dist * tan(fov * 0.5)) / scale;
+		
+		vec2 uv = SCREEN_UV + (dis_dir * (f / s));
+		screen_color = texture(screen_tex, uv);
+		color = vec3(screen_color.r, screen_color.g, screen_color.b);
+		
+	}
+	ALBEDO = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_578bw"]
+render_priority = 0
+shader = SubResource("Shader_fyjc6")
+shader_parameter/scale = 5.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bxe76"]
+emission_shape_offset = Vector3(0, 10, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pt52r"]
+render_priority = 0
+shader = ExtResource("7_kr4w0")
+shader_parameter/effect_color = Color(0.8, 0.36, 0.2, 1)
+shader_parameter/octave_count = 20
+shader_parameter/amp_start = 0.291
+shader_parameter/amp_coeff = 0.69
+shader_parameter/freq_coeff = 1.325
+shader_parameter/speed = 0.8
+shader_parameter/billboard_y = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3782u"]
+material = SubResource("ShaderMaterial_pt52r")
+size = Vector2(15, 20)
 
 [node name="Temple" instance=ExtResource("1_ov5jx")]
 
@@ -702,7 +801,6 @@ ignore_occlusion_culling = true
 surface_material_override/0 = SubResource("StandardMaterial3D_bl8ed")
 
 [node name="Surface" parent="NavRegion/Goddess/Goddess/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 sorting_offset = 1.0
 ignore_occlusion_culling = true
 surface_material_override/0 = ExtResource("6_suoll")
@@ -737,6 +835,26 @@ visible = false
 autoplay = "HoverIdle"
 playback_auto_capture = false
 speed_scale = 0.5
+
+[node name="Refraction" type="MeshInstance3D" parent="NavRegion" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -13)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_gltbo")
+surface_material_override/0 = SubResource("ShaderMaterial_578bw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="NavRegion/Refraction" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965354, -0.260943, 0, 0.260943, 0.965354, 8.2016e-05, 0.00022316, -0.000631809)
+amount = 5
+amount_ratio = 0.01
+lifetime = 0.1
+speed_scale = 64.0
+explosiveness = 1.0
+randomness = 1.0
+visibility_aabb = AABB(-20, -10, -20.0001, 40, 40, 40.0001)
+local_coords = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_bxe76")
+draw_pass_1 = SubResource("QuadMesh_3782u")
 
 [node name="Players" parent="." index="5" node_paths=PackedStringArray("level")]
 level = NodePath("..")

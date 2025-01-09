@@ -127,10 +127,11 @@ visible = false
 texture = ExtResource("6_1t7b4")
 
 [node name="WeaponBG" type="PanelContainer" parent="UI"]
+layout_mode = 0
 offset_left = 714.0
-offset_top = 279.0
+offset_top = 271.0
 offset_right = 909.0
-offset_bottom = 402.0
+offset_bottom = 410.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ypvma")
 
 [node name="Weapon" type="VBoxContainer" parent="UI"]
