@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cykhq31st78s1" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Goddess.blend" id="5_r73wd"]
 [ext_resource type="Material" uid="uid://bi48kknnwrqgf" path="res://Maps/BotSim/Temple/Assets/Materials/GoddessMat.tres" id="6_suoll"]
 [ext_resource type="AudioStream" uid="uid://cukakob2orkkd" path="res://Maps/Audio/Music/TheHolyTemple.ogg" id="7_ar8yn"]
-[ext_resource type="Shader" path="res://Maps/BotSim/Temple/Assets/Materials/StaticDischarge.gdshader" id="7_kr4w0"]
+[ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Static.gd" id="8_0k2kh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o8tdu"]
 noise_type = 2
@@ -160,7 +160,7 @@ void fragment() {
 	vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
 
 	bool hit = hit_sphere(CAMERA_POSITION_WORLD, ray_dir, NODE_POSITION_WORLD, scale * .3);
-	
+
 	vec4 screen_color = texture(screen_tex, SCREEN_UV);
 	vec3 color;
 	if (hit) {
@@ -170,15 +170,15 @@ void fragment() {
 		vec2 bh_p = get_uv_from_world_position(NODE_POSITION_WORLD, PROJECTION_MATRIX, VIEW_MATRIX);
 		vec2 dis_dir = normalize(bh_p - SCREEN_UV) * 0.5;
 		float f =  1.0 - fresnel(0.5, NORMAL, VIEW);
-		
+
 		float fov = atan(-1.0 / PROJECTION_MATRIX[1][1] * 2.0);
 		float dist = distance(CAMERA_POSITION_WORLD, NODE_POSITION_WORLD);
 		float s = (2.0 * dist * tan(fov * 0.5)) / scale;
-		
+
 		vec2 uv = SCREEN_UV + (dis_dir * (f / s));
 		screen_color = texture(screen_tex, uv);
 		color = vec3(screen_color.r, screen_color.g, screen_color.b);
-		
+
 	}
 	ALBEDO = color;
 }"
@@ -188,26 +188,94 @@ render_priority = 0
 shader = SubResource("Shader_fyjc6")
 shader_parameter/scale = 5.5
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bxe76"]
-emission_shape_offset = Vector3(0, 10, 0)
-spread = 0.0
-gravity = Vector3(0, 0, 0)
-attractor_interaction_enabled = false
+[sub_resource type="CylinderMesh" id="CylinderMesh_h3ud1"]
+top_radius = 2.3
+bottom_radius = 2.3
+height = 20.0
+radial_segments = 5
+rings = 0
+cap_top = false
+cap_bottom = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pt52r"]
+[sub_resource type="Shader" id="Shader_m6xwb"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform vec3 effect_color: source_color = vec3(0.2, 0.3, 0.8);
+uniform int octave_count: hint_range(1, 20) = 10;
+uniform float amp_start = 0.5;
+uniform float amp_coeff = 0.5;
+uniform float freq_coeff = 2.0;
+uniform float speed = 0.5;
+
+uniform bool billboard_y = true;
+
+varying float instance_id;
+
+void vertex() {
+     //Billboard Mode: Y-Billboard
+	if (billboard_y) {
+	    MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
+	            vec4(normalize(cross(vec3(0.0, 1.0, 0.0), MAIN_CAM_INV_VIEW_MATRIX[2].xyz)), 0.0),
+	            vec4(0.0, 1.0, 0.0, 0.0),
+	            vec4(normalize(cross(MAIN_CAM_INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0),
+	            MODEL_MATRIX[3]);
+	    MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	}
+	instance_id = float(INSTANCE_ID) / 10.0;
+}
+
+float hash12(vec2 x) {
+    return fract(cos(mod(dot(x, vec2(13.9898, 8.141)), 3.14)) * 43758.5453);
+}
+
+vec2 hash22(vec2 uv) {
+    uv = vec2(dot(uv, vec2(127.1,311.7)),
+              dot(uv, vec2(269.5,183.3)));
+    return 2.0 * fract(sin(uv) * 43758.5453123) - 1.0;
+}
+
+float noise(vec2 uv) {
+    vec2 iuv = floor(uv);
+    vec2 fuv = fract(uv);
+    vec2 blur = smoothstep(0.0, 1.0, fuv);
+    return mix(mix(dot(hash22(iuv + vec2(0.0,0.0)), fuv - vec2(0.0,0.0)),
+                   dot(hash22(iuv + vec2(1.0,0.0)), fuv - vec2(1.0,0.0)), blur.x),
+               mix(dot(hash22(iuv + vec2(0.0,1.0)), fuv - vec2(0.0,1.0)),
+                   dot(hash22(iuv + vec2(1.0,1.0)), fuv - vec2(1.0,1.0)), blur.x), blur.y) + 0.5;
+}
+
+float fbm(vec2 uv, int octaves) {
+    float value = 0.0;
+    float amplitude = amp_start;
+    for (int i = 0; i < octaves; i++) {
+        value += amplitude * noise(uv);
+        uv *= freq_coeff;
+        amplitude *= amp_coeff;
+    }
+    return value;
+}
+
+void fragment() {
+    vec2 uv = 2.0 * UV - 1.0;
+    uv += 2.0 * fbm(uv + TIME * speed * ((instance_id + 1.0) / 10.0), octave_count) - 1.0;
+    float dist = abs(uv.x);
+    vec3 color = effect_color * mix(0.0, 0.05, hash12(vec2(TIME))) / dist;
+    ALBEDO = color;
+	ALPHA = color.r;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo3xm"]
 render_priority = 0
-shader = ExtResource("7_kr4w0")
+shader = SubResource("Shader_m6xwb")
 shader_parameter/effect_color = Color(0.8, 0.36, 0.2, 1)
 shader_parameter/octave_count = 20
 shader_parameter/amp_start = 0.291
 shader_parameter/amp_coeff = 0.69
 shader_parameter/freq_coeff = 1.325
-shader_parameter/speed = 0.8
+shader_parameter/speed = 5.895
 shader_parameter/billboard_y = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_3782u"]
-material = SubResource("ShaderMaterial_pt52r")
-size = Vector2(15, 20)
 
 [node name="Temple" instance=ExtResource("1_ov5jx")]
 
@@ -842,19 +910,15 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_gltbo")
 surface_material_override/0 = SubResource("ShaderMaterial_578bw")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="NavRegion/Refraction" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.965354, -0.260943, 0, 0.260943, 0.965354, 8.2016e-05, 0.00022316, -0.000631809)
-amount = 5
-amount_ratio = 0.01
-lifetime = 0.1
-speed_scale = 64.0
-explosiveness = 1.0
-randomness = 1.0
-visibility_aabb = AABB(-20, -10, -20.0001, 40, 40, 40.0001)
-local_coords = true
-transform_align = 1
-process_material = SubResource("ParticleProcessMaterial_bxe76")
-draw_pass_1 = SubResource("QuadMesh_3782u")
+[node name="Static" type="MeshInstance3D" parent="NavRegion/Refraction" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.973762, -0.227569, 0, 0.227569, 0.973762, 0, 9.56742, 4.02324)
+visible = false
+mesh = SubResource("CylinderMesh_h3ud1")
+surface_material_override/0 = SubResource("ShaderMaterial_jo3xm")
+script = ExtResource("8_0k2kh")
+
+[node name="FlashSFX" type="AudioStreamPlayer3D" parent="NavRegion/Refraction/Static" index="0"]
+bus = &"SFX"
 
 [node name="Players" parent="." index="5" node_paths=PackedStringArray("level")]
 level = NodePath("..")

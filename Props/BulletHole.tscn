@@ -7,6 +7,9 @@
 [node name="BulletHole" type="Decal"]
 size = Vector3(0.1, 0.01, 0.1)
 texture_albedo = ExtResource("1_se2qb")
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+cull_mask = 1
 script = ExtResource("2_hk442")
 
 [node name="Ricochet" type="AudioStreamPlayer3D" parent="."]

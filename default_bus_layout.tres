@@ -1,26 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://hv5q6n8v8xa6"]
-
-[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_5xqec"]
-resource_name = "BandPassFilter"
-
-[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_m6uxa"]
-resource_name = "Chorus"
-voice_count = 4
-voice/3/delay_ms = 12.0
-voice/3/rate_hz = 1.0
-voice/3/depth_ms = 1.0
-voice/3/level_db = 0.0
-voice/3/cutoff_hz = 16000.0
-voice/3/pan = -0.75
-voice/4/delay_ms = 18.0
-voice/4/rate_hz = 1.5
-voice/4/depth_ms = 4.0
-voice/4/level_db = 0.0
-voice/4/cutoff_hz = 16000.0
-voice/4/pan = 0.75
-
-[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_1kwfb"]
-resource_name = "LowPassFilter"
+[gd_resource type="AudioBusLayout" format=3 uid="uid://hv5q6n8v8xa6"]
 
 [resource]
 bus/0/volume_db = -4.50411
@@ -30,15 +8,9 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = -4.76812
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectBandPassFilter_5xqec")
-bus/1/effect/0/enabled = false
 bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = -5.93075
 bus/2/send = &"Master"
-bus/2/effect/0/effect = SubResource("AudioEffectChorus_m6uxa")
-bus/2/effect/0/enabled = false
-bus/2/effect/1/effect = SubResource("AudioEffectLowPassFilter_1kwfb")
-bus/2/effect/1/enabled = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://o2h1ckasd2vt"]
+[gd_scene load_steps=68 format=4 uid="uid://o2h1ckasd2vt"]
 
 [ext_resource type="PackedScene" uid="uid://ddao41v7s3ovx" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
 [ext_resource type="Material" uid="uid://isleghls2oka" path="res://Maps/BotSim/Temple/Assets/Materials/Terrain.tres" id="2_cnr1c"]
@@ -23,7 +23,24 @@
 [ext_resource type="Material" uid="uid://cp7p06yppjmon" path="res://Maps/BotSim/Temple/Assets/Materials/CobbleStone.tres" id="15_vw7fy"]
 [ext_resource type="Material" uid="uid://b63ha2txgh2r4" path="res://Maps/BotSim/Temple/Assets/Materials/RoughWood.tres" id="16_dbeog"]
 [ext_resource type="Material" uid="uid://bvtmphnwo7qm7" path="res://Maps/BotSim/Temple/Assets/Materials/GoldCrystal.tres" id="16_tipu6"]
+[ext_resource type="Material" uid="uid://b4m7qsdumxruw" path="res://Maps/BotSim/Temple/Assets/Materials/Bark.tres" id="16_x0cwi"]
+[ext_resource type="Material" uid="uid://bru1uryec1myq" path="res://Maps/BotSim/Temple/Assets/Materials/Leaf.tres" id="17_a328q"]
 [ext_resource type="Material" uid="uid://2l5h050ckagm" path="res://Maps/BotSim/Temple/Assets/Materials/WhiteCrystal.tres" id="18_0otkx"]
+[ext_resource type="PackedScene" uid="uid://dxyhhg6pnnyrf" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueLowerConVines.glb" id="18_iaqnr"]
+[ext_resource type="PackedScene" uid="uid://hhpic5s28ife" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueMidVines.glb" id="19_mxmvr"]
+[ext_resource type="PackedScene" uid="uid://bturbuc4riceq" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueTopConVines.glb" id="20_o7i8g"]
+[ext_resource type="PackedScene" uid="uid://c0h7dhyjxdivu" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueMidConVines.glb" id="21_g5ov7"]
+[ext_resource type="PackedScene" uid="uid://xwacxt2ka7te" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueTopVines.glb" id="22_0ndrr"]
+[ext_resource type="PackedScene" uid="uid://cw1hastkokbd4" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedLowerVines.glb" id="22_ifelm"]
+[ext_resource type="PackedScene" uid="uid://kbgsjuw44twx" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteLowerVines.glb" id="24_e5h4n"]
+[ext_resource type="PackedScene" uid="uid://b361lrieik7dn" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueLowerVines.glb" id="25_mikji"]
+[ext_resource type="PackedScene" uid="uid://b0d2maqcgynlj" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedLowerConVines.glb" id="25_munml"]
+[ext_resource type="AudioStream" uid="uid://b8gvv16pfrxui" path="res://Maps/BotSim/Temple/Assets/SFX/Static.ogg" id="26_qel10"]
+[ext_resource type="PackedScene" uid="uid://dhvgi3l0geg83" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteMidVines.glb" id="27_twyqo"]
+[ext_resource type="PackedScene" uid="uid://cbfci6bnvdu0d" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedMidVines.glb" id="32_8ejan"]
+[ext_resource type="PackedScene" uid="uid://bobfjfoc6xtdv" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedMidConVines.glb" id="33_tvp4p"]
+[ext_resource type="PackedScene" uid="uid://bnu4pqe7xw8ky" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedTopConVines.glb" id="34_j5flo"]
+[ext_resource type="PackedScene" uid="uid://bi3mejgbsvnqy" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedTopVines.glb" id="35_idgc2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50bou"]
 
@@ -170,8 +187,8 @@ noise = SubResource("FastNoiseLite_x7fi5")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fp3q6"]
 emission_shape_offset = Vector3(0, -0.5, 0)
 spread = 0.0
-initial_velocity_min = -20.0
-initial_velocity_max = 20.0
+initial_velocity_min = -5.0
+initial_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
 
@@ -331,12 +348,12 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewxev"]
 render_priority = 0
 shader = SubResource("Shader_ilqq1")
-shader_parameter/effect_color = Color(1, 0.15, 0, 1)
+shader_parameter/effect_color = Color(0.8, 0.398667, 0.112, 1)
 shader_parameter/octave_count = 20
 shader_parameter/amp_start = 0.356
 shader_parameter/amp_coeff = 0.63
 shader_parameter/freq_coeff = 1.42
-shader_parameter/speed = 5.67
+shader_parameter/speed = 2.0
 shader_parameter/billboard_y = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_go2jk"]
@@ -443,49 +460,47 @@ surface_material_override/0 = ExtResource("2_cnr1c")
 
 [node name="BlueSide" type="Node3D" parent="." index="1"]
 
-[node name="Details" type="Node3D" parent="BlueSide" index="0"]
+[node name="Monuments" type="Node3D" parent="BlueSide" index="0"]
 
-[node name="Monuments" type="Node3D" parent="BlueSide/Details" index="0"]
-
-[node name="LowerMonument" type="Node3D" parent="BlueSide/Details/Monuments" index="0"]
+[node name="LowerMonument" type="Node3D" parent="BlueSide/Monuments" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 32)
 script = ExtResource("11_hlsa2")
 rotate_dir = false
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="BlueSide/Details/Monuments/LowerMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="BlueSide/Monuments/LowerMonument" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_03kfy")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/LowerMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/LowerMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="BlueSide/Details/Monuments/LowerMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="BlueSide/Monuments/LowerMonument" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_10gy6")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Details/Monuments/LowerMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/LowerMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/LowerMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="Crystal" type="OmniLight3D" parent="BlueSide/Details/Monuments/LowerMonument/Crystal" index="1"]
+[node name="Crystal" type="OmniLight3D" parent="BlueSide/Monuments/LowerMonument/Crystal" index="1"]
 light_color = Color(0, 0.633333, 1, 1)
 light_energy = 2.65
 light_indirect_energy = 5.0
@@ -500,26 +515,26 @@ distance_fade_shadow = 12.0
 omni_range = 10.0
 omni_attenuation = -1.086
 
-[node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Details/Monuments/LowerMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Monuments/LowerMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_03kfy")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/LowerMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="StaticTop" type="GPUParticles3D" parent="BlueSide/Details/Monuments/LowerMonument" index="3"]
+[node name="StaticTop" type="GPUParticles3D" parent="BlueSide/Monuments/LowerMonument" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3092, 0)
 amount = 15
 amount_ratio = 0.25
@@ -531,7 +546,7 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_j0r27")
 
-[node name="StaticBottom" type="GPUParticles3D" parent="BlueSide/Details/Monuments/LowerMonument" index="4"]
+[node name="StaticBottom" type="GPUParticles3D" parent="BlueSide/Monuments/LowerMonument" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95877, 0)
 amount = 15
 amount_ratio = 0.25
@@ -543,44 +558,55 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_j0r27")
 
-[node name="MidMonument" type="Node3D" parent="BlueSide/Details/Monuments" index="1"]
+[node name="Static" type="AudioStreamPlayer3D" parent="BlueSide/Monuments/LowerMonument" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = ExtResource("26_qel10")
+volume_db = 6.0
+unit_size = 5.0
+max_db = 6.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="MidMonument" type="Node3D" parent="BlueSide/Monuments" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 1)
 script = ExtResource("11_hlsa2")
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="BlueSide/Details/Monuments/MidMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="BlueSide/Monuments/MidMonument" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_03kfy")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/MidMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/MidMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="BlueSide/Details/Monuments/MidMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="BlueSide/Monuments/MidMonument" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_10gy6")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Details/Monuments/MidMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/MidMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/MidMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="Crystal" type="OmniLight3D" parent="BlueSide/Details/Monuments/MidMonument/Crystal" index="1"]
+[node name="Crystal" type="OmniLight3D" parent="BlueSide/Monuments/MidMonument/Crystal" index="1"]
 light_color = Color(0, 0.633333, 1, 1)
 light_energy = 3.043
 light_indirect_energy = 5.0
@@ -595,26 +621,26 @@ distance_fade_shadow = 12.0
 omni_range = 13.0
 omni_attenuation = -0.651
 
-[node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Details/Monuments/MidMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Monuments/MidMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_03kfy")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/MidMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/MidMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/MidMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="StaticTop" type="GPUParticles3D" parent="BlueSide/Details/Monuments/MidMonument" index="3"]
+[node name="StaticTop" type="GPUParticles3D" parent="BlueSide/Monuments/MidMonument" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3092, 0)
 amount = 15
 amount_ratio = 0.25
@@ -626,7 +652,7 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_j0r27")
 
-[node name="StaticBottom" type="GPUParticles3D" parent="BlueSide/Details/Monuments/MidMonument" index="4"]
+[node name="StaticBottom" type="GPUParticles3D" parent="BlueSide/Monuments/MidMonument" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95877, 0)
 amount = 15
 amount_ratio = 0.25
@@ -638,84 +664,97 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_j0r27")
 
-[node name="UpperMonument" type="Node3D" parent="BlueSide/Details/Monuments" index="2"]
+[node name="Static" type="AudioStreamPlayer3D" parent="BlueSide/Monuments/MidMonument" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = ExtResource("26_qel10")
+volume_db = 6.0
+unit_size = 5.0
+max_db = 6.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="UpperMonument" type="Node3D" parent="BlueSide/Monuments" index="2"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 22.5, 5, -34.5)
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="BlueSide/Details/Monuments/UpperMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="BlueSide/Monuments/UpperMonument" index="0"]
 transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_03kfy")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/UpperMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/UpperMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="BlueSide/Details/Monuments/UpperMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="BlueSide/Monuments/UpperMonument" index="1"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_10gy6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Details/Monuments/UpperMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/UpperMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/UpperMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Details/Monuments/UpperMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Monuments/UpperMonument" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_03kfy")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/UpperMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Details/Monuments/UpperMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/UpperMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="RubbleA" parent="BlueSide/Details" index="1" instance=ExtResource("3_w0ikm")]
+[node name="Rubble" type="Node3D" parent="BlueSide" index="1"]
+
+[node name="RubbleA" parent="BlueSide/Rubble" index="0" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(-1.38693, 0.890622, 2.5226, 0, 2.84145, -1.0032, -2.6752, -0.461732, -1.30781, 25.3393, -0.559517, -5.24215)
 
-[node name="RubbleA5" parent="BlueSide/Details" index="2" instance=ExtResource("3_w0ikm")]
+[node name="RubbleA5" parent="BlueSide/Rubble" index="1" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(-1.15547, 0.0565367, -1.23376, 0.0412981, 1.69034, 0.0387819, 1.23436, -0.00363054, -1.1562, 13.4043, -0.160514, -9.1053)
 
-[node name="RubbleA2" parent="BlueSide/Details" index="3" instance=ExtResource("3_w0ikm")]
+[node name="RubbleA2" parent="BlueSide/Rubble" index="2" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(2.25671, 0.309475, 2.79226, 0.240238, 3.54718, -0.587306, -2.79907, 0.553957, 2.20081, 24.0666, -0.638003, 6.74696)
 
-[node name="RubbleA3" parent="BlueSide/Details" index="4" instance=ExtResource("3_w0ikm")]
+[node name="RubbleA3" parent="BlueSide/Rubble" index="3" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(2.25671, 0.309475, 2.79226, 0.240238, 3.54718, -0.587306, -2.79907, 0.553957, 2.20081, 13.3794, -0.638003, 6.74696)
 
-[node name="RubbleA6" parent="BlueSide/Details" index="5" instance=ExtResource("3_w0ikm")]
+[node name="RubbleA6" parent="BlueSide/Rubble" index="4" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(-1.4329, 0, 1.18868, 0, 1.86176, 0, -1.18868, 0, -1.4329, 27.4222, 5, -19.8177)
 
-[node name="RubbleA7" parent="BlueSide/Details" index="6" instance=ExtResource("3_w0ikm")]
+[node name="RubbleA7" parent="BlueSide/Rubble" index="5" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(1.06472, 0.0835581, -1.53902, -0.0271956, 1.17853, 0.147585, 1.43602, -0.0396338, 1.14388, 18.5542, 5.0284, -16.9152)
 
-[node name="RubbleA8" parent="BlueSide/Details" index="7" instance=ExtResource("3_w0ikm")]
+[node name="RubbleA8" parent="BlueSide/Rubble" index="6" instance=ExtResource("3_w0ikm")]
 transform = Transform3D(0.58032, -0.161054, -2.11756, -0.0926899, 1.37934, -0.292327, 2.06823, 0.107006, 0.581061, 16.8743, 4.90363, -27.6003)
 
-[node name="Supports" type="Node3D" parent="BlueSide" index="1"]
+[node name="Supports" type="Node3D" parent="BlueSide" index="2"]
 
 [node name="6MLog" parent="BlueSide/Supports" index="0" instance=ExtResource("7_fv1se")]
 transform = Transform3D(0.998495, 0.0548457, 0, -0.0548457, 0.998495, 0, 0, 0, 1, 24.9509, -0.862024, -5.57267)
@@ -1239,7 +1278,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 18.75,
 [node name="2MLog12" parent="BlueSide/Supports" index="173" instance=ExtResource("7_rpeem")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 22.5, 10, -31.375)
 
-[node name="FloorTrim" type="Node3D" parent="BlueSide" index="2"]
+[node name="FloorTrim" type="Node3D" parent="BlueSide" index="3"]
 
 [node name="FloorTrimA" parent="BlueSide/FloorTrim" index="0" instance=ExtResource("9_atiog")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, -3.5)
@@ -1697,187 +1736,223 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23, 0,
 [node name="FloorTrimC8" parent="BlueSide/FloorTrim" index="151" instance=ExtResource("11_ryetl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19, 0, -6)
 
+[node name="Vines" type="Node3D" parent="BlueSide" index="4"]
+
+[node name="BlueLowerVines" parent="BlueSide/Vines" index="0" instance=ExtResource("25_mikji")]
+
+[node name="BlueLowerVinesMesh" parent="BlueSide/Vines/BlueLowerVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="BlueLowerConVines" parent="BlueSide/Vines" index="1" instance=ExtResource("18_iaqnr")]
+
+[node name="BlueLowerConVinesMesh" parent="BlueSide/Vines/BlueLowerConVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="BlueMidVines" parent="BlueSide/Vines" index="2" instance=ExtResource("19_mxmvr")]
+
+[node name="BlueMidVinesMesh" parent="BlueSide/Vines/BlueMidVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="BlueTopConVines" parent="BlueSide/Vines" index="3" instance=ExtResource("20_o7i8g")]
+
+[node name="BlueTopConVinesMesh" parent="BlueSide/Vines/BlueTopConVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="BlueMidConVines" parent="BlueSide/Vines" index="4" instance=ExtResource("21_g5ov7")]
+
+[node name="BlueMidConVinesMesh" parent="BlueSide/Vines/BlueMidConVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="BlueTopVines" parent="BlueSide/Vines" index="5" instance=ExtResource("22_0ndrr")]
+
+[node name="BlueTopVinesMesh" parent="BlueSide/Vines/BlueTopVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
 [node name="WhiteMiddle" type="Node3D" parent="." index="2"]
 
-[node name="Details" type="Node3D" parent="WhiteMiddle" index="0"]
+[node name="Monuments" type="Node3D" parent="WhiteMiddle" index="0"]
 
-[node name="Monuments" type="Node3D" parent="WhiteMiddle/Details" index="0"]
-
-[node name="LowerMonument" type="Node3D" parent="WhiteMiddle/Details/Monuments" index="0"]
+[node name="LowerMonument" type="Node3D" parent="WhiteMiddle/Monuments" index="0"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 34)
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/LowerMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Monuments/LowerMonument" index="0"]
 transform = Transform3D(-1.25, 1.50996e-07, 0, -1.88745e-07, -1, 0, 0, 0, 1.25, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/LowerMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Monuments/LowerMonument" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_0otkx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/LowerMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/LowerMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Monuments/LowerMonument" index="2"]
 transform = Transform3D(1.25, 0, 0, 0, 0.8, 0, 0, 0, 1.25, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="MidMonument1" type="Node3D" parent="WhiteMiddle/Details/Monuments" index="1"]
+[node name="MidMonument1" type="Node3D" parent="WhiteMiddle/Monuments" index="1"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 4)
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/MidMonument1" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Monuments/MidMonument1" index="0"]
 transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/MidMonument1" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Monuments/MidMonument1" index="1"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_0otkx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument1/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/MidMonument1" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Monuments/MidMonument1" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument1/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="MidMonument2" type="Node3D" parent="WhiteMiddle/Details/Monuments" index="2"]
+[node name="MidMonument2" type="Node3D" parent="WhiteMiddle/Monuments" index="2"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, -4)
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/MidMonument2" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Monuments/MidMonument2" index="0"]
 transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/MidMonument2" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Monuments/MidMonument2" index="1"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_0otkx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument2/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/MidMonument2" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Monuments/MidMonument2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/MidMonument2/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="TempleMonument1" type="Node3D" parent="WhiteMiddle/Details/Monuments" index="3"]
+[node name="TempleMonument1" type="Node3D" parent="WhiteMiddle/Monuments" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
 script = ExtResource("11_hlsa2")
 rotate_dir = false
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Monuments/TempleMonument1" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 visible = false
 mesh = SubResource("ArrayMesh_padnk")
@@ -1885,33 +1960,33 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Monuments/TempleMonument1" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("16_tipu6")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument1/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="Crystal" type="OmniLight3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/Crystal" index="1"]
+[node name="Crystal" type="OmniLight3D" parent="WhiteMiddle/Monuments/TempleMonument1/Crystal" index="1"]
 light_color = Color(1, 0.900333, 0.74, 1)
 light_energy = 2.914
 light_indirect_energy = 5.0
@@ -1926,30 +2001,30 @@ distance_fade_shadow = 15.0
 omni_range = 12.0
 omni_attenuation = -0.252
 
-[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Monuments/TempleMonument1" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="WhiteMiddle/Details/Monuments/TempleMonument1" index="3"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="WhiteMiddle/Monuments/TempleMonument1" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95877, 0)
-amount = 15
+amount = 30
 amount_ratio = 0.25
-lifetime = 0.1
+lifetime = 2.0
 speed_scale = 64.0
 randomness = 1.0
 visibility_aabb = AABB(-4.67664, -4.5, -4, 9.51602, 8, 8)
@@ -1957,12 +2032,23 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_go2jk")
 
-[node name="TempleMonument2" type="Node3D" parent="WhiteMiddle/Details/Monuments" index="4"]
+[node name="Static" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/TempleMonument1" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = ExtResource("26_qel10")
+volume_db = 6.0
+unit_size = 5.0
+max_db = 6.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="TempleMonument2" type="Node3D" parent="WhiteMiddle/Monuments" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
 script = ExtResource("11_hlsa2")
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Monuments/TempleMonument2" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 visible = false
 mesh = SubResource("ArrayMesh_padnk")
@@ -1970,33 +2056,33 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="WhiteMiddle/Monuments/TempleMonument2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("16_tipu6")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument2/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="Crystal" type="OmniLight3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/Crystal" index="1"]
+[node name="Crystal" type="OmniLight3D" parent="WhiteMiddle/Monuments/TempleMonument2/Crystal" index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 light_color = Color(1, 0.900333, 0.74, 1)
 light_energy = 2.914
@@ -2012,36 +2098,46 @@ distance_fade_shadow = 15.0
 omni_range = 12.0
 omni_attenuation = -0.252
 
-[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="WhiteMiddle/Monuments/TempleMonument2" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="WhiteMiddle/Details/Monuments/TempleMonument2" index="3"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="WhiteMiddle/Monuments/TempleMonument2" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95877, 0)
-amount = 15
+amount = 30
 amount_ratio = 0.25
-lifetime = 0.1
+lifetime = 2.0
 speed_scale = 64.0
 randomness = 1.0
 visibility_aabb = AABB(-4.68687, -4.5, -4, 9.42084, 8, 8)
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_go2jk")
+
+[node name="Static" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/TempleMonument2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = ExtResource("26_qel10")
+volume_db = 6.0
+unit_size = 5.0
+max_db = 6.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
 
 [node name="Supports" type="Node3D" parent="WhiteMiddle" index="1"]
 
@@ -3736,51 +3832,63 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, 0
 [node name="FloorTrimB12" parent="WhiteMiddle/FloorTrim" index="157" instance=ExtResource("10_tc77q")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 37.125)
 
+[node name="Vines" type="Node3D" parent="WhiteMiddle" index="3"]
+
+[node name="WhiteLowerVines" parent="WhiteMiddle/Vines" index="0" instance=ExtResource("24_e5h4n")]
+
+[node name="WhiteLowerVinesMesh" parent="WhiteMiddle/Vines/WhiteLowerVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="WhiteMidVines" parent="WhiteMiddle/Vines" index="1" instance=ExtResource("27_twyqo")]
+
+[node name="WhiteMidVinesMesh" parent="WhiteMiddle/Vines/WhiteMidVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
 [node name="RedSide" type="Node3D" parent="." index="3"]
 
-[node name="Details" type="Node3D" parent="RedSide" index="0"]
+[node name="Monuments" type="Node3D" parent="RedSide" index="0"]
 
-[node name="Monuments" type="Node3D" parent="RedSide/Details" index="0"]
-
-[node name="LowerMonument" type="Node3D" parent="RedSide/Details/Monuments" index="0"]
+[node name="LowerMonument" type="Node3D" parent="RedSide/Monuments" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 32)
 script = ExtResource("11_hlsa2")
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="RedSide/Details/Monuments/LowerMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="RedSide/Monuments/LowerMonument" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_nx7kh")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/LowerMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/LowerMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="RedSide/Details/Monuments/LowerMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="RedSide/Monuments/LowerMonument" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("11_cmrlc")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Details/Monuments/LowerMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/LowerMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/LowerMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="Crystal" type="OmniLight3D" parent="RedSide/Details/Monuments/LowerMonument/Crystal" index="1"]
+[node name="Crystal" type="OmniLight3D" parent="RedSide/Monuments/LowerMonument/Crystal" index="1"]
 light_color = Color(0.68, 0.4012, 0.4012, 1)
 light_energy = 3.823
 light_indirect_energy = 5.0
@@ -3795,26 +3903,26 @@ distance_fade_shadow = 12.0
 omni_range = 10.0
 omni_attenuation = -1.085
 
-[node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Details/Monuments/LowerMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Monuments/LowerMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_nx7kh")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/LowerMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="StaticTop" type="GPUParticles3D" parent="RedSide/Details/Monuments/LowerMonument" index="3"]
+[node name="StaticTop" type="GPUParticles3D" parent="RedSide/Monuments/LowerMonument" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3092, 0)
 amount = 15
 amount_ratio = 0.25
@@ -3826,7 +3934,7 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_s67xh")
 
-[node name="StaticBottom" type="GPUParticles3D" parent="RedSide/Details/Monuments/LowerMonument" index="4"]
+[node name="StaticBottom" type="GPUParticles3D" parent="RedSide/Monuments/LowerMonument" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95877, 0)
 amount = 15
 amount_ratio = 0.25
@@ -3838,46 +3946,56 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_s67xh")
 
-[node name="MidMonument" type="Node3D" parent="RedSide/Details/Monuments" index="1"]
+[node name="Static" type="AudioStreamPlayer3D" parent="RedSide/Monuments/LowerMonument" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = ExtResource("26_qel10")
+volume_db = 6.0
+unit_size = 5.0
+max_db = 6.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+
+[node name="MidMonument" type="Node3D" parent="RedSide/Monuments" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 1)
 script = ExtResource("11_hlsa2")
 rotate_dir = false
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="RedSide/Details/Monuments/MidMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="RedSide/Monuments/MidMonument" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_nx7kh")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Details/Monuments/MidMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/MidMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/MidMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="RedSide/Details/Monuments/MidMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/MidMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/MidMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="RedSide/Details/Monuments/MidMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="RedSide/Monuments/MidMonument" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("11_cmrlc")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Details/Monuments/MidMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/MidMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/MidMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="Crystal" type="OmniLight3D" parent="RedSide/Details/Monuments/MidMonument/Crystal" index="1"]
+[node name="Crystal" type="OmniLight3D" parent="RedSide/Monuments/MidMonument/Crystal" index="1"]
 light_color = Color(0.68, 0.442, 0.442, 1)
 light_energy = 3.141
 light_indirect_energy = 5.0
@@ -3892,26 +4010,26 @@ distance_fade_shadow = 12.0
 omni_range = 13.0
 omni_attenuation = -0.839
 
-[node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Details/Monuments/MidMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Monuments/MidMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_nx7kh")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Details/Monuments/MidMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/MidMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/MidMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="RedSide/Details/Monuments/MidMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/MidMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/MidMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="StaticTop" type="GPUParticles3D" parent="RedSide/Details/Monuments/MidMonument" index="3"]
+[node name="StaticTop" type="GPUParticles3D" parent="RedSide/Monuments/MidMonument" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3092, 0)
 amount = 15
 amount_ratio = 0.25
@@ -3923,7 +4041,7 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_mc0pm")
 
-[node name="StaticBottom" type="GPUParticles3D" parent="RedSide/Details/Monuments/MidMonument" index="4"]
+[node name="StaticBottom" type="GPUParticles3D" parent="RedSide/Monuments/MidMonument" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95877, 0)
 amount = 15
 amount_ratio = 0.25
@@ -3935,60 +4053,68 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_fp3q6")
 draw_pass_1 = SubResource("QuadMesh_mc0pm")
 
-[node name="UpperMonument" type="Node3D" parent="RedSide/Details/Monuments" index="2"]
+[node name="Static" type="AudioStreamPlayer3D" parent="RedSide/Monuments/MidMonument" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = ExtResource("26_qel10")
+pitch_scale = 0.75
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+
+[node name="UpperMonument" type="Node3D" parent="RedSide/Monuments" index="2"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -22.5, 5, -34.5)
 metadata/_edit_group_ = true
 
-[node name="PlinthUpper" type="MeshInstance3D" parent="RedSide/Details/Monuments/UpperMonument" index="0"]
+[node name="PlinthUpper" type="MeshInstance3D" parent="RedSide/Monuments/UpperMonument" index="0"]
 transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_nx7kh")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthUpper" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/PlinthUpper" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthUpper/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/UpperMonument/PlinthUpper/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthUpper" index="1"]
+[node name="Collision" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/PlinthUpper" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthUpper/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/UpperMonument/PlinthUpper/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
-[node name="Crystal" type="MeshInstance3D" parent="RedSide/Details/Monuments/UpperMonument" index="1"]
+[node name="Crystal" type="MeshInstance3D" parent="RedSide/Monuments/UpperMonument" index="1"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("11_cmrlc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Details/Monuments/UpperMonument/Crystal" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/Crystal" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/UpperMonument/Crystal/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/UpperMonument/Crystal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0aya2")
 
-[node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Details/Monuments/UpperMonument" index="2"]
+[node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Monuments/UpperMonument" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_nx7kh")
 surface_material_override/1 = ExtResource("7_pbjv6")
 
-[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthLower" index="0"]
+[node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/PlinthLower" index="0"]
 collision_mask = 34
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthLower/DetailCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/UpperMonument/PlinthLower/DetailCollision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_o66ix")
 
-[node name="Collision" type="StaticBody3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthLower" index="1"]
+[node name="Collision" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/PlinthLower" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Details/Monuments/UpperMonument/PlinthLower/Collision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/UpperMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
 [node name="Supports" type="Node3D" parent="RedSide" index="1"]
@@ -4968,6 +5094,44 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23, 0,
 [node name="FloorTrimC8" parent="RedSide/FloorTrim" index="152" instance=ExtResource("11_ryetl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19, 0, -6)
 
+[node name="Vines" type="Node3D" parent="RedSide" index="3"]
+
+[node name="RedLowerVines" parent="RedSide/Vines" index="0" instance=ExtResource("22_ifelm")]
+
+[node name="RedLowerVinesMesh" parent="RedSide/Vines/RedLowerVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="RedLowerConVines" parent="RedSide/Vines" index="1" instance=ExtResource("25_munml")]
+
+[node name="RedLowerConVinesMesh" parent="RedSide/Vines/RedLowerConVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="RedMidVines" parent="RedSide/Vines" index="2" instance=ExtResource("32_8ejan")]
+
+[node name="RedMidVinesMesh" parent="RedSide/Vines/RedMidVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="RedMidConVines" parent="RedSide/Vines" index="3" instance=ExtResource("33_tvp4p")]
+
+[node name="RedMidConVinesMesh" parent="RedSide/Vines/RedMidConVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="RedTopConVines" parent="RedSide/Vines" index="4" instance=ExtResource("34_j5flo")]
+
+[node name="RedTopConVinesMesh" parent="RedSide/Vines/RedTopConVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="RedTopVines" parent="RedSide/Vines" index="5" instance=ExtResource("35_idgc2")]
+
+[node name="RedTopVinesMesh" parent="RedSide/Vines/RedTopVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
 [node name="Doorways" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, -5.3551e-09, -1.76951e-08, -6.98492e-10, 1, 2.98023e-08, -8.84756e-09, 0, 1, 1.67638e-07, 0, 0)
 
@@ -5096,3 +5260,18 @@ surface_material_override/0 = ExtResource("12_f2neo")
 
 [node name="OccluderInstance3D" parent="." index="40"]
 layers = 15
+
+[editable path="BlueSide/Vines/BlueLowerVines"]
+[editable path="BlueSide/Vines/BlueLowerConVines"]
+[editable path="BlueSide/Vines/BlueMidVines"]
+[editable path="BlueSide/Vines/BlueTopConVines"]
+[editable path="BlueSide/Vines/BlueMidConVines"]
+[editable path="BlueSide/Vines/BlueTopVines"]
+[editable path="WhiteMiddle/Vines/WhiteLowerVines"]
+[editable path="WhiteMiddle/Vines/WhiteMidVines"]
+[editable path="RedSide/Vines/RedLowerVines"]
+[editable path="RedSide/Vines/RedLowerConVines"]
+[editable path="RedSide/Vines/RedMidVines"]
+[editable path="RedSide/Vines/RedMidConVines"]
+[editable path="RedSide/Vines/RedTopConVines"]
+[editable path="RedSide/Vines/RedTopVines"]

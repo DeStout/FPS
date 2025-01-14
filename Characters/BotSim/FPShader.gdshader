@@ -14,6 +14,6 @@ void vertex() {
 void fragment() {
 	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
 	float linear_depth = 1.0 / (depth * INV_PROJECTION_MATRIX[2].w + INV_PROJECTION_MATRIX[3].w);
-	
+
 	ALBEDO = vec3(linear_depth / depth_factor);
 }
