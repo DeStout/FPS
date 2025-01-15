@@ -7,7 +7,7 @@ var fps_visible := true
 # Cheats
 var invincible := false
 var infinite_ammo := false
-var bottomless_clip := false
+var bottomless_mag:= false
 
 var bot_sim_level : BotSimLevel = null
 var players_container = null
@@ -23,8 +23,20 @@ func _ready() -> void:
 	visible = debug_visible
 	$FPS.visible = fps_visible
 	
-	Globals.game.bot_sim_started.connect(bot_sim_started)
-	Globals.game.bot_sim_ended.connect(bot_sim_ended)
+	Globals.game.bot_sim_started.connect(_bot_sim_started)
+	Globals.game.bot_sim_ended.connect(_bot_sim_ended)
+	
+	await get_tree().physics_frame
+	HUD.pause_menu.options.invincibility.toggled.connect(_set_invincible)
+	HUD.pause_menu.options.infinite_ammo.toggled.connect(_set_infinite_ammo)
+	HUD.pause_menu.options.bottomless_mag.toggled.connect(_set_bottomless_mag)
+	HUD.pause_menu.options.show_hud.toggled.connect(_show_HUD)
+	HUD.pause_menu.options.show_weapon_info.toggled.connect(_show_weapon_info)
+	HUD.pause_menu.options.show_crosshair.toggled.connect(_show_crosshair)
+	
+	_set_invincible(HUD.pause_menu.options.invincibility.button_pressed)
+	_set_infinite_ammo(HUD.pause_menu.options.infinite_ammo.button_pressed)
+	_set_bottomless_mag(HUD.pause_menu.options.bottomless_mag.button_pressed)
 
 
 func _process(_delta) -> void:
@@ -37,20 +49,43 @@ func _process(_delta) -> void:
 			_invincible()
 		if infinite_ammo:
 			_infinite_ammo()
-		if bottomless_clip:
-			_bottomless_clip()
+		if bottomless_mag:
+			_bottomless_mag()
 			
 		if Input.is_action_just_pressed("Debug") and bot_sim_level:
 			_swap_cameras()
 
 
-func bot_sim_started(new_level) -> void:
+func _set_invincible(is_invincible : bool) -> void:
+	invincible = is_invincible
+
+func _set_infinite_ammo(is_infinite : bool) -> void:
+	infinite_ammo = is_infinite
+
+func _set_bottomless_mag(is_bottomless : bool) -> void:
+	bottomless_mag = is_bottomless
+
+func _show_HUD(show_HUD : bool) -> void:
+	HUD.visible = show_HUD
+
+func _show_weapon_info(show_weapon_info : bool) -> void:
+	HUD.weapon_info.visible = show_weapon_info
+
+func _show_crosshair(show_crosshair : bool) -> void:
+	HUD.reticle.visible = show_crosshair
+
+
+func _bot_sim_started(new_level) -> void:
 	bot_sim_level = new_level
 	players_container = bot_sim_level.get_node("Players")
 	player = players_container.player
+	
+	_show_HUD(HUD.pause_menu.options.show_hud.button_pressed)
+	_show_weapon_info(HUD.pause_menu.options.show_weapon_info.button_pressed)
+	_show_crosshair(HUD.pause_menu.options.show_crosshair.button_pressed)
 
 
-func bot_sim_ended() -> void:
+func _bot_sim_ended() -> void:
 	bot_sim_level = null
 	players_container = null
 	player = null
@@ -92,14 +127,14 @@ func _swap_cameras() -> void:
 
 func _invincible() -> void:
 	player.health = player.MAX_HEALTH
-	#player.update_health_UI()
 
 func _infinite_ammo() -> void:
-	player.weapon_held.extra_ammo = player.weapon_held.stats.max_ammo - \
-									player.weapon_held.stats.mag_size
-	HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)
+	if player.weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
+		player.weapon_held.extra_ammo = player.weapon_held.properties.max_ammo - \
+										player.weapon_held.properties.mag_size
+		HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)
 
-func _bottomless_clip() -> void:
-	if player:
+func _bottomless_mag() -> void:
+	if player.weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		player.weapon_held.ammo_in_mag = player.weapon_held.properties.mag_size
-	HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)
+		HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)

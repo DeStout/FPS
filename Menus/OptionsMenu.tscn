@@ -5,8 +5,7 @@
 [ext_resource type="Script" path="res://Menus/AudioSetting.gd" id="3_p2er2"]
 [ext_resource type="Script" path="res://Menus/SensSetting.gd" id="4_kiwx0"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "mouse_slider", "controller_slider", "invert_y_box")]
-visible = false
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "mouse_slider", "controller_slider", "invert_y_box", "invincibility", "infinite_ammo", "bottomless_mag", "show_hud", "show_weapon_info", "show_crosshair")]
 layout_mode = 3
 anchor_left = 0.272
 anchor_right = 1.0
@@ -20,6 +19,12 @@ sfx_slider = NodePath("Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VL
 mouse_slider = NodePath("Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Mouse/VLayout/MouseSens")
 controller_slider = NodePath("Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens")
 invert_y_box = NodePath("Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox")
+invincibility = NodePath("Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/Invincibility/HLayout/Control/InvincibilityBox")
+infinite_ammo = NodePath("Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/InfinteAmmo/HLayout/Control/InfiniteAmmoBox")
+bottomless_mag = NodePath("Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/BottomlessMag/HLayout/Control/BottomlessMagBox")
+show_hud = NodePath("Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/HUDVis/HLayout/Control/HUDVisBox")
+show_weapon_info = NodePath("Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/WeaponInfoVis/HLayout/Control/WeaponInfoVisBox")
+show_crosshair = NodePath("Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/CrosshairVis/HLayout/Control/CrosshairVisBox")
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -270,6 +275,231 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 0
 size_flags_vertical = 4
+
+[node name="Debug" type="Control" parent="Layout/Settings/Settings/Tabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Margin" type="MarginContainer" parent="Layout/Settings/Settings/Tabs/Debug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 1000
+
+[node name="VBox" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 110
+
+[node name="WeaponDebug" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Invincibility" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug"]
+layout_mode = 2
+
+[node name="HLayout" type="HBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/Invincibility"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 1237.0
+offset_bottom = 98.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/Invincibility/HLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Invincibility"
+
+[node name="Control" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/Invincibility/HLayout"]
+custom_minimum_size = Vector2(72.405, 0)
+layout_mode = 2
+
+[node name="InvincibilityBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/Invincibility/HLayout/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.29825
+anchor_top = 0.343284
+anchor_right = 1.29825
+anchor_bottom = 0.343284
+offset_left = 179.0
+offset_top = -14.0
+offset_right = 203.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="InfinteAmmo" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug"]
+layout_mode = 2
+
+[node name="HLayout" type="HBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/InfinteAmmo"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 1237.0
+offset_bottom = 98.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/InfinteAmmo/HLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Infinite Ammo"
+
+[node name="Control" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/InfinteAmmo/HLayout"]
+custom_minimum_size = Vector2(72.405, 0)
+layout_mode = 2
+
+[node name="InfiniteAmmoBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/InfinteAmmo/HLayout/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 171.798
+offset_top = -24.5
+offset_right = 195.798
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="BottomlessMag" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug"]
+layout_mode = 2
+
+[node name="HLayout" type="HBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/BottomlessMag"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 1237.0
+offset_bottom = 98.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/BottomlessMag/HLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Bottomless Clip"
+
+[node name="Control" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/BottomlessMag/HLayout"]
+custom_minimum_size = Vector2(72.405, 0)
+layout_mode = 2
+
+[node name="BottomlessMagBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/WeaponDebug/BottomlessMag/HLayout/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 142.798
+offset_top = -23.5
+offset_right = 166.798
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="HUDDebug" type="VBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="HUDVis" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug"]
+layout_mode = 2
+
+[node name="HLayout" type="HBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/HUDVis"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 352.0
+offset_bottom = 98.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/HUDVis/HLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "HUD Visible"
+
+[node name="Control" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/HUDVis/HLayout"]
+custom_minimum_size = Vector2(72.405, 0)
+layout_mode = 2
+
+[node name="HUDVisBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/HUDVis/HLayout/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 233.798
+offset_top = -24.5
+offset_right = 257.797
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+button_pressed = true
+
+[node name="WeaponInfoVis" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug"]
+layout_mode = 2
+
+[node name="HLayout" type="HBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/WeaponInfoVis"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 540.0
+offset_bottom = 98.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/WeaponInfoVis/HLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Weapon Info Visible"
+
+[node name="Control" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/WeaponInfoVis/HLayout"]
+custom_minimum_size = Vector2(72.405, 0)
+layout_mode = 2
+
+[node name="WeaponInfoVisBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/WeaponInfoVis/HLayout/Control"]
+layout_mode = 2
+offset_left = 82.0
+offset_top = 9.0
+offset_right = 106.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+button_pressed = true
+
+[node name="CrosshairVis" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug"]
+layout_mode = 2
+
+[node name="HLayout" type="HBoxContainer" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/CrosshairVis"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 465.0
+offset_bottom = 98.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/CrosshairVis/HLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Crosshair Visible"
+
+[node name="Control" type="Control" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/CrosshairVis/HLayout"]
+custom_minimum_size = Vector2(72.405, 0)
+layout_mode = 2
+
+[node name="CrosshairVisBox" type="CheckBox" parent="Layout/Settings/Settings/Tabs/Debug/Margin/VBox/HUDDebug/CrosshairVis/HLayout/Control"]
+layout_mode = 2
+offset_left = 157.0
+offset_top = 9.0
+offset_right = 181.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+button_pressed = true
 
 [node name="Buttons" type="Control" parent="Layout"]
 layout_mode = 2

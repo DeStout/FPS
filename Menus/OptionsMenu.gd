@@ -5,18 +5,30 @@ extends Control
 
 const INVERT_DEFAULT := false
 
+@export_category("Volume Options")
 @export var master_slider : HSlider
 @export var music_slider : HSlider
 @export var sfx_slider : HSlider
+
+@export_category("Input Options")
 @export var mouse_slider : HSlider
 @export var controller_slider : HSlider
 @export var invert_y_box : CheckBox
+
+@export_category("Debug Options")
+@export var invincibility : CheckBox
+@export var infinite_ammo : CheckBox
+@export var bottomless_mag : CheckBox
+@export var show_hud : CheckBox
+@export var show_weapon_info : CheckBox
+@export var show_crosshair : CheckBox
 
 
 func default() -> void:
 	master_slider.default()
 	music_slider.default()
 	sfx_slider.default()
+	
 	mouse_slider.default()
 	controller_slider.default()
 	invert_y_change(INVERT_DEFAULT)

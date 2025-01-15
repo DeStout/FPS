@@ -31,7 +31,6 @@ grow_vertical = 2
 color = Color(0.234375, 0.234375, 0.234375, 0.498039)
 
 [node name="OptionsMenu" parent="." instance=ExtResource("2_5rsrr")]
-visible = true
 layout_mode = 1
 offset_left = -231.24
 offset_right = -296.0

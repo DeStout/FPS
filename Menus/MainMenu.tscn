@@ -683,6 +683,7 @@ text = "Back"
 flat = true
 
 [node name="OptionsMenu" parent="." node_paths=PackedStringArray("main_menu") instance=ExtResource("5_ueokc")]
+visible = false
 layout_mode = 1
 main_menu = NodePath("..")
 
@@ -758,5 +759,7 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/Controller/VLayout/ControllerSens" to="." method="play_boop"]
 [connection signal="mouse_entered" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="play_boop"]
 [connection signal="pressed" from="OptionsMenu/Layout/Settings/Settings/Tabs/Controls/Margin/VLayout/InvertY/VLayout/InvertY/InvertYBox" to="." method="play_select"]
+[connection signal="pressed" from="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Defaults" to="OptionsMenu" method="default_button"]
+[connection signal="pressed" from="OptionsMenu/Layout/Buttons/Buttons/MarginContainer/Layout/Back" to="OptionsMenu" method="back_button"]
 
 [editable path="OptionsMenu"]

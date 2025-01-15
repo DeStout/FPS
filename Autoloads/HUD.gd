@@ -3,6 +3,8 @@ extends CanvasLayer
 
 var game_over = false
 
+@onready var pause_menu := $PauseMenu
+
 @onready var fade_in_out := $FadeInOut
 @onready var match_timer := $MatchTimer
 @onready var scoreboard := $Score
@@ -12,11 +14,15 @@ var game_over = false
 @onready var ui := $UI
 @onready var reticle := $UI/Reticle
 @onready var scope := $UI/Scope
+
+@onready var weapon_info := $UI/Weapon
 @onready var ammo_in_mag := $UI/Weapon/AmmoInMag
 @onready var extra_ammo := $UI/Weapon/ExtraAmmo
+
 @onready var health_mod := $UI/HealthMod
 @onready var health_bar := $UI/HealthMod/HealthBar
 @onready var armor_bar := $UI/HealthMod/ArmorBar
+
 @onready var damage_up := $UI/Damage/Up
 @onready var damage_down := $UI/Damage/Down
 @onready var damage_left := $UI/Damage/Left

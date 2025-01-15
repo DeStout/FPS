@@ -1,6 +1,9 @@
 extends Control
 
 
+@onready var options := $OptionsMenu
+
+
 func _input(event) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
 		if Input.is_action_just_pressed("Pause"):
