@@ -103,10 +103,11 @@ func quit_single_player() -> void:
 
 # Called from loading_screen._update_UI()
 func start_bot_sim() -> void:
-	# Signal to Debug.bot_sim_start()
-	#bot_sim_started.emit(map)
 	map.open()
 	can_be_paused = true
+	
+	# Signal to Debug.bot_sim_start()
+	bot_sim_started.emit(map)
 
 
 # Called from Pause.quit_button() and MultiplayerLevel.end_match()

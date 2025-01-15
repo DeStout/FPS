@@ -4,6 +4,7 @@ class_name BotSimLevel
 
 var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
+@export var nav_region : NavigationRegion3D = null
 @onready var fx := $FX
 
 

@@ -28,6 +28,8 @@ var game_over = false
 var default_reticle_pos := 50
 var max_reticle_bloom := 150
 
+var screenshot_path := "E:\\De\\My Documents\\Godot\\Exports" + \
+										"\\MannequinShooter\\Images\\Screenshots\\"
 
 func _ready() -> void:
 	set_process(false)
@@ -37,12 +39,26 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ScoreBoard"):
 		show_health()
+	
+	if Input.is_action_just_pressed("Screenshot"):
+		_take_screenshot()
 
 
 func _process(delta: float) -> void:
 	if !game_over and !Input.is_action_pressed("ScoreBoard"):
 		_fade_health(delta)
 	_fade_dmg(delta)
+
+
+func _take_screenshot(): # Function for taking screenshots and saving them
+	var date = Time.get_date_string_from_system().replace(".","_") 
+	var time :String = Time.get_time_string_from_system().replace(":","")
+	var screenshot_name = "screenshot_" + date + "_" + time + ".png"
+	var full_path = screenshot_path + screenshot_name
+	
+	var image = get_viewport().get_texture().get_image()
+	image.save_png(full_path)
+	$ScreenshotSFX.play()
 
 
 func setup_single_player() -> void:

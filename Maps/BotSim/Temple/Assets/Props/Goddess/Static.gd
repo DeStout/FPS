@@ -28,8 +28,9 @@ func _process(delta : float) -> void:
 		var flash = randf()
 		if flash >= flash_threshold:
 			visible = true
-			sfx.position = sfx_path.curve.get_closest_point( \
-								to_local(%Players.player.global_position))
+			if %Players.player.is_inside_tree():
+				sfx.position = sfx_path.curve.get_closest_point( \
+									to_local(%Players.player.global_position))
 			sfx.pitch_scale = init_pitch + (init_pitch * randf_range(-0.1, 0.1))
 			sfx.play()
 			flash_length = randf_range(flash_limits.x, flash_limits.y)

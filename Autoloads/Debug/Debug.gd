@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-
 var debug_visible := true
 var fps_visible := true
 
@@ -24,9 +23,8 @@ func _ready() -> void:
 	visible = debug_visible
 	$FPS.visible = fps_visible
 	
-	if Globals.game is BotSimLevel:
-		Globals.game.bot_sim_started.connect(bot_sim_started)
-		Globals.game.bot_sim_ended.connect(bot_sim_ended)
+	Globals.game.bot_sim_started.connect(bot_sim_started)
+	Globals.game.bot_sim_ended.connect(bot_sim_ended)
 
 
 func _process(_delta) -> void:
@@ -42,16 +40,15 @@ func _process(_delta) -> void:
 		if bottomless_clip:
 			_bottomless_clip()
 			
-		if Input.is_action_just_pressed("DebugCam"):
+		if Input.is_action_just_pressed("Debug") and bot_sim_level:
 			_swap_cameras()
 
 
-# Emitted from Globals.start_match()
 func bot_sim_started(new_level) -> void:
 	bot_sim_level = new_level
 	players_container = bot_sim_level.get_node("Players")
-	#players_container = player.get_parent()
 	player = players_container.player
+
 
 func bot_sim_ended() -> void:
 	bot_sim_level = null
@@ -65,37 +62,44 @@ func _swap_cameras() -> void:
 	cam_swap = !cam_swap
 	if cam_swap:
 		player_pos = player.transform
-		if !players_container:
-			players_container = player.get_parent()
 		players_container.remove_child(player)
-		#for bot in players_container.bots:
-			#bot.character_killed(player)
+		
+		for bot in players_container.bots:
+			bot.character_killed(player)
 		
 		if !debug_camera:
 			debug_camera = debug_camera_.instantiate()
-			debug_camera.transform = player_pos
-			add_child(debug_camera)
-			debug_camera.global_position.y += 1.5
-		else:
-			add_child(debug_camera)
+		debug_camera.transform = player_pos
+		add_child(debug_camera)
+		debug_camera.global_position.y += 1.7
 	else:
+		var temp_trans = debug_camera.global_transform
 		remove_child(debug_camera)
 		players_container.add_child(player)
-		player.transform = player_pos
-		#for bot in players_container.bots:
-			#bot.character_spawned(player, true)
+		if bot_sim_level.nav_region:
+			var nav_map := bot_sim_level.nav_region.get_navigation_map()
+			var closest_point = NavigationServer3D.map_get_closest_point( \
+														nav_map, temp_trans.origin)
+			player.global_transform = temp_trans
+			player.global_position = closest_point
+			player.velocity = Vector3.ZERO
+		else:
+			player.transform = player_pos
+			
+		for bot in players_container.bots:
+			bot.character_spawned(player, true)
 
 
 func _invincible() -> void:
 	player.health = player.MAX_HEALTH
-	player.update_health_UI()
+	#player.update_health_UI()
 
 func _infinite_ammo() -> void:
 	player.weapon_held.extra_ammo = player.weapon_held.stats.max_ammo - \
 									player.weapon_held.stats.mag_size
-	player.update_UI()
+	HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)
 
 func _bottomless_clip() -> void:
 	if player:
-		player.weapon_held.ammo_in_mag = player.weapon_held.stats.mag_size
-		player.update_UI()
+		player.weapon_held.ammo_in_mag = player.weapon_held.properties.mag_size
+	HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)

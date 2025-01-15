@@ -6,11 +6,7 @@ const DEACCEL := 120
 const SPEED := 8
 const FAST_SPEED := 14
 var speed := SPEED
-
-
-func _process(delta: float) -> void:
-	_update_time_UI()
-
+ 
 
 func _physics_process(delta: float) -> void:
 	# Controller Look
@@ -42,11 +38,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, DEACCEL * delta)
 		velocity.z = move_toward(velocity.z, 0, DEACCEL * delta)
 	move_and_slide()
-	
-	
-func _update_time_UI() -> void:
-	if Globals.bot_sim_seettings.time != 0:
-		%MatchTimer.set_time($"..".level.get_match_time())
 
 
 func _input(event: InputEvent) -> void:

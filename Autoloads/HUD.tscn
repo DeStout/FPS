@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2bya7jvn8luj"]
+[gd_scene load_steps=18 format=3 uid="uid://c2bya7jvn8luj"]
 
 [ext_resource type="Script" path="res://Autoloads/HUD.gd" id="1_ih3gh"]
 [ext_resource type="PackedScene" uid="uid://c7bpadmpmu5g3" path="res://Menus/PauseMenu.tscn" id="1_l1osx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Characters/BotSim/MatchTimer.gd" id="7_7tmu3"]
 [ext_resource type="Script" path="res://Characters/BotSim/LeaderList.gd" id="7_28wp2"]
 [ext_resource type="Texture2D" uid="uid://crqwjsvsfkcig" path="res://Characters/DmgArrow.png" id="8_yj7y2"]
+[ext_resource type="AudioStream" uid="uid://dfs6uabfed51c" path="res://Autoloads/Screenshot.wav" id="10_ginxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr44o"]
 resource_local_to_scene = true
@@ -421,5 +422,8 @@ color = Color(0, 0, 0, 1)
 [node name="PauseMenu" parent="." instance=ExtResource("1_l1osx")]
 visible = false
 top_level = true
+
+[node name="ScreenshotSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ginxb")
 
 [connection signal="timeout" from="Locked/LockedTimer" to="." method="_hide_locked"]
