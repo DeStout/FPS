@@ -30,9 +30,6 @@ func _ready() -> void:
 	HUD.pause_menu.options.invincibility.toggled.connect(_set_invincible)
 	HUD.pause_menu.options.infinite_ammo.toggled.connect(_set_infinite_ammo)
 	HUD.pause_menu.options.bottomless_mag.toggled.connect(_set_bottomless_mag)
-	HUD.pause_menu.options.show_hud.toggled.connect(_show_HUD)
-	HUD.pause_menu.options.show_weapon_info.toggled.connect(_show_weapon_info)
-	HUD.pause_menu.options.show_crosshair.toggled.connect(_show_crosshair)
 	
 	_set_invincible(HUD.pause_menu.options.invincibility.button_pressed)
 	_set_infinite_ammo(HUD.pause_menu.options.infinite_ammo.button_pressed)
@@ -79,10 +76,6 @@ func _bot_sim_started(new_level) -> void:
 	bot_sim_level = new_level
 	players_container = bot_sim_level.get_node("Players")
 	player = players_container.player
-	
-	_show_HUD(HUD.pause_menu.options.show_hud.button_pressed)
-	_show_weapon_info(HUD.pause_menu.options.show_weapon_info.button_pressed)
-	_show_crosshair(HUD.pause_menu.options.show_crosshair.button_pressed)
 
 
 func _bot_sim_ended() -> void:

@@ -19,9 +19,6 @@ const INVERT_DEFAULT := false
 @export var invincibility : CheckBox
 @export var infinite_ammo : CheckBox
 @export var bottomless_mag : CheckBox
-@export var show_hud : CheckBox
-@export var show_weapon_info : CheckBox
-@export var show_crosshair : CheckBox
 
 
 func default() -> void:
