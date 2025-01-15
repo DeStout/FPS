@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgk0mejwh02ln"]
+[gd_scene load_steps=26 format=3 uid="uid://bgk0mejwh02ln"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_ov5jx"]
 [ext_resource type="VoxelGIData" uid="uid://bftyiwg0vwdwk" path="res://Maps/BotSim/Temple/Temple.VoxelGI_data.res" id="2_2cypd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://bi48kknnwrqgf" path="res://Maps/BotSim/Temple/Assets/Materials/GoddessMat.tres" id="6_suoll"]
 [ext_resource type="AudioStream" uid="uid://cukakob2orkkd" path="res://Maps/Audio/Music/TheHolyTemple.ogg" id="7_ar8yn"]
 [ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Static.gd" id="8_0k2kh"]
+[ext_resource type="AudioStream" uid="uid://juys58xkyd7q" path="res://Maps/BotSim/Temple/Assets/SFX/LargeStatic.ogg" id="8_f8epm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o8tdu"]
 noise_type = 2
@@ -276,6 +277,13 @@ shader_parameter/amp_coeff = 0.69
 shader_parameter/freq_coeff = 1.325
 shader_parameter/speed = 5.895
 shader_parameter/billboard_y = false
+
+[sub_resource type="Curve3D" id="Curve3D_yympt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -9.53, -2.235, 0, 0, 0, 0, 0, 0, 0, 13.465, -1.94),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Temple" instance=ExtResource("1_ov5jx")]
 
@@ -896,9 +904,6 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_pixak")
 surface_material_override/0 = SubResource("ShaderMaterial_8mi78")
 
-[node name="OmniControl" parent="NavRegion/Goddess" index="1"]
-visible = false
-
 [node name="AnimationPlayer" parent="NavRegion/Goddess" index="2"]
 autoplay = "HoverIdle"
 playback_auto_capture = false
@@ -916,8 +921,15 @@ visible = false
 mesh = SubResource("CylinderMesh_h3ud1")
 surface_material_override/0 = SubResource("ShaderMaterial_jo3xm")
 script = ExtResource("8_0k2kh")
+process_in_editor = true
 
-[node name="FlashSFX" type="AudioStreamPlayer3D" parent="NavRegion/Refraction/Static" index="0"]
+[node name="SFXPath" type="Path3D" parent="NavRegion/Refraction/Static" index="0"]
+curve = SubResource("Curve3D_yympt")
+
+[node name="FlashSFX" type="AudioStreamPlayer3D" parent="NavRegion/Refraction/Static" index="1"]
+stream = ExtResource("8_f8epm")
+max_distance = 25.0
+max_polyphony = 3
 bus = &"SFX"
 
 [node name="Players" parent="." index="5" node_paths=PackedStringArray("level")]

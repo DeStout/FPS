@@ -89,6 +89,7 @@ flat = true
 alignment = 0
 
 [node name="SinglePlayerMenu" type="Control" parent="." node_paths=PackedStringArray("main_menu")]
+visible = false
 layout_mode = 1
 anchor_left = 0.272
 anchor_right = 1.0
@@ -689,7 +690,7 @@ main_menu = NodePath("..")
 default_value = 75.0
 
 [node name="MusicSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/Music/VLayout" index="1"]
-default_value = 60.0
+default_value = 50.0
 
 [node name="SFXSlider" parent="OptionsMenu/Layout/Settings/Settings/Tabs/Audio/Margin/VLayout/SFX/VLayout" index="1"]
 default_value = 40.0

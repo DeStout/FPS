@@ -8,11 +8,15 @@ extends Node3D
 @export var rotate_time := 20.0
 @export var rotate_dir := true
 
+@onready var sfx := $Static
+
 var time := randf() * TAU
 
 
 func _ready() -> void:
 	crystal.rotate_y(time)
+	sfx.pitch_scale += sfx.pitch_scale * randf_range(-0.08, 0.08)
+	sfx.play(time)
 
 
 func _process(delta: float) -> void:

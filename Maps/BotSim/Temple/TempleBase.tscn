@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://o2h1ckasd2vt"]
+[gd_scene load_steps=73 format=4 uid="uid://o2h1ckasd2vt"]
 
 [ext_resource type="PackedScene" uid="uid://ddao41v7s3ovx" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
 [ext_resource type="Material" uid="uid://isleghls2oka" path="res://Maps/BotSim/Temple/Assets/Materials/Terrain.tres" id="2_cnr1c"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://vo6bqqctmurm" path="res://Maps/BotSim/Temple/Assets/Materials/BlackStone.tres" id="7_pbjv6"]
 [ext_resource type="PackedScene" uid="uid://quvmcav0pm1r" path="res://Maps/BotSim/Temple/Assets/Props/Logs/2MLog.blend" id="7_rpeem"]
 [ext_resource type="PackedScene" uid="uid://c1yfii2ty5pop" path="res://Maps/BotSim/Temple/Assets/Props/Logs/4MLog.blend" id="8_7phul"]
+[ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/SFX/Ring.gd" id="8_up8w1"]
 [ext_resource type="PackedScene" uid="uid://barphhjc2tbna" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimA.blend" id="9_atiog"]
 [ext_resource type="PackedScene" uid="uid://ctlrdjxy1qx2s" path="res://Maps/BotSim/Temple/Assets/Props/Logs/1MLog.blend" id="9_nlpdx"]
 [ext_resource type="Material" uid="uid://dd8x64quafwg2" path="res://Maps/BotSim/Temple/Assets/Materials/BlueCrystal.tres" id="10_10gy6"]
@@ -37,6 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://b0d2maqcgynlj" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedLowerConVines.glb" id="25_munml"]
 [ext_resource type="AudioStream" uid="uid://b8gvv16pfrxui" path="res://Maps/BotSim/Temple/Assets/SFX/Static.ogg" id="26_qel10"]
 [ext_resource type="PackedScene" uid="uid://dhvgi3l0geg83" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteMidVines.glb" id="27_twyqo"]
+[ext_resource type="PackedScene" uid="uid://5040kbvp7vtx" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteTopBlueVines.glb" id="29_2aglb"]
+[ext_resource type="PackedScene" uid="uid://4sqpxkv38xcw" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteTopCeilingVines.glb" id="30_ecvff"]
+[ext_resource type="PackedScene" uid="uid://mphrafq8fktc" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteTopRedVines.glb" id="31_sq0gi"]
 [ext_resource type="PackedScene" uid="uid://cbfci6bnvdu0d" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedMidVines.glb" id="32_8ejan"]
 [ext_resource type="PackedScene" uid="uid://bobfjfoc6xtdv" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedMidConVines.glb" id="33_tvp4p"]
 [ext_resource type="PackedScene" uid="uid://bnu4pqe7xw8ky" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedTopConVines.glb" id="34_j5flo"]
@@ -275,6 +279,8 @@ shader_parameter/billboard_y = true
 [sub_resource type="QuadMesh" id="QuadMesh_j0r27"]
 material = SubResource("ShaderMaterial_p5kgt")
 size = Vector2(3, 4)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_2ithn"]
 
 [sub_resource type="Shader" id="Shader_ilqq1"]
 code = "shader_type spatial;
@@ -561,11 +567,9 @@ draw_pass_1 = SubResource("QuadMesh_j0r27")
 [node name="Static" type="AudioStreamPlayer3D" parent="BlueSide/Monuments/LowerMonument" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = ExtResource("26_qel10")
-volume_db = 6.0
-unit_size = 5.0
-max_db = 6.0
-autoplay = true
-max_distance = 10.0
+max_db = -2.0
+pitch_scale = 0.75
+max_distance = 15.0
 bus = &"SFX"
 parameters/looping = true
 
@@ -667,11 +671,9 @@ draw_pass_1 = SubResource("QuadMesh_j0r27")
 [node name="Static" type="AudioStreamPlayer3D" parent="BlueSide/Monuments/MidMonument" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = ExtResource("26_qel10")
-volume_db = 6.0
-unit_size = 5.0
-max_db = 6.0
-autoplay = true
-max_distance = 10.0
+max_db = -2.0
+pitch_scale = 0.75
+max_distance = 15.0
 bus = &"SFX"
 parameters/looping = true
 
@@ -730,6 +732,14 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueSide/Monuments/UpperMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
+
+[node name="Ring" type="AudioStreamPlayer3D" parent="BlueSide/Monuments/UpperMonument" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = SubResource("AudioStreamGenerator_2ithn")
+max_db = -10.0
+max_distance = 12.0
+bus = &"SFX"
+script = ExtResource("8_up8w1")
 
 [node name="Rubble" type="Node3D" parent="BlueSide" index="1"]
 
@@ -1783,7 +1793,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 metadata/_edit_group_ = true
 
 [node name="PlinthUpper" type="MeshInstance3D" parent="WhiteMiddle/Monuments/LowerMonument" index="0"]
-transform = Transform3D(-1.25, 1.50996e-07, 0, -1.88745e-07, -1, 0, 0, 0, 1.25, 0, 5, 0)
+transform = Transform3D(-1.25, 1.20797e-07, 0, -1.88745e-07, -0.8, 0, 0, 0, 1.25, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
@@ -1833,6 +1843,17 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
+
+[node name="Ring" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/LowerMonument" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = SubResource("AudioStreamGenerator_2ithn")
+max_db = -10.0
+max_distance = 10.0
+bus = &"SFX"
+script = ExtResource("8_up8w1")
+pulse_hz1 = 248.0
+pulse_hz2 = 0.8
+pulse_hz3 = 0.04
 
 [node name="MidMonument1" type="Node3D" parent="WhiteMiddle/Monuments" index="1"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 4)
@@ -1890,6 +1911,16 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
 
+[node name="Ring" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/MidMonument1" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = SubResource("AudioStreamGenerator_2ithn")
+max_db = -10.0
+max_distance = 8.0
+bus = &"SFX"
+script = ExtResource("8_up8w1")
+pulse_hz1 = 308.0
+pulse_hz2 = 1.0
+
 [node name="MidMonument2" type="Node3D" parent="WhiteMiddle/Monuments" index="2"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, -4)
 metadata/_edit_group_ = true
@@ -1945,6 +1976,16 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
+
+[node name="Ring" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/MidMonument2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = SubResource("AudioStreamGenerator_2ithn")
+max_db = -10.0
+max_distance = 8.0
+bus = &"SFX"
+script = ExtResource("8_up8w1")
+pulse_hz1 = 308.0
+pulse_hz2 = 1.0
 
 [node name="TempleMonument1" type="Node3D" parent="WhiteMiddle/Monuments" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
@@ -2035,11 +2076,9 @@ draw_pass_1 = SubResource("QuadMesh_go2jk")
 [node name="Static" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/TempleMonument1" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = ExtResource("26_qel10")
-volume_db = 6.0
-unit_size = 5.0
-max_db = 6.0
-autoplay = true
-max_distance = 10.0
+max_db = -2.0
+pitch_scale = 0.75
+max_distance = 15.0
 bus = &"SFX"
 parameters/looping = true
 
@@ -2132,11 +2171,9 @@ draw_pass_1 = SubResource("QuadMesh_go2jk")
 [node name="Static" type="AudioStreamPlayer3D" parent="WhiteMiddle/Monuments/TempleMonument2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = ExtResource("26_qel10")
-volume_db = 6.0
-unit_size = 5.0
-max_db = 6.0
-autoplay = true
-max_distance = 10.0
+max_db = -2.0
+pitch_scale = 0.75
+max_distance = 15.0
 bus = &"SFX"
 
 [node name="Supports" type="Node3D" parent="WhiteMiddle" index="1"]
@@ -3846,6 +3883,24 @@ surface_material_override/1 = ExtResource("17_a328q")
 surface_material_override/0 = ExtResource("16_x0cwi")
 surface_material_override/1 = ExtResource("17_a328q")
 
+[node name="WhiteTopBlueVines" parent="WhiteMiddle/Vines" index="2" instance=ExtResource("29_2aglb")]
+
+[node name="WhiteTopBlueVinesMesh" parent="WhiteMiddle/Vines/WhiteTopBlueVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="WhiteTopCeilingVines" parent="WhiteMiddle/Vines" index="3" instance=ExtResource("30_ecvff")]
+
+[node name="WhiteTopCeilingVinesMesh" parent="WhiteMiddle/Vines/WhiteTopCeilingVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
+[node name="WhiteTopRedVines" parent="WhiteMiddle/Vines" index="4" instance=ExtResource("31_sq0gi")]
+
+[node name="WhiteTopRedVinesMesh" parent="WhiteMiddle/Vines/WhiteTopRedVines" index="0"]
+surface_material_override/0 = ExtResource("16_x0cwi")
+surface_material_override/1 = ExtResource("17_a328q")
+
 [node name="RedSide" type="Node3D" parent="." index="3"]
 
 [node name="Monuments" type="Node3D" parent="RedSide" index="0"]
@@ -3949,11 +4004,9 @@ draw_pass_1 = SubResource("QuadMesh_s67xh")
 [node name="Static" type="AudioStreamPlayer3D" parent="RedSide/Monuments/LowerMonument" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = ExtResource("26_qel10")
-volume_db = 6.0
-unit_size = 5.0
-max_db = 6.0
-autoplay = true
-max_distance = 10.0
+max_db = -2.0
+pitch_scale = 0.75
+max_distance = 15.0
 bus = &"SFX"
 
 [node name="MidMonument" type="Node3D" parent="RedSide/Monuments" index="1"]
@@ -4056,9 +4109,9 @@ draw_pass_1 = SubResource("QuadMesh_mc0pm")
 [node name="Static" type="AudioStreamPlayer3D" parent="RedSide/Monuments/MidMonument" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = ExtResource("26_qel10")
+max_db = -2.0
 pitch_scale = 0.75
-autoplay = true
-max_distance = 10.0
+max_distance = 15.0
 bus = &"SFX"
 
 [node name="UpperMonument" type="Node3D" parent="RedSide/Monuments" index="2"]
@@ -4116,6 +4169,14 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RedSide/Monuments/UpperMonument/PlinthLower/Collision" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dioqo")
+
+[node name="Ring" type="AudioStreamPlayer3D" parent="RedSide/Monuments/UpperMonument" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+stream = SubResource("AudioStreamGenerator_2ithn")
+max_db = -10.0
+max_distance = 12.0
+bus = &"SFX"
+script = ExtResource("8_up8w1")
 
 [node name="Supports" type="Node3D" parent="RedSide" index="1"]
 
@@ -5269,6 +5330,9 @@ layers = 15
 [editable path="BlueSide/Vines/BlueTopVines"]
 [editable path="WhiteMiddle/Vines/WhiteLowerVines"]
 [editable path="WhiteMiddle/Vines/WhiteMidVines"]
+[editable path="WhiteMiddle/Vines/WhiteTopBlueVines"]
+[editable path="WhiteMiddle/Vines/WhiteTopCeilingVines"]
+[editable path="WhiteMiddle/Vines/WhiteTopRedVines"]
 [editable path="RedSide/Vines/RedLowerVines"]
 [editable path="RedSide/Vines/RedLowerConVines"]
 [editable path="RedSide/Vines/RedMidVines"]
