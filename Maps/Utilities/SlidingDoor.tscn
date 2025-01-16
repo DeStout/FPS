@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ci6uy4jghak2i"]
 
-[ext_resource type="Script" path="res://Maps/SlidingDoor.gd" id="1_70yfs"]
+[ext_resource type="Script" path="res://Maps/Utilities/SlidingDoor.gd" id="1_70yfs"]
 [ext_resource type="Texture2D" uid="uid://41faj8pfp84a" path="res://Maps/T_Orange_D.png" id="1_dagta"]
 [ext_resource type="AudioStream" uid="uid://uyjf7rfhpepa" path="res://Maps/Audio/SlidingDoorOpen.ogg" id="2_bmnfj"]
 [ext_resource type="AudioStream" uid="uid://b2086xxmhhswm" path="res://Maps/Audio/SlidingDoorFinish.ogg" id="3_egfpd"]

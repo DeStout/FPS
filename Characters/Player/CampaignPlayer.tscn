@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb1otskk4hdc6"]
 
 [ext_resource type="PackedScene" uid="uid://65jhlh1xbkow" path="res://Characters/CharacterBase.tscn" id="1_chbam"]
-[ext_resource type="Script" path="res://Characters/Campaign/CampaignPlayer.gd" id="2_y7402"]
-[ext_resource type="PackedScene" uid="uid://cvpfdvyui6d4b" path="res://Characters/FirstPerson.tscn" id="3_jtbiy"]
+[ext_resource type="Script" path="res://Deprecated/CampaignPlayer_dep.gd" id="2_y7402"]
+[ext_resource type="PackedScene" uid="uid://cvpfdvyui6d4b" path="res://Characters/Player/FirstPerson.tscn" id="3_jtbiy"]
 
 [node name="Player" instance=ExtResource("1_chbam")]
 script = ExtResource("2_y7402")

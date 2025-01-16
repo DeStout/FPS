@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyk0g66n61823"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_ohiu5"]
-[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Maps/BotSim/BridgeBase.tscn" id="2_f504j"]
+[ext_resource type="PackedScene" uid="uid://debo1o7qgu6hu" path="res://Maps/BotSim/Bridge/BridgeBase.tscn" id="2_f504j"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_nh0dr"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="4_mo75w"]
 

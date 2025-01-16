@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c10ahl0nqxbf3"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_nfny2"]
-[ext_resource type="PackedScene" uid="uid://ca3w75xdwj1hb" path="res://Maps/BotSim/SquareBase.tscn" id="2_gdei8"]
+[ext_resource type="PackedScene" uid="uid://ca3w75xdwj1hb" path="res://Maps/BotSim/Square/SquareBase.tscn" id="2_gdei8"]
 [ext_resource type="PackedScene" uid="uid://csaruiackbvkq" path="res://Props/PickUps/WeaponPickUp.tscn" id="3_dfocn"]
 [ext_resource type="PackedScene" uid="uid://ho0xjys0mcbb" path="res://Props/PickUps/HealthPickUp.tscn" id="4_uijg5"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ndot8npdai20"]
 
-[ext_resource type="Script" path="res://Characters/DamageLabel.gd" id="1_jr7wr"]
+[ext_resource type="Script" path="res://Maps/Utilities/DamageLabel.gd" id="1_jr7wr"]
 
 [node name="DamageLabel" type="Label3D"]
 top_level = true

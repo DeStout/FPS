@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bakhbfe2uhg4u"
-path="res://.godot/imported/Scope.png-6959538c464050471fc91d69a19ecaaf.ctex"
+path="res://.godot/imported/Scope.png-1072e4222ecdf092ae64fd5cfc48ba84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Scope.png"
-dest_files=["res://.godot/imported/Scope.png-6959538c464050471fc91d69a19ecaaf.ctex"]
+source_file="res://Autoloads/HUD/Scope.png"
+dest_files=["res://.godot/imported/Scope.png-1072e4222ecdf092ae64fd5cfc48ba84.ctex"]
 
 [params]
 

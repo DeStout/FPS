@@ -2,9 +2,8 @@ class_name CharacterBase
 extends CharacterBody3D
 
 
-signal defeated
-
 @export var current_level : Node3D
+@export var mode_func : Node
 @export var enemies : Array[CharacterBase] = []
 var last_shot_by : CharacterBase = null
 
@@ -36,6 +35,7 @@ var armor := 0
 # Body segments / Skeleton
 @onready var skeleton := $Mannequin/Mannequin/Skeleton3D
 const BodySeg := preload("res://Characters/BodySeg.gd")
+@onready var surface_mesh := $Mannequin/Mannequin/Skeleton3D/Surface
 @onready var body_segs : Array = [$Mannequin/Mannequin/Skeleton3D/Head/HeadArea,
 						$Mannequin/Mannequin/Skeleton3D/Neck/NeckArea,
 						$Mannequin/Mannequin/Skeleton3D/Chest/ChestArea,
@@ -56,6 +56,7 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
+@onready var aim_helper := $AimHelper
 @onready var weapons := $Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons
 @onready var weapon_held : Node3D = null
 @onready var nozzle : Node3D = $Mannequin/Nozzle
@@ -213,6 +214,10 @@ func shell_loaded() -> void:
 
 # Signaled from BodySeg
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+	# Check if friendly fire is turned on
+	if mode_func.has_method(&"take_damge") and !mode_func.take_damage(shooter):
+		return
+		
 	last_shot_by = shooter
 	last_body_seg_shot = body_seg.get_parent()
 	
@@ -235,10 +240,11 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 											$DmgLbl.global_position, str(damage))
 
 
+# Setter function of health
 func _set_health(new_health) -> void:
 	health = max(0, new_health)
 	if health == 0:
-		_die()
+		mode_func.die()
 
 
 func set_enemies(new_enemies : Array[CharacterBase]):
@@ -251,23 +257,25 @@ func is_enemy(character):
 	return enemies.has(character)
 
 
-func _die() -> void:
-	# No Connections
-	defeated.emit(self)
+# Called from mode_func.die()
+func die() -> void:
+	var death_sfx = $Voice.get_death_sfx()
+	death_sfx.play()
 	
 	visible = false
 	_disable_collisions(true)
 	set_processing(false)
+	armor = 0
 	
-	var body_mat = $Mannequin/Mannequin/Skeleton3D/Surface.mesh.surface_get_material(0)
-	if $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0):
-		body_mat = $Mannequin/Mannequin/Skeleton3D/Surface.get_surface_override_material(0)
-	current_level.spawn_rag_doll(skeleton, transform, \
-						last_shot_by, last_body_seg_shot.name, body_mat)
+	var body_mat = surface_mesh.mesh.surface_get_material(0)
+	if surface_mesh.get_surface_override_material(0):
+		body_mat = surface_mesh.get_surface_override_material(0)
+	current_level.spawn_rag_doll(skeleton, global_transform, \
+								last_shot_by, last_body_seg_shot.name, body_mat)
 	
-	var death_sfx = $Voice.get_death_sfx()
-	death_sfx.play()
 	await death_sfx.finished
+	global_position = Vector3(0, -10, 0)
+	return
 
 
 func _disable_collisions(is_disabled : bool) -> void:
@@ -317,10 +325,6 @@ func _pick_up_weapon(new_pick_up : PickUp) -> Weapon:
 	return null
 
 
-func sort_weapons(weapon1 : Weapon, weapon2 : Weapon) -> bool:
-	return weapon1.weapon_type < weapon2.weapon_type
-
-
 func _pick_up_ammo(new_pick_up : PickUp) -> void:
 	if _have_weapon(new_pick_up.weapon_type):
 		var weapon_for = _get_weapon(new_pick_up.weapon_type)
@@ -328,6 +332,25 @@ func _pick_up_ammo(new_pick_up : PickUp) -> void:
 			weapon_for.add_ammo(_get_weapon(new_pick_up.weapon_type) \
 															.properties.mag_size)
 			new_pick_up.picked_up()
+
+
+func rand_weapon() -> int:
+	var weight := 4.0
+	var spawn_weapon = randf_range(1, (Globals.WEAPONS.size()-1) ** weight)
+	spawn_weapon = int(pow(spawn_weapon, 1.0 / weight))
+	spawn_weapon = Globals.WEAPONS.size()-1 - spawn_weapon
+	return spawn_weapon
+
+
+func reset_weapons() -> void:
+	for weapon in weapons.get_children():
+		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
+			weapon.queue_free()
+	weapon_held = _get_weapon(Globals.WEAPONS.SLAPPER)
+
+
+func sort_weapons(weapon1 : Weapon, weapon2 : Weapon) -> bool:
+	return weapon1.weapon_type < weapon2.weapon_type
 
 
 func add_weapon(new_weapon : Weapon) -> void:
@@ -392,6 +415,7 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 			
 			await _anim_weapon_switch(old_weapon, weapon_held)
 			switching_weapons = false
+		mode_func.switch_weapon(new_weapon)
 	else:
 		assert(new_weapon != null, "Cannot switch to a NULL weapon")
 

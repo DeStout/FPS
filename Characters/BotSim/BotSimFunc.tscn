@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4nfein558adj"]
+
+[ext_resource type="Script" path="res://Characters/BotSim/BotSimFunc.gd" id="1_7o854"]
+
+[node name="BotSimFunc" type="Node"]
+script = ExtResource("1_7o854")

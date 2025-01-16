@@ -1,8 +1,8 @@
 extends CharacterBase
 
-
-@onready var fp_animator : AnimationPlayer = \
-								$AimHelper/FirstPerson/AnimationPlayer
+@onready var fp_shader : MeshInstance3D = $AimHelper/FirstPerson/FPCanvas/ \
+											SubVpContainer/SubVp/FPCamera/Shader
+@onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
 @onready var fp_weapon_meshes := [[null],
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 
 				$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolBody/PistolBody],
@@ -53,7 +53,7 @@ func _physics_process(delta) -> void:
 		
 	var tween = create_tween()
 	var weapon_blend_pos : String = "parameters/Upper/" + \
-			Globals.WEAPON_NAMES[weapon_held.weapon_type] + "/Guard/blend_position"
+			Globals.WEAPON_NAMES[weapon_held.weapon_type] + "/Alert/blend_position"
 			
 	_set_speed(input_dir)
 	if direction:
@@ -142,8 +142,8 @@ func _input(event) -> void:
 				_cycle_switch_weapon()
 
 
-func _swing() -> void:
-	pass
+func enable_screen_effect(enable : bool) -> void:
+	fp_shader.visible = enable
 
 
 func _fire() -> void:
@@ -152,7 +152,7 @@ func _fire() -> void:
 		return
 	if weapon_held.can_fire() and !switching_weapons:
 		weapon_held.fire()
-		if fp_animator.is_playing():
+		if fp_animator.is_playing() and !weapon_held.is_reloading:
 			fp_animator.stop()
 		fp_animator.play(weapon_held.get_anim("Shoot"))
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
@@ -160,28 +160,27 @@ func _fire() -> void:
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
-func _zoom() -> void:
-	super()
-	var zoom_level := 1.0
-	var zoom_time := 0.075
-	var cam = $AimHelper/Camera
-	var fps_cam = \
-			$AimHelper/FirstPersonFPCanvas/SubViewportContainer/SubViewport/FPCamera
-	if zoomed:
-		zoom_level = weapon_held.properties.zoom_level
-		var tween = create_tween().set_parallel(true)
-		tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
-		tween.tween_property(fps_cam, "fov", 75 / zoom_level, zoom_time)
-		Globals.zoom_sensitibity = 0.5
-		%FirstPerson.visible = false
-		HUD.zoom_crosshairs(true)
-	else:
-		HUD.zoom_crosshairs(false)
-		Globals.zoom_sensitibity = 1.0
-		var tween = create_tween().set_parallel(true)
-		tween.tween_property(cam, "fov", 75, zoom_time)
-		tween.tween_property(fps_cam, "fov", 75, zoom_time)
-		%FirstPerson.visible = true
+#func _zoom() -> void:
+	#super()
+	#var zoom_level := 1.0
+	#var zoom_time := 0.075
+	#var cam = $AimHelper/Camera
+	#var fps_cam = $AimHelper/FirstPerson/FPCanvas/SubVpContainer/SubVp/FPCamera
+	#if zoomed:
+		#zoom_level = weapon_held.properties.zoom_level
+		#var tween = create_tween().set_parallel(true)
+		#tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
+		#tween.tween_property(fps_cam, "fov", 75 / zoom_level, zoom_time)
+		#Globals.zoom_sensitibity = 0.5
+		#%FirstPerson.visible = false
+		#HUD.zoom_crosshairs(true)
+	#else:
+		#HUD.zoom_crosshairs(false)
+		#Globals.zoom_sensitibity = 1.0
+		#var tween = create_tween().set_parallel(true)
+		#tween.tween_property(cam, "fov", 75, zoom_time)
+		#tween.tween_property(fps_cam, "fov", 75, zoom_time)
+		#%FirstPerson.visible = true
 
 
 func _reload() -> void:
@@ -246,12 +245,27 @@ func get_fp_weapon(weapon : int) -> Array:
 	return new_fp_weapon
 
 
+func reset_weapons() -> void:
+	for weapon in weapons.get_children():
+		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
+			_show_fp_weapon(weapon.weapon_type, false)
+	super()
+	fp_animator.play("SlapperIdle")
+
+
 func add_weapon(new_weapon : Weapon) -> void:
 	if _have_weapon(new_weapon.weapon_type):
 		return
 	new_weapon.get_node("Mesh").cast_shadow = \
 						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	super(new_weapon)
+
+
+func _show_fp_weapon(weapon_type : Globals.WEAPONS, show : bool) -> void:
+	var fpweapon : Array = get_fp_weapon(weapon_type)
+	if fpweapon[0] != null:
+		for mesh in fpweapon:
+			mesh.visible = show
 
 
 func _switch_weapon(new_weapon : Weapon) -> void:

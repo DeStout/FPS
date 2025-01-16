@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwg7182f40h5u"
-path="res://.godot/imported/CrossHair.png-4280401374e90218b25b7864681a917c.ctex"
+uid="uid://b762t7r843oy8"
+path="res://.godot/imported/Crosshair.svg-be50b130f95955aed1deed24a7e804ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/CrossHair.png"
-dest_files=["res://.godot/imported/CrossHair.png-4280401374e90218b25b7864681a917c.ctex"]
+source_file="res://Autoloads/HUD/Crosshair.svg"
+dest_files=["res://.godot/imported/Crosshair.svg-be50b130f95955aed1deed24a7e804ec.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

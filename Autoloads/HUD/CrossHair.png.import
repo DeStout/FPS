@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crqwjsvsfkcig"
-path="res://.godot/imported/DmgArrow.png-75cbc348966dd31bb664edd4d48b925a.ctex"
+uid="uid://dwg7182f40h5u"
+path="res://.godot/imported/CrossHair.png-7cde41c0a4ad72034d8f99a40adced40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/DmgArrow.png"
-dest_files=["res://.godot/imported/DmgArrow.png-75cbc348966dd31bb664edd4d48b925a.ctex"]
+source_file="res://Autoloads/HUD/CrossHair.png"
+dest_files=["res://.godot/imported/CrossHair.png-7cde41c0a4ad72034d8f99a40adced40.ctex"]
 
 [params]
 

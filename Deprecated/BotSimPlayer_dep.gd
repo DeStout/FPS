@@ -2,7 +2,7 @@ extends BotSimCharacter
 
 
 @onready var fp_shader : MeshInstance3D = $AimHelper/FirstPerson/FPCanvas/ \
-								SubViewportContainer/SubViewport/FPCamera/Shader
+											SubVpContainer/SubVp/FPCamera/Shader
 @onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
 @onready var fp_weapon_meshes := [[null],
 				[$AimHelper/FirstPerson/Mannequin/Skeleton3D/PistolMag/PistolMag, 

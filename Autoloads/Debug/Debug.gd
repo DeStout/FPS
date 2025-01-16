@@ -30,10 +30,6 @@ func _ready() -> void:
 	HUD.pause_menu.options.invincibility.toggled.connect(_set_invincible)
 	HUD.pause_menu.options.infinite_ammo.toggled.connect(_set_infinite_ammo)
 	HUD.pause_menu.options.bottomless_mag.toggled.connect(_set_bottomless_mag)
-	
-	_set_invincible(HUD.pause_menu.options.invincibility.button_pressed)
-	_set_infinite_ammo(HUD.pause_menu.options.infinite_ammo.button_pressed)
-	_set_bottomless_mag(HUD.pause_menu.options.bottomless_mag.button_pressed)
 
 
 func _process(_delta) -> void:
@@ -61,15 +57,6 @@ func _set_infinite_ammo(is_infinite : bool) -> void:
 
 func _set_bottomless_mag(is_bottomless : bool) -> void:
 	bottomless_mag = is_bottomless
-
-func _show_HUD(show_HUD : bool) -> void:
-	HUD.visible = show_HUD
-
-func _show_weapon_info(show_weapon_info : bool) -> void:
-	HUD.weapon_info.visible = show_weapon_info
-
-func _show_crosshair(show_crosshair : bool) -> void:
-	HUD.reticle.visible = show_crosshair
 
 
 func _bot_sim_started(new_level) -> void:
@@ -113,9 +100,6 @@ func _swap_cameras() -> void:
 			player.velocity = Vector3.ZERO
 		else:
 			player.transform = player_pos
-			
-		for bot in players_container.bots:
-			bot.character_spawned(player, true)
 
 
 func _invincible() -> void:

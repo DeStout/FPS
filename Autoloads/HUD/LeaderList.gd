@@ -1,7 +1,7 @@
 extends Control
 
 
-var leader_label_ := load("res://Characters/BotSim/LeaderLabel.tscn")
+var leader_label_ := load("res://Autoloads/HUD/LeaderLabel.tscn")
 
 @onready var list : VBoxContainer = $List
 var teams := []

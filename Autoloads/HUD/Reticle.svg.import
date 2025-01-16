@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b762t7r843oy8"
-path="res://.godot/imported/Crosshair.svg-18142ae9371f511269cc0478ed267dda.ctex"
+uid="uid://ba26jwpggkqi2"
+path="res://.godot/imported/Reticle.svg-dba5674adf7c4bdca8f4d5b9541dc3cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Crosshair.svg"
-dest_files=["res://.godot/imported/Crosshair.svg-18142ae9371f511269cc0478ed267dda.ctex"]
+source_file="res://Autoloads/HUD/Reticle.svg"
+dest_files=["res://.godot/imported/Reticle.svg-dba5674adf7c4bdca8f4d5b9541dc3cd.ctex"]
 
 [params]
 

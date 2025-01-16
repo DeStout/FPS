@@ -5,6 +5,7 @@ class_name BotSimLevel
 var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 @export var nav_region : NavigationRegion3D = null
+@onready var players := $Players
 @onready var fx := $FX
 
 
@@ -12,7 +13,7 @@ func _ready() -> void:
 	if Globals.game.bot_sim_settings.time != 0:
 		$MatchTime.start(Globals.game.bot_sim_settings.time)
 		$MatchTime.paused = true
-	%Players.set_up()
+	players.set_up()
 	HUD.setup_bot_sim()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

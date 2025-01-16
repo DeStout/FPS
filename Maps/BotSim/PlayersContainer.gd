@@ -1,7 +1,7 @@
 extends Node3D
 
 
-var player_ = load("res://Characters/BotSim/BotSimPlayer.tscn")
+var player_ = load("res://Characters/Player/BotSimPlayer.tscn")
 var bot_ = load("res://Characters/BotSim/BotSimEnemy.tscn")
 
 var respawn_timer_ = load("res://Maps/BotSim/RespawnTimer.tscn")
@@ -25,8 +25,8 @@ func set_up() -> void:
 	used_spawns.append(spawn_point)
 
 	HUD.scoreboard.add_character(player.name, team_colors[0])
-	player.set_color(team_colors[0])
 	spawn_character(player, spawn_point)
+	player.mode_func.set_color(team_colors[0])
 	connect_signals(player)
 	
 	match Globals.game.bot_sim_settings.game_mode:
@@ -46,9 +46,7 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 	var spawn_point : Marker3D = level.get_spawn_point()
 	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var enemy = bot_.instantiate()
-		enemy.set_color(team_colors[1])
 		bots.append(enemy)
-		enemy.new_name("Enemy" + str(x+1))
 		var temp : Array[CharacterBase] = [player]
 		enemy.set_enemies(temp)
 
@@ -56,8 +54,11 @@ func _set_up_lone_wolf(used_spawns : Array) -> void:
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		HUD.scoreboard.add_character(enemy.name, team_colors[1])
 		spawn_character(enemy, spawn_point)
+		enemy.mode_func.new_name("Enemy" + str(x+1))
+		enemy.mode_func.set_color(team_colors[1])
+		
+		HUD.scoreboard.add_character(enemy.name, team_colors[1])
 		connect_signals(enemy)
 	player.set_enemies(bots)
 
@@ -68,17 +69,18 @@ func _set_up_ffa(used_spawns : Array) -> void:
 	var enemies : Array[CharacterBase] = [player]
 	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var enemy = bot_.instantiate()
-		enemy.set_color(team_colors[x+1])
 		enemies.append(enemy)
 		bots.append(enemy)
-		enemy.new_name("Enemy" + str(x+1))
 		
 		while(used_spawns.has(spawn_point)):
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		HUD.scoreboard.add_character(enemy.name, team_colors[x+1])
 		spawn_character(enemy, spawn_point)
+		enemy.mode_func.new_name("Enemy" + str(x+1))
+		enemy.mode_func.set_color(team_colors[x+1])
+		
+		HUD.scoreboard.add_character(enemy.name, team_colors[x+1])
 		connect_signals(enemy)
 	
 	for enemy in enemies:
@@ -90,27 +92,30 @@ func _set_up_team_battle(used_spawns) -> void:
 	var spawn_point : Marker3D = level.get_spawn_point()
 	var team1 : Array[CharacterBase] = [player]
 	var team2 : Array[CharacterBase] = []
+	var new_name : String
 	var team_color : Color
 	for x in range(Globals.game.bot_sim_settings.num_bots):
 		var bot = bot_.instantiate()
 		if x < Globals.game.bot_sim_settings.num_bots / 2:
 			team_color = team_colors[0]
-			bot.set_color(team_color)
 			team1.append(bot)
-			bot.new_name("Ally" + str(x+1))
+			new_name = "Ally" + str(x+1)
 		else:
 			team_color = team_colors[1]
-			bot.set_color(team_color)
 			team2.append(bot)
-			bot.new_name("Enemy" + str(x-(Globals.game.bot_sim_settings.num_bots / 2)+1))
+			new_name = "Enemy" + \
+						str(x-(Globals.game.bot_sim_settings.num_bots / 2)+1)
 		bots.append(bot)
 		
 		while(used_spawns.has(spawn_point)):
 			spawn_point = level.get_spawn_point()
 		used_spawns.append(spawn_point)
 
-		HUD.scoreboard.add_character(bot.name, team_color)
 		spawn_character(bot, spawn_point)
+		bot.mode_func.new_name(new_name)
+		bot.mode_func.set_color(team_color)
+		
+		HUD.scoreboard.add_character(bot.name, team_color)
 		connect_signals(bot)
 	
 	for ally in team1:
@@ -132,8 +137,8 @@ func spawn_character(character : CharacterBase, spawn_point : Marker3D) -> void:
 
 
 func connect_signals(character) -> void:
-	character.died.connect(character_killed)
-	character.add_score.connect(add_to_scoreboard)
+	character.mode_func.died.connect(character_killed)
+	character.mode_func.add_score.connect(add_to_scoreboard)
 	
 	if character is BotSimEnemy:
 		for pickup in level.get_all_pickups():
@@ -157,7 +162,7 @@ func add_to_scoreboard(killed, killer) -> void:
 	HUD.leader_list.update(HUD.scoreboard.get_leader_list())
 
 
-# Signaled from BotSimCharacter._die
+# Signaled from BotSimCharacter.mode_func.die()
 func character_killed(character) -> void:
 	remove_child(character)
 
@@ -172,7 +177,4 @@ func character_killed(character) -> void:
 
 func respawn_character(character) -> void:
 	add_child(character)
-	character.respawn()
-	
-	for bot in bots:
-		bot.character_spawned(character, player == character)
+	character.mode_func.respawn()

@@ -3,7 +3,7 @@ extends Node3D
 
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
 var bullet_hole_ := load("res://Props/BulletHole.tscn")
-var damage_label_ := load("res://Characters/DamageLabel.tscn")
+var damage_label_ := load("res://Maps/Utilities/DamageLabel.tscn")
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
 var mat_ := load("res://Characters/BotSim/BotSimMat.tres")
 

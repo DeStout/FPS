@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b55w1jhicbmtn"]
 
-[ext_resource type="Script" path="res://Characters/BotSim/LeaderLabel.gd" id="1_1p670"]
+[ext_resource type="Script" path="res://Autoloads/HUD/LeaderLabel.gd" id="1_1p670"]
 
 [node name="LeaderLabel" type="Control"]
 layout_mode = 3

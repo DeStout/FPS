@@ -1,5 +1,5 @@
 class_name BotSimEnemy
-extends BotSimCharacter
+extends CharacterBase
 
 
 @onready var state_machine := $StateMachine
@@ -8,7 +8,6 @@ extends BotSimCharacter
 var update_interval := 15
 var update_offset := randi_range(0, update_interval-1)
 
-@onready var aim_helper := $AimHelper
 @onready var target_timer := $TargetTimer
 var target_seek_time := 4.0
 var target : CharacterBase = null
@@ -22,6 +21,8 @@ const TURN_SPEED := 6.0
 const AIM_SPEED := 1.0
 var move_speed_mod := 0.9
 var bot_blocking := false
+
+@onready var name_label := $NameLabel
 
 
 func _ready() -> void:

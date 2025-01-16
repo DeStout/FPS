@@ -34,7 +34,7 @@ func add_kill(character, points := 1) -> void:
 	characters[character.name][1] = num_kills
 	$List.set_item_text(list_index, str(num_kills))
 	
-	teams[character.team] += points
+	teams[character.mode_func.team] += points
 	if Globals.game.bot_sim_settings.score_to_win > 0:
 		_check_win()
 

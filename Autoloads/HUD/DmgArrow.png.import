@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba26jwpggkqi2"
-path="res://.godot/imported/Reticle.svg-466f35255aba3c834357a16dc395f542.ctex"
+uid="uid://crqwjsvsfkcig"
+path="res://.godot/imported/DmgArrow.png-fd982ededdf3921370f00cab531cf862.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Reticle.svg"
-dest_files=["res://.godot/imported/Reticle.svg-466f35255aba3c834357a16dc395f542.ctex"]
+source_file="res://Autoloads/HUD/DmgArrow.png"
+dest_files=["res://.godot/imported/DmgArrow.png-fd982ededdf3921370f00cab531cf862.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

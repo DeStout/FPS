@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b688j3ddo1ufy" path="res://Characters/Anims/FirstPerson/FirstPersonAnims.blend" id="1_2rk1l"]
 [ext_resource type="Material" uid="uid://cqwagpvoohpyk" path="res://Props/Weapons/Pistol/Pistol_Mat.tres" id="2_fy0ol"]
-[ext_resource type="Script" path="res://Characters/FirstPerson.gd" id="2_s7flq"]
+[ext_resource type="Script" path="res://Characters/Player/FirstPerson.gd" id="2_s7flq"]
 [ext_resource type="Material" uid="uid://cx4qos30v047i" path="res://Props/Weapons/SMG/SMG_Mat.tres" id="3_xemk3"]
 [ext_resource type="Material" uid="uid://d2cwb1tlpjtsi" path="res://Props/Weapons/Rifle/Rifle_Mat.tres" id="4_bceup"]
 [ext_resource type="Material" uid="uid://bgf07fdohwmm2" path="res://Props/Weapons/Shotgun/Shotgun_Mat.tres" id="5_p62lx"]

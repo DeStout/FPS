@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0w8g3xxs1u61"
-path="res://.godot/imported/Square.glb-59b7b032e46ae3e62d2b9c9795203b18.scn"
+uid="uid://m14adrv5f2fa"
+path="res://.godot/imported/Bridge.glb-78aedace4bb4d32d921ef98c73602015.scn"
 
 [deps]
 
-source_file="res://Maps/BotSim/Square.glb"
-dest_files=["res://.godot/imported/Square.glb-59b7b032e46ae3e62d2b9c9795203b18.scn"]
+source_file="res://Maps/BotSim/Bridge/Bridge.glb"
+dest_files=["res://.godot/imported/Bridge.glb-78aedace4bb4d32d921ef98c73602015.scn"]
 
 [params]
 

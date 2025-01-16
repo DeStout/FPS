@@ -24,7 +24,7 @@ run/stretch/mode="viewport"
 
 Globals="*res://Autoloads/Globals.gd"
 Debug="*res://Autoloads/Debug/Debug.tscn"
-HUD="*res://Autoloads/HUD.tscn"
+HUD="*res://Autoloads/HUD/HUD.tscn"
 
 [debug]
 
@@ -42,6 +42,17 @@ window/vsync/vsync_mode=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/linecounter/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Autoloads/": "orange",
+"res://Characters/": "blue",
+"res://Deprecated/": "red",
+"res://Maps/": "green",
+"res://Menus/": "yellow",
+"res://Props/": "purple"
+}
 
 [input]
 
