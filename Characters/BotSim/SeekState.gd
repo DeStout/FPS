@@ -52,7 +52,7 @@ func _seek_goal(delta : float) -> void:
 	if !enemy.nav_agent.is_navigation_finished():
 		input_dir = Vector2.UP
 	if enemy.bot_blocking and frame % enemy.update_interval == enemy.update_offset:
-		input_dir.x = (randi_range(0, 1) * 2) - 1
+		input_dir.x = clamp((randi_range(0, 3) * 2) - 1, -1, 1)
 		enemy.bot_blocking = false
 	var direction = (enemy.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	

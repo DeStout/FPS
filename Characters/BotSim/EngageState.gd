@@ -102,10 +102,11 @@ func _move_to_target(delta) -> void:
 		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, input_dir, 0.1)
 		tween.tween_property(enemy.anim_tree, weapon_blend_pos, 1, 0.1)
 		
+		var accel = enemy.accel * 0.5
 		enemy.velocity.x = move_toward(enemy.velocity.x, \
-								direction.x * enemy.speed, enemy.accel * delta)
+								direction.x * enemy.speed, accel * delta)
 		enemy.velocity.z = move_toward(enemy.velocity.z, \
-								direction.z * enemy.speed, enemy.accel * delta)
+								direction.z * enemy.speed, accel * delta)
 	else:
 		tween.tween_property(enemy.anim_tree, enemy.lower_blend_pos, Vector2.ZERO, 0.1)
 		tween.tween_property(enemy.anim_tree, weapon_blend_pos, -1, 0.1)
@@ -120,6 +121,7 @@ func _move_to_target(delta) -> void:
 
 func set_input(path_goal : Vector3) -> Vector2:
 	if !enemy.is_enemy_visible(enemy.target):
+		move_timer.stop()
 		return Vector2.UP
 	
 	# Prioritize moving to within the current weapon's range of the target
