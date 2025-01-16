@@ -2,6 +2,8 @@ class_name CharacterBase
 extends CharacterBody3D
 
 
+signal defeated
+
 @export var current_level : Node3D
 @export var mode_func : Node
 @export var enemies : Array[CharacterBase] = []
@@ -101,8 +103,6 @@ func _process(delta) -> void:
 
 
 func _physics_process(delta) -> void:
-	#_apply_recoil(delta)
-	
 	if ladder:
 		accel = ACCEL
 		deaccel = DEACCEL
@@ -215,8 +215,9 @@ func shell_loaded() -> void:
 # Signaled from BodySeg
 func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
 	# Check if friendly fire is turned on
-	if mode_func.has_method(&"take_damge") and !mode_func.take_damage(shooter):
-		return
+	if mode_func and mode_func.has_method(&"take_damge"):
+		if !mode_func.take_damage(shooter):
+			return
 		
 	last_shot_by = shooter
 	last_body_seg_shot = body_seg.get_parent()
@@ -244,7 +245,10 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 func _set_health(new_health) -> void:
 	health = max(0, new_health)
 	if health == 0:
-		mode_func.die()
+		if mode_func is BotSimFunc:
+			mode_func.die()
+		else:
+			die()
 
 
 func set_enemies(new_enemies : Array[CharacterBase]):
@@ -415,7 +419,8 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 			
 			await _anim_weapon_switch(old_weapon, weapon_held)
 			switching_weapons = false
-		mode_func.switch_weapon(new_weapon)
+		if mode_func is BotSimFunc:
+			mode_func.switch_weapon(new_weapon)
 	else:
 		assert(new_weapon != null, "Cannot switch to a NULL weapon")
 

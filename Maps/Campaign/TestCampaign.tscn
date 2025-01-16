@@ -4310,6 +4310,8 @@ shape = SubResource("ConcavePolygonShape3D_kmtgm")
 [node name="Player" parent="Players" index="0" node_paths=PackedStringArray("current_level") instance=ExtResource("4_r8i4x")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 0)
+has_start_weapon = true
+start_weapon = 1
 current_level = NodePath("../..")
 
 [node name="CampaignEnemy1" parent="Players" index="1" node_paths=PackedStringArray("guard_path", "current_level", "enemies") instance=ExtResource("5_ejj15")]

@@ -1,4 +1,4 @@
-extends CharacterBase
+class_name Player extends CharacterBase
 
 @onready var fp_shader : MeshInstance3D = $AimHelper/FirstPerson/FPCanvas/ \
 											SubVpContainer/SubVp/FPCamera/Shader
@@ -15,12 +15,15 @@ extends CharacterBase
 			 $AimHelper/FirstPerson/Mannequin/Skeleton3D/ShotgunShell/ShotgunShell],
 					[null]]
 
+@export var has_start_weapon := false
+@export var start_weapon : Globals.WEAPONS
+
 
 func _ready() -> void:
 	super()
+	if has_start_weapon:
+		add_weapon(Globals.weapons[start_weapon].instantiate())
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
-	add_weapon(Globals.weapons[Globals.WEAPONS.PISTOL].instantiate())
-	weapon_state_machine.travel("Alert")
 	nozzle = $AimHelper/FirstPerson/Nozzle
 
 

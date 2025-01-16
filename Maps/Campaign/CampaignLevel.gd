@@ -7,7 +7,7 @@ class_name CampaignLevel
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
 var bullet_hole_ := load("res://Props/BulletHole.tscn")
-var damage_label_ := load("res://Characters/DamageLabel.tscn")
+var damage_label_ := load("res://Maps/Utilities/DamageLabel.tscn")
 var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
 var enemy_ := load("res://Characters/Campaign/CampaignEnemy.tscn")
@@ -72,7 +72,7 @@ func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> voi
 	damage_label.set_txt_pos_color(pos, dmg, color)
 
 
-# Called from CharacterBase.die()
+# Called from CharacterBase.mode_func.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 								shooter : CharacterBase, body_seg_shot : String, \
 												body_mat : BaseMaterial3D) -> void:

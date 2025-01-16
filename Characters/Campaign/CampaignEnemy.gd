@@ -235,7 +235,7 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 	super(body_seg, damage * damage_mod, shooter)
 
 
-func _die() -> void:
+func die() -> void:
 	super()
 	
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
@@ -244,6 +244,7 @@ func _die() -> void:
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 	
+	defeated.emit(self)
 	call_deferred("queue_free")
 
 
