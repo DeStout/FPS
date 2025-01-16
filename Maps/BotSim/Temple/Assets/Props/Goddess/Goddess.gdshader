@@ -43,22 +43,22 @@ void vertex() {
 void fragment() {
 	NORMAL_MAP = texture(normal_map, UV).xyz;
 	NORMAL_MAP_DEPTH = normal_strength;
-	
+
 	float VdotN = dot(VIEW, NORMAL);
 	float fresnel = clamp(SchlickFresnel(VdotN), 0.0, 1.0);
-	
+
 	vec4 albedo_mix = texture(albedo_texture, UV) * albedo;
 	float roughness_mix = texture(roughness_texture, UV).r * roughness;
-	
+
 	float a = mix(0.001, 1.0, albedo_mix.a);
 	float a_factor_0 = mix(fresnel * edge_color.a, 1.0, a);
 	float a_factor_1 = 0.5 * sqrt(a);
 	float a_factor_2 = a_factor_0 + a_factor_1;
-	
+
 	ALBEDO = mix(edge_color.rgb * edge_color.a, albedo_mix.rgb * surface_contribution, a);
 	ROUGHNESS = roughness_mix;
 	SPECULAR = 0.5 * inversesqrt(specular_contribution);
-	
+
 	vec3 unpacked_normal = NORMAL_MAP;
 	unpacked_normal.xy = unpacked_normal.xy * 2.0 - 1.0;
 	unpacked_normal.z = sqrt(max(0.0, 1.0 - dot(unpacked_normal.xy, unpacked_normal.xy)));
