@@ -5,11 +5,14 @@
 [resource]
 script = ExtResource("1_xrgia")
 automatic = false
-can_zoom = false
+can_zoom = true
 zoom_level = 3.0
 num_shots = 1
-shot_variance = 0.02
-shots_per_second = 1.5
+shots_per_second = 1.0
+default_variance = 0.005
+max_variance = 0.015
+variance_build = 0.003
+variance_reset = 10.0
 max_ammo = 28
 mag_size = 7
 body_dmg = {
@@ -17,7 +20,6 @@ body_dmg = {
 1: 45,
 2: 35
 }
-dmg_falloff = Vector2(15, 75)
-impulse = 350.0
+dmg_falloff = Vector2(15, 100)
 pos_offset = Vector3(-0.0190888, -0.108876, 0.0337282)
 rot_offset = Vector3(-1.27062, 1.5708, -1.47828e-07)

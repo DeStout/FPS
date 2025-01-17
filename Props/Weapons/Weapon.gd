@@ -50,6 +50,8 @@ func interrupt_reload() -> void:
 
 
 func get_anim(anim : String) -> String:
+	if weapon_type == Globals.WEAPONS.SNIPER:
+		return Globals.WEAPON_NAMES[Globals.WEAPONS.RIFLE] + anim
 	return Globals.WEAPON_NAMES[weapon_type] + anim
 
 

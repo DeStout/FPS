@@ -169,8 +169,7 @@ func set_on_ladder(new_ladder : Area3D) -> void:
 
 
 func _pull_alt() -> void:
-	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
-		alt_pulled = true
+	alt_pulled = true
 
 
 func _fire() -> void:
@@ -181,9 +180,9 @@ func _fire() -> void:
 
 
 func _gun_alt() -> void:
+	weapon_held.fire_alt()
+	alt_pulled = false
 	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
-		weapon_held.fire_alt()
-		alt_pulled = false
 		_zoom()
 
 
@@ -386,6 +385,9 @@ func add_weapon(new_weapon : Weapon) -> void:
 	
 	if new_weapon.weapon_type > weapon_held.weapon_type:
 		_switch_weapon(new_weapon)
+	
+	#if new_weapon.weapon_type == Globals.WEAPONS.SNIPER:
+		#new_weapon.weapon_type = Globals.WEAPONS.RIFLE
 
 
 func _have_weapon(weapon_type : int ) -> bool:

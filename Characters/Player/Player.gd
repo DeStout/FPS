@@ -1,5 +1,7 @@
 class_name Player extends CharacterBase
 
+@onready var cam := $AimHelper/Camera
+@onready var fp_cam := $AimHelper/FirstPerson/FPCanvas/SubVpContainer/SubVp/FPCamera
 @onready var fp_shader : MeshInstance3D = $AimHelper/FirstPerson/FPCanvas/ \
 											SubVpContainer/SubVp/FPCamera/Shader
 @onready var fp_animator : AnimationPlayer = $AimHelper/FirstPerson/AnimationPlayer
@@ -163,27 +165,23 @@ func _fire() -> void:
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
-#func _zoom() -> void:
-	#super()
-	#var zoom_level := 1.0
-	#var zoom_time := 0.075
-	#var cam = $AimHelper/Camera
-	#var fps_cam = $AimHelper/FirstPerson/FPCanvas/SubVpContainer/SubVp/FPCamera
-	#if zoomed:
-		#zoom_level = weapon_held.properties.zoom_level
-		#var tween = create_tween().set_parallel(true)
-		#tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
-		#tween.tween_property(fps_cam, "fov", 75 / zoom_level, zoom_time)
-		#Globals.zoom_sensitibity = 0.5
-		#%FirstPerson.visible = false
-		#HUD.zoom_crosshairs(true)
-	#else:
-		#HUD.zoom_crosshairs(false)
-		#Globals.zoom_sensitibity = 1.0
-		#var tween = create_tween().set_parallel(true)
-		#tween.tween_property(cam, "fov", 75, zoom_time)
-		#tween.tween_property(fps_cam, "fov", 75, zoom_time)
-		#%FirstPerson.visible = true
+func _zoom() -> void:
+	super()
+	var zoom_level := 1.0
+	var zoom_time := 0.075
+	if zoomed:
+		zoom_level = weapon_held.properties.zoom_level
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
+		tween.tween_property(fp_cam, "fov", 75 / zoom_level, zoom_time)
+		Globals.zoom_sensitibity = 0.5
+		HUD.zoom_crosshairs(true)
+	else:
+		HUD.zoom_crosshairs(false)
+		Globals.zoom_sensitibity = 1.0
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(cam, "fov", 75, zoom_time)
+		tween.tween_property(fp_cam, "fov", 75, zoom_time)
 
 
 func _reload() -> void:
@@ -307,24 +305,23 @@ func _unequip_weapon(old_weapon : Weapon) -> void:
 	await fp_animator.animation_finished
 	
 	old_weapon.visible = false
-	var fpweapon : Array = get_fp_weapon(old_weapon.weapon_type)
-	if fpweapon[0] != null:
-		for mesh in fpweapon:
-			mesh.visible = false
+	if old_weapon.weapon_type == Globals.WEAPONS.SNIPER:
+		_show_fp_weapon(Globals.WEAPONS.RIFLE, false)
+	_show_fp_weapon(old_weapon.weapon_type, false)
 
 
 func _equip_weapon(new_weapon : Weapon) -> void:
 	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
+		pass
 		HUD.show_reticle(false)
 	else:
 		HUD.show_reticle(true)
-		
+	
 	fp_animator.play_backwards(new_weapon.get_anim("Equip"))
 	
-	var fpweapon : Array = get_fp_weapon(new_weapon.weapon_type)
-	if fpweapon[0] != null:
-		for mesh in fpweapon:
-			mesh.visible = true
+	if new_weapon.weapon_type == Globals.WEAPONS.SNIPER:
+		_show_fp_weapon(Globals.WEAPONS.RIFLE, true)
+	_show_fp_weapon(new_weapon.weapon_type, true)
 	
 	weapon_state_machine.travel("Alert")
 	new_weapon.visible = true
