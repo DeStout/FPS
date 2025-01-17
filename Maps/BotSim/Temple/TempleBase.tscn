@@ -1,47 +1,48 @@
-[gd_scene load_steps=73 format=4 uid="uid://o2h1ckasd2vt"]
+[gd_scene load_steps=74 format=4 uid="uid://o2h1ckasd2vt"]
 
 [ext_resource type="PackedScene" uid="uid://ddao41v7s3ovx" path="res://Maps/BotSim/Temple/Temple.blend" id="1_c7hqf"]
-[ext_resource type="Material" uid="uid://isleghls2oka" path="res://Maps/BotSim/Temple/Assets/Materials/Terrain.tres" id="2_cnr1c"]
-[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/Assets/Materials/BlueGlow.tres" id="3_03kfy"]
-[ext_resource type="PackedScene" uid="uid://djk7mxbgsy43v" path="res://Maps/BotSim/Temple/Assets/Props/Misc/RubbleA.blend" id="3_w0ikm"]
-[ext_resource type="PackedScene" uid="uid://c7kw14f0rdw0x" path="res://Maps/BotSim/Temple/Assets/Props/Misc/StoneDoorway.blend" id="4_oftx4"]
+[ext_resource type="Material" uid="uid://isleghls2oka" path="res://Maps/BotSim/Temple/Assets/Materials/Terrain.tres" id="2_pb3m8"]
+[ext_resource type="Material" uid="uid://jshlki0jjbbu" path="res://Maps/BotSim/Temple/Assets/Materials/BlueGlow.tres" id="3_kquyh"]
+[ext_resource type="PackedScene" uid="uid://dmoy7q1whwiwd" path="res://Maps/BotSim/Temple/Assets/Props/Misc/RubbleA.blend" id="3_w0ikm"]
+[ext_resource type="PackedScene" uid="uid://cpey1b0nnlck0" path="res://Maps/BotSim/Temple/Assets/Props/Misc/StoneDoorway.blend" id="4_oftx4"]
+[ext_resource type="Material" uid="uid://vo6bqqctmurm" path="res://Maps/BotSim/Temple/Assets/Materials/BlackStone.tres" id="4_x16ua"]
+[ext_resource type="Material" uid="uid://dd8x64quafwg2" path="res://Maps/BotSim/Temple/Assets/Materials/BlueCrystal.tres" id="5_jx2p7"]
 [ext_resource type="Material" uid="uid://ctgsfnqfckqbr" path="res://Maps/BotSim/Temple/Assets/Materials/WhiteGlow.tres" id="6_4gkpw"]
-[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/Assets/Materials/RedGlow.tres" id="6_nx7kh"]
-[ext_resource type="PackedScene" uid="uid://cjnxieq6a3k6j" path="res://Maps/BotSim/Temple/Assets/Props/Logs/6MLog.blend" id="7_fv1se"]
-[ext_resource type="Material" uid="uid://vo6bqqctmurm" path="res://Maps/BotSim/Temple/Assets/Materials/BlackStone.tres" id="7_pbjv6"]
-[ext_resource type="PackedScene" uid="uid://quvmcav0pm1r" path="res://Maps/BotSim/Temple/Assets/Props/Logs/2MLog.blend" id="7_rpeem"]
-[ext_resource type="PackedScene" uid="uid://c1yfii2ty5pop" path="res://Maps/BotSim/Temple/Assets/Props/Logs/4MLog.blend" id="8_7phul"]
+[ext_resource type="PackedScene" uid="uid://helh26mq2kcb" path="res://Maps/BotSim/Temple/Assets/Props/Logs/6MLog.blend" id="7_fv1se"]
+[ext_resource type="PackedScene" uid="uid://dt5ow7fb3up6y" path="res://Maps/BotSim/Temple/Assets/Props/Logs/2MLog.blend" id="7_rpeem"]
+[ext_resource type="PackedScene" uid="uid://ctjt1st23kdvc" path="res://Maps/BotSim/Temple/Assets/Props/Logs/4MLog.blend" id="8_7phul"]
 [ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/SFX/Ring.gd" id="8_up8w1"]
 [ext_resource type="PackedScene" uid="uid://barphhjc2tbna" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimA.blend" id="9_atiog"]
 [ext_resource type="PackedScene" uid="uid://ctlrdjxy1qx2s" path="res://Maps/BotSim/Temple/Assets/Props/Logs/1MLog.blend" id="9_nlpdx"]
-[ext_resource type="Material" uid="uid://dd8x64quafwg2" path="res://Maps/BotSim/Temple/Assets/Materials/BlueCrystal.tres" id="10_10gy6"]
 [ext_resource type="PackedScene" uid="uid://b3tsxtveorf4p" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimB.blend" id="10_tc77q"]
-[ext_resource type="Material" uid="uid://dllw8dkjfpnus" path="res://Maps/BotSim/Temple/Assets/Materials/RedCrystal.tres" id="11_cmrlc"]
 [ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/Props/Monuments/Crystal.gd" id="11_hlsa2"]
 [ext_resource type="PackedScene" uid="uid://dds7gd65l0ud2" path="res://Maps/BotSim/Temple/Assets/Props/FloorTrim/FloorTrimC.blend" id="11_ryetl"]
 [ext_resource type="Material" uid="uid://b80w2toxnescd" path="res://Maps/BotSim/Temple/Assets/Materials/BrownStone.tres" id="12_f2neo"]
 [ext_resource type="PackedScene" uid="uid://bet8unvahm04" path="res://Maps/BotSim/Temple/Assets/Props/Misc/IndividualDoorway.blend" id="13_8yid6"]
 [ext_resource type="Material" uid="uid://cp7p06yppjmon" path="res://Maps/BotSim/Temple/Assets/Materials/CobbleStone.tres" id="15_vw7fy"]
-[ext_resource type="Material" uid="uid://b63ha2txgh2r4" path="res://Maps/BotSim/Temple/Assets/Materials/RoughWood.tres" id="16_dbeog"]
-[ext_resource type="Material" uid="uid://bvtmphnwo7qm7" path="res://Maps/BotSim/Temple/Assets/Materials/GoldCrystal.tres" id="16_tipu6"]
-[ext_resource type="Material" uid="uid://b4m7qsdumxruw" path="res://Maps/BotSim/Temple/Assets/Materials/Bark.tres" id="16_x0cwi"]
-[ext_resource type="Material" uid="uid://bru1uryec1myq" path="res://Maps/BotSim/Temple/Assets/Materials/Leaf.tres" id="17_a328q"]
-[ext_resource type="Material" uid="uid://2l5h050ckagm" path="res://Maps/BotSim/Temple/Assets/Materials/WhiteCrystal.tres" id="18_0otkx"]
+[ext_resource type="Material" uid="uid://b4m7qsdumxruw" path="res://Maps/BotSim/Temple/Assets/Materials/Bark.tres" id="17_3djrk"]
 [ext_resource type="PackedScene" uid="uid://dxyhhg6pnnyrf" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueLowerConVines.glb" id="18_iaqnr"]
+[ext_resource type="Material" uid="uid://bru1uryec1myq" path="res://Maps/BotSim/Temple/Assets/Materials/Leaf.tres" id="18_wwbva"]
 [ext_resource type="PackedScene" uid="uid://hhpic5s28ife" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueMidVines.glb" id="19_mxmvr"]
 [ext_resource type="PackedScene" uid="uid://bturbuc4riceq" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueTopConVines.glb" id="20_o7i8g"]
 [ext_resource type="PackedScene" uid="uid://c0h7dhyjxdivu" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueMidConVines.glb" id="21_g5ov7"]
 [ext_resource type="PackedScene" uid="uid://xwacxt2ka7te" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueTopVines.glb" id="22_0ndrr"]
 [ext_resource type="PackedScene" uid="uid://cw1hastkokbd4" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedLowerVines.glb" id="22_ifelm"]
 [ext_resource type="PackedScene" uid="uid://kbgsjuw44twx" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteLowerVines.glb" id="24_e5h4n"]
+[ext_resource type="Material" uid="uid://2l5h050ckagm" path="res://Maps/BotSim/Temple/Assets/Materials/WhiteCrystal.tres" id="25_085la"]
 [ext_resource type="PackedScene" uid="uid://b361lrieik7dn" path="res://Maps/BotSim/Temple/Assets/Props/Vines/BlueLowerVines.glb" id="25_mikji"]
 [ext_resource type="PackedScene" uid="uid://b0d2maqcgynlj" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedLowerConVines.glb" id="25_munml"]
 [ext_resource type="AudioStream" uid="uid://b8gvv16pfrxui" path="res://Maps/BotSim/Temple/Assets/SFX/Static.ogg" id="26_qel10"]
+[ext_resource type="Material" uid="uid://bvtmphnwo7qm7" path="res://Maps/BotSim/Temple/Assets/Materials/GoldCrystal.tres" id="26_yot7c"]
 [ext_resource type="PackedScene" uid="uid://dhvgi3l0geg83" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteMidVines.glb" id="27_twyqo"]
 [ext_resource type="PackedScene" uid="uid://5040kbvp7vtx" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteTopBlueVines.glb" id="29_2aglb"]
 [ext_resource type="PackedScene" uid="uid://4sqpxkv38xcw" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteTopCeilingVines.glb" id="30_ecvff"]
 [ext_resource type="PackedScene" uid="uid://mphrafq8fktc" path="res://Maps/BotSim/Temple/Assets/Props/Vines/WhiteTopRedVines.glb" id="31_sq0gi"]
 [ext_resource type="PackedScene" uid="uid://cbfci6bnvdu0d" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedMidVines.glb" id="32_8ejan"]
+[ext_resource type="Material" uid="uid://it15dhmdaegw" path="res://Maps/BotSim/Temple/Assets/Materials/RedGlow.tres" id="32_764xo"]
+[ext_resource type="PackedScene" uid="uid://e6lm53vucmh8" path="res://Maps/BotSim/Temple/Assets/Props/Misc/LargeShelf.blend" id="32_pktuk"]
+[ext_resource type="Material" uid="uid://dllw8dkjfpnus" path="res://Maps/BotSim/Temple/Assets/Materials/RedCrystal.tres" id="33_1kegd"]
+[ext_resource type="PackedScene" uid="uid://d2bj2d0w566da" path="res://Maps/BotSim/Temple/Assets/Props/Misc/SmallShelf.blend" id="33_t25hf"]
 [ext_resource type="PackedScene" uid="uid://bobfjfoc6xtdv" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedMidConVines.glb" id="33_tvp4p"]
 [ext_resource type="PackedScene" uid="uid://bnu4pqe7xw8ky" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedTopConVines.glb" id="34_j5flo"]
 [ext_resource type="PackedScene" uid="uid://bi3mejgbsvnqy" path="res://Maps/BotSim/Temple/Assets/Props/Vines/RedTopVines.glb" id="35_idgc2"]
@@ -462,7 +463,7 @@ cast_shadow = 0
 gi_lightmap_scale = 3
 mesh = SubResource("ArrayMesh_psaao")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_cnr1c")
+surface_material_override/0 = ExtResource("2_pb3m8")
 
 [node name="BlueSide" type="Node3D" parent="." index="1"]
 
@@ -477,8 +478,8 @@ rotate_dir = false
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_03kfy")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("3_kquyh")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -497,7 +498,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("10_10gy6")
+surface_material_override/0 = ExtResource("5_jx2p7")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/Crystal" index="0"]
@@ -524,8 +525,8 @@ omni_attenuation = -1.086
 [node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Monuments/LowerMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_03kfy")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("3_kquyh")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/LowerMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -581,8 +582,8 @@ script = ExtResource("11_hlsa2")
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_03kfy")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("3_kquyh")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -601,7 +602,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("10_10gy6")
+surface_material_override/0 = ExtResource("5_jx2p7")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/Crystal" index="0"]
@@ -628,8 +629,8 @@ omni_attenuation = -0.651
 [node name="PlinthLower" type="MeshInstance3D" parent="BlueSide/Monuments/MidMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_03kfy")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("3_kquyh")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/MidMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -685,8 +686,8 @@ metadata/_edit_group_ = true
 transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_03kfy")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("3_kquyh")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -705,7 +706,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("10_10gy6")
+surface_material_override/0 = ExtResource("5_jx2p7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/Crystal" index="0"]
 collision_mask = 34
@@ -717,8 +718,8 @@ shape = SubResource("ConcavePolygonShape3D_0aya2")
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_03kfy")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("3_kquyh")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="BlueSide/Monuments/UpperMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -1751,38 +1752,38 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19, 0,
 [node name="BlueLowerVines" parent="BlueSide/Vines" index="0" instance=ExtResource("25_mikji")]
 
 [node name="BlueLowerVinesMesh" parent="BlueSide/Vines/BlueLowerVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="BlueLowerConVines" parent="BlueSide/Vines" index="1" instance=ExtResource("18_iaqnr")]
 
 [node name="BlueLowerConVinesMesh" parent="BlueSide/Vines/BlueLowerConVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="BlueMidVines" parent="BlueSide/Vines" index="2" instance=ExtResource("19_mxmvr")]
 
 [node name="BlueMidVinesMesh" parent="BlueSide/Vines/BlueMidVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="BlueTopConVines" parent="BlueSide/Vines" index="3" instance=ExtResource("20_o7i8g")]
 
 [node name="BlueTopConVinesMesh" parent="BlueSide/Vines/BlueTopConVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="BlueMidConVines" parent="BlueSide/Vines" index="4" instance=ExtResource("21_g5ov7")]
 
 [node name="BlueMidConVinesMesh" parent="BlueSide/Vines/BlueMidConVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="BlueTopVines" parent="BlueSide/Vines" index="5" instance=ExtResource("22_0ndrr")]
 
 [node name="BlueTopVinesMesh" parent="BlueSide/Vines/BlueTopVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="WhiteMiddle" type="Node3D" parent="." index="2"]
 
@@ -1797,7 +1798,7 @@ transform = Transform3D(-1.25, 1.20797e-07, 0, -1.88745e-07, -0.8, 0, 0, 0, 1.25
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -1816,7 +1817,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("18_0otkx")
+surface_material_override/0 = ExtResource("25_085la")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/Crystal" index="0"]
 collision_mask = 34
@@ -1829,7 +1830,7 @@ transform = Transform3D(1.25, 0, 0, 0, 0.8, 0, 0, 0, 1.25, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/LowerMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -1848,7 +1849,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 stream = SubResource("AudioStreamGenerator_2ithn")
 max_db = -10.0
-max_distance = 10.0
+max_distance = 12.0
 bus = &"SFX"
 script = ExtResource("8_up8w1")
 pulse_hz1 = 248.0
@@ -1864,7 +1865,7 @@ transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthUpper" index="0"]
 collision_mask = 34
@@ -1883,7 +1884,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("18_0otkx")
+surface_material_override/0 = ExtResource("25_085la")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/Crystal" index="0"]
 collision_mask = 34
@@ -1896,7 +1897,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument1/PlinthLower" index="0"]
 collision_mask = 34
@@ -1930,7 +1931,7 @@ transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthUpper" index="0"]
 collision_mask = 34
@@ -1949,7 +1950,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("18_0otkx")
+surface_material_override/0 = ExtResource("25_085la")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/Crystal" index="0"]
 collision_mask = 34
@@ -1962,7 +1963,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/MidMonument2/PlinthLower" index="0"]
 collision_mask = 34
@@ -1999,7 +2000,7 @@ visible = false
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthUpper" index="0"]
 collision_mask = 34
@@ -2018,7 +2019,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("16_tipu6")
+surface_material_override/0 = ExtResource("26_yot7c")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/Crystal" index="0"]
@@ -2046,7 +2047,7 @@ omni_attenuation = -0.252
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument1/PlinthLower" index="0"]
 collision_mask = 34
@@ -2093,7 +2094,7 @@ visible = false
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthUpper" index="0"]
 collision_mask = 34
@@ -2112,7 +2113,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("16_tipu6")
+surface_material_override/0 = ExtResource("26_yot7c")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/Crystal" index="0"]
@@ -2141,7 +2142,7 @@ omni_attenuation = -0.252
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4gkpw")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="WhiteMiddle/Monuments/TempleMonument2/PlinthLower" index="0"]
 collision_mask = 34
@@ -3874,32 +3875,106 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0,
 [node name="WhiteLowerVines" parent="WhiteMiddle/Vines" index="0" instance=ExtResource("24_e5h4n")]
 
 [node name="WhiteLowerVinesMesh" parent="WhiteMiddle/Vines/WhiteLowerVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="WhiteMidVines" parent="WhiteMiddle/Vines" index="1" instance=ExtResource("27_twyqo")]
 
 [node name="WhiteMidVinesMesh" parent="WhiteMiddle/Vines/WhiteMidVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="WhiteTopBlueVines" parent="WhiteMiddle/Vines" index="2" instance=ExtResource("29_2aglb")]
 
 [node name="WhiteTopBlueVinesMesh" parent="WhiteMiddle/Vines/WhiteTopBlueVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="WhiteTopCeilingVines" parent="WhiteMiddle/Vines" index="3" instance=ExtResource("30_ecvff")]
 
 [node name="WhiteTopCeilingVinesMesh" parent="WhiteMiddle/Vines/WhiteTopCeilingVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="WhiteTopRedVines" parent="WhiteMiddle/Vines" index="4" instance=ExtResource("31_sq0gi")]
 
 [node name="WhiteTopRedVinesMesh" parent="WhiteMiddle/Vines/WhiteTopRedVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
+
+[node name="Shelves" type="Node3D" parent="WhiteMiddle" index="4"]
+
+[node name="R_LargeShelf1" parent="WhiteMiddle/Shelves" index="0" instance=ExtResource("32_pktuk")]
+transform = Transform3D(0.988089, -0.153469, -0.0112701, 0.153883, 0.985436, 0.0723659, 0, -0.0732382, 0.997315, 5.57904, 3.0245, -12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/R_LargeShelf1/LargeShelf" index="0"]
+collision_mask = 34
+
+[node name="R_LargeShelf2" parent="WhiteMiddle/Shelves" index="1" instance=ExtResource("32_pktuk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.375, -12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/R_LargeShelf2/LargeShelf" index="0"]
+collision_mask = 34
+
+[node name="R_LargeShelf3" parent="WhiteMiddle/Shelves" index="2" instance=ExtResource("32_pktuk")]
+transform = Transform3D(1, 0, 0, 0, 0.99993, -0.0118156, 0, 0.0118156, 0.99993, 5.5, 1.313, -12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/R_LargeShelf3/LargeShelf" index="0"]
+collision_mask = 34
+
+[node name="L_LargeShelf1" parent="WhiteMiddle/Shelves" index="3" instance=ExtResource("32_pktuk")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.73852e-08, -0.999571, 0.0292999, -2.56148e-09, 0.0292999, 0.999571, -5.5, 3.438, -12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/L_LargeShelf1/LargeShelf" index="0"]
+collision_mask = 34
+
+[node name="L_LargeShelf2" parent="WhiteMiddle/Shelves" index="4" instance=ExtResource("32_pktuk")]
+transform = Transform3D(-0.996422, -0.0845127, 0, 0.0845127, -0.996422, 0, 0, 0, 1, -5.5, 2.375, -12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/L_LargeShelf2/LargeShelf" index="0"]
+collision_mask = 34
+
+[node name="L_LargeShelf3" parent="WhiteMiddle/Shelves" index="5" instance=ExtResource("32_pktuk")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.72028e-08, -0.997484, -0.0708881, 6.19724e-09, -0.0708881, 0.997484, -5.5, 1.313, -12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/L_LargeShelf3/LargeShelf" index="0"]
+collision_mask = 34
+
+[node name="R_SmallShelf1" parent="WhiteMiddle/Shelves" index="6" instance=ExtResource("33_t25hf")]
+transform = Transform3D(0.990384, 0.138343, 0, -0.138343, 0.990384, 0, 0, 0, 1, 5.5, 3.33218, 12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/R_SmallShelf1/SmallShelf" index="0"]
+collision_mask = 34
+
+[node name="R_SmallShelf2" parent="WhiteMiddle/Shelves" index="7" instance=ExtResource("33_t25hf")]
+transform = Transform3D(0.989425, -0.145047, 0, 0.145047, 0.989425, 0, 0, 0, 1, 5.5, 2.35098, 12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/R_SmallShelf2/SmallShelf" index="0"]
+collision_mask = 34
+
+[node name="R_SmallShelf3" parent="WhiteMiddle/Shelves" index="8" instance=ExtResource("33_t25hf")]
+transform = Transform3D(1, 0, 0, 0, 0.993081, 0.117433, 0, -0.117433, 0.993081, 5.5, 1.19867, 12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/R_SmallShelf3/SmallShelf" index="0"]
+collision_mask = 34
+
+[node name="L_SmallShelf1" parent="WhiteMiddle/Shelves" index="9" instance=ExtResource("33_t25hf")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.7384e-08, -0.999557, 0.0297709, -2.60266e-09, 0.0297709, 0.999557, -5.5, 3.438, 12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/L_SmallShelf1/SmallShelf" index="0"]
+collision_mask = 34
+
+[node name="L_SmallShelf2" parent="WhiteMiddle/Shelves" index="10" instance=ExtResource("33_t25hf")]
+transform = Transform3D(-0.998872, -0.0473538, 0.00359545, 0.0474901, -0.996005, 0.0756243, -6.73514e-09, 0.0757097, 0.99713, -5.5, 2.375, 12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/L_SmallShelf2/SmallShelf" index="0"]
+collision_mask = 34
+
+[node name="L_SmallShelf3" parent="WhiteMiddle/Shelves" index="11" instance=ExtResource("33_t25hf")]
+transform = Transform3D(-0.988811, -0.149173, 0, 0.149173, -0.988811, 0, 0, 0, 1, -5.5, 1.313, 12.5)
+
+[node name="StaticBody3D" parent="WhiteMiddle/Shelves/L_SmallShelf3/SmallShelf" index="0"]
+collision_mask = 34
 
 [node name="RedSide" type="Node3D" parent="." index="3"]
 
@@ -3914,8 +3989,8 @@ metadata/_edit_group_ = true
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_nx7kh")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("32_764xo")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -3934,7 +4009,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("11_cmrlc")
+surface_material_override/0 = ExtResource("33_1kegd")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/Crystal" index="0"]
@@ -3961,8 +4036,8 @@ omni_attenuation = -1.085
 [node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Monuments/LowerMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_nx7kh")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("32_764xo")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/LowerMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -4019,8 +4094,8 @@ metadata/_edit_group_ = true
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_nx7kh")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("32_764xo")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -4039,7 +4114,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80356, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("11_cmrlc")
+surface_material_override/0 = ExtResource("33_1kegd")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/Crystal" index="0"]
@@ -4066,8 +4141,8 @@ omni_attenuation = -0.839
 [node name="PlinthLower" type="MeshInstance3D" parent="RedSide/Monuments/MidMonument" index="2"]
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_nx7kh")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("32_764xo")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/MidMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -4122,8 +4197,8 @@ metadata/_edit_group_ = true
 transform = Transform3D(-1, 1.20797e-07, 0, -1.50996e-07, -0.8, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_nx7kh")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("32_764xo")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/PlinthUpper" index="0"]
 collision_mask = 34
@@ -4142,7 +4217,7 @@ shape = SubResource("ConcavePolygonShape3D_dioqo")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.35728, 0)
 mesh = SubResource("ArrayMesh_r67gi")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("11_cmrlc")
+surface_material_override/0 = ExtResource("33_1kegd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/Crystal" index="0"]
 collision_mask = 34
@@ -4154,8 +4229,8 @@ shape = SubResource("ConcavePolygonShape3D_0aya2")
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_padnk")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_nx7kh")
-surface_material_override/1 = ExtResource("7_pbjv6")
+surface_material_override/0 = ExtResource("32_764xo")
+surface_material_override/1 = ExtResource("4_x16ua")
 
 [node name="DetailCollision" type="StaticBody3D" parent="RedSide/Monuments/UpperMonument/PlinthLower" index="0"]
 collision_mask = 34
@@ -5160,38 +5235,38 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19, 0,
 [node name="RedLowerVines" parent="RedSide/Vines" index="0" instance=ExtResource("22_ifelm")]
 
 [node name="RedLowerVinesMesh" parent="RedSide/Vines/RedLowerVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="RedLowerConVines" parent="RedSide/Vines" index="1" instance=ExtResource("25_munml")]
 
 [node name="RedLowerConVinesMesh" parent="RedSide/Vines/RedLowerConVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="RedMidVines" parent="RedSide/Vines" index="2" instance=ExtResource("32_8ejan")]
 
 [node name="RedMidVinesMesh" parent="RedSide/Vines/RedMidVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="RedMidConVines" parent="RedSide/Vines" index="3" instance=ExtResource("33_tvp4p")]
 
 [node name="RedMidConVinesMesh" parent="RedSide/Vines/RedMidConVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="RedTopConVines" parent="RedSide/Vines" index="4" instance=ExtResource("34_j5flo")]
 
 [node name="RedTopConVinesMesh" parent="RedSide/Vines/RedTopConVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="RedTopVines" parent="RedSide/Vines" index="5" instance=ExtResource("35_idgc2")]
 
 [node name="RedTopVinesMesh" parent="RedSide/Vines/RedTopVines" index="0"]
-surface_material_override/0 = ExtResource("16_x0cwi")
-surface_material_override/1 = ExtResource("17_a328q")
+surface_material_override/0 = ExtResource("17_3djrk")
+surface_material_override/1 = ExtResource("18_wwbva")
 
 [node name="Doorways" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, -5.3551e-09, -1.76951e-08, -6.98492e-10, 1, 2.98023e-08, -8.84756e-09, 0, 1, 1.67638e-07, 0, 0)
@@ -5244,83 +5319,195 @@ transform = Transform3D(-1, 0, -8.74228e-08, 1.75025e-17, 1, 0, 8.74228e-08, 0, 
 [node name="IndividualDoorway4" parent="Doorways" index="15" instance=ExtResource("13_8yid6")]
 transform = Transform3D(1, 0, 0, -1.38781e-17, 1, 0, 0, 0, 1, -5.30853e-07, 8.94069e-07, -15)
 
-[node name="DoorwayDeep1" parent="." index="5"]
-surface_material_override/0 = ExtResource("15_vw7fy")
-
-[node name="MiddleSideRoom" parent="." index="6"]
+[node name="BlueMidCon" parent="." index="5"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="DoorwayDeep2" parent="." index="7"]
-surface_material_override/0 = ExtResource("15_vw7fy")
+[node name="StaticBody3D" parent="BlueMidCon" index="0"]
+collision_mask = 34
 
-[node name="MidSideRoom" parent="." index="10"]
+[node name="BlueMid" parent="." index="6"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="TopSideRoom" parent="." index="12"]
+[node name="StaticBody3D" parent="BlueMid" index="0"]
+collision_mask = 34
+
+[node name="BlueTop" parent="." index="7"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="TopSideConnector" parent="." index="13"]
+[node name="StaticBody3D" parent="BlueTop" index="0"]
+collision_mask = 34
+
+[node name="BlueTopCon" parent="." index="8"]
+surface_material_override/0 = ExtResource("12_f2neo")
+surface_material_override/1 = ExtResource("3_kquyh")
+
+[node name="StaticBody3D" parent="BlueTopCon" index="0"]
+collision_mask = 34
+
+[node name="BlueBottomCon" parent="." index="9"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="StaticBody3D" parent="BlueBottomCon" index="0"]
+collision_mask = 34
+
+[node name="BlueBottom" parent="." index="10"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="StaticBody3D" parent="BlueBottom" index="0"]
+collision_mask = 34
+
+[node name="TempleRoom" parent="." index="11"]
+gi_lightmap_scale = 3
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="StaticBody3D" parent="TempleRoom" index="0"]
+collision_mask = 34
+
+[node name="Entrance" parent="." index="12"]
 surface_material_override/0 = ExtResource("12_f2neo")
 surface_material_override/1 = ExtResource("6_4gkpw")
 
-[node name="BottomSideConnector" parent="." index="14"]
-surface_material_override/0 = ExtResource("12_f2neo")
+[node name="StaticBody3D" parent="Entrance" index="0"]
+collision_mask = 34
 
-[node name="BottomSideRoom" parent="." index="17"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="BottomSideRoomHull" parent="." index="25"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="BottomSideConnectorHull" parent="." index="26"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="MidSideRoomHull" parent="." index="27"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="MiddleSideRoomHull" parent="." index="28"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="DoorwayDeepHull2" parent="." index="29"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="TopSideRoomHull" parent="." index="30"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="TopSideConnectorHull" parent="." index="31"]
-surface_material_override/0 = ExtResource("12_f2neo")
-
-[node name="CenterRoom" parent="." index="32"]
+[node name="CenterRoom" parent="." index="13"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
 [node name="StaticBody3D" parent="CenterRoom" index="0"]
 collision_mask = 34
 
-[node name="LargeShelves" parent="." index="33"]
-surface_material_override/0 = ExtResource("16_dbeog")
-
-[node name="SmallShelves" parent="." index="34"]
-surface_material_override/0 = ExtResource("16_dbeog")
-
-[node name="CenterRoomHull" parent="." index="35"]
+[node name="RedBottom" parent="." index="14"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="TempleRoom" parent="." index="36"]
-gi_lightmap_scale = 3
+[node name="StaticBody3D" parent="RedBottom" index="0"]
+collision_mask = 34
+
+[node name="RedBottomCon" parent="." index="15"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="TempleRoomHull" parent="." index="37"]
+[node name="StaticBody3D" parent="RedBottomCon" index="0"]
+collision_mask = 34
+
+[node name="RedMid" parent="." index="16"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="Entrance" parent="." index="38"]
-surface_material_override/0 = ExtResource("12_f2neo")
-surface_material_override/1 = ExtResource("6_4gkpw")
+[node name="StaticBody3D" parent="RedMid" index="0"]
+collision_mask = 34
 
-[node name="EntranceHull" parent="." index="39"]
+[node name="RedTopCon" parent="." index="17"]
+surface_material_override/0 = ExtResource("12_f2neo")
+surface_material_override/1 = ExtResource("32_764xo")
+
+[node name="StaticBody3D" parent="RedTopCon" index="0"]
+collision_mask = 34
+
+[node name="RedTop" parent="." index="18"]
 surface_material_override/0 = ExtResource("12_f2neo")
 
-[node name="OccluderInstance3D" parent="." index="40"]
-layers = 15
+[node name="StaticBody3D" parent="RedTop" index="0"]
+collision_mask = 34
+
+[node name="RedMidCon" parent="." index="19"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="StaticBody3D" parent="RedMidCon" index="0"]
+collision_mask = 34
+
+[node name="BlueBottomConHull" parent="." index="20"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="BlueBottomHull" parent="." index="21"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="CenterHull" parent="." index="22"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="DoorwayDeepHull" parent="." index="23"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="EntranceHull" parent="." index="24"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="BlueMidConHull" parent="." index="25"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="BlueMidHull" parent="." index="26"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="TempleHull" parent="." index="27"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="BlueTopConHull" parent="." index="28"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="BlueTopHull" parent="." index="29"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="RedBottomHull" parent="." index="30"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="RedBottomConHull" parent="." index="31"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="RedMidHull" parent="." index="32"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="RedMidConHull" parent="." index="33"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="RedTopConHull" parent="." index="34"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="RedTopHull" parent="." index="35"]
+surface_material_override/0 = ExtResource("12_f2neo")
+
+[node name="Doorway1" parent="." index="36"]
+collision_mask = 34
+
+[node name="Doorway2" parent="." index="37"]
+collision_mask = 34
+
+[node name="Doorway3" parent="." index="38"]
+collision_mask = 34
+
+[node name="Doorway4" parent="." index="39"]
+collision_mask = 34
+
+[node name="Doorway5" parent="." index="40"]
+collision_mask = 34
+
+[node name="Doorway6" parent="." index="41"]
+collision_mask = 34
+
+[node name="Doorway7" parent="." index="42"]
+collision_mask = 34
+
+[node name="Doorway8" parent="." index="43"]
+collision_mask = 34
+
+[node name="Doorway9" parent="." index="44"]
+collision_mask = 34
+
+[node name="Doorway10" parent="." index="45"]
+collision_mask = 34
+
+[node name="Doorway11" parent="." index="46"]
+collision_mask = 34
+
+[node name="Doorway12" parent="." index="47"]
+collision_mask = 34
+
+[node name="DoorwayDeep1" parent="." index="48"]
+surface_material_override/0 = ExtResource("15_vw7fy")
+
+[node name="StaticBody3D" parent="DoorwayDeep1" index="0"]
+collision_mask = 34
+
+[node name="DoorwayDeep2" parent="." index="49"]
+surface_material_override/0 = ExtResource("15_vw7fy")
+
+[node name="StaticBody3D" parent="DoorwayDeep2" index="0"]
+collision_mask = 34
 
 [editable path="BlueSide/Vines/BlueLowerVines"]
 [editable path="BlueSide/Vines/BlueLowerConVines"]
@@ -5333,6 +5520,18 @@ layers = 15
 [editable path="WhiteMiddle/Vines/WhiteTopBlueVines"]
 [editable path="WhiteMiddle/Vines/WhiteTopCeilingVines"]
 [editable path="WhiteMiddle/Vines/WhiteTopRedVines"]
+[editable path="WhiteMiddle/Shelves/R_LargeShelf1"]
+[editable path="WhiteMiddle/Shelves/R_LargeShelf2"]
+[editable path="WhiteMiddle/Shelves/R_LargeShelf3"]
+[editable path="WhiteMiddle/Shelves/L_LargeShelf1"]
+[editable path="WhiteMiddle/Shelves/L_LargeShelf2"]
+[editable path="WhiteMiddle/Shelves/L_LargeShelf3"]
+[editable path="WhiteMiddle/Shelves/R_SmallShelf1"]
+[editable path="WhiteMiddle/Shelves/R_SmallShelf2"]
+[editable path="WhiteMiddle/Shelves/R_SmallShelf3"]
+[editable path="WhiteMiddle/Shelves/L_SmallShelf1"]
+[editable path="WhiteMiddle/Shelves/L_SmallShelf2"]
+[editable path="WhiteMiddle/Shelves/L_SmallShelf3"]
 [editable path="RedSide/Vines/RedLowerVines"]
 [editable path="RedSide/Vines/RedLowerConVines"]
 [editable path="RedSide/Vines/RedMidVines"]

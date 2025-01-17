@@ -88,6 +88,15 @@ func _ready() -> void:
 		shoot_cast.add_exception(body_seg)
 
 
+func _screen_entered() -> void:
+	anim_tree.process_mode = Node.PROCESS_MODE_INHERIT
+	skeleton.visible = true
+
+func _screen_exited() -> void:
+	anim_tree.process_mode = Node.PROCESS_MODE_DISABLED
+	skeleton.visible = false
+
+
 func set_processing(new_process) -> void:
 	set_process(new_process)
 	set_physics_process(new_process)

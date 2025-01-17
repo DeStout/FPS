@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://quvmcav0pm1r"
+uid="uid://dt5ow7fb3up6y"
 path="res://.godot/imported/2MLog.blend-485679def7691fe81bb86380895ff63b.scn"
 
 [deps]
@@ -32,11 +32,6 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"materials": {
-"@MATERIAL:0": {
-"use_external/path": "res://Maps/BotSim/Temple/RoughWood.tres"
-}
-},
 "meshes": {
 "2MLog_Cube": {
 "generate/lightmap_uv": 0,
@@ -45,7 +40,7 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Maps/BotSim/Temple/assets/Props/Logs/2MLog.res"
+"save_to_file/path": "res://Maps/BotSim/Temple/Assets/Props/Logs/2MLog.res"
 }
 }
 }

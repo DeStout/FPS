@@ -14,7 +14,7 @@ var players_container = null
 var player : CharacterBase = null
 var player_pos : Transform3D
 
-var debug_camera_ = preload("res://Autoloads/Debug/DebugCamera.tscn")
+var debug_camera_ = load("res://Autoloads/Debug/DebugCamera.tscn")
 var debug_camera : CharacterBody3D = null
 var cam_swap := false
 
@@ -61,7 +61,7 @@ func _set_bottomless_mag(is_bottomless : bool) -> void:
 
 func _bot_sim_started(new_level) -> void:
 	bot_sim_level = new_level
-	players_container = bot_sim_level.get_node("Players")
+	players_container = bot_sim_level.players
 	player = players_container.player
 
 
@@ -69,8 +69,12 @@ func _bot_sim_ended() -> void:
 	bot_sim_level = null
 	players_container = null
 	player = null
-	debug_camera = null
 	cam_swap = false
+	
+	if debug_camera:
+		cam_swap = false
+		debug_camera.queue_free()
+		debug_camera = null
 
 
 func _swap_cameras() -> void:

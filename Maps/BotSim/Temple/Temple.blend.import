@@ -53,10 +53,43 @@ _subresources={
 }
 },
 "nodes": {
-"PATH:BottomSideConnector": {
+"PATH:BlueBottom": {
 "generate/occluder": 1
 },
-"PATH:BottomSideRoom": {
+"PATH:BlueBottomCon": {
+"generate/occluder": 1
+},
+"PATH:BlueBottomConHull": {
+"generate/occluder": 1
+},
+"PATH:BlueBottomHull": {
+"generate/occluder": 1
+},
+"PATH:BlueMid": {
+"generate/occluder": 1
+},
+"PATH:BlueMidCon": {
+"generate/occluder": 1
+},
+"PATH:BlueMidConHull": {
+"generate/occluder": 1
+},
+"PATH:BlueMidHull": {
+"generate/occluder": 1
+},
+"PATH:BlueTop": {
+"generate/occluder": 1
+},
+"PATH:BlueTopCon": {
+"generate/occluder": 1
+},
+"PATH:BlueTopConHull": {
+"generate/occluder": 1
+},
+"PATH:BlueTopHull": {
+"generate/occluder": 1
+},
+"PATH:CenterHull": {
 "generate/occluder": 1
 },
 "PATH:CenterRoom": {
@@ -68,22 +101,55 @@ _subresources={
 "PATH:DoorwayDeep2": {
 "generate/occluder": 1
 },
+"PATH:DoorwayDeepHull": {
+"generate/occluder": 1
+},
 "PATH:Entrance": {
 "generate/occluder": 1
 },
-"PATH:MidSideRoom": {
+"PATH:EntranceHull": {
 "generate/occluder": 1
 },
-"PATH:MiddleSideRoom": {
+"PATH:RedBottom": {
+"generate/occluder": 1
+},
+"PATH:RedBottomCon": {
+"generate/occluder": 1
+},
+"PATH:RedBottomConHull": {
+"generate/occluder": 1
+},
+"PATH:RedBottomHull": {
+"generate/occluder": 1
+},
+"PATH:RedMid": {
+"generate/occluder": 1
+},
+"PATH:RedMidCon": {
+"generate/occluder": 1
+},
+"PATH:RedMidConHull": {
+"generate/occluder": 1
+},
+"PATH:RedMidHull": {
+"generate/occluder": 1
+},
+"PATH:RedTop": {
+"generate/occluder": 1
+},
+"PATH:RedTopCon": {
+"generate/occluder": 1
+},
+"PATH:RedTopConHull": {
+"generate/occluder": 1
+},
+"PATH:RedTopHull": {
+"generate/occluder": 1
+},
+"PATH:TempleHull": {
 "generate/occluder": 1
 },
 "PATH:TempleRoom": {
-"generate/occluder": 1
-},
-"PATH:TopSideConnector": {
-"generate/occluder": 1
-},
-"PATH:TopSideRoom": {
 "generate/occluder": 1
 }
 }

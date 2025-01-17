@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djk7mxbgsy43v"
+uid="uid://dmoy7q1whwiwd"
 path="res://.godot/imported/RubbleA.blend-0f3a6e3629fec33c7890c05db752cf53.scn"
 
 [deps]
@@ -40,7 +40,7 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Maps/BotSim/Temple/assets/Props/Misc/RubbleA.res"
+"save_to_file/path": "res://Maps/BotSim/Temple/Assets/Props/Misc/RubbleA.res"
 }
 }
 }

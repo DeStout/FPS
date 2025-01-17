@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c7kw14f0rdw0x"
+uid="uid://cpey1b0nnlck0"
 path="res://.godot/imported/StoneDoorway.blend-4847c2698b4e9538dcc9d6256b0fa69c.scn"
 
 [deps]
@@ -40,7 +40,7 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Maps/BotSim/Temple/assets/Props/Misc/StoneDoorway.res"
+"save_to_file/path": "res://Maps/BotSim/Temple/Assets/Props/Misc/StoneDoorway.res"
 }
 }
 }

@@ -71,7 +71,7 @@ shape = SubResource("CapsuleShape3D_5yxej")
 
 [node name="Skeleton3D" parent="Mannequin/Mannequin" index="0"]
 show_rest_only = false
-bones/0/position = Vector3(-5.98402e-06, 0.965836, -4.11674e-07)
+bones/0/position = Vector3(-5.98401e-06, 0.960486, -4.11952e-07)
 bones/1/rotation = Quaternion(0, 0, 0, 1)
 bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
@@ -116,16 +116,16 @@ bones/51/rotation = Quaternion(0, 0, 0, 1)
 bones/52/rotation = Quaternion(0, 0, 0, 1)
 bones/53/rotation = Quaternion(0, 0, 0, 1)
 bones/55/rotation = Quaternion(0.0155962, -0.200379, 0.979158, 0.0292304)
-bones/56/rotation = Quaternion(0.000661137, 0.978515, 0.205274, -0.0192586)
-bones/57/rotation = Quaternion(0.0585394, 0.690616, -0.718217, 0.0615352)
+bones/56/rotation = Quaternion(0.000624385, 0.979129, 0.202341, -0.0190816)
+bones/57/rotation = Quaternion(0.05905, 0.693981, -0.714933, 0.061435)
 bones/58/rotation = Quaternion(-0.0062387, 0.985966, -0.164283, -0.0290379)
 bones/60/rotation = Quaternion(0.00470322, 0.0586903, 0.997904, -0.0268647)
-bones/61/rotation = Quaternion(0.000663773, 0.993839, 0.109786, -0.0152034)
-bones/62/rotation = Quaternion(-0.0744446, 0.787788, -0.608904, -0.0555404)
+bones/61/rotation = Quaternion(0.000600626, 0.99337, 0.113981, -0.0149755)
+bones/62/rotation = Quaternion(-0.0761321, 0.796676, -0.597093, -0.0546844)
 bones/63/rotation = Quaternion(0.0102404, 0.992902, -0.11743, 0.0158373)
 
 [node name="Head" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85028e-05, 1.56867, 0.00340767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85028e-05, 1.56332, 0.00340767)
 bone_name = "mixamorig_Head"
 bone_idx = 5
 
@@ -138,7 +138,7 @@ script = ExtResource("3_icqlu")
 shape = SubResource("CapsuleShape3D_ybita")
 
 [node name="Neck" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94757e-05, 1.46545, 0.034832)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94757e-05, 1.4601, 0.034832)
 bone_name = "mixamorig_Neck"
 bone_idx = 4
 
@@ -151,7 +151,7 @@ script = ExtResource("3_icqlu")
 shape = SubResource("CylinderShape3D_5nwuk")
 
 [node name="R_UpperArm" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="4"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.187632, 1.40356, 0.0617143)
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.187632, 1.39821, 0.0617143)
 bone_name = "mixamorig_RightArm"
 bone_idx = 32
 
@@ -165,7 +165,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_o0x7p")
 
 [node name="R_Forearm" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="5"]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.461679, 1.40353, 0.0617141)
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.461679, 1.39818, 0.0617141)
 bone_name = "mixamorig_RightForeArm"
 bone_idx = 33
 
@@ -179,7 +179,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_3mg8s")
 
 [node name="R_Hand" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="6"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.737823, 1.40351, 0.0617139)
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.737823, 1.39816, 0.0617139)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
@@ -199,7 +199,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0789925, 0)
 
 [node name="L_UpperArm" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="7"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.187585, 1.40359, 0.0617148)
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.187585, 1.39824, 0.0617148)
 bone_name = "mixamorig_LeftArm"
 bone_idx = 8
 
@@ -213,7 +213,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_o0x7p")
 
 [node name="L_Forearm" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="8"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.461632, 1.40361, 0.0617149)
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.461632, 1.39826, 0.0617149)
 bone_name = "mixamorig_LeftForeArm"
 bone_idx = 9
 
@@ -227,7 +227,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_3mg8s")
 
 [node name="L_Hand" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="9"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.737777, 1.40364, 0.0617148)
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.737777, 1.39829, 0.0617148)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 10
 
@@ -241,7 +241,7 @@ body_seg = 2
 shape = SubResource("BoxShape3D_q006a")
 
 [node name="Chest" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65333e-05, 1.31513, 0.042761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65333e-05, 1.30978, 0.042761)
 bone_name = "mixamorig_Spine2"
 bone_idx = 3
 
@@ -255,7 +255,7 @@ body_seg = 1
 shape = SubResource("CapsuleShape3D_33ikk")
 
 [node name="Stomach" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71302e-06, 1.18153, 0.0264964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71302e-06, 1.17618, 0.0264964)
 bone_name = "mixamorig_Spine1"
 bone_idx = 2
 
@@ -269,7 +269,7 @@ body_seg = 1
 shape = SubResource("CapsuleShape3D_u53g5")
 
 [node name="Hips" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98402e-06, 0.965836, -4.11674e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98401e-06, 0.960486, -4.11952e-07)
 bone_name = "mixamorig_Hips"
 bone_idx = 0
 
@@ -283,7 +283,7 @@ body_seg = 1
 shape = SubResource("SphereShape3D_xg4we")
 
 [node name="R_Thigh" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="13"]
-transform = Transform3D(-0.998513, 0.0541688, 0.00623332, -0.0530647, -0.991668, 0.117387, 0.0125401, 0.116882, 0.993067, 0.0912385, 0.899272, 0.00055338)
+transform = Transform3D(-0.998513, 0.0541688, 0.00623332, -0.0530647, -0.991668, 0.117387, 0.0125401, 0.116882, 0.993067, 0.0912385, 0.893921, 0.00055338)
 bone_name = "mixamorig_RightUpLeg"
 bone_idx = 60
 
@@ -297,7 +297,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_m40cq")
 
 [node name="R_Shin" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="14"]
-transform = Transform3D(0.99813, 0.0495724, 0.0357705, 0.0586066, -0.942395, -0.329328, 0.0173844, 0.330808, -0.943538, 0.115704, 0.497433, 0.0530787)
+transform = Transform3D(0.99813, 0.0495724, 0.0357706, 0.0587515, -0.939564, -0.337295, 0.0168882, 0.338766, -0.940719, 0.115704, 0.492083, 0.0530787)
 bone_name = "mixamorig_RightLeg"
 bone_idx = 61
 
@@ -311,7 +311,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_o4b52")
 
 [node name="R_Foot" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="15"]
-transform = Transform3D(-0.976997, -0.206343, -0.0538483, -0.0694758, 0.0692489, 0.995178, -0.201619, 0.976026, -0.0819917, 0.133369, 0.107818, 0.211576)
+transform = Transform3D(-0.976997, -0.206343, -0.0538483, -0.0651563, 0.0483991, 0.996701, -0.203056, 0.977282, -0.0607303, 0.133369, 0.103822, 0.214865)
 bone_name = "mixamorig_RightFoot"
 bone_idx = 62
 
@@ -325,7 +325,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_f7heq")
 
 [node name="L_Thigh" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="16"]
-transform = Transform3D(-0.997805, -0.0634927, 0.018828, 0.0509921, -0.917988, -0.393317, 0.0422567, -0.391493, 0.91921, -0.0912506, 0.899272, 0.000553348)
+transform = Transform3D(-0.997805, -0.0634927, 0.018828, 0.0509921, -0.917988, -0.393317, 0.0422567, -0.391493, 0.91921, -0.0912506, 0.893922, 0.000553348)
 bone_name = "mixamorig_LeftUpLeg"
 bone_idx = 55
 
@@ -339,7 +339,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_m40cq")
 
 [node name="L_Shin" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="17"]
-transform = Transform3D(0.998198, -0.0597588, -0.00539971, -0.0598145, -0.998151, -0.0108345, -0.00474227, 0.0111379, -0.999927, -0.11937, 0.524708, -0.153532)
+transform = Transform3D(0.998198, -0.0597588, -0.00539973, -0.059785, -0.9982, -0.00483066, -0.00510133, 0.00514475, -0.999974, -0.11937, 0.519358, -0.153532)
 bone_name = "mixamorig_LeftLeg"
 bone_idx = 56
 
@@ -353,7 +353,7 @@ body_seg = 2
 shape = SubResource("CapsuleShape3D_o4b52")
 
 [node name="L_Foot" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="18"]
-transform = Transform3D(-0.982434, 0.176563, 0.0604055, 0.0683045, 0.0390017, 0.996902, 0.17366, 0.983516, -0.0503765, -0.141944, 0.105083, -0.12827)
+transform = Transform3D(-0.982434, 0.176563, 0.0604055, 0.0656106, 0.023787, 0.997562, 0.174696, 0.984002, -0.0349536, -0.141944, 0.0995887, -0.13079)
 bone_name = "mixamorig_LeftFoot"
 bone_idx = 57
 
@@ -416,6 +416,11 @@ unit_size = 2.0
 max_distance = 3.0
 bus = &"SFX"
 
+[node name="ScreenNotify" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.856132, -0.101614)
+layers = 2
+aabb = AABB(-0.4, -0.85, -0.4, 0.8, 1.8, 0.8)
+
 [connection signal="take_damage" from="Mannequin/Mannequin/Skeleton3D/Head/HeadArea" to="." method="take_damage"]
 [connection signal="take_damage" from="Mannequin/Mannequin/Skeleton3D/Neck/NeckArea" to="." method="take_damage"]
 [connection signal="take_damage" from="Mannequin/Mannequin/Skeleton3D/R_UpperArm/UpperArmArea" to="." method="take_damage"]
@@ -433,5 +438,7 @@ bus = &"SFX"
 [connection signal="take_damage" from="Mannequin/Mannequin/Skeleton3D/L_Thigh/ThighArea" to="." method="take_damage"]
 [connection signal="take_damage" from="Mannequin/Mannequin/Skeleton3D/L_Shin/ShinArea" to="." method="take_damage"]
 [connection signal="take_damage" from="Mannequin/Mannequin/Skeleton3D/L_Foot/FootArea" to="." method="take_damage"]
+[connection signal="screen_entered" from="ScreenNotify" to="." method="_screen_entered"]
+[connection signal="screen_exited" from="ScreenNotify" to="." method="_screen_exited"]
 
 [editable path="Mannequin"]
