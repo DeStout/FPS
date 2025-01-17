@@ -3887,6 +3887,7 @@ surface_material_override/1 = ExtResource("18_wwbva")
 [node name="WhiteTopBlueVines" parent="WhiteMiddle/Vines" index="2" instance=ExtResource("29_2aglb")]
 
 [node name="WhiteTopBlueVinesMesh" parent="WhiteMiddle/Vines/WhiteTopBlueVines" index="0"]
+sorting_offset = -1.0
 surface_material_override/0 = ExtResource("17_3djrk")
 surface_material_override/1 = ExtResource("18_wwbva")
 

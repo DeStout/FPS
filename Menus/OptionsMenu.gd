@@ -19,6 +19,7 @@ const INVERT_DEFAULT := false
 @export var invincibility : CheckBox
 @export var infinite_ammo : CheckBox
 @export var bottomless_mag : CheckBox
+@export var wireframe : CheckBox
 
 
 func default() -> void:

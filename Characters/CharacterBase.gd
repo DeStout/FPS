@@ -90,11 +90,9 @@ func _ready() -> void:
 
 func _screen_entered() -> void:
 	anim_tree.process_mode = Node.PROCESS_MODE_INHERIT
-	skeleton.visible = true
 
 func _screen_exited() -> void:
 	anim_tree.process_mode = Node.PROCESS_MODE_DISABLED
-	skeleton.visible = false
 
 
 func set_processing(new_process) -> void:

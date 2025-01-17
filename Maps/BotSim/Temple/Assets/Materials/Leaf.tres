@@ -7,6 +7,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e4lx1"]
 
 [resource]
+render_priority = -1
 transparency = 1
 albedo_texture = ExtResource("1_umdl6")
 roughness_texture = ExtResource("4_ddmb8")

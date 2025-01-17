@@ -30,6 +30,7 @@ func _ready() -> void:
 	HUD.pause_menu.options.invincibility.toggled.connect(_set_invincible)
 	HUD.pause_menu.options.infinite_ammo.toggled.connect(_set_infinite_ammo)
 	HUD.pause_menu.options.bottomless_mag.toggled.connect(_set_bottomless_mag)
+	HUD.pause_menu.options.wireframe.toggled.connect(_set_wireframe)
 
 
 func _process(_delta) -> void:
@@ -57,6 +58,15 @@ func _set_infinite_ammo(is_infinite : bool) -> void:
 
 func _set_bottomless_mag(is_bottomless : bool) -> void:
 	bottomless_mag = is_bottomless
+
+func _set_wireframe(is_wireframe : bool) -> void:
+	var vp_rid := get_viewport().get_viewport_rid()
+	if is_wireframe:
+		RenderingServer.viewport_set_debug_draw(vp_rid, \
+									RenderingServer.VIEWPORT_DEBUG_DRAW_WIREFRAME)
+	else:
+		RenderingServer.viewport_set_debug_draw(vp_rid, \
+									RenderingServer.VIEWPORT_DEBUG_DRAW_DISABLED)
 
 
 func _bot_sim_started(new_level) -> void:

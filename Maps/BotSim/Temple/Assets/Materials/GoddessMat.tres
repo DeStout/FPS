@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Goddess.gdshader" id="1_pxxmm"]
 
 [resource]
-render_priority = 0
+render_priority = 2
 shader = ExtResource("1_pxxmm")
 shader_parameter/albedo = Color(1, 0, 0.716667, 0.0196078)
 shader_parameter/roughness = 0.238
