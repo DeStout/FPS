@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Props/PickUps/WeaponPickUp.gd" id="2_7jj57"]
 [ext_resource type="PackedScene" uid="uid://c7c70o2wmstqa" path="res://Props/Weapons/Pistol/PistolBase.tscn" id="3_hhi7m"]
 [ext_resource type="AudioStream" uid="uid://ca5b4phw81h2w" path="res://Props/PickUps/Audio/PickupWeapon.ogg" id="4_6o66x"]
-[ext_resource type="Texture2D" uid="uid://rripmqvgbn08" path="res://Props/Weapons/Pistol/Pistol_Pistol_A.png" id="4_jnd8e"]
+[ext_resource type="Texture2D" uid="uid://c5vip1hhevobq" path="res://Props/Weapons/Pistol/Pistol_A.png" id="4_jnd8e"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7apmu"]
 resource_local_to_scene = true
@@ -60,9 +60,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_7apmu")
 
 [node name="Model" parent="." index="1"]
-transform = Transform3D(0.608559, 0.098079, -1.89496, 0.942943, 1.71969, 0.391842, 1.64855, -1.0126, 0.477031, 0, 0.244229, 0)
+transform = Transform3D(-0.903455, 0.850614, -1.55916, 0.942943, 1.71969, 0.391842, 1.50726, -0.55806, -1.17791, 0, 0.244229, 0)
 
-[node name="Pistol2" type="MeshInstance3D" parent="Model" index="0" instance=ExtResource("3_hhi7m")]
+[node name="Pistol" type="MeshInstance3D" parent="Model" index="0" instance=ExtResource("3_hhi7m")]
 mesh = SubResource("ArrayMesh_awglp")
 skeleton = NodePath("")
 

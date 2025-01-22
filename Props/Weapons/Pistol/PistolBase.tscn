@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://c7c70o2wmstqa"]
 
-[ext_resource type="Texture2D" uid="uid://rripmqvgbn08" path="res://Props/Weapons/Pistol/Pistol_Pistol_A.png" id="1_ceevg"]
+[ext_resource type="Texture2D" uid="uid://c5vip1hhevobq" path="res://Props/Weapons/Pistol/Pistol_A.png" id="1_ceevg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qurdo"]
 resource_name = "M_Pistol"

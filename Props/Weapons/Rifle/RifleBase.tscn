@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://c7isot5rpcwus"]
 
-[ext_resource type="Texture2D" uid="uid://bct0wpf7d6sdh" path="res://Props/Weapons/Rifle/Rifle_Rifle_A.png" id="1_4fsfh"]
+[ext_resource type="Texture2D" uid="uid://bsn4yu3k8hmrn" path="res://Props/Weapons/Rifle/Rifle_A.png" id="1_4fsfh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht57f"]
 resource_name = "Rifle"
