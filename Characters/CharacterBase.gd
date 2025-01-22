@@ -383,9 +383,6 @@ func add_weapon(new_weapon : Weapon) -> void:
 	
 	if new_weapon.weapon_type > weapon_held.weapon_type:
 		_switch_weapon(new_weapon)
-	
-	#if new_weapon.weapon_type == Globals.WEAPONS.SNIPER:
-		#new_weapon.weapon_type = Globals.WEAPONS.RIFLE
 
 
 func _have_weapon(weapon_type : int ) -> bool:
@@ -404,7 +401,7 @@ func _get_weapon(weapon_type : int) -> Weapon:
 
 
 func _switch_to_next_weapon() -> void:
-	# weapons backwards = snopaew
+	#-- weapons backwards = snopaew --#
 	var snopaew := []
 	for weapon in weapons.get_children():
 		snopaew.append(weapon.weapon_type)
@@ -416,22 +413,21 @@ func _switch_to_next_weapon() -> void:
 
 
 func _switch_weapon(new_weapon : Weapon) -> void:
-	if new_weapon != null:
-		if weapon_held != new_weapon and !switching_weapons:
-			switching_weapons = true
-			var old_weapon : Weapon = weapon_held
-			if weapon_held:
-				weapon_held.interrupt_reload()
-			weapon_held = new_weapon
-			weapon_state_machine = $Mannequin/AnimTree["parameters/Upper/" + \
-					Globals.WEAPON_NAMES[new_weapon.weapon_type] + "/playback"]
-			
-			await _anim_weapon_switch(old_weapon, weapon_held)
-			switching_weapons = false
-		if mode_func is BotSimFunc:
-			mode_func.switch_weapon(new_weapon)
-	else:
-		assert(new_weapon != null, "Cannot switch to a NULL weapon")
+	assert(new_weapon != null, "CharacterBase._switch_weapon(): " \
+														+ "new_weapon is null")
+	if weapon_held != new_weapon and !switching_weapons:
+		switching_weapons = true
+		var old_weapon : Weapon = weapon_held
+		if weapon_held:
+			weapon_held.interrupt_reload()
+		weapon_held = new_weapon
+		weapon_state_machine = $Mannequin/AnimTree["parameters/Upper/" + \
+				Globals.WEAPON_NAMES[new_weapon.weapon_type] + "/playback"]
+		
+		await _anim_weapon_switch(old_weapon, weapon_held)
+		switching_weapons = false
+	if mode_func is BotSimFunc:
+		mode_func.switch_weapon(new_weapon)
 
 
 func _anim_weapon_switch(old_weapon : Weapon, new_weapon : Weapon) -> void:

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c84m2rgvte01j"
-path="res://.godot/imported/FP_PistolAnims.blend-ca0acb652543ab6341efbc1cd966cb4f.scn"
+uid="uid://db8n5p7wvqmqg"
+path="res://.godot/imported/FP_RifleAnims.blend-fef3ebe4cf7b02b6d017a26a022b1210.scn"
 
 [deps]
 
-source_file="res://Characters/Player/FirstPerson/FP_PistolAnims.blend"
-dest_files=["res://.godot/imported/FP_PistolAnims.blend-ca0acb652543ab6341efbc1cd966cb4f.scn"]
+source_file="res://Characters/Player/FirstPerson/Anims/FP_RifleAnims.blend"
+dest_files=["res://.godot/imported/FP_RifleAnims.blend-fef3ebe4cf7b02b6d017a26a022b1210.scn"]
 
 [params]
 
@@ -33,7 +33,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "animations": {
-"PistolIdle": {
+"RifleIdle": {
 "save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",
@@ -1832,7 +1832,7 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 },
-"PistolRun": {
+"RifleRun": {
 "save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",

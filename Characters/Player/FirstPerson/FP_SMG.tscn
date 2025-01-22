@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbyw05bkm46t1"]
+
+[ext_resource type="PackedScene" uid="uid://cncyyqssn24po" path="res://Characters/Player/FirstPerson/Anims/FP_SMGAnims.blend" id="1_y4uu0"]
+[ext_resource type="Script" path="res://Characters/Player/FirstPerson/FPWeapon.gd" id="2_31udl"]
+
+[node name="FP_SMG" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_y4uu0")]
+script = ExtResource("2_31udl")
+weapon_type = 2
+weapon_mesh = [NodePath("Mannequin/Skeleton3D/SMGBody/SMGBody"), NodePath("Mannequin/Skeleton3D/SMGMag/SMGMag")]
+
+[node name="SMGMag" parent="Mannequin/Skeleton3D" index="0"]
+transform = Transform3D(100, -4.16015e-05, 6.27952e-06, 2.96141e-05, 99.8295, 5.83759, -1.00145e-05, -5.83759, 99.8295, 84.763, 1.88203, 5.77784)
+
+[node name="SMGBody" parent="Mannequin/Skeleton3D" index="1"]
+transform = Transform3D(100, -1.79262e-05, 1.97069e-06, 6.3763e-06, 100, 1.98975e-06, -3.2879e-06, -6.45305e-06, 100, 84.763, 1.91781, 6.17138)

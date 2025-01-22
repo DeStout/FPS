@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1it7mpnktnm3"]
+
+[ext_resource type="PackedScene" uid="uid://sphnnhw7es0i" path="res://Characters/Player/FirstPerson/Anims/FP_ShotgunAnims.blend" id="1_vn0d1"]
+[ext_resource type="Script" path="res://Characters/Player/FirstPerson/FPWeapon.gd" id="2_h3feq"]
+
+[node name="FP_Shotgun" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_vn0d1")]
+script = ExtResource("2_h3feq")
+weapon_type = 4
+weapon_mesh = [NodePath("Mannequin/Skeleton3D/ShotgunBody/ShotgunBody"), NodePath("Mannequin/Skeleton3D/ShotgunPump/ShotgunPump"), NodePath("Mannequin/Skeleton3D/ShotgunShell/ShotgunShell")]
+
+[node name="ShotgunPump" parent="Mannequin/Skeleton3D" index="0"]
+transform = Transform3D(100, -5.47032e-06, 2.44708e-05, -9.05984e-06, 100, 4.53099e-05, -2.28385e-05, -4.67943e-05, 100, 84.763, 1.91806, 6.17136)
+
+[node name="ShotgunBody" parent="Mannequin/Skeleton3D" index="1"]
+transform = Transform3D(100, -0.0171382, 0.00845312, 0.0171181, 100, 0.0653778, -0.00846269, -0.0653778, 100, 84.763, 1.91875, 6.1716)
+
+[node name="ShotgunShell" parent="Mannequin/Skeleton3D" index="2"]
+transform = Transform3D(100, -2.22045e-14, 2.22045e-14, 2.22045e-14, 100, -8.58307e-06, -2.22045e-14, 8.58307e-06, 100, 6.96713e-23, -4.86719, 0)

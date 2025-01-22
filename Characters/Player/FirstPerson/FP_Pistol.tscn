@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://di2yt2mm3cu4s"]
+
+[ext_resource type="PackedScene" uid="uid://c84m2rgvte01j" path="res://Characters/Player/FirstPerson/Anims/FP_PistolAnims.blend" id="1_csryp"]
+[ext_resource type="Script" path="res://Characters/Player/FirstPerson/FPWeapon.gd" id="2_0s0fx"]
+
+[node name="FP_Pistol" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_csryp")]
+script = ExtResource("2_0s0fx")
+weapon_type = 1
+weapon_mesh = [NodePath("Mannequin/Skeleton3D/PistolBody/PistolBody"), NodePath("Mannequin/Skeleton3D/PistolMag/PistolMag")]
+
+[node name="PistolMag" parent="Mannequin/Skeleton3D" index="0"]
+transform = Transform3D(100, 3.69211e-06, 1.25494e-05, -7.08735e-07, 30.2952, -95.3006, -8.63768e-06, 95.3006, 30.2952, 73.7829, 3.82476, 5.56548)
+
+[node name="PistolBody" parent="Mannequin/Skeleton3D" index="1"]
+transform = Transform3D(100, 1.98531e-06, 1.74497e-05, 5.89981e-06, 9.54843e-06, -100, -3.30253e-06, 100, 1.40117e-05, 73.7829, 6.91875, 6.17137)

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvpfdvyui6d4b"]
-
-[ext_resource type="Script" path="res://Characters/Player/FirstPerson.gd" id="2_s7flq"]
-
-[node name="FirstPerson" type="Node3D"]
-script = ExtResource("2_s7flq")
