@@ -426,8 +426,9 @@ func _switch_weapon(new_weapon : Weapon) -> void:
 		
 		await _anim_weapon_switch(old_weapon, weapon_held)
 		switching_weapons = false
-	if mode_func is BotSimFunc:
-		mode_func.switch_weapon(new_weapon)
+		
+		if mode_func is BotSimFunc:
+			mode_func.switch_weapon(new_weapon)
 
 
 func _anim_weapon_switch(old_weapon : Weapon, new_weapon : Weapon) -> void:

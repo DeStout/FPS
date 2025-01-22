@@ -24,7 +24,7 @@ func set_color(new_color : Color) -> void:
 
 func _ready() -> void:
 	await character.ready
-	character.add_weapon(Globals.weapons[character.rand_weapon()].instantiate())
+	#character.add_weapon(Globals.weapons[character.rand_weapon()].instantiate())
 
 
 func switch_weapon(new_weapon : Weapon) -> void:

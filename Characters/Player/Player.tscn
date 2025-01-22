@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://r3koenwobfw4"]
+[gd_scene load_steps=7 format=3 uid="uid://r3koenwobfw4"]
 
 [ext_resource type="PackedScene" uid="uid://65jhlh1xbkow" path="res://Characters/CharacterBase.tscn" id="1_x0s2j"]
 [ext_resource type="Script" path="res://Characters/Player/Player.gd" id="2_v47e3"]
 [ext_resource type="Script" path="res://Characters/Player/FirstPerson/FirstPerson.gd" id="3_hpkn3"]
-[ext_resource type="PackedScene" uid="uid://cwx7axmj3m8ke" path="res://Characters/Player/FirstPerson/FP_Slapper.tscn" id="4_jonbf"]
 [ext_resource type="Shader" path="res://Characters/Player/FirstPerson/FPShader.gdshader" id="5_te2xj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_bd5r0"]
@@ -153,9 +152,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0)
 script = ExtResource("3_hpkn3")
 player = NodePath("../..")
 
-[node name="FP_Slapper" parent="AimHelper/FirstPerson" index="0" instance=ExtResource("4_jonbf")]
-
-[node name="FPCanvas" type="CanvasLayer" parent="AimHelper/FirstPerson" index="1"]
+[node name="FPCanvas" type="CanvasLayer" parent="AimHelper/FirstPerson" index="0"]
 
 [node name="SubVpContainer" type="SubViewportContainer" parent="AimHelper/FirstPerson/FPCanvas" index="0"]
 anchors_preset = 15
@@ -181,7 +178,7 @@ extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_bd5r0")
 surface_material_override/0 = SubResource("ShaderMaterial_0xhcf")
 
-[node name="Nozzle" type="Node3D" parent="AimHelper/FirstPerson" index="2"]
+[node name="Nozzle" type="Node3D" parent="AimHelper/FirstPerson" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -3)
 
 [editable path="Mannequin"]
