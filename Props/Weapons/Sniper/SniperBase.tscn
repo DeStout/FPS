@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://bj4atepg6ty4q"]
 
-[ext_resource type="Texture2D" uid="uid://c4ipjt65xmoal" path="res://Props/Weapons/Sniper/Sniper_A.png" id="1_5abmm"]
+[ext_resource type="Texture2D" uid="uid://c4ipjt65xmoal" path="res://Props/Weapons/Sniper/Sniper_AO.png" id="1_5abmm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kvui"]
 

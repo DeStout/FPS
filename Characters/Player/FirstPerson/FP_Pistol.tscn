@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://di2yt2mm3cu4s"]
+[gd_scene load_steps=4 format=3 uid="uid://di2yt2mm3cu4s"]
 
 [ext_resource type="PackedScene" uid="uid://c84m2rgvte01j" path="res://Characters/Player/FirstPerson/Anims/FP_PistolAnims.blend" id="1_csryp"]
 [ext_resource type="Script" path="res://Characters/Player/FirstPerson/FPWeapon.gd" id="2_0s0fx"]
+[ext_resource type="Material" uid="uid://cqwagpvoohpyk" path="res://Props/Weapons/Pistol/Pistol_Mat.tres" id="3_u0r4a"]
 
 [node name="FP_Pistol" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_csryp")]
 script = ExtResource("2_0s0fx")
@@ -11,5 +12,23 @@ weapon_mesh = [NodePath("Mannequin/Skeleton3D/PistolBody/PistolBody"), NodePath(
 [node name="PistolMag" parent="Mannequin/Skeleton3D" index="0"]
 transform = Transform3D(100, 3.69211e-06, 1.25494e-05, -7.08735e-07, 30.2952, -95.3006, -8.63768e-06, 95.3006, 30.2952, 73.7829, 3.82476, 5.56548)
 
+[node name="PistolMag" parent="Mannequin/Skeleton3D/PistolMag" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_u0r4a")
+
 [node name="PistolBody" parent="Mannequin/Skeleton3D" index="1"]
 transform = Transform3D(100, 1.98531e-06, 1.74497e-05, 5.89981e-06, 9.54843e-06, -100, -3.30253e-06, 100, 1.40117e-05, 73.7829, 6.91875, 6.17137)
+
+[node name="PistolBody" parent="Mannequin/Skeleton3D/PistolBody" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_u0r4a")
+
+[node name="MannyJoints" parent="Mannequin/Skeleton3D" index="2"]
+layers = 8
+cast_shadow = 0
+
+[node name="MannySurface" parent="Mannequin/Skeleton3D" index="3"]
+layers = 8
+cast_shadow = 0

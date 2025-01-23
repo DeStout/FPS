@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3605x8j3xshq"]
+
+[ext_resource type="Texture2D" uid="uid://c4ipjt65xmoal" path="res://Props/Weapons/Sniper/Sniper_AO.png" id="1_sbq3t"]
+
+[resource]
+albedo_color = Color(0.628906, 0.628906, 0.628906, 1)
+albedo_texture = ExtResource("1_sbq3t")
+metallic = 1.0
+roughness = 0.68

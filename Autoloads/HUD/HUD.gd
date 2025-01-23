@@ -181,7 +181,6 @@ func _hide_locked() -> void:
 
 
 func show_reticle(show) -> void:
-	return
 	reticle.visible = show
 
 
@@ -193,7 +192,7 @@ func bloom_reticle(bloom_perc : float) -> void:
 
 func zoom_crosshairs(show) -> void:
 	scope.visible = show
-	#reticle.visible = !show
+	reticle.visible = !show
 
 
 func show_damage(dmg_dir) -> void:

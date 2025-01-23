@@ -6,9 +6,9 @@
 script = ExtResource("1_xrgia")
 automatic = false
 can_zoom = true
-zoom_level = 3.0
+zoom_level = 5.0
 num_shots = 1
-shots_per_second = 1.0
+shots_per_second = 0.667
 default_variance = 0.005
 max_variance = 0.015
 variance_build = 0.003

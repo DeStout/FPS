@@ -48,6 +48,7 @@ func die() -> void:
 		character.current_level.spawn_weapon_pick_up( \
 										character.global_position, weapon_info)
 	await character.die()
+	await character.reset_weapons()
 	
 	# Signal to PlayersContainer.character_killed
 	died.emit(character)
@@ -62,7 +63,6 @@ func respawn() -> void:
 	character.set_processing(true)
 	character._disable_collisions(false)
 	
-	character.reset_weapons()
 	await get_tree().process_frame
 	character.add_weapon(Globals.weapons[character.rand_weapon()].instantiate())
 	character.trigger_pulled = false

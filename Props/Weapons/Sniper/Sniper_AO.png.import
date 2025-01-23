@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4ipjt65xmoal"
-path.s3tc="res://.godot/imported/Sniper_A.png-4424d30ea9eb72f742ff3136607741d0.s3tc.ctex"
-path.etc2="res://.godot/imported/Sniper_A.png-4424d30ea9eb72f742ff3136607741d0.etc2.ctex"
+path.s3tc="res://.godot/imported/Sniper_AO.png-2df83dc2903425d8665432fac35fc73f.s3tc.ctex"
+path.etc2="res://.godot/imported/Sniper_AO.png-2df83dc2903425d8665432fac35fc73f.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Props/Weapons/Sniper/Sniper_A.png"
-dest_files=["res://.godot/imported/Sniper_A.png-4424d30ea9eb72f742ff3136607741d0.s3tc.ctex", "res://.godot/imported/Sniper_A.png-4424d30ea9eb72f742ff3136607741d0.etc2.ctex"]
+source_file="res://Props/Weapons/Sniper/Sniper_AO.png"
+dest_files=["res://.godot/imported/Sniper_AO.png-2df83dc2903425d8665432fac35fc73f.s3tc.ctex", "res://.godot/imported/Sniper_AO.png-2df83dc2903425d8665432fac35fc73f.etc2.ctex"]
 
 [params]
 

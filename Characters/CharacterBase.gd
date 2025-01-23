@@ -272,6 +272,8 @@ func die() -> void:
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()
 	
+	if zoomed:
+		_zoom()
 	visible = false
 	_disable_collisions(true)
 	set_processing(false)

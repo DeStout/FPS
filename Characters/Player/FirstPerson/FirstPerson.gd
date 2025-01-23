@@ -35,6 +35,7 @@ func get_weapon(weapon_type : Globals.WEAPONS) -> Node3D:
 func add_weapon(new_weapon : Weapon) -> void:
 	current_weapon = get_weapon(new_weapon.weapon_type)
 	current_weapon.show_mesh(false)
+	current_weapon.first_person = self
 	add_child(current_weapon)
 	animator = current_weapon.anim_player
 	
@@ -51,13 +52,20 @@ func remove_weapon(old_weapon : Weapon) -> void:
 	return
 
 
+func show_weapon(show : bool) -> void:
+	current_weapon.show_mesh(show)
+
+
 func reset_weapons() -> void:
-	pass
+	current_weapon.queue_free()
+	current_weapon = get_weapon(Globals.WEAPONS.SLAPPER)
+	add_child(current_weapon)
+	animator = current_weapon.anim_player
 
 
-func _slap() -> void:
+func slap() -> void:
 	player.slap()
 
 
-func _shell_loaded() -> void:
+func shell_loaded() -> void:
 	player.shell_loaded()

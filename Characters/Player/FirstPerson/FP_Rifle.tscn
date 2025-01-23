@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://deb8d32ryxk1n"]
+[gd_scene load_steps=4 format=3 uid="uid://deb8d32ryxk1n"]
 
 [ext_resource type="PackedScene" uid="uid://db8n5p7wvqmqg" path="res://Characters/Player/FirstPerson/Anims/FP_RifleAnims.blend" id="1_sstd0"]
 [ext_resource type="Script" path="res://Characters/Player/FirstPerson/FPWeapon.gd" id="2_hfq71"]
+[ext_resource type="Material" uid="uid://d2cwb1tlpjtsi" path="res://Props/Weapons/Rifle/Rifle_Mat.tres" id="3_k7htg"]
 
 [node name="FP_Rifle" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_sstd0")]
 script = ExtResource("2_hfq71")
@@ -11,5 +12,23 @@ weapon_mesh = [NodePath("Mannequin/Skeleton3D/RifleBody/RifleBody"), NodePath("M
 [node name="RifleMag" parent="Mannequin/Skeleton3D" index="0"]
 transform = Transform3D(100, 2.75411e-06, 1.91426e-05, -1.35611e-05, 99.9251, -3.86976, -2.05511e-05, 3.86975, 99.9251, 73.7829, 4.41875, 6.17138)
 
+[node name="RifleMag" parent="Mannequin/Skeleton3D/RifleMag" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_k7htg")
+
 [node name="RifleBody" parent="Mannequin/Skeleton3D" index="1"]
 transform = Transform3D(100, 6.50642e-06, 1.39051e-05, -1.80563e-05, 100, 1.39243e-05, -1.52212e-05, -1.83886e-05, 100, 73.7829, 4.41875, 6.17138)
+
+[node name="RifleBody" parent="Mannequin/Skeleton3D/RifleBody" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_k7htg")
+
+[node name="MannyJoints" parent="Mannequin/Skeleton3D" index="2"]
+layers = 8
+cast_shadow = 0
+
+[node name="MannySurface" parent="Mannequin/Skeleton3D" index="3"]
+layers = 8
+cast_shadow = 0

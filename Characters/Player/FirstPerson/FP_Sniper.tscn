@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwk0ylm72qjqx"]
+[gd_scene load_steps=4 format=3 uid="uid://cwk0ylm72qjqx"]
 
 [ext_resource type="PackedScene" uid="uid://bn7u5nokjmapi" path="res://Characters/Player/FirstPerson/Anims/FP_SniperAnims.blend" id="1_akdeg"]
 [ext_resource type="Script" path="res://Characters/Player/FirstPerson/FPWeapon.gd" id="2_uxwn7"]
+[ext_resource type="Material" uid="uid://b3605x8j3xshq" path="res://Props/Weapons/Sniper/Sniper_Mat.tres" id="3_s2tsl"]
 
 [node name="FP_Sniper" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_akdeg")]
 script = ExtResource("2_uxwn7")
@@ -11,8 +12,31 @@ weapon_mesh = [NodePath("Mannequin/Skeleton3D/SniperBody/SniperBody"), NodePath(
 [node name="SniperBolt" parent="Mannequin/Skeleton3D" index="0"]
 transform = Transform3D(100, -8.83711e-09, 2.93762e-08, 8.83711e-09, 100, -1.16415e-10, -2.93762e-08, -1.16415e-10, 100, 84.763, 15.428, -1.8066)
 
+[node name="SniperBolt" parent="Mannequin/Skeleton3D/SniperBolt" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_s2tsl")
+
 [node name="SniperBody" parent="Mannequin/Skeleton3D" index="1"]
 transform = Transform3D(100, -0.000152587, 0.000152588, 0.000152587, 100, -1.95505e-05, -0.000152588, 1.95508e-05, 100, 84.763, 6.9178, 6.17138)
 
+[node name="SniperBody" parent="Mannequin/Skeleton3D/SniperBody" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_s2tsl")
+
 [node name="SniperMag" parent="Mannequin/Skeleton3D" index="2"]
 transform = Transform3D(100, 3.97047e-23, 1.8198e-23, -3.87401e-23, 99.8737, -5.02487, -2.01701e-23, 5.02487, 99.8737, 84.763, 10.9267, -8.66427)
+
+[node name="SniperMag" parent="Mannequin/Skeleton3D/SniperMag" index="0"]
+layers = 8
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_s2tsl")
+
+[node name="MannyJoints" parent="Mannequin/Skeleton3D" index="3"]
+layers = 8
+cast_shadow = 0
+
+[node name="MannySurface" parent="Mannequin/Skeleton3D" index="4"]
+layers = 8
+cast_shadow = 0

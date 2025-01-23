@@ -164,10 +164,13 @@ func _zoom() -> void:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(cam, "fov", 75 / zoom_level, zoom_time)
 		tween.tween_property(fp_cam, "fov", 75 / zoom_level, zoom_time)
-		Globals.zoom_sensitibity = 0.5
+		Globals.zoom_sensitibity = 0.2
+		first_person.show_weapon(false)
 		HUD.zoom_crosshairs(true)
 	else:
+		first_person.show_weapon(true)
 		HUD.zoom_crosshairs(false)
+		HUD.show_reticle(false)
 		Globals.zoom_sensitibity = 1.0
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(cam, "fov", 75, zoom_time)
@@ -228,10 +231,8 @@ func _show_damage(shooter : CharacterBase) -> void:
 
 
 func reset_weapons() -> void:
-	for weapon in weapons.get_children():
-		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
-			first_person.reset_weapons()
 	super()
+	first_person.reset_weapons()
 	first_person.animator.play("SlapperIdle")
 
 
@@ -281,8 +282,8 @@ func _unequip_weapon(old_weapon : Weapon) -> void:
 
 
 func _equip_weapon(new_weapon : Weapon) -> void:
-	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
-		pass
+	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER or \
+							weapon_held.weapon_type == Globals.WEAPONS.SLAPPER:
 		HUD.show_reticle(false)
 	else:
 		HUD.show_reticle(true)
