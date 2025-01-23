@@ -717,7 +717,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jo3xm"]
-render_priority = 0
+render_priority = 1
 shader = SubResource("Shader_m6xwb")
 shader_parameter/effect_color = Color(0.8, 0.36, 0.2, 1)
 shader_parameter/octave_count = 20
@@ -1369,7 +1369,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_578bw")
 
 [node name="Static" type="MeshInstance3D" parent="NavRegion/Refraction" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.973762, -0.227569, 0, 0.227569, 0.973762, 0, 9.56742, 4.02324)
-visible = false
 mesh = SubResource("CylinderMesh_h3ud1")
 surface_material_override/0 = SubResource("ShaderMaterial_jo3xm")
 script = ExtResource("8_0k2kh")

@@ -16,6 +16,7 @@ const INVERT_DEFAULT := false
 @export var invert_y_box : CheckBox
 
 @export_category("Debug Options")
+@export var invisibility : CheckBox
 @export var invincibility : CheckBox
 @export var infinite_ammo : CheckBox
 @export var bottomless_mag : CheckBox

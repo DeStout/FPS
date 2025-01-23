@@ -5,6 +5,7 @@ var debug_visible := true
 var fps_visible := true
 
 # Cheats
+var invisible := false
 var invincible := false
 var infinite_ammo := false
 var bottomless_mag:= false
@@ -27,6 +28,7 @@ func _ready() -> void:
 	Globals.game.bot_sim_ended.connect(_bot_sim_ended)
 	
 	await get_tree().physics_frame
+	HUD.pause_menu.options.invisibility.toggled.connect(_set_invisible)
 	HUD.pause_menu.options.invincibility.toggled.connect(_set_invincible)
 	HUD.pause_menu.options.infinite_ammo.toggled.connect(_set_infinite_ammo)
 	HUD.pause_menu.options.bottomless_mag.toggled.connect(_set_bottomless_mag)
@@ -49,6 +51,12 @@ func _process(_delta) -> void:
 		if Input.is_action_just_pressed("Debug") and bot_sim_level:
 			_swap_cameras()
 
+
+func _set_invisible(is_invisible : bool) -> void:
+	invisible = is_invisible
+	player.set_collision_layer_value(1, invisible)
+	player.set_collision_layer_value(2, !invisible)
+	player.set_collision_mask_value(2, !invincible)
 
 func _set_invincible(is_invincible : bool) -> void:
 	invincible = is_invincible
@@ -73,6 +81,7 @@ func _bot_sim_started(new_level) -> void:
 	bot_sim_level = new_level
 	players_container = bot_sim_level.players
 	player = players_container.player
+	player.respawned.connect(_player_respawned)
 
 
 func _bot_sim_ended() -> void:
@@ -114,6 +123,10 @@ func _swap_cameras() -> void:
 			player.velocity = Vector3.ZERO
 		else:
 			player.transform = player_pos
+
+
+func _player_respawned() -> void:
+	pass
 
 
 func _invincible() -> void:

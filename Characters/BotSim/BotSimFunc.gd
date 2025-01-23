@@ -66,6 +66,8 @@ func respawn() -> void:
 	await get_tree().process_frame
 	character.add_weapon(Globals.weapons[character.rand_weapon()].instantiate())
 	character.trigger_pulled = false
+	
+	character.respawned.emit()
 
 
 func set_current_camera(is_current : bool) -> void:

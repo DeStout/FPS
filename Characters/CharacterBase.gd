@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 signal defeated
+signal respawned
 
 @export var current_level : Node3D
 @export var mode_func : Node
