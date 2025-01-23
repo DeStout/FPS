@@ -103,6 +103,7 @@ func set_game_over() -> void:
 func exit_game() -> void:
 	game_over = false
 	visible = false
+	zoom_crosshairs(false)
 	set_process(false)
 
 
@@ -130,7 +131,7 @@ func show_weapon_info(show : bool) -> void:
 	$UI/Weapon.visible = show
 
 
-func update_weapon(mag_ammo, ammo_extra) -> void:
+func update_weapon(mag_ammo : int, ammo_extra : int) -> void:
 	ammo_in_mag.text = str(mag_ammo)
 	extra_ammo.text = str(ammo_extra)
 
@@ -139,7 +140,8 @@ func show_health() -> void:
 	health_mod.modulate.a = 1
 
 
-func update_health(max_health, max_armor, health, armor) -> void:
+func update_health(max_health : int, max_armor : int, \
+											health : int, armor : int) -> void:
 	# Health Boxes
 	var box_count := health_bar.get_child_count()
 	var health_per_box : int = max_health / box_count
@@ -180,7 +182,7 @@ func _hide_locked() -> void:
 	$Locked.visible = false
 
 
-func show_reticle(show) -> void:
+func show_reticle(show : bool) -> void:
 	reticle.visible = show
 
 
@@ -190,12 +192,12 @@ func bloom_reticle(bloom_perc : float) -> void:
 	reticle.get_child(2).offset.x = bloom + default_reticle_pos
 
 
-func zoom_crosshairs(show) -> void:
+func zoom_crosshairs(show : bool) -> void:
 	scope.visible = show
 	reticle.visible = !show
 
 
-func show_damage(dmg_dir) -> void:
+func show_damage(dmg_dir : Vector2) -> void:
 	if dmg_dir.y > 0:
 		damage_up.modulate.a = dmg_dir.y
 	else:
@@ -206,12 +208,12 @@ func show_damage(dmg_dir) -> void:
 		damage_left.modulate.a = abs(dmg_dir.x)
 
 
-func _fade_health(delta) -> void:
+func _fade_health(delta : float) -> void:
 	if health_mod.modulate.a > 0:
 		health_mod.modulate.a -= delta
 
 
-func _fade_dmg(delta) -> void:
+func _fade_dmg(delta : float) -> void:
 	if damage_up.modulate.a > 0:
 		damage_up.modulate.a -= delta
 	if damage_left.modulate.a > 0:

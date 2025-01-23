@@ -155,7 +155,11 @@ func _fire() -> void:
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
 
 
-func _zoom() -> void:
+func zoom() -> void:
+	if !first_person.current_weapon.can_zoom:
+		first_person.current_weapon.was_zoomed = !first_person.current_weapon.was_zoomed
+		return
+		
 	super()
 	var zoom_level := 1.0
 	var zoom_time := 0.075

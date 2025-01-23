@@ -89,6 +89,8 @@ func quit_single_player() -> void:
 	Engine.time_scale = 1.0
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Globals.zoom_sensitibity = 1.0
+	
 	map.end_game()
 	map.queue_free()
 	can_be_paused = false
@@ -115,6 +117,7 @@ func quit_bot_sim() -> void:
 	Engine.time_scale = 1.0
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Globals.zoom_sensitibity = 1.0
 	
 	map.queue_free()
 	bot_sim_settings = BotSimSettings.new()

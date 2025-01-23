@@ -182,10 +182,10 @@ func _gun_alt() -> void:
 	weapon_held.fire_alt()
 	alt_pulled = false
 	if weapon_held.weapon_type == Globals.WEAPONS.SNIPER:
-		_zoom()
+		zoom()
 
 
-func _zoom() -> void:
+func zoom() -> void:
 	zoomed = !zoomed
 
 
@@ -274,7 +274,7 @@ func die() -> void:
 	death_sfx.play()
 	
 	if zoomed:
-		_zoom()
+		zoom()
 	visible = false
 	_disable_collisions(true)
 	set_processing(false)

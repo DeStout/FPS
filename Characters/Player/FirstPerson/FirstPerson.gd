@@ -38,6 +38,7 @@ func add_weapon(new_weapon : Weapon) -> void:
 	current_weapon.first_person = self
 	add_child(current_weapon)
 	animator = current_weapon.anim_player
+	await get_tree().physics_frame
 	
 	animator.play_backwards(new_weapon.get_anim("Equip"))
 	current_weapon.show_mesh(true)
