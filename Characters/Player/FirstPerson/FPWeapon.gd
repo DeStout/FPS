@@ -27,7 +27,6 @@ func reload_ammo() -> void:
 
 
 func reload_finished() -> void:
-	print("reload finished")
 	weapon.is_reloading = false
 
 

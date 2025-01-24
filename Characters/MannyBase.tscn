@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://31u0y7afils0"]
+[gd_scene load_steps=120 format=4 uid="uid://31u0y7afils0"]
 
 [ext_resource type="Animation" uid="uid://cfvspychfohqx" path="res://Characters/Anims/LowerIdleFall.res" id="1_a6gak"]
 [ext_resource type="Animation" uid="uid://bheddmwebx2oj" path="res://Characters/Anims/LowerIdleStanding.res" id="2_hjijs"]
@@ -1018,9 +1018,29 @@ states/Guard/position = Vector2(327, 100)
 transitions = ["Start", "Guard", SubResource("AnimationNodeStateMachineTransition_gs0kf"), "Guard", "Alert", SubResource("AnimationNodeStateMachineTransition_wv1gm"), "Alert", "Guard", SubResource("AnimationNodeStateMachineTransition_x8esd")]
 graph_offset = Vector2(-109, -40)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_crus4"]
+animation = &"UpperGuardIdleRifle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3lr2"]
+animation = &"UpperAlertRunRifle"
+
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_sg6pw"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_crus4")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_o3lr2")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_spqwg"]
+animation = &"UpperGuardIdleRifle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k5wcs"]
+animation = &"UpperGuardWalkRifle"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_j44i2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_spqwg")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_k5wcs")
+blend_point_1/pos = 1.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jqn8o"]
 advance_mode = 2
@@ -1101,7 +1121,7 @@ filter_enabled = true
 filters = ["", "Mannequin/Skeleton3D:mixamorig_Head", "Mannequin/Skeleton3D:mixamorig_LeftArm", "Mannequin/Skeleton3D:mixamorig_LeftForeArm", "Mannequin/Skeleton3D:mixamorig_LeftHand", "Mannequin/Skeleton3D:mixamorig_LeftHandIndex1", "Mannequin/Skeleton3D:mixamorig_LeftHandIndex2", "Mannequin/Skeleton3D:mixamorig_LeftHandIndex3", "Mannequin/Skeleton3D:mixamorig_LeftHandMiddle1", "Mannequin/Skeleton3D:mixamorig_LeftHandMiddle2", "Mannequin/Skeleton3D:mixamorig_LeftHandMiddle3", "Mannequin/Skeleton3D:mixamorig_LeftHandPinky1", "Mannequin/Skeleton3D:mixamorig_LeftHandPinky2", "Mannequin/Skeleton3D:mixamorig_LeftHandPinky3", "Mannequin/Skeleton3D:mixamorig_LeftHandRing1", "Mannequin/Skeleton3D:mixamorig_LeftHandRing2", "Mannequin/Skeleton3D:mixamorig_LeftHandRing3", "Mannequin/Skeleton3D:mixamorig_LeftHandThumb1", "Mannequin/Skeleton3D:mixamorig_LeftHandThumb2", "Mannequin/Skeleton3D:mixamorig_LeftHandThumb3", "Mannequin/Skeleton3D:mixamorig_LeftShoulder", "Mannequin/Skeleton3D:mixamorig_Neck", "Mannequin/Skeleton3D:mixamorig_RightArm", "Mannequin/Skeleton3D:mixamorig_RightForeArm", "Mannequin/Skeleton3D:mixamorig_RightHand", "Mannequin/Skeleton3D:mixamorig_RightHandIndex1", "Mannequin/Skeleton3D:mixamorig_RightHandIndex2", "Mannequin/Skeleton3D:mixamorig_RightHandIndex3", "Mannequin/Skeleton3D:mixamorig_RightHandMiddle1", "Mannequin/Skeleton3D:mixamorig_RightHandMiddle2", "Mannequin/Skeleton3D:mixamorig_RightHandMiddle3", "Mannequin/Skeleton3D:mixamorig_RightHandPinky1", "Mannequin/Skeleton3D:mixamorig_RightHandPinky2", "Mannequin/Skeleton3D:mixamorig_RightHandPinky3", "Mannequin/Skeleton3D:mixamorig_RightHandRing1", "Mannequin/Skeleton3D:mixamorig_RightHandRing2", "Mannequin/Skeleton3D:mixamorig_RightHandRing3", "Mannequin/Skeleton3D:mixamorig_RightHandThumb1", "Mannequin/Skeleton3D:mixamorig_RightHandThumb2", "Mannequin/Skeleton3D:mixamorig_RightHandThumb3", "Mannequin/Skeleton3D:mixamorig_RightShoulder", "Mannequin/Skeleton3D:mixamorig_Spine", "Mannequin/Skeleton3D:mixamorig_Spine1", "Mannequin/Skeleton3D:mixamorig_Spine2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v2cao"]
-graph_offset = Vector2(-280, -160)
+graph_offset = Vector2(-516.686, -204.14)
 nodes/Add/node = SubResource("AnimationNodeAdd2_rfv1t")
 nodes/Add/position = Vector2(160, 40)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_v35em")
