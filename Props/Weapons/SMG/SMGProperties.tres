@@ -13,13 +13,13 @@ default_variance = 0.015
 max_variance = 0.05
 variance_build = 0.006
 variance_reset = 1.75
-max_ammo = 140
+max_ammo = 175
 mag_size = 35
 body_dmg = {
-0: 18,
-1: 10,
-2: 6
+0: 19,
+1: 11,
+2: 7
 }
-dmg_falloff = Vector2(7.5, 30)
+dmg_falloff = Vector2(7.5, 50)
 pos_offset = Vector3(-0.0147436, -0.116423, 0.0389635)
 rot_offset = Vector3(-1.39565, -1.5708, -3.14159)
