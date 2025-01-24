@@ -7,7 +7,7 @@
 [node name="FP_Sniper" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_akdeg")]
 script = ExtResource("2_uxwn7")
 weapon_type = 5
-weapon_mesh = [NodePath("Mannequin/Skeleton3D/SniperBody/SniperBody"), NodePath("Mannequin/Skeleton3D/SniperBolt/SniperBolt"), NodePath("Mannequin/Skeleton3D/SniperMag/SniperMag")]
+weapon_mesh = [NodePath("Mannequin/Skeleton3D/SniperBody/SniperBody"), NodePath("Mannequin/Skeleton3D/SniperBolt/SniperBolt"), NodePath("Mannequin/Skeleton3D/SniperMag/SniperMag"), NodePath("Mannequin/Skeleton3D/MannySurface"), NodePath("Mannequin/Skeleton3D/MannyJoints")]
 
 [node name="Skeleton3D" parent="Mannequin" index="0"]
 bones/0/rotation = Quaternion(-0.000670809, 0.967659, 0.00274735, 0.252248)

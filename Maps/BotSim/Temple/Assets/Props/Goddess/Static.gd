@@ -7,7 +7,7 @@ var current_level : BotSimLevel
 @export var process_in_editor := false :
 	set = set_process_in_editor
 
-var flash_threshold := 0.985
+var flash_threshold := 0.99
 var flash_limits := Vector2(0.01, 0.3)
 var flash_length := 0.05
 var flash_time := 0.0

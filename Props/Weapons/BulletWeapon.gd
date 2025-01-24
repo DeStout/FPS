@@ -91,13 +91,17 @@ func reload() -> void:
 	if can_reload():
 		is_reloading = true
 		$ReloadAudio.play()
-		await $ReloadAudio.finished
+		
+		if !fp_weapon:
+			await $ReloadAudio.finished
+			reload_ammo()
+			is_reloading = false
 
-		var ammo_to_add = properties.mag_size - ammo_in_mag
-		ammo_in_mag += min(ammo_to_add, extra_ammo)
-		extra_ammo = max(extra_ammo - ammo_to_add, 0)
 
-		is_reloading = false
+func reload_ammo() -> void:
+	var ammo_to_add = properties.mag_size - ammo_in_mag
+	ammo_in_mag += min(ammo_to_add, extra_ammo)
+	extra_ammo = max(extra_ammo - ammo_to_add, 0)
 
 
 func can_pick_up_ammo() -> bool:

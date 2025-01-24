@@ -62,9 +62,6 @@ transform = Transform3D(-0.444873, -0.0447394, -0.894475, -0.141371, 0.989738, 0
 [node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/R_Hand" index="0"]
 collision_layer = 4
 
-[node name="Slapper" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons" index="0" node_paths=PackedStringArray("wielder")]
-wielder = NodePath("../../../../../..")
-
 [node name="L_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="7"]
 transform = Transform3D(0.162985, 0.257265, 0.952497, -0.194615, 0.954821, -0.224591, -0.967244, -0.148765, 0.20569, -0.187731, 1.38381, 0.0325064)
 

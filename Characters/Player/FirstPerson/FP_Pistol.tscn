@@ -7,10 +7,57 @@
 [node name="FP_Pistol" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_csryp")]
 script = ExtResource("2_0s0fx")
 weapon_type = 1
-weapon_mesh = [NodePath("Mannequin/Skeleton3D/PistolBody/PistolBody"), NodePath("Mannequin/Skeleton3D/PistolMag/PistolMag")]
+weapon_mesh = [NodePath("Mannequin/Skeleton3D/PistolBody/PistolBody"), NodePath("Mannequin/Skeleton3D/PistolMag/PistolMag"), NodePath("Mannequin/Skeleton3D/MannySurface"), NodePath("Mannequin/Skeleton3D/MannyJoints")]
+
+[node name="Skeleton3D" parent="Mannequin" index="0"]
+bones/0/rotation = Quaternion(-0.000453473, 0.984449, 0.00279147, 0.17565)
+bones/1/rotation = Quaternion(-0.633005, -0.33106, 0.333416, -0.615255)
+bones/2/rotation = Quaternion(0.530474, -0.802697, -0.0269636, 0.271199)
+bones/3/rotation = Quaternion(0.316899, -6.8449e-08, 9.21535e-06, 0.948459)
+bones/4/position = Vector3(1.49476e-06, 27.6145, 1.44814e-06)
+bones/4/rotation = Quaternion(0.0109981, -0.208862, 0.19167, 0.958915)
+bones/5/rotation = Quaternion(0.0784705, -0.560097, 0.225838, 0.793177)
+bones/6/rotation = Quaternion(-0.0429081, -0.095624, -0.189189, 0.976331)
+bones/8/rotation = Quaternion(0.0560687, -0.088283, -0.0400163, 0.993711)
+bones/9/rotation = Quaternion(0.453892, 0.0110677, -0.244023, 0.856921)
+bones/10/rotation = Quaternion(0.371893, 0.0090707, -0.199934, 0.906443)
+bones/11/rotation = Quaternion(0.0575341, -0.112198, -0.00834417, 0.991984)
+bones/12/rotation = Quaternion(0.454338, -0.025395, -0.242112, 0.856921)
+bones/13/rotation = Quaternion(0.372258, -0.0208074, -0.198373, 0.906443)
+bones/14/rotation = Quaternion(0.0499746, -0.127763, 0.00665818, 0.990523)
+bones/15/rotation = Quaternion(0.541951, -0.0482216, -0.321602, 0.774943)
+bones/16/rotation = Quaternion(0.372258, -0.0208036, -0.198372, 0.906443)
+bones/17/rotation = Quaternion(0.102657, -0.218178, -0.0670145, 0.968178)
+bones/18/rotation = Quaternion(0.549259, -0.069815, -0.380261, 0.740838)
+bones/19/rotation = Quaternion(0.372267, -0.020723, -0.198164, 0.906487)
+bones/20/rotation = Quaternion(0.630735, -0.33531, 0.337668, 0.612961)
+bones/21/rotation = Quaternion(0.459201, 0.809209, -0.0469024, 0.363476)
+bones/22/rotation = Quaternion(0.485048, -2.16684e-08, 1.74578e-06, 0.874487)
+bones/23/rotation = Quaternion(-0.205138, -0.354839, 0.0872048, 0.907966)
+bones/24/rotation = Quaternion(0.229879, -0.547776, -0.383414, 0.707171)
+bones/25/position = Vector3(-1.23381e-05, 4.74496, -1.77122e-05)
+bones/25/rotation = Quaternion(-0.0924003, 0.00092662, 0.36889, 0.924868)
+bones/26/position = Vector3(-1.90735e-06, 4.38216, 1.62591e-05)
+bones/26/rotation = Quaternion(0.00335757, 0.00126821, -0.0071421, 0.999968)
+bones/27/rotation = Quaternion(0.0526413, -1.29189e-05, 0.000265601, 0.998613)
+bones/28/rotation = Quaternion(0.477661, -0.000116402, 0.00245733, 0.878541)
+bones/29/rotation = Quaternion(0.489354, -0.000121331, 0.00251375, 0.872082)
+bones/30/rotation = Quaternion(0.149802, 0.0039265, 0.0282759, 0.988304)
+bones/31/rotation = Quaternion(0.656345, -0.000163115, 0.00337159, 0.754453)
+bones/32/rotation = Quaternion(0.475715, 0.0473737, -0.0456027, 0.877138)
+bones/33/rotation = Quaternion(0.149459, 0.00819683, 0.0578995, 0.987037)
+bones/34/rotation = Quaternion(0.656345, -0.000162597, 0.00337743, 0.754453)
+bones/35/position = Vector3(-2.42186e-07, 3.30732, 1.99371e-06)
+bones/35/rotation = Quaternion(0.479169, 0.0288397, -0.0272168, 0.876826)
+bones/36/rotation = Quaternion(0.150083, -0.00418734, -0.0280347, 0.988267)
+bones/37/rotation = Quaternion(0.65295, 0.0231179, -0.0199024, 0.756787)
+bones/38/rotation = Quaternion(0.464106, 0.0725477, -0.0684863, 0.880143)
+bones/39/position = Vector3(-0.0751215, 10.7225, 2.91182)
+bones/39/rotation = Quaternion(-0.506517, -0.497279, 0.49615, -0.499989)
+bones/40/position = Vector3(3.39941e-07, -1.67517e-06, -1.48692e-06)
 
 [node name="PistolMag" parent="Mannequin/Skeleton3D" index="0"]
-transform = Transform3D(100, 3.69211e-06, 1.25494e-05, -7.08735e-07, 30.2952, -95.3006, -8.63768e-06, 95.3006, 30.2952, 73.7829, 3.82476, 5.56548)
+transform = Transform3D(99.1664, 0.5455, -12.8736, -12.8193, 14.2632, -98.1439, 1.30081, 98.9761, 14.2142, 20.4668, 11.6899, -55.6854)
 
 [node name="PistolMag" parent="Mannequin/Skeleton3D/PistolMag" index="0"]
 layers = 8
@@ -18,7 +65,7 @@ cast_shadow = 0
 surface_material_override/0 = ExtResource("3_u0r4a")
 
 [node name="PistolBody" parent="Mannequin/Skeleton3D" index="1"]
-transform = Transform3D(100, 1.98531e-06, 1.74497e-05, 5.89981e-06, 9.54843e-06, -100, -3.30253e-06, 100, 1.40117e-05, 73.7829, 6.91875, 6.17137)
+transform = Transform3D(99.1664, -3.38022, -12.4338, -12.8193, -16.14, -97.8527, 1.30081, 98.631, -16.4388, 20.831, 14.6197, -54.5792)
 
 [node name="PistolBody" parent="Mannequin/Skeleton3D/PistolBody" index="0"]
 layers = 8

@@ -12,11 +12,12 @@ class_name Player extends CharacterBase
 
 func _ready() -> void:
 	super()
-	first_person.add_weapon(weapon_held)
-	if has_start_weapon:
-		add_weapon(Globals.weapons[start_weapon].instantiate())
+	
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 	nozzle = $AimHelper/FirstPerson/Nozzle
+	
+	if has_start_weapon:
+		add_weapon(Globals.weapons[start_weapon].instantiate())
 
 
 func _process(delta: float) -> void:
@@ -181,12 +182,17 @@ func zoom() -> void:
 		tween.tween_property(fp_cam, "fov", 75, zoom_time)
 
 
+func _set_slapper() -> void:
+	super()
+	first_person.add_weapon(weapon_held)
+	first_person.animator.play(weapon_held.get_anim("Idle"))
+	HUD.show_weapon_info(weapon_held.weapon_type != Globals.WEAPONS.SLAPPER)
+
+
 func _reload() -> void:
 	if weapon_held.can_reload() and !switching_weapons and !weapon_held.is_reloading:
 		first_person.animator.play(weapon_held.get_anim("Reload"))
-	await super()
-	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
+	super()
 
 
 func shell_loaded() -> void:
@@ -243,9 +249,10 @@ func reset_weapons() -> void:
 func add_weapon(new_weapon : Weapon) -> void:
 	if _have_weapon(new_weapon.weapon_type):
 		return
-	new_weapon.get_node("Mesh").cast_shadow = \
-						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	super(new_weapon)
+	if new_weapon.weapon_type != Globals.WEAPONS.SLAPPER:
+		new_weapon.get_node("Mesh").cast_shadow = \
+						GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 
 
 func _switch_weapon(new_weapon : Weapon) -> void:

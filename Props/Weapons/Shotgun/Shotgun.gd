@@ -17,6 +17,3 @@ func reload() -> void:
 func load_shell() -> void:
 	ammo_in_mag += 1
 	extra_ammo -= 1
-	
-	if ammo_in_mag == properties.mag_size:
-		is_reloading = false

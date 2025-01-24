@@ -172,7 +172,6 @@ func pickup_removed(pickup) -> void:
 
 
 func _swing() -> void:
-	super()
 	slap()
 
 

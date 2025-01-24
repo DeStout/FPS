@@ -7,10 +7,58 @@
 [node name="FP_Rifle" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_sstd0")]
 script = ExtResource("2_hfq71")
 weapon_type = 3
-weapon_mesh = [NodePath("Mannequin/Skeleton3D/RifleBody/RifleBody"), NodePath("Mannequin/Skeleton3D/RifleMag/RifleMag")]
+weapon_mesh = [NodePath("Mannequin/Skeleton3D/RifleBody/RifleBody"), NodePath("Mannequin/Skeleton3D/RifleMag/RifleMag"), NodePath("Mannequin/Skeleton3D/MannySurface"), NodePath("Mannequin/Skeleton3D/MannyJoints")]
+
+[node name="Skeleton3D" parent="Mannequin" index="0"]
+bones/0/rotation = Quaternion(-0.000595245, 0.97421, 0.00276471, 0.225627)
+bones/1/rotation = Quaternion(-0.556553, -0.444095, 0.448456, -0.540293)
+bones/2/rotation = Quaternion(0.546886, -0.68867, -0.247612, 0.406618)
+bones/3/position = Vector3(2.15436e-05, 27.4047, 2.52012e-05)
+bones/3/rotation = Quaternion(0.635825, -1.79319e-07, 1.67844e-05, 0.771834)
+bones/4/rotation = Quaternion(-0.203561, 0.609761, 0.0240398, 0.765621)
+bones/5/rotation = Quaternion(0.0849209, -0.731991, 0.213652, 0.641351)
+bones/6/rotation = Quaternion(-0.111093, 0.0369039, -0.128142, 0.984823)
+bones/7/rotation = Quaternion(-0.0190544, 0.00254426, 0.00665188, 0.999793)
+bones/8/rotation = Quaternion(0.380616, -0.167071, -0.057334, 0.907706)
+bones/9/rotation = Quaternion(0.486867, -0.0231988, -0.19014, 0.852214)
+bones/10/rotation = Quaternion(0.486868, -0.0231957, -0.190134, 0.852215)
+bones/11/rotation = Quaternion(0.380616, -0.167069, -0.0573384, 0.907707)
+bones/12/rotation = Quaternion(0.486868, -0.0231973, -0.190134, 0.852215)
+bones/13/position = Vector3(2.83963e-05, 3.45976, 8.77773e-06)
+bones/13/rotation = Quaternion(0.486869, -0.0231974, -0.190134, 0.852215)
+bones/14/rotation = Quaternion(0.380615, -0.167071, -0.0573343, 0.907707)
+bones/15/rotation = Quaternion(0.486867, -0.0231973, -0.190141, 0.852214)
+bones/16/rotation = Quaternion(0.486869, -0.023193, -0.190134, 0.852215)
+bones/17/rotation = Quaternion(0.380594, -0.167123, -0.0572101, 0.907714)
+bones/18/rotation = Quaternion(0.486866, -0.0231554, -0.190448, 0.852147)
+bones/19/rotation = Quaternion(0.486878, -0.0230874, -0.189938, 0.852256)
+bones/20/rotation = Quaternion(0.585604, -0.406616, 0.410247, 0.568708)
+bones/21/rotation = Quaternion(0.59115, 0.596028, 0.130071, 0.527611)
+bones/22/rotation = Quaternion(0.749592, 9.05615e-09, 1.76487e-06, 0.6619)
+bones/23/position = Vector3(4.88877e-06, 27.6145, -3.45829e-06)
+bones/23/rotation = Quaternion(-0.351942, -0.504045, 0.204313, 0.761795)
+bones/24/rotation = Quaternion(0.380312, -0.639809, -0.47758, 0.466824)
+bones/25/rotation = Quaternion(0.14546, 0.050661, 0.514462, 0.843566)
+bones/26/rotation = Quaternion(0.00438383, 0.0219062, 0.104207, 0.994305)
+bones/27/rotation = Quaternion(0.310744, 0.0622105, -0.153883, 0.935889)
+bones/28/rotation = Quaternion(0.65514, 0.0232556, 0.0511088, 0.753418)
+bones/29/rotation = Quaternion(0.387102, 0.0554015, -0.0134583, 0.920272)
+bones/30/rotation = Quaternion(0.687334, 0.12444, 0.0883022, 0.710133)
+bones/31/rotation = Quaternion(0.338163, -0.0750027, 0.041814, 0.937162)
+bones/32/rotation = Quaternion(0.467415, 0.0935655, 0.0320193, 0.878489)
+bones/33/rotation = Quaternion(0.700917, 0.0308291, 0.0374507, 0.711592)
+bones/34/rotation = Quaternion(0.349303, -0.0679766, -0.0213998, 0.934296)
+bones/35/rotation = Quaternion(0.418789, 0.158675, -0.0156584, 0.893976)
+bones/36/rotation = Quaternion(0.676348, 0.191226, 0.121683, 0.700842)
+bones/37/rotation = Quaternion(0.332906, -0.0148992, 0.109911, 0.936414)
+bones/38/rotation = Quaternion(0.356039, -0.0729157, 0.0258246, 0.931264)
+bones/39/position = Vector3(-0.419974, 8.06444, 4.1845)
+bones/39/rotation = Quaternion(-0.515747, -0.45783, 0.57021, -0.446382)
+bones/40/position = Vector3(-9.96227e-07, -4.22748, -14.7929)
+bones/40/rotation = Quaternion(0.0629453, 2.77604e-08, 2.07511e-08, 0.998017)
 
 [node name="RifleMag" parent="Mannequin/Skeleton3D" index="0"]
-transform = Transform3D(100, 2.75411e-06, 1.91426e-05, -1.35611e-05, 99.9251, -3.86976, -2.05511e-05, 3.86975, 99.9251, 73.7829, 4.41875, 6.17138)
+transform = Transform3D(99.9964, -0.821771, -0.210493, 0.812463, 99.9125, -4.10115, 0.244018, 4.09928, 99.9156, 11.7372, -7.71222, -35.3914)
 
 [node name="RifleMag" parent="Mannequin/Skeleton3D/RifleMag" index="0"]
 layers = 8
@@ -18,7 +66,7 @@ cast_shadow = 0
 surface_material_override/0 = ExtResource("3_k7htg")
 
 [node name="RifleBody" parent="Mannequin/Skeleton3D" index="1"]
-transform = Transform3D(100, 6.50642e-06, 1.39051e-05, -1.80563e-05, 100, 1.39243e-05, -1.52212e-05, -1.83886e-05, 100, 73.7829, 4.41875, 6.17138)
+transform = Transform3D(99.9964, -0.813006, -0.242141, 0.812459, 99.9964, -0.23169, 0.244024, 0.229704, 99.9994, 11.7372, -7.71222, -35.3914)
 
 [node name="RifleBody" parent="Mannequin/Skeleton3D/RifleBody" index="0"]
 layers = 8

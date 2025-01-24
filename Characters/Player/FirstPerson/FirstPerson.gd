@@ -36,6 +36,9 @@ func add_weapon(new_weapon : Weapon) -> void:
 	current_weapon = get_weapon(new_weapon.weapon_type)
 	current_weapon.show_mesh(false)
 	current_weapon.first_person = self
+	current_weapon.weapon = player.weapon_held
+	player.weapon_held.fp_weapon = current_weapon
+	
 	add_child(current_weapon)
 	animator = current_weapon.anim_player
 	await get_tree().physics_frame

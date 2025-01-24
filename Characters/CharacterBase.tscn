@@ -143,8 +143,8 @@ shape = SubResource("BoxShape3D_q006a")
 [node name="Weapons" type="Node3D" parent="Mannequin/Mannequin/Skeleton3D/R_Hand"]
 unique_name_in_owner = true
 
-[node name="Slapper" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons" instance=ExtResource("2_e1vp6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0789925, 0)
+[node name="Slapper" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons" node_paths=PackedStringArray("wielder") instance=ExtResource("2_e1vp6")]
+wielder = NodePath("../../../../../..")
 
 [node name="L_UpperArm" type="BoneAttachment3D" parent="Mannequin/Mannequin/Skeleton3D" index="7"]
 transform = Transform3D(0.162985, 0.257265, 0.952497, -0.194615, 0.954821, -0.224591, -0.967244, -0.148765, 0.20569, -0.187725, 1.41627, 0.0325064)

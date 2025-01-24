@@ -219,7 +219,6 @@ func _fire() -> void:
 
 
 func _swing() -> void:
-	super()
 	slap()
 
 

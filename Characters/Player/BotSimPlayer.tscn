@@ -10,4 +10,7 @@ mode_func = NodePath("BotSimFunc")
 script = ExtResource("3_j2bpo")
 character = NodePath("..")
 
+[node name="Slapper" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0789925, 0)
+
 [editable path="Mannequin"]

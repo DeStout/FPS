@@ -82,8 +82,7 @@ var lower_blend_pos := "parameters/Lower/RunIdle/blend_position"
 
 
 func _ready() -> void:
-	weapon_held = _get_weapon(Globals.WEAPONS.SLAPPER)
-	
+	_set_slapper()
 	set_processing(false)
 	for body_seg in body_segs:
 		shoot_cast.add_exception(body_seg)
@@ -189,8 +188,11 @@ func zoom() -> void:
 	zoomed = !zoomed
 
 
-func _swing() -> void:
-	pass
+func _set_slapper() -> void:
+	weapon_held = _get_weapon(Globals.WEAPONS.SLAPPER)
+	weapon_state_machine = $Mannequin/AnimTree["parameters/Upper/Slapper/playback"]
+	weapon_state_machine.travel("Alert")
+	upper_state_machine.travel(Globals.WEAPON_NAMES[weapon_held.weapon_type])
 
 
 func slap() -> void:
@@ -204,7 +206,6 @@ func slap() -> void:
 			assert(chest_seg != null, "Character does not have Chest")
 			character.take_damage(chest_seg, weapon_held.damage, self)
 			$Slapped.play()
-
 
 func _reload() -> void:
 	if weapon_held and !weapon_held.is_reloading and !switching_weapons:
@@ -348,10 +349,10 @@ func _pick_up_ammo(new_pick_up : PickUp) -> void:
 
 
 func rand_weapon() -> int:
-	var weight := 4.0
-	var spawn_weapon = randf_range(1, (Globals.WEAPONS.size()-1) ** weight)
+	var weight := 3.0
+	var spawn_weapon = randf_range(1, (Globals.WEAPONS.size()) ** weight)
 	spawn_weapon = int(pow(spawn_weapon, 1.0 / weight))
-	spawn_weapon = Globals.WEAPONS.size()-1 - spawn_weapon
+	spawn_weapon = Globals.WEAPONS.size() - spawn_weapon
 	return spawn_weapon
 
 

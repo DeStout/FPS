@@ -4,6 +4,7 @@ extends Node3D
 
 @export var weapon_type : Globals.WEAPONS
 @export var wielder : CharacterBase = null
+var fp_weapon : FPWeapon = null
 @export var impulse := 150
 
 var is_reloading := false
