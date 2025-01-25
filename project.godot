@@ -242,6 +242,7 @@ Screenshot={
 3d_physics/layer_6="Ragdoll"
 3d_physics/layer_7="Interactables"
 3d_physics/layer_8="NavAdjust"
+3d_physics/layer_9="Grenade"
 
 [limbo_ai]
 

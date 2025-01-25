@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dovfhhiq57x4g"]
+
+[ext_resource type="Script" path="res://Props/Weapons/Grenade/Grenade.gd" id="1_p8qrt"]
+[ext_resource type="AudioStream" uid="uid://cuwmcsge0stbu" path="res://Props/Weapons/Grenade/Throw.wav" id="2_jhnqf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cckbe"]
+friction = 5.0
+bounce = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4yr1w"]
+radius = 0.075
+height = 0.18
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tt31o"]
+radius = 0.075
+height = 0.2
+radial_segments = 8
+rings = 2
+
+[node name="Grenade" type="RigidBody3D"]
+physics_interpolation_mode = 1
+collision_layer = 256
+collision_mask = 15
+input_ray_pickable = false
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_cckbe")
+can_sleep = false
+continuous_cd = true
+script = ExtResource("1_p8qrt")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4yr1w")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tt31o")
+
+[node name="Explode" type="Timer" parent="."]
+
+[node name="Throw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jhnqf")
+pitch_scale = 2.0
+autoplay = true
+max_polyphony = 3
+bus = &"SFX"
+
+[connection signal="timeout" from="Explode" to="." method="_explode"]

@@ -9,7 +9,7 @@ var zoom_sensitibity := 1.0
 var invert_y_axis := false
 
 enum WEAPONS { SLAPPER, PISTOL, SMG, RIFLE, SHOTGUN, SNIPER }
-var weapons = [load("res://Props/Weapons/Slapper/Slapper.tscn"),
+var weapons = [ load("res://Props/Weapons/Slapper/Slapper.tscn"),
 				load("res://Props/Weapons/Pistol/Pistol.tscn"),
 				load("res://Props/Weapons/SMG/SMG.tscn"),
 				load("res://Props/Weapons/Rifle/Rifle.tscn"),

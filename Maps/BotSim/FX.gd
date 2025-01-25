@@ -3,6 +3,8 @@ extends Node3D
 
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
 var bullet_hole_ := load("res://Props/BulletHole.tscn")
+var grenade_ := load("res://Props/Weapons/Grenade/Grenade.tscn")
+var explosion_ := load("res://Props/Weapons/Grenade/Explosion.tscn")
 var damage_label_ := load("res://Maps/Utilities/DamageLabel.tscn")
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
 var mat_ := load("res://Characters/BotSim/BotSimMat.tres")
@@ -35,6 +37,26 @@ func add_bullet_hole(pos : Vector3, normal : Vector3, parent : Node3D) -> void:
 		bullet_hole = bullet_holes.pop_front()
 		if bullet_hole != null:
 			bullet_hole.set_fade()
+
+
+func add_grenade(thrower, spawn_basis : Basis, spawn_point : Vector3, \
+								spawn_dir : Vector3, throw_strength : float) -> void:
+	var grenade = grenade_.instantiate()
+	add_child(grenade)
+	
+	grenade.thrower = thrower
+	grenade.global_position = spawn_point
+	grenade.global_basis = spawn_basis
+	grenade.global_basis = grenade.global_basis.looking_at(spawn_dir)
+	
+	grenade.apply_central_impulse(-grenade.global_basis.z * throw_strength)
+
+
+func add_explosion(thrower : CharacterBase, spawn_pos : Vector3) -> void:
+	var explosion = explosion_.instantiate()
+	add_child(explosion)
+	explosion.thrower = thrower
+	explosion.global_position = spawn_pos
 
 
 func add_damage_label(body_seg_type : int, pos : Vector3, dmg : String):

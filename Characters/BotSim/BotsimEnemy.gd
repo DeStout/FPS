@@ -175,12 +175,13 @@ func _swing() -> void:
 	slap()
 
 
-func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+func take_damage(damage : int, shooter : CharacterBase, \
+										body_seg : BodySeg = body_segs[0]) -> void:
 	if state_machine.current_state.name == "SeekState" and \
 									state_machine.current_state.active == true:
 		target = shooter
 		state_machine.current_state.alert()
-	super(body_seg, damage, shooter)
+	super(damage, shooter, body_seg)
 
 
 func _unequip_weapon(old_weapon) -> void:

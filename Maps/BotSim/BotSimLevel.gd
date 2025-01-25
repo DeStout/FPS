@@ -66,6 +66,15 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3, parent : Node3D = null) 
 	fx.add_bullet_hole(pos, normal, parent)
 
 
+func spawn_grenade(thrower, spawn_basis : Basis, spawn_point : Vector3, \
+								spawn_dir : Vector3, throw_strength : float) -> void:
+	fx.add_grenade(thrower, spawn_basis, spawn_point, spawn_dir, throw_strength)
+
+
+func spawn_explosion(thrower : CharacterBase, spawn_pos : Vector3) -> void:
+	fx.add_explosion(thrower, spawn_pos)
+
+
 # Called from CharacterBase.take_damage()
 func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> void:
 	fx.add_damage_label(body_seg_type, pos, dmg)

@@ -15,9 +15,10 @@ var game_over = false
 @onready var reticle := $UI/Reticle
 @onready var scope := $UI/Scope
 
-@onready var weapon_info := $UI/Weapon
-@onready var ammo_in_mag := $UI/Weapon/AmmoInMag
-@onready var extra_ammo := $UI/Weapon/ExtraAmmo
+@onready var weapon_info := $UI/WeaponBG
+@onready var ammo_in_mag := $UI/WeaponBG/Weapon/AmmoInMag
+@onready var extra_ammo := $UI/WeaponBG/Weapon/ExtraAmmo
+@onready var grenades := $UI/WeaponBG/Weapon/Grenades
 
 @onready var health_mod := $UI/HealthMod
 @onready var health_bar := $UI/HealthMod/HealthBar
@@ -128,12 +129,16 @@ func fade_out() -> void:
 
 
 func show_weapon_info(show : bool) -> void:
-	$UI/Weapon.visible = show
+	weapon_info.visible = show
 
 
 func update_weapon(mag_ammo : int, ammo_extra : int) -> void:
 	ammo_in_mag.text = str(mag_ammo)
 	extra_ammo.text = str(ammo_extra)
+
+
+func update_grenades(grenade_count : int) -> void:
+	grenades.text = str(grenade_count)
 
 
 func show_health() -> void:

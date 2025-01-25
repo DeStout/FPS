@@ -14,6 +14,7 @@ func _ready() -> void:
 	super()
 	
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
+	HUD.update_grenades(grenade_count)
 	nozzle = $AimHelper/FirstPerson/Nozzle
 	
 	if has_start_weapon:
@@ -96,6 +97,9 @@ func _input(event) -> void:
 
 	if Input.is_action_just_pressed("Reload"):
 		_reload()
+	
+	if Input.is_action_just_pressed("Throw"):
+		_throw()
 
 	# Mouse Look
 	if event is InputEventMouseMotion:
@@ -154,6 +158,11 @@ func _fire() -> void:
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
 		HUD.bloom_reticle(weapon_held.get_variance_perc())
+
+
+func _throw() -> void:
+	super()
+	HUD.update_grenades(grenade_count)
 
 
 func zoom() -> void:
@@ -226,9 +235,10 @@ func _pick_up_health(new_health : PickUp) -> void:
 	HUD.show_health()
 
 
-func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+func take_damage(damage : int, shooter : CharacterBase, \
+										body_seg : BodySeg = body_segs[0]) -> void:
 	damage *= (2.0/5.0)
-	super(body_seg, damage, shooter)
+	super(damage, shooter, body_seg)
 	_show_damage(shooter)
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 	HUD.show_health()

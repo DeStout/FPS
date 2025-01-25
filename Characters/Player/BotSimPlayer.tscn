@@ -10,7 +10,55 @@ mode_func = NodePath("BotSimFunc")
 script = ExtResource("3_j2bpo")
 character = NodePath("..")
 
+[node name="Head" parent="Mannequin/Mannequin/Skeleton3D" index="2"]
+transform = Transform3D(1, 0.000418454, 0.000706413, -0.000346331, 0.99507, -0.099176, -0.000744431, 0.0991758, 0.99507, 3.8498e-05, 1.56936, 0.0228464)
+
+[node name="Neck" parent="Mannequin/Mannequin/Skeleton3D" index="3"]
+transform = Transform3D(1, -1.1074e-08, 6.3271e-10, 1.1092e-08, 0.998335, -0.05768, 7.09021e-12, 0.05768, 0.998335, 2.9472e-05, 1.4645, 0.0482648)
+
+[node name="R_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="4"]
+transform = Transform3D(0.187772, -0.139342, -0.972278, 0.123035, 0.985426, -0.117465, 0.974476, -0.0975676, 0.202179, 0.187842, 1.38225, 0.0361332)
+
+[node name="R_Forearm" parent="Mannequin/Mannequin/Skeleton3D" index="5"]
+transform = Transform3D(0.830257, -0.128794, -0.542296, 0.0382424, 0.983807, -0.175102, 0.556067, 0.124641, 0.821738, 0.226006, 1.1122, 0.062876)
+
+[node name="R_Hand" parent="Mannequin/Mannequin/Skeleton3D" index="6"]
+transform = Transform3D(-0.444873, -0.0447394, -0.894475, -0.141371, 0.989738, 0.0208075, 0.884365, 0.135709, -0.446633, 0.261552, 0.840521, 0.0284433)
+
 [node name="Slapper" parent="Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0789925, 0)
+
+[node name="L_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="7"]
+transform = Transform3D(0.162985, 0.257265, 0.952497, -0.194615, 0.954821, -0.224591, -0.967244, -0.148765, 0.20569, -0.187731, 1.38381, 0.0325064)
+
+[node name="L_Forearm" parent="Mannequin/Mannequin/Skeleton3D" index="8"]
+transform = Transform3D(-0.407972, 0.0110038, 0.912928, 0.350631, 0.925136, 0.14554, -0.842981, 0.379478, -0.381287, -0.258257, 1.12215, 0.0732699)
+
+[node name="L_Hand" parent="Mannequin/Mannequin/Skeleton3D" index="9"]
+transform = Transform3D(-0.358179, 0.0533016, 0.93213, 0.0967074, 0.995117, -0.0197427, -0.928631, 0.0830726, -0.361584, -0.261286, 0.866668, -0.0315002)
+
+[node name="Chest" parent="Mannequin/Mannequin/Skeleton3D" index="10"]
+transform = Transform3D(1, -1.29182e-08, 5.47321e-10, 1.29292e-08, 0.998652, -0.0518974, 1.23839e-10, 0.0518974, 0.998652, 1.65316e-05, 1.31396, 0.0483816)
+
+[node name="Stomach" parent="Mannequin/Mannequin/Skeleton3D" index="11"]
+transform = Transform3D(1, -7.21353e-09, 4.21456e-10, 7.22422e-09, 0.999305, -0.0372849, -1.52208e-10, 0.0372849, 0.999305, 5.71225e-06, 1.18106, 0.027147)
+
+[node name="R_Thigh" parent="Mannequin/Mannequin/Skeleton3D" index="13"]
+transform = Transform3D(-1, -1.11322e-09, 1.04258e-11, 1.11322e-09, -1, -7.6177e-10, 1.04258e-11, -7.6177e-10, 1, 0.0912385, 0.89889, 0.00055338)
+
+[node name="R_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="14"]
+transform = Transform3D(0.999538, -0.00465442, 0.0300437, 0.00203222, -0.975772, -0.218779, 0.0303341, 0.218739, -0.975312, 0.0936853, 0.492935, 0.00569627)
+
+[node name="R_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="15"]
+transform = Transform3D(-0.976698, -0.21462, 6.57327e-05, 0.00766813, -0.0345902, 0.999372, -0.214483, 0.976085, 0.0354299, 0.0886636, 0.0871463, 0.117694)
+
+[node name="L_Thigh" parent="Mannequin/Mannequin/Skeleton3D" index="16"]
+transform = Transform3D(-1, -1.41881e-09, 1.4133e-11, 1.41881e-09, -1, 8.15592e-10, 1.4133e-11, 8.15592e-10, 1, -0.0912506, 0.89889, 0.000553348)
+
+[node name="L_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="17"]
+transform = Transform3D(0.999258, -0.00917926, 0.0373932, 0.00660327, -0.915923, -0.4013, 0.0379329, 0.401249, -0.915183, -0.0936974, 0.492936, 0.00570952)
+
+[node name="L_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="18"]
+transform = Transform3D(-0.991093, 0.13267, 0.0115278, 0.0681939, 0.431263, 0.899645, 0.114384, 0.892418, -0.43647, -0.0958822, 0.116089, 0.193364)
 
 [editable path="Mannequin"]

@@ -226,12 +226,13 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 
-func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+func take_damage(damage : int, shooter : CharacterBase, \
+										body_seg : Area3D = body_segs[0]) -> void:
 	if state_machine.current_state.name == "GuardState" and \
 									state_machine.current_state.active == true:
 		target = shooter
 		state_machine.current_state.alert()
-	super(body_seg, damage * damage_mod, shooter)
+	super(damage * damage_mod, shooter, body_seg)
 
 
 func die() -> void:

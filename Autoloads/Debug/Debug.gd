@@ -137,6 +137,7 @@ func _infinite_ammo() -> void:
 		player.weapon_held.extra_ammo = player.weapon_held.properties.max_ammo - \
 										player.weapon_held.properties.mag_size
 		HUD.update_weapon(player.weapon_held.ammo_in_mag, player.weapon_held.extra_ammo)
+		player.grenade_count = player.MAX_GRENADES
 
 func _bottomless_mag() -> void:
 	if player.weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:

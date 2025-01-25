@@ -9,4 +9,4 @@ signal take_damage
 # Called from shooter CharacterBase
 func body_seg_shot(damage : int, shooter : CharacterBase) -> void:
 	# Signal to CharacterBase take_damage()
-	take_damage.emit(self, damage, shooter)
+	take_damage.emit(damage, shooter, self)

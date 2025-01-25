@@ -129,35 +129,35 @@ texture = ExtResource("6_1t7b4")
 
 [node name="WeaponBG" type="PanelContainer" parent="UI"]
 layout_mode = 0
-offset_left = 714.0
+offset_left = 753.0
 offset_top = 271.0
 offset_right = 909.0
-offset_bottom = 410.0
+offset_bottom = 485.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ypvma")
 
-[node name="Weapon" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 780.0
-offset_top = 265.0
-offset_right = 862.0
-offset_bottom = 411.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = -20
+[node name="Weapon" type="VBoxContainer" parent="UI/WeaponBG"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -15
 
-[node name="AmmoInMag" type="Label" parent="UI/Weapon"]
+[node name="AmmoInMag" type="Label" parent="UI/WeaponBG/Weapon"]
 layout_mode = 2
 text = "32"
 label_settings = SubResource("LabelSettings_vgpdo")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ExtraAmmo" type="Label" parent="UI/Weapon"]
+[node name="ExtraAmmo" type="Label" parent="UI/WeaponBG/Weapon"]
 layout_mode = 2
 text = "0"
+label_settings = SubResource("LabelSettings_0pkc5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Grenades" type="Label" parent="UI/WeaponBG/Weapon"]
+layout_mode = 2
+text = "4"
 label_settings = SubResource("LabelSettings_0pkc5")
 horizontal_alignment = 2
 vertical_alignment = 1

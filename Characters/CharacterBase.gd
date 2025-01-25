@@ -21,6 +21,8 @@ const BACK_SPEED := 3.5
 const ZOOM_SPEED := 3.5
 const LADDER_SPEED := 4.0
 const JUMP_VELOCITY := 6.0
+const THROW_STRENGTH := 350
+
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var was_on_floor := false
 var ladder : Area3D = null
@@ -59,6 +61,9 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
+const MAX_GRENADES := 4
+var grenade_count := 4
+
 @onready var aim_helper := $AimHelper
 @onready var weapons := $Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons
 @onready var weapon_held : Node3D = null
@@ -162,6 +167,14 @@ func _pull_trigger() -> void:
 	_switch_to_next_weapon()
 
 
+func _throw() -> void:
+	if grenade_count > 0:
+		var throw_from := $Mannequin/Mannequin/Skeleton3D/R_Hand/HandArea
+		current_level.spawn_grenade(self, global_basis, throw_from.global_position, \
+									-$AimHelper.global_basis.z, THROW_STRENGTH)
+		grenade_count -= 1
+
+
 func set_on_ladder(new_ladder : Area3D) -> void:
 	ladder = new_ladder
 
@@ -204,7 +217,7 @@ func slap() -> void:
 				if body_seg.name == "ChestArea":
 					chest_seg = body_seg
 			assert(chest_seg != null, "Character does not have Chest")
-			character.take_damage(chest_seg, weapon_held.damage, self)
+			character.take_damage(weapon_held.damage, self, chest_seg)
 			$Slapped.play()
 
 func _reload() -> void:
@@ -221,15 +234,26 @@ func shell_loaded() -> void:
 
 
 # Signaled from BodySeg
-func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> void:
+func take_damage(damage : int, attacker : CharacterBase, \
+										body_seg : BodySeg = body_segs[0]) -> void:
 	# Check if friendly fire is turned on
-	if mode_func and mode_func.has_method(&"take_damge"):
-		if !mode_func.take_damage(shooter):
+	if mode_func != null and mode_func.has_method("take_damage"):
+		if !mode_func.take_damage(attacker):
 			return
-		
-	last_shot_by = shooter
-	last_body_seg_shot = body_seg.get_parent()
 	
+	last_shot_by = attacker
+	if body_seg:
+		last_body_seg_shot = body_seg.get_parent()
+		
+	_subtract_health(damage)
+	if health > 0:
+		$Voice.get_hurt_sfx().play()
+	if current_level != null:
+		current_level.spawn_damage_label(body_seg.body_seg,
+											$DmgLbl.global_position, str(damage))
+
+
+func _subtract_health(damage : int) -> void:
 	if armor > 0:
 		var armor_dmg : int = damage / 2
 		if armor > abs(armor_dmg):
@@ -240,13 +264,6 @@ func take_damage(body_seg : Area3D, damage : int, shooter : CharacterBase) -> vo
 			armor = 0
 	else:
 		health -= damage
-		
-	if health > 0:
-		$Voice.get_hurt_sfx().play()
-	
-	if current_level != null:
-		current_level.spawn_damage_label(body_seg.body_seg,
-											$DmgLbl.global_position, str(damage))
 
 
 # Setter function of health
@@ -361,6 +378,8 @@ func reset_weapons() -> void:
 		if weapon.weapon_type != Globals.WEAPONS.SLAPPER:
 			weapon.queue_free()
 	weapon_held = _get_weapon(Globals.WEAPONS.SLAPPER)
+	
+	grenade_count = MAX_GRENADES
 
 
 func sort_weapons(weapon1 : Weapon, weapon2 : Weapon) -> bool:
