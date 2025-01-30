@@ -62,7 +62,7 @@ func _move_to_target(delta) -> void:
 	if !enemy.target or !enemy.target.is_inside_tree():
 		return
 	if enemy.is_enemy_visible(enemy.target) and enemy.shoot_timer.is_stopped():
-		if randi() % 30 == 0:
+		if randi() % 40 == 0:
 			enemy._throw()
 		else:
 			enemy.trigger_pulled = true

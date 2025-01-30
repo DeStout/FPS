@@ -14,8 +14,8 @@ var target : CharacterBase = null
 var enemies_vis : Array[bool] = []
 
 @onready var shoot_timer := $ShootTimer
-var shoot_speed_mod := 1.0/2.5
-var shoot_speed_variance := Vector2(0.3, 1.0)
+var shoot_speed_mod := 2.0/2.5
+var shoot_speed_variance := Vector2(0.6, 1.0)
 
 const TURN_SPEED := 6.0
 const AIM_SPEED := 1.0
@@ -68,7 +68,7 @@ func _fire() -> void:
 	super()
 	trigger_pulled = false
 	var speed_variance := randf_range(shoot_speed_variance.x , shoot_speed_variance.y)
-	var shoot_speed := 0.25 * speed_variance
+	var shoot_speed := 1.0
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		shoot_speed = weapon_held.properties.shots_per_second * \
 												shoot_speed_mod * speed_variance
