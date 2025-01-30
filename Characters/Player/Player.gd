@@ -235,11 +235,10 @@ func _pick_up_health(new_health : PickUp) -> void:
 	HUD.show_health()
 
 
-func take_damage(damage : int, shooter : CharacterBase, \
-										body_seg : BodySeg = body_segs[0]) -> void:
-	damage *= (2.0/5.0)
-	super(damage, shooter, body_seg)
-	_show_damage(shooter)
+func take_damage(damage : Damage) -> void:
+	damage.damage_amount *= (2.0/5.0)
+	super(damage)
+	_show_damage(damage.attacker)
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 	HUD.show_health()
 
@@ -254,6 +253,8 @@ func reset_weapons() -> void:
 	super()
 	first_person.reset_weapons()
 	first_person.animator.play("SlapperIdle")
+	
+	HUD.update_grenades(grenade_count)
 
 
 func add_weapon(new_weapon : Weapon) -> void:

@@ -6,7 +6,7 @@ extends Area3D
 
 signal take_damage
 
-# Called from shooter CharacterBase
-func body_seg_shot(damage : int, shooter : CharacterBase) -> void:
-	# Signal to CharacterBase take_damage()
-	take_damage.emit(damage, shooter, self)
+# Called from BulletWeapon._check_shot_collision()
+func body_seg_shot(damage : Damage) -> void:
+	# Signal to CharacterBase.take_damage()
+	take_damage.emit(damage)

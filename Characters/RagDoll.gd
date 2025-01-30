@@ -24,13 +24,10 @@ func set_material(new_mat : BaseMaterial3D) -> void:
 	surf_mat = $Surface.get_surface_override_material(0)
 	
 
-func match_pose_transform(manny_skel, manny_trans, body_seg_shot) -> void:
+func match_pose_transform(manny_skel, manny_trans) -> void:
 	transform = manny_trans
 	for bone in get_bone_count():
 		set_bone_pose(bone, manny_skel.get_bone_pose(bone))
-		
-		if find_bone($PhysBoneSim.get_node(body_seg_shot).bone_name) == bone:
-			$PhysBoneSim.get_node(body_seg_shot).joint_type = PhysicalBone3D.JOINT_TYPE_NONE
 	
 	await get_tree().create_timer(.01).timeout
 	$PhysBoneSim.physical_bones_start_simulation()
@@ -39,10 +36,10 @@ func match_pose_transform(manny_skel, manny_trans, body_seg_shot) -> void:
 	return
 
 
-func add_impulse(shooter_pos : Vector3, body_seg_shot : String, 
-													gun_impulse : float) -> void:
-	var body_seg : PhysicalBone3D = $PhysBoneSim.get_node(body_seg_shot)
-	var impulse = shooter_pos.direction_to(global_position) * gun_impulse
+func add_impulse(damage : Damage) -> void:
+	var body_seg : PhysicalBone3D = $PhysBoneSim.get_node( \
+									str(damage.body_seg_damaged.get_parent().name))
+	var impulse = damage.global_position.direction_to(global_position) * damage.impulse
 	body_seg.apply_central_impulse(impulse)
 
 

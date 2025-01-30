@@ -61,8 +61,19 @@ func _check_shot_collision() -> void:
 	if wielder.shoot_cast.is_colliding():
 		var shot_collider := wielder.shoot_cast.get_collider()
 		level.spawn_shot_trail(nozzle_pos, wielder.shoot_cast.get_collision_point())
+		
 		if shot_collider is BodySeg:
-			shot_collider.body_seg_shot(calculate_damage(shot_collider), wielder)
+			var damage := Damage.new()
+			damage.attacker = wielder
+			damage.attacker_cam = null
+			damage.damage_type = Damage.DAMAGE_TYPES.BULLET
+			damage.attacking_weapon = weapon_type
+			damage.body_seg_damaged = shot_collider
+			damage.damage_amount = calculate_damage(shot_collider)
+			damage.global_position = global_position
+			damage.impulse = impulse
+			
+			shot_collider.body_seg_shot(damage)
 		else:
 			level.spawn_bullet_hole(wielder.shoot_cast.get_collision_point(),
 									wielder.shoot_cast.get_collision_normal(),

@@ -4,8 +4,9 @@ extends ShapeCast3D
 const MAX_DAMAGE := 75
 const MIN_DAMAGE := 15
 
-@onready var radius : float = $Mesh.mesh.radius
 var thrower : CharacterBase = null
+@onready var radius : float = $Mesh.mesh.radius
+var impulse := 500
 
 
 func _explosion() -> void:
@@ -18,8 +19,24 @@ func _explosion() -> void:
 			
 		var dist = character.global_position + Vector3(0, 1.8/2, 0)
 		dist = global_position.distance_to(dist)
-		var damage = int(max(MIN_DAMAGE ,remap(dist, 0.0, radius, MAX_DAMAGE, MIN_DAMAGE)))
-		character.take_damage(damage, thrower)
+		
+		var head_seg : Area3D = null
+		for body_seg in character.body_segs:
+			if body_seg.name == "HeadArea":
+				head_seg = body_seg
+		assert(head_seg != null, "Character does not have Head")
+		
+		var damage : Damage = Damage.new()
+		damage.attacker = thrower
+		damage.attacker_cam = null
+		damage.damage_type = Damage.DAMAGE_TYPES.EXPLOSIVE
+		damage.body_seg_damaged = head_seg
+		damage.damage_amount = int(max(MIN_DAMAGE ,\
+								remap(dist, 0.0, radius, MAX_DAMAGE, MIN_DAMAGE)))
+		damage.global_position = global_position
+		damage.impulse = impulse
+		
+		character.take_damage(damage)
 		
 	await $Explosion.finished
 	queue_free()

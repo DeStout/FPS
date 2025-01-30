@@ -321,7 +321,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113881, 1.53917, -1.49362)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 
 [node name="Camera" type="Camera3D" parent="AimHelper"]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.97237, 0.233445, 0, -0.233445, 0.97237, 0, 0.5, 0.75)
 visible = false
 cull_mask = 1048551

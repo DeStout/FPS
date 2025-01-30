@@ -16,10 +16,10 @@ var bullet_holes := []
 var rag_dolls := []
 
 
-func add_shot_trail(nozzle_point : Vector3, collision_point : Vector3) -> void:
+func add_shot_trail(nozzle : Vector3, collision_point : Vector3) -> void:
 	var shot_trail = shot_trail_.instantiate()
 	add_child(shot_trail)
-	shot_trail.align_and_scale(nozzle_point, collision_point)
+	shot_trail.align_and_scale(nozzle, collision_point)
 
 
 func add_bullet_hole(pos : Vector3, normal : Vector3, parent : Node3D) -> void:
@@ -59,30 +59,28 @@ func add_explosion(thrower : CharacterBase, spawn_pos : Vector3) -> void:
 	explosion.global_position = spawn_pos
 
 
-func add_damage_label(body_seg_type : int, pos : Vector3, dmg : String):
+func add_damage_label(damage : Damage, pos : Vector3):
 	var damage_label = damage_label_.instantiate()
 	add_child(damage_label)
 	var color : Color
-	match body_seg_type:
+	match damage.body_seg_damaged.body_seg:
 		Globals.BODY_SEGS.HEAD:
 			color = Color.GOLD
 		_:
 			color = Color.BROWN
-	damage_label.set_txt_pos_color(pos, dmg, color)
+	damage_label.set_txt_pos_color(pos, str(damage.damage_amount), color)
 
 
 func add_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
-							shooter : CharacterBase, body_seg_shot : String, \
-											body_mat : BaseMaterial3D) -> void:
+						damage : Damage, body_mat : BaseMaterial3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	var temp_mat = mat_.duplicate()
 	temp_mat.albedo_color = body_mat.albedo_color
 	rag_doll.exiting.connect(remove_rag_doll)
 	add_child(rag_doll)
 	rag_doll.set_material(temp_mat)
-	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
-	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
-										shooter.weapon_held.impulse)
+	await rag_doll.match_pose_transform(dead_skel, dead_trans)
+	rag_doll.add_impulse(damage)
 	
 	rag_dolls.push_back(rag_doll)
 	if rag_dolls.size() > MAX_RAG_DOLLS:

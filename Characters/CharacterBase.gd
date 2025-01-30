@@ -8,7 +8,7 @@ signal respawned
 @export var current_level : Node3D
 @export var mode_func : Node
 @export var enemies : Array[CharacterBase] = []
-var last_shot_by : CharacterBase = null
+var last_damage : Damage = null
 
 # Movement
 const ACCEL := 80
@@ -58,7 +58,6 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 						$Mannequin/Mannequin/Skeleton3D/L_Thigh/ThighArea,
 						$Mannequin/Mannequin/Skeleton3D/L_Shin/ShinArea,
 						$Mannequin/Mannequin/Skeleton3D/L_Foot/FootArea]
-var last_body_seg_shot : BoneAttachment3D = null
 
 # Weapons
 const MAX_GRENADES := 4
@@ -217,7 +216,18 @@ func slap() -> void:
 				if body_seg.name == "ChestArea":
 					chest_seg = body_seg
 			assert(chest_seg != null, "Character does not have Chest")
-			character.take_damage(weapon_held.damage, self, chest_seg)
+			
+			var damage := Damage.new()
+			damage.attacker = self
+			damage.attacker_cam = null
+			damage.damage_type = Damage.DAMAGE_TYPES.SLAP
+			damage.attacking_weapon = Globals.WEAPONS.SLAPPER
+			damage.body_seg_damaged = chest_seg
+			damage.damage_amount = weapon_held.damage
+			damage.global_position = weapon_held.global_position
+			damage.impulse = weapon_held.impulse
+			
+			character.take_damage(damage)
 			$Slapped.play()
 
 func _reload() -> void:
@@ -233,24 +243,20 @@ func shell_loaded() -> void:
 	pass
 
 
-# Signaled from BodySeg
-func take_damage(damage : int, attacker : CharacterBase, \
-										body_seg : BodySeg = body_segs[0]) -> void:
+# Signaled from BodySeg / Explosion
+func take_damage(damage : Damage) -> void:
+	last_damage = damage
+	
 	# Check if friendly fire is turned on
 	if mode_func != null and mode_func.has_method("take_damage"):
-		if !mode_func.take_damage(attacker):
+		if !mode_func.take_damage(damage.attacker):
 			return
-	
-	last_shot_by = attacker
-	if body_seg:
-		last_body_seg_shot = body_seg.get_parent()
 		
-	_subtract_health(damage)
+	_subtract_health(damage.damage_amount)
 	if health > 0:
 		$Voice.get_hurt_sfx().play()
 	if current_level != null:
-		current_level.spawn_damage_label(body_seg.body_seg,
-											$DmgLbl.global_position, str(damage))
+		current_level.spawn_damage_label(damage, $DmgLbl.global_position)
 
 
 func _subtract_health(damage : int) -> void:
@@ -301,8 +307,7 @@ func die() -> void:
 	var body_mat = surface_mesh.mesh.surface_get_material(0)
 	if surface_mesh.get_surface_override_material(0):
 		body_mat = surface_mesh.get_surface_override_material(0)
-	current_level.spawn_rag_doll(skeleton, global_transform, \
-								last_shot_by, last_body_seg_shot.name, body_mat)
+	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, body_mat)
 	
 	await death_sfx.finished
 	global_position = Vector3(0, -10, 0)

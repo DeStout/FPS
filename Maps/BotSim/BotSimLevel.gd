@@ -57,8 +57,8 @@ func end_match() -> void:
 
 
 # Called from CharacterBase.shoot()
-func spawn_shot_trail(nozzle_point : Vector3, collision_point : Vector3) -> void:
-	fx.add_shot_trail(nozzle_point, collision_point)
+func spawn_shot_trail(nozzle : Vector3, collision_point : Vector3) -> void:
+	fx.add_shot_trail(nozzle, collision_point)
 
 
 # Called from CharacterBase.shoot()
@@ -76,15 +76,14 @@ func spawn_explosion(thrower : CharacterBase, spawn_pos : Vector3) -> void:
 
 
 # Called from CharacterBase.take_damage()
-func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> void:
-	fx.add_damage_label(body_seg_type, pos, dmg)
+func spawn_damage_label(damage : Damage, pos : Vector3) -> void:
+	fx.add_damage_label(damage, pos)
 
 
 # Called from CharacterBase.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
-							shooter : CharacterBase, body_seg_shot : String, \
-											body_mat : BaseMaterial3D) -> void:
-	fx.add_rag_doll(dead_skel, dead_trans, shooter, body_seg_shot, body_mat)
+						damage : Damage, body_mat : BaseMaterial3D) -> void:
+	fx.add_rag_doll(dead_skel, dead_trans, damage, body_mat)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:
