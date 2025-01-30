@@ -94,7 +94,7 @@ func spawn_damage_label(damage : Damage, pos : Vector3) -> void:
 	damage_label.set_txt_pos_color(pos, str(damage.damage_amount), color)
 
 
-# Called from CharacterBase.mode_func.die()
+# Called from CharacterBase.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
 						damage : Damage, body_mat : BaseMaterial3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
@@ -116,4 +116,4 @@ func character_out_of_bounds(body : Node3D) -> void:
 		HUD.update_health(player.MAX_HEALTH, player.MAX_ARMOR, player.MAX_HEALTH, 0)
 		Globals.game.reset_single_player()
 		return
-	body.queue_free()
+		body.queue_free()

@@ -289,7 +289,7 @@ func is_enemy(character):
 	return enemies.has(character)
 
 
-# Called from mode_func.die() / Campaign
+# Called from mode_func.die() / CampaignEnemy.die()
 func die() -> void:
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()

@@ -56,9 +56,9 @@ func _select_bot_sim_map() -> String:
 	var map_address := ""
 	match bot_sim_settings.map:
 		0:
-			map_address = "res://Maps/BotSim/Square.tscn"
+			map_address = "res://Maps/BotSim/Square/Square.tscn"
 		1:
-			map_address = "res://Maps/BotSim/Bridge.tscn"
+			map_address = "res://Maps/BotSim/Bridge/Bridge.tscn"
 		2:
 			map_address = "res://Maps/BotSim/Temple/Temple.tscn"
 	return map_address

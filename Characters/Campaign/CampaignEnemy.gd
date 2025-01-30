@@ -242,10 +242,10 @@ func die() -> void:
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
 		
-	await super()
 	
-	# Connected to nada
+	# Connected to EnemySpawner
 	defeated.emit(self)
+	await super()
 	call_deferred("queue_free")
 
 

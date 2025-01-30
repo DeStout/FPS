@@ -3,17 +3,21 @@ extends Weapon
 
 
 @export var properties : BulletWeaponProperties = null
+
 var extra_ammo : int
 var ammo_in_mag : int
+
 @onready var variance := properties.default_variance
+@onready var reset_time := 0.0
 
 
 func _process(delta: float) -> void:
 	super(delta)
-	if variance > properties.default_variance:
-		var reset_amt := properties.max_variance - properties.default_variance
-		reset_amt = reset_amt * (delta / properties.variance_reset)
+	if reset_time == 0.0:
+		var reset_amt := properties.max_variance * delta / properties.variance_reset
 		variance = max(properties.default_variance, variance - reset_amt)
+	else:
+		reset_time = max(0.0, reset_time - delta)
 
 
 func reset() -> void:
@@ -39,7 +43,9 @@ func fire() -> void:
 		_check_shot_collision()
 		
 		wielder.shoot_cast.rotation = Vector3.ZERO
+	
 	variance = min(properties.max_variance, variance + properties.variance_build)
+	reset_time = 1.25 * fire_time
 	
 	if !properties.automatic:
 		wielder.trigger_pulled = false
