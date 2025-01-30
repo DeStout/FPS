@@ -276,10 +276,7 @@ func _subtract_health(damage : int) -> void:
 func _set_health(new_health) -> void:
 	health = max(0, new_health)
 	if health == 0:
-		if mode_func is BotSimFunc:
-			mode_func.die()
-		else:
-			die()
+		mode_func.die()
 
 
 func set_enemies(new_enemies : Array[CharacterBase]):
@@ -292,7 +289,7 @@ func is_enemy(character):
 	return enemies.has(character)
 
 
-# Called from mode_func.die()
+# Called from mode_func.die() / Campaign
 func die() -> void:
 	var death_sfx = $Voice.get_death_sfx()
 	death_sfx.play()
@@ -310,6 +307,8 @@ func die() -> void:
 	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, body_mat)
 	
 	await death_sfx.finished
+	if !is_inside_tree():
+		breakpoint
 	global_position = Vector3(0, -10, 0)
 	return
 

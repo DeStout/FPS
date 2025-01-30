@@ -164,6 +164,8 @@ func add_to_scoreboard(killed, killer) -> void:
 
 # Signaled from BotSimCharacter.mode_func.die()
 func character_killed(character) -> void:
+	if !character.is_inside_tree():
+		breakpoint
 	remove_child(character)
 
 	for bot in bots:

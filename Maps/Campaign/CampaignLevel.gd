@@ -7,6 +7,8 @@ class_name CampaignLevel
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
 var bullet_hole_ := load("res://Props/BulletHole.tscn")
+var grenade_ := load("res://Props/Weapons/Grenade/Grenade.tscn")
+var explosion_ := load("res://Props/Weapons/Grenade/Explosion.tscn")
 var damage_label_ := load("res://Maps/Utilities/DamageLabel.tscn")
 var weapon_pick_up_ := load("res://Props/PickUps/WeaponPickUp.tscn")
 
@@ -60,28 +62,46 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3, \
 	bullet_hole.project_to(normal)
 
 
-func spawn_damage_label(body_seg_type : int, pos : Vector3, dmg : String) -> void:
+func spawn_grenade(thrower, spawn_basis : Basis, spawn_point : Vector3, \
+								spawn_dir : Vector3, throw_strength : float) -> void:
+	var grenade = grenade_.instantiate()
+	$FX.add_child(grenade)
+	
+	grenade.thrower = thrower
+	grenade.global_position = spawn_point
+	grenade.global_basis = spawn_basis
+	grenade.global_basis = grenade.global_basis.looking_at(spawn_dir)
+	
+	grenade.apply_central_impulse(-grenade.global_basis.z * throw_strength)
+
+
+func spawn_explosion(thrower : CharacterBase, spawn_pos : Vector3) -> void:
+	var explosion = explosion_.instantiate()
+	$FX.add_child(explosion)
+	explosion.thrower = thrower
+	explosion.global_position = spawn_pos
+
+
+func spawn_damage_label(damage : Damage, pos : Vector3) -> void:
 	var damage_label = damage_label_.instantiate()
 	$FX.add_child(damage_label)
 	var color : Color
-	match body_seg_type:
+	match damage.body_seg_damaged.body_seg:
 		Globals.BODY_SEGS.HEAD:
 			color = Color.GOLD
 		_:
 			color = Color.BROWN
-	damage_label.set_txt_pos_color(pos, dmg, color)
+	damage_label.set_txt_pos_color(pos, str(damage.damage_amount), color)
 
 
 # Called from CharacterBase.mode_func.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
-								shooter : CharacterBase, body_seg_shot : String, \
-												body_mat : BaseMaterial3D) -> void:
+						damage : Damage, body_mat : BaseMaterial3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
 	rag_doll.set_material(body_mat)
-	await rag_doll.match_pose_transform(dead_skel, dead_trans, body_seg_shot)
-	rag_doll.add_impulse(shooter.global_position, body_seg_shot,
-														shooter.weapon_held.impulse)
+	await rag_doll.match_pose_transform(dead_skel, dead_trans)
+	rag_doll.add_impulse(damage)
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

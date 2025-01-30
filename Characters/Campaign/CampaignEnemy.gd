@@ -226,24 +226,25 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 
-func take_damage(damage : int, shooter : CharacterBase, \
-										body_seg : Area3D = body_segs[0]) -> void:
+func take_damage(damage : Damage) -> void:
 	if state_machine.current_state.name == "GuardState" and \
 									state_machine.current_state.active == true:
-		target = shooter
+		damage.damage_amount *= damage_mod
+		target = damage.attacker
 		state_machine.current_state.alert()
-	super(damage * damage_mod, shooter, body_seg)
+	super(damage)
 
 
 func die() -> void:
-	super()
-	
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		var weapon_info := [weapon_held.weapon_type,
 								weapon_held.extra_ammo,
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
+		
+	await super()
 	
+	# Connected to nada
 	defeated.emit(self)
 	call_deferred("queue_free")
 

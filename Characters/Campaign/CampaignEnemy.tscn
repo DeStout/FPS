@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bd2fp3xjnl5vp" path="res://Characters/Campaign/VisionCone.tscn" id="6_oihj4"]
 [ext_resource type="Material" uid="uid://nd3s5x5tfn4y" path="res://Characters/Campaign/EnemyMat.tres" id="7_c21dw"]
 
-[node name="CampaignEnemy" instance=ExtResource("1_ywjkl")]
+[node name="CampaignEnemy" node_paths=PackedStringArray("mode_func") instance=ExtResource("1_ywjkl")]
 script = ExtResource("1_6r1n6")
 starting_weapon = 0
+mode_func = NodePath("CampaignFunc")
 
 [node name="CampaignFunc" type="Node" parent="." index="0" node_paths=PackedStringArray("character")]
 script = ExtResource("3_8llv2")
@@ -57,61 +58,61 @@ bones/62/rotation = Quaternion(-0.0750514, 0.790994, -0.604686, -0.055235)
 surface_material_override/0 = ExtResource("7_c21dw")
 
 [node name="Head" parent="Mannequin/Mannequin/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85028e-05, 1.56401, 0.00340767)
+transform = Transform3D(1, 0.000418454, 0.000706413, -0.000346331, 0.99507, -0.099176, -0.000744431, 0.0991758, 0.99507, 3.8498e-05, 1.56508, 0.0228464)
 
 [node name="HeadArea" parent="Mannequin/Mannequin/Skeleton3D/Head" index="0"]
 collision_layer = 8
 
 [node name="Neck" parent="Mannequin/Mannequin/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94757e-05, 1.46079, 0.034832)
+transform = Transform3D(1, -1.1074e-08, 6.3271e-10, 1.1092e-08, 0.998335, -0.05768, 7.09021e-12, 0.05768, 0.998335, 2.9472e-05, 1.46022, 0.0482648)
 
 [node name="NeckArea" parent="Mannequin/Mannequin/Skeleton3D/Neck" index="0"]
 collision_layer = 8
 
 [node name="R_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="4"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.187632, 1.3989, 0.0617143)
+transform = Transform3D(0.187772, -0.139342, -0.972278, 0.123035, 0.985426, -0.117465, 0.974476, -0.0975676, 0.202179, 0.187842, 1.37798, 0.0361332)
 
 [node name="UpperArmArea" parent="Mannequin/Mannequin/Skeleton3D/R_UpperArm" index="0"]
 collision_layer = 8
 
 [node name="R_Forearm" parent="Mannequin/Mannequin/Skeleton3D" index="5"]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.461679, 1.39887, 0.0617141)
+transform = Transform3D(0.830257, -0.128794, -0.542296, 0.0382424, 0.983807, -0.175102, 0.556067, 0.124641, 0.821738, 0.226006, 1.10792, 0.062876)
 
 [node name="ForearmArea" parent="Mannequin/Mannequin/Skeleton3D/R_Forearm" index="0"]
 collision_layer = 8
 
 [node name="R_Hand" parent="Mannequin/Mannequin/Skeleton3D" index="6"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 0.737823, 1.39885, 0.0617139)
+transform = Transform3D(-0.444873, -0.0447394, -0.894475, -0.141371, 0.989738, 0.0208075, 0.884365, 0.135709, -0.446633, 0.261552, 0.836245, 0.0284433)
 
 [node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/R_Hand" index="0"]
 collision_layer = 8
 
 [node name="L_UpperArm" parent="Mannequin/Mannequin/Skeleton3D" index="7"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.187585, 1.39893, 0.0617148)
+transform = Transform3D(0.162985, 0.257265, 0.952497, -0.194615, 0.954821, -0.224591, -0.967244, -0.148765, 0.20569, -0.187731, 1.37953, 0.0325064)
 
 [node name="UpperArmArea" parent="Mannequin/Mannequin/Skeleton3D/L_UpperArm" index="0"]
 collision_layer = 8
 
 [node name="L_Forearm" parent="Mannequin/Mannequin/Skeleton3D" index="8"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.461632, 1.39895, 0.0617149)
+transform = Transform3D(-0.407972, 0.0110038, 0.912928, 0.350631, 0.925136, 0.14554, -0.842981, 0.379478, -0.381287, -0.258257, 1.11787, 0.0732699)
 
 [node name="ForearmArea" parent="Mannequin/Mannequin/Skeleton3D/L_Forearm" index="0"]
 collision_layer = 8
 
 [node name="L_Hand" parent="Mannequin/Mannequin/Skeleton3D" index="9"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.737777, 1.39898, 0.0617148)
+transform = Transform3D(-0.358179, 0.0533016, 0.93213, 0.0967074, 0.995117, -0.0197427, -0.928631, 0.0830726, -0.361584, -0.261286, 0.862393, -0.0315002)
 
 [node name="HandArea" parent="Mannequin/Mannequin/Skeleton3D/L_Hand" index="0"]
 collision_layer = 8
 
 [node name="Chest" parent="Mannequin/Mannequin/Skeleton3D" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65333e-05, 1.31047, 0.042761)
+transform = Transform3D(1, -1.29182e-08, 5.47321e-10, 1.29292e-08, 0.998652, -0.0518974, 1.23839e-10, 0.0518974, 0.998652, 1.65316e-05, 1.30969, 0.0483816)
 
 [node name="ChestArea" parent="Mannequin/Mannequin/Skeleton3D/Chest" index="0"]
 collision_layer = 8
 
 [node name="Stomach" parent="Mannequin/Mannequin/Skeleton3D" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71302e-06, 1.17687, 0.0264964)
+transform = Transform3D(1, -7.21353e-09, 4.21456e-10, 7.22422e-09, 0.999305, -0.0372849, -1.52208e-10, 0.0372849, 0.999305, 5.71225e-06, 1.17679, 0.027147)
 
 [node name="StomachArea" parent="Mannequin/Mannequin/Skeleton3D/Stomach" index="0"]
 collision_layer = 8
@@ -123,37 +124,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98402e-06, 0.961178, -4.11
 collision_layer = 8
 
 [node name="R_Thigh" parent="Mannequin/Mannequin/Skeleton3D" index="13"]
-transform = Transform3D(-0.998513, 0.0541688, 0.00623332, -0.0530647, -0.991668, 0.117387, 0.0125401, 0.116882, 0.993067, 0.0912385, 0.894614, 0.00055338)
+transform = Transform3D(-1, -1.11322e-09, 1.04258e-11, 1.11322e-09, -1, -7.6177e-10, 1.04258e-11, -7.6177e-10, 1, 0.0912385, 0.894614, 0.00055338)
 
 [node name="ThighArea" parent="Mannequin/Mannequin/Skeleton3D/R_Thigh" index="0"]
 collision_layer = 8
 
 [node name="R_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="14"]
-transform = Transform3D(0.99813, 0.0495724, 0.0357706, 0.0587573, -0.939448, -0.337617, 0.0168681, 0.339088, -0.940604, 0.115704, 0.492775, 0.0530787)
+transform = Transform3D(0.999551, -0.00460502, 0.029597, 0.00222865, -0.973938, -0.226802, 0.0298701, 0.226766, -0.973491, 0.0936853, 0.488659, 0.00569627)
 
 [node name="ShinArea" parent="Mannequin/Mannequin/Skeleton3D/R_Shin" index="0"]
 collision_layer = 8
 
 [node name="R_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="15"]
-transform = Transform3D(-0.976997, -0.206343, -0.0538483, -0.0690957, 0.0674096, 0.99533, -0.201749, 0.976155, -0.0801164, 0.133369, 0.10457, 0.214998)
+transform = Transform3D(-0.97668, -0.2147, 5.33946e-05, 0.00798355, -0.036069, 0.999318, -0.214551, 0.976014, 0.036942, 0.0886936, 0.0838062, 0.121033)
 
 [node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/R_Foot" index="0"]
 collision_layer = 8
 
 [node name="L_Thigh" parent="Mannequin/Mannequin/Skeleton3D" index="16"]
-transform = Transform3D(-0.997805, -0.0634927, 0.018828, 0.0509921, -0.917988, -0.393317, 0.0422567, -0.391493, 0.91921, -0.0912506, 0.894614, 0.000553348)
+transform = Transform3D(-1, -1.41881e-09, 1.4133e-11, 1.41881e-09, -1, 8.15592e-10, 1.4133e-11, 8.15592e-10, 1, -0.0912506, 0.894614, 0.000553348)
 
 [node name="ThighArea" parent="Mannequin/Mannequin/Skeleton3D/L_Thigh" index="0"]
 collision_layer = 8
 
 [node name="L_Shin" parent="Mannequin/Mannequin/Skeleton3D" index="17"]
-transform = Transform3D(0.998198, -0.0597588, -0.00539972, -0.0597832, -0.998201, -0.00449041, -0.00512167, 0.00480506, -0.999975, -0.11937, 0.52005, -0.153532)
+transform = Transform3D(0.999272, -0.00893026, 0.0370968, 0.00649292, -0.91825, -0.395948, 0.0376, 0.395901, -0.917523, -0.0936974, 0.48866, 0.00570952)
 
 [node name="ShinArea" parent="Mannequin/Mannequin/Skeleton3D/L_Shin" index="0"]
 collision_layer = 8
 
 [node name="L_Foot" parent="Mannequin/Mannequin/Skeleton3D" index="18"]
-transform = Transform3D(-0.982434, 0.176563, 0.0604055, 0.0623443, 0.00544882, 0.99804, 0.175888, 0.984274, -0.0163606, -0.141944, 0.100273, -0.130933)
+transform = Transform3D(-0.990889, 0.134305, 0.0100721, 0.0637126, 0.401548, 0.913619, 0.118659, 0.905937, -0.406446, -0.0957714, 0.110724, 0.191163)
 
 [node name="FootArea" parent="Mannequin/Mannequin/Skeleton3D/L_Foot" index="0"]
 collision_layer = 8

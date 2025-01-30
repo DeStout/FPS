@@ -6,3 +6,7 @@ extends Node
 
 func _ready() -> void:
 	await character.ready
+
+
+func die() -> void:
+	character.die()
