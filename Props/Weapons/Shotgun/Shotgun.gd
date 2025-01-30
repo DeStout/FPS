@@ -2,7 +2,7 @@ extends BulletWeapon
 
 
 func can_fire() -> bool:
-	return ammo_in_mag > 0 and $FireTimer.is_stopped()
+	return ammo_in_mag > 0 and fire_time == 0.0
 
 
 func fire() -> void:

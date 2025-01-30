@@ -5,12 +5,9 @@ var slappable := []
 @export var damage := 25
 
 
-func _ready() -> void:
-	$FireTimer.wait_time = 0.5
-
-
 func fire() -> void:
 	super()
+	fire_time = 0.5
 
 
 func can_reload() -> bool:

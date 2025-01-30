@@ -8,12 +8,8 @@ var ammo_in_mag : int
 @onready var variance := properties.default_variance
 
 
-func _ready() -> void:
-	super()
-	$FireTimer.wait_time = 1.0 / properties.shots_per_second
-
-
 func _process(delta: float) -> void:
+	super(delta)
 	if variance > properties.default_variance:
 		var reset_amt := properties.max_variance - properties.default_variance
 		reset_amt = reset_amt * (delta / properties.variance_reset)
@@ -31,6 +27,7 @@ func can_fire() -> bool:
 
 func fire() -> void:
 	super()
+	fire_time = 1.0 / properties.shots_per_second
 	ammo_in_mag -= 1
 	
 	for shot in range(properties.num_shots):

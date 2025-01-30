@@ -1,7 +1,7 @@
 extends Node3D
 
 
-var travel_speed := 200
+var travel_speed := 400
 var travel_time := 0.0
 var time := 0.0
 var from := Vector3.ZERO

@@ -10,6 +10,3 @@ bus = &"SFX"
 
 [node name="ReloadAudio" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
-
-[node name="FireTimer" type="Timer" parent="."]
-one_shot = true

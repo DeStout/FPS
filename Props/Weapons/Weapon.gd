@@ -7,7 +7,14 @@ extends Node3D
 var fp_weapon : FPWeapon = null
 @export var impulse := 150
 
+var fire_time := 0.0
+
 var is_reloading := false
+
+
+func _process(delta: float) -> void:
+	if fire_time > 0.0:
+		fire_time = max(0.0, fire_time - delta)
 
 
 func _ready():
@@ -23,12 +30,11 @@ func has_ammo():
 
 
 func can_fire() -> bool:
-	return $FireTimer.is_stopped()
+	return fire_time == 0.0
 
 
 func fire() -> void:
 	$FireAudio.play()
-	$FireTimer.start()
 
 
 func fire_alt() -> void:
