@@ -22,7 +22,7 @@ func _add_loading_screen() -> CanvasLayer:
 
 
 # Called from SinglePlayerMenu.start_button()
-func load_single_player(map_selected) -> void:
+func load_single_player(map_selected : int) -> void:
 	loading_screen = _add_loading_screen()
 	if main_menu.is_inside_tree():
 		remove_child(main_menu)

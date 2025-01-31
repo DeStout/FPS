@@ -6,6 +6,7 @@ var progress := [0]
 var map_return := Callable()
 var map_load := Callable()
 
+var loaded := false
 var status : int
 var fake_progress := 0
 var time := 0.0
@@ -32,6 +33,21 @@ func _process(delta: float) -> void:
 	_update_UI(delta)
 
 
+func _update_load() -> void:
+	if !loaded:
+		status = ResourceLoader.load_threaded_get_status(address, progress)
+		
+	if fake_progress < int(progress[0]*100):
+		fake_progress += min(randi_range(0, 2), int(progress[0]*100 - fake_progress))
+	elif fake_progress == 100:
+		$Percent.modulate = Color.BLUE
+		$Continue.visible = true
+		
+	if status == ResourceLoader.THREAD_LOAD_LOADED and !loaded:
+		map_return.call(ResourceLoader.load_threaded_get(address))
+		loaded = true
+
+
 func _update_UI(delta : float) -> void:
 	$Percent.text = str(fake_progress) + " %"
 	
@@ -42,14 +58,3 @@ func _update_UI(delta : float) -> void:
 		if Input.is_anything_pressed():
 			map_load.call_deferred()
 			queue_free()
-
-
-func _update_load() -> void:
-	status = ResourceLoader.load_threaded_get_status(address, progress)
-	if fake_progress < int(progress[0]*100):
-		fake_progress += min(randi_range(0, 2), int(progress[0]*100 - fake_progress))
-		
-	elif status == ResourceLoader.THREAD_LOAD_LOADED:
-		$Percent.modulate = Color.BLUE
-		$Continue.visible = true
-		map_return.call(ResourceLoader.load_threaded_get(address))
