@@ -6,6 +6,9 @@ var thrower : CharacterBase = null
 
 
 func _ready() -> void:
+	angular_velocity.z = 1080
+	angular_velocity *= thrower.transform
+	
 	$Explode.start(fuse_time)
 
 
