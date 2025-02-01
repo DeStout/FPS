@@ -308,9 +308,6 @@ func die() -> void:
 	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, body_mat)
 	
 	await death_sfx.finished
-	#print("death audio: ", name)
-	if !is_inside_tree():
-		breakpoint
 	global_position = Vector3(0, -10, 0)
 	return
 

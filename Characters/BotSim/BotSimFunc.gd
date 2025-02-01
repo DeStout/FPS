@@ -10,9 +10,9 @@ var mat : BaseMaterial3D = load("res://Characters/BotSim/BotSimMat.tres")
 var team : Color
 
 
-func new_name(new_name : String) -> void:
-	character.name = new_name
-	character.name_label.text = new_name
+func new_name(new_char_name : String) -> void:
+	character.name = new_char_name
+	character.name_label.text = new_char_name
 
 
 func set_color(new_color : Color) -> void:
@@ -28,7 +28,7 @@ func _ready() -> void:
 						Globals.weapons[character.rand_weapon()].instantiate())
 
 
-func switch_weapon(new_weapon : Weapon) -> void:
+func switch_weapon(_new_weapon : Weapon) -> void:
 	character.weapon_state_machine.travel("Alert")
 	
 
@@ -49,8 +49,6 @@ func die() -> void:
 		character.current_level.spawn_weapon_pick_up( \
 										character.global_position, weapon_info)
 	
-	#if !is_inside_tree():
-		#breakpoint
 	await character.die()
 	character.reset_weapons()
 	
