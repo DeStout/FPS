@@ -28,7 +28,7 @@ func _explosion() -> void:
 		
 		var damage : Damage = Damage.new()
 		damage.attacker = thrower
-		damage.attacker_cam = null
+		damage.attacker_cam = thrower.camera
 		damage.damage_type = Damage.DAMAGE_TYPES.EXPLOSIVE
 		damage.body_seg_damaged = head_seg
 		damage.damage_amount = int(max(MIN_DAMAGE ,\

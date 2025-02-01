@@ -14,10 +14,11 @@ render_priority = 0
 shader = ExtResource("5_te2xj")
 shader_parameter/depth_factor = 16.0
 
-[node name="Player" instance=ExtResource("1_x0s2j")]
+[node name="Player" node_paths=PackedStringArray("camera") instance=ExtResource("1_x0s2j")]
 script = ExtResource("2_v47e3")
 has_start_weapon = false
 start_weapon = 0
+camera = NodePath("AimHelper/Camera")
 
 [node name="Skeleton3D" parent="Mannequin/Mannequin" index="0"]
 bones/0/position = Vector3(-5.98402e-06, 0.965454, -4.11703e-07)

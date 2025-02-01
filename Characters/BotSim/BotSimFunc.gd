@@ -39,7 +39,7 @@ func take_damage(shooter : CharacterBase) -> bool:
 
 
 func die() -> void:
-	# Signal to PlayerContainer.add_to_scoreboard
+	# Signal to PlayerContainer.add_to_scoreboard()
 	add_score.emit(character, character.last_damage.attacker)
 	
 	if character.weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
@@ -48,8 +48,11 @@ func die() -> void:
 								character.weapon_held.ammo_in_mag]
 		character.current_level.spawn_weapon_pick_up( \
 										character.global_position, weapon_info)
+	
+	#if !is_inside_tree():
+		#breakpoint
 	await character.die()
-	await character.reset_weapons()
+	character.reset_weapons()
 	
 	# Signal to PlayersContainer.character_killed
 	died.emit(character)
@@ -68,9 +71,5 @@ func respawn() -> void:
 	character.add_weapon(Globals.weapons[character.rand_weapon()].instantiate())
 	character.trigger_pulled = false
 	
+	character.respawn()
 	character.respawned.emit()
-
-
-func set_current_camera(is_current : bool) -> void:
-	#%Camera.current = is_current
-	pass

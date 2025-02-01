@@ -8,9 +8,10 @@
 [ext_resource type="Script" path="res://Characters/BotSim/EngageState.gd" id="5_5mojb"]
 [ext_resource type="PackedScene" uid="uid://bd2fp3xjnl5vp" path="res://Characters/Campaign/VisionCone.tscn" id="6_kydgb"]
 
-[node name="BotSimEnemy" node_paths=PackedStringArray("mode_func") instance=ExtResource("1_rm3je")]
+[node name="BotSimEnemy" node_paths=PackedStringArray("mode_func", "camera") instance=ExtResource("1_rm3je")]
 script = ExtResource("2_f8x2w")
 mode_func = NodePath("BotSimFunc")
+camera = NodePath("AimHelper/Camera")
 
 [node name="BotSimFunc" type="Node" parent="." index="0" node_paths=PackedStringArray("character")]
 script = ExtResource("3_ys16m")

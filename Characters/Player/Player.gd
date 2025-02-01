@@ -249,6 +249,17 @@ func _show_damage(shooter : CharacterBase) -> void:
 	HUD.show_damage(dmg_dir)
 
 
+func die() -> void:
+	await super()
+	last_damage.attacker_cam.current = true
+
+
+func respawn() -> void:
+	super()
+	camera.current = true
+	current_level.players.reset_cameras()
+
+
 func reset_weapons() -> void:
 	super()
 	first_person.reset_weapons()

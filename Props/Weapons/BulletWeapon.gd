@@ -68,7 +68,7 @@ func _check_shot_collision() -> void:
 		if shot_collider is BodySeg:
 			var damage := Damage.new()
 			damage.attacker = wielder
-			damage.attacker_cam = null
+			damage.attacker_cam = wielder.camera
 			damage.damage_type = Damage.DAMAGE_TYPES.BULLET
 			damage.attacking_weapon = weapon_type
 			damage.body_seg_damaged = shot_collider

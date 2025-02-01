@@ -164,8 +164,9 @@ func add_to_scoreboard(killed, killer) -> void:
 
 # Signaled from BotSimCharacter.mode_func.die()
 func character_killed(character) -> void:
-	if !character.is_inside_tree():
-		breakpoint
+	#if !character.is_inside_tree():
+		#breakpoint
+	#print("Removing: ", character.name)
 	remove_child(character)
 
 	for bot in bots:
@@ -180,3 +181,8 @@ func character_killed(character) -> void:
 func respawn_character(character) -> void:
 	add_child(character)
 	character.mode_func.respawn()
+
+
+func reset_cameras() -> void:
+	for bot in bots:
+		bot.camera.current = false

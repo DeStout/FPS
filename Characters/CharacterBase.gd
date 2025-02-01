@@ -63,6 +63,7 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 const MAX_GRENADES := 4
 var grenade_count := 4
 
+@export var camera : Camera3D
 @onready var aim_helper := $AimHelper
 @onready var weapons := $Mannequin/Mannequin/Skeleton3D/R_Hand/Weapons
 @onready var weapon_held : Node3D = null
@@ -219,7 +220,7 @@ func slap() -> void:
 			
 			var damage := Damage.new()
 			damage.attacker = self
-			damage.attacker_cam = null
+			damage.attacker_cam = camera
 			damage.damage_type = Damage.DAMAGE_TYPES.SLAP
 			damage.attacking_weapon = Globals.WEAPONS.SLAPPER
 			damage.body_seg_damaged = chest_seg
@@ -307,10 +308,15 @@ func die() -> void:
 	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, body_mat)
 	
 	await death_sfx.finished
+	#print("death audio: ", name)
 	if !is_inside_tree():
 		breakpoint
 	global_position = Vector3(0, -10, 0)
 	return
+
+
+func respawn() -> void:
+	pass
 
 
 func _disable_collisions(is_disabled : bool) -> void:
