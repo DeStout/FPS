@@ -252,12 +252,13 @@ func take_damage(damage : Damage) -> void:
 	if mode_func != null and mode_func.has_method("take_damage"):
 		if !mode_func.take_damage(damage.attacker):
 			return
-		
-	_subtract_health(damage.damage_amount)
+	
 	if health > 0:
 		$Voice.get_hurt_sfx().play()
 	if current_level != null:
 		current_level.spawn_damage_label(damage, $DmgLbl.global_position)
+		
+	_subtract_health(damage.damage_amount)
 
 
 func _subtract_health(damage : int) -> void:
@@ -292,9 +293,6 @@ func is_enemy(character):
 
 # Called from mode_func.die() / CampaignEnemy.die()
 func die() -> void:
-	var death_sfx = $Voice.get_death_sfx()
-	death_sfx.play()
-	
 	if zoomed:
 		zoom()
 	visible = false
@@ -305,11 +303,10 @@ func die() -> void:
 	var body_mat = surface_mesh.mesh.surface_get_material(0)
 	if surface_mesh.get_surface_override_material(0):
 		body_mat = surface_mesh.get_surface_override_material(0)
-	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, body_mat)
-	
-	await death_sfx.finished
+	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, \
+												body_mat, $Voice.get_death_sfx())
+
 	global_position = Vector3(0, -10, 0)
-	return
 
 
 func respawn() -> void:

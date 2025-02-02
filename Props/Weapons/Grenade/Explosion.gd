@@ -9,11 +9,6 @@ var thrower : CharacterBase = null
 var impulse := 500
 
 
-#func _ready() -> void:
-	#$SmokeParticles.emitting = true
-	#$FragParticles.emitting = true
-
-
 func _explosion() -> void:
 	force_update_transform()
 	

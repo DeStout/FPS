@@ -44,7 +44,7 @@ func _ready() -> void:
 			new_voice.unit_size = DEATH_SETTINGS[VOICES.DE][1]
 			new_voice.max_db = DEATH_SETTINGS[VOICES.DE][2]
 			new_voice.bus = "SFX"
-			add_child(new_voice)
+			#add_child(new_voice)
 			death_sfx.append(new_voice)
 		VOICES.REUBEN:
 			voice_name = "Reuben"
@@ -62,7 +62,7 @@ func _ready() -> void:
 			new_voice.unit_size = DEATH_SETTINGS[VOICES.REUBEN][1]
 			new_voice.max_db = DEATH_SETTINGS[VOICES.REUBEN][2]
 			new_voice.bus = "SFX"
-			add_child(new_voice)
+			#add_child(new_voice)
 			death_sfx.append(new_voice)
 		VOICES.AUTUMN:
 			voice_name = "Autumn"
@@ -80,7 +80,7 @@ func _ready() -> void:
 			new_voice.unit_size = DEATH_SETTINGS[VOICES.AUTUMN][1]
 			new_voice.max_db = DEATH_SETTINGS[VOICES.AUTUMN][2]
 			new_voice.bus = "SFX"
-			add_child(new_voice)
+			#add_child(new_voice)
 			death_sfx.append(new_voice)
 	#print(owner.name, " is ", voice_name)
 
@@ -90,4 +90,4 @@ func get_hurt_sfx() -> AudioStreamPlayer3D:
 
 
 func get_death_sfx() -> AudioStreamPlayer3D:
-	return death_sfx.pick_random()
+	return death_sfx.pick_random().duplicate()

@@ -22,7 +22,14 @@ func _process(delta: float) -> void:
 func set_material(new_mat : BaseMaterial3D) -> void:
 	$Surface.set_surface_override_material(0, new_mat)
 	surf_mat = $Surface.get_surface_override_material(0)
-	
+
+
+func set_death_sfx(death_sfx : AudioStreamPlayer3D) -> void:
+	if death_sfx.get_parent():
+		breakpoint
+	$HeadBone.add_child(death_sfx)
+	death_sfx.play()
+
 
 func match_pose_transform(manny_skel, manny_trans) -> void:
 	transform = manny_trans

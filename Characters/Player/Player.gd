@@ -244,6 +244,8 @@ func take_damage(damage : Damage) -> void:
 
 
 func _show_damage(shooter : CharacterBase) -> void:
+	if !shooter or !is_inside_tree():
+		return
 	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
 								-to_local(shooter.global_position).z).normalized()
 	HUD.show_damage(dmg_dir)

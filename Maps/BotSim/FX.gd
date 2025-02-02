@@ -71,12 +71,14 @@ func add_damage_label(damage : Damage, pos : Vector3):
 
 
 func add_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
-						damage : Damage, body_mat : BaseMaterial3D) -> void:
+									damage : Damage, body_mat : BaseMaterial3D,
+									death_sfx : AudioStreamPlayer3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	var temp_mat = mat_.duplicate()
 	temp_mat.albedo_color = body_mat.albedo_color
 	rag_doll.exiting.connect(remove_rag_doll)
 	add_child(rag_doll)
+	rag_doll.set_death_sfx(death_sfx)
 	rag_doll.set_material(temp_mat)
 	await rag_doll.match_pose_transform(dead_skel, dead_trans)
 	rag_doll.add_impulse(damage)

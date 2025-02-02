@@ -49,7 +49,7 @@ func die() -> void:
 		character.current_level.spawn_weapon_pick_up( \
 										character.global_position, weapon_info)
 	
-	await character.die()
+	character.die()
 	character.reset_weapons()
 	
 	# Signal to PlayersContainer.character_killed

@@ -761,6 +761,11 @@ layers = 2
 mesh = SubResource("ArrayMesh_xdvon")
 skin = SubResource("Skin_b67ut")
 
+[node name="HeadBone" type="BoneAttachment3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45544e-05, 1.60075, 0.00340767)
+bone_name = "mixamorig_Head"
+bone_idx = 5
+
 [node name="PhysBoneSim" type="PhysicalBoneSimulator3D" parent="."]
 
 [node name="Hips" type="PhysicalBone3D" parent="PhysBoneSim"]
@@ -850,6 +855,8 @@ collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
+body_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 mass = 8.0
 angular_damp = 25.0
 bone_name = "mixamorig_Head"
@@ -998,7 +1005,8 @@ collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-body_offset = Transform3D(1, 2.98023e-08, -8.88177e-16, -2.98023e-08, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77636e-15, 5.96046e-08, -1.77636e-15)
+body_offset = Transform3D(1, 2.98023e-08, -8.88177e-16, -2.98023e-08, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -5.96046e-08, 0)
 mass = 7.0
 angular_damp = 25.0
 bone_name = "mixamorig_LeftUpLeg"
@@ -1019,9 +1027,9 @@ collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 3
-joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 8.88181e-16, 5.96046e-08, 1.77636e-15)
 joint_rotation = Vector3(0, 1.5708, 0)
-body_offset = Transform3D(1, -1.49012e-08, -4.4409e-16, 1.49012e-08, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
+body_offset = Transform3D(1, -1.49012e-08, -4.4409e-16, 1.49012e-08, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, -5.96046e-08, 0)
 mass = 5.0
 angular_damp = 25.0
 bone_name = "mixamorig_LeftLeg"
@@ -1064,7 +1072,8 @@ collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 2
-body_offset = Transform3D(1, 2.98023e-08, 1.49012e-08, -2.98023e-08, 1, -1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 0, 0, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77636e-15, -5.96046e-08, 8.88181e-16)
+body_offset = Transform3D(1, 2.98023e-08, 1.49012e-08, -2.98023e-08, 1, -1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 0, 5.96046e-08, 0)
 mass = 7.0
 angular_damp = 25.0
 bone_name = "mixamorig_RightUpLeg"
@@ -1085,9 +1094,9 @@ collision_layer = 32
 collision_mask = 33
 input_ray_pickable = false
 joint_type = 3
-joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, -5.96046e-08, -1.77636e-15)
 joint_rotation = Vector3(0, 1.5708, 0)
-body_offset = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
+body_offset = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 5.96046e-08, 0)
 mass = 5.0
 angular_damp = 25.0
 bone_name = "mixamorig_RightLeg"
