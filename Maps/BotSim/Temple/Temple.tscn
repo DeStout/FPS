@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bgk0mejwh02ln"]
+[gd_scene load_steps=30 format=4 uid="uid://bgk0mejwh02ln"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_ov5jx"]
 [ext_resource type="VoxelGIData" uid="uid://bftyiwg0vwdwk" path="res://Maps/BotSim/Temple/Temple.VoxelGI_data.res" id="2_2cypd"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cykhq31st78s1" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Goddess.blend" id="5_r73wd"]
 [ext_resource type="Material" uid="uid://bi48kknnwrqgf" path="res://Maps/BotSim/Temple/Assets/Materials/GoddessMat.tres" id="6_suoll"]
 [ext_resource type="AudioStream" uid="uid://cukakob2orkkd" path="res://Maps/Audio/Music/TheHolyTemple.ogg" id="7_ar8yn"]
+[ext_resource type="Shader" path="res://Maps/BotSim/Temple/Assets/Materials/SpacialWarp.gdshader" id="7_iybpc"]
 [ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Static.gd" id="8_0k2kh"]
 [ext_resource type="AudioStream" uid="uid://juys58xkyd7q" path="res://Maps/BotSim/Temple/Assets/SFX/LargeStatic.ogg" id="8_f8epm"]
 
@@ -491,75 +492,9 @@ height = 2.5
 radial_segments = 36
 rings = 18
 
-[sub_resource type="Shader" id="Shader_jjguu"]
-code = "shader_type spatial;
-render_mode unshaded;
-
-uniform sampler2D screen_tex : hint_screen_texture;
-uniform sampler2D depth_tex : hint_depth_texture;
-uniform float scale;
-
-bool hit_sphere(vec3 ray_origin, vec3 ray_dir, vec3 sphere_origin, float radius) {
-	vec3 oc = ray_origin - sphere_origin;
-	float a = dot(ray_dir, ray_dir);
-	float b = 2.0 * dot(ray_dir, oc);
-	float c = dot(oc, oc) - (radius * radius);
-	float disc = (b * b) - 4.0 * a * c;
-	return disc > 0.0;
-}
-
-vec3 get_world_position_from_uv(vec2 uv, float depth, mat4 inv_proj_m, mat4 inv_view_m) {
-	vec4 ndc = vec4((uv * 2.0) - 1.0, depth, 1.0);
-	vec4 view_p = inv_proj_m * ndc;
-	view_p.xyz /= view_p.w;
-	view_p = (inv_view_m * vec4(view_p.xyz, 1.0));
-	return view_p.xyz;
-}
-
-vec2 get_uv_from_world_position(vec3 position_w, mat4 proj_m, mat4 view_m) {
-	vec3 position_v = (view_m * vec4(position_w, 1.0)).xyz;
-	vec4 position_cs = proj_m * vec4(position_v.xyz, 1.0);
-	vec2 ndc = position_cs.xy / position_cs.w;
-	return ndc.xy * 0.5 + 0.5;
-}
-
-float fresnel(float amount, vec3 normal, vec3 view) {
-	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
-}
-
-void fragment() {
-	float depth = texture(depth_tex, SCREEN_UV).x;
-	vec3 frag_p = get_world_position_from_uv(SCREEN_UV, depth, INV_PROJECTION_MATRIX, INV_VIEW_MATRIX);
-	vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
-
-	bool hit = hit_sphere(CAMERA_POSITION_WORLD, ray_dir, NODE_POSITION_WORLD, scale * .3);
-	
-	vec4 screen_color = texture(screen_tex, SCREEN_UV);
-	vec3 color;
-	if (hit) {
-		color = vec3(0.0);
-	}
-	else {
-		vec2 bh_p = get_uv_from_world_position(NODE_POSITION_WORLD, PROJECTION_MATRIX, VIEW_MATRIX);
-		vec2 dis_dir = normalize(bh_p - SCREEN_UV) * 0.5;
-		float f =  1.0 - fresnel(0.5, NORMAL, VIEW);
-		
-		float fov = atan(-1.0 / PROJECTION_MATRIX[1][1] * 2.0);
-		float dist = distance(CAMERA_POSITION_WORLD, NODE_POSITION_WORLD);
-		float s = (2.0 * dist * tan(fov * 0.5)) / scale;
-		
-		vec2 uv = SCREEN_UV + (dis_dir * (f / s));
-		screen_color = texture(screen_tex, uv);
-		color = vec3(screen_color.r, screen_color.g, screen_color.b);
-		
-	}
-	ALBEDO = color;
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mi78"]
 render_priority = 1
-shader = SubResource("Shader_jjguu")
-shader_parameter/scale = 10.52
+shader = ExtResource("7_iybpc")
 
 [sub_resource type="SphereMesh" id="SphereMesh_gltbo"]
 radius = 2.5
@@ -568,75 +503,9 @@ radial_segments = 36
 rings = 18
 is_hemisphere = true
 
-[sub_resource type="Shader" id="Shader_fyjc6"]
-code = "shader_type spatial;
-render_mode unshaded;
-
-uniform sampler2D screen_tex : hint_screen_texture;
-uniform sampler2D depth_tex : hint_depth_texture;
-uniform float scale;
-
-bool hit_sphere(vec3 ray_origin, vec3 ray_dir, vec3 sphere_origin, float radius) {
-	vec3 oc = ray_origin - sphere_origin;
-	float a = dot(ray_dir, ray_dir);
-	float b = 2.0 * dot(ray_dir, oc);
-	float c = dot(oc, oc) - (radius * radius);
-	float disc = (b * b) - 4.0 * a * c;
-	return disc > 0.0;
-}
-
-vec3 get_world_position_from_uv(vec2 uv, float depth, mat4 inv_proj_m, mat4 inv_view_m) {
-	vec4 ndc = vec4((uv * 2.0) - 1.0, depth, 1.0);
-	vec4 view_p = inv_proj_m * ndc;
-	view_p.xyz /= view_p.w;
-	view_p = (inv_view_m * vec4(view_p.xyz, 1.0));
-	return view_p.xyz;
-}
-
-vec2 get_uv_from_world_position(vec3 position_w, mat4 proj_m, mat4 view_m) {
-	vec3 position_v = (view_m * vec4(position_w, 1.0)).xyz;
-	vec4 position_cs = proj_m * vec4(position_v.xyz, 1.0);
-	vec2 ndc = position_cs.xy / position_cs.w;
-	return ndc.xy * 0.5 + 0.5;
-}
-
-float fresnel(float amount, vec3 normal, vec3 view) {
-	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
-}
-
-void fragment() {
-	float depth = texture(depth_tex, SCREEN_UV).x;
-	vec3 frag_p = get_world_position_from_uv(SCREEN_UV, depth, INV_PROJECTION_MATRIX, INV_VIEW_MATRIX);
-	vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
-
-	bool hit = hit_sphere(CAMERA_POSITION_WORLD, ray_dir, NODE_POSITION_WORLD, scale * .3);
-
-	vec4 screen_color = texture(screen_tex, SCREEN_UV);
-	vec3 color;
-	if (hit) {
-		color = vec3(0.0);
-	}
-	else {
-		vec2 bh_p = get_uv_from_world_position(NODE_POSITION_WORLD, PROJECTION_MATRIX, VIEW_MATRIX);
-		vec2 dis_dir = normalize(bh_p - SCREEN_UV) * 0.5;
-		float f =  1.0 - fresnel(0.5, NORMAL, VIEW);
-
-		float fov = atan(-1.0 / PROJECTION_MATRIX[1][1] * 2.0);
-		float dist = distance(CAMERA_POSITION_WORLD, NODE_POSITION_WORLD);
-		float s = (2.0 * dist * tan(fov * 0.5)) / scale;
-
-		vec2 uv = SCREEN_UV + (dis_dir * (f / s));
-		screen_color = texture(screen_tex, uv);
-		color = vec3(screen_color.r, screen_color.g, screen_color.b);
-
-	}
-	ALBEDO = color;
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_578bw"]
 render_priority = 0
-shader = SubResource("Shader_fyjc6")
-shader_parameter/scale = 5.5
+shader = ExtResource("7_iybpc")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_h3ud1"]
 top_radius = 2.3
@@ -1126,7 +995,7 @@ navigation_mesh = SubResource("NavigationMesh_xuj3b")
 transform = Transform3D(-4.5, 0, -6.79481e-07, 0, 4.5, 0, 6.79481e-07, 0, -4.5, 0, 10, -36.5)
 
 [node name="Skeleton3D" parent="NavRegion/Goddess/Goddess" index="0"]
-bones/1/position = Vector3(0.0103284, 1.2435, -0.0125556)
+bones/1/position = Vector3(-1.4042e-05, 0.969949, -0.0154834)
 bones/1/rotation = Quaternion(2.50984e-07, 0.999979, -0.00645833, 7.54963e-08)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-0.0801557, 2.99206e-08, -2.50215e-07, 0.996782)
@@ -1137,11 +1006,11 @@ bones/6/position = Vector3(-6.03716e-09, 0.0934399, 0.0284124)
 bones/6/rotation = Quaternion(-0.158884, 0.00728247, -0.0058405, 0.987253)
 bones/7/rotation = Quaternion(-0.48443, 0.570964, -0.526164, -0.403087)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(0.458076, -0.153494, -0.420121, 0.768182)
+bones/8/rotation = Quaternion(0.451839, -0.152782, -0.422425, 0.770751)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-7.86426e-07, -3.81886e-09, -0.88464, 0.466275)
 bones/10/position = Vector3(7.94388e-06, 0.293361, -1.63614e-05)
-bones/10/rotation = Quaternion(-0.281267, -0.175341, -0.211788, 0.919397)
+bones/10/rotation = Quaternion(-0.287624, -0.172982, -0.209702, 0.918355)
 bones/11/position = Vector3(0.0268184, 0.0246444, 0.0157281)
 bones/11/rotation = Quaternion(-0.0335608, 0.02369, -0.237404, 0.970542)
 bones/11/scale = Vector3(1, 1, 1)
@@ -1168,10 +1037,10 @@ bones/23/position = Vector3(-0.0380605, 0.0807654, 0.00485502)
 bones/23/rotation = Quaternion(-0.0166909, 0.0018169, 2.25936e-07, 0.999859)
 bones/24/rotation = Quaternion(-0.0166934, 0.00181692, -3.56261e-07, 0.999859)
 bones/25/rotation = Quaternion(-0.0166858, 0.0018166, -2.51779e-07, 0.999859)
-bones/26/rotation = Quaternion(-0.222318, 0.604475, -0.380356, 0.663713)
+bones/26/rotation = Quaternion(-0.223818, 0.604013, -0.378798, 0.664519)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/rotation = Quaternion(0.00150165, 0.00218102, -0.682875, 0.73053)
-bones/28/rotation = Quaternion(-0.311155, 0.670122, 0.184696, 0.648079)
+bones/28/rotation = Quaternion(-0.311652, 0.671618, 0.183935, 0.646507)
 bones/29/rotation = Quaternion(0.000815333, 0.094366, -0.0740884, 0.992777)
 bones/30/rotation = Quaternion(0.0295017, -0.00973738, -0.0685082, 0.997167)
 bones/31/rotation = Quaternion(0.0511163, -0.0123291, -0.121441, 0.991205)
@@ -1189,10 +1058,10 @@ bones/40/rotation = Quaternion(-0.0355473, -0.00115158, -0.00241872, 0.999364)
 bones/41/rotation = Quaternion(-0.0355418, -0.00134708, -0.00177641, 0.999366)
 bones/42/rotation = Quaternion(-0.0355537, -0.00141364, -0.00143378, 0.999366)
 bones/43/rotation = Quaternion(-0.0355462, -0.000927834, -0.00277156, 0.999364)
-bones/44/rotation = Quaternion(0.10577, 0.637793, -0.000686676, 0.76291)
+bones/44/rotation = Quaternion(0.104479, 0.635877, -0.000498298, 0.764686)
 bones/44/scale = Vector3(1, 1, 1)
-bones/45/rotation = Quaternion(-0.00100608, -0.00265611, -0.456257, 0.889844)
-bones/46/rotation = Quaternion(-0.282294, 0.701711, 0.290652, 0.586032)
+bones/45/rotation = Quaternion(-0.0010041, -0.00265748, -0.455358, 0.890304)
+bones/46/rotation = Quaternion(-0.281955, 0.703746, 0.290116, 0.584017)
 bones/47/rotation = Quaternion(0.6618, -0.270672, -0.066806, 0.695913)
 bones/48/rotation = Quaternion(-0.194879, -0.03129, 0.339796, 0.919555)
 bones/48/scale = Vector3(1, 1, 1)
@@ -1216,9 +1085,9 @@ bones/60/rotation = Quaternion(0.169068, -0.00776288, -0.0284526, 0.985163)
 bones/61/rotation = Quaternion(0.0979241, -0.00176828, -0.017664, 0.995036)
 bones/62/rotation = Quaternion(0.484423, 0.57097, -0.526162, 0.403089)
 bones/62/scale = Vector3(1, 1, 1)
-bones/63/rotation = Quaternion(0.478976, 0.154646, 0.410777, 0.760217)
+bones/63/rotation = Quaternion(0.473149, 0.153998, 0.413019, 0.762777)
 bones/64/rotation = Quaternion(2.06364e-05, 2.05334e-08, 0.884827, 0.46592)
-bones/65/rotation = Quaternion(-0.286507, 0.174247, 0.223662, 0.915165)
+bones/65/rotation = Quaternion(-0.292535, 0.172096, 0.221678, 0.914147)
 bones/66/position = Vector3(-0.0268176, 0.0246589, 0.0157775)
 bones/66/rotation = Quaternion(-0.0567093, -0.0205349, 0.239182, 0.9691)
 bones/67/rotation = Quaternion(1.6059e-06, 0.00104297, -7.08628e-07, 1)
@@ -1236,10 +1105,10 @@ bones/78/position = Vector3(0.038063, 0.080775, 0.00488468)
 bones/78/rotation = Quaternion(1.08953e-06, 1.60374e-07, 2.82656e-07, 1)
 bones/79/rotation = Quaternion(-5.95796e-06, -1.90349e-07, -5.46352e-07, 1)
 bones/80/rotation = Quaternion(8.60396e-06, 6.45354e-07, 2.46357e-07, 1)
-bones/81/rotation = Quaternion(0.0119616, -0.462307, -0.0284965, 0.886181)
+bones/81/rotation = Quaternion(0.00798341, -0.453133, -0.0311249, 0.890864)
 bones/81/scale = Vector3(1, 1, 1)
-bones/82/rotation = Quaternion(0.000954261, -0.00269732, 0.42875, 0.903419)
-bones/83/rotation = Quaternion(-0.272233, -0.851542, -0.310083, 0.323441)
+bones/82/rotation = Quaternion(0.000956453, -0.00269596, 0.429716, 0.90296)
+bones/83/rotation = Quaternion(-0.271029, -0.856123, -0.309083, 0.313151)
 bones/84/rotation = Quaternion(0.645176, 0.0473035, -0.0793986, 0.758424)
 bones/85/rotation = Quaternion(-0.37997, 0.0716147, -0.260373, 0.884703)
 bones/85/scale = Vector3(1, 1, 1)
@@ -1258,10 +1127,10 @@ bones/96/rotation = Quaternion(-0.0605481, 0.000974466, -0.284329, 0.956812)
 bones/97/rotation = Quaternion(0.0788561, 0.00213649, 0.014145, 0.996783)
 bones/97/scale = Vector3(1, 1, 1)
 bones/98/rotation = Quaternion(0.0788742, 0.00210864, 0.0142964, 0.99678)
-bones/99/rotation = Quaternion(0.193301, 0.658507, 0.173349, 0.706366)
+bones/99/rotation = Quaternion(0.192398, 0.65923, 0.174463, 0.705664)
 bones/99/scale = Vector3(1, 1, 1)
 bones/100/rotation = Quaternion(-0.00131982, 0.00237537, 0.60565, 0.795726)
-bones/101/rotation = Quaternion(-0.094153, -0.605394, -0.179058, 0.769786)
+bones/101/rotation = Quaternion(-0.0949214, -0.606634, -0.178914, 0.768749)
 bones/102/rotation = Quaternion(0.0765946, 0.0577808, 0.240745, 0.965835)
 bones/102/scale = Vector3(1, 1, 1)
 bones/103/rotation = Quaternion(-0.000676029, -0.0015858, -0.00844224, 0.999963)
@@ -1280,48 +1149,48 @@ bones/114/rotation = Quaternion(-0.0554892, 0.00115454, 0.00199529, 0.998457)
 bones/115/rotation = Quaternion(-0.0554862, 0.000410891, -0.000295731, 0.998459)
 bones/115/scale = Vector3(1, 1, 1)
 bones/116/rotation = Quaternion(-0.0554689, 0.000450488, -0.000145273, 0.99846)
-bones/117/rotation = Quaternion(-0.216893, 0.235562, 0.9462, 0.0466255)
-bones/118/rotation = Quaternion(-0.443938, -5.98627e-08, 3.7977e-08, 0.896058)
-bones/119/rotation = Quaternion(0.105211, -0.20793, -0.0773452, 0.969388)
+bones/117/rotation = Quaternion(-0.209793, 0.345338, 0.911906, 0.0718045)
+bones/118/rotation = Quaternion(-0.636761, -6.33453e-08, 6.69528e-08, 0.771061)
+bones/119/rotation = Quaternion(0.213175, -0.197858, -0.100108, 0.951518)
 bones/119/scale = Vector3(1, 1, 1)
 bones/120/rotation = Quaternion(0.115153, -2.44991e-07, 3.23843e-07, 0.993348)
 bones/120/scale = Vector3(1, 1, 1)
-bones/121/rotation = Quaternion(0.214534, 0.405405, 0.884603, -0.0842654)
+bones/121/rotation = Quaternion(0.208105, 0.485386, 0.843029, -0.101958)
 bones/121/scale = Vector3(1, 1, 1)
-bones/122/rotation = Quaternion(-0.718918, -1.25701e-07, 2.43729e-07, 0.695095)
-bones/123/rotation = Quaternion(0.0682882, 0.171714, 0.153751, 0.970676)
+bones/122/rotation = Quaternion(-0.827986, -1.11115e-07, 2.80138e-07, 0.560749)
+bones/123/rotation = Quaternion(0.146156, 0.157719, 0.169787, 0.961736)
 bones/124/rotation = Quaternion(0.253369, -0.00914327, 0.00452193, 0.967316)
-bones/125/position = Vector3(-0.0161797, 1.60856, -0.171788)
+bones/125/position = Vector3(-0.0265219, 1.33501, -0.174795)
 bones/125/rotation = Quaternion(-0.00937483, -0.707074, 0.0468872, -0.705521)
-bones/126/position = Vector3(0.452492, 1.09541, -0.108831)
+bones/126/position = Vector3(0.44215, 0.838784, -0.111838)
 bones/126/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
-bones/127/position = Vector3(0.57684, 1.88952, 0.0437159)
+bones/127/position = Vector3(0.566497, 1.63289, 0.0407088)
 bones/127/scale = Vector3(1, 1, 1)
-bones/128/position = Vector3(0.405873, 1.35955, 0.099827)
-bones/129/position = Vector3(-0.389027, 1.09079, -0.116886)
+bones/128/position = Vector3(0.39553, 1.10292, 0.0968199)
+bones/129/position = Vector3(-0.39937, 0.834162, -0.119893)
 bones/129/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
-bones/130/position = Vector3(-0.442721, 1.37054, 0.281416)
-bones/131/position = Vector3(-0.719401, 1.37259, 0.178282)
-bones/132/position = Vector3(0.0379995, 1.60855, -0.171201)
+bones/130/position = Vector3(-0.453063, 1.11391, 0.278409)
+bones/131/position = Vector3(-0.729743, 1.11596, 0.175275)
+bones/132/position = Vector3(0.0276571, 1.335, -0.174208)
 bones/132/rotation = Quaternion(0.0310125, -0.709219, 0.0674452, 0.701069)
-bones/133/position = Vector3(0.145576, 2.04716, 0.00926759)
+bones/133/position = Vector3(0.135506, 1.77361, 0.0062605)
 bones/133/rotation = Quaternion(0.0215016, -0.683542, -0.00131625, 0.729594)
 bones/133/scale = Vector3(1, 1, 1)
-bones/134/position = Vector3(0.642418, 1.77777, 0.0613999)
+bones/134/position = Vector3(0.632348, 1.50421, 0.0583928)
 bones/134/rotation = Quaternion(0.522879, 0.458819, 0.528955, -0.486095)
 bones/134/scale = Vector3(1, 1, 1)
-bones/135/position = Vector3(-0.62917, 1.7803, 0.0488253)
+bones/135/position = Vector3(-0.63924, 1.50675, 0.0458182)
 bones/135/rotation = Quaternion(-0.539399, 0.372313, 0.562519, 0.503989)
-bones/136/position = Vector3(-0.279178, 1.21388, 0.0495476)
+bones/136/position = Vector3(-0.289248, 0.940322, 0.0465405)
 bones/136/rotation = Quaternion(0.706329, -0.0326141, 0.706533, 0.0291167)
 bones/136/scale = Vector3(1, 1, 1)
-bones/137/position = Vector3(0.0906442, 0.379497, -0.00828652)
+bones/137/position = Vector3(0.082078, 0.217122, -0.0127613)
 bones/137/rotation = Quaternion(0.99347, -3.13993e-07, -9.44305e-07, 0.114092)
-bones/138/position = Vector3(-0.0717361, 0.558636, -0.0228095)
+bones/138/position = Vector3(-0.0820772, 0.404723, -0.0263257)
 bones/138/rotation = Quaternion(0.952717, -4.80369e-07, -1.29769e-06, 0.303859)
 bones/138/scale = Vector3(1, 1, 1)
-bones/139/position = Vector3(0.440861, 0.601073, -0.733944)
-bones/140/position = Vector3(-0.53551, 0.616391, -0.94524)
+bones/139/position = Vector3(0.430519, 0.344448, -0.736951)
+bones/140/position = Vector3(-0.545853, 0.359766, -0.948247)
 
 [node name="Joints" parent="NavRegion/Goddess/Goddess/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_p03nq")
@@ -1335,7 +1204,7 @@ skin = SubResource("Skin_f1prd")
 surface_material_override/0 = SubResource("StandardMaterial3D_yr1c3")
 
 [node name="BoneAttach" type="BoneAttachment3D" parent="NavRegion/Goddess/Goddess/Skeleton3D" index="3"]
-transform = Transform3D(-1, 5.02933e-07, 1.47748e-07, 5.00982e-07, 0.999917, -0.0129164, -1.54231e-07, -0.0129164, -0.999917, 0.0103284, 1.2435, -0.0125556)
+transform = Transform3D(-1, 5.02933e-07, 1.47748e-07, 5.00982e-07, 0.999917, -0.0129164, -1.54231e-07, -0.0129164, -0.999917, -1.4042e-05, 0.969949, -0.0154834)
 bone_name = "mixamorig_Hips"
 bone_idx = 1
 
@@ -1353,6 +1222,7 @@ omni_attenuation = -0.091
 
 [node name="Refraction" type="MeshInstance3D" parent="NavRegion/Goddess/Goddess/Skeleton3D/BoneAttach" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38726e-15, -0.0671535, -1.74623e-10)
+instance_shader_parameters/scale = 12.0
 mesh = SubResource("SphereMesh_pixak")
 surface_material_override/0 = SubResource("ShaderMaterial_8mi78")
 
@@ -1362,8 +1232,9 @@ playback_auto_capture = false
 speed_scale = 0.5
 
 [node name="Refraction" type="MeshInstance3D" parent="NavRegion" index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -13)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -13.1843)
 cast_shadow = 0
+instance_shader_parameters/scale = 6.075
 mesh = SubResource("SphereMesh_gltbo")
 surface_material_override/0 = SubResource("ShaderMaterial_578bw")
 

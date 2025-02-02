@@ -2,9 +2,14 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_17axc"]
 noise_type = 2
-fractal_octaves = 2
-fractal_lacunarity = 3.6
-fractal_gain = 0.195
+frequency = 0.0277
+fractal_octaves = 3
+fractal_lacunarity = 5.52
+fractal_gain = 0.485
+fractal_weighted_strength = 0.61
 
 [resource]
+invert = true
+seamless = true
+seamless_blend_skirt = 0.333
 noise = SubResource("FastNoiseLite_17axc")

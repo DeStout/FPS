@@ -1,35 +1,91 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7b8mu23sphdn"]
+[gd_scene load_steps=26 format=3 uid="uid://b7b8mu23sphdn"]
 
 [ext_resource type="Script" path="res://Props/Weapons/Grenade/Explosion.gd" id="1_xphon"]
+[ext_resource type="Material" uid="uid://chxvulri54qwc" path="res://Props/Weapons/Grenade/SmokeMat.tres" id="2_c4smk"]
+[ext_resource type="Shader" path="res://Maps/BotSim/Temple/Assets/Materials/SpacialWarp.gdshader" id="2_hyide"]
 [ext_resource type="AudioStream" uid="uid://bqat8e3nbn2cg" path="res://Props/Weapons/Grenade/Explosion.ogg" id="2_i8ip1"]
-[ext_resource type="Shader" path="res://Props/Weapons/Grenade/Explosion.gdshader" id="2_jmdd3"]
-[ext_resource type="Texture2D" uid="uid://d2u2dfvv442s5" path="res://Props/Weapons/Grenade/ExplosionNoise.tres" id="3_pnpwc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a6s3c"]
 radius = 4.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_egx1i"]
-radius = 4.0
-height = 8.0
-radial_segments = 72
-rings = 36
+[sub_resource type="SphereMesh" id="SphereMesh_qsmd7"]
 
-[sub_resource type="Gradient" id="Gradient_jrpk4"]
-offsets = PackedFloat32Array(0.115, 0.895)
-colors = PackedColorArray(0.0859375, 0.0625941, 0.0383826, 1, 1, 0.92428, 0.61267, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_q411i"]
-gradient = SubResource("Gradient_jrpk4")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbsb0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5giw7"]
 render_priority = 0
-shader = ExtResource("2_jmdd3")
-shader_parameter/surface_offset_weight = 1.33
-shader_parameter/surface_scroll_speed = 0.56
-shader_parameter/emission_color = Color(1, 0.704199, 0, 1)
-shader_parameter/emission_strength = 1.0
-shader_parameter/surface_offset_tex = ExtResource("3_pnpwc")
-shader_parameter/surface_color_gradient = SubResource("GradientTexture1D_q411i")
+shader = ExtResource("2_hyide")
+
+[sub_resource type="Curve" id="Curve_5anxx"]
+_data = [Vector2(0.5, 0), 0.0, 0.252513, 0, 0, Vector2(1, 1), 4.60763, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5b21n"]
+texture_mode = 1
+curve = SubResource("Curve_5anxx")
+
+[sub_resource type="Gradient" id="Gradient_sik3m"]
+offsets = PackedFloat32Array(0.2, 0.7)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1v4vm"]
+gradient = SubResource("Gradient_sik3m")
+
+[sub_resource type="Curve" id="Curve_r281n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49537, 0.307692), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7njwg"]
+curve = SubResource("Curve_r281n")
+
+[sub_resource type="Curve" id="Curve_dskl0"]
+_data = [Vector2(0, 0.153846), 0.0, 3.2257, 0, 0, Vector2(0.421296, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n8xu1"]
+curve = SubResource("Curve_dskl0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcdbs"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+radial_velocity_min = 5.49998
+radial_velocity_max = 6.49998
+radial_velocity_curve = SubResource("CurveTexture_7njwg")
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_n8xu1")
+color_ramp = SubResource("GradientTexture1D_1v4vm")
+alpha_curve = SubResource("CurveTexture_5b21n")
+
+[sub_resource type="SphereMesh" id="SphereMesh_w10kk"]
+material = ExtResource("2_c4smk")
+
+[sub_resource type="Curve" id="Curve_d8ovj"]
+_data = [Vector2(0, 1), 0.0, -0.237363, 0, 0, Vector2(1, 0), -0.296703, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p54v0"]
+curve = SubResource("Curve_d8ovj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdjw5"]
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 1.0
+radial_velocity_min = 50.0
+radial_velocity_max = 60.0
+radial_velocity_curve = SubResource("CurveTexture_p54v0")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsnao"]
+albedo_color = Color(1, 0.221273, 0, 1)
+emission_enabled = true
+emission = Color(0.935973, 1, 0.582123, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n40yd"]
+material = SubResource("StandardMaterial3D_gsnao")
+radius = 0.025
+height = 0.65
 
 [sub_resource type="Animation" id="Animation_icrfi"]
 resource_name = "Explosion"
@@ -49,9 +105,119 @@ tracks/0/keys = {
 "method": &"_explosion"
 }]
 }
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Warp")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.08, 1, 10, 10, 10, 0.1, 1, 11, 11, 11)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Warp:instance_shader_parameters/scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SmokeParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.02),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FragParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.02),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Warp:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_t3ood"]
 length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 9.415, 9.415, 9.415)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Warp:instance_shader_parameters/scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.995]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SmokeParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FragParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Warp:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t2jhg"]
 _data = {
@@ -66,18 +232,44 @@ max_results = 16
 collision_mask = 2
 script = ExtResource("1_xphon")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_egx1i")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_fbsb0")
+[node name="Warp" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.415, 0, 0, 0, 9.415, 0, 0, 0, 9.415, 0, 0, 0)
+instance_shader_parameters/scale = 2.995
+mesh = SubResource("SphereMesh_qsmd7")
+surface_material_override/0 = SubResource("ShaderMaterial_5giw7")
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 15
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.65
+fixed_fps = 60
+visibility_aabb = AABB(-3.5, -3.5, -3.5, 7, 7, 7)
+process_material = SubResource("ParticleProcessMaterial_mcdbs")
+draw_pass_1 = SubResource("SphereMesh_w10kk")
+
+[node name="FragParticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.6
+interp_to_end = 0.07
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.65
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_vdjw5")
+draw_pass_1 = SubResource("CapsuleMesh_n40yd")
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_t2jhg")
 }
 autoplay = "Explosion"
+playback_auto_capture = false
 
 [node name="Explosion" type="AudioStreamPlayer3D" parent="."]
+visible = false
 stream = ExtResource("2_i8ip1")
 volume_db = 5.0
 unit_size = 45.0

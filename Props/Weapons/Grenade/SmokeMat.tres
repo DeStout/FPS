@@ -1,0 +1,47 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://chxvulri54qwc"]
+
+[ext_resource type="Shader" path="res://Props/Weapons/Grenade/Explosion.gdshader" id="1_d2h6n"]
+
+[sub_resource type="Gradient" id="Gradient_jrpk4"]
+offsets = PackedFloat32Array(0, 0.864583)
+colors = PackedColorArray(0.0585938, 0.0521484, 0.0263672, 1, 0.0976563, 0.0869141, 0.0439453, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q411i"]
+gradient = SubResource("Gradient_jrpk4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_13gks"]
+frequency = 0.0349
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_32qov"]
+invert = true
+seamless = true
+seamless_blend_skirt = 0.333
+as_normal_map = true
+bump_strength = 3.7
+noise = SubResource("FastNoiseLite_13gks")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t83ht"]
+noise_type = 2
+frequency = 0.0171
+fractal_octaves = 3
+fractal_lacunarity = 5.52
+fractal_gain = 0.485
+fractal_weighted_strength = 0.61
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cxfey"]
+invert = true
+seamless = true
+seamless_blend_skirt = 0.333
+noise = SubResource("FastNoiseLite_t83ht")
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_d2h6n")
+shader_parameter/surface_offset_weight = 0.53
+shader_parameter/surface_scroll_speed = 0.615
+shader_parameter/prox_fade_dist = 0.274
+shader_parameter/emission_color = Color(1, 0.243407, 0, 1)
+shader_parameter/emission_str = 50.0
+shader_parameter/surface_offset_tex = SubResource("NoiseTexture2D_cxfey")
+shader_parameter/surface_color_gradient = SubResource("GradientTexture1D_q411i")
+shader_parameter/surface_normal = SubResource("NoiseTexture2D_32qov")

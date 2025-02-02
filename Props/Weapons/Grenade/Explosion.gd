@@ -5,8 +5,13 @@ const MAX_DAMAGE := 75
 const MIN_DAMAGE := 15
 
 var thrower : CharacterBase = null
-@onready var radius : float = $Mesh.mesh.radius
+@onready var radius : float = shape.radius
 var impulse := 500
+
+
+#func _ready() -> void:
+	#$SmokeParticles.emitting = true
+	#$FragParticles.emitting = true
 
 
 func _explosion() -> void:
