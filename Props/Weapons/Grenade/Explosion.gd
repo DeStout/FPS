@@ -14,8 +14,8 @@ func _explosion() -> void:
 	
 	for collision in get_collision_count():
 		var character = get_collider(collision)
-		if !character.has_method("take_damage"):
-			return
+		if !character.has_method("take_damage") or !character.is_inside_tree():
+			continue
 			
 		var dist = character.global_position + Vector3(0, 1.8/2, 0)
 		dist = global_position.distance_to(dist)

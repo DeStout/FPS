@@ -2,40 +2,26 @@
 extends PickUp
 
 
+var grenade_ := load("res://Props/Weapons/Grenade/GrenadeBase.tscn")
+
 @export var weapon_type : Globals.WEAPONS : set = _set_model
-var weapon_model : Node3D
-var pistol_ := preload("res://Props/Weapons/Pistol/PistolBase.tscn")
-var smg_ := preload("res://Props/Weapons/SMG/SMGBase.tscn")
-var rifle_ := preload("res://Props/Weapons/Rifle/RifleBase.tscn")
-var shotgun_ := preload("res://Props/Weapons/Shotgun/ShotgunBase.tscn")
-var sniper_ := preload("res://Props/Weapons/Sniper/SniperBase.tscn")
+@export var weapon_model : MeshInstance3D
+var rotate_rate := 2.0
 
 
-func _set_model(new_weapon_type) -> void:
+func _process(delta) -> void:
+	$Model.rotate_y(rotate_rate * delta)
+
+
+func _set_model(new_ammo_type : int) -> void:
 	var child_count = $Model.get_children()
-	weapon_type = new_weapon_type
+	weapon_type = new_ammo_type
 	match weapon_type:
-		Globals.WEAPONS.SLAPPER:
-			weapon_type = Globals.WEAPONS.PISTOL
-		Globals.WEAPONS.PISTOL:
-			weapon_model = pistol_.instantiate()
-			weapon_model.scale = Vector3.ONE
-			weapon_model.position = Vector3.ZERO
-		Globals.WEAPONS.SMG:
-			weapon_model = smg_.instantiate()
-			weapon_model.scale = Vector3.ONE
-			weapon_model.position = Vector3.ZERO
-		Globals.WEAPONS.RIFLE:
-			weapon_model = rifle_.instantiate()
-			weapon_model.scale = Vector3(0.5, 0.5, 0.5)
-			weapon_model.position = Vector3(0, -0.025, 0.1)
-		Globals.WEAPONS.SHOTGUN:
-			weapon_model = shotgun_.instantiate()
-			weapon_model.scale = Vector3(0.676, 0.676, 0.676)
-			weapon_model.position = Vector3(0.0, -0.027, 0.026)
-		Globals.WEAPONS.SNIPER:
-			weapon_model = sniper_.instantiate()
-			weapon_model.scale = Vector3(0.5, 0.5, 0.5)
-			weapon_model.position = Vector3(0, -0.025, 0.1)
+		Globals.WEAPONS.GRENADE:
+			weapon_model = grenade_.instantiate()
+		_:
+			weapon_type = Globals.WEAPONS.GRENADE
+			assert(false, "AmmoPickUp._set_model: Not an available ammo type")
+			
 	if $Model.get_child_count() > 0:
 		$Model.get_child(0).replace_by(weapon_model)

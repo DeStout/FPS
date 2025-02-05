@@ -44,6 +44,8 @@ func physics_update(delta) -> void:
 
 func _aim(delta) -> void:
 	if enemy.target and enemy.enemies_vis[enemy.enemies.find(enemy.target)]:
+		if !is_inside_tree() or !enemy.target.is_inside_tree():
+			breakpoint
 		var target_pos = enemy.target.global_position + Vector3(0, 1.2, 0)
 		var new_trans : Transform3D = enemy.aim_helper.global_transform.looking_at(target_pos)
 		enemy.aim_helper.global_transform = enemy.aim_helper.global_transform.interpolate_with \
@@ -87,9 +89,11 @@ func _move_to_target(delta) -> void:
 		if !enemy.transform.origin.is_equal_approx(next_path_pos):
 			new_transform = enemy.transform.looking_at(next_path_pos)
 	else:
-		var temp_transform = enemy.target.global_position
-		temp_transform.y = enemy.global_position.y
-		new_transform = enemy.transform.looking_at(temp_transform)
+		var temp_pos = enemy.target.global_position
+		temp_pos.y = enemy.global_position.y
+		if !is_inside_tree() or !enemy.target.is_inside_tree() or enemy.transform.origin.is_equal_approx(temp_pos):
+			breakpoint
+		new_transform = enemy.transform.looking_at(temp_pos)
 	enemy.transform = enemy.transform. \
 						interpolate_with(new_transform, enemy.TURN_SPEED * delta)
 

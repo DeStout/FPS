@@ -120,8 +120,9 @@ func is_enemy_visible(enemy) -> bool:
 
 
 func character_killed(deceased) -> void:
-	if deceased == target:
-		target = null
+	if target == deceased:
+		enemies_vis[enemies.find(deceased)] = false
+		target_lost()
 
 
 func get_closest_healths(healths_type : Globals.HEALTHS) -> PickUp:
@@ -176,11 +177,18 @@ func _swing() -> void:
 
 
 func take_damage(damage : Damage) -> void:
+	if damage.attacker != self:
+		target = damage.attacker
 	if state_machine.current_state.name == "SeekState" and \
 									state_machine.current_state.active == true:
-		target = damage.attacker
 		state_machine.current_state.alert()
 	super(damage)
+
+
+func die() -> void:
+	super()
+	enemies_vis[enemies.find(target)] = false
+	target_lost()
 
 
 func _unequip_weapon(old_weapon) -> void:

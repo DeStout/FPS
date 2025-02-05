@@ -2,11 +2,12 @@
 extends PickUp
 
 
-var pistol_ := preload("res://Props/Weapons/Pistol/PistolBase.tscn")
-var smg_ := preload("res://Props/Weapons/SMG/SMGBase.tscn")
-var rifle_ := preload("res://Props/Weapons/Rifle/RifleBase.tscn")
-var shotgun_ := preload("res://Props/Weapons/Shotgun/ShotgunBase.tscn")
-var sniper_ := preload("res://Props/Weapons/Sniper/SniperBase.tscn")
+var pistol_ := load("res://Props/Weapons/Pistol/PistolBase.tscn")
+var smg_ := load("res://Props/Weapons/SMG/SMGBase.tscn")
+var rifle_ := load("res://Props/Weapons/Rifle/RifleBase.tscn")
+var shotgun_ := load("res://Props/Weapons/Shotgun/ShotgunBase.tscn")
+var sniper_ := load("res://Props/Weapons/Sniper/SniperBase.tscn")
+var grenade_ := load("res://Props/Weapons/Grenade/GrenadeBase.tscn")
 
 @export var weapon_type : Globals.WEAPONS : set = _set_model
 @onready var weapon_model := get_child(0)
@@ -35,6 +36,9 @@ func _set_model(new_weapon_type) -> void:
 			weapon_model = shotgun_.instantiate()
 		Globals.WEAPONS.SNIPER:
 			weapon_model = sniper_.instantiate()
+		Globals.WEAPONS.GRENADE:
+			weapon_model = grenade_.instantiate()
+			
 	if $Model.get_child_count() > 0:
 		$Model.get_child(0).replace_by(weapon_model)
 
@@ -65,6 +69,8 @@ func set_up_drop(new_pos, new_weapon_info) -> void:
 			name = "ShotgunPickUp"
 		Globals.WEAPONS.SNIPER:
 			name = "SniperPickUp"
+		Globals.WEAPONS.GRENADE:
+			name = "GrenadePickUp"
 	$Despawn.start()
 
 

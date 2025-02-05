@@ -14,6 +14,8 @@ const DEATH_SETTINGS = [[0, 5, 0],			# De
 var hurt_sfx := []
 var death_sfx := []
 
+var active_voice : AudioStreamPlayer3D
+
 func _ready() -> void:
 	voice = randi() % VOICES.size()
 	
@@ -28,6 +30,7 @@ func _ready() -> void:
 			new_voice.unit_size = HURT_SETTINGS[VOICES.DE][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.DE][2]
 			new_voice.bus = "SFX"
+			new_voice.finished.connect(end_active_voice)
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -36,6 +39,7 @@ func _ready() -> void:
 			new_voice.unit_size = HURT_SETTINGS[VOICES.DE][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.DE][2]
 			new_voice.bus = "SFX"
+			new_voice.finished.connect(end_active_voice)
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -54,6 +58,7 @@ func _ready() -> void:
 			new_voice.unit_size = HURT_SETTINGS[VOICES.REUBEN][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.REUBEN][2]
 			new_voice.bus = "SFX"
+			new_voice.finished.connect(end_active_voice)
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -72,6 +77,7 @@ func _ready() -> void:
 			new_voice.unit_size = HURT_SETTINGS[VOICES.AUTUMN][1]
 			new_voice.max_db = HURT_SETTINGS[VOICES.AUTUMN][2]
 			new_voice.bus = "SFX"
+			new_voice.finished.connect(end_active_voice)
 			add_child(new_voice)
 			hurt_sfx.append(new_voice)
 			new_voice = AudioStreamPlayer3D.new()
@@ -86,8 +92,15 @@ func _ready() -> void:
 
 
 func get_hurt_sfx() -> AudioStreamPlayer3D:
-	return hurt_sfx.pick_random()
+	active_voice = hurt_sfx.pick_random()
+	return active_voice
 
 
 func get_death_sfx() -> AudioStreamPlayer3D:
 	return death_sfx.pick_random().duplicate()
+
+
+func end_active_voice() -> void:
+	if active_voice:
+		active_voice.stop()
+		active_voice = null

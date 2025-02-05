@@ -227,6 +227,7 @@ func _pick_up_ammo(new_ammo : PickUp) -> void:
 	super(new_ammo)
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		HUD.update_weapon(weapon_held.ammo_in_mag, weapon_held.extra_ammo)
+	HUD.update_grenades(grenade_count)
 
 
 func _pick_up_health(new_health : PickUp) -> void:
@@ -238,21 +239,21 @@ func _pick_up_health(new_health : PickUp) -> void:
 func take_damage(damage : Damage) -> void:
 	damage.damage_amount *= (2.0/5.0)
 	super(damage)
-	_show_damage(damage.attacker)
+	_show_damage(damage.global_position)
 	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 	HUD.show_health()
 
 
-func _show_damage(shooter : CharacterBase) -> void:
-	if !shooter or !is_inside_tree():
+func _show_damage(damage_from : Vector3) -> void:
+	if !is_inside_tree():
 		return
-	var dmg_dir := Vector2(to_local(shooter.global_position).x, 
-								-to_local(shooter.global_position).z).normalized()
+	var dmg_dir := Vector2(to_local(damage_from).x, 
+								-to_local(damage_from).z).normalized()
 	HUD.show_damage(dmg_dir)
 
 
 func die() -> void:
-	await super()
+	super()
 	last_damage.attacker_cam.current = true
 
 
@@ -260,6 +261,7 @@ func respawn() -> void:
 	super()
 	camera.current = true
 	current_level.players.reset_cameras()
+	HUD.update_health(MAX_HEALTH, MAX_ARMOR, health, armor)
 
 
 func reset_weapons() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bgk0mejwh02ln"]
+[gd_scene load_steps=31 format=4 uid="uid://bgk0mejwh02ln"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_ov5jx"]
 [ext_resource type="VoxelGIData" uid="uid://bftyiwg0vwdwk" path="res://Maps/BotSim/Temple/Temple.VoxelGI_data.res" id="2_2cypd"]
@@ -12,6 +12,7 @@
 [ext_resource type="Shader" path="res://Maps/BotSim/Temple/Assets/Materials/SpacialWarp.gdshader" id="7_iybpc"]
 [ext_resource type="Script" path="res://Maps/BotSim/Temple/Assets/Props/Goddess/Static.gd" id="8_0k2kh"]
 [ext_resource type="AudioStream" uid="uid://juys58xkyd7q" path="res://Maps/BotSim/Temple/Assets/SFX/LargeStatic.ogg" id="8_f8epm"]
+[ext_resource type="PackedScene" uid="uid://c4ojhf0xgakry" path="res://Props/PickUps/AmmoPickUp.tscn" id="11_ooq2v"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o8tdu"]
 noise_type = 2
@@ -1627,52 +1628,50 @@ respawn_time = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.25, 2.5)
 respawn_time = 20.0
 
-[node name="Pistol3" parent="Pickups" index="2" instance=ExtResource("3_36e2o")]
+[node name="Pistol4" parent="Pickups" index="2" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 17.5)
 respawn_time = 20.0
 
-[node name="Pistol4" parent="Pickups" index="3" instance=ExtResource("3_36e2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 5.25, -37)
-respawn_time = 20.0
-
-[node name="Pistol5" parent="Pickups" index="4" instance=ExtResource("3_36e2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5.25, -37)
-respawn_time = 20.0
-
-[node name="Pistol6" parent="Pickups" index="5" instance=ExtResource("3_36e2o")]
+[node name="Pistol5" parent="Pickups" index="3" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -20)
 respawn_time = 20.0
 
-[node name="Pistol7" parent="Pickups" index="6" instance=ExtResource("3_36e2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, 0.25, 35.25)
-
-[node name="Pistol8" parent="Pickups" index="7" instance=ExtResource("3_36e2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0.25, 35.25)
-
-[node name="SMG1" parent="Pickups" index="8" instance=ExtResource("3_36e2o")]
+[node name="SMG1" parent="Pickups" index="4" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.25, 5)
 weapon_type = 2
 respawn_time = 45.0
 
-[node name="SMG2" parent="Pickups" index="9" instance=ExtResource("3_36e2o")]
+[node name="SMG2" parent="Pickups" index="5" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.25, 5)
 weapon_type = 2
 respawn_time = 45.0
 
-[node name="Rifle1" parent="Pickups" index="10" instance=ExtResource("3_36e2o")]
+[node name="Rifle1" parent="Pickups" index="6" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 39.5)
 weapon_type = 3
 respawn_time = 45.0
 
-[node name="Shotgun1" parent="Pickups" index="11" instance=ExtResource("3_36e2o")]
+[node name="Shotgun1" parent="Pickups" index="7" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 weapon_type = 4
 respawn_time = 45.0
 
-[node name="Sniper1" parent="Pickups" index="12" instance=ExtResource("3_36e2o")]
+[node name="Sniper1" parent="Pickups" index="8" instance=ExtResource("3_36e2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -41)
 weapon_type = 5
 respawn_time = 45.0
+
+[node name="Grenade1" parent="Pickups" index="9" instance=ExtResource("11_ooq2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0.25, 35.25)
+
+[node name="Grenade2" parent="Pickups" index="10" instance=ExtResource("11_ooq2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, 0.25, 35.25)
+
+[node name="Grenade3" parent="Pickups" index="11" instance=ExtResource("11_ooq2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 5.25, -37)
+
+[node name="Grenade4" parent="Pickups" index="12" instance=ExtResource("11_ooq2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5.25, -37)
 
 [node name="Health1" parent="Pickups" index="13" instance=ExtResource("4_f0cib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.25, 20)

@@ -253,12 +253,11 @@ func take_damage(damage : Damage) -> void:
 		if !mode_func.take_damage(damage.attacker):
 			return
 	
-	if health > 0:
-		$Voice.get_hurt_sfx().play()
 	if current_level != null:
 		current_level.spawn_damage_label(damage, $DmgLbl.global_position)
-		
 	_subtract_health(damage.damage_amount)
+	if health > 0:
+		$Voice.get_hurt_sfx().play()
 
 
 func _subtract_health(damage : int) -> void:
@@ -293,6 +292,7 @@ func is_enemy(character):
 
 # Called from mode_func.die() / CampaignEnemy.die()
 func die() -> void:
+	switching_weapons = false
 	if zoomed:
 		zoom()
 	visible = false
@@ -305,7 +305,6 @@ func die() -> void:
 		body_mat = surface_mesh.get_surface_override_material(0)
 	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, \
 												body_mat, $Voice.get_death_sfx())
-
 	global_position = Vector3(0, -10, 0)
 
 
@@ -343,6 +342,10 @@ func _pick_up_health(new_pick_up : PickUp) -> void:
 				new_pick_up.picked_up()
 
 
+func _pick_up_grenade(new_grenade : PickUp) -> void:
+	pass
+
+
 func _pick_up_weapon(new_pick_up : PickUp) -> Weapon:
 	if !_have_weapon(new_pick_up.weapon_type):
 		var new_weapon : Weapon = \
@@ -361,19 +364,25 @@ func _pick_up_weapon(new_pick_up : PickUp) -> Weapon:
 
 
 func _pick_up_ammo(new_pick_up : PickUp) -> void:
-	if _have_weapon(new_pick_up.weapon_type):
-		var weapon_for = _get_weapon(new_pick_up.weapon_type)
-		if weapon_for is BulletWeapon and weapon_for.can_pick_up_ammo():
-			weapon_for.add_ammo(_get_weapon(new_pick_up.weapon_type) \
-															.properties.mag_size)
-			new_pick_up.picked_up()
+	match new_pick_up.weapon_type:
+		Globals.WEAPONS.GRENADE:
+			if grenade_count < MAX_GRENADES:
+				grenade_count += 1
+				new_pick_up.picked_up()
+		_:
+			if _have_weapon(new_pick_up.weapon_type):
+				var weapon_for = _get_weapon(new_pick_up.weapon_type)
+				if weapon_for is BulletWeapon and weapon_for.can_pick_up_ammo():
+					weapon_for.add_ammo(_get_weapon(new_pick_up.weapon_type) \
+																	.properties.mag_size)
+					new_pick_up.picked_up()
 
 
 func rand_weapon() -> int:
 	var weight := 3.0
-	var spawn_weapon = randf_range(1, (Globals.WEAPONS.size()) ** weight)
+	var spawn_weapon = randf_range(1, (Globals.WEAPONS.size()-1) ** weight)
 	spawn_weapon = int(pow(spawn_weapon, 1.0 / weight))
-	spawn_weapon = Globals.WEAPONS.size() - spawn_weapon
+	spawn_weapon = Globals.WEAPONS.size()-1 - spawn_weapon
 	return spawn_weapon
 
 
