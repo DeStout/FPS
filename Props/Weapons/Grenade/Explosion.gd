@@ -38,5 +38,5 @@ func _explosion() -> void:
 		
 		character.take_damage(damage)
 		
-	await $Explosion.finished
+	await $SFX.finished
 	queue_free()

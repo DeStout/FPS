@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7b8mu23sphdn"]
+[gd_scene load_steps=27 format=3 uid="uid://b7b8mu23sphdn"]
 
 [ext_resource type="Script" path="res://Props/Weapons/Grenade/Explosion.gd" id="1_xphon"]
 [ext_resource type="Material" uid="uid://chxvulri54qwc" path="res://Props/Weapons/Grenade/SmokeMat.tres" id="2_c4smk"]
@@ -13,6 +13,8 @@ radius = 4.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5giw7"]
 render_priority = 0
 shader = ExtResource("2_hyide")
+
+[sub_resource type="SphereMesh" id="SphereMesh_cx31x"]
 
 [sub_resource type="Curve" id="Curve_5anxx"]
 _data = [Vector2(0.5, 0), 0.0, 0.252513, 0, 0, Vector2(1, 1), 4.60763, 0.0, 0, 0]
@@ -89,7 +91,7 @@ height = 0.65
 
 [sub_resource type="Animation" id="Animation_icrfi"]
 resource_name = "Explosion"
-length = 0.5
+length = 0.6
 step = 0.01
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -160,69 +162,93 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion:instance_shader_parameters/surface_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.35, 0.35, 0.5, 0.75]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Explosion:instance_shader_parameters/emission_prog")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.38),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Explosion:instance_shader_parameters/alpha_prog")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.35, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/9/type = "scale_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Explosion")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.02, 1, 0, 0, 0, 0.07, 1, 4, 4, 4, 0.6, 1, 3.5, 3.5, 3.5)
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SmokeParticles:instance_shader_parameters/alpha_prog")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
-[sub_resource type="Animation" id="Animation_t3ood"]
+[sub_resource type="Animation" id="Animation_y16od"]
 length = 0.001
-tracks/0/type = "scale_3d"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Warp")
+tracks/0/path = NodePath("Explosion:instance_shader_parameters/alpha_prog")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 9.415, 9.415, 9.415)
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Warp:instance_shader_parameters/scale")
+tracks/1/path = NodePath("SmokeParticles:instance_shader_parameters/alpha_prog")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.995]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SmokeParticles:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FragParticles:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Warp:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t2jhg"]
 _data = {
 "Explosion": SubResource("Animation_icrfi"),
-"RESET": SubResource("Animation_t3ood")
+"RESET": SubResource("Animation_y16od")
 }
 
 [node name="ShapeCast3D" type="ShapeCast3D"]
@@ -233,12 +259,24 @@ collision_mask = 2
 script = ExtResource("1_xphon")
 
 [node name="Warp" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.415, 0, 0, 0, 9.415, 0, 0, 0, 9.415, 0, 0, 0)
-instance_shader_parameters/scale = 2.995
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, 0)
+visible = false
+instance_shader_parameters/scale = 0.0
 mesh = SubResource("SphereMesh_qsmd7")
 surface_material_override/0 = SubResource("ShaderMaterial_5giw7")
 
+[node name="Explosion" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+instance_shader_parameters/alpha_prog = 1.0
+instance_shader_parameters/emission_prog = 1.0
+instance_shader_parameters/surface_offset = 0.75
+mesh = SubResource("SphereMesh_cx31x")
+surface_material_override/0 = ExtResource("2_c4smk")
+
 [node name="SmokeParticles" type="GPUParticles3D" parent="."]
+instance_shader_parameters/alpha_prog = 1.0
+instance_shader_parameters/emission_prog = 0.5
+instance_shader_parameters/surface_offset = 0.6
 emitting = false
 amount = 15
 lifetime = 0.7
@@ -268,7 +306,7 @@ libraries = {
 autoplay = "Explosion"
 playback_auto_capture = false
 
-[node name="Explosion" type="AudioStreamPlayer3D" parent="."]
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
 visible = false
 stream = ExtResource("2_i8ip1")
 volume_db = 5.0

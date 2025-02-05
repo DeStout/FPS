@@ -303,9 +303,10 @@ func die() -> void:
 	var body_mat = surface_mesh.mesh.surface_get_material(0)
 	if surface_mesh.get_surface_override_material(0):
 		body_mat = surface_mesh.get_surface_override_material(0)
-	current_level.spawn_rag_doll(skeleton, global_transform, last_damage, \
+	await current_level.spawn_rag_doll(skeleton, global_transform, last_damage, \
 												body_mat, $Voice.get_death_sfx())
 	global_position = Vector3(0, -10, 0)
+	return
 
 
 func respawn() -> void:

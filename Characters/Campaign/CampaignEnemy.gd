@@ -143,6 +143,8 @@ func move_to_target(delta) -> void:
 	
 	# Turn to look at the target
 	var new_transform : Transform3D
+	if transform.origin.is_equal_approx(next_path_pos):
+		breakpoint
 	new_transform = transform.looking_at(next_path_pos)
 	transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
@@ -236,17 +238,17 @@ func take_damage(damage : Damage) -> void:
 
 
 func die() -> void:
+	target_lost()
 	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
 		var weapon_info := [weapon_held.weapon_type,
 								weapon_held.extra_ammo,
 								weapon_held.ammo_in_mag]
 		current_level.spawn_weapon_pick_up(global_position, weapon_info)
-		
 	
 	# Connected to EnemySpawner
 	defeated.emit(self)
 	await super()
-	call_deferred("queue_free")
+	queue_free.call_deferred()
 
 
 func _unequip_weapon(old_weapon) -> void:

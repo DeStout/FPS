@@ -96,12 +96,15 @@ func spawn_damage_label(damage : Damage, pos : Vector3) -> void:
 
 # Called from CharacterBase.die()
 func spawn_rag_doll(dead_skel : Skeleton3D, dead_trans : Transform3D, \
-						damage : Damage, body_mat : BaseMaterial3D) -> void:
+						damage : Damage, body_mat : BaseMaterial3D, \
+									death_sfx : AudioStreamPlayer3D) -> void:
 	var rag_doll = rag_doll_.instantiate()
 	$FX.add_child(rag_doll)
+	rag_doll.set_death_sfx(death_sfx)
 	rag_doll.set_material(body_mat)
 	await rag_doll.match_pose_transform(dead_skel, dead_trans)
 	rag_doll.add_impulse(damage)
+	return
 
 
 func spawn_weapon_pick_up(dropped_position : Vector3, weapon_info : Array) -> void:

@@ -25,8 +25,6 @@ func set_material(new_mat : BaseMaterial3D) -> void:
 
 
 func set_death_sfx(death_sfx : AudioStreamPlayer3D) -> void:
-	if death_sfx.get_parent():
-		breakpoint
 	$HeadBone.add_child(death_sfx)
 	death_sfx.play()
 
@@ -36,7 +34,7 @@ func match_pose_transform(manny_skel, manny_trans) -> void:
 	for bone in get_bone_count():
 		set_bone_pose(bone, manny_skel.get_bone_pose(bone))
 	
-	await get_tree().create_timer(.01).timeout
+	await get_tree().create_timer(.001).timeout
 	$PhysBoneSim.physical_bones_start_simulation()
 	
 	$FadeoutTimer.start(vis_time)

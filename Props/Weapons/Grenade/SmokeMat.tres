@@ -37,7 +37,6 @@ noise = SubResource("FastNoiseLite_t83ht")
 [resource]
 render_priority = 1
 shader = ExtResource("1_d2h6n")
-shader_parameter/surface_offset_weight = 0.53
 shader_parameter/surface_scroll_speed = 0.615
 shader_parameter/prox_fade_dist = 0.274
 shader_parameter/emission_color = Color(1, 0.243407, 0, 1)
