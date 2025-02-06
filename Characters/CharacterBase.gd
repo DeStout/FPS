@@ -377,7 +377,7 @@ func _pick_up_ammo(new_pick_up : PickUp) -> void:
 	match new_pick_up.weapon_type:
 		Globals.WEAPONS.GRENADE:
 			if grenade_count < MAX_GRENADES:
-				grenade_count += 1
+				grenade_count = min(MAX_GRENADES, grenade_count + 2)
 				new_pick_up.picked_up()
 		_:
 			if _have_weapon(new_pick_up.weapon_type):

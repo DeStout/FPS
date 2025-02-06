@@ -20,10 +20,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _show_activate(body) -> void:
-	if body == %Player and !activated:
+	if body is Player and !activated:
 		HUD.show_activate(true)
 
 
 func _hide_activate(body) -> void:
-	if body == %Player:
+	if body is Player:
 		HUD.show_activate(false)

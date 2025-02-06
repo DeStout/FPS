@@ -160,8 +160,12 @@ func _throw() -> void:
 		weapon_held.is_throwing = true
 		trigger_pulled = false
 		await first_person.throw()
-		HUD.update_grenades(grenade_count)
 		weapon_held.is_throwing = false
+
+
+func release(release_point) -> void:
+	super(release_point)
+	HUD.update_grenades(grenade_count)
 
 
 func zoom() -> void:

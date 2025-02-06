@@ -17,6 +17,8 @@ var closed := true
 var moving := false
 var tween : Tween = null
 
+var bodies := []
+
 
 func _ready() -> void:
 	if open_on_start:
@@ -25,17 +27,31 @@ func _ready() -> void:
 
 
 func _show_activate(body) -> void:
-	if body == %Player and !locked and closed:
+	if !bodies.has(body):
+		bodies.append(body)
+		
+	if body is Player and !locked and closed:
 		HUD.show_activate(true)
 
 
 func _hide_activate(body) -> void:
-	if body == %Player:
+	if bodies.has(body):
+		bodies.erase(body)
+		
+	if body is Player:
 		HUD.show_activate(false)
 
 
 func _input(event: InputEvent) -> void:
-	if $UseArea.overlaps_body(%Player) and Input.is_action_just_pressed("Use"):
+	var has_player := false
+	for body in bodies:
+		if body is Player:
+			has_player = true
+			break
+	if !has_player:
+		return
+		
+	if Input.is_action_just_pressed("Use"):
 		if !locked:
 			$ActivateSound.play()
 			activate()
