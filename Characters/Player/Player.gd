@@ -21,12 +21,6 @@ func _ready() -> void:
 		add_weapon(Globals.weapons[start_weapon].instantiate())
 
 
-func _process(delta: float) -> void:
-	super(delta)
-	if weapon_held.weapon_type != Globals.WEAPONS.SLAPPER:
-		HUD.bloom_reticle(weapon_held.get_variance_perc())
-
-
 func _physics_process(delta) -> void:
 	super(delta)
 
@@ -67,7 +61,8 @@ func _physics_process(delta) -> void:
 			velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
 		
 		if !weapon_held.is_fire_anim(first_person.animator.current_animation) and \
-							!weapon_held.is_reloading and !switching_weapons:
+						!weapon_held.is_reloading and !weapon_held.is_throwing and \
+																!switching_weapons:
 			first_person.animator.play(weapon_held.get_anim("Run"))
 	else:
 		tween.tween_property(anim_tree, lower_blend_pos, Vector2.ZERO, 0.1)
@@ -161,8 +156,12 @@ func _fire() -> void:
 
 
 func _throw() -> void:
-	super()
-	HUD.update_grenades(grenade_count)
+	if grenade_count > 0 and !weapon_held.is_throwing:
+		weapon_held.is_throwing = true
+		trigger_pulled = false
+		await first_person.throw()
+		HUD.update_grenades(grenade_count)
+		weapon_held.is_throwing = false
 
 
 func zoom() -> void:
@@ -250,11 +249,6 @@ func _show_damage(damage_from : Vector3) -> void:
 	var dmg_dir := Vector2(to_local(damage_from).x, 
 								-to_local(damage_from).z).normalized()
 	HUD.show_damage(dmg_dir)
-
-
-func die() -> void:
-	super()
-	last_damage.attacker_cam.current = true
 
 
 func respawn() -> void:

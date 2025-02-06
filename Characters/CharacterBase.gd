@@ -61,7 +61,7 @@ const BodySeg := preload("res://Characters/BodySeg.gd")
 
 # Weapons
 const MAX_GRENADES := 4
-var grenade_count := 4
+@export_range(0, MAX_GRENADES) var grenade_count := MAX_GRENADES
 
 @export var camera : Camera3D
 @onready var aim_helper := $AimHelper
@@ -168,11 +168,18 @@ func _pull_trigger() -> void:
 
 
 func _throw() -> void:
-	if grenade_count > 0:
-		var throw_from := $Mannequin/Mannequin/Skeleton3D/R_Hand/HandArea
-		current_level.spawn_grenade(self, global_basis, throw_from.global_position, \
-									-$AimHelper.global_basis.z, THROW_STRENGTH)
-		grenade_count -= 1
+	if grenade_count > 0 and !weapon_held.is_throwing:
+		weapon_held.is_throwing = true
+		trigger_pulled = false
+		release(nozzle.global_position)
+		await get_tree().create_timer(0.6).timeout
+		weapon_held.is_throwing = false
+
+
+func release(release_point : Vector3) -> void:
+	current_level.spawn_grenade(self, global_basis, release_point, \
+								-$AimHelper.global_basis.z, THROW_STRENGTH)
+	grenade_count -= 1
 
 
 func set_on_ladder(new_ladder : Area3D) -> void:
@@ -184,10 +191,13 @@ func _pull_alt() -> void:
 
 
 func _fire() -> void:
+	if weapon_held.is_throwing:
+		return
 	if weapon_held is BulletWeapon and weapon_held.ammo_in_mag == 0:
 		_reload()
 		return
-	weapon_held.fire()
+	if weapon_held.can_fire() and !switching_weapons:
+		weapon_held.fire()
 
 
 func _gun_alt() -> void:
@@ -305,7 +315,6 @@ func die() -> void:
 		body_mat = surface_mesh.get_surface_override_material(0)
 	await current_level.spawn_rag_doll(skeleton, global_transform, last_damage, \
 												body_mat, $Voice.get_death_sfx())
-	global_position = Vector3(0, -10, 0)
 	return
 
 

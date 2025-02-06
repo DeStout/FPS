@@ -50,6 +50,9 @@ func die() -> void:
 										character.global_position, weapon_info)
 	
 	character.die()
+	if character is Player:
+		character.last_damage.attacker_cam.current = true
+	character.global_position = Vector3(0, -10, 0)
 	character.reset_weapons()
 	
 	# Signal to PlayersContainer.character_killed

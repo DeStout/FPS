@@ -70,7 +70,7 @@ bones/43/position = Vector3(15.7197, 3.02077, -43.4126)
 bones/43/rotation = Quaternion(0.0251323, -4.53967e-14, -4.56033e-13, 0.999684)
 
 [node name="SniperBolt" parent="Mannequin/Skeleton3D" index="0"]
-transform = Transform3D(99.9983, -0.00200407, -0.582093, -0.0046179, 99.9935, -1.13758, 0.582078, 1.13759, 99.9918, 15.6955, 7.15775, -36.4978)
+transform = Transform3D(99.9983, -0.00200407, -0.582093, -0.0046179, 99.9935, -1.13758, 0.582078, 1.13758, 99.9918, 15.6955, 7.15776, -36.4978)
 
 [node name="SniperBolt" parent="Mannequin/Skeleton3D/SniperBolt" index="0"]
 layers = 8
@@ -78,7 +78,7 @@ cast_shadow = 0
 surface_material_override/0 = ExtResource("3_s2tsl")
 
 [node name="SniperBody" parent="Mannequin/Skeleton3D" index="1"]
-transform = Transform3D(99.9983, -0.00215676, -0.58194, -0.0044636, 99.9935, -1.1376, 0.581927, 1.1376, 99.9918, 15.6492, -1.44264, -28.6173)
+transform = Transform3D(99.9983, -0.00215675, -0.58194, -0.00446359, 99.9935, -1.1376, 0.581927, 1.1376, 99.9918, 15.6492, -1.44264, -28.6173)
 
 [node name="SniperBody" parent="Mannequin/Skeleton3D/SniperBody" index="0"]
 layers = 8
@@ -86,7 +86,7 @@ cast_shadow = 0
 surface_material_override/0 = ExtResource("3_s2tsl")
 
 [node name="SniperMag" parent="Mannequin/Skeleton3D" index="2"]
-transform = Transform3D(100, 9.09496e-11, -1.13687e-11, -9.14059e-11, 99.8737, -5.02487, 6.78423e-12, 5.02487, 99.8737, 15.7197, 3.02077, -43.4126)
+transform = Transform3D(100, 9.09496e-11, -1.13687e-11, -9.1406e-11, 99.8737, -5.02487, 6.78424e-12, 5.02487, 99.8737, 15.7197, 3.02077, -43.4126)
 
 [node name="SniperMag" parent="Mannequin/Skeleton3D/SniperMag" index="0"]
 layers = 8

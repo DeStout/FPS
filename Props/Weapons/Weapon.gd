@@ -1,5 +1,4 @@
-class_name Weapon
-extends Node3D
+class_name Weapon extends Node3D
 
 
 @export var weapon_type : Globals.WEAPONS
@@ -10,6 +9,7 @@ var fp_weapon : FPWeapon = null
 var fire_time := 0.0
 
 var is_reloading := false
+var is_throwing := false
 
 
 func _process(delta: float) -> void:
@@ -30,7 +30,7 @@ func has_ammo():
 
 
 func can_fire() -> bool:
-	return fire_time == 0.0
+	return fire_time == 0.0 and !is_throwing
 
 
 func fire() -> void:

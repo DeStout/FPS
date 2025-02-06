@@ -7,6 +7,7 @@ var smg_ := load("res://Characters/Player/FirstPerson/FP_SMG.tscn")
 var rifle_ := load("res://Characters/Player/FirstPerson/FP_Rifle.tscn")
 var shotgun_ := load("res://Characters/Player/FirstPerson/FP_Shotgun.tscn")
 var sniper_ := load("res://Characters/Player/FirstPerson/FP_Sniper.tscn")
+var grenade_ := load("res://Characters/Player/FirstPerson/FP_Grenade.tscn")
 
 @export var player : CharacterBase = null
 var current_weapon : FPWeapon
@@ -27,6 +28,8 @@ func get_weapon(weapon_type : Globals.WEAPONS) -> Node3D:
 			return shotgun_.instantiate()
 		Globals.WEAPONS.SNIPER:
 			return sniper_.instantiate()
+		Globals.WEAPONS.GRENADE:
+			return grenade_.instantiate()
 		_:
 			assert(false, "FirstPerson.get_weapon(): weapon_type not a weapon")
 			return
@@ -65,6 +68,24 @@ func reset_weapons() -> void:
 	current_weapon = get_weapon(Globals.WEAPONS.SLAPPER)
 	add_child(current_weapon)
 	animator = current_weapon.anim_player
+
+
+func throw() -> void:
+	current_weapon.visible = false
+	var grenade = grenade_.instantiate()
+	add_child(grenade)
+	grenade.release.connect(release)
+	await grenade.get_node("AnimationPlayer").animation_finished
+	grenade.queue_free()
+	animator.play_backwards(current_weapon.weapon.get_anim("Equip"))
+	await get_tree().physics_frame
+	current_weapon.visible = true
+	await animator.animation_finished
+	return
+
+
+func release(release_point : Vector3) -> void:
+	player.release(release_point)
 
 
 func slap() -> void:

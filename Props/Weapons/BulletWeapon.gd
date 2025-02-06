@@ -1,5 +1,4 @@
-class_name BulletWeapon
-extends Weapon
+class_name BulletWeapon extends Weapon
 
 
 @export var properties : BulletWeaponProperties = null

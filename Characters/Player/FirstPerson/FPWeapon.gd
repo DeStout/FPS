@@ -12,6 +12,11 @@ var can_zoom := true
 var was_zoomed := false
 
 
+func _process(delta: float) -> void:
+	if weapon_type != Globals.WEAPONS.SLAPPER:
+		HUD.bloom_reticle(weapon.get_variance_perc())
+
+
 func show_mesh(show : bool) -> void:
 	for mesh in weapon_mesh:
 		mesh.visible = show

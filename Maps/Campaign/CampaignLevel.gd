@@ -65,9 +65,8 @@ func spawn_bullet_hole(pos : Vector3, normal : Vector3, \
 func spawn_grenade(thrower, spawn_basis : Basis, spawn_point : Vector3, \
 								spawn_dir : Vector3, throw_strength : float) -> void:
 	var grenade = grenade_.instantiate()
-	$FX.add_child(grenade)
-	
 	grenade.thrower = thrower
+	$FX.add_child(grenade)
 	grenade.global_position = spawn_point
 	grenade.global_basis = spawn_basis
 	grenade.global_basis = grenade.global_basis.looking_at(spawn_dir)
