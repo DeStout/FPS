@@ -21,6 +21,8 @@ var cam_swap := false
 
 
 func _ready() -> void:
+	if get_tree().current_scene.name != "Game":
+		return
 	visible = debug_visible
 	$FPS.visible = fps_visible
 	

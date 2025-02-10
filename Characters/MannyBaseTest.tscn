@@ -1,0 +1,452 @@
+[gd_scene load_steps=35 format=3 uid="uid://dpwat708l5iwi"]
+
+[ext_resource type="PackedScene" uid="uid://tckq6s43m5rx" path="res://Characters/Anims/MannyAnims.blend" id="1_l7rul"]
+[ext_resource type="Script" path="res://Temp/AnimControl.gd" id="2_g4n11"]
+[ext_resource type="PackedScene" uid="uid://c7c70o2wmstqa" path="res://Props/Weapons/Pistol/PistolBase.tscn" id="2_qvyj0"]
+[ext_resource type="Texture2D" uid="uid://b762t7r843oy8" path="res://Autoloads/HUD/Crosshair.svg" id="3_cujy2"]
+[ext_resource type="Script" path="res://Temp/CamPivot.gd" id="3_vpscu"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_oxbdl"]
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbbis"]
+animation = &"UpperAlertPistolShoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ivp8q"]
+animation = &"LowerAlertIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wx3vs"]
+animation = &"LowerWalkRight"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k8e4f"]
+animation = &"LowerWalkBack"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_efvta"]
+animation = &"LowerWalkForward"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fegu7"]
+animation = &"LowerWalkLeft"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pji8k"]
+animation = &"LowerRunBack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ml1ll"]
+animation = &"LowerRunRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fjtbv"]
+animation = &"LowerRunForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fu87j"]
+animation = &"LowerRunLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mqtuf"]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_ivp8q")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_wx3vs")
+blend_point_1/pos = Vector2(0.5, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_k8e4f")
+blend_point_2/pos = Vector2(0, 0.5)
+blend_point_3/node = SubResource("AnimationNodeAnimation_efvta")
+blend_point_3/pos = Vector2(0, -0.5)
+blend_point_4/node = SubResource("AnimationNodeAnimation_fegu7")
+blend_point_4/pos = Vector2(-0.5, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_pji8k")
+blend_point_5/pos = Vector2(0, 1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_ml1ll")
+blend_point_6/pos = Vector2(1, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_fjtbv")
+blend_point_7/pos = Vector2(0, -1)
+blend_point_8/node = SubResource("AnimationNodeAnimation_fu87j")
+blend_point_8/pos = Vector2(-1, 0)
+triangles = PackedInt32Array(0, 1, 2, 0, 1, 3, 0, 3, 4, 0, 2, 4, 3, 4, 7, 4, 7, 8, 2, 4, 5, 1, 2, 5, 1, 5, 6, 4, 5, 8, 1, 3, 7, 1, 6, 7)
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1nh1b"]
+filter_enabled = true
+filters = ["Mannequin/Skeleton3D:LeftArm", "Mannequin/Skeleton3D:LeftForeArm", "Mannequin/Skeleton3D:LeftHand", "Mannequin/Skeleton3D:LeftShoulder", "Mannequin/Skeleton3D:RightArm", "Mannequin/Skeleton3D:RightForeArm", "Mannequin/Skeleton3D:RightHand", "Mannequin/Skeleton3D:RightShoulder", "Mannequin/Skeleton3D:Spine"]
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_agd2w"]
+animation = &"UpperAlertPistolIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6lgn7"]
+animation = &"UpperAlertWalkBackPistol"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vpju"]
+animation = &"UpperAlertWalkForwardPistol"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v5jfk"]
+animation = &"UpperAlertWalkRightPistol"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yiycw"]
+animation = &"UpperAlertWalkLeftPistol"
+use_custom_timeline = true
+timeline_length = 0.633
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fpfhu"]
+animation = &"UpperAlertRunBackPistol"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8m4lp"]
+animation = &"UpperAlertRunForwardPistol"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5nxls"]
+animation = &"UpperAlertRunRightPistol"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xrycp"]
+animation = &"UpperAlertRunLeftPistol"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ejmjm"]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_agd2w")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6lgn7")
+blend_point_1/pos = Vector2(0, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_5vpju")
+blend_point_2/pos = Vector2(0, -0.5)
+blend_point_3/node = SubResource("AnimationNodeAnimation_v5jfk")
+blend_point_3/pos = Vector2(0.5, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_yiycw")
+blend_point_4/pos = Vector2(-0.5, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_fpfhu")
+blend_point_5/pos = Vector2(0, 1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_8m4lp")
+blend_point_6/pos = Vector2(0, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_5nxls")
+blend_point_7/pos = Vector2(1, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_xrycp")
+blend_point_8/pos = Vector2(-1, 0)
+triangles = PackedInt32Array(0, 2, 3, 0, 1, 3, 0, 2, 4, 0, 1, 4, 1, 4, 5, 1, 3, 5, 2, 4, 6, 2, 3, 6, 3, 6, 7, 3, 5, 7, 4, 6, 8, 4, 5, 8)
+sync = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7pgti"]
+graph_offset = Vector2(-407.937, -104.542)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_oxbdl")
+nodes/Add2/position = Vector2(140, 220)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_vbbis")
+nodes/Animation/position = Vector2(-300, 180)
+nodes/LowerAnim/node = SubResource("AnimationNodeBlendSpace2D_mqtuf")
+nodes/LowerAnim/position = Vector2(-180, 440)
+nodes/ShootOneShot/node = SubResource("AnimationNodeOneShot_1nh1b")
+nodes/ShootOneShot/position = Vector2(-40, 80)
+nodes/UpperAnim/node = SubResource("AnimationNodeBlendSpace2D_ejmjm")
+nodes/UpperAnim/position = Vector2(-240, -40)
+nodes/output/position = Vector2(360, 240)
+node_connections = [&"Add2", 0, &"ShootOneShot", &"Add2", 1, &"LowerAnim", &"ShootOneShot", 0, &"UpperAnim", &"ShootOneShot", 1, &"Animation", &"output", 0, &"Add2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pp3vt"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0e1p4"]
+sky_material = SubResource("ProceduralSkyMaterial_pp3vt")
+
+[sub_resource type="Environment" id="Environment_m1kpd"]
+background_mode = 2
+sky = SubResource("Sky_0e1p4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byelh"]
+corner_radius_top_left = 256
+corner_radius_top_right = 256
+corner_radius_bottom_right = 256
+corner_radius_bottom_left = 256
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l2nq"]
+bg_color = Color(0.411765, 0.411765, 0.411765, 1)
+corner_radius_top_left = 256
+corner_radius_top_right = 256
+corner_radius_bottom_right = 256
+corner_radius_bottom_left = 256
+corner_detail = 16
+
+[node name="Mannequin" instance=ExtResource("1_l7rul")]
+
+[node name="Light" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="Skeleton3D" parent="Mannequin" index="0"]
+bones/1/position = Vector3(6.75717e-06, 99.7919, -4.09133e-05)
+bones/1/rotation = Quaternion(4.39048e-05, 1, 3.76894e-08, 1.50601e-06)
+bones/2/rotation = Quaternion(-0.0607302, -2.33825e-08, 6.12528e-06, 0.998154)
+bones/3/rotation = Quaternion(0.000196127, 2.99938e-08, -9.31616e-06, 1)
+bones/4/rotation = Quaternion(0.0577117, 2.20959e-06, 3.28261e-06, 0.998333)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00282766, 1.00638e-09, -1.03645e-10, 0.999996)
+bones/6/rotation = Quaternion(1.39602e-15, -8.39984e-12, -4.87891e-18, 1)
+bones/7/rotation = Quaternion(-0.453835, -0.544849, 0.551139, -0.439794)
+bones/8/position = Vector3(-3.50354e-07, 12.9223, 2.18881e-06)
+bones/8/rotation = Quaternion(-0.010422, -0.00132801, 0.0758401, 0.997065)
+bones/9/position = Vector3(1.36726e-05, 27.4401, -1.70555e-06)
+bones/9/rotation = Quaternion(6.25426e-07, 2.10434e-08, 0.0506105, 0.998718)
+bones/10/position = Vector3(-1.12154e-06, 27.6496, -1.04619e-05)
+bones/10/rotation = Quaternion(7.03209e-07, -2.54641e-08, -0.0252171, 0.999682)
+bones/11/position = Vector3(-3.00298, 3.78884, 2.16715)
+bones/11/rotation = Quaternion(0.251894, -0.0594642, 0.221923, 0.940087)
+bones/12/position = Vector3(5.00678e-06, 4.74499, 2.50133e-05)
+bones/12/rotation = Quaternion(7.35419e-06, 3.62292e-07, 8.53091e-07, 1)
+bones/13/position = Vector3(-3.57627e-07, 4.38213, -3.91182e-05)
+bones/14/position = Vector3(-2.82204, 12.2666, 0.231827)
+bones/14/rotation = Quaternion(6.47051e-07, -6.68512e-08, 4.68632e-06, 1)
+bones/15/position = Vector3(1.56456e-07, 3.89197, -1.51241e-05)
+bones/15/rotation = Quaternion(-1.55177e-06, 1.15806e-07, -6.21108e-06, 1)
+bones/16/position = Vector3(3.63466e-07, 3.41517, -2.20544e-05)
+bones/16/rotation = Quaternion(6.31445e-08, -5.60647e-08, 1.97277e-09, 1)
+bones/17/position = Vector3(-1.25273e-05, 12.7755, -8.11963e-06)
+bones/17/rotation = Quaternion(-5.57953e-07, 3.80934e-08, 3.42043e-09, 1)
+bones/18/position = Vector3(2.8154e-07, 3.61398, -1.35508e-05)
+bones/18/rotation = Quaternion(2.29218e-07, -9.20414e-09, 5.88069e-09, 1)
+bones/19/position = Vector3(2.93064e-05, 3.45976, -9.2105e-06)
+bones/19/rotation = Quaternion(5.68525e-07, -2.75178e-08, -8.25522e-09, 1)
+bones/20/position = Vector3(2.21664, 12.147, -0.00999583)
+bones/20/rotation = Quaternion(-7.15459e-07, -1.13085e-10, 4.6344e-06, 1)
+bones/21/position = Vector3(9.41553e-07, 3.60118, 4.75504e-06)
+bones/21/rotation = Quaternion(-1.64612e-06, 2.27253e-08, -8.22315e-06, 1)
+bones/22/position = Vector3(4.27671e-07, 3.30731, 8.73953e-06)
+bones/22/rotation = Quaternion(2.7825e-07, 2.78242e-07, 3.33537e-07, 1)
+bones/23/position = Vector3(4.72584, 10.9082, 0.226132)
+bones/23/rotation = Quaternion(1.35441e-06, 1.62774e-07, 0.000140977, 1)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(-8.07034e-07, 4.13665, 2.68604e-06)
+bones/24/rotation = Quaternion(-4.62342e-06, -4.52032e-07, -0.000368422, 1)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(3.84055e-08, 2.59482, -2.43367e-06)
+bones/25/rotation = Quaternion(5.29425e-06, 6.46246e-07, 0.000230579, 1)
+bones/26/rotation = Quaternion(0.453838, -0.544847, 0.55114, 0.439793)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/position = Vector3(-2.26492e-07, 12.9223, -4.53569e-06)
+bones/27/rotation = Quaternion(-0.0104253, 0.00132841, -0.0758388, 0.997065)
+bones/28/position = Vector3(-3.05579e-07, 27.4401, 3.61851e-06)
+bones/28/rotation = Quaternion(2.30723e-07, 1.4254e-08, -0.0506105, 0.998718)
+bones/29/position = Vector3(1.27642e-05, 27.6496, -3.36123e-06)
+bones/29/rotation = Quaternion(-2.98555e-07, -6.91032e-08, 0.025217, 0.999682)
+bones/30/position = Vector3(3.00298, 3.7888, 2.16716)
+bones/30/rotation = Quaternion(0.251896, 0.0594639, -0.221924, 0.940086)
+bones/31/position = Vector3(9.11951e-06, 4.74495, -2.84719e-05)
+bones/31/rotation = Quaternion(7.64198e-06, -1.18299e-07, -6.85453e-07, 1)
+bones/32/position = Vector3(-8.10622e-06, 4.38216, 4.00341e-05)
+bones/33/position = Vector3(2.82204, 12.2666, 0.231838)
+bones/33/rotation = Quaternion(4.5944e-08, -4.64021e-08, -4.80884e-06, 1)
+bones/34/position = Vector3(1.90624e-07, 3.89196, -2.24422e-06)
+bones/34/rotation = Quaternion(1.55369e-06, 1.15711e-07, 4.21138e-06, 1)
+bones/35/position = Vector3(-1.28066e-05, 3.41516, 3.52131e-06)
+bones/35/rotation = Quaternion(-6.31372e-08, 6.3137e-08, -5.30375e-08, 1)
+bones/36/position = Vector3(1.65512e-05, 12.7755, 1.82501e-05)
+bones/36/rotation = Quaternion(1.25276e-06, 5.85399e-08, -4.19433e-07, 1)
+bones/37/position = Vector3(5.07084e-08, 3.61396, -5.30669e-06)
+bones/37/rotation = Quaternion(-2.29218e-07, -9.20075e-09, 3.95078e-08, 1)
+bones/38/position = Vector3(-2.93147e-05, 3.45976, -9.63863e-06)
+bones/38/rotation = Quaternion(-5.68525e-07, -2.75184e-08, 3.71477e-08, 1)
+bones/39/position = Vector3(-2.21663, 12.147, -0.0099847)
+bones/39/rotation = Quaternion(1.40997e-06, 2.05293e-08, -4.76679e-06, 1)
+bones/40/position = Vector3(-7.26591e-07, 3.6012, -6.88401e-06)
+bones/40/rotation = Quaternion(-6.60297e-07, -5.49423e-08, 7.8906e-06, 1)
+bones/41/position = Vector3(-7.41146e-07, 3.30731, -3.41407e-07)
+bones/41/rotation = Quaternion(-5.59901e-08, 5.59925e-08, 2.43161e-07, 1)
+bones/42/position = Vector3(-4.72583, 10.9082, 0.226141)
+bones/42/rotation = Quaternion(1.18514e-06, 7.8552e-09, -3.2276e-06, 1)
+bones/43/position = Vector3(2.79509e-07, 4.13664, 2.59502e-07)
+bones/43/rotation = Quaternion(-1.61916e-07, 4.1819e-08, 1.06347e-05, 1)
+bones/44/position = Vector3(-1.65966e-07, 2.59485, -2.99007e-06)
+bones/44/rotation = Quaternion(2.55612e-07, -1.71975e-08, -1.07546e-05, 1)
+bones/45/rotation = Quaternion(2.03257e-05, -0.00635018, 0.999975, -0.00296964)
+bones/45/scale = Vector3(1, 1, 1)
+bones/46/rotation = Quaternion(-0.030792, 0.000257746, -0.00591736, 0.999508)
+bones/46/scale = Vector3(1, 1, 1)
+bones/47/rotation = Quaternion(0.563398, 0.0144177, 0.0249216, 0.825684)
+bones/47/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(0.213328, -0.0327445, -0.0148846, 0.976318)
+bones/48/scale = Vector3(1, 1, 1)
+bones/49/rotation = Quaternion(-1.82097e-05, -0.0063338, 0.999975, 0.00305746)
+bones/49/scale = Vector3(1, 1, 1)
+bones/50/rotation = Quaternion(-0.0308247, -0.000257901, 0.00591736, 0.999507)
+bones/51/rotation = Quaternion(0.563412, -0.0144173, -0.0249217, 0.825674)
+bones/51/scale = Vector3(1, 1, 1)
+bones/52/rotation = Quaternion(0.213344, 0.032341, 0.0147829, 0.97633)
+bones/52/scale = Vector3(1, 1, 1)
+
+[node name="RHand" type="BoneAttachment3D" parent="Mannequin/Skeleton3D" index="2"]
+transform = Transform3D(0.0569942, 0.0315956, -0.997874, 0.996842, 0.0535605, 0.0586311, 0.0552989, -0.998064, -0.0284432, 2.64421, 148.243, -44.5264)
+bone_name = "RightHand"
+bone_idx = 29
+
+[node name="Pistol" parent="Mannequin/Skeleton3D/RHand" index="0" instance=ExtResource("2_qvyj0")]
+transform = Transform3D(5.8418, 99.6794, 5.46649, 2.92846, 5.30237, -99.8164, -99.7863, 5.99115, -2.60932, 1.84677, 8.80827, 3.20328)
+
+[node name="AnimationPlayer" parent="." index="2"]
+playback_auto_capture = false
+
+[node name="AnimTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeBlendTree_7pgti")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+parameters/LowerAnim/blend_position = Vector2(0, 0)
+parameters/ShootOneShot/active = false
+parameters/ShootOneShot/internal_active = false
+parameters/ShootOneShot/request = 0
+parameters/UpperAnim/blend_position = Vector2(0, 0)
+
+[node name="CamVP" type="CanvasLayer" parent="." index="4"]
+
+[node name="SubVPCont" type="SubViewportContainer" parent="CamVP" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -512.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubVP" type="SubViewport" parent="CamVP/SubVPCont" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1408, 1080)
+render_target_update_mode = 4
+
+[node name="CamPivot" type="Node3D" parent="CamVP/SubVPCont/SubVP" index="0"]
+transform = Transform3D(-0.894154, -0.164831, 0.416316, 0, 0.929776, 0.368125, -0.447759, 0.32916, -0.831364, 0, 1.08045, 0)
+script = ExtResource("3_vpscu")
+
+[node name="Camera" type="Camera3D" parent="CamVP/SubVPCont/SubVP/CamPivot" index="0"]
+transform = Transform3D(1, 7.45058e-08, -5.96046e-08, 0, 1, -2.68221e-07, 0, 0, 1, 2.74047e-08, -1.19209e-07, 2.141)
+environment = SubResource("Environment_m1kpd")
+current = true
+
+[node name="AnimControl" type="CanvasLayer" parent="." index="5" node_paths=PackedStringArray("anim_tree", "value_label")]
+script = ExtResource("2_g4n11")
+anim_tree = NodePath("../AnimTree")
+value_label = NodePath("AnimControl/Value")
+
+[node name="AnimControl" type="ColorRect" parent="AnimControl" index="0"]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.733
+anchor_right = 1.0
+anchor_bottom = 0.474
+offset_left = 0.639893
+offset_bottom = 0.0799561
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.410156, 0.410156, 0.410156, 1)
+
+[node name="MainCirc" type="Panel" parent="AnimControl/AnimControl" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_byelh")
+
+[node name="InnerCirc" type="Panel" parent="AnimControl/AnimControl/MainCirc" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l2nq")
+
+[node name="Cursor" type="TextureRect" parent="AnimControl/AnimControl" index="1"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 239.0
+offset_top = 239.0
+offset_right = 362.0
+offset_bottom = 362.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_cujy2")
+
+[node name="Value" type="Label" parent="AnimControl/AnimControl" index="2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 477.0
+offset_right = -457.0
+offset_bottom = -1.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "(0, 0)"
+vertical_alignment = 2
+
+[node name="ControlsBox" type="VBoxContainer" parent="AnimControl" index="1"]
+anchors_preset = -1
+anchor_left = 0.733
+anchor_top = 0.474
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.639893
+offset_top = 0.0799561
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hbox" type="HBoxContainer" parent="AnimControl/ControlsBox" index="0"]
+layout_mode = 2
+
+[node name="Container" type="Control" parent="AnimControl/ControlsBox/Hbox" index="0"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="AnimControl/ControlsBox/Hbox/Container" index="0"]
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 75.0
+
+[node name="ShootButton" type="Button" parent="AnimControl/ControlsBox/Hbox/Container/Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -370.0
+theme_override_font_sizes/font_size = 48
+text = "Shoot"
+
+[connection signal="pressed" from="AnimControl/ControlsBox/Hbox/Container/Control/ShootButton" to="AnimControl" method="play_shoot_anim"]
