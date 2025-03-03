@@ -84,7 +84,7 @@ sync = true
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1nh1b"]
 filter_enabled = true
-filters = ["Mannequin/Skeleton3D:LeftArm", "Mannequin/Skeleton3D:LeftForeArm", "Mannequin/Skeleton3D:LeftHand", "Mannequin/Skeleton3D:LeftShoulder", "Mannequin/Skeleton3D:RightArm", "Mannequin/Skeleton3D:RightForeArm", "Mannequin/Skeleton3D:RightHand", "Mannequin/Skeleton3D:RightShoulder", "Mannequin/Skeleton3D:Spine"]
+filters = ["Mannequin/Skeleton3D:LeftForeArm", "Mannequin/Skeleton3D:LeftHand", "Mannequin/Skeleton3D:RightForeArm", "Mannequin/Skeleton3D:RightHand", "Mannequin/Skeleton3D:Spine"]
 sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_agd2w"]
@@ -158,7 +158,6 @@ triangles = PackedInt32Array(0, 2, 3, 0, 1, 3, 0, 2, 4, 0, 1, 4, 1, 4, 5, 1, 3, 
 sync = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7pgti"]
-graph_offset = Vector2(-407.937, -104.542)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_oxbdl")
 nodes/Add2/position = Vector2(140, 220)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vbbis")
@@ -309,12 +308,20 @@ bones/52/rotation = Quaternion(0.213344, 0.032341, 0.0147829, 0.97633)
 bones/52/scale = Vector3(1, 1, 1)
 
 [node name="RHand" type="BoneAttachment3D" parent="Mannequin/Skeleton3D" index="2"]
-transform = Transform3D(0.0569942, 0.0315956, -0.997874, 0.996842, 0.0535605, 0.0586311, 0.0552989, -0.998064, -0.0284432, 2.64421, 148.243, -44.5264)
+transform = Transform3D(0.05687, 0.031724, -0.997877, 0.996879, 0.05301, 0.0584983, 0.0547532, -0.99809, -0.0286105, 2.64639, 149.063, -43.9308)
 bone_name = "RightHand"
 bone_idx = 29
 
 [node name="Pistol" parent="Mannequin/Skeleton3D/RHand" index="0" instance=ExtResource("2_qvyj0")]
 transform = Transform3D(5.8418, 99.6794, 5.46649, 2.92846, 5.30237, -99.8164, -99.7863, 5.99115, -2.60932, 1.84677, 8.80827, 3.20328)
+
+[node name="Target" type="Marker3D" parent="Mannequin/Skeleton3D/RHand/Pistol" index="0"]
+transform = Transform3D(-1.6905e-05, -2.35683e-05, 0.00999996, -0.00999999, -2.48462e-06, -1.69099e-05, 2.52434e-06, -0.00999997, -2.35648e-05, -0.0379734, -0.045778, 0.0870531)
+
+[node name="LArm_IK" type="SkeletonIK3D" parent="Mannequin/Skeleton3D" index="3"]
+root_bone = &"LeftArm"
+tip_bone = &"LeftHand"
+target_node = NodePath("../RHand/Pistol/Target")
 
 [node name="AnimationPlayer" parent="." index="2"]
 playback_auto_capture = false
@@ -355,10 +362,11 @@ transform = Transform3D(1, 7.45058e-08, -5.96046e-08, 0, 1, -2.68221e-07, 0, 0, 
 environment = SubResource("Environment_m1kpd")
 current = true
 
-[node name="AnimControl" type="CanvasLayer" parent="." index="5" node_paths=PackedStringArray("anim_tree", "value_label")]
+[node name="AnimControl" type="CanvasLayer" parent="." index="5" node_paths=PackedStringArray("anim_tree", "value_label", "IK")]
 script = ExtResource("2_g4n11")
 anim_tree = NodePath("../AnimTree")
 value_label = NodePath("AnimControl/Value")
+IK = NodePath("../Mannequin/Skeleton3D/LArm_IK")
 
 [node name="AnimControl" type="ColorRect" parent="AnimControl" index="0"]
 top_level = true
@@ -446,6 +454,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -370.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Shoot"
 

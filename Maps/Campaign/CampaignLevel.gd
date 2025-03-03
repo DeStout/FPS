@@ -2,7 +2,7 @@ extends Node3D
 class_name CampaignLevel
 
 
-@export var player : CharacterBase
+@export var player : Player
 
 var rag_doll_ := load("res://Characters/RagDoll.tscn")
 var shot_trail_ := load("res://Props/ShotTrail.tscn")
@@ -118,4 +118,7 @@ func character_out_of_bounds(body : Node3D) -> void:
 		HUD.update_health(player.MAX_HEALTH, player.MAX_ARMOR, player.MAX_HEALTH, 0)
 		Globals.game.reset_single_player()
 		return
+		body.queue_free()
+	elif body is CharacterBase:
+		body.defeated.emit()
 		body.queue_free()

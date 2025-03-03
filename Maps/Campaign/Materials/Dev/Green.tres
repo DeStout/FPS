@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbvx7yrx4jgou"]
+
+[ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Dev/Campaign1_tex_7.png" id="1_3l034"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_3l034")

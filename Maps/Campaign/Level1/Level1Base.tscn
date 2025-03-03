@@ -1,0 +1,155 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch4aiveqyc2gx"]
+
+[ext_resource type="PackedScene" uid="uid://ntsm8m3itrvb" path="res://Maps/Campaign/Level1/Level1.blend" id="1_sxbb1"]
+[ext_resource type="Material" uid="uid://dglmcl7poxhy" path="res://Maps/Campaign/Materials/Asphalt/Asphalt.tres" id="2_cslb0"]
+[ext_resource type="Material" uid="uid://cvkyh6oxrv3fw" path="res://Maps/Campaign/Materials/RockFace/RockFace.tres" id="3_uxuha"]
+[ext_resource type="Material" uid="uid://b6f1ujloga01d" path="res://Maps/Campaign/Materials/Concrete/Concrete.tres" id="4_vaumo"]
+[ext_resource type="Material" uid="uid://b53jgu3418lyd" path="res://Maps/Campaign/Materials/Metal/Metal.tres" id="5_i51k7"]
+[ext_resource type="Material" uid="uid://bspcter5xq0qw" path="res://Maps/Campaign/Materials/MetalSheet/MetalSheet.tres" id="6_j8fif"]
+[ext_resource type="Texture2D" uid="uid://jtln57tsmcli" path="res://Maps/Campaign/Materials/Metal/Metal_Albedo.png" id="7_y188i"]
+[ext_resource type="Texture2D" uid="uid://ct702oe63cc4f" path="res://Maps/Campaign/Materials/Metal/Metal_Metal.png" id="8_v6ygg"]
+[ext_resource type="Texture2D" uid="uid://ctwm7x8md5um" path="res://Maps/Campaign/Materials/Metal/Metal_Normal.png" id="9_6adt1"]
+[ext_resource type="Texture2D" uid="uid://du2uxdrmkvw3d" path="res://Maps/Campaign/Materials/Metal/Metal_Roughness.png" id="10_gaimo"]
+[ext_resource type="Material" uid="uid://y1kyxgc8mxsu" path="res://Maps/Campaign/Materials/Dev/Orange.tres" id="11_vx08v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrloj"]
+albedo_texture = ExtResource("7_y188i")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("8_v6ygg")
+roughness = 0.63
+roughness_texture = ExtResource("10_gaimo")
+normal_enabled = true
+normal_scale = 4.66
+normal_texture = ExtResource("9_6adt1")
+uv1_triplanar = true
+
+[node name="Level1" instance=ExtResource("1_sxbb1")]
+
+[node name="Area2Ground" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_cslb0")
+metadata/_edit_group_ = true
+
+[node name="Tunnel" parent="." index="1"]
+surface_material_override/0 = ExtResource("4_vaumo")
+metadata/_edit_group_ = true
+
+[node name="Area1Cliff" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_uxuha")
+metadata/_edit_group_ = true
+
+[node name="Area1Gate" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_vaumo")
+surface_material_override/1 = ExtResource("5_i51k7")
+metadata/_edit_group_ = true
+
+[node name="Area2Gate" parent="." index="4"]
+surface_material_override/0 = ExtResource("4_vaumo")
+surface_material_override/1 = ExtResource("5_i51k7")
+metadata/_edit_group_ = true
+
+[node name="Area2Wall" parent="." index="5"]
+surface_material_override/0 = ExtResource("3_uxuha")
+metadata/_edit_group_ = true
+
+[node name="Tower" parent="." index="6"]
+surface_material_override/0 = ExtResource("4_vaumo")
+surface_material_override/1 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="TowerStairs" parent="." index="7"]
+surface_material_override/0 = ExtResource("4_vaumo")
+metadata/_edit_group_ = true
+
+[node name="TowerStairsCol" parent="." index="8"]
+collision_mask = 306
+
+[node name="TowerRailing" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_lrloj")
+metadata/_edit_group_ = true
+
+[node name="ShippingContainer1" parent="." index="10"]
+surface_material_override/0 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="ShippingContainer6" parent="." index="11"]
+surface_material_override/0 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="ShippingContainer2" parent="." index="12"]
+surface_material_override/0 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="ShippingContainer3" parent="." index="13"]
+surface_material_override/0 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="ShippingContainer5" parent="." index="14"]
+surface_material_override/0 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="ShippingContainer4" parent="." index="15"]
+surface_material_override/0 = ExtResource("6_j8fif")
+metadata/_edit_group_ = true
+
+[node name="Area2Door" parent="." index="16"]
+surface_material_override/0 = ExtResource("4_vaumo")
+metadata/_edit_group_ = true
+
+[node name="Area3" parent="." index="17"]
+metadata/_edit_group_ = true
+
+[node name="Area4" parent="." index="18"]
+metadata/_edit_group_ = true
+
+[node name="Area3Shell" parent="." index="19"]
+surface_material_override/0 = ExtResource("3_uxuha")
+metadata/_edit_group_ = true
+
+[node name="Area4Shell" parent="." index="20"]
+surface_material_override/0 = ExtResource("3_uxuha")
+metadata/_edit_group_ = true
+
+[node name="Area4Rampway" parent="." index="21"]
+metadata/_edit_group_ = true
+
+[node name="TempGround" parent="." index="22"]
+surface_material_override/0 = ExtResource("2_cslb0")
+metadata/_edit_group_ = true
+
+[node name="Area4Terminal" parent="." index="23"]
+surface_material_override/0 = ExtResource("11_vx08v")
+metadata/_edit_group_ = true
+
+[node name="Area5" parent="." index="24"]
+metadata/_edit_group_ = true
+
+[node name="Area5Railway" parent="." index="25"]
+metadata/_edit_group_ = true
+
+[node name="Area5Gangwalk" parent="." index="26"]
+metadata/_edit_group_ = true
+
+[node name="Area5Shell" parent="." index="27"]
+surface_material_override/0 = ExtResource("3_uxuha")
+metadata/_edit_group_ = true
+
+[node name="Area6Ground" parent="." index="28"]
+surface_material_override/0 = ExtResource("2_cslb0")
+metadata/_edit_group_ = true
+
+[node name="Area6Gate" parent="." index="29"]
+metadata/_edit_group_ = true
+
+[node name="Area1Ground" parent="." index="30"]
+surface_material_override/0 = ExtResource("2_cslb0")
+metadata/_edit_group_ = true
+
+[node name="Area6Building" parent="." index="31"]
+metadata/_edit_group_ = true
+
+[node name="Area6Door" parent="." index="32"]
+metadata/_edit_group_ = true
+
+[node name="Area6Ramp" parent="." index="33"]
+metadata/_edit_group_ = true

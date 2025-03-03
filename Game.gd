@@ -34,9 +34,9 @@ func _select_single_player_map() -> String:
 	var map_address := ""
 	match single_player_settings:
 		0:
-			map_address = "res://Maps/Campaign/TestCampaign.tscn"
+			map_address = "res://Maps/Campaign/Level1/Level1.tscn"
 		1:
-			map_address = "res://Maps/Campaign/Reuben/Reuben.tscn"
+			map_address = "res://Maps/Campaign/Test/TestCampaign.tscn"
 	return map_address
 
 

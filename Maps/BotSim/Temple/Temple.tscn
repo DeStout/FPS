@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bgk0mejwh02ln"]
+[gd_scene load_steps=30 format=4 uid="uid://bgk0mejwh02ln"]
 
 [ext_resource type="PackedScene" uid="uid://cktnv6xx6yxxn" path="res://Maps/BotSim/BotSimLevel.tscn" id="1_ov5jx"]
 [ext_resource type="VoxelGIData" uid="uid://bftyiwg0vwdwk" path="res://Maps/BotSim/Temple/Temple.VoxelGI_data.res" id="2_2cypd"]
@@ -503,10 +503,6 @@ height = 2.5
 radial_segments = 36
 rings = 18
 is_hemisphere = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_578bw"]
-render_priority = 0
-shader = ExtResource("7_iybpc")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_h3ud1"]
 top_radius = 2.3
@@ -1223,7 +1219,6 @@ omni_attenuation = -0.091
 
 [node name="Refraction" type="MeshInstance3D" parent="NavRegion/Goddess/Goddess/Skeleton3D/BoneAttach" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38726e-15, -0.0671535, -1.74623e-10)
-instance_shader_parameters/scale = 12.0
 mesh = SubResource("SphereMesh_pixak")
 surface_material_override/0 = SubResource("ShaderMaterial_8mi78")
 
@@ -1235,9 +1230,8 @@ speed_scale = 0.5
 [node name="Refraction" type="MeshInstance3D" parent="NavRegion" index="2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -13.1843)
 cast_shadow = 0
-instance_shader_parameters/scale = 6.075
 mesh = SubResource("SphereMesh_gltbo")
-surface_material_override/0 = SubResource("ShaderMaterial_578bw")
+surface_material_override/0 = SubResource("ShaderMaterial_8mi78")
 
 [node name="Static" type="MeshInstance3D" parent="NavRegion/Refraction" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.973762, -0.227569, 0, 0.227569, 0.973762, 0, 9.56742, 4.02324)

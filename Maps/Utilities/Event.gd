@@ -10,9 +10,9 @@ var event := Node.new()
 
 func _ready() -> void:
 	event.set_script(event_script)
+	event.resources = resources
 	add_child(event)
 	event.player = player
-	event.resources = resources
 
 
 func trigger() -> void:

@@ -1,11 +1,11 @@
 [gd_scene load_steps=41 format=3 uid="uid://dvenckx2dn3c0"]
 
 [ext_resource type="PackedScene" uid="uid://dcesl64wxrgro" path="res://Maps/Campaign/CampaignLevel.tscn" id="1_j16dn"]
-[ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Campaign1_tex_7.png" id="2_da4iw"]
+[ext_resource type="Texture2D" uid="uid://dm4fw4cn6xt2m" path="res://Maps/Campaign/Materials/Dev/Campaign1_tex_7.png" id="2_da4iw"]
 [ext_resource type="PackedScene" uid="uid://bb1otskk4hdc6" path="res://Characters/Player/CampaignPlayer.tscn" id="2_gfpqq"]
 [ext_resource type="Script" path="res://Maps/Utilities/Ladder.gd" id="3_dpimj"]
 [ext_resource type="PackedScene" uid="uid://cv1xbqlbbiyub" path="res://Characters/Campaign/CampaignEnemy.tscn" id="3_u7umk"]
-[ext_resource type="Texture2D" uid="uid://41faj8pfp84a" path="res://Maps/T_Orange_D.png" id="4_ekh5x"]
+[ext_resource type="Texture2D" uid="uid://41faj8pfp84a" path="res://Maps/Campaign/Materials/Dev/T_Orange_D.png" id="4_ekh5x"]
 [ext_resource type="PackedScene" uid="uid://ci6uy4jghak2i" path="res://Maps/Utilities/SlidingDoor.tscn" id="5_aedjw"]
 [ext_resource type="Script" path="res://Maps/Utilities/UseEvent.gd" id="6_awoyt"]
 [ext_resource type="Script" path="res://Maps/Campaign/Reuben/UnlockDoor.gd" id="7_2am84"]

@@ -44,7 +44,6 @@ default_font_size = 36
 Button/colors/font_focus_color = Color(0.392157, 0.392157, 0.392157, 1)
 Button/colors/font_hover_color = Color(0, 0, 1, 1)
 Button/colors/font_pressed_color = Color(1, 0, 0, 1)
-Button/styles/focus = null
 HSlider/icons/grabber = ExtResource("1_jwgjr")
 HSlider/styles/grabber_area = SubResource("StyleBoxLine_vlkh3")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4jvsl")

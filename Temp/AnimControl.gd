@@ -9,8 +9,13 @@ var shoot_request := "parameters/ShootOneShot/request"
 @onready var container := $AnimControl
 @onready var cursor := $AnimControl/Cursor
 @export var value_label : Label
+@export var IK : SkeletonIK3D
 @onready var cursor_offset = cursor.size / 2 * cursor.scale
 var cursor_captured := false
+
+
+func _ready() -> void:
+	IK.start()
 
 
 func _input(event: InputEvent) -> void:

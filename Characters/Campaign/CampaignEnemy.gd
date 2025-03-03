@@ -6,6 +6,7 @@ extends CharacterBase
 @export var guard_path : Node3D
 
 var target : CharacterBase = null
+var target_seek_time = 8.0
 var enemies_vis : Array[bool] = []
 var alert := false
 var damage_mod := 1.5
@@ -120,7 +121,7 @@ func move_to_target(delta) -> void:
 	
 	# Start timer to switch to GuardState if no target visible
 	if !is_enemy_visible(target) and $TargetTimer.is_stopped() and !alert:
-		$TargetTimer.start(5.0)
+		$TargetTimer.start(target_seek_time)
 	
 	# Set the desired destination
 	var next_path_pos := Vector3.ZERO
@@ -143,8 +144,8 @@ func move_to_target(delta) -> void:
 	
 	# Turn to look at the target
 	var new_transform : Transform3D
-	if transform.origin.is_equal_approx(next_path_pos):
-		breakpoint
+	#if transform.origin.is_equal_approx(next_path_pos):
+		#breakpoint
 	new_transform = transform.looking_at(next_path_pos)
 	transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
 
@@ -187,6 +188,8 @@ func check_enemies_visible() -> bool:
 			%TargetCast.force_raycast_update()
 			if %TargetCast.is_colliding() and %TargetCast.get_collider() == body:
 				enemies_vis[enemies.find(body)] = true
+	if enemies_vis.has(true):
+		$TargetTimer.stop()
 	return enemies_vis.has(true)
 
 
